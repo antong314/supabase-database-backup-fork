@@ -193,6 +193,24 @@ CREATE OR REPLACE TRIGGER "wiki_pages_tsv_update" BEFORE INSERT OR UPDATE ON "pu
 
 
 
+CREATE POLICY "All access for All Users" ON "public"."contacts" USING (true);
+
+
+
+CREATE POLICY "All access for All Users" ON "public"."wiki_pages" USING (true);
+
+
+
+CREATE POLICY "Enable read access for all users" ON "public"."wiki_pages" FOR SELECT USING (true);
+
+
+
+ALTER TABLE "public"."contacts" ENABLE ROW LEVEL SECURITY;
+
+
+ALTER TABLE "public"."wiki_pages" ENABLE ROW LEVEL SECURITY;
+
+
 
 
 ALTER PUBLICATION "supabase_realtime" OWNER TO "postgres";
