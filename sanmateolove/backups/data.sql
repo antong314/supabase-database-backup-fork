@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
-\restrict Sjhqjd4G4gv8UopOQ5wtaTwKOh632FY0Y45YSan4wSqXfSkvvqT4n1Co0vw4jah
+\restrict XXN4oInbWfvYgShEJ8wRxKI4U1xgeca4IRfwEJOH0iGaL34vJAeQa6TUCPrSo2g
 
 -- Dumped from database version 15.8
 -- Dumped by pg_dump version 17.6
@@ -244,6 +244,7 @@ ae620267-baa8-478d-abba-7a2a6f9bffde	2025-08-03 15:50:37.525535+00	2025-08-12 13
 6890e54f-82cd-4739-93e7-728d282c3a6a	2025-03-31 19:15:16.049069+00	2025-06-04 21:19:11.608128+00	Dr. Eugenie Giasson-Gomez, D.C.	Healer	Chiropractic Care for the Whole Family. Solutions for all musculoskeletal issues, acute and chronic. English, français, español..	+50672395691	https://www.numoacupuncture.com/provider/eugenie-giasson-gomez-dc	\N	https://www.google.com/maps/place/La+Ecovilla/@9.9593125,-84.4991374,17z/data=!4m14!1m7!3m6!1s0x8fa04e91571c3441:0xbe1d11d7245c1f77!2sLa+Ecovilla!8m2!3d9.9593125!4d-84.4965625!16s%2Fg%2F11f24vwrk_!3m5!1s0x8fa04e91571c3441:0xbe1d11d7245c1f77!8m2!3d9.9593125!4d-84.4965625!16s%2Fg%2F11f24vwrk_?entry=ttu	f
 52d0d6f4-adf3-4aaa-b3ea-183cb7c47e84	2025-06-14 14:35:51.243244+00	2025-06-14 14:35:51.243244+00	iPhone Repair Orotina	Service	Guy who fixes iPhone screen in the Orotina bus station	+50687412227	\N	\N	\N	f
 289af565-6cbc-4908-a29e-7554b4032119	2025-06-14 14:36:59.638484+00	2025-06-14 14:36:59.638484+00	Apple Technician Escazu	Service	Apple and Mac products authorized technician in Escazu.	+50688419932	\N	\N	\N	f
+562d18e7-acba-41f2-b3d7-70aed40ff16e	2025-09-13 14:15:54.18944+00	2025-09-13 14:25:40.516479+00	Embody Wellness & Retreat Center	Retreats	Embody Costa Rica is a sanctuary of transformation, rooted in nature and guided by the spirit of deep healing, joy, and embodiment. \n\nNestled in the lush beauty of Costa Rica, it is more than a retreat center, it is a living, breathing ecosystem where people reconnect with themselves, community, and the Earth. Every detail reflects a devotion to authenticity, celebration, and holistic well-being.	+50662237434	http://EmbodyCostaRica.com	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/public/a2eabe82-70f3-4495-8b20-13ef26ad1664.jpg	https://g.co/kgs/YbNh9iu	f
 \.
 
 
@@ -356,6 +357,8 @@ COPY "storage"."buckets_analytics" ("id", "type", "format", "created_at", "updat
 --
 
 COPY "storage"."objects" ("id", "bucket_id", "name", "owner", "created_at", "updated_at", "last_accessed_at", "metadata", "version", "owner_id", "user_metadata", "level") FROM stdin;
+34483050-ddc0-4445-ab8a-e6166128dd86	contact-images	public/14357cca-b2c4-4b0b-bf2f-30af12b14d3e.jpg	\N	2025-09-13 14:15:53.760661+00	2025-09-13 14:15:53.760661+00	2025-09-13 14:15:53.760661+00	{"eTag": "\\"e5d73157b7ed77b563c707fb1143cf99\\"", "size": 435163, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-09-13T14:15:54.000Z", "contentLength": 435163, "httpStatusCode": 200}	66987d1d-eee3-4c4a-8c03-97730e6e4512	\N	{}	2
+1aa54a5c-ecfd-4e7a-948b-0efd8f164d94	contact-images	public/a2eabe82-70f3-4495-8b20-13ef26ad1664.jpg	\N	2025-09-13 14:25:40.318856+00	2025-09-13 14:25:40.318856+00	2025-09-13 14:25:40.318856+00	{"eTag": "\\"e5d73157b7ed77b563c707fb1143cf99\\"", "size": 435163, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-09-13T14:25:41.000Z", "contentLength": 435163, "httpStatusCode": 200}	a0c16aca-6590-43cf-bcab-8838773280bd	\N	{}	2
 3a09d3a6-3a38-44ca-89ab-e6c906497f9a	contact-images	280888cc-faa7-48a1-b2a8-b2fb511a7b84.png	\N	2025-03-31 19:43:47.930667+00	2025-08-29 20:03:05.666865+00	2025-03-31 19:43:47.930667+00	{"eTag": "\\"057689b7d757aad651a42d7538c07557\\"", "size": 990088, "mimetype": "image/png", "cacheControl": "max-age=3600", "lastModified": "2025-03-31T19:43:48.000Z", "contentLength": 990088, "httpStatusCode": 200}	1cdb435b-a192-4890-8312-270290e5c2c2	\N	{}	1
 290c5805-a4d7-4fd6-8328-1f97d650b113	contact-images	5169a4e7-7ed0-4c79-8cf1-fb5022d0a1cb.png	\N	2025-03-31 19:43:44.557821+00	2025-08-29 20:03:05.666865+00	2025-03-31 19:43:44.557821+00	{"eTag": "\\"9aed530753baaf9d7f64b821ccf9dafe\\"", "size": 340666, "mimetype": "image/png", "cacheControl": "max-age=3600", "lastModified": "2025-03-31T19:58:47.000Z", "contentLength": 340666, "httpStatusCode": 200}	f5a83b09-2faf-46d8-81a4-f45b13fc25eb	\N	{}	1
 6385762f-d4b3-45e0-b54f-67f23191c563	contact-images	24eecdbd-91c6-4153-b0b0-44cb6f27266c.jpg	\N	2025-03-31 19:57:19.162588+00	2025-08-29 20:03:05.666865+00	2025-03-31 19:57:19.162588+00	{"eTag": "\\"bfcfeedd41bf627571ead21ad605eae1\\"", "size": 53163, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-03-31T19:59:00.000Z", "contentLength": 53163, "httpStatusCode": 200}	06dc34dc-3615-4ae9-ad02-2c67bcac6ade	\N	{}	1
@@ -465,6 +468,6 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 1, false);
 -- PostgreSQL database dump complete
 --
 
-\unrestrict Sjhqjd4G4gv8UopOQ5wtaTwKOh632FY0Y45YSan4wSqXfSkvvqT4n1Co0vw4jah
+\unrestrict XXN4oInbWfvYgShEJ8wRxKI4U1xgeca4IRfwEJOH0iGaL34vJAeQa6TUCPrSo2g
 
 RESET ALL;
