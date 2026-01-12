@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
--- \restrict nLbNpLcBjyDzsVX0bxRQQwJ4WK18Aawa3zJ0jNPYm18id93sdXIHh4eRBtein7r
+-- \restrict MxPzOpr6msQZbyF03rXQwybVrFtWn5RIYbT2IscqAKfTOjEazSMsTkvqiQR8MFX
 
 -- Dumped from database version 15.8
 -- Dumped by pg_dump version 17.6
@@ -274,6 +274,7 @@ ac4e003e-b5a4-49ce-a264-30b1e2b6f858	2025-12-17 12:25:31.212326+00	2025-12-17 14
 c2b553cb-700c-47a1-b48c-3778233e365f	2025-11-06 23:43:43.502178+00	2025-11-07 02:35:06.257538+00	Kahina Mendoza	Healer	Trauma-informed somatic coach & conscious leadership mentor to change-makers, purpose-driven visionaries and soul-led entrepreneurs navigating major transitions (career shift, spiritual awakening, personal reinvention, separation etc.) I invite you to take the science-backed archetype assessment + integration session as a first step or message me to find out how I can best support you.	+50684532542	https://kahinamendoza.com/archetype-mapping/	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/public/8a6242d5-9797-4b2a-a0ae-91a4969e8ecb.jpg	\N	f
 fc86e0b8-5a56-4c2f-a79b-5d6edee75476	2025-12-17 14:47:32.012648+00	2025-12-17 15:01:43.474948+00	Kristen	Healer	Acupuncturist, Herbalist, Spiritual Response Therapy, Integrated  Energywork, Reiki, Tui Na bodywork, Cupping, Gua Sha, Qi Gong, Eastern Dietary Therapy, Integrated Medicine, Complementary Medicine, Functional Medicine	+15852332077	Inspiredwellnessacu.com	\N	\N	f
 caf0ae18-d68f-461f-9ddc-2f28499a0a19	2025-12-17 14:52:21.127453+00	2025-12-17 15:04:16.201232+00	Costa Rica Retreats	Retreats	Our sanctuary - our heart home in Costa Rica, where we’ve guided retreats for 30 years, has magically shaped us. Ancient trees and vibrant birds thrive here, creating an atmosphere brimming with possibility and alive with the energy of transformation. A place steeped in power, where the elements cleanse, inspire, and guide each of us back to the sacred wild within our hearts.\nImmersive retreats in a vibrant setting designed to restore vitality and joy!\nRooted & Wild Retreat\nSoulQuest: A Shamanu Retreat\nSacred Plant Medicine Retreat\nRomanced by the Elements Retreat\nSpiritual Fasting Retreat\nTree Medicine Retreat\nEcovillage Immersion Retreats\n* Private Cleansing & Rejuvenation Retreats\n\n\nLorenna Bousquet-Kacera\nShantree Kacera, RH, DN, Ph.D.	+15196529109	https://thelivingcentre.com/costa-rica	\N	\N	f
+d7783402-7b23-470b-8cdf-26a5171d4e80	2026-01-11 01:37:50.459866+00	2026-01-11 01:37:50.459866+00	Dr Graham Clingbine	Service	Biology and science tuition for both children and Adults... Of any age....qualified professor.... Tutoring children and Adults of all ages.....	+447565 141191	Graham.Clingbine@hotmail.com	\N	\N	f
 \.
 
 
@@ -525,6 +526,6 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 1, false);
 -- PostgreSQL database dump complete
 --
 
--- \unrestrict nLbNpLcBjyDzsVX0bxRQQwJ4WK18Aawa3zJ0jNPYm18id93sdXIHh4eRBtein7r
+-- \unrestrict MxPzOpr6msQZbyF03rXQwybVrFtWn5RIYbT2IscqAKfTOjEazSMsTkvqiQR8MFX
 
 RESET ALL;
