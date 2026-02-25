@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
--- \restrict 6p3TFZxaNDdxksYJdxeCBcy2SCd6Sq0BvgZMcljemZmiVAO87mkKqmfHNfAAddj
+-- \restrict F2zSMb9Dyddo5FhnhqT4J9ZbV5iAMvMGq5U7wB6g5w9s3CAT1yg4KGwfdyVprac
 
 -- Dumped from database version 15.8
 -- Dumped by pg_dump version 17.6
@@ -26,6 +26,14 @@ SET row_security = off;
 --
 
 COPY "auth"."audit_log_entries" ("instance_id", "id", "payload", "created_at", "ip_address") FROM stdin;
+\.
+
+
+--
+-- Data for Name: custom_oauth_providers; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."custom_oauth_providers" ("id", "provider_type", "identifier", "name", "client_id", "client_secret", "acceptable_client_ids", "scopes", "pkce_enabled", "attribute_mapping", "authorization_params", "enabled", "email_optional", "issuer", "discovery_url", "skip_nonce_check", "cached_discovery", "discovery_cached_at", "authorization_url", "token_url", "userinfo_url", "jwks_uri", "created_at", "updated_at") FROM stdin;
 \.
 
 
@@ -516,6 +524,6 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 1, false);
 -- PostgreSQL database dump complete
 --
 
--- \unrestrict 6p3TFZxaNDdxksYJdxeCBcy2SCd6Sq0BvgZMcljemZmiVAO87mkKqmfHNfAAddj
+-- \unrestrict F2zSMb9Dyddo5FhnhqT4J9ZbV5iAMvMGq5U7wB6g5w9s3CAT1yg4KGwfdyVprac
 
 RESET ALL;
