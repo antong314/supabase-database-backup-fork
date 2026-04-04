@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
--- \restrict qtjWDEQidNJdEADT2nb0XcTNoqTrmAKErStDfP0MtHmc7gynyBKJ6aMJ8TThDfu
+-- \restrict 1qO7T2YQerwRElgzK7Qt30Zh4SvLnKDhI3LG97acAixqgdaxgVs4uJo32WP9nbv
 
 -- Dumped from database version 15.8
 -- Dumped by pg_dump version 17.6
@@ -270,8 +270,8 @@ ab017c53-99a5-4275-8575-f98ef186f8f9	2025-03-31 19:15:16.049069+00	2025-03-31 19
 9bf6639d-9773-4e58-b83b-1ab63b5fc2d5	2025-03-31 19:15:16.049069+00	2025-03-31 19:43:52.458035+00	Irene Flores Hoppe	Groceries	Pastry chef, gluten-free, vegan and sugar-free products, as well as healthy preserved products. 	+506 84329497	https://www.facebook.com/share/12C8uDuuMWW/?mibextid=qi2Omg	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/9bf6639d-9773-4e58-b83b-1ab63b5fc2d5.jpg	\N	f
 813478e3-107e-42fc-9498-2c24d722e89b	2025-03-31 19:15:16.049069+00	2025-03-31 19:43:53.452535+00	Bici Chocolate & Cacao	Groceries	Artisan chocolatier with a passion for cocoa and bicycles	+5068856 9415	https://www.instagram.com/bicichocolate_artesanal/	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/813478e3-107e-42fc-9498-2c24d722e89b.jpg	\N	f
 69b5d576-c8b0-42d3-9985-6209fe935639	2025-03-31 19:15:16.049069+00	2025-03-31 19:59:03.236176+00	Estetica Canina Orotina	Service	Dog Grooming	+5068520 7614	\N	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/69b5d576-c8b0-42d3-9985-6209fe935639.jpg	\N	f
-af9a554d-a23b-47d8-8660-5a1a9351e455	2025-03-31 19:15:16.049069+00	2025-03-31 19:43:59.304773+00	Adriana	Taxi	New car, native to the area, extensive local knowledge and friendly service. Punbctual.	+50686695644	\N	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/af9a554d-a23b-47d8-8660-5a1a9351e455.jpg	\N	f
 eb78867b-50c6-441d-8a83-1dd971e3aca1	2025-03-31 19:15:16.049069+00	2025-03-31 19:44:00.44923+00	Jonathan Salazar C.	Taxi	Professional Taxi Driver (#60) - Can go almost anywhere in CR	+506 8758 1586	https://www.google.com/maps/place/Alajuela+Province,+Atenas/data=!4m2!3m1!1s0x8fa05119604dc297:0xaf69ee57a14c8979?sa=X&ved=1t:242&ictx=111	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/eb78867b-50c6-441d-8a83-1dd971e3aca1.jpg	https://www.google.com/maps/place/Alajuela+Province,+Atenas/data=!4m2!3m1!1s0x8fa05119604dc297:0xaf69ee57a14c8979?sa=X&ved=1t:242&ictx=111	f
+af9a554d-a23b-47d8-8660-5a1a9351e455	2025-03-31 19:15:16.049069+00	2026-04-03 19:22:51.369966+00	Adriana	Taxi	New car, native to the area, extensive local knowledge and friendly service. Punctual.	+50686695644	\N	\N	\N	f
 ecc05ced-d271-4a8a-b8c8-7fddd0b20676	2025-03-31 19:15:16.049069+00	2025-03-31 19:44:03.58246+00	Sergio and Karla	Taxi	Price one way to the airport: 30mil. Price from the airport to Alegria 35mil with one stop at no additional cost without time limit. local trip to Orotina with waiting time as needed: 6mil round trip and 6 thousand return. English & French	+506 6063 6340	\N	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/ecc05ced-d271-4a8a-b8c8-7fddd0b20676.jpg	\N	f
 7833313b-09b3-460f-a2f8-82b5433a3ddb	2025-03-31 19:15:16.049069+00	2025-03-31 19:44:13.313253+00	COFORSA Print Shop	Service	Copy & Print Shop in Orotina, can send files by WhatsApp and order ahead	+506 6342 0327	https://goo.gl/maps/ZSTtdXfwMWynsD948	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/7833313b-09b3-460f-a2f8-82b5433a3ddb.jpg	https://goo.gl/maps/ZSTtdXfwMWynsD948	f
 e50e05c1-8830-4de8-b63b-edf03cc4340d	2025-03-31 19:15:16.049069+00	2025-03-31 19:44:19.320301+00	Florian Kuster	Creative	A Swiss Photographer and Videographer specialized in Real Estate, Hotel and Wildlife.\\nReal Estate agent for the Maderal area.	+50684736304	https://floriankuster.com/	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/e50e05c1-8830-4de8-b63b-edf03cc4340d.jpg	\N	f
@@ -540,6 +540,6 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 1, false);
 -- PostgreSQL database dump complete
 --
 
--- \unrestrict qtjWDEQidNJdEADT2nb0XcTNoqTrmAKErStDfP0MtHmc7gynyBKJ6aMJ8TThDfu
+-- \unrestrict 1qO7T2YQerwRElgzK7Qt30Zh4SvLnKDhI3LG97acAixqgdaxgVs4uJo32WP9nbv
 
 RESET ALL;
