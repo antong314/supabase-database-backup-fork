@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
--- \restrict sRrFkPe3fKmikCS2F1dTivmMNbQJzfWhK1xTvwDmyoj8NCH3xq5bn7BWwZv0a6z
+-- \restrict UhQHfp7y0Viu5YRqw4x1EJqS1zY0b9BAZFJ3ORA9XzQdQVDhru6X1lq0qn5I3fN
 
 -- Dumped from database version 15.8
 -- Dumped by pg_dump version 17.6
@@ -244,7 +244,6 @@ f9722b12-4843-4670-b660-b38bde40cdac	2025-03-31 19:15:16.049069+00	2025-03-31 19
 56b7f15f-89b1-47d7-a216-ee965b0c2fb4	2025-03-31 19:15:16.049069+00	2025-03-31 19:15:16.049069+00	Nestor	Taxi	Alegria-SJO $60. Fluent English	+506 8621 0990	\N	\N	\N	f
 ea3b512e-e862-4f57-a3cd-e5ddb2fd5c2d	2025-03-31 19:15:16.049069+00	2025-03-31 19:15:16.049069+00	Jesús	Taxi	$35 airport roundtrip	+506 8412 3823	\N	\N	\N	f
 7e1c5d3e-667d-496b-8f9b-bf39e0b18518	2025-03-31 19:15:16.049069+00	2025-03-31 19:15:16.049069+00	Plomero Juan José	Construction	Plumber - Orotina	+506 7130 9303	\N	\N	\N	f
-478e9bd1-a2e3-4189-ada0-def92b87880a	2025-03-31 19:15:16.049069+00	2025-03-31 19:44:05.139155+00	SophiA	Healer	Shamanic immersion in nature, Shamanic Journeys (Rituals for women & Ceremonies),shamanic Hypnosis & constellations. Guidance & channeling 	+506 87184331	www.sophiehardy.org	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/478e9bd1-a2e3-4189-ada0-def92b87880a.jpg	\N	f
 41155bb4-543b-4464-8641-4ec9db710d27	2025-03-31 19:15:16.049069+00	2025-03-31 19:44:06.81838+00	Finca Vida Verde	Retreats	Eco-educational retreat and event center	+506 6253 6248	http://fincavidaverde.com/	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/41155bb4-543b-4464-8641-4ec9db710d27.jpg	\N	f
 534761c7-44d2-4149-a445-2b4b34ba71ff	2025-03-31 19:15:16.049069+00	2025-03-31 19:44:09.464954+00	Matthew Human	Creative	Musican, Chef, Project Manager	+506 6253 6248	Www.MatthewHuman.com	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/534761c7-44d2-4149-a445-2b4b34ba71ff.jpg	\N	f
 d693582d-b5e2-45d2-9564-c264f27cef7e	2025-03-31 19:15:16.049069+00	2025-03-31 19:44:11.024273+00	Marcus Blacker	Healer	Life & Breath, Somatic Coach and Breathwork Facilitator	+447763845120	https://www.lifeandbreath.coach/	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/d693582d-b5e2-45d2-9564-c264f27cef7e.jpg	\N	f
@@ -256,6 +255,7 @@ d2660edd-5753-4726-993d-c0cbfe0836a1	2025-03-31 19:15:16.049069+00	2025-03-31 19
 f527447c-c93e-4a3a-ac49-499447d24e72	2025-03-31 19:15:16.049069+00	2025-03-31 19:44:45.952707+00	Ian Inspires	Healer	Community & Leadership Coaching	+1 540 392 9490	http://ianinspires.com	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/f527447c-c93e-4a3a-ac49-499447d24e72.jpg	\N	f
 0c9b061b-0b64-4451-9731-cf82d00069cb	2025-03-31 19:15:16.049069+00	2025-03-31 19:57:23.182916+00	Guillermo Gomez, L.Ac., MTCM	Healer	Holistic Healthcare Practicioner specalizing in acupuncture, functional medicine, herbal medicine and homeopathy. 10+ years experience in a wide variety of health issues. Unlock your innate ability to heal from the inside out.  English, español, português, français.	+506 7239 9880	https://heal.me/gg	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/0c9b061b-0b64-4451-9731-cf82d00069cb.jpg	https://www.google.com/search?client=firefox-b-1-d&q=google+review+numo+acupuncture#	f
 f7f5071a-4951-460e-9c7e-14f97e46c557	2025-03-31 19:15:16.049069+00	2025-03-31 19:59:39.281293+00	Dr. Edgar Leguizamón	Healer	Doctor in Orotina, english-speaking, both adults and children	+506 8309 6402	\N	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/f7f5071a-4951-460e-9c7e-14f97e46c557.jpg	\N	f
+478e9bd1-a2e3-4189-ada0-def92b87880a	2025-03-31 19:15:16.049069+00	2026-08-01 20:19:26.558821+00	SophiA	Healer	Shamanic immersion in nature, Shamanic Journeys (Rituals for women & Ceremonies),shamanic Hypnosis & constellations. Guidance & channeling	+50687184331	www.sophiehardy.org	\N	\N	f
 52d316a6-3844-4d8b-b1f0-1a8d3aae882d	2025-03-31 19:15:16.049069+00	2025-03-31 19:15:16.049069+00	Fugas Free	Construction	Plumber - Tiffanys pipe whisperer	+506 8897 0966	\N	\N	\N	f
 57d89782-7df4-4b57-b15c-221eef71c959	2025-03-31 19:15:16.049069+00	2025-03-31 19:15:16.049069+00	Juan	Construction	Plumber	+506 7130 9303	\N	\N	\N	f
 8a9372dd-07f4-4c1e-862c-697395b1a352	2025-03-31 19:15:16.049069+00	2025-03-31 19:15:16.049069+00	Edwin Serrano	Construction	Electrician	+506 8861 4906	\N	\N	\N	f
@@ -540,6 +540,6 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 1, false);
 -- PostgreSQL database dump complete
 --
 
--- \unrestrict sRrFkPe3fKmikCS2F1dTivmMNbQJzfWhK1xTvwDmyoj8NCH3xq5bn7BWwZv0a6z
+-- \unrestrict UhQHfp7y0Viu5YRqw4x1EJqS1zY0b9BAZFJ3ORA9XzQdQVDhru6X1lq0qn5I3fN
 
 RESET ALL;
