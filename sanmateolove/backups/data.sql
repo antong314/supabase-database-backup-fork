@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
--- \restrict UhQHfp7y0Viu5YRqw4x1EJqS1zY0b9BAZFJ3ORA9XzQdQVDhru6X1lq0qn5I3fN
+-- \restrict hDYMMwGQNhUS7H28FLoj9PEZsiPQfjRSEzYKvmAc3AXGbSf8ke9h4hf5QfJuDHU
 
 -- Dumped from database version 15.8
 -- Dumped by pg_dump version 17.6
@@ -253,9 +253,9 @@ c2c7fb1a-22ed-45fe-93c4-4ccf69097d5c	2025-03-31 19:15:16.049069+00	2025-03-31 19
 52b24215-e80c-4ee0-a427-f70ebfcc7a0d	2025-03-31 19:15:16.049069+00	2025-03-31 19:44:34.570606+00	Donai Suárez Ramiréz	Service	Chemical-free vegetables and preparation of fertilizers and insecticides and vermicomposting.	+506 8455 2061	\N	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/52b24215-e80c-4ee0-a427-f70ebfcc7a0d.jpg	\N	f
 d2660edd-5753-4726-993d-c0cbfe0836a1	2025-03-31 19:15:16.049069+00	2025-03-31 19:44:37.656636+00	Love Organic Market & Kitchen	Groceries	We are a market with vegan and organic products.	+44 7734696457	https://www.google.com/maps/dir//20401,+Provincia+de+Alajuela,+San+Mateo,+20401/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8fa04d4cc6dec7cf:0x643d7bd8b99de661?entry=s&sa=X	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/d2660edd-5753-4726-993d-c0cbfe0836a1.jpg	https://www.google.com/maps/dir//20401,+Provincia+de+Alajuela,+San+Mateo,+20401/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8fa04d4cc6dec7cf:0x643d7bd8b99de661?entry=s&sa=X	f
 f527447c-c93e-4a3a-ac49-499447d24e72	2025-03-31 19:15:16.049069+00	2025-03-31 19:44:45.952707+00	Ian Inspires	Healer	Community & Leadership Coaching	+1 540 392 9490	http://ianinspires.com	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/f527447c-c93e-4a3a-ac49-499447d24e72.jpg	\N	f
+478e9bd1-a2e3-4189-ada0-def92b87880a	2025-03-31 19:15:16.049069+00	2026-08-02 20:20:31.89302+00	SophiA	Healer	Shamanic immersion in nature, Shamanic Journeys (Rituals for women & Ceremonies),shamanic Hypnosis & constellations. Guidance & channeling	+50687184331	www.sophiehardy.org	\N	\N	f
 0c9b061b-0b64-4451-9731-cf82d00069cb	2025-03-31 19:15:16.049069+00	2025-03-31 19:57:23.182916+00	Guillermo Gomez, L.Ac., MTCM	Healer	Holistic Healthcare Practicioner specalizing in acupuncture, functional medicine, herbal medicine and homeopathy. 10+ years experience in a wide variety of health issues. Unlock your innate ability to heal from the inside out.  English, español, português, français.	+506 7239 9880	https://heal.me/gg	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/0c9b061b-0b64-4451-9731-cf82d00069cb.jpg	https://www.google.com/search?client=firefox-b-1-d&q=google+review+numo+acupuncture#	f
 f7f5071a-4951-460e-9c7e-14f97e46c557	2025-03-31 19:15:16.049069+00	2025-03-31 19:59:39.281293+00	Dr. Edgar Leguizamón	Healer	Doctor in Orotina, english-speaking, both adults and children	+506 8309 6402	\N	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/f7f5071a-4951-460e-9c7e-14f97e46c557.jpg	\N	f
-478e9bd1-a2e3-4189-ada0-def92b87880a	2025-03-31 19:15:16.049069+00	2026-08-01 20:19:26.558821+00	SophiA	Healer	Shamanic immersion in nature, Shamanic Journeys (Rituals for women & Ceremonies),shamanic Hypnosis & constellations. Guidance & channeling	+50687184331	www.sophiehardy.org	\N	\N	f
 52d316a6-3844-4d8b-b1f0-1a8d3aae882d	2025-03-31 19:15:16.049069+00	2025-03-31 19:15:16.049069+00	Fugas Free	Construction	Plumber - Tiffanys pipe whisperer	+506 8897 0966	\N	\N	\N	f
 57d89782-7df4-4b57-b15c-221eef71c959	2025-03-31 19:15:16.049069+00	2025-03-31 19:15:16.049069+00	Juan	Construction	Plumber	+506 7130 9303	\N	\N	\N	f
 8a9372dd-07f4-4c1e-862c-697395b1a352	2025-03-31 19:15:16.049069+00	2025-03-31 19:15:16.049069+00	Edwin Serrano	Construction	Electrician	+506 8861 4906	\N	\N	\N	f
@@ -299,6 +299,33 @@ c2b553cb-700c-47a1-b48c-3778233e365f	2025-11-06 23:43:43.502178+00	2025-11-07 02
 fc86e0b8-5a56-4c2f-a79b-5d6edee75476	2025-12-17 14:47:32.012648+00	2025-12-17 15:01:43.474948+00	Kristen	Healer	Acupuncturist, Herbalist, Spiritual Response Therapy, Integrated  Energywork, Reiki, Tui Na bodywork, Cupping, Gua Sha, Qi Gong, Eastern Dietary Therapy, Integrated Medicine, Complementary Medicine, Functional Medicine	+15852332077	Inspiredwellnessacu.com	\N	\N	f
 caf0ae18-d68f-461f-9ddc-2f28499a0a19	2025-12-17 14:52:21.127453+00	2025-12-17 15:04:16.201232+00	Costa Rica Retreats	Retreats	Our sanctuary - our heart home in Costa Rica, where we’ve guided retreats for 30 years, has magically shaped us. Ancient trees and vibrant birds thrive here, creating an atmosphere brimming with possibility and alive with the energy of transformation. A place steeped in power, where the elements cleanse, inspire, and guide each of us back to the sacred wild within our hearts.\nImmersive retreats in a vibrant setting designed to restore vitality and joy!\nRooted & Wild Retreat\nSoulQuest: A Shamanu Retreat\nSacred Plant Medicine Retreat\nRomanced by the Elements Retreat\nSpiritual Fasting Retreat\nTree Medicine Retreat\nEcovillage Immersion Retreats\n* Private Cleansing & Rejuvenation Retreats\n\n\nLorenna Bousquet-Kacera\nShantree Kacera, RH, DN, Ph.D.	+15196529109	https://thelivingcentre.com/costa-rica	\N	\N	f
 d7783402-7b23-470b-8cdf-26a5171d4e80	2026-01-11 01:37:50.459866+00	2026-01-11 01:37:50.459866+00	Dr Graham Clingbine	Service	Biology and science tuition for both children and Adults... Of any age....qualified professor.... Tutoring children and Adults of all ages.....	+447565 141191	Graham.Clingbine@hotmail.com	\N	\N	f
+\.
+
+
+--
+-- Data for Name: provider_deletion_events; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."provider_deletion_events" ("id", "contact_id", "provider_name_snapshot", "reason", "requester_whatsapp", "undo_token_hash", "deleted_at", "undo_expires_at", "undone_at") FROM stdin;
+\.
+
+
+--
+-- Data for Name: provider_reviews; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."provider_reviews" ("id", "contact_id", "rating", "comment", "reviewer_name", "reviewer_whatsapp", "is_deleted", "deleted_at", "created_at", "updated_at") FROM stdin;
+d4572709-e865-406b-b195-3448be721d44	71f48f6d-aa99-420b-bdf4-c866e4907ead	5	Love her!	Anton Gorshkov	6467338252	f	\N	2026-08-02 22:56:14.636318+00	2026-08-02 22:56:14.636318+00
+865bb7e7-e40c-47e6-9748-dc35f93f4937	71f48f6d-aa99-420b-bdf4-c866e4907ead	5	Her kids did this at the market - amazing!	\N	6467338252	f	\N	2026-08-03 00:42:30.138068+00	2026-08-03 00:42:30.138068+00
+\.
+
+
+--
+-- Data for Name: provider_review_images; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."provider_review_images" ("id", "review_id", "storage_path", "position", "created_at") FROM stdin;
+6db76e59-5814-4a88-b7b8-407abec0fe40	865bb7e7-e40c-47e6-9748-dc35f93f4937	71f48f6d-aa99-420b-bdf4-c866e4907ead/d39f918f-713d-486e-bfb4-c83af6fbd934.jpg	0	2026-08-03 00:42:30.138068+00
 \.
 
 
@@ -403,6 +430,7 @@ a4ff00c5-d579-4490-90b7-4799d25b6bf8	events-social-activities	Events & Social Ac
 COPY "storage"."buckets" ("id", "name", "owner", "created_at", "updated_at", "public", "avif_autodetection", "file_size_limit", "allowed_mime_types", "owner_id", "type") FROM stdin;
 wikimedia	wikimedia	\N	2025-03-27 04:04:14.072205+00	2025-03-27 04:04:14.072205+00	t	f	5242880	\N	\N	STANDARD
 contact-images	contact-images	\N	2025-03-31 17:54:18.794205+00	2025-03-31 17:54:18.794205+00	t	f	5242880	\N	\N	STANDARD
+review-images	review-images	\N	2026-08-03 00:35:33.857432+00	2026-08-03 00:35:33.857432+00	t	f	5242880	{image/jpeg,image/png,image/webp}	\N	STANDARD
 \.
 
 
@@ -436,6 +464,7 @@ a26133f5-8e22-4541-9328-14fe40d4851d	contact-images	public/41fb89c6-0567-49fc-85
 c9fce365-88d6-4d20-8f56-88035fce5d1d	contact-images	public/8a6242d5-9797-4b2a-a0ae-91a4969e8ecb.jpg	\N	2025-11-07 02:35:05.839672+00	2025-11-07 02:35:05.839672+00	2025-11-07 02:35:05.839672+00	{"eTag": "\\"270f6a13ee606b2353705d94422eb59e\\"", "size": 82319, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-11-07T02:35:06.000Z", "contentLength": 82319, "httpStatusCode": 200}	abb4195c-44e3-4bb3-a321-d7839fea4232	\N	{}
 02a435f6-6a96-4277-a39d-79ba0a1f9d87	contact-images	public/5571700a-f739-438d-b581-9f65b934870b.jpg	\N	2025-11-07 02:41:21.652467+00	2025-11-07 02:41:21.652467+00	2025-11-07 02:41:21.652467+00	{"eTag": "\\"cefdfabc976c79938bf60a71712cdaae\\"", "size": 358118, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-11-07T02:41:22.000Z", "contentLength": 358118, "httpStatusCode": 200}	ca120870-60ff-44c3-9322-60d0823eb447	\N	{}
 6385762f-d4b3-45e0-b54f-67f23191c563	contact-images	24eecdbd-91c6-4153-b0b0-44cb6f27266c.jpg	\N	2025-03-31 19:57:19.162588+00	2025-08-29 20:03:05.666865+00	2025-03-31 19:57:19.162588+00	{"eTag": "\\"bfcfeedd41bf627571ead21ad605eae1\\"", "size": 53163, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-03-31T19:59:00.000Z", "contentLength": 53163, "httpStatusCode": 200}	06dc34dc-3615-4ae9-ad02-2c67bcac6ade	\N	{}
+39df9e98-0123-4e24-be13-09c47c8469d5	review-images	71f48f6d-aa99-420b-bdf4-c866e4907ead/d39f918f-713d-486e-bfb4-c83af6fbd934.jpg	\N	2026-08-03 00:42:29.871109+00	2026-08-03 00:42:29.871109+00	2026-08-03 00:42:29.871109+00	{"eTag": "\\"742b7c575b78116ef1a39a4724e3f4c0\\"", "size": 416597, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2026-08-03T00:42:30.000Z", "contentLength": 416597, "httpStatusCode": 200}	f3b20a52-f874-4cff-8208-044483a15778	\N	{}
 25cd6e12-95d3-4a48-a1c7-7af53b696921	contact-images	0c9b061b-0b64-4451-9731-cf82d00069cb.jpg	\N	2025-03-31 19:57:22.957035+00	2025-08-29 20:03:05.666865+00	2025-03-31 19:57:22.957035+00	{"eTag": "\\"d49ba1abe588eb541c833673b795d554\\"", "size": 112032, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-03-31T19:59:45.000Z", "contentLength": 112032, "httpStatusCode": 200}	d1653139-2801-49fa-9b68-4692b5595115	\N	{}
 a19c5969-7af6-43fd-b93c-226313e827e5	contact-images	409282d0-8d61-4c10-8b23-94af838924e5.jpg	\N	2025-03-31 19:44:20.575399+00	2025-08-29 20:03:05.666865+00	2025-03-31 19:44:20.575399+00	{"eTag": "\\"2027d57abd09fed4240b96dac1bdffbf\\"", "size": 42213, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-03-31T19:59:19.000Z", "contentLength": 42213, "httpStatusCode": 200}	94e2361b-b3d6-41ad-8520-be69fd118881	\N	{}
 d13275de-8cbb-415a-9f76-be7623b3417f	contact-images	1f2783c3-a9bd-460c-a732-9e6a6f8491cb.webp	\N	2025-03-31 19:44:38.618434+00	2025-08-29 20:03:05.666865+00	2025-03-31 19:44:38.618434+00	{"eTag": "\\"3a6659ff8797626db5a779cc634eaa5f\\"", "size": 3850, "mimetype": "image/webp", "cacheControl": "max-age=3600", "lastModified": "2025-03-31T19:59:34.000Z", "contentLength": 3850, "httpStatusCode": 200}	bea18033-24f4-4c5f-9b11-040a57e11629	\N	{}
@@ -540,6 +569,6 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 1, false);
 -- PostgreSQL database dump complete
 --
 
--- \unrestrict UhQHfp7y0Viu5YRqw4x1EJqS1zY0b9BAZFJ3ORA9XzQdQVDhru6X1lq0qn5I3fN
+-- \unrestrict hDYMMwGQNhUS7H28FLoj9PEZsiPQfjRSEzYKvmAc3AXGbSf8ke9h4hf5QfJuDHU
 
 RESET ALL;
