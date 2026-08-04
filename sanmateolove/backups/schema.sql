@@ -59,6 +59,17 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA "extensions";
 
 
 
+CREATE TYPE "public"."bot_conversation_phase" AS ENUM (
+    'awaiting_description',
+    'awaiting_category',
+    'review_optional',
+    'awaiting_review'
+);
+
+
+ALTER TYPE "public"."bot_conversation_phase" OWNER TO "postgres";
+
+
 CREATE TYPE "public"."provider_deletion_reason" AS ENUM (
     'outdated',
     'duplicate',
@@ -69,6 +80,63 @@ CREATE TYPE "public"."provider_deletion_reason" AS ENUM (
 
 
 ALTER TYPE "public"."provider_deletion_reason" OWNER TO "postgres";
+
+
+CREATE OR REPLACE FUNCTION "public"."clear_bot_conversation"("p_conversation_key" "text") RETURNS "void"
+    LANGUAGE "sql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $$
+  DELETE FROM public.bot_conversations
+  WHERE conversation_key = lower(btrim(COALESCE(p_conversation_key, '')));
+$$;
+
+
+ALTER FUNCTION "public"."clear_bot_conversation"("p_conversation_key" "text") OWNER TO "postgres";
+
+
+CREATE OR REPLACE FUNCTION "public"."find_active_contact_by_phone"("p_phone" "text") RETURNS TABLE("id" "uuid", "title" "text", "subtitle" "text", "category" "text", "phone_number" "text", "website_url" "text", "map_url" "text", "image_url" "text")
+    LANGUAGE "sql" STABLE
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $$
+  SELECT
+    contacts.id,
+    contacts.title,
+    contacts.subtitle,
+    contacts.category,
+    contacts.phone_number,
+    contacts.website_url,
+    contacts.map_url,
+    contacts.image_url
+  FROM public.contacts AS contacts
+  WHERE contacts.is_deleted = FALSE
+    AND contacts.phone_normalized = public.normalize_contact_phone(p_phone)
+  LIMIT 1;
+$$;
+
+
+ALTER FUNCTION "public"."find_active_contact_by_phone"("p_phone" "text") OWNER TO "postgres";
+
+
+CREATE OR REPLACE FUNCTION "public"."get_bot_conversation"("p_conversation_key" "text") RETURNS TABLE("contact_id" "uuid", "phase" "text", "context" "jsonb", "expires_at" timestamp with time zone)
+    LANGUAGE "sql" STABLE SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $$
+  SELECT
+    conversations.contact_id,
+    conversations.phase::TEXT,
+    conversations.context,
+    conversations.expires_at
+  FROM public.bot_conversations AS conversations
+  JOIN public.contacts AS contacts
+    ON contacts.id = conversations.contact_id
+   AND contacts.is_deleted = FALSE
+  WHERE conversations.conversation_key = lower(btrim(COALESCE(p_conversation_key, '')))
+    AND conversations.expires_at > now()
+  LIMIT 1;
+$$;
+
+
+ALTER FUNCTION "public"."get_bot_conversation"("p_conversation_key" "text") OWNER TO "postgres";
 
 
 CREATE OR REPLACE FUNCTION "public"."get_provider_review_summaries"("p_contact_ids" "uuid"[] DEFAULT NULL::"uuid"[]) RETURNS TABLE("contact_id" "uuid", "average_rating" numeric, "review_count" bigint, "rating_counts" "jsonb")
@@ -160,6 +228,26 @@ $$;
 
 
 ALTER FUNCTION "public"."handle_updated_at"() OWNER TO "postgres";
+
+
+CREATE OR REPLACE FUNCTION "public"."normalize_contact_phone"("p_phone" "text") RETURNS "text"
+    LANGUAGE "sql" IMMUTABLE PARALLEL SAFE
+    SET "search_path" TO 'pg_catalog'
+    AS $$
+  SELECT NULLIF(
+    CASE
+      WHEN left(normalized.digits, 2) = '00' THEN substring(normalized.digits FROM 3)
+      ELSE normalized.digits
+    END,
+    ''
+  )
+  FROM (
+    SELECT regexp_replace(COALESCE(p_phone, ''), '[^0-9]+', '', 'g') AS digits
+  ) AS normalized;
+$$;
+
+
+ALTER FUNCTION "public"."normalize_contact_phone"("p_phone" "text") OWNER TO "postgres";
 
 
 CREATE OR REPLACE FUNCTION "public"."perform_provider_soft_delete"("p_contact_id" "uuid", "p_provider_name_confirmation" "text", "p_reason" "text", "p_requester_whatsapp" "text", "p_undo_token_hash" "text") RETURNS TABLE("event_id" "uuid", "undo_expires_at" timestamp with time zone)
@@ -265,6 +353,65 @@ ALTER FUNCTION "public"."perform_provider_soft_delete"("p_contact_id" "uuid", "p
 
 COMMENT ON FUNCTION "public"."perform_provider_soft_delete"("p_contact_id" "uuid", "p_provider_name_confirmation" "text", "p_reason" "text", "p_requester_whatsapp" "text", "p_undo_token_hash" "text") IS 'Service-role-only atomic provider soft deletion with name, reason, WhatsApp, and token-hash validation.';
 
+
+
+CREATE OR REPLACE FUNCTION "public"."set_bot_conversation"("p_conversation_key" "text", "p_contact_id" "uuid", "p_phase" "text", "p_context" "jsonb" DEFAULT '{}'::"jsonb", "p_ttl_hours" integer DEFAULT 72) RETURNS "void"
+    LANGUAGE "plpgsql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $_$
+DECLARE
+  v_key TEXT := lower(btrim(COALESCE(p_conversation_key, '')));
+  v_phase public.bot_conversation_phase;
+  v_context JSONB := COALESCE(p_context, '{}'::JSONB);
+  v_ttl_hours INTEGER := LEAST(GREATEST(COALESCE(p_ttl_hours, 72), 1), 168);
+BEGIN
+  IF v_key !~ '^[0-9a-f]{64}$' THEN
+    RAISE EXCEPTION 'Invalid conversation key' USING ERRCODE = '22023';
+  END IF;
+  IF jsonb_typeof(v_context) <> 'object' THEN
+    RAISE EXCEPTION 'Conversation context must be an object' USING ERRCODE = '22023';
+  END IF;
+  IF NOT EXISTS (
+    SELECT 1 FROM public.contacts
+    WHERE id = p_contact_id AND is_deleted = FALSE
+  ) THEN
+    RAISE EXCEPTION 'Provider not found' USING ERRCODE = 'P0002';
+  END IF;
+
+  BEGIN
+    v_phase := p_phase::public.bot_conversation_phase;
+  EXCEPTION WHEN invalid_text_representation THEN
+    RAISE EXCEPTION 'Invalid conversation phase' USING ERRCODE = '22023';
+  END;
+
+  INSERT INTO public.bot_conversations AS conversations (
+    conversation_key,
+    contact_id,
+    phase,
+    context,
+    expires_at,
+    updated_at
+  )
+  VALUES (
+    v_key,
+    p_contact_id,
+    v_phase,
+    v_context,
+    now() + make_interval(hours => v_ttl_hours),
+    now()
+  )
+  ON CONFLICT (conversation_key) DO UPDATE
+  SET
+    contact_id = EXCLUDED.contact_id,
+    phase = EXCLUDED.phase,
+    context = EXCLUDED.context,
+    expires_at = EXCLUDED.expires_at,
+    updated_at = now();
+END;
+$_$;
+
+
+ALTER FUNCTION "public"."set_bot_conversation"("p_conversation_key" "text", "p_contact_id" "uuid", "p_phase" "text", "p_context" "jsonb", "p_ttl_hours" integer) OWNER TO "postgres";
 
 
 CREATE OR REPLACE FUNCTION "public"."set_provider_review_updated_at"() RETURNS "trigger"
@@ -495,6 +642,27 @@ SET default_tablespace = '';
 SET default_table_access_method = "heap";
 
 
+CREATE TABLE IF NOT EXISTS "public"."bot_conversations" (
+    "conversation_key" "text" NOT NULL,
+    "contact_id" "uuid" NOT NULL,
+    "phase" "public"."bot_conversation_phase" NOT NULL,
+    "context" "jsonb" DEFAULT '{}'::"jsonb" NOT NULL,
+    "expires_at" timestamp with time zone NOT NULL,
+    "created_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    "updated_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    CONSTRAINT "bot_conversations_check" CHECK (("expires_at" > "created_at")),
+    CONSTRAINT "bot_conversations_context_check" CHECK (("jsonb_typeof"("context") = 'object'::"text")),
+    CONSTRAINT "bot_conversations_conversation_key_check" CHECK (("conversation_key" ~ '^[0-9a-f]{64}$'::"text"))
+);
+
+
+ALTER TABLE "public"."bot_conversations" OWNER TO "postgres";
+
+
+COMMENT ON TABLE "public"."bot_conversations" IS 'Short-lived Machu bot state keyed by a server-generated HMAC; contains no submitter phone numbers.';
+
+
+
 CREATE TABLE IF NOT EXISTS "public"."contacts" (
     "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
     "created_at" timestamp with time zone DEFAULT "now"() NOT NULL,
@@ -506,7 +674,8 @@ CREATE TABLE IF NOT EXISTS "public"."contacts" (
     "website_url" "text",
     "image_url" "text",
     "map_url" "text",
-    "is_deleted" boolean DEFAULT false NOT NULL
+    "is_deleted" boolean DEFAULT false NOT NULL,
+    "phone_normalized" "text" GENERATED ALWAYS AS ("public"."normalize_contact_phone"("phone_number")) STORED
 );
 
 
@@ -637,6 +806,11 @@ CREATE TABLE IF NOT EXISTS "public"."wiki_pages" (
 ALTER TABLE "public"."wiki_pages" OWNER TO "postgres";
 
 
+ALTER TABLE ONLY "public"."bot_conversations"
+    ADD CONSTRAINT "bot_conversations_pkey" PRIMARY KEY ("conversation_key");
+
+
+
 ALTER TABLE ONLY "public"."contacts"
     ADD CONSTRAINT "contacts_pkey" PRIMARY KEY ("id");
 
@@ -674,6 +848,14 @@ ALTER TABLE ONLY "public"."provider_reviews"
 
 ALTER TABLE ONLY "public"."wiki_pages"
     ADD CONSTRAINT "wiki_pages_pkey" PRIMARY KEY ("id", "version");
+
+
+
+CREATE INDEX "bot_conversations_expiry_idx" ON "public"."bot_conversations" USING "btree" ("expires_at");
+
+
+
+CREATE UNIQUE INDEX "contacts_active_phone_normalized_unique_idx" ON "public"."contacts" USING "btree" ("phone_normalized") WHERE (("is_deleted" = false) AND ("phone_normalized" IS NOT NULL));
 
 
 
@@ -721,6 +903,11 @@ CREATE OR REPLACE TRIGGER "wiki_pages_tsv_update" BEFORE INSERT OR UPDATE ON "pu
 
 
 
+ALTER TABLE ONLY "public"."bot_conversations"
+    ADD CONSTRAINT "bot_conversations_contact_id_fkey" FOREIGN KEY ("contact_id") REFERENCES "public"."contacts"("id") ON DELETE CASCADE;
+
+
+
 ALTER TABLE ONLY "public"."provider_deletion_events"
     ADD CONSTRAINT "provider_deletion_events_contact_id_fkey" FOREIGN KEY ("contact_id") REFERENCES "public"."contacts"("id") ON DELETE RESTRICT;
 
@@ -754,6 +941,9 @@ CREATE POLICY "Public can edit active contacts" ON "public"."contacts" FOR UPDAT
 
 CREATE POLICY "Public can read active contacts" ON "public"."contacts" FOR SELECT TO "authenticated", "anon" USING (("is_deleted" = false));
 
+
+
+ALTER TABLE "public"."bot_conversations" ENABLE ROW LEVEL SECURITY;
 
 
 ALTER TABLE "public"."contacts" ENABLE ROW LEVEL SECURITY;
@@ -962,6 +1152,27 @@ GRANT ALL ON TYPE "public"."provider_deletion_reason" TO "service_role";
 
 
 
+REVOKE ALL ON FUNCTION "public"."clear_bot_conversation"("p_conversation_key" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."clear_bot_conversation"("p_conversation_key" "text") TO "anon";
+GRANT ALL ON FUNCTION "public"."clear_bot_conversation"("p_conversation_key" "text") TO "authenticated";
+GRANT ALL ON FUNCTION "public"."clear_bot_conversation"("p_conversation_key" "text") TO "service_role";
+
+
+
+REVOKE ALL ON FUNCTION "public"."find_active_contact_by_phone"("p_phone" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."find_active_contact_by_phone"("p_phone" "text") TO "anon";
+GRANT ALL ON FUNCTION "public"."find_active_contact_by_phone"("p_phone" "text") TO "authenticated";
+GRANT ALL ON FUNCTION "public"."find_active_contact_by_phone"("p_phone" "text") TO "service_role";
+
+
+
+REVOKE ALL ON FUNCTION "public"."get_bot_conversation"("p_conversation_key" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."get_bot_conversation"("p_conversation_key" "text") TO "anon";
+GRANT ALL ON FUNCTION "public"."get_bot_conversation"("p_conversation_key" "text") TO "authenticated";
+GRANT ALL ON FUNCTION "public"."get_bot_conversation"("p_conversation_key" "text") TO "service_role";
+
+
+
 REVOKE ALL ON FUNCTION "public"."get_provider_review_summaries"("p_contact_ids" "uuid"[]) FROM PUBLIC;
 GRANT ALL ON FUNCTION "public"."get_provider_review_summaries"("p_contact_ids" "uuid"[]) TO "anon";
 GRANT ALL ON FUNCTION "public"."get_provider_review_summaries"("p_contact_ids" "uuid"[]) TO "authenticated";
@@ -989,8 +1200,22 @@ GRANT ALL ON FUNCTION "public"."handle_updated_at"() TO "service_role";
 
 
 
+REVOKE ALL ON FUNCTION "public"."normalize_contact_phone"("p_phone" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."normalize_contact_phone"("p_phone" "text") TO "anon";
+GRANT ALL ON FUNCTION "public"."normalize_contact_phone"("p_phone" "text") TO "authenticated";
+GRANT ALL ON FUNCTION "public"."normalize_contact_phone"("p_phone" "text") TO "service_role";
+
+
+
 REVOKE ALL ON FUNCTION "public"."perform_provider_soft_delete"("p_contact_id" "uuid", "p_provider_name_confirmation" "text", "p_reason" "text", "p_requester_whatsapp" "text", "p_undo_token_hash" "text") FROM PUBLIC;
 GRANT ALL ON FUNCTION "public"."perform_provider_soft_delete"("p_contact_id" "uuid", "p_provider_name_confirmation" "text", "p_reason" "text", "p_requester_whatsapp" "text", "p_undo_token_hash" "text") TO "service_role";
+
+
+
+REVOKE ALL ON FUNCTION "public"."set_bot_conversation"("p_conversation_key" "text", "p_contact_id" "uuid", "p_phase" "text", "p_context" "jsonb", "p_ttl_hours" integer) FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."set_bot_conversation"("p_conversation_key" "text", "p_contact_id" "uuid", "p_phase" "text", "p_context" "jsonb", "p_ttl_hours" integer) TO "anon";
+GRANT ALL ON FUNCTION "public"."set_bot_conversation"("p_conversation_key" "text", "p_contact_id" "uuid", "p_phase" "text", "p_context" "jsonb", "p_ttl_hours" integer) TO "authenticated";
+GRANT ALL ON FUNCTION "public"."set_bot_conversation"("p_conversation_key" "text", "p_contact_id" "uuid", "p_phase" "text", "p_context" "jsonb", "p_ttl_hours" integer) TO "service_role";
 
 
 
@@ -1029,6 +1254,10 @@ GRANT ALL ON FUNCTION "public"."update_wiki_content_tsv"() TO "service_role";
 
 
 
+
+
+
+GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."bot_conversations" TO "service_role";
 
 
 
