@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
--- \restrict 1N1KYGRmzJKpfTr0JXDc6fBOmxVUYu9qwXGPYbnsIWaugO6K7drRkFqTBJJfZoF
+-- \restrict yf7kzYcvCKeA6EYrItWnYtdEnwnjeisCx2zZLaByt5TgiKafIkbFZiaNRWPgQVT
 
 -- Dumped from database version 15.8
 -- Dumped by pg_dump version 17.6
@@ -276,13 +276,13 @@ e50e05c1-8830-4de8-b63b-edf03cc4340d	2025-03-31 19:15:16.049069+00	2025-03-31 19
 1f2783c3-a9bd-460c-a732-9e6a6f8491cb	2025-03-31 19:15:16.049069+00	2025-03-31 19:44:38.76896+00	Capriella	Groceries	Goat milk, yogurt, and cheese	+506 8362 2267	https://capriella.cr/	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/1f2783c3-a9bd-460c-a732-9e6a6f8491cb.webp	\N	f
 4cdb6ba1-a768-4f14-8e26-e2518b593478	2025-03-31 19:15:16.049069+00	2025-03-31 19:44:54.052629+00	Alberto Artecassia	Service	Wood worker by Efra the mechanic on Route 3 near school	+5068333 1431	\N	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/4cdb6ba1-a768-4f14-8e26-e2518b593478.jpg	\N	f
 57d89782-7df4-4b57-b15c-221eef71c959	2025-03-31 19:15:16.049069+00	2026-08-03 22:16:39.386385+00	Juan	Construction	Plumber	+506 7130 9303	\N	\N	\N	t
-3122164d-6001-47d7-8241-95dc8b66f588	2025-03-31 19:15:16.049069+00	2025-04-09 22:34:39.460839+00	Anton	Creative	Creator of this site and Editor of Machuca Elements Newsletter, local Boxing Coach.	+16467338252	https://machucaelements.substack.com/	\N	\N	f
 c6ff23ff-deb8-4542-99d0-93bdf1875118	2025-03-31 19:15:16.049069+00	2026-08-03 22:16:39.386385+00	Michael Blahut, DO	Service	Osteopathic and physical rehab medicine, Cranial-sacral specialist, yoga therapist, as well as functional / holistic / and alternative medicine.	+19732719834	https://holisticfamilycarepa.com/	\N	\N	t
 5169a4e7-7ed0-4c79-8cf1-fb5022d0a1cb	2025-03-31 19:15:16.049069+00	2026-08-03 22:16:39.386385+00	Michael Blahut, DO	Healer	Osteopathy and holistic medicine, Cranial-sacral specialist, yoga therapist, as well as functional / holistic / and alternative medicine.	+19732719834	https://holisticfamilycarepa.com/	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/5169a4e7-7ed0-4c79-8cf1-fb5022d0a1cb.png	\N	t
 dec793fc-4ba1-40cc-a5df-8ac429485259	2025-03-31 19:15:16.049069+00	2025-03-31 19:44:30.337729+00	DAMORO ingeniería	Construction	Electrical and Mechanical Engineering Consulting	+506 8365 0473	www.linkedin.com/in/daniel-morales-5110061b7	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/dec793fc-4ba1-40cc-a5df-8ac429485259.png	Maderal San Mateo Alajuela	f
 563fea82-7a05-4c8a-b54d-57bef8106da0	2025-03-31 19:15:16.049069+00	2025-03-31 19:49:52.485728+00	Julianne Taza	Healer	Energy Healing therapies (TEC and Reiki)	+506 6070 7935	https://www.zolemgehestrella.com/terapias-hol%C3%ADsticas	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/563fea82-7a05-4c8a-b54d-57bef8106da0.jpg	La Ecovilla https://goo.gl/maps/rZLSahkKPTHRbfpV9	f
 aab7e7cd-4843-4e90-8b8b-a33623c3a10e	2025-03-31 19:15:16.049069+00	2025-03-31 19:57:17.622152+00	Las Brisas Resort & Villas; Playa Hermosa	Retreats	Indulge in Paradise by the Beach!  Rated #1 Boutique Resort in Playa Hermosa.  200+ 5-Star Reviews, owned & operated by lovely ESM neighbors. Day-Pass available + Suites and 2 or 3-Bedroom Villas. Newly Re-Designed, walking distance to a gorgeous silky black sand beach, (2) tranquil pools, lounge beds, outdoor showers, on-site spa services, Wi-Fi, Smart TV's, board games, scooter-rentals, Scarlet Macaw visit daily, concierge tour management, and SO much more!  (*Available for Retreats & Buy-Outs) 	+19542990209	http://www.LasBrisasResortAndVillas.com	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/aab7e7cd-4843-4e90-8b8b-a33623c3a10e.jpg	https://maps.app.goo.gl/dcqzReAtUsgGFk6v8?g_st=ic	f
 b589f295-01ec-4c5e-9b2b-2a89978fd178	2025-03-31 19:15:16.049069+00	2025-03-31 19:57:21.197659+00	Brad @ Machu Campo	Retreats	A riverfront sanctuary and glamping campground situated on the Machuca river. A space to re-connect & slow down.	+506 8450 8444	https://www.instagram.com/MachuCampo/	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/b589f295-01ec-4c5e-9b2b-2a89978fd178.jpg	https://goo.gl/maps/tY1pGR21iqNQ3fo7A	f
+3122164d-6001-47d7-8241-95dc8b66f588	2025-03-31 19:15:16.049069+00	2026-08-04 18:56:59.504185+00	Anton	Creative	Creator of this site and Editor of Machuca Elements Newsletter, local Boxing Coach.	+16467338252	https://machucaelements.substack.com/	\N	\N	f
 6eb8f444-b758-442b-8075-315ec0b6416a	2025-03-31 19:15:16.049069+00	2025-03-31 19:59:23.535726+00	New Paradigm Astrology by Kaypacha	Healer	Kaypacha's diverse background includes knowledge of evolutionary, shamanic, and Uranian astrology, cosmobiology, and esoteric studies. He has been practicing and teaching kundalini yoga for more than ten years and has combined his knowledge of the Sabian symbols, tarot, meditation, breathwork, and yoga to create his own unique, heart-centered astrological methods for healing and growth.	+15306157847	https://newparadigmastrology.com/	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/6eb8f444-b758-442b-8075-315ec0b6416a.jpg	\N	f
 023c486e-d322-41d8-ad53-d30c72ecc804	2025-07-01 02:26:27.6732+00	2025-07-01 02:27:16.045495+00	DeliCru	Groceries	Raw vegan healthy fast food\n\nFrom energy balls, Cinammons falls, pancakes, cookies, grawnolas and dried fruits to hamburgers, wraps, pasta bowls and curries\n\nEven Fitness protein bars and much more. \n\nALL products are sugar free\nGluten and grain free\nPlant based made with simple and whole ingredients	+5066306-4551	\N	https://wooxzmomwwllkyxdcajk.supabase.co/storage/v1/object/public/contact-images/public/8455eb3f-e63c-424f-959b-18dcc25d6e04.jpg	https://maps.app.goo.gl/diUNfAxMdhdfHvnH6	f
 ae620267-baa8-478d-abba-7a2a6f9bffde	2025-08-03 15:50:37.525535+00	2025-08-12 13:53:34.184573+00	Tim Shilstone	Service	Digital Marketer / Marketing Data Analyst. Excited to help scale small businesses / startups.	+19144336313	https://www.linkedin.com/in/timshilstone/	\N	\N	f
@@ -313,10 +313,23 @@ d3fe8d856cafe9081ff3a900e6ad21e83edeff822c72c9d360511c6b45db66ad	721ee4f8-69fe-4
 
 
 --
+-- Data for Name: community_verification_actions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."community_verification_actions" ("id", "action_type", "requester_whatsapp", "payload", "client_secret_hash", "request_ip_hash", "twilio_verification_sid", "status", "check_attempts", "result_id", "created_at", "expires_at", "verified_at", "consumed_at") FROM stdin;
+86412e19-a19c-45c6-8a2f-7bf28a3bad65	provider_review	+16467338252	{"rating": 5, "comment": "She is truly amazing at everything she does! (ok, husband review here, I'm testing the platform :) ).", "imageCount": 0, "providerId": "71f48f6d-aa99-420b-bdf4-c866e4907ead", "reviewerName": null}	f45a79d0005c6a44cc61901d64d4a0aa45dca31b5d7e82521497563bd0d78c25	e0311933b4913b6544c3e491f3698061cfea1bdaabe22187223eae6779eb3d81	VE583841bf7e9eda9a559794e14112b65a	completed	1	ddafe0c4-5b11-440a-8fbd-e474f185eb20	2026-08-04 15:42:09.337207+00	2026-08-04 15:52:09.226+00	2026-08-04 15:42:35.095+00	2026-08-04 15:42:35.191642+00
+531b1d7b-7f00-46cd-9860-5289f27caeea	provider_review	+16467338252	{"rating": 5, "comment": "Still Amazing!", "imageCount": 0, "providerId": "71f48f6d-aa99-420b-bdf4-c866e4907ead", "reviewerName": null}	c5bbc357530fe7dff1eadcc0cb270ff32cbbfd12289a9b6fd6cb7ece9580e4d5	e0311933b4913b6544c3e491f3698061cfea1bdaabe22187223eae6779eb3d81	\N	failed	0	\N	2026-08-04 16:16:36.665089+00	2026-08-04 16:26:36.593+00	\N	\N
+69e846c0-c3f9-4b02-b3ab-7984b2935ab1	provider_review	+16467338252	{"rating": 5, "comment": "Amazing.", "imageCount": 0, "providerId": "71f48f6d-aa99-420b-bdf4-c866e4907ead", "reviewerName": null}	53e4afe8e574932743f23806155583e0c11ed97e970b1c55db286830c45ff123	e0311933b4913b6544c3e491f3698061cfea1bdaabe22187223eae6779eb3d81	VEa045f1a0b55fd343e6d43e8654828d42	sent	0	\N	2026-08-04 16:24:15.460007+00	2026-08-04 16:34:15.365+00	\N	\N
+74c5eec0-8e4d-40b3-b489-d30be7b7833a	provider_review	+50661435930	{"rating": 5, "comment": "Amazing human being and community builder. Highily recommended", "imageCount": 0, "providerId": "3122164d-6001-47d7-8241-95dc8b66f588", "reviewerName": "Yam Aisner"}	cef013eae07e4f1fc82f4c3be9d1a3eb7168ec0882e3cafea1065fba3f7de001	6d12c5f09e54e6f57bcd414efe1d1ef1c14b65f8d787cc2f577bb0553809aecb	VE9ec00383bba143585738329ade4fa3e5	sent	0	\N	2026-08-04 18:02:33.718861+00	2026-08-04 18:12:33.62+00	\N	\N
+46fa5ff4-a5a9-4723-84ae-75618df9619b	provider_review	+50672365292	{"rating": 5, "comment": "Amazing", "imageCount": 0, "providerId": "71f48f6d-aa99-420b-bdf4-c866e4907ead", "reviewerName": null}	5e42a0a03e520caadf586f1c7a098d5a3bc3d01b815e70dca32675bc65100745	e0311933b4913b6544c3e491f3698061cfea1bdaabe22187223eae6779eb3d81	VE0df70feb9e44fea460c396657bbe3d7a	completed	1	89ae933c-5198-4492-a8d0-15737ab505f9	2026-08-04 18:57:49.900397+00	2026-08-04 19:07:49.809+00	2026-08-04 18:58:06.641+00	2026-08-04 18:58:06.695041+00
+\.
+
+
+--
 -- Data for Name: provider_deletion_events; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY "public"."provider_deletion_events" ("id", "contact_id", "provider_name_snapshot", "reason", "requester_whatsapp", "undo_token_hash", "deleted_at", "undo_expires_at", "undone_at") FROM stdin;
+COPY "public"."provider_deletion_events" ("id", "contact_id", "provider_name_snapshot", "reason", "requester_whatsapp", "undo_token_hash", "deleted_at", "undo_expires_at", "undone_at", "verification_action_id", "verification_method", "verified_at", "twilio_verification_sid") FROM stdin;
 \.
 
 
@@ -324,9 +337,11 @@ COPY "public"."provider_deletion_events" ("id", "contact_id", "provider_name_sna
 -- Data for Name: provider_reviews; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY "public"."provider_reviews" ("id", "contact_id", "rating", "comment", "reviewer_name", "reviewer_whatsapp", "is_deleted", "deleted_at", "created_at", "updated_at") FROM stdin;
-d4572709-e865-406b-b195-3448be721d44	71f48f6d-aa99-420b-bdf4-c866e4907ead	5	Love her!	Anton Gorshkov	6467338252	f	\N	2026-08-02 22:56:14.636318+00	2026-08-02 22:56:14.636318+00
-865bb7e7-e40c-47e6-9748-dc35f93f4937	71f48f6d-aa99-420b-bdf4-c866e4907ead	5	Her kids did this at the market - amazing!	\N	6467338252	f	\N	2026-08-03 00:42:30.138068+00	2026-08-03 00:42:30.138068+00
+COPY "public"."provider_reviews" ("id", "contact_id", "rating", "comment", "reviewer_name", "reviewer_whatsapp", "is_deleted", "deleted_at", "created_at", "updated_at", "verification_action_id", "verification_method", "verified_at", "twilio_verification_sid") FROM stdin;
+865bb7e7-e40c-47e6-9748-dc35f93f4937	71f48f6d-aa99-420b-bdf4-c866e4907ead	5	Her kids did this at the market - amazing!	\N	+6467338252	f	\N	2026-08-03 00:42:30.138068+00	2026-08-04 15:01:45.948714+00	\N	legacy_unverified	\N	\N
+d4572709-e865-406b-b195-3448be721d44	71f48f6d-aa99-420b-bdf4-c866e4907ead	5	Love her!	Anton Gorshkov	+6467338252	t	2026-08-04 15:01:45.948714+00	2026-08-02 22:56:14.636318+00	2026-08-04 15:01:45.948714+00	\N	legacy_unverified	\N	\N
+ddafe0c4-5b11-440a-8fbd-e474f185eb20	71f48f6d-aa99-420b-bdf4-c866e4907ead	5	She is truly amazing at everything she does! (ok, husband review here, I'm testing the platform :) ).	\N	+16467338252	f	\N	2026-08-04 15:42:35.191642+00	2026-08-04 15:42:35.191642+00	86412e19-a19c-45c6-8a2f-7bf28a3bad65	whatsapp_otp	2026-08-04 15:42:35.191642+00	VE583841bf7e9eda9a559794e14112b65a
+89ae933c-5198-4492-a8d0-15737ab505f9	71f48f6d-aa99-420b-bdf4-c866e4907ead	5	Amazing	\N	+50672365292	f	\N	2026-08-04 18:58:06.695041+00	2026-08-04 18:58:06.695041+00	46fa5ff4-a5a9-4723-84ae-75618df9619b	whatsapp_otp	2026-08-04 18:58:06.695041+00	VE0df70feb9e44fea460c396657bbe3d7a
 \.
 
 
@@ -579,6 +594,6 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 1, false);
 -- PostgreSQL database dump complete
 --
 
--- \unrestrict 1N1KYGRmzJKpfTr0JXDc6fBOmxVUYu9qwXGPYbnsIWaugO6K7drRkFqTBJJfZoF
+-- \unrestrict yf7kzYcvCKeA6EYrItWnYtdEnwnjeisCx2zZLaByt5TgiKafIkbFZiaNRWPgQVT
 
 RESET ALL;

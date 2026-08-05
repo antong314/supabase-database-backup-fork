@@ -94,6 +94,113 @@ $$;
 ALTER FUNCTION "public"."clear_bot_conversation"("p_conversation_key" "text") OWNER TO "postgres";
 
 
+CREATE OR REPLACE FUNCTION "public"."complete_verified_provider_deletion"("p_action_id" "uuid", "p_undo_token_hash" "text") RETURNS TABLE("event_id" "uuid", "undo_expires_at" timestamp with time zone)
+    LANGUAGE "plpgsql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $$
+DECLARE
+  v_action public.community_verification_actions%ROWTYPE;
+  v_event_id UUID;
+  v_undo_expires_at TIMESTAMPTZ;
+BEGIN
+  SELECT actions.* INTO v_action
+  FROM public.community_verification_actions AS actions
+  WHERE actions.id = p_action_id
+  FOR UPDATE;
+
+  IF NOT FOUND OR v_action.action_type <> 'provider_delete'
+    OR v_action.status <> 'verified' OR v_action.consumed_at IS NOT NULL
+    OR v_action.expires_at <= now() THEN
+    RAISE EXCEPTION 'Verified deletion action is unavailable' USING ERRCODE = '22023';
+  END IF;
+
+  SELECT result.event_id, result.undo_expires_at
+  INTO v_event_id, v_undo_expires_at
+  FROM public.perform_provider_soft_delete(
+    (v_action.payload->>'providerId')::UUID,
+    v_action.payload->>'providerNameConfirmation',
+    v_action.payload->>'reason',
+    v_action.requester_whatsapp,
+    p_undo_token_hash
+  ) AS result;
+
+  UPDATE public.provider_deletion_events AS events
+  SET
+    verification_action_id = v_action.id,
+    verification_method = 'whatsapp_otp',
+    verified_at = v_action.verified_at,
+    twilio_verification_sid = v_action.twilio_verification_sid
+  WHERE events.id = v_event_id;
+
+  UPDATE public.community_verification_actions
+  SET status = 'completed', consumed_at = now(), result_id = v_event_id
+  WHERE id = v_action.id;
+
+  RETURN QUERY SELECT v_event_id, v_undo_expires_at;
+END;
+$$;
+
+
+ALTER FUNCTION "public"."complete_verified_provider_deletion"("p_action_id" "uuid", "p_undo_token_hash" "text") OWNER TO "postgres";
+
+
+CREATE OR REPLACE FUNCTION "public"."complete_verified_provider_review"("p_action_id" "uuid", "p_image_paths" "text"[] DEFAULT ARRAY[]::"text"[]) RETURNS TABLE("id" "uuid", "contact_id" "uuid", "rating" smallint, "comment" "text", "reviewer_name" "text", "created_at" timestamp with time zone, "image_paths" "text"[])
+    LANGUAGE "plpgsql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $$
+DECLARE
+  v_action public.community_verification_actions%ROWTYPE;
+  v_result RECORD;
+  v_expected_images INTEGER;
+BEGIN
+  SELECT actions.* INTO v_action
+  FROM public.community_verification_actions AS actions
+  WHERE actions.id = p_action_id
+  FOR UPDATE;
+
+  IF NOT FOUND OR v_action.action_type <> 'provider_review'
+    OR v_action.status <> 'verified' OR v_action.consumed_at IS NOT NULL
+    OR v_action.expires_at <= now() THEN
+    RAISE EXCEPTION 'Verified review action is unavailable' USING ERRCODE = '22023';
+  END IF;
+
+  v_expected_images := COALESCE((v_action.payload->>'imageCount')::INTEGER, 0);
+  IF cardinality(COALESCE(p_image_paths, ARRAY[]::TEXT[])) <> v_expected_images THEN
+    RAISE EXCEPTION 'Review image count does not match the verified action' USING ERRCODE = '22023';
+  END IF;
+
+  SELECT * INTO v_result
+  FROM public.submit_provider_review(
+    (v_action.payload->>'providerId')::UUID,
+    (v_action.payload->>'rating')::SMALLINT,
+    v_action.requester_whatsapp,
+    COALESCE(p_image_paths, ARRAY[]::TEXT[]),
+    v_action.payload->>'comment',
+    v_action.payload->>'reviewerName',
+    'whatsapp_otp',
+    v_action.id,
+    v_action.twilio_verification_sid
+  );
+
+  UPDATE public.community_verification_actions
+  SET status = 'completed', consumed_at = now(), result_id = v_result.id
+  WHERE community_verification_actions.id = v_action.id;
+
+  RETURN QUERY SELECT
+    v_result.id,
+    v_result.contact_id,
+    v_result.rating,
+    v_result.comment,
+    v_result.reviewer_name,
+    v_result.created_at,
+    v_result.image_paths;
+END;
+$$;
+
+
+ALTER FUNCTION "public"."complete_verified_provider_review"("p_action_id" "uuid", "p_image_paths" "text"[]) OWNER TO "postgres";
+
+
 CREATE OR REPLACE FUNCTION "public"."find_active_contact_by_phone"("p_phone" "text") RETURNS TABLE("id" "uuid", "title" "text", "subtitle" "text", "category" "text", "phone_number" "text", "website_url" "text", "map_url" "text", "image_url" "text")
     LANGUAGE "sql" STABLE
     SET "search_path" TO 'pg_catalog', 'public'
@@ -428,9 +535,9 @@ $$;
 ALTER FUNCTION "public"."set_provider_review_updated_at"() OWNER TO "postgres";
 
 
-CREATE OR REPLACE FUNCTION "public"."submit_provider_review"("p_contact_id" "uuid", "p_rating" smallint, "p_reviewer_whatsapp" "text", "p_image_paths" "text"[] DEFAULT ARRAY[]::"text"[], "p_comment" "text" DEFAULT NULL::"text", "p_reviewer_name" "text" DEFAULT NULL::"text") RETURNS TABLE("id" "uuid", "contact_id" "uuid", "rating" smallint, "comment" "text", "reviewer_name" "text", "created_at" timestamp with time zone, "image_paths" "text"[])
+CREATE OR REPLACE FUNCTION "public"."submit_provider_review"("p_contact_id" "uuid", "p_rating" smallint, "p_reviewer_whatsapp" "text", "p_image_paths" "text"[] DEFAULT ARRAY[]::"text"[], "p_comment" "text" DEFAULT NULL::"text", "p_reviewer_name" "text" DEFAULT NULL::"text", "p_verification_method" "text" DEFAULT 'whatsapp_inbound'::"text", "p_verification_action_id" "uuid" DEFAULT NULL::"uuid", "p_twilio_verification_sid" "text" DEFAULT NULL::"text") RETURNS TABLE("id" "uuid", "contact_id" "uuid", "rating" smallint, "comment" "text", "reviewer_name" "text", "created_at" timestamp with time zone, "image_paths" "text"[])
     LANGUAGE "plpgsql" SECURITY DEFINER
-    SET "search_path" TO 'pg_catalog', 'public'
+    SET "search_path" TO 'pg_catalog', 'public', 'storage'
     AS $_$
 DECLARE
   v_comment TEXT;
@@ -438,66 +545,43 @@ DECLARE
   v_reviewer_whatsapp TEXT;
   v_image_paths TEXT[] := COALESCE(p_image_paths, ARRAY[]::TEXT[]);
   v_review public.provider_reviews%ROWTYPE;
+  v_storage_path TEXT;
 BEGIN
   IF p_rating IS NULL OR p_rating NOT BETWEEN 1 AND 5 THEN
-    RAISE EXCEPTION 'Rating must be a whole number between 1 and 5'
-      USING ERRCODE = '22023';
+    RAISE EXCEPTION 'Rating must be a whole number between 1 and 5' USING ERRCODE = '22023';
   END IF;
 
   IF NOT EXISTS (
-    SELECT 1
-    FROM public.contacts AS contacts
-    WHERE contacts.id = p_contact_id
-      AND COALESCE(contacts.is_deleted, FALSE) = FALSE
+    SELECT 1 FROM public.contacts AS contacts
+    WHERE contacts.id = p_contact_id AND contacts.is_deleted = FALSE
   ) THEN
-    RAISE EXCEPTION 'Provider not found'
-      USING ERRCODE = 'P0002';
+    RAISE EXCEPTION 'Provider not found' USING ERRCODE = 'P0002';
   END IF;
 
   IF cardinality(v_image_paths) > 4 THEN
-    RAISE EXCEPTION 'A review can include at most 4 images'
-      USING ERRCODE = '22023';
+    RAISE EXCEPTION 'A review can include at most 4 images' USING ERRCODE = '22023';
+  END IF;
+  IF cardinality(v_image_paths) <> cardinality(ARRAY(SELECT DISTINCT unnest(v_image_paths))) THEN
+    RAISE EXCEPTION 'Review image paths must be unique' USING ERRCODE = '22023';
   END IF;
 
-  IF cardinality(v_image_paths) <> (
-    SELECT count(DISTINCT paths.storage_path)
-    FROM unnest(v_image_paths) AS paths(storage_path)
-  ) THEN
-    RAISE EXCEPTION 'Review image paths must be unique'
-      USING ERRCODE = '22023';
-  END IF;
-
-  IF EXISTS (
-    SELECT 1
-    FROM unnest(v_image_paths) AS paths(storage_path)
-    WHERE paths.storage_path IS NULL
-      OR paths.storage_path !~ (
-        '^' || p_contact_id::TEXT ||
-        '/[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.(jpg|jpeg|png|webp)$'
-      )
-  ) THEN
-    RAISE EXCEPTION 'Review images must use the provider/image path format and an allowed extension'
-      USING ERRCODE = '22023';
-  END IF;
+  FOREACH v_storage_path IN ARRAY v_image_paths LOOP
+    IF v_storage_path !~ ('^' || p_contact_id::TEXT || '/[0-9a-f-]{36}\.(jpg|jpeg|png|webp)$') THEN
+      RAISE EXCEPTION 'Invalid review image path' USING ERRCODE = '22023';
+    END IF;
+  END LOOP;
 
   IF EXISTS (
-    SELECT 1
-    FROM unnest(v_image_paths) AS paths(storage_path)
+    SELECT 1 FROM unnest(v_image_paths) AS paths(storage_path)
     WHERE NOT EXISTS (
-      SELECT 1
-      FROM storage.objects AS objects
-      WHERE objects.bucket_id = 'review-images'
-        AND objects.name = paths.storage_path
+      SELECT 1 FROM storage.objects AS objects
+      WHERE objects.bucket_id = 'review-images' AND objects.name = paths.storage_path
     )
   ) THEN
-    RAISE EXCEPTION 'One or more review images were not uploaded'
-      USING ERRCODE = '22023';
+    RAISE EXCEPTION 'One or more review images were not uploaded' USING ERRCODE = '22023';
   END IF;
 
-  v_comment := NULLIF(
-    btrim(regexp_replace(COALESCE(p_comment, ''), E'\r\n?', E'\n', 'g')),
-    ''
-  );
+  v_comment := NULLIF(btrim(regexp_replace(COALESCE(p_comment, ''), E'\r\n?', E'\n', 'g')), '');
   v_reviewer_name := NULLIF(
     btrim(regexp_replace(COALESCE(p_reviewer_name, ''), '[[:space:]]+', ' ', 'g')),
     ''
@@ -508,51 +592,76 @@ BEGIN
     '',
     'g'
   );
-
   IF left(v_reviewer_whatsapp, 2) = '00' THEN
     v_reviewer_whatsapp := '+' || substring(v_reviewer_whatsapp FROM 3);
+  ELSIF v_reviewer_whatsapp ~ '^[1-9][0-9]{7,14}$' THEN
+    v_reviewer_whatsapp := '+' || v_reviewer_whatsapp;
   END IF;
 
   IF v_comment IS NOT NULL AND char_length(v_comment) > 1000 THEN
-    RAISE EXCEPTION 'Comment must be 1000 characters or fewer'
-      USING ERRCODE = '22023';
+    RAISE EXCEPTION 'Comment must be 1000 characters or fewer' USING ERRCODE = '22023';
   END IF;
-
   IF v_reviewer_name IS NOT NULL AND char_length(v_reviewer_name) > 80 THEN
-    RAISE EXCEPTION 'Reviewer name must be 80 characters or fewer'
-      USING ERRCODE = '22023';
+    RAISE EXCEPTION 'Reviewer name must be 80 characters or fewer' USING ERRCODE = '22023';
+  END IF;
+  IF v_reviewer_whatsapp !~ '^\+[1-9][0-9]{7,14}$' THEN
+    RAISE EXCEPTION 'Enter a valid WhatsApp number including country code' USING ERRCODE = '22023';
+  END IF;
+  IF p_verification_method NOT IN ('whatsapp_otp', 'whatsapp_inbound') THEN
+    RAISE EXCEPTION 'A verified WhatsApp method is required' USING ERRCODE = '22023';
   END IF;
 
-  IF v_reviewer_whatsapp !~ '^\+?[0-9]{8,15}$' THEN
-    RAISE EXCEPTION 'Enter a valid WhatsApp number with 8 to 15 digits'
-      USING ERRCODE = '22023';
-  END IF;
+  SELECT reviews.* INTO v_review
+  FROM public.provider_reviews AS reviews
+  WHERE reviews.contact_id = p_contact_id
+    AND reviews.reviewer_whatsapp = v_reviewer_whatsapp
+    AND reviews.is_deleted = FALSE
+  FOR UPDATE;
 
-  INSERT INTO public.provider_reviews AS reviews (
-    contact_id,
-    rating,
-    comment,
-    reviewer_name,
-    reviewer_whatsapp
-  )
-  VALUES (
-    p_contact_id,
-    p_rating,
-    v_comment,
-    v_reviewer_name,
-    v_reviewer_whatsapp
-  )
-  RETURNING reviews.* INTO v_review;
+  IF FOUND THEN
+    DELETE FROM public.provider_review_images AS images WHERE images.review_id = v_review.id;
+    UPDATE public.provider_reviews AS reviews
+    SET
+      rating = p_rating,
+      comment = v_comment,
+      reviewer_name = v_reviewer_name,
+      verification_method = p_verification_method,
+      verification_action_id = COALESCE(p_verification_action_id, reviews.verification_action_id),
+      verified_at = now(),
+      twilio_verification_sid = p_twilio_verification_sid,
+      updated_at = now()
+    WHERE reviews.id = v_review.id
+    RETURNING reviews.* INTO v_review;
+  ELSE
+    INSERT INTO public.provider_reviews AS reviews (
+      contact_id,
+      rating,
+      comment,
+      reviewer_name,
+      reviewer_whatsapp,
+      verification_method,
+      verification_action_id,
+      verified_at,
+      twilio_verification_sid
+    ) VALUES (
+      p_contact_id,
+      p_rating,
+      v_comment,
+      v_reviewer_name,
+      v_reviewer_whatsapp,
+      p_verification_method,
+      p_verification_action_id,
+      now(),
+      p_twilio_verification_sid
+    )
+    RETURNING reviews.* INTO v_review;
+  END IF;
 
   INSERT INTO public.provider_review_images (review_id, storage_path, position)
-  SELECT
-    v_review.id,
-    paths.storage_path,
-    (paths.ordinality - 1)::SMALLINT
+  SELECT v_review.id, paths.storage_path, (paths.ordinality - 1)::SMALLINT
   FROM unnest(v_image_paths) WITH ORDINALITY AS paths(storage_path, ordinality);
 
-  RETURN QUERY
-  SELECT
+  RETURN QUERY SELECT
     v_review.id,
     v_review.contact_id,
     v_review.rating,
@@ -564,11 +673,7 @@ END;
 $_$;
 
 
-ALTER FUNCTION "public"."submit_provider_review"("p_contact_id" "uuid", "p_rating" smallint, "p_reviewer_whatsapp" "text", "p_image_paths" "text"[], "p_comment" "text", "p_reviewer_name" "text") OWNER TO "postgres";
-
-
-COMMENT ON FUNCTION "public"."submit_provider_review"("p_contact_id" "uuid", "p_rating" smallint, "p_reviewer_whatsapp" "text", "p_image_paths" "text"[], "p_comment" "text", "p_reviewer_name" "text") IS 'Creates an immediately public review and ordered image metadata without returning reviewer WhatsApp.';
-
+ALTER FUNCTION "public"."submit_provider_review"("p_contact_id" "uuid", "p_rating" smallint, "p_reviewer_whatsapp" "text", "p_image_paths" "text"[], "p_comment" "text", "p_reviewer_name" "text", "p_verification_method" "text", "p_verification_action_id" "uuid", "p_twilio_verification_sid" "text") OWNER TO "postgres";
 
 
 CREATE OR REPLACE FUNCTION "public"."undo_provider_soft_delete"("p_event_id" "uuid", "p_undo_token_hash" "text") RETURNS "void"
@@ -663,6 +768,42 @@ COMMENT ON TABLE "public"."bot_conversations" IS 'Short-lived Machu bot state ke
 
 
 
+CREATE TABLE IF NOT EXISTS "public"."community_verification_actions" (
+    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
+    "action_type" "text" NOT NULL,
+    "requester_whatsapp" "text" NOT NULL,
+    "payload" "jsonb" NOT NULL,
+    "client_secret_hash" "text" NOT NULL,
+    "request_ip_hash" "text",
+    "twilio_verification_sid" "text",
+    "status" "text" DEFAULT 'pending'::"text" NOT NULL,
+    "check_attempts" smallint DEFAULT 0 NOT NULL,
+    "result_id" "uuid",
+    "created_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    "expires_at" timestamp with time zone DEFAULT ("now"() + '00:10:00'::interval) NOT NULL,
+    "verified_at" timestamp with time zone,
+    "consumed_at" timestamp with time zone,
+    CONSTRAINT "community_verification_actions_action_type_check" CHECK (("action_type" = ANY (ARRAY['provider_delete'::"text", 'provider_review'::"text"]))),
+    CONSTRAINT "community_verification_actions_check" CHECK (("expires_at" > "created_at")),
+    CONSTRAINT "community_verification_actions_check1" CHECK ((("verified_at" IS NULL) OR ("verified_at" >= "created_at"))),
+    CONSTRAINT "community_verification_actions_check2" CHECK ((("consumed_at" IS NULL) OR ("verified_at" IS NOT NULL))),
+    CONSTRAINT "community_verification_actions_check_attempts_check" CHECK ((("check_attempts" >= 0) AND ("check_attempts" <= 10))),
+    CONSTRAINT "community_verification_actions_client_secret_hash_check" CHECK (("client_secret_hash" ~ '^[0-9a-f]{64}$'::"text")),
+    CONSTRAINT "community_verification_actions_payload_check" CHECK (("jsonb_typeof"("payload") = 'object'::"text")),
+    CONSTRAINT "community_verification_actions_request_ip_hash_check" CHECK ((("request_ip_hash" IS NULL) OR ("request_ip_hash" ~ '^[0-9a-f]{64}$'::"text"))),
+    CONSTRAINT "community_verification_actions_requester_whatsapp_check" CHECK (("requester_whatsapp" ~ '^\+[1-9][0-9]{7,14}$'::"text")),
+    CONSTRAINT "community_verification_actions_status_check" CHECK (("status" = ANY (ARRAY['pending'::"text", 'sent'::"text", 'verified'::"text", 'completed'::"text", 'failed'::"text", 'expired'::"text"]))),
+    CONSTRAINT "community_verification_actions_twilio_verification_sid_check" CHECK ((("twilio_verification_sid" IS NULL) OR ("twilio_verification_sid" ~ '^VE[0-9a-fA-F]{32}$'::"text")))
+);
+
+
+ALTER TABLE "public"."community_verification_actions" OWNER TO "postgres";
+
+
+COMMENT ON TABLE "public"."community_verification_actions" IS 'Private, short-lived actions bound to a Twilio WhatsApp possession verification.';
+
+
+
 CREATE TABLE IF NOT EXISTS "public"."contacts" (
     "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
     "created_at" timestamp with time zone DEFAULT "now"() NOT NULL,
@@ -716,11 +857,17 @@ CREATE TABLE IF NOT EXISTS "public"."provider_deletion_events" (
     "deleted_at" timestamp with time zone DEFAULT "now"() NOT NULL,
     "undo_expires_at" timestamp with time zone NOT NULL,
     "undone_at" timestamp with time zone,
+    "verification_action_id" "uuid",
+    "verification_method" "text" DEFAULT 'legacy_community_code'::"text" NOT NULL,
+    "verified_at" timestamp with time zone,
+    "twilio_verification_sid" "text",
     CONSTRAINT "provider_deletion_events_check" CHECK (("undo_expires_at" > "deleted_at")),
     CONSTRAINT "provider_deletion_events_check1" CHECK ((("undone_at" IS NULL) OR ("undone_at" <= "undo_expires_at"))),
     CONSTRAINT "provider_deletion_events_provider_name_snapshot_check" CHECK (("char_length"("provider_name_snapshot") > 0)),
     CONSTRAINT "provider_deletion_events_requester_whatsapp_check" CHECK (((("char_length"("requester_whatsapp") >= 8) AND ("char_length"("requester_whatsapp") <= 16)) AND ("requester_whatsapp" ~ '^\+?[0-9]{8,15}$'::"text"))),
-    CONSTRAINT "provider_deletion_events_undo_token_hash_check" CHECK (("undo_token_hash" ~ '^[0-9a-f]{64}$'::"text"))
+    CONSTRAINT "provider_deletion_events_twilio_verification_sid_check" CHECK ((("twilio_verification_sid" IS NULL) OR ("twilio_verification_sid" ~ '^VE[0-9a-fA-F]{32}$'::"text"))),
+    CONSTRAINT "provider_deletion_events_undo_token_hash_check" CHECK (("undo_token_hash" ~ '^[0-9a-f]{64}$'::"text")),
+    CONSTRAINT "provider_deletion_events_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['legacy_community_code'::"text", 'whatsapp_otp'::"text"])))
 );
 
 
@@ -768,11 +915,16 @@ CREATE TABLE IF NOT EXISTS "public"."provider_reviews" (
     "deleted_at" timestamp with time zone,
     "created_at" timestamp with time zone DEFAULT "now"() NOT NULL,
     "updated_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    "verification_action_id" "uuid",
+    "verification_method" "text" DEFAULT 'legacy_unverified'::"text" NOT NULL,
+    "verified_at" timestamp with time zone,
+    "twilio_verification_sid" "text",
     CONSTRAINT "provider_reviews_check" CHECK (((("is_deleted" = false) AND ("deleted_at" IS NULL)) OR (("is_deleted" = true) AND ("deleted_at" IS NOT NULL)))),
     CONSTRAINT "provider_reviews_comment_check" CHECK ((("comment" IS NULL) OR ("char_length"("comment") <= 1000))),
     CONSTRAINT "provider_reviews_rating_check" CHECK ((("rating" >= 1) AND ("rating" <= 5))),
     CONSTRAINT "provider_reviews_reviewer_name_check" CHECK ((("reviewer_name" IS NULL) OR ("char_length"("reviewer_name") <= 80))),
-    CONSTRAINT "provider_reviews_reviewer_whatsapp_check" CHECK (((("char_length"("reviewer_whatsapp") >= 8) AND ("char_length"("reviewer_whatsapp") <= 16)) AND ("reviewer_whatsapp" ~ '^\+?[0-9]{8,15}$'::"text")))
+    CONSTRAINT "provider_reviews_reviewer_whatsapp_check" CHECK (((("char_length"("reviewer_whatsapp") >= 8) AND ("char_length"("reviewer_whatsapp") <= 16)) AND ("reviewer_whatsapp" ~ '^\+?[0-9]{8,15}$'::"text"))),
+    CONSTRAINT "provider_reviews_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['legacy_unverified'::"text", 'whatsapp_otp'::"text", 'whatsapp_inbound'::"text"])))
 );
 
 
@@ -808,6 +960,16 @@ ALTER TABLE "public"."wiki_pages" OWNER TO "postgres";
 
 ALTER TABLE ONLY "public"."bot_conversations"
     ADD CONSTRAINT "bot_conversations_pkey" PRIMARY KEY ("conversation_key");
+
+
+
+ALTER TABLE ONLY "public"."community_verification_actions"
+    ADD CONSTRAINT "community_verification_actions_client_secret_hash_key" UNIQUE ("client_secret_hash");
+
+
+
+ALTER TABLE ONLY "public"."community_verification_actions"
+    ADD CONSTRAINT "community_verification_actions_pkey" PRIMARY KEY ("id");
 
 
 
@@ -855,6 +1017,18 @@ CREATE INDEX "bot_conversations_expiry_idx" ON "public"."bot_conversations" USIN
 
 
 
+CREATE INDEX "community_verification_actions_expiry_idx" ON "public"."community_verification_actions" USING "btree" ("expires_at") WHERE ("consumed_at" IS NULL);
+
+
+
+CREATE INDEX "community_verification_actions_ip_created_idx" ON "public"."community_verification_actions" USING "btree" ("request_ip_hash", "created_at" DESC) WHERE ("request_ip_hash" IS NOT NULL);
+
+
+
+CREATE INDEX "community_verification_actions_phone_created_idx" ON "public"."community_verification_actions" USING "btree" ("requester_whatsapp", "created_at" DESC);
+
+
+
 CREATE UNIQUE INDEX "contacts_active_phone_normalized_unique_idx" ON "public"."contacts" USING "btree" ("phone_normalized") WHERE (("is_deleted" = false) AND ("phone_normalized" IS NOT NULL));
 
 
@@ -867,11 +1041,27 @@ CREATE INDEX "provider_deletion_events_pending_undo_idx" ON "public"."provider_d
 
 
 
+CREATE UNIQUE INDEX "provider_deletion_events_verification_action_uidx" ON "public"."provider_deletion_events" USING "btree" ("verification_action_id") WHERE ("verification_action_id" IS NOT NULL);
+
+
+
 CREATE INDEX "provider_review_images_review_position_idx" ON "public"."provider_review_images" USING "btree" ("review_id", "position");
 
 
 
+CREATE UNIQUE INDEX "provider_reviews_one_active_per_whatsapp_uidx" ON "public"."provider_reviews" USING "btree" ("contact_id", "reviewer_whatsapp") WHERE ("is_deleted" = false);
+
+
+
+COMMENT ON INDEX "public"."provider_reviews_one_active_per_whatsapp_uidx" IS 'One active review per provider per canonical verified WhatsApp number.';
+
+
+
 CREATE INDEX "provider_reviews_public_contact_created_idx" ON "public"."provider_reviews" USING "btree" ("contact_id", "created_at" DESC) WHERE ("is_deleted" = false);
+
+
+
+CREATE UNIQUE INDEX "provider_reviews_verification_action_uidx" ON "public"."provider_reviews" USING "btree" ("verification_action_id") WHERE ("verification_action_id" IS NOT NULL);
 
 
 
@@ -913,6 +1103,11 @@ ALTER TABLE ONLY "public"."provider_deletion_events"
 
 
 
+ALTER TABLE ONLY "public"."provider_deletion_events"
+    ADD CONSTRAINT "provider_deletion_events_verification_action_id_fkey" FOREIGN KEY ("verification_action_id") REFERENCES "public"."community_verification_actions"("id") ON DELETE RESTRICT;
+
+
+
 ALTER TABLE ONLY "public"."provider_review_images"
     ADD CONSTRAINT "provider_review_images_review_id_fkey" FOREIGN KEY ("review_id") REFERENCES "public"."provider_reviews"("id") ON DELETE CASCADE;
 
@@ -920,6 +1115,11 @@ ALTER TABLE ONLY "public"."provider_review_images"
 
 ALTER TABLE ONLY "public"."provider_reviews"
     ADD CONSTRAINT "provider_reviews_contact_id_fkey" FOREIGN KEY ("contact_id") REFERENCES "public"."contacts"("id") ON DELETE CASCADE;
+
+
+
+ALTER TABLE ONLY "public"."provider_reviews"
+    ADD CONSTRAINT "provider_reviews_verification_action_id_fkey" FOREIGN KEY ("verification_action_id") REFERENCES "public"."community_verification_actions"("id") ON DELETE RESTRICT;
 
 
 
@@ -944,6 +1144,9 @@ CREATE POLICY "Public can read active contacts" ON "public"."contacts" FOR SELEC
 
 
 ALTER TABLE "public"."bot_conversations" ENABLE ROW LEVEL SECURITY;
+
+
+ALTER TABLE "public"."community_verification_actions" ENABLE ROW LEVEL SECURITY;
 
 
 ALTER TABLE "public"."contacts" ENABLE ROW LEVEL SECURITY;
@@ -1159,6 +1362,16 @@ GRANT ALL ON FUNCTION "public"."clear_bot_conversation"("p_conversation_key" "te
 
 
 
+REVOKE ALL ON FUNCTION "public"."complete_verified_provider_deletion"("p_action_id" "uuid", "p_undo_token_hash" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."complete_verified_provider_deletion"("p_action_id" "uuid", "p_undo_token_hash" "text") TO "service_role";
+
+
+
+REVOKE ALL ON FUNCTION "public"."complete_verified_provider_review"("p_action_id" "uuid", "p_image_paths" "text"[]) FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."complete_verified_provider_review"("p_action_id" "uuid", "p_image_paths" "text"[]) TO "service_role";
+
+
+
 REVOKE ALL ON FUNCTION "public"."find_active_contact_by_phone"("p_phone" "text") FROM PUBLIC;
 GRANT ALL ON FUNCTION "public"."find_active_contact_by_phone"("p_phone" "text") TO "anon";
 GRANT ALL ON FUNCTION "public"."find_active_contact_by_phone"("p_phone" "text") TO "authenticated";
@@ -1224,10 +1437,8 @@ GRANT ALL ON FUNCTION "public"."set_provider_review_updated_at"() TO "service_ro
 
 
 
-REVOKE ALL ON FUNCTION "public"."submit_provider_review"("p_contact_id" "uuid", "p_rating" smallint, "p_reviewer_whatsapp" "text", "p_image_paths" "text"[], "p_comment" "text", "p_reviewer_name" "text") FROM PUBLIC;
-GRANT ALL ON FUNCTION "public"."submit_provider_review"("p_contact_id" "uuid", "p_rating" smallint, "p_reviewer_whatsapp" "text", "p_image_paths" "text"[], "p_comment" "text", "p_reviewer_name" "text") TO "anon";
-GRANT ALL ON FUNCTION "public"."submit_provider_review"("p_contact_id" "uuid", "p_rating" smallint, "p_reviewer_whatsapp" "text", "p_image_paths" "text"[], "p_comment" "text", "p_reviewer_name" "text") TO "authenticated";
-GRANT ALL ON FUNCTION "public"."submit_provider_review"("p_contact_id" "uuid", "p_rating" smallint, "p_reviewer_whatsapp" "text", "p_image_paths" "text"[], "p_comment" "text", "p_reviewer_name" "text") TO "service_role";
+REVOKE ALL ON FUNCTION "public"."submit_provider_review"("p_contact_id" "uuid", "p_rating" smallint, "p_reviewer_whatsapp" "text", "p_image_paths" "text"[], "p_comment" "text", "p_reviewer_name" "text", "p_verification_method" "text", "p_verification_action_id" "uuid", "p_twilio_verification_sid" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."submit_provider_review"("p_contact_id" "uuid", "p_rating" smallint, "p_reviewer_whatsapp" "text", "p_image_paths" "text"[], "p_comment" "text", "p_reviewer_name" "text", "p_verification_method" "text", "p_verification_action_id" "uuid", "p_twilio_verification_sid" "text") TO "service_role";
 
 
 
@@ -1258,6 +1469,10 @@ GRANT ALL ON FUNCTION "public"."update_wiki_content_tsv"() TO "service_role";
 
 
 GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."bot_conversations" TO "service_role";
+
+
+
+GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."community_verification_actions" TO "service_role";
 
 
 
