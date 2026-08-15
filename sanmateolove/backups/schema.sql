@@ -127,7 +127,7 @@ BEGIN
   UPDATE public.provider_deletion_events AS events
   SET
     verification_action_id = v_action.id,
-    verification_method = 'whatsapp_otp',
+    verification_method = v_action.verification_method,
     verified_at = v_action.verified_at,
     twilio_verification_sid = v_action.twilio_verification_sid
   WHERE events.id = v_event_id;
@@ -177,7 +177,7 @@ BEGIN
     COALESCE(p_image_paths, ARRAY[]::TEXT[]),
     v_action.payload->>'comment',
     v_action.payload->>'reviewerName',
-    'whatsapp_otp',
+    v_action.verification_method,
     v_action.id,
     v_action.twilio_verification_sid
   );
@@ -199,6 +199,139 @@ $$;
 
 
 ALTER FUNCTION "public"."complete_verified_provider_review"("p_action_id" "uuid", "p_image_paths" "text"[]) OWNER TO "postgres";
+
+
+CREATE OR REPLACE FUNCTION "public"."complete_verified_provider_write"("p_action_id" "uuid", "p_image_path" "text" DEFAULT NULL::"text", "p_image_url" "text" DEFAULT NULL::"text") RETURNS TABLE("id" "uuid", "title" "text", "subtitle" "text", "category" "text", "phone_number" "text", "website_url" "text", "map_url" "text", "image_url" "text", "previous_image_url" "text")
+    LANGUAGE "plpgsql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public', 'storage'
+    AS $_$
+DECLARE
+  v_action public.community_verification_actions%ROWTYPE;
+  v_contact public.contacts%ROWTYPE;
+  v_previous_image_url TEXT;
+  v_image_change TEXT;
+  v_next_image_url TEXT;
+BEGIN
+  SELECT actions.* INTO v_action
+  FROM public.community_verification_actions AS actions
+  WHERE actions.id = p_action_id
+  FOR UPDATE;
+
+  IF NOT FOUND OR v_action.action_type NOT IN ('provider_create', 'provider_update')
+    OR v_action.status <> 'verified' OR v_action.consumed_at IS NOT NULL
+    OR v_action.expires_at <= now() THEN
+    RAISE EXCEPTION 'Verified provider action is unavailable' USING ERRCODE = '22023';
+  END IF;
+
+  v_image_change := v_action.payload->>'imageChange';
+  IF v_image_change = 'replace' THEN
+    IF p_image_path IS NULL
+      OR p_image_path !~ (
+        '^' || v_action.id::TEXT
+        || '/[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}'
+        || '\.(jpg|jpeg|png|webp)$'
+      )
+      OR p_image_url IS NULL
+      OR p_image_url !~ (
+        '^https?://[^[:space:]]+/storage/v1/object/public/contact-images/'
+        || replace(replace(p_image_path, '.', '\.'), '/', '\/')
+        || '$'
+      ) THEN
+      RAISE EXCEPTION 'A verified provider logo is required' USING ERRCODE = '22023';
+    END IF;
+    IF NOT EXISTS (
+      SELECT 1 FROM storage.objects AS objects
+      WHERE objects.bucket_id = 'contact-images' AND objects.name = p_image_path
+    ) THEN
+      RAISE EXCEPTION 'The verified provider logo was not uploaded' USING ERRCODE = '22023';
+    END IF;
+    v_next_image_url := p_image_url;
+  ELSIF p_image_path IS NOT NULL OR p_image_url IS NOT NULL THEN
+    RAISE EXCEPTION 'This provider action does not allow a new logo' USING ERRCODE = '22023';
+  END IF;
+
+  IF v_action.action_type = 'provider_create' THEN
+    IF v_image_change IS NULL OR v_image_change NOT IN ('none', 'replace') THEN
+      RAISE EXCEPTION 'Invalid provider image action' USING ERRCODE = '22023';
+    END IF;
+
+    INSERT INTO public.contacts AS contacts (
+      title,
+      category,
+      subtitle,
+      phone_number,
+      website_url,
+      map_url,
+      image_url,
+      is_deleted
+    ) VALUES (
+      v_action.payload->>'name',
+      v_action.payload->>'category',
+      v_action.payload->>'description',
+      v_action.payload->>'providerPhone',
+      NULLIF(v_action.payload->>'website', ''),
+      NULLIF(v_action.payload->>'mapUrl', ''),
+      v_next_image_url,
+      FALSE
+    )
+    RETURNING contacts.* INTO v_contact;
+  ELSE
+    IF v_image_change IS NULL OR v_image_change NOT IN ('keep', 'remove', 'replace') THEN
+      RAISE EXCEPTION 'Invalid provider image action' USING ERRCODE = '22023';
+    END IF;
+
+    SELECT contacts.* INTO v_contact
+    FROM public.contacts AS contacts
+    WHERE contacts.id = (v_action.payload->>'providerId')::UUID
+      AND contacts.is_deleted = FALSE
+    FOR UPDATE;
+    IF NOT FOUND THEN
+      RAISE EXCEPTION 'Provider not found' USING ERRCODE = 'P0002';
+    END IF;
+
+    v_previous_image_url := v_contact.image_url;
+    IF v_image_change = 'keep' THEN
+      v_next_image_url := v_contact.image_url;
+    ELSIF v_image_change = 'remove' THEN
+      v_next_image_url := NULL;
+    END IF;
+
+    UPDATE public.contacts AS contacts
+    SET
+      title = v_action.payload->>'name',
+      category = v_action.payload->>'category',
+      subtitle = v_action.payload->>'description',
+      phone_number = v_action.payload->>'providerPhone',
+      website_url = NULLIF(v_action.payload->>'website', ''),
+      map_url = NULLIF(v_action.payload->>'mapUrl', ''),
+      image_url = v_next_image_url
+    WHERE contacts.id = v_contact.id
+    RETURNING contacts.* INTO v_contact;
+  END IF;
+
+  UPDATE public.community_verification_actions AS actions
+  SET status = 'completed', consumed_at = now(), result_id = v_contact.id
+  WHERE actions.id = v_action.id;
+
+  RETURN QUERY SELECT
+    v_contact.id,
+    v_contact.title,
+    v_contact.subtitle,
+    v_contact.category,
+    v_contact.phone_number,
+    v_contact.website_url,
+    v_contact.map_url,
+    v_contact.image_url,
+    v_previous_image_url;
+END;
+$_$;
+
+
+ALTER FUNCTION "public"."complete_verified_provider_write"("p_action_id" "uuid", "p_image_path" "text", "p_image_url" "text") OWNER TO "postgres";
+
+
+COMMENT ON FUNCTION "public"."complete_verified_provider_write"("p_action_id" "uuid", "p_image_path" "text", "p_image_url" "text") IS 'Atomically creates or updates a provider from an unconsumed WhatsApp-verified action.';
+
 
 
 CREATE OR REPLACE FUNCTION "public"."find_active_contact_by_phone"("p_phone" "text") RETURNS TABLE("id" "uuid", "title" "text", "subtitle" "text", "category" "text", "phone_number" "text", "website_url" "text", "map_url" "text", "image_url" "text")
@@ -460,6 +593,27 @@ ALTER FUNCTION "public"."perform_provider_soft_delete"("p_contact_id" "uuid", "p
 
 COMMENT ON FUNCTION "public"."perform_provider_soft_delete"("p_contact_id" "uuid", "p_provider_name_confirmation" "text", "p_reason" "text", "p_requester_whatsapp" "text", "p_undo_token_hash" "text") IS 'Service-role-only atomic provider soft deletion with name, reason, WhatsApp, and token-hash validation.';
 
+
+
+CREATE OR REPLACE FUNCTION "public"."reject_anonymous_contact_image_mutation"() RETURNS "trigger"
+    LANGUAGE "plpgsql"
+    SET "search_path" TO 'pg_catalog', 'public', 'storage', 'auth'
+    AS $$
+DECLARE
+  v_bucket_id TEXT := CASE WHEN TG_OP = 'DELETE' THEN OLD.bucket_id ELSE NEW.bucket_id END;
+BEGIN
+  IF v_bucket_id = 'contact-images'
+    AND auth.role() IN ('anon', 'authenticated') THEN
+    RAISE EXCEPTION 'Provider logos require a verified server action'
+      USING ERRCODE = '42501';
+  END IF;
+  IF TG_OP = 'DELETE' THEN RETURN OLD; END IF;
+  RETURN NEW;
+END;
+$$;
+
+
+ALTER FUNCTION "public"."reject_anonymous_contact_image_mutation"() OWNER TO "postgres";
 
 
 CREATE OR REPLACE FUNCTION "public"."set_bot_conversation"("p_conversation_key" "text", "p_contact_id" "uuid", "p_phase" "text", "p_context" "jsonb" DEFAULT '{}'::"jsonb", "p_ttl_hours" integer DEFAULT 72) RETURNS "void"
@@ -783,7 +937,8 @@ CREATE TABLE IF NOT EXISTS "public"."community_verification_actions" (
     "expires_at" timestamp with time zone DEFAULT ("now"() + '00:10:00'::interval) NOT NULL,
     "verified_at" timestamp with time zone,
     "consumed_at" timestamp with time zone,
-    CONSTRAINT "community_verification_actions_action_type_check" CHECK (("action_type" = ANY (ARRAY['provider_delete'::"text", 'provider_review'::"text"]))),
+    "verification_method" "text" DEFAULT 'whatsapp_otp'::"text" NOT NULL,
+    CONSTRAINT "community_verification_actions_action_type_check" CHECK (("action_type" = ANY (ARRAY['provider_create'::"text", 'provider_update'::"text", 'provider_delete'::"text", 'provider_review'::"text"]))),
     CONSTRAINT "community_verification_actions_check" CHECK (("expires_at" > "created_at")),
     CONSTRAINT "community_verification_actions_check1" CHECK ((("verified_at" IS NULL) OR ("verified_at" >= "created_at"))),
     CONSTRAINT "community_verification_actions_check2" CHECK ((("consumed_at" IS NULL) OR ("verified_at" IS NOT NULL))),
@@ -793,7 +948,8 @@ CREATE TABLE IF NOT EXISTS "public"."community_verification_actions" (
     CONSTRAINT "community_verification_actions_request_ip_hash_check" CHECK ((("request_ip_hash" IS NULL) OR ("request_ip_hash" ~ '^[0-9a-f]{64}$'::"text"))),
     CONSTRAINT "community_verification_actions_requester_whatsapp_check" CHECK (("requester_whatsapp" ~ '^\+[1-9][0-9]{7,14}$'::"text")),
     CONSTRAINT "community_verification_actions_status_check" CHECK (("status" = ANY (ARRAY['pending'::"text", 'sent'::"text", 'verified'::"text", 'completed'::"text", 'failed'::"text", 'expired'::"text"]))),
-    CONSTRAINT "community_verification_actions_twilio_verification_sid_check" CHECK ((("twilio_verification_sid" IS NULL) OR ("twilio_verification_sid" ~ '^VE[0-9a-fA-F]{32}$'::"text")))
+    CONSTRAINT "community_verification_actions_twilio_verification_sid_check" CHECK ((("twilio_verification_sid" IS NULL) OR ("twilio_verification_sid" ~ '^VE[0-9a-fA-F]{32}$'::"text"))),
+    CONSTRAINT "community_verification_actions_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['whatsapp_otp'::"text", 'whatsapp_inbound'::"text"])))
 );
 
 
@@ -801,6 +957,10 @@ ALTER TABLE "public"."community_verification_actions" OWNER TO "postgres";
 
 
 COMMENT ON TABLE "public"."community_verification_actions" IS 'Private, short-lived actions bound to a Twilio WhatsApp possession verification.';
+
+
+
+COMMENT ON COLUMN "public"."community_verification_actions"."verification_method" IS 'Possession proof used for this action; new browser actions use a signed inbound Machu message.';
 
 
 
@@ -867,7 +1027,7 @@ CREATE TABLE IF NOT EXISTS "public"."provider_deletion_events" (
     CONSTRAINT "provider_deletion_events_requester_whatsapp_check" CHECK (((("char_length"("requester_whatsapp") >= 8) AND ("char_length"("requester_whatsapp") <= 16)) AND ("requester_whatsapp" ~ '^\+?[0-9]{8,15}$'::"text"))),
     CONSTRAINT "provider_deletion_events_twilio_verification_sid_check" CHECK ((("twilio_verification_sid" IS NULL) OR ("twilio_verification_sid" ~ '^VE[0-9a-fA-F]{32}$'::"text"))),
     CONSTRAINT "provider_deletion_events_undo_token_hash_check" CHECK (("undo_token_hash" ~ '^[0-9a-f]{64}$'::"text")),
-    CONSTRAINT "provider_deletion_events_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['legacy_community_code'::"text", 'whatsapp_otp'::"text"])))
+    CONSTRAINT "provider_deletion_events_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['legacy_community_code'::"text", 'whatsapp_otp'::"text", 'whatsapp_inbound'::"text"])))
 );
 
 
@@ -1131,14 +1291,6 @@ CREATE POLICY "Enable read access for all users" ON "public"."wiki_pages" FOR SE
 
 
 
-CREATE POLICY "Public can add active contacts" ON "public"."contacts" FOR INSERT TO "authenticated", "anon" WITH CHECK (("is_deleted" = false));
-
-
-
-CREATE POLICY "Public can edit active contacts" ON "public"."contacts" FOR UPDATE TO "authenticated", "anon" USING (("is_deleted" = false)) WITH CHECK (("is_deleted" = false));
-
-
-
 CREATE POLICY "Public can read active contacts" ON "public"."contacts" FOR SELECT TO "authenticated", "anon" USING (("is_deleted" = false));
 
 
@@ -1372,6 +1524,11 @@ GRANT ALL ON FUNCTION "public"."complete_verified_provider_review"("p_action_id"
 
 
 
+REVOKE ALL ON FUNCTION "public"."complete_verified_provider_write"("p_action_id" "uuid", "p_image_path" "text", "p_image_url" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."complete_verified_provider_write"("p_action_id" "uuid", "p_image_path" "text", "p_image_url" "text") TO "service_role";
+
+
+
 REVOKE ALL ON FUNCTION "public"."find_active_contact_by_phone"("p_phone" "text") FROM PUBLIC;
 GRANT ALL ON FUNCTION "public"."find_active_contact_by_phone"("p_phone" "text") TO "anon";
 GRANT ALL ON FUNCTION "public"."find_active_contact_by_phone"("p_phone" "text") TO "authenticated";
@@ -1422,6 +1579,11 @@ GRANT ALL ON FUNCTION "public"."normalize_contact_phone"("p_phone" "text") TO "s
 
 REVOKE ALL ON FUNCTION "public"."perform_provider_soft_delete"("p_contact_id" "uuid", "p_provider_name_confirmation" "text", "p_reason" "text", "p_requester_whatsapp" "text", "p_undo_token_hash" "text") FROM PUBLIC;
 GRANT ALL ON FUNCTION "public"."perform_provider_soft_delete"("p_contact_id" "uuid", "p_provider_name_confirmation" "text", "p_reason" "text", "p_requester_whatsapp" "text", "p_undo_token_hash" "text") TO "service_role";
+
+
+
+REVOKE ALL ON FUNCTION "public"."reject_anonymous_contact_image_mutation"() FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."reject_anonymous_contact_image_mutation"() TO "service_role";
 
 
 
@@ -1479,41 +1641,6 @@ GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public".
 GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."contacts" TO "service_role";
 GRANT SELECT ON TABLE "public"."contacts" TO "anon";
 GRANT SELECT ON TABLE "public"."contacts" TO "authenticated";
-
-
-
-GRANT INSERT("title"),UPDATE("title") ON TABLE "public"."contacts" TO "anon";
-GRANT INSERT("title"),UPDATE("title") ON TABLE "public"."contacts" TO "authenticated";
-
-
-
-GRANT INSERT("category"),UPDATE("category") ON TABLE "public"."contacts" TO "anon";
-GRANT INSERT("category"),UPDATE("category") ON TABLE "public"."contacts" TO "authenticated";
-
-
-
-GRANT INSERT("subtitle"),UPDATE("subtitle") ON TABLE "public"."contacts" TO "anon";
-GRANT INSERT("subtitle"),UPDATE("subtitle") ON TABLE "public"."contacts" TO "authenticated";
-
-
-
-GRANT INSERT("phone_number"),UPDATE("phone_number") ON TABLE "public"."contacts" TO "anon";
-GRANT INSERT("phone_number"),UPDATE("phone_number") ON TABLE "public"."contacts" TO "authenticated";
-
-
-
-GRANT INSERT("website_url"),UPDATE("website_url") ON TABLE "public"."contacts" TO "anon";
-GRANT INSERT("website_url"),UPDATE("website_url") ON TABLE "public"."contacts" TO "authenticated";
-
-
-
-GRANT INSERT("image_url"),UPDATE("image_url") ON TABLE "public"."contacts" TO "anon";
-GRANT INSERT("image_url"),UPDATE("image_url") ON TABLE "public"."contacts" TO "authenticated";
-
-
-
-GRANT INSERT("map_url"),UPDATE("map_url") ON TABLE "public"."contacts" TO "anon";
-GRANT INSERT("map_url"),UPDATE("map_url") ON TABLE "public"."contacts" TO "authenticated";
 
 
 
