@@ -211,6 +211,8 @@ DECLARE
   v_previous_image_url TEXT;
   v_image_change TEXT;
   v_next_image_url TEXT;
+  v_before_snapshot JSONB;
+  v_after_snapshot JSONB;
 BEGIN
   SELECT actions.* INTO v_action
   FROM public.community_verification_actions AS actions
@@ -289,6 +291,15 @@ BEGIN
       RAISE EXCEPTION 'Provider not found' USING ERRCODE = 'P0002';
     END IF;
 
+    v_before_snapshot := jsonb_build_object(
+      'name', v_contact.title,
+      'category', v_contact.category,
+      'description', v_contact.subtitle,
+      'phone', v_contact.phone_number,
+      'website', v_contact.website_url,
+      'mapUrl', v_contact.map_url,
+      'imageUrl', v_contact.image_url
+    );
     v_previous_image_url := v_contact.image_url;
     IF v_image_change = 'keep' THEN
       v_next_image_url := v_contact.image_url;
@@ -308,6 +319,34 @@ BEGIN
     WHERE contacts.id = v_contact.id
     RETURNING contacts.* INTO v_contact;
   END IF;
+
+  v_after_snapshot := jsonb_build_object(
+    'name', v_contact.title,
+    'category', v_contact.category,
+    'description', v_contact.subtitle,
+    'phone', v_contact.phone_number,
+    'website', v_contact.website_url,
+    'mapUrl', v_contact.map_url,
+    'imageUrl', v_contact.image_url
+  );
+
+  INSERT INTO public.provider_change_events (
+    contact_id,
+    action_type,
+    requester_whatsapp,
+    verification_method,
+    verification_action_id,
+    before_snapshot,
+    after_snapshot
+  ) VALUES (
+    v_contact.id,
+    v_action.action_type,
+    v_action.requester_whatsapp,
+    v_action.verification_method,
+    v_action.id,
+    v_before_snapshot,
+    v_after_snapshot
+  );
 
   UPDATE public.community_verification_actions AS actions
   SET status = 'completed', consumed_at = now(), result_id = v_contact.id
@@ -761,7 +800,7 @@ BEGIN
   IF v_reviewer_whatsapp !~ '^\+[1-9][0-9]{7,14}$' THEN
     RAISE EXCEPTION 'Enter a valid WhatsApp number including country code' USING ERRCODE = '22023';
   END IF;
-  IF p_verification_method NOT IN ('whatsapp_otp', 'whatsapp_inbound') THEN
+  IF p_verification_method NOT IN ('whatsapp_otp', 'whatsapp_inbound', 'trusted_session') THEN
     RAISE EXCEPTION 'A verified WhatsApp method is required' USING ERRCODE = '22023';
   END IF;
 
@@ -925,7 +964,7 @@ COMMENT ON TABLE "public"."bot_conversations" IS 'Short-lived Machu bot state ke
 CREATE TABLE IF NOT EXISTS "public"."community_verification_actions" (
     "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
     "action_type" "text" NOT NULL,
-    "requester_whatsapp" "text" NOT NULL,
+    "requester_whatsapp" "text",
     "payload" "jsonb" NOT NULL,
     "client_secret_hash" "text" NOT NULL,
     "request_ip_hash" "text",
@@ -938,6 +977,7 @@ CREATE TABLE IF NOT EXISTS "public"."community_verification_actions" (
     "verified_at" timestamp with time zone,
     "consumed_at" timestamp with time zone,
     "verification_method" "text" DEFAULT 'whatsapp_otp'::"text" NOT NULL,
+    "trusted_session_id" "uuid",
     CONSTRAINT "community_verification_actions_action_type_check" CHECK (("action_type" = ANY (ARRAY['provider_create'::"text", 'provider_update'::"text", 'provider_delete'::"text", 'provider_review'::"text"]))),
     CONSTRAINT "community_verification_actions_check" CHECK (("expires_at" > "created_at")),
     CONSTRAINT "community_verification_actions_check1" CHECK ((("verified_at" IS NULL) OR ("verified_at" >= "created_at"))),
@@ -949,7 +989,8 @@ CREATE TABLE IF NOT EXISTS "public"."community_verification_actions" (
     CONSTRAINT "community_verification_actions_requester_whatsapp_check" CHECK (("requester_whatsapp" ~ '^\+[1-9][0-9]{7,14}$'::"text")),
     CONSTRAINT "community_verification_actions_status_check" CHECK (("status" = ANY (ARRAY['pending'::"text", 'sent'::"text", 'verified'::"text", 'completed'::"text", 'failed'::"text", 'expired'::"text"]))),
     CONSTRAINT "community_verification_actions_twilio_verification_sid_check" CHECK ((("twilio_verification_sid" IS NULL) OR ("twilio_verification_sid" ~ '^VE[0-9a-fA-F]{32}$'::"text"))),
-    CONSTRAINT "community_verification_actions_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['whatsapp_otp'::"text", 'whatsapp_inbound'::"text"])))
+    CONSTRAINT "community_verification_actions_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['whatsapp_otp'::"text", 'whatsapp_inbound'::"text", 'trusted_session'::"text"]))),
+    CONSTRAINT "community_verification_actions_verified_actor_check" CHECK ((("requester_whatsapp" IS NOT NULL) OR (("verification_method" = 'whatsapp_inbound'::"text") AND ("status" = ANY (ARRAY['pending'::"text", 'sent'::"text", 'failed'::"text", 'expired'::"text"])))))
 );
 
 
@@ -960,7 +1001,39 @@ COMMENT ON TABLE "public"."community_verification_actions" IS 'Private, short-li
 
 
 
+COMMENT ON COLUMN "public"."community_verification_actions"."requester_whatsapp" IS 'Private verified actor. For inbound flows this is populated atomically from the Twilio-signed WhatsApp sender; pending actions are unclaimed.';
+
+
+
 COMMENT ON COLUMN "public"."community_verification_actions"."verification_method" IS 'Possession proof used for this action; new browser actions use a signed inbound Machu message.';
+
+
+
+CREATE TABLE IF NOT EXISTS "public"."community_verified_sessions" (
+    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
+    "token_hash" "text" NOT NULL,
+    "verified_whatsapp" "text" NOT NULL,
+    "source_action_id" "uuid" NOT NULL,
+    "created_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    "last_used_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    "expires_at" timestamp with time zone NOT NULL,
+    "revoked_at" timestamp with time zone,
+    CONSTRAINT "community_verified_sessions_check" CHECK (("expires_at" > "created_at")),
+    CONSTRAINT "community_verified_sessions_check1" CHECK (("last_used_at" >= "created_at")),
+    CONSTRAINT "community_verified_sessions_check2" CHECK ((("revoked_at" IS NULL) OR ("revoked_at" >= "created_at"))),
+    CONSTRAINT "community_verified_sessions_token_hash_check" CHECK (("token_hash" ~ '^[0-9a-f]{64}$'::"text")),
+    CONSTRAINT "community_verified_sessions_verified_whatsapp_check" CHECK (("verified_whatsapp" ~ '^\+[1-9][0-9]{7,14}$'::"text"))
+);
+
+
+ALTER TABLE "public"."community_verified_sessions" OWNER TO "postgres";
+
+
+COMMENT ON TABLE "public"."community_verified_sessions" IS 'Private 30-day browser sessions mapped to a WhatsApp number proven through Machu.';
+
+
+
+COMMENT ON COLUMN "public"."community_verified_sessions"."token_hash" IS 'SHA-256 of the opaque HttpOnly browser credential; the raw credential is never stored.';
 
 
 
@@ -1007,6 +1080,32 @@ COMMENT ON COLUMN "public"."contacts"."image_url" IS 'Public URL of the image st
 
 
 
+CREATE TABLE IF NOT EXISTS "public"."provider_change_events" (
+    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
+    "contact_id" "uuid" NOT NULL,
+    "action_type" "text" NOT NULL,
+    "requester_whatsapp" "text" NOT NULL,
+    "verification_method" "text" NOT NULL,
+    "verification_action_id" "uuid" NOT NULL,
+    "before_snapshot" "jsonb",
+    "after_snapshot" "jsonb" NOT NULL,
+    "changed_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    CONSTRAINT "provider_change_events_action_type_check" CHECK (("action_type" = ANY (ARRAY['provider_create'::"text", 'provider_update'::"text"]))),
+    CONSTRAINT "provider_change_events_after_snapshot_check" CHECK (("jsonb_typeof"("after_snapshot") = 'object'::"text")),
+    CONSTRAINT "provider_change_events_before_snapshot_check" CHECK ((("before_snapshot" IS NULL) OR ("jsonb_typeof"("before_snapshot") = 'object'::"text"))),
+    CONSTRAINT "provider_change_events_check" CHECK (((("action_type" = 'provider_create'::"text") AND ("before_snapshot" IS NULL)) OR (("action_type" = 'provider_update'::"text") AND ("before_snapshot" IS NOT NULL)))),
+    CONSTRAINT "provider_change_events_requester_whatsapp_check" CHECK (("requester_whatsapp" ~ '^\+[1-9][0-9]{7,14}$'::"text")),
+    CONSTRAINT "provider_change_events_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['whatsapp_otp'::"text", 'whatsapp_inbound'::"text", 'trusted_session'::"text"])))
+);
+
+
+ALTER TABLE "public"."provider_change_events" OWNER TO "postgres";
+
+
+COMMENT ON TABLE "public"."provider_change_events" IS 'Private immutable administrator audit trail for provider additions and edits.';
+
+
+
 CREATE TABLE IF NOT EXISTS "public"."provider_deletion_events" (
     "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
     "contact_id" "uuid" NOT NULL,
@@ -1027,7 +1126,7 @@ CREATE TABLE IF NOT EXISTS "public"."provider_deletion_events" (
     CONSTRAINT "provider_deletion_events_requester_whatsapp_check" CHECK (((("char_length"("requester_whatsapp") >= 8) AND ("char_length"("requester_whatsapp") <= 16)) AND ("requester_whatsapp" ~ '^\+?[0-9]{8,15}$'::"text"))),
     CONSTRAINT "provider_deletion_events_twilio_verification_sid_check" CHECK ((("twilio_verification_sid" IS NULL) OR ("twilio_verification_sid" ~ '^VE[0-9a-fA-F]{32}$'::"text"))),
     CONSTRAINT "provider_deletion_events_undo_token_hash_check" CHECK (("undo_token_hash" ~ '^[0-9a-f]{64}$'::"text")),
-    CONSTRAINT "provider_deletion_events_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['legacy_community_code'::"text", 'whatsapp_otp'::"text", 'whatsapp_inbound'::"text"])))
+    CONSTRAINT "provider_deletion_events_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['legacy_community_code'::"text", 'whatsapp_otp'::"text", 'whatsapp_inbound'::"text", 'trusted_session'::"text"])))
 );
 
 
@@ -1084,7 +1183,7 @@ CREATE TABLE IF NOT EXISTS "public"."provider_reviews" (
     CONSTRAINT "provider_reviews_rating_check" CHECK ((("rating" >= 1) AND ("rating" <= 5))),
     CONSTRAINT "provider_reviews_reviewer_name_check" CHECK ((("reviewer_name" IS NULL) OR ("char_length"("reviewer_name") <= 80))),
     CONSTRAINT "provider_reviews_reviewer_whatsapp_check" CHECK (((("char_length"("reviewer_whatsapp") >= 8) AND ("char_length"("reviewer_whatsapp") <= 16)) AND ("reviewer_whatsapp" ~ '^\+?[0-9]{8,15}$'::"text"))),
-    CONSTRAINT "provider_reviews_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['legacy_unverified'::"text", 'whatsapp_otp'::"text", 'whatsapp_inbound'::"text"])))
+    CONSTRAINT "provider_reviews_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['legacy_unverified'::"text", 'whatsapp_otp'::"text", 'whatsapp_inbound'::"text", 'trusted_session'::"text"])))
 );
 
 
@@ -1133,8 +1232,28 @@ ALTER TABLE ONLY "public"."community_verification_actions"
 
 
 
+ALTER TABLE ONLY "public"."community_verified_sessions"
+    ADD CONSTRAINT "community_verified_sessions_pkey" PRIMARY KEY ("id");
+
+
+
+ALTER TABLE ONLY "public"."community_verified_sessions"
+    ADD CONSTRAINT "community_verified_sessions_token_hash_key" UNIQUE ("token_hash");
+
+
+
 ALTER TABLE ONLY "public"."contacts"
     ADD CONSTRAINT "contacts_pkey" PRIMARY KEY ("id");
+
+
+
+ALTER TABLE ONLY "public"."provider_change_events"
+    ADD CONSTRAINT "provider_change_events_pkey" PRIMARY KEY ("id");
+
+
+
+ALTER TABLE ONLY "public"."provider_change_events"
+    ADD CONSTRAINT "provider_change_events_verification_action_id_key" UNIQUE ("verification_action_id");
 
 
 
@@ -1189,7 +1308,23 @@ CREATE INDEX "community_verification_actions_phone_created_idx" ON "public"."com
 
 
 
+CREATE INDEX "community_verified_sessions_expiry_idx" ON "public"."community_verified_sessions" USING "btree" ("expires_at") WHERE ("revoked_at" IS NULL);
+
+
+
+CREATE INDEX "community_verified_sessions_phone_created_idx" ON "public"."community_verified_sessions" USING "btree" ("verified_whatsapp", "created_at" DESC);
+
+
+
 CREATE UNIQUE INDEX "contacts_active_phone_normalized_unique_idx" ON "public"."contacts" USING "btree" ("phone_normalized") WHERE (("is_deleted" = false) AND ("phone_normalized" IS NOT NULL));
+
+
+
+CREATE INDEX "provider_change_events_actor_changed_idx" ON "public"."provider_change_events" USING "btree" ("requester_whatsapp", "changed_at" DESC);
+
+
+
+CREATE INDEX "provider_change_events_contact_changed_idx" ON "public"."provider_change_events" USING "btree" ("contact_id", "changed_at" DESC);
 
 
 
@@ -1258,6 +1393,26 @@ ALTER TABLE ONLY "public"."bot_conversations"
 
 
 
+ALTER TABLE ONLY "public"."community_verification_actions"
+    ADD CONSTRAINT "community_verification_actions_trusted_session_id_fkey" FOREIGN KEY ("trusted_session_id") REFERENCES "public"."community_verified_sessions"("id") ON DELETE RESTRICT;
+
+
+
+ALTER TABLE ONLY "public"."community_verified_sessions"
+    ADD CONSTRAINT "community_verified_sessions_source_action_id_fkey" FOREIGN KEY ("source_action_id") REFERENCES "public"."community_verification_actions"("id") ON DELETE RESTRICT;
+
+
+
+ALTER TABLE ONLY "public"."provider_change_events"
+    ADD CONSTRAINT "provider_change_events_contact_id_fkey" FOREIGN KEY ("contact_id") REFERENCES "public"."contacts"("id") ON DELETE RESTRICT;
+
+
+
+ALTER TABLE ONLY "public"."provider_change_events"
+    ADD CONSTRAINT "provider_change_events_verification_action_id_fkey" FOREIGN KEY ("verification_action_id") REFERENCES "public"."community_verification_actions"("id") ON DELETE RESTRICT;
+
+
+
 ALTER TABLE ONLY "public"."provider_deletion_events"
     ADD CONSTRAINT "provider_deletion_events_contact_id_fkey" FOREIGN KEY ("contact_id") REFERENCES "public"."contacts"("id") ON DELETE RESTRICT;
 
@@ -1301,7 +1456,13 @@ ALTER TABLE "public"."bot_conversations" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "public"."community_verification_actions" ENABLE ROW LEVEL SECURITY;
 
 
+ALTER TABLE "public"."community_verified_sessions" ENABLE ROW LEVEL SECURITY;
+
+
 ALTER TABLE "public"."contacts" ENABLE ROW LEVEL SECURITY;
+
+
+ALTER TABLE "public"."provider_change_events" ENABLE ROW LEVEL SECURITY;
 
 
 ALTER TABLE "public"."provider_deletion_events" ENABLE ROW LEVEL SECURITY;
@@ -1638,9 +1799,17 @@ GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public".
 
 
 
+GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."community_verified_sessions" TO "service_role";
+
+
+
 GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."contacts" TO "service_role";
 GRANT SELECT ON TABLE "public"."contacts" TO "anon";
 GRANT SELECT ON TABLE "public"."contacts" TO "authenticated";
+
+
+
+GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."provider_change_events" TO "service_role";
 
 
 
