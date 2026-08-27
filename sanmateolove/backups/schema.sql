@@ -94,6 +94,18 @@ $$;
 ALTER FUNCTION "public"."clear_bot_conversation"("p_conversation_key" "text") OWNER TO "postgres";
 
 
+CREATE OR REPLACE FUNCTION "public"."clear_bot_search_session"("p_conversation_key" "text") RETURNS "void"
+    LANGUAGE "sql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $$
+  DELETE FROM public.bot_search_sessions
+  WHERE conversation_key = lower(btrim(COALESCE(p_conversation_key, '')));
+$$;
+
+
+ALTER FUNCTION "public"."clear_bot_search_session"("p_conversation_key" "text") OWNER TO "postgres";
+
+
 CREATE OR REPLACE FUNCTION "public"."complete_verified_provider_deletion"("p_action_id" "uuid", "p_undo_token_hash" "text") RETURNS TABLE("event_id" "uuid", "undo_expires_at" timestamp with time zone)
     LANGUAGE "plpgsql" SECURITY DEFINER
     SET "search_path" TO 'pg_catalog', 'public'
@@ -418,6 +430,23 @@ $$;
 ALTER FUNCTION "public"."get_bot_conversation"("p_conversation_key" "text") OWNER TO "postgres";
 
 
+CREATE OR REPLACE FUNCTION "public"."get_bot_search_session"("p_conversation_key" "text") RETURNS TABLE("context" "jsonb", "expires_at" timestamp with time zone)
+    LANGUAGE "sql" STABLE SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $$
+  SELECT
+    sessions.context,
+    sessions.expires_at
+  FROM public.bot_search_sessions AS sessions
+  WHERE sessions.conversation_key = lower(btrim(COALESCE(p_conversation_key, '')))
+    AND sessions.expires_at > now()
+  LIMIT 1;
+$$;
+
+
+ALTER FUNCTION "public"."get_bot_search_session"("p_conversation_key" "text") OWNER TO "postgres";
+
+
 CREATE OR REPLACE FUNCTION "public"."get_provider_review_summaries"("p_contact_ids" "uuid"[] DEFAULT NULL::"uuid"[]) RETURNS TABLE("contact_id" "uuid", "average_rating" numeric, "review_count" bigint, "rating_counts" "jsonb")
     LANGUAGE "sql" STABLE SECURITY DEFINER
     SET "search_path" TO 'pg_catalog', 'public'
@@ -714,6 +743,46 @@ $_$;
 ALTER FUNCTION "public"."set_bot_conversation"("p_conversation_key" "text", "p_contact_id" "uuid", "p_phase" "text", "p_context" "jsonb", "p_ttl_hours" integer) OWNER TO "postgres";
 
 
+CREATE OR REPLACE FUNCTION "public"."set_bot_search_session"("p_conversation_key" "text", "p_context" "jsonb" DEFAULT '{}'::"jsonb", "p_ttl_hours" integer DEFAULT 24) RETURNS "void"
+    LANGUAGE "plpgsql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $_$
+DECLARE
+  v_key TEXT := lower(btrim(COALESCE(p_conversation_key, '')));
+  v_context JSONB := COALESCE(p_context, '{}'::JSONB);
+  v_ttl_hours INTEGER := LEAST(GREATEST(COALESCE(p_ttl_hours, 24), 1), 72);
+BEGIN
+  IF v_key !~ '^[0-9a-f]{64}$' THEN
+    RAISE EXCEPTION 'Invalid conversation key' USING ERRCODE = '22023';
+  END IF;
+  IF jsonb_typeof(v_context) <> 'object' THEN
+    RAISE EXCEPTION 'Search context must be an object' USING ERRCODE = '22023';
+  END IF;
+
+  INSERT INTO public.bot_search_sessions AS sessions (
+    conversation_key,
+    context,
+    expires_at,
+    updated_at
+  )
+  VALUES (
+    v_key,
+    v_context,
+    now() + make_interval(hours => v_ttl_hours),
+    now()
+  )
+  ON CONFLICT (conversation_key) DO UPDATE
+  SET
+    context = EXCLUDED.context,
+    expires_at = EXCLUDED.expires_at,
+    updated_at = now();
+END;
+$_$;
+
+
+ALTER FUNCTION "public"."set_bot_search_session"("p_conversation_key" "text", "p_context" "jsonb", "p_ttl_hours" integer) OWNER TO "postgres";
+
+
 CREATE OR REPLACE FUNCTION "public"."set_provider_review_updated_at"() RETURNS "trigger"
     LANGUAGE "plpgsql"
     SET "search_path" TO 'pg_catalog', 'public'
@@ -958,6 +1027,25 @@ ALTER TABLE "public"."bot_conversations" OWNER TO "postgres";
 
 
 COMMENT ON TABLE "public"."bot_conversations" IS 'Short-lived Machu bot state keyed by a server-generated HMAC; contains no submitter phone numbers.';
+
+
+
+CREATE TABLE IF NOT EXISTS "public"."bot_search_sessions" (
+    "conversation_key" "text" NOT NULL,
+    "context" "jsonb" DEFAULT '{}'::"jsonb" NOT NULL,
+    "expires_at" timestamp with time zone NOT NULL,
+    "created_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    "updated_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    CONSTRAINT "bot_search_sessions_check" CHECK (("expires_at" > "created_at")),
+    CONSTRAINT "bot_search_sessions_context_check" CHECK (("jsonb_typeof"("context") = 'object'::"text")),
+    CONSTRAINT "bot_search_sessions_conversation_key_check" CHECK (("conversation_key" ~ '^[0-9a-f]{64}$'::"text"))
+);
+
+
+ALTER TABLE "public"."bot_search_sessions" OWNER TO "postgres";
+
+
+COMMENT ON TABLE "public"."bot_search_sessions" IS 'Short-lived Machu search result queues keyed by a server-generated HMAC; contains no submitter phone numbers.';
 
 
 
@@ -1222,6 +1310,11 @@ ALTER TABLE ONLY "public"."bot_conversations"
 
 
 
+ALTER TABLE ONLY "public"."bot_search_sessions"
+    ADD CONSTRAINT "bot_search_sessions_pkey" PRIMARY KEY ("conversation_key");
+
+
+
 ALTER TABLE ONLY "public"."community_verification_actions"
     ADD CONSTRAINT "community_verification_actions_client_secret_hash_key" UNIQUE ("client_secret_hash");
 
@@ -1293,6 +1386,10 @@ ALTER TABLE ONLY "public"."wiki_pages"
 
 
 CREATE INDEX "bot_conversations_expiry_idx" ON "public"."bot_conversations" USING "btree" ("expires_at");
+
+
+
+CREATE INDEX "bot_search_sessions_expiry_idx" ON "public"."bot_search_sessions" USING "btree" ("expires_at");
 
 
 
@@ -1451,6 +1548,9 @@ CREATE POLICY "Public can read active contacts" ON "public"."contacts" FOR SELEC
 
 
 ALTER TABLE "public"."bot_conversations" ENABLE ROW LEVEL SECURITY;
+
+
+ALTER TABLE "public"."bot_search_sessions" ENABLE ROW LEVEL SECURITY;
 
 
 ALTER TABLE "public"."community_verification_actions" ENABLE ROW LEVEL SECURITY;
@@ -1675,6 +1775,13 @@ GRANT ALL ON FUNCTION "public"."clear_bot_conversation"("p_conversation_key" "te
 
 
 
+REVOKE ALL ON FUNCTION "public"."clear_bot_search_session"("p_conversation_key" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."clear_bot_search_session"("p_conversation_key" "text") TO "anon";
+GRANT ALL ON FUNCTION "public"."clear_bot_search_session"("p_conversation_key" "text") TO "authenticated";
+GRANT ALL ON FUNCTION "public"."clear_bot_search_session"("p_conversation_key" "text") TO "service_role";
+
+
+
 REVOKE ALL ON FUNCTION "public"."complete_verified_provider_deletion"("p_action_id" "uuid", "p_undo_token_hash" "text") FROM PUBLIC;
 GRANT ALL ON FUNCTION "public"."complete_verified_provider_deletion"("p_action_id" "uuid", "p_undo_token_hash" "text") TO "service_role";
 
@@ -1701,6 +1808,13 @@ REVOKE ALL ON FUNCTION "public"."get_bot_conversation"("p_conversation_key" "tex
 GRANT ALL ON FUNCTION "public"."get_bot_conversation"("p_conversation_key" "text") TO "anon";
 GRANT ALL ON FUNCTION "public"."get_bot_conversation"("p_conversation_key" "text") TO "authenticated";
 GRANT ALL ON FUNCTION "public"."get_bot_conversation"("p_conversation_key" "text") TO "service_role";
+
+
+
+REVOKE ALL ON FUNCTION "public"."get_bot_search_session"("p_conversation_key" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."get_bot_search_session"("p_conversation_key" "text") TO "anon";
+GRANT ALL ON FUNCTION "public"."get_bot_search_session"("p_conversation_key" "text") TO "authenticated";
+GRANT ALL ON FUNCTION "public"."get_bot_search_session"("p_conversation_key" "text") TO "service_role";
 
 
 
@@ -1755,6 +1869,13 @@ GRANT ALL ON FUNCTION "public"."set_bot_conversation"("p_conversation_key" "text
 
 
 
+REVOKE ALL ON FUNCTION "public"."set_bot_search_session"("p_conversation_key" "text", "p_context" "jsonb", "p_ttl_hours" integer) FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."set_bot_search_session"("p_conversation_key" "text", "p_context" "jsonb", "p_ttl_hours" integer) TO "anon";
+GRANT ALL ON FUNCTION "public"."set_bot_search_session"("p_conversation_key" "text", "p_context" "jsonb", "p_ttl_hours" integer) TO "authenticated";
+GRANT ALL ON FUNCTION "public"."set_bot_search_session"("p_conversation_key" "text", "p_context" "jsonb", "p_ttl_hours" integer) TO "service_role";
+
+
+
 REVOKE ALL ON FUNCTION "public"."set_provider_review_updated_at"() FROM PUBLIC;
 GRANT ALL ON FUNCTION "public"."set_provider_review_updated_at"() TO "service_role";
 
@@ -1792,6 +1913,10 @@ GRANT ALL ON FUNCTION "public"."update_wiki_content_tsv"() TO "service_role";
 
 
 GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."bot_conversations" TO "service_role";
+
+
+
+GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."bot_search_sessions" TO "service_role";
 
 
 
