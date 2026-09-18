@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
--- \restrict uOkT2IHv9KvxSSJEuHi4i4fkjnkzWc24Wos6OpP5r7GtaYR18hznp5B4vgCYtFh
+-- \restrict rjRh9ThjunBmxCgVJVCxiHo729XHJvbWKprctCHjiY50iDh7G3Q6qcQrF3fWCDa
 
 -- Dumped from database version 15.8
 -- Dumped by pg_dump version 17.6
@@ -614,10 +614,10 @@ a4ff00c5-d579-4490-90b7-4799d25b6bf8	events-social-activities	Events & Social Ac
 -- Data for Name: buckets; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
 --
 
-COPY "storage"."buckets" ("id", "name", "owner", "created_at", "updated_at", "public", "avif_autodetection", "file_size_limit", "allowed_mime_types", "owner_id", "type", "versioning_status") FROM stdin;
-wikimedia	wikimedia	\N	2025-03-27 04:04:14.072205+00	2025-03-27 04:04:14.072205+00	t	f	5242880	\N	\N	STANDARD	DISABLED
-contact-images	contact-images	\N	2025-03-31 17:54:18.794205+00	2025-03-31 17:54:18.794205+00	t	f	5242880	\N	\N	STANDARD	DISABLED
-review-images	review-images	\N	2026-08-03 00:35:33.857432+00	2026-08-03 00:35:33.857432+00	t	f	5242880	{image/jpeg,image/png,image/webp}	\N	STANDARD	DISABLED
+COPY "storage"."buckets" ("id", "name", "owner", "created_at", "updated_at", "public", "avif_autodetection", "file_size_limit", "allowed_mime_types", "owner_id", "type", "versioning_status", "lifecycle_configuration", "lifecycle_configuration_generation") FROM stdin;
+wikimedia	wikimedia	\N	2025-03-27 04:04:14.072205+00	2025-03-27 04:04:14.072205+00	t	f	5242880	\N	\N	STANDARD	DISABLED	\N	\N
+contact-images	contact-images	\N	2025-03-31 17:54:18.794205+00	2025-03-31 17:54:18.794205+00	t	f	5242880	\N	\N	STANDARD	DISABLED	\N	\N
+review-images	review-images	\N	2026-08-03 00:35:33.857432+00	2026-08-03 00:35:33.857432+00	t	f	5242880	{image/jpeg,image/png,image/webp}	\N	STANDARD	DISABLED	\N	\N
 \.
 
 
@@ -756,6 +756,6 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 1, false);
 -- PostgreSQL database dump complete
 --
 
--- \unrestrict uOkT2IHv9KvxSSJEuHi4i4fkjnkzWc24Wos6OpP5r7GtaYR18hznp5B4vgCYtFh
+-- \unrestrict rjRh9ThjunBmxCgVJVCxiHo729XHJvbWKprctCHjiY50iDh7G3Q6qcQrF3fWCDa
 
 RESET ALL;
