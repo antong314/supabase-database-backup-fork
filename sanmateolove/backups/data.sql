@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
--- \restrict 7VSjtfAnMzMT3tkPN71M7JDiQMRZZtNu9bftodEXwCiXHJwRie2VQoyQcU2Ll5x
+-- \restrict wylAfrlgMONdeiyOP4iIrapgLqchEf851SaDMPxOYvNqylxqQPbO6m8A94QMfan
 
 -- Dumped from database version 15.8
 -- Dumped by pg_dump version 17.6
@@ -377,6 +377,7 @@ d3fe8d856cafe9081ff3a900e6ad21e83edeff822c72c9d360511c6b45db66ad	721ee4f8-69fe-4
 --
 
 COPY "public"."bot_search_sessions" ("conversation_key", "context", "expires_at", "created_at", "updated_at") FROM stdin;
+416732232cf0464595a2c4f547bbfa72bbd8a02040f116dfd09eb141c0fbb0d0	{"secondaryIds": ["c762bd9a-cdde-4562-bf41-9f783c3fff69"], "serviceLabel": "immigration lawyers", "qualifierLabels": ["residency permits"], "preferenceLabels": [], "remainingPrimaryIds": []}	2026-09-28 00:42:30.777721+00	2026-09-27 00:42:30.777721+00	2026-09-27 00:42:30.777721+00
 \.
 
 
@@ -758,6 +759,6 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 1, false);
 -- PostgreSQL database dump complete
 --
 
--- \unrestrict 7VSjtfAnMzMT3tkPN71M7JDiQMRZZtNu9bftodEXwCiXHJwRie2VQoyQcU2Ll5x
+-- \unrestrict wylAfrlgMONdeiyOP4iIrapgLqchEf851SaDMPxOYvNqylxqQPbO6m8A94QMfan
 
 RESET ALL;
