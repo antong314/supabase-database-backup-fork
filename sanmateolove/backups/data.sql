@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
--- \restrict CGmTJcnlLvat0LMb3UuqiC2Z8hd6xK9M1BxYTD9lF7NZGEqOrvz5IhDSnT9vR3a
+-- \restrict dU66kIOpQOpwt0jmf9z1nYG5pdQ350ibtwI3YfAgt9ekVIFE1uKPTXPFYTvpZHq
 
 -- Dumped from database version 15.8
 -- Dumped by pg_dump version 17.11
@@ -360,6 +360,7 @@ a2c508cd-a209-4a14-9524-df67a5ef86e2	2026-08-26 21:38:34.455463+00	2026-08-26 21
 ee83de7b-e4fd-4668-8251-4909358235a8	2026-08-26 21:38:34.455463+00	2026-08-26 21:38:34.455463+00	Servicios Técnicos Lizano Atenas	Service	Technical inspection and small-appliance repair service in Atenas.	+50683543948	\N	\N	\N	f
 aa533548-6130-4146-b2b2-ca1dd663939a	2026-08-26 21:38:34.455463+00	2026-08-26 21:38:34.455463+00	Soluciones y Reparaciones MyG	Construction	Construction, remodeling, painting, plumbing, electrical work, welding, air-conditioning, refrigeration, and appliance repair.	\N	https://www.facebook.com/share/1bcM9i4yzn/	\N	\N	f
 3bd5ea70-f55e-4d12-861a-2649cb1920b7	2026-08-26 21:38:34.455463+00	2026-08-26 21:38:34.455463+00	Sunshine Sitters — Harper	Service	Childcare and children’s camps with games, crafts, and supervised activities.	+50671497509	\N	\N	\N	f
+a4ce1e9d-65d1-45fe-84f7-a80b85ff2ffd	2026-10-03 22:36:36.910153+00	2026-10-03 22:36:37.029248+00	Andrez — Car AC Repair	Mechanic	Recommended for car air-conditioning repair. The messages do not specify a service area.	+50660633494	\N	\N	\N	f
 \.
 
 
@@ -456,6 +457,87 @@ cfdfb3ca-7192-4580-bf95-c554b13e695d	9cc92d2462f8da6e4818be7ce544e9002aa067498e8
 
 
 --
+-- Data for Name: group_digest_admin_state; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."group_digest_admin_state" ("admin_whatsapp", "last_inbound_at") FROM stdin;
++16467338252	2026-10-03 22:40:23.517+00
+\.
+
+
+--
+-- Data for Name: group_digest_runs; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."group_digest_runs" ("id", "run_date", "trigger", "mode", "status", "stats", "error", "summary_sent_at", "started_at", "finished_at") FROM stdin;
+ce7caec6-0c8e-474a-89e8-e936da5099af	2026-10-03	schedule	shadow	completed	{"failed": 0, "groups": 0, "purged": 0, "applied": 0, "skipped": 0, "messages": 0, "proposed": 0, "needs_review": 0, "enabledGroups": 0}	\N	\N	2026-10-03 22:00:27.878617+00	2026-10-03 22:00:28.281+00
+6c241ac8-70e2-4dd3-9033-73317773b017	2026-10-03	manual	shadow	completed	{"failed": 0, "groups": 0, "purged": 0, "applied": 0, "skipped": 0, "messages": 0, "proposed": 0, "needs_review": 0, "enabledGroups": 1}	\N	2026-10-03 22:08:41.87+00	2026-10-03 22:08:41.548794+00	2026-10-03 22:08:41.752+00
+50d0e5c0-3bed-4e7b-ac0b-564e1fdb84e3	2026-10-03	manual	shadow	completed	{"failed": 0, "groups": 1, "purged": 0, "applied": 0, "skipped": 0, "messages": 4, "proposed": 1, "needs_review": 0, "enabledGroups": 1}	\N	2026-10-03 22:15:58.996+00	2026-10-03 22:15:54.033608+00	2026-10-03 22:15:58.562+00
+950c4e97-4b6a-46bc-b45d-08b810e4f1e5	2026-10-03	manual	shadow	completed	{"failed": 0, "groups": 0, "purged": 0, "applied": 0, "skipped": 0, "messages": 0, "proposed": 0, "needs_review": 0, "enabledGroups": 1}	\N	2026-10-03 22:21:29.09+00	2026-10-03 22:21:28.353455+00	2026-10-03 22:21:28.684+00
+35bb31ec-ceac-4df5-90d8-04dd45d04d32	2026-10-03	manual	shadow	completed	{"failed": 0, "groups": 0, "purged": 0, "applied": 0, "skipped": 0, "messages": 0, "proposed": 0, "needs_review": 0, "enabledGroups": 1}	\N	2026-10-03 22:36:24.227+00	2026-10-03 22:36:23.491491+00	2026-10-03 22:36:23.802+00
+\.
+
+
+--
+-- Data for Name: wiki_change_events; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."wiki_change_events" ("id", "page_id", "page_slug", "action_type", "requester_whatsapp", "requester_name", "verification_method", "verification_action_id", "twilio_message_sid", "before_snapshot", "after_snapshot", "reverted_at", "reverted_by_event_id", "changed_at") FROM stdin;
+77a48871-1524-41be-bfe2-a71b1fbd8725	99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a	machu-integration-test-20260830	wiki_create	+15555550199	\N	whatsapp_inbound	5ad818b7-44b0-461f-b4f5-912f4c5598ca	\N	\N	{"id": "99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a", "slug": "machu-integration-test-20260830", "title": "Machu Integration Test", "content": "[{\\"type\\":\\"paragraph\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Initial audited test content.\\"}]}]", "excerpt": "A page about Machu Integration Test", "version": 0, "category": "Uncategorized", "created_at": "2026-08-30T20:23:12.574443+00:00", "updated_at": "2026-08-30T20:23:12.574443+00:00"}	\N	\N	2026-08-30 20:23:12.574443+00
+c140b7de-1f03-4794-a959-3a6acc9eb507	99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a	machu-integration-test-20260830	wiki_restore	+15555550199	Automated deployment smoke test	whatsapp_inbound	\N	SMbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb	{"id": "99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a", "slug": "machu-integration-test-20260830", "title": "Machu Integration Test", "content": "[{\\"type\\":\\"paragraph\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Updated audited test content.\\"}]}]", "excerpt": "A page about Machu Integration Test", "version": 1, "category": "Uncategorized", "created_at": "2026-08-30T20:23:12.574443+00:00", "updated_at": "2026-08-30T20:23:12.753993+00:00"}	{"id": "99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a", "slug": "machu-integration-test-20260830", "title": "Machu Integration Test", "content": "[{\\"type\\":\\"paragraph\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Initial audited test content.\\"}]}]", "excerpt": "A page about Machu Integration Test", "version": 2, "category": "Uncategorized", "created_at": "2026-08-30T20:23:12.574443+00:00", "updated_at": "2026-08-30T20:23:12.83508+00:00"}	\N	\N	2026-08-30 20:23:12.83508+00
+799266c1-c02c-402a-a9f9-4d31a15a0674	99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a	machu-integration-test-20260830	wiki_update	+15555550199	Automated deployment smoke test	whatsapp_inbound	\N	SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa	{"id": "99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a", "slug": "machu-integration-test-20260830", "title": "Machu Integration Test", "content": "[{\\"type\\":\\"paragraph\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Initial audited test content.\\"}]}]", "excerpt": "A page about Machu Integration Test", "version": 0, "category": "Uncategorized", "created_at": "2026-08-30T20:23:12.574443+00:00", "updated_at": "2026-08-30T20:23:12.574443+00:00"}	{"id": "99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a", "slug": "machu-integration-test-20260830", "title": "Machu Integration Test", "content": "[{\\"type\\":\\"paragraph\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Updated audited test content.\\"}]}]", "excerpt": "A page about Machu Integration Test", "version": 1, "category": "Uncategorized", "created_at": "2026-08-30T20:23:12.574443+00:00", "updated_at": "2026-08-30T20:23:12.753993+00:00"}	2026-08-30 20:23:12.83508+00	c140b7de-1f03-4794-a959-3a6acc9eb507	2026-08-30 20:23:12.753993+00
+3fbdaedb-6410-48e7-9003-72d942efd245	99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a	machu-integration-test-20260830	wiki_delete	+15555550199	Automated deployment smoke test	whatsapp_inbound	\N	SMcccccccccccccccccccccccccccccccc	{"id": "99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a", "slug": "machu-integration-test-20260830", "title": "Machu Integration Test", "content": "[{\\"type\\":\\"paragraph\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Initial audited test content.\\"}]}]", "excerpt": "A page about Machu Integration Test", "version": 2, "category": "Uncategorized", "created_at": "2026-08-30T20:23:12.574443+00:00", "updated_at": "2026-08-30T20:23:12.83508+00:00"}	\N	\N	\N	2026-08-30 20:23:12.884003+00
+217f7d06-db4a-48b4-9f61-e0576c7a5dbe	6ddbe365-a2e2-48fd-968f-ba9aef331e08	restaurants	wiki_update	+16467338252	Anton	whatsapp_inbound	\N	SMe1e16dddb6062bb191dda747340cb66d	{"id": "6ddbe365-a2e2-48fd-968f-ba9aef331e08", "slug": "restaurants", "title": "Restaurants", "content": "[{\\"id\\":\\"b4d14f99-82b6-4810-89e5-425d8ae36101\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Orotina & San Mateo\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"ba3746cd-b401-4887-95d0-a2ed76a443d9\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/Ga2Pe86xoUmDSjq19\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Casa Victoria\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - best food in the area by far! See \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://machucaelements.substack.com/p/issue-13-culinary-crossroads-casa\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Machuca Elements Newsletter\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" featuring it.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"b02a69fa-d10f-4c62-9e02-e79e7919f471\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://www.instagram.com/delicru.cr?igsh=MXF3Z2V5OHRjOGRjbw==\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"DeliCru\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - Raw Vegan Gluten Free and sugar free amazing mind-blowing food. It's worth trying the food and snacks are super good quality too.  Avaliable on Sunday's farmer's market ESM or Alegria's Market. \\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"57ec9e25-b0d3-4e8f-b725-86f49fa71040\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/oZ75Aivgi3HS1fkD8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"La Poza Blanca\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - local favorite\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"60ab9ff4-f22a-43de-bb56-cfb64aad3469\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/PofPThFJ6be3BiGG6\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Malau Orotina\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - possibly best restaurant in Orotina. Off the beaten path and standard fare, but quality food and service. Best Ceviche!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"96f187d6-f1ae-49aa-8e61-7ef835488f8b\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/AAKwEYA35V4SX4Ty9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Frenesi\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - possibly the best Tico food in San Mateo!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"7ea64185-70d3-4aca-85f5-f1fb2fb67362\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/3zbtvN3G7M6Uexhp8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Buen Camino\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - bike park with a great gringo-friendly restaurant.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"4cc52733-5842-4607-ad66-67f1f620cbb3\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/G2k1HY2YhBXrjrGk8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Kafecitos\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - modernish coffee shop with pastries they bake and a decent breakfast\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"239c069a-676e-4e8f-abc6-8e757413f88f\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/1PkYP9meFmT9i82Z8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Soda y Restaurante El Forgon\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - decent local cuisine, conveniently located on the main road\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"470e0ca9-8adc-4180-b318-9b3b18ea178d\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/55X97BRPmEQGB3n28\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"La Terraza\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - another decent local food spot, slightly more upscale then soda, but not \\\\\\"upscale\\\\\\" by any means\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fbd7a961-a987-4ec2-9c50-8724fd27469a\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/hKvcm9jxxJFCHFAX9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Mirador Aeromar \\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\"- local decent cuisine with a view that will knock your socks off!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"ce0b4d9b-a73f-4dc4-834f-4522ba429722\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/N7Hq4i1NP85dH7ZJ9?g_st=com.google.maps.preview.copy\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Restaurante Yummy\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - Fantastic ribs and rotisserie chicken. Can smell the aromas down the street. Always a hit for the kids!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"d0331f2c-b67e-46ce-9eab-8af72a9c81f6\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/ijKjNtCGdoMeLFPr9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Bocadito\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - great typical Costa Rican food\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"780eb78a-1f31-4723-9814-5df7563bf5b2\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"1ad98c94-41a7-48d7-8079-bd2d141cb7c4\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Atenas\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"79f30357-2205-4e36-938d-8756f5a1e260\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/gWvipbFB4PSS9BhGA\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"La Casita del Café\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - good coffee and comida tipica, and a view to knock your socks off.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"54113707-e935-4023-a826-4db78d633fde\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/MFpGYMC4DPpoXYNq8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Monsoon Asian Bistro & Neapolitan Pizza\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - can you have a place that has awesome Indian and Great Pizza under one roof? Apparently the answer is yes.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"d055bb1b-4b90-43fc-a97a-3e3597010695\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/Z5NRTBW7VRUVUXCL7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Pequeña Polonia\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - in addition to classic American fare, also serves good Polish food like pierogis, schnitzel, Hungarian pancakes, etc.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"61a40cc2-2f4a-4205-bc91-b53d2122717c\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/gH4mobV9wsDi5WaC7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"El Jardin\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - classic fare from burgers to veg. dishes with great views and thoughtful presentation\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"89a6f3f7-74b2-4726-aad8-2cc3723b7e0b\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/sXikX52bGk1FNyHJ9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"El Balcón del Café\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" German/Tico ex-pat\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"9cc6f78c-47eb-49a7-98dd-0f01f185f6eb\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://<https://maps.app.goo.gl/F34ppFPqh9rZ5wCY9?g_st=ic>\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Chicharronera Don Yayo\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - fantastic bowls of Chifrio / get the mixed bowl\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"e8f56860-b23e-4f55-bc9e-531fbe8fc0cb\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/SQTsBEw1ZvZYp6cbA\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Ghie Gourmet Indian/Asian Foods\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"3e67222e-08bc-4186-86fc-87c2fd659c8f\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"2fba1acf-fc00-4003-8b8c-f50187398a88\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Ramón\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"a159f040-ec74-487d-ab21-fb305597d516\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://<https://maps.app.goo.gl/LGCSzBizXQMrupjT6>\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Le Sucrée Pâtisserie\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - great coffee and bakery!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"b5862f84-1c62-41fd-a21c-f78461e598c7\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"\\\\nJaco\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"a6176a56-a32d-4bac-aa3c-869e7b003c0a\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://<https://maps.app.goo.gl/md3QExayDHH16mgz6>\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Arigato\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - very good Sushi\\\\n\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"855a51fe-926d-4a71-bc35-1604be89a4de\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Other\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"4c6dd9f4-6f62-4f66-b99e-444db0734338\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://g.page/maeculpa?share\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Mae Culpa Restaurante y Pizzería a la Leña\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - amazing views, good pizza & Italian dishes (use Waze! really important for this one)\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"2e0079da-532e-434d-9bb2-f41151206163\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://g.page/Choco-Tour-Costa-Rica?share\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Choco-Tour San Mateo\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - yes, it’s a bit of a touristy thing, but not a tourist trap! Authentic chocolate tour, very educational.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"07327b10-b39a-488b-a20b-a139d647bade\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/5zeHg1PXEXLd7gd6A\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Raw Co Juicery & Food\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - when in Escazu, a must stop for a quick and healthy bite, bowl, smoothie, soup, baked goods and more.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"78ccf6d4-bb73-4895-959f-b24333589c1f\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/LmcjhroH4JqvqdRk9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Avenida Escazú\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - feeling like you miss US? Perhaps you want to walk Santa Monica Boulevard or visit Miami Beach? While not exactly like those places, this little street certainly rhymes. Pretty stores, cute restaurants & cafes, all outdoors with good parking and very modern amenities. If you need to scratch that “Modern City” itch, come here.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"e84f7167-299e-47d8-93cf-d97c21dcc47d\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://www.sanmateo.love/?q=wilfredo+mendoza\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Chef Wilfredo Mendoza\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - at Home Private Chef specialized in gluten-free, plant-based and healthy creations. Services include weekly meal prep, gourmet dining, retreats.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"56d15a53-6f61-42b6-b6cf-9634417e56e9\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://theark.green/restaurant/\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"https://theark.green/restaurant/\\",\\"styles\\":{\\"underline\\":true}}]},{\\"type\\":\\"text\\",\\"text\\":\\" The Ark restaurant offers a 5 course, garden to table dining experience. Reservations are required and must share dietary/allergy concerns at the time of booking.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"d38f8d4b-d7e8-4295-807b-b8e1b8d4f796\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"For Best Pizzas\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" in the Area see this write-up: \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://machucaelements.substack.com/p/issue-21-answering-the-big-questions\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"https://machucaelements.substack.com/p/issue-21-answering-the-big-questions\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"660f8ae2-c6c4-49d8-b70a-499a7689ae92\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/MzwvJ6v6FmVNLrF47\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Restaurante y Marisquería Leda\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"9366ac3a-58a5-4fbe-a66f-5fea8b5385e8\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"b01682ec-ccfa-46b5-b5bf-a0aeb8fdd574\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Jose\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"2868ad40-39e3-4628-b987-e093676d3303\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/VBELF7QhVTKEk1fD6\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Apotecario\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - yum! fancy! #datenight \\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"1a47c517-2479-4dd2-bce0-7639a00d0b3d\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/NQv9M3YYrqASzr6j7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Silvestre\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - special!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"53f3550d-43e3-4a8f-938e-1e0992e0a28a\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/zyUd2un4KJTjQtMz7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"You Korean BBQ & Soju House\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"5bed2d94-0df9-46dc-ae99-a8cbb9c1f2e7\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]}]", "excerpt": "A page about Restaurants", "version": 21, "category": "Shopping", "created_at": "2025-03-24T16:04:01.304172+00:00", "updated_at": "2025-11-07T01:06:58.546+00:00"}	{"id": "6ddbe365-a2e2-48fd-968f-ba9aef331e08", "slug": "restaurants", "title": "Restaurants", "content": "[{\\"id\\":\\"b4d14f99-82b6-4810-89e5-425d8ae36101\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Orotina & San Mateo\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"ba3746cd-b401-4887-95d0-a2ed76a443d9\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/Ga2Pe86xoUmDSjq19\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Casa Victoria\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - best food in the area by far! See \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://machucaelements.substack.com/p/issue-13-culinary-crossroads-casa\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Machuca Elements Newsletter\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" featuring it.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"b02a69fa-d10f-4c62-9e02-e79e7919f471\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://www.instagram.com/delicru.cr?igsh=MXF3Z2V5OHRjOGRjbw==\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"DeliCru\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - Raw Vegan Gluten Free and sugar free amazing mind-blowing food. It's worth trying the food and snacks are super good quality too.  Avaliable on Sunday's farmer's market ESM or Alegria's Market. \\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"57ec9e25-b0d3-4e8f-b725-86f49fa71040\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/oZ75Aivgi3HS1fkD8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"La Poza Blanca\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - local favorite; good pizza\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"60ab9ff4-f22a-43de-bb56-cfb64aad3469\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/PofPThFJ6be3BiGG6\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Malau Orotina\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - possibly best restaurant in Orotina. Off the beaten path and standard fare, but quality food and service. Best Ceviche!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"96f187d6-f1ae-49aa-8e61-7ef835488f8b\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/AAKwEYA35V4SX4Ty9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Frenesi\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - possibly the best Tico food in San Mateo!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"7ea64185-70d3-4aca-85f5-f1fb2fb67362\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/3zbtvN3G7M6Uexhp8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Buen Camino\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - bike park with a great gringo-friendly restaurant.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"4cc52733-5842-4607-ad66-67f1f620cbb3\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/G2k1HY2YhBXrjrGk8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Kafecitos\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - modernish coffee shop with pastries they bake and a decent breakfast\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"239c069a-676e-4e8f-abc6-8e757413f88f\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/1PkYP9meFmT9i82Z8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Soda y Restaurante El Forgon\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - decent local cuisine, conveniently located on the main road\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"470e0ca9-8adc-4180-b318-9b3b18ea178d\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/55X97BRPmEQGB3n28\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"La Terraza\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - another decent local food spot, slightly more upscale then soda, but not \\\\\\"upscale\\\\\\" by any means\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fbd7a961-a987-4ec2-9c50-8724fd27469a\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/hKvcm9jxxJFCHFAX9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Mirador Aeromar \\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\"- local decent cuisine with a view that will knock your socks off!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"ce0b4d9b-a73f-4dc4-834f-4522ba429722\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/N7Hq4i1NP85dH7ZJ9?g_st=com.google.maps.preview.copy\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Restaurante Yummy\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - Fantastic ribs and rotisserie chicken. Can smell the aromas down the street. Always a hit for the kids!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"d0331f2c-b67e-46ce-9eab-8af72a9c81f6\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/ijKjNtCGdoMeLFPr9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Bocadito\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - great typical Costa Rican food\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"780eb78a-1f31-4723-9814-5df7563bf5b2\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"1ad98c94-41a7-48d7-8079-bd2d141cb7c4\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Atenas\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"79f30357-2205-4e36-938d-8756f5a1e260\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/gWvipbFB4PSS9BhGA\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"La Casita del Café\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - good coffee and comida tipica, and a view to knock your socks off.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"54113707-e935-4023-a826-4db78d633fde\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/MFpGYMC4DPpoXYNq8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Monsoon Asian Bistro & Neapolitan Pizza\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - can you have a place that has awesome Indian and Great Pizza under one roof? Apparently the answer is yes.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"d055bb1b-4b90-43fc-a97a-3e3597010695\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/Z5NRTBW7VRUVUXCL7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Pequeña Polonia\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - in addition to classic American fare, also serves good Polish food like pierogis, schnitzel, Hungarian pancakes, etc.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"61a40cc2-2f4a-4205-bc91-b53d2122717c\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/gH4mobV9wsDi5WaC7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"El Jardin\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - classic fare from burgers to veg. dishes with great views and thoughtful presentation\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"89a6f3f7-74b2-4726-aad8-2cc3723b7e0b\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/sXikX52bGk1FNyHJ9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"El Balcón del Café\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" German/Tico ex-pat\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"9cc6f78c-47eb-49a7-98dd-0f01f185f6eb\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://<https://maps.app.goo.gl/F34ppFPqh9rZ5wCY9?g_st=ic>\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Chicharronera Don Yayo\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - fantastic bowls of Chifrio / get the mixed bowl\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"e8f56860-b23e-4f55-bc9e-531fbe8fc0cb\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/SQTsBEw1ZvZYp6cbA\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Ghie Gourmet Indian/Asian Foods\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"3e67222e-08bc-4186-86fc-87c2fd659c8f\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"2fba1acf-fc00-4003-8b8c-f50187398a88\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Ramón\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"a159f040-ec74-487d-ab21-fb305597d516\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://<https://maps.app.goo.gl/LGCSzBizXQMrupjT6>\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Le Sucrée Pâtisserie\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - great coffee and bakery!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"b5862f84-1c62-41fd-a21c-f78461e598c7\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"\\\\nJaco\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"a6176a56-a32d-4bac-aa3c-869e7b003c0a\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://<https://maps.app.goo.gl/md3QExayDHH16mgz6>\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Arigato\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - very good Sushi\\\\n\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"855a51fe-926d-4a71-bc35-1604be89a4de\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Other\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"4c6dd9f4-6f62-4f66-b99e-444db0734338\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://g.page/maeculpa?share\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Mae Culpa Restaurante y Pizzería a la Leña\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - amazing views, good pizza & Italian dishes (use Waze! really important for this one)\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"2e0079da-532e-434d-9bb2-f41151206163\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://g.page/Choco-Tour-Costa-Rica?share\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Choco-Tour San Mateo\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - yes, it’s a bit of a touristy thing, but not a tourist trap! Authentic chocolate tour, very educational.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"07327b10-b39a-488b-a20b-a139d647bade\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/5zeHg1PXEXLd7gd6A\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Raw Co Juicery & Food\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - when in Escazu, a must stop for a quick and healthy bite, bowl, smoothie, soup, baked goods and more.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"78ccf6d4-bb73-4895-959f-b24333589c1f\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/LmcjhroH4JqvqdRk9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Avenida Escazú\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - feeling like you miss US? Perhaps you want to walk Santa Monica Boulevard or visit Miami Beach? While not exactly like those places, this little street certainly rhymes. Pretty stores, cute restaurants & cafes, all outdoors with good parking and very modern amenities. If you need to scratch that “Modern City” itch, come here.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"e84f7167-299e-47d8-93cf-d97c21dcc47d\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://www.sanmateo.love/?q=wilfredo+mendoza\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Chef Wilfredo Mendoza\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - at Home Private Chef specialized in gluten-free, plant-based and healthy creations. Services include weekly meal prep, gourmet dining, retreats.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"56d15a53-6f61-42b6-b6cf-9634417e56e9\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://theark.green/restaurant/\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"https://theark.green/restaurant/\\",\\"styles\\":{\\"underline\\":true}}]},{\\"type\\":\\"text\\",\\"text\\":\\" The Ark restaurant offers a 5 course, garden to table dining experience. Reservations are required and must share dietary/allergy concerns at the time of booking.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"d38f8d4b-d7e8-4295-807b-b8e1b8d4f796\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"For Best Pizzas\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" in the Area see this write-up: \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://machucaelements.substack.com/p/issue-21-answering-the-big-questions\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"https://machucaelements.substack.com/p/issue-21-answering-the-big-questions\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"660f8ae2-c6c4-49d8-b70a-499a7689ae92\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/MzwvJ6v6FmVNLrF47\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Restaurante y Marisquería Leda\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"9366ac3a-58a5-4fbe-a66f-5fea8b5385e8\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"b01682ec-ccfa-46b5-b5bf-a0aeb8fdd574\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Jose\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"2868ad40-39e3-4628-b987-e093676d3303\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/VBELF7QhVTKEk1fD6\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Apotecario\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - yum! fancy! #datenight \\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"1a47c517-2479-4dd2-bce0-7639a00d0b3d\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/NQv9M3YYrqASzr6j7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Silvestre\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - special!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"53f3550d-43e3-4a8f-938e-1e0992e0a28a\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/zyUd2un4KJTjQtMz7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"You Korean BBQ & Soju House\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"5bed2d94-0df9-46dc-ae99-a8cbb9c1f2e7\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]}]", "excerpt": "A page about Restaurants", "version": 22, "category": "Shopping", "created_at": "2025-03-24T16:04:01.304172+00:00", "updated_at": "2026-08-30T22:01:39.823349+00:00"}	\N	\N	2026-08-30 22:01:39.823349+00
+c06a9761-506c-440a-adaf-8de6199224c0	7d7541f0-b76b-4429-bf57-3a5bfb8d191e	shipping	wiki_update	+16467338252	\N	trusted_session	8e761d0d-4066-4ab2-abb4-d2fc929b0d14	\N	{"id": "7d7541f0-b76b-4429-bf57-3a5bfb8d191e", "slug": "shipping", "title": "Shipping", "content": "[{\\"id\\":\\"0291af14-90b4-40bf-b9b7-2a3b1502238d\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"You can order from Amazon or from anywhere else and deliver your package to Miami, from there a number of Package Forwarding services are available which will take your package from there and forward it to Costa Rica and sometimes even deliver to your door depending on where you live or at the very least deliver it to Atenas and San Mateo.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fd36c032-dc02-4095-8df9-827130e04047\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"aad688ef-14db-4ab9-8b1e-65b2ae747fe4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Atenas:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" WhatsApp message them at this number +506 6054 4441 and request to open an account.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"088bc0e7-d76c-40a9-9dc6-71c426fad233\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"They will collect some basic information and provide you with an account number. The account will act as your name when you ship items from the US to Miami. From Miami the item/s will be sent to the store in Atenas. Once your package arrives, you will recieve an email. If you don't pick up your package, they will generally message you a reminder in WhatsApp.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fcb1f0bf-ff4a-4cf5-b0cb-517115f150c5\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Air ✈ Account# CR####LMS - $8 per pound Ship 🚢 Acccount# NAVCR####LMS (Min. weight 20L) - $4 per pound\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"3097c373-93fe-449d-8475-16dd0b9b3be6\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Address you will use: NAVCR####LMS 8589 NW 54th St Doral (Miami), Florida 33166-3322\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"eb239f71-cfdb-4529-9146-67c94e30d829\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I generally include my name before or after the NAVCR####LMS as some shippers won't ship without an actual name in the address.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"52bb5c90-d64f-4d0b-8bed-637655c568eb\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I've had great success using CR Shipping.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"44fadeb1-090d-4bc1-8ca1-108f0920a9db\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"b2bfac61-c604-48ae-8c3e-8cc82352cb29\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Mateo:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://www.sanmateo.love/?q=Rosco+Shipping\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Rosco Shipping\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - delivers to San Mateo, similar pricing as CR Shipping, but you have to meet him in the park.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"8739fde9-46d0-4170-97ce-d6defb359fc4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]}]", "excerpt": "A page about Shipping", "version": 2, "category": "Local Know-How", "created_at": "2025-03-27T20:29:01.812786+00:00", "updated_at": "2025-03-27T22:12:19.501+00:00"}	{"id": "7d7541f0-b76b-4429-bf57-3a5bfb8d191e", "slug": "shipping", "title": "Shipping Packages to Costa Rica", "content": "[{\\"id\\":\\"0291af14-90b4-40bf-b9b7-2a3b1502238d\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"You can order from Amazon or from anywhere else and deliver your package to Miami, from there a number of Package Forwarding services are available which will take your package from there and forward it to Costa Rica and sometimes even deliver to your door depending on where you live or at the very least deliver it to Atenas and San Mateo.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fd36c032-dc02-4095-8df9-827130e04047\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"aad688ef-14db-4ab9-8b1e-65b2ae747fe4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Atenas:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" WhatsApp message them at this number +506 6054 4441 and request to open an account.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"088bc0e7-d76c-40a9-9dc6-71c426fad233\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"They will collect some basic information and provide you with an account number. The account will act as your name when you ship items from the US to Miami. From Miami the item/s will be sent to the store in Atenas. Once your package arrives, you will recieve an email. If you don't pick up your package, they will generally message you a reminder in WhatsApp.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fcb1f0bf-ff4a-4cf5-b0cb-517115f150c5\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Air ✈ Account# CR####LMS - $8 per pound Ship 🚢 Acccount# NAVCR####LMS (Min. weight 20L) - $4 per pound\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"3097c373-93fe-449d-8475-16dd0b9b3be6\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Address you will use: NAVCR####LMS 8589 NW 54th St Doral (Miami), Florida 33166-3322\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"eb239f71-cfdb-4529-9146-67c94e30d829\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I generally include my name before or after the NAVCR####LMS as some shippers won't ship without an actual name in the address.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"52bb5c90-d64f-4d0b-8bed-637655c568eb\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I've had great success using CR Shipping.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"44fadeb1-090d-4bc1-8ca1-108f0920a9db\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"b2bfac61-c604-48ae-8c3e-8cc82352cb29\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Mateo:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://www.sanmateo.love/?q=Rosco+Shipping\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Rosco Shipping\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - delivers to San Mateo, similar pricing as CR Shipping, but you have to meet him in the park.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"ef8bc63e-8a96-4690-ad59-1195a4e57a5e\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"3088b5fc-7286-482a-a056-50d45e6b5f5e\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Orotina:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/ngQNV26RREU4A27A6\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"AWS\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"text\\",\\"text\\":\\"+506-7290-2221\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\". You order Amazon or any delivery service to US and it gets delivered to Orotina!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"8739fde9-46d0-4170-97ce-d6defb359fc4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]}]", "excerpt": "A page about Shipping", "version": 3, "category": "Local Know-How", "created_at": "2025-03-27T20:29:01.812786+00:00", "updated_at": "2026-09-02T17:51:41.228782+00:00"}	\N	\N	2026-09-02 17:51:41.228782+00
+0822f9cf-2eab-435f-8e93-a9eae4fc6a34	7d7541f0-b76b-4429-bf57-3a5bfb8d191e	shipping	wiki_update	+16467338252	\N	trusted_session	53ffc510-314d-450f-9ec8-df5614d9ddfc	\N	{"id": "7d7541f0-b76b-4429-bf57-3a5bfb8d191e", "slug": "shipping", "title": "Shipping Packages to Costa Rica", "content": "[{\\"id\\":\\"0291af14-90b4-40bf-b9b7-2a3b1502238d\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"You can order from Amazon or from anywhere else and deliver your package to Miami, from there a number of Package Forwarding services are available which will take your package from there and forward it to Costa Rica and sometimes even deliver to your door depending on where you live or at the very least deliver it to Atenas and San Mateo.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fd36c032-dc02-4095-8df9-827130e04047\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"aad688ef-14db-4ab9-8b1e-65b2ae747fe4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Atenas:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" WhatsApp message them at this number +506 6054 4441 and request to open an account.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"088bc0e7-d76c-40a9-9dc6-71c426fad233\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"They will collect some basic information and provide you with an account number. The account will act as your name when you ship items from the US to Miami. From Miami the item/s will be sent to the store in Atenas. Once your package arrives, you will recieve an email. If you don't pick up your package, they will generally message you a reminder in WhatsApp.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fcb1f0bf-ff4a-4cf5-b0cb-517115f150c5\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Air ✈ Account# CR####LMS - $8 per pound Ship 🚢 Acccount# NAVCR####LMS (Min. weight 20L) - $4 per pound\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"3097c373-93fe-449d-8475-16dd0b9b3be6\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Address you will use: NAVCR####LMS 8589 NW 54th St Doral (Miami), Florida 33166-3322\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"eb239f71-cfdb-4529-9146-67c94e30d829\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I generally include my name before or after the NAVCR####LMS as some shippers won't ship without an actual name in the address.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"52bb5c90-d64f-4d0b-8bed-637655c568eb\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I've had great success using CR Shipping.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"44fadeb1-090d-4bc1-8ca1-108f0920a9db\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"b2bfac61-c604-48ae-8c3e-8cc82352cb29\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Mateo:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://www.sanmateo.love/?q=Rosco+Shipping\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Rosco Shipping\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - delivers to San Mateo, similar pricing as CR Shipping, but you have to meet him in the park.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"ef8bc63e-8a96-4690-ad59-1195a4e57a5e\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"3088b5fc-7286-482a-a056-50d45e6b5f5e\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Orotina:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/ngQNV26RREU4A27A6\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"AWS\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"text\\",\\"text\\":\\"+506-7290-2221\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\". You order Amazon or any delivery service to US and it gets delivered to Orotina!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"8739fde9-46d0-4170-97ce-d6defb359fc4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]}]", "excerpt": "A page about Shipping", "version": 3, "category": "Local Know-How", "created_at": "2025-03-27T20:29:01.812786+00:00", "updated_at": "2026-09-02T17:51:41.228782+00:00"}	{"id": "7d7541f0-b76b-4429-bf57-3a5bfb8d191e", "slug": "shipping", "title": "Shipping Packages to Costa Rica", "content": "[{\\"id\\":\\"0291af14-90b4-40bf-b9b7-2a3b1502238d\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"You can order from Amazon or from anywhere else and deliver your package to Miami, from there a number of Package Forwarding services are available which will take your package from there and forward it to Costa Rica and sometimes even deliver to your door depending on where you live or at the very least deliver it to Atenas and San Mateo.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fd36c032-dc02-4095-8df9-827130e04047\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"aad688ef-14db-4ab9-8b1e-65b2ae747fe4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Atenas:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" WhatsApp message them at this number +506 6054 4441 and request to open an account.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"088bc0e7-d76c-40a9-9dc6-71c426fad233\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"They will collect some basic information and provide you with an account number. The account will act as your name when you ship items from the US to Miami. From Miami the item/s will be sent to the store in Atenas. Once your package arrives, you will recieve an email. If you don't pick up your package, they will generally message you a reminder in WhatsApp.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fcb1f0bf-ff4a-4cf5-b0cb-517115f150c5\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Air ✈ Account# CR####LMS - $8 per pound Ship 🚢 Acccount# NAVCR####LMS (Min. weight 20L) - $4 per pound\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"3097c373-93fe-449d-8475-16dd0b9b3be6\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Address you will use: NAVCR####LMS 8589 NW 54th St Doral (Miami), Florida 33166-3322\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"eb239f71-cfdb-4529-9146-67c94e30d829\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I generally include my name before or after the NAVCR####LMS as some shippers won't ship without an actual name in the address.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"52bb5c90-d64f-4d0b-8bed-637655c568eb\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I've had great success using CR Shipping.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"44fadeb1-090d-4bc1-8ca1-108f0920a9db\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"b2bfac61-c604-48ae-8c3e-8cc82352cb29\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Mateo:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://www.sanmateo.love/provider/409282d0-8d61-4c10-8b23-94af838924e5\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Rosco Shipping\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - delivers to San Mateo, similar pricing as CR Shipping, but you have to meet him in the park.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"ef8bc63e-8a96-4690-ad59-1195a4e57a5e\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"3088b5fc-7286-482a-a056-50d45e6b5f5e\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Orotina:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://www.sanmateo.love/provider/1d1e01c1-12a1-4f0b-a85d-7e0f222b04c5\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"AWS\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"text\\",\\"text\\":\\"+506-7290-2221\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\". You order Amazon or any delivery service to US and it gets delivered to Orotina!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"8739fde9-46d0-4170-97ce-d6defb359fc4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]}]", "excerpt": "A page about Shipping", "version": 4, "category": "Local Know-How", "created_at": "2025-03-27T20:29:01.812786+00:00", "updated_at": "2026-09-02T17:57:30.359789+00:00"}	\N	\N	2026-09-02 17:57:30.359789+00
+\.
+
+
+--
+-- Data for Name: group_digest_items; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."group_digest_items" ("id", "ref", "run_id", "kind", "action", "status", "reason", "confidence", "title", "detail", "payload", "evidence", "contact_id", "wiki_page_slug", "wiki_event_id", "created_at", "decided_at", "decided_by") FROM stdin;
+20ce1b2f-f180-4961-95ab-99ca4b62d5f9	1	50d0e5c0-3bed-4e7b-ac0b-564e1fdb84e3	contact	contact_create	applied	\N	0.82	Andrez — Car AC Repair	mechanics · +50660633494	{"name": "Andrez — Car AC Repair", "phone": "+50660633494", "changes": {"category": "Mechanic", "subtitle": "Recommended for car air-conditioning repair. The messages do not specify a service area."}, "website": "", "category": "Mechanic", "description": "Recommended for car air-conditioning repair. The messages do not specify a service area."}	[{"text": "+506 6063 3494", "group": "Test Machu Listener", "sender": "Anton", "sent_at": "2026-10-03T22:07:53+00:00", "contacts": []}, {"text": "Andrez se llama", "group": "Test Machu Listener", "sender": "Anton", "sent_at": "2026-10-03T22:07:53+00:00", "contacts": []}, {"text": "This is the best ac repair", "group": "Test Machu Listener", "sender": "Anton", "sent_at": "2026-10-03T22:08:01+00:00", "contacts": []}, {"text": "For cars", "group": "Test Machu Listener", "sender": "Anton", "sent_at": "2026-10-03T22:08:04+00:00", "contacts": []}]	a4ce1e9d-65d1-45fe-84f7-a80b85ff2ffd	\N	\N	2026-10-03 22:15:58.483669+00	2026-10-03 22:36:37.066+00	+16467338252
+\.
+
+
+--
+-- Data for Name: whatsapp_groups; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."whatsapp_groups" ("jid", "ref", "name", "enabled", "processed_through", "first_seen_at", "enabled_at", "updated_at") FROM stdin;
+120363430895695851@g.us	1	Test Machu Listener	t	2026-10-03 22:08:04.769074+00	2026-10-03 22:04:06.068679+00	2026-10-03 22:40:16.981+00	2026-10-03 22:40:16.981+00
+120363202469540309@g.us	4	The NEW Machuca Valley Community	t	\N	2026-10-03 22:37:58.719442+00	2026-10-03 22:40:16.981+00	2026-10-03 22:40:16.981+00
+120363205175314432@g.us	6	MV Construction and Repair Services	t	\N	2026-10-03 22:38:27.80025+00	2026-10-03 22:40:16.981+00	2026-10-03 22:40:16.981+00
+120363206404216704@g.us	7	MV FOODIES.	t	\N	2026-10-03 22:38:35.871671+00	2026-10-03 22:40:16.981+00	2026-10-03 22:40:16.981+00
+120363407632582800@g.us	8	MV Real Estate / Bienes Raíces 🏡	t	\N	2026-10-03 22:38:41.684542+00	2026-10-03 22:40:16.981+00	2026-10-03 22:40:16.981+00
+120363402822094365@g.us	11	MV Events	t	\N	2026-10-03 22:39:17.313211+00	2026-10-03 22:40:16.981+00	2026-10-03 22:40:16.981+00
+120363206254204249@g.us	5	MV Services, Offerings, Promotions, Servicios, Ofertas, Promociones)	t	\N	2026-10-03 22:38:22.431137+00	2026-10-03 22:40:16.981+00	2026-10-03 22:40:16.981+00
+120363203127855640@g.us	2	MV - Neighbors (No Sales and No Promo)	t	\N	2026-10-03 22:37:58.450401+00	2026-10-03 22:40:16.981+00	2026-10-03 22:40:16.981+00
+120363184598656143@g.us	3	The NEW Machuca Valley Community	t	\N	2026-10-03 22:37:58.49809+00	2026-10-03 22:40:16.981+00	2026-10-03 22:40:16.981+00
+120363203882629480@g.us	9	Wellness and Healing Offerings	t	\N	2026-10-03 22:39:01.27928+00	2026-10-03 22:40:16.981+00	2026-10-03 22:40:16.981+00
+120363185304372115@g.us	10	MV Housing Rentals / Alquilas (No sales/ventas)	t	\N	2026-10-03 22:39:10.728718+00	2026-10-03 22:40:16.981+00	2026-10-03 22:40:16.981+00
+\.
+
+
+--
+-- Data for Name: group_messages; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."group_messages" ("group_jid", "message_id", "sender_hash", "sender_name", "sent_at", "body", "contacts", "quoted_message_id", "edited_at", "received_at") FROM stdin;
+120363430895695851@g.us	3A4AD324F1633D4DF828	faf1122faeac82964037aa132bb231fff246b131bc7237a89281cbc2dc06526f	Anton	2026-10-03 22:07:53+00	+506 6063 3494	[]	\N	\N	2026-10-03 22:07:53.954896+00
+120363430895695851@g.us	3A2AE78A42C3A42D61DC	faf1122faeac82964037aa132bb231fff246b131bc7237a89281cbc2dc06526f	Anton	2026-10-03 22:07:53+00	Andrez se llama	[]	\N	\N	2026-10-03 22:07:54.15983+00
+120363430895695851@g.us	3AACA0C1DDF461DE81C5	faf1122faeac82964037aa132bb231fff246b131bc7237a89281cbc2dc06526f	Anton	2026-10-03 22:08:01+00	This is the best ac repair	[]	\N	\N	2026-10-03 22:08:01.668567+00
+120363430895695851@g.us	3A29F06622F8F461B72F	faf1122faeac82964037aa132bb231fff246b131bc7237a89281cbc2dc06526f	Anton	2026-10-03 22:08:04+00	For cars	[]	\N	\N	2026-10-03 22:08:04.769074+00
+120363402822094365@g.us	3B04921E38EC04FA3C2B	c1ad0644fb4e45c301b180ecb2cd0c7f396cc0fddb52b9b37dcd3e7b420612ff	Mikayal	2026-10-03 23:42:29+00	Machuca Valley Ecstatic Dance returns to Alegria for October! \n\nWe’ll be going on a deep-sonic journey that fuses downtempo and organic house, Latin grooves, Afrobeat, global bass, along with traditional sounds from Latin America, Africa, the Middle East, and beyond.    \n\nDoors at 9:50am\nWarmup and grounding from 10:00am - 10:20am\nOpening circle at 10:20am\nFull wave begins at 10:30am\n\n5.000 - 10.000 colones \n$10 - $20 \n(Cash, Paypal, Venmo, Wise)\n\nHolding space for this one is Aja (Mikayal): Lifetime musician, multi-decade dancer and ceremonial space holder. He’ll weave a world-music sonic river that flows from stillness, into grounding depths, up to soaring peaks, and back to the center. \n\nSpread the word!\n\nJoin the group: https://chat.whatsapp.com/DBsTsbZlhmoC1d0yTZ30CGl	[]	\N	\N	2026-10-03 23:42:34.87025+00
+120363402822094365@g.us	3BB74608C76E4298BF16	c1ad0644fb4e45c301b180ecb2cd0c7f396cc0fddb52b9b37dcd3e7b420612ff	Mikayal	2026-10-03 23:43:12+00	¡Machuca Valley Ecstatic Dance regresa a Alegría en octubre!\n\nNos embarcaremos en un viaje sónico profundo que fusiona downtempo y organic house, ritmos latinos, Afrobeat, global bass, junto con sonidos tradicionales de América Latina, África, Medio Oriente y más allá.\n\nPuertas a las 9:50am\nCalentamiento y enraizamiento de 10:00am a 10:20am\nCírculo de apertura a las 10:20am\nLa ola completa comienza a las 10:30am\n\n5.000 - 10.000 colones\n$10 - $20\n(Efectivo, PayPal, Venmo, Wise)\n\nSosteniendo el espacio para este evento está Aja (Mikayal): músico de toda la vida, bailarín de varias décadas y guardián de espacios ceremoniales. Tejerá un río sónico de música del mundo que fluye desde la quietud, hacia profundidades de enraizamiento, hasta picos elevados, y de vuelta al centro.\n\n¡Corran la voz!\n\nÚnete al grupo: https://chat.whatsapp.com/DBsTsbZlhmoC1d0yTZ30CGl	[]	\N	\N	2026-10-03 23:43:12.652187+00
+120363206254204249@g.us	A562BE98BF16A239831E6E7B107711F3	b36cb0ca305f46de5fb7abcfd68886dd79d7238141145f11d91af56a246af469	Choco Tour	2026-10-04 01:07:59+00	Hola buenas noches.\n\nIf anyone want CACAO or CHOCOLATE tomorrow at ESM please PM.\n\nA few bars are left and some beans and nibs.\n\nvery limited stock!!!	[]	\N	\N	2026-10-04 01:08:06.458807+00
+120363203127855640@g.us	3A464489D6C2BC610DEE	7b36f81db663c4b65deff4a3ced55a38f0aabd0faf2b7ab69901feccd9731fb5	Ilse Golcher	2026-10-04 01:42:12+00	At the pharmacies	[]	ACA7B7579F2F8736ACF8FF5E83275C04	\N	2026-10-04 01:42:14.567888+00
+\.
+
+
+--
 -- Data for Name: provider_change_events; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -468,6 +550,8 @@ b9f4d3b7-6be7-40b2-a4d4-c98a3373eb8f	60bcd8e8-7fb8-4350-addb-8d3d17b5c855	provid
 e94781f2-8fe2-44be-868a-7b33b32aa55b	b71b919d-a29b-4312-b854-14c7c39dbad2	provider_create	+16467338252	trusted_session	9c931e56-2b7d-43db-a008-9edc3b075c6d	\N	{"name": "ChocoTour Costa Rica — Chef Alex Corral", "phone": "+50661930555", "mapUrl": null, "website": "https://www.choco-tour.com/", "category": "Service", "imageUrl": null, "description": "Local cacao and nature tours, cooking classes, catering and event dining. Also offers selected permaculture and irrigation projects."}	2026-08-26 21:06:47.791407+00	\N	\N
 ab93cf32-ac93-4328-a5b9-0297e4f4bae5	b6358eac-4014-4780-a7ea-6b9339d79aef	provider_create	+16467338252	trusted_session	aac036f6-9e70-44ee-b494-dc2b6b220f0d	\N	{"name": "Cristina Viquez — Home Services", "phone": "+50670798577", "mapUrl": null, "website": null, "category": "Construction", "imageUrl": null, "description": "Construction and remodeling, AC installation and maintenance, pool and garden work, repairs, and residential cleaning. Recommended for punctual, thorough AC service."}	2026-08-26 21:06:48.520245+00	\N	\N
 9db5d87b-68ce-4752-9fee-4d73f0626bb9	dc90c51e-25c9-40ca-b183-e30a7bdd66b5	provider_create	+16467338252	trusted_session	992bfd33-58a8-4548-b1a4-86b824a73e9c	\N	{"name": "CyG Law Firm — Jairo Guzmán", "phone": "+50688228955", "mapUrl": null, "website": null, "category": "Service", "imageUrl": null, "description": "Lawyers and public notaries handling criminal, family, immigration, labor, administrative and notarial matters. Local office at SaMa Center, Local C."}	2026-08-26 21:06:49.168392+00	\N	\N
+db411361-e79d-4f80-a2d5-fce4df70012e	a4ce1e9d-65d1-45fe-84f7-a80b85ff2ffd	provider_create	+16467338252	group_digest	\N	\N	{"id": "a4ce1e9d-65d1-45fe-84f7-a80b85ff2ffd", "title": "Andrez — Car AC Repair", "map_url": null, "category": "Service", "subtitle": "", "image_url": null, "created_at": "2026-10-03T22:36:36.910153+00:00", "is_deleted": false, "updated_at": "2026-10-03T22:36:36.910153+00:00", "website_url": null, "phone_number": "+50660633494"}	2026-10-03 22:36:36.910153+00	Machu group digest	digest:20ce1b2f-f180-4961-95ab-99ca4b62d5f9
+b973065f-82a5-4899-81f8-ed6df4188cd0	a4ce1e9d-65d1-45fe-84f7-a80b85ff2ffd	provider_update	+16467338252	group_digest	\N	{"id": "a4ce1e9d-65d1-45fe-84f7-a80b85ff2ffd", "title": "Andrez — Car AC Repair", "map_url": null, "category": "Service", "subtitle": "", "image_url": null, "created_at": "2026-10-03T22:36:36.910153+00:00", "is_deleted": false, "updated_at": "2026-10-03T22:36:36.910153+00:00", "website_url": null, "phone_number": "+50660633494"}	{"id": "a4ce1e9d-65d1-45fe-84f7-a80b85ff2ffd", "title": "Andrez — Car AC Repair", "map_url": null, "category": "Mechanic", "subtitle": "Recommended for car air-conditioning repair. The messages do not specify a service area.", "image_url": null, "created_at": "2026-10-03T22:36:36.910153+00:00", "is_deleted": false, "updated_at": "2026-10-03T22:36:37.029248+00:00", "website_url": null, "phone_number": "+50660633494"}	2026-10-03 22:36:37.029248+00	Machu group digest	digest:20ce1b2f-f180-4961-95ab-99ca4b62d5f9
 \.
 
 
@@ -510,17 +594,11 @@ COPY "public"."provider_review_images" ("id", "review_id", "storage_path", "posi
 
 
 --
--- Data for Name: wiki_change_events; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: whatsapp_listener_status; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY "public"."wiki_change_events" ("id", "page_id", "page_slug", "action_type", "requester_whatsapp", "requester_name", "verification_method", "verification_action_id", "twilio_message_sid", "before_snapshot", "after_snapshot", "reverted_at", "reverted_by_event_id", "changed_at") FROM stdin;
-77a48871-1524-41be-bfe2-a71b1fbd8725	99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a	machu-integration-test-20260830	wiki_create	+15555550199	\N	whatsapp_inbound	5ad818b7-44b0-461f-b4f5-912f4c5598ca	\N	\N	{"id": "99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a", "slug": "machu-integration-test-20260830", "title": "Machu Integration Test", "content": "[{\\"type\\":\\"paragraph\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Initial audited test content.\\"}]}]", "excerpt": "A page about Machu Integration Test", "version": 0, "category": "Uncategorized", "created_at": "2026-08-30T20:23:12.574443+00:00", "updated_at": "2026-08-30T20:23:12.574443+00:00"}	\N	\N	2026-08-30 20:23:12.574443+00
-c140b7de-1f03-4794-a959-3a6acc9eb507	99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a	machu-integration-test-20260830	wiki_restore	+15555550199	Automated deployment smoke test	whatsapp_inbound	\N	SMbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb	{"id": "99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a", "slug": "machu-integration-test-20260830", "title": "Machu Integration Test", "content": "[{\\"type\\":\\"paragraph\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Updated audited test content.\\"}]}]", "excerpt": "A page about Machu Integration Test", "version": 1, "category": "Uncategorized", "created_at": "2026-08-30T20:23:12.574443+00:00", "updated_at": "2026-08-30T20:23:12.753993+00:00"}	{"id": "99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a", "slug": "machu-integration-test-20260830", "title": "Machu Integration Test", "content": "[{\\"type\\":\\"paragraph\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Initial audited test content.\\"}]}]", "excerpt": "A page about Machu Integration Test", "version": 2, "category": "Uncategorized", "created_at": "2026-08-30T20:23:12.574443+00:00", "updated_at": "2026-08-30T20:23:12.83508+00:00"}	\N	\N	2026-08-30 20:23:12.83508+00
-799266c1-c02c-402a-a9f9-4d31a15a0674	99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a	machu-integration-test-20260830	wiki_update	+15555550199	Automated deployment smoke test	whatsapp_inbound	\N	SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa	{"id": "99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a", "slug": "machu-integration-test-20260830", "title": "Machu Integration Test", "content": "[{\\"type\\":\\"paragraph\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Initial audited test content.\\"}]}]", "excerpt": "A page about Machu Integration Test", "version": 0, "category": "Uncategorized", "created_at": "2026-08-30T20:23:12.574443+00:00", "updated_at": "2026-08-30T20:23:12.574443+00:00"}	{"id": "99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a", "slug": "machu-integration-test-20260830", "title": "Machu Integration Test", "content": "[{\\"type\\":\\"paragraph\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Updated audited test content.\\"}]}]", "excerpt": "A page about Machu Integration Test", "version": 1, "category": "Uncategorized", "created_at": "2026-08-30T20:23:12.574443+00:00", "updated_at": "2026-08-30T20:23:12.753993+00:00"}	2026-08-30 20:23:12.83508+00	c140b7de-1f03-4794-a959-3a6acc9eb507	2026-08-30 20:23:12.753993+00
-3fbdaedb-6410-48e7-9003-72d942efd245	99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a	machu-integration-test-20260830	wiki_delete	+15555550199	Automated deployment smoke test	whatsapp_inbound	\N	SMcccccccccccccccccccccccccccccccc	{"id": "99bc0210-b6aa-4f16-b7c3-068d4e1fbb9a", "slug": "machu-integration-test-20260830", "title": "Machu Integration Test", "content": "[{\\"type\\":\\"paragraph\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Initial audited test content.\\"}]}]", "excerpt": "A page about Machu Integration Test", "version": 2, "category": "Uncategorized", "created_at": "2026-08-30T20:23:12.574443+00:00", "updated_at": "2026-08-30T20:23:12.83508+00:00"}	\N	\N	\N	2026-08-30 20:23:12.884003+00
-217f7d06-db4a-48b4-9f61-e0576c7a5dbe	6ddbe365-a2e2-48fd-968f-ba9aef331e08	restaurants	wiki_update	+16467338252	Anton	whatsapp_inbound	\N	SMe1e16dddb6062bb191dda747340cb66d	{"id": "6ddbe365-a2e2-48fd-968f-ba9aef331e08", "slug": "restaurants", "title": "Restaurants", "content": "[{\\"id\\":\\"b4d14f99-82b6-4810-89e5-425d8ae36101\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Orotina & San Mateo\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"ba3746cd-b401-4887-95d0-a2ed76a443d9\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/Ga2Pe86xoUmDSjq19\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Casa Victoria\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - best food in the area by far! See \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://machucaelements.substack.com/p/issue-13-culinary-crossroads-casa\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Machuca Elements Newsletter\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" featuring it.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"b02a69fa-d10f-4c62-9e02-e79e7919f471\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://www.instagram.com/delicru.cr?igsh=MXF3Z2V5OHRjOGRjbw==\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"DeliCru\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - Raw Vegan Gluten Free and sugar free amazing mind-blowing food. It's worth trying the food and snacks are super good quality too.  Avaliable on Sunday's farmer's market ESM or Alegria's Market. \\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"57ec9e25-b0d3-4e8f-b725-86f49fa71040\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/oZ75Aivgi3HS1fkD8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"La Poza Blanca\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - local favorite\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"60ab9ff4-f22a-43de-bb56-cfb64aad3469\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/PofPThFJ6be3BiGG6\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Malau Orotina\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - possibly best restaurant in Orotina. Off the beaten path and standard fare, but quality food and service. Best Ceviche!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"96f187d6-f1ae-49aa-8e61-7ef835488f8b\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/AAKwEYA35V4SX4Ty9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Frenesi\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - possibly the best Tico food in San Mateo!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"7ea64185-70d3-4aca-85f5-f1fb2fb67362\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/3zbtvN3G7M6Uexhp8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Buen Camino\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - bike park with a great gringo-friendly restaurant.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"4cc52733-5842-4607-ad66-67f1f620cbb3\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/G2k1HY2YhBXrjrGk8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Kafecitos\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - modernish coffee shop with pastries they bake and a decent breakfast\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"239c069a-676e-4e8f-abc6-8e757413f88f\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/1PkYP9meFmT9i82Z8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Soda y Restaurante El Forgon\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - decent local cuisine, conveniently located on the main road\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"470e0ca9-8adc-4180-b318-9b3b18ea178d\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/55X97BRPmEQGB3n28\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"La Terraza\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - another decent local food spot, slightly more upscale then soda, but not \\\\\\"upscale\\\\\\" by any means\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fbd7a961-a987-4ec2-9c50-8724fd27469a\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/hKvcm9jxxJFCHFAX9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Mirador Aeromar \\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\"- local decent cuisine with a view that will knock your socks off!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"ce0b4d9b-a73f-4dc4-834f-4522ba429722\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/N7Hq4i1NP85dH7ZJ9?g_st=com.google.maps.preview.copy\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Restaurante Yummy\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - Fantastic ribs and rotisserie chicken. Can smell the aromas down the street. Always a hit for the kids!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"d0331f2c-b67e-46ce-9eab-8af72a9c81f6\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/ijKjNtCGdoMeLFPr9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Bocadito\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - great typical Costa Rican food\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"780eb78a-1f31-4723-9814-5df7563bf5b2\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"1ad98c94-41a7-48d7-8079-bd2d141cb7c4\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Atenas\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"79f30357-2205-4e36-938d-8756f5a1e260\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/gWvipbFB4PSS9BhGA\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"La Casita del Café\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - good coffee and comida tipica, and a view to knock your socks off.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"54113707-e935-4023-a826-4db78d633fde\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/MFpGYMC4DPpoXYNq8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Monsoon Asian Bistro & Neapolitan Pizza\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - can you have a place that has awesome Indian and Great Pizza under one roof? Apparently the answer is yes.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"d055bb1b-4b90-43fc-a97a-3e3597010695\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/Z5NRTBW7VRUVUXCL7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Pequeña Polonia\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - in addition to classic American fare, also serves good Polish food like pierogis, schnitzel, Hungarian pancakes, etc.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"61a40cc2-2f4a-4205-bc91-b53d2122717c\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/gH4mobV9wsDi5WaC7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"El Jardin\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - classic fare from burgers to veg. dishes with great views and thoughtful presentation\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"89a6f3f7-74b2-4726-aad8-2cc3723b7e0b\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/sXikX52bGk1FNyHJ9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"El Balcón del Café\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" German/Tico ex-pat\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"9cc6f78c-47eb-49a7-98dd-0f01f185f6eb\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://<https://maps.app.goo.gl/F34ppFPqh9rZ5wCY9?g_st=ic>\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Chicharronera Don Yayo\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - fantastic bowls of Chifrio / get the mixed bowl\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"e8f56860-b23e-4f55-bc9e-531fbe8fc0cb\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/SQTsBEw1ZvZYp6cbA\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Ghie Gourmet Indian/Asian Foods\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"3e67222e-08bc-4186-86fc-87c2fd659c8f\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"2fba1acf-fc00-4003-8b8c-f50187398a88\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Ramón\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"a159f040-ec74-487d-ab21-fb305597d516\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://<https://maps.app.goo.gl/LGCSzBizXQMrupjT6>\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Le Sucrée Pâtisserie\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - great coffee and bakery!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"b5862f84-1c62-41fd-a21c-f78461e598c7\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"\\\\nJaco\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"a6176a56-a32d-4bac-aa3c-869e7b003c0a\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://<https://maps.app.goo.gl/md3QExayDHH16mgz6>\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Arigato\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - very good Sushi\\\\n\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"855a51fe-926d-4a71-bc35-1604be89a4de\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Other\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"4c6dd9f4-6f62-4f66-b99e-444db0734338\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://g.page/maeculpa?share\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Mae Culpa Restaurante y Pizzería a la Leña\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - amazing views, good pizza & Italian dishes (use Waze! really important for this one)\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"2e0079da-532e-434d-9bb2-f41151206163\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://g.page/Choco-Tour-Costa-Rica?share\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Choco-Tour San Mateo\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - yes, it’s a bit of a touristy thing, but not a tourist trap! Authentic chocolate tour, very educational.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"07327b10-b39a-488b-a20b-a139d647bade\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/5zeHg1PXEXLd7gd6A\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Raw Co Juicery & Food\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - when in Escazu, a must stop for a quick and healthy bite, bowl, smoothie, soup, baked goods and more.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"78ccf6d4-bb73-4895-959f-b24333589c1f\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/LmcjhroH4JqvqdRk9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Avenida Escazú\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - feeling like you miss US? Perhaps you want to walk Santa Monica Boulevard or visit Miami Beach? While not exactly like those places, this little street certainly rhymes. Pretty stores, cute restaurants & cafes, all outdoors with good parking and very modern amenities. If you need to scratch that “Modern City” itch, come here.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"e84f7167-299e-47d8-93cf-d97c21dcc47d\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://www.sanmateo.love/?q=wilfredo+mendoza\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Chef Wilfredo Mendoza\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - at Home Private Chef specialized in gluten-free, plant-based and healthy creations. Services include weekly meal prep, gourmet dining, retreats.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"56d15a53-6f61-42b6-b6cf-9634417e56e9\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://theark.green/restaurant/\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"https://theark.green/restaurant/\\",\\"styles\\":{\\"underline\\":true}}]},{\\"type\\":\\"text\\",\\"text\\":\\" The Ark restaurant offers a 5 course, garden to table dining experience. Reservations are required and must share dietary/allergy concerns at the time of booking.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"d38f8d4b-d7e8-4295-807b-b8e1b8d4f796\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"For Best Pizzas\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" in the Area see this write-up: \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://machucaelements.substack.com/p/issue-21-answering-the-big-questions\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"https://machucaelements.substack.com/p/issue-21-answering-the-big-questions\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"660f8ae2-c6c4-49d8-b70a-499a7689ae92\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/MzwvJ6v6FmVNLrF47\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Restaurante y Marisquería Leda\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"9366ac3a-58a5-4fbe-a66f-5fea8b5385e8\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"b01682ec-ccfa-46b5-b5bf-a0aeb8fdd574\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Jose\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"2868ad40-39e3-4628-b987-e093676d3303\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/VBELF7QhVTKEk1fD6\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Apotecario\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - yum! fancy! #datenight \\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"1a47c517-2479-4dd2-bce0-7639a00d0b3d\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/NQv9M3YYrqASzr6j7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Silvestre\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - special!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"53f3550d-43e3-4a8f-938e-1e0992e0a28a\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/zyUd2un4KJTjQtMz7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"You Korean BBQ & Soju House\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"5bed2d94-0df9-46dc-ae99-a8cbb9c1f2e7\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]}]", "excerpt": "A page about Restaurants", "version": 21, "category": "Shopping", "created_at": "2025-03-24T16:04:01.304172+00:00", "updated_at": "2025-11-07T01:06:58.546+00:00"}	{"id": "6ddbe365-a2e2-48fd-968f-ba9aef331e08", "slug": "restaurants", "title": "Restaurants", "content": "[{\\"id\\":\\"b4d14f99-82b6-4810-89e5-425d8ae36101\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Orotina & San Mateo\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"ba3746cd-b401-4887-95d0-a2ed76a443d9\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/Ga2Pe86xoUmDSjq19\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Casa Victoria\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - best food in the area by far! See \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://machucaelements.substack.com/p/issue-13-culinary-crossroads-casa\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Machuca Elements Newsletter\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" featuring it.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"b02a69fa-d10f-4c62-9e02-e79e7919f471\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://www.instagram.com/delicru.cr?igsh=MXF3Z2V5OHRjOGRjbw==\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"DeliCru\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - Raw Vegan Gluten Free and sugar free amazing mind-blowing food. It's worth trying the food and snacks are super good quality too.  Avaliable on Sunday's farmer's market ESM or Alegria's Market. \\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"57ec9e25-b0d3-4e8f-b725-86f49fa71040\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/oZ75Aivgi3HS1fkD8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"La Poza Blanca\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - local favorite; good pizza\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"60ab9ff4-f22a-43de-bb56-cfb64aad3469\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/PofPThFJ6be3BiGG6\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Malau Orotina\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - possibly best restaurant in Orotina. Off the beaten path and standard fare, but quality food and service. Best Ceviche!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"96f187d6-f1ae-49aa-8e61-7ef835488f8b\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/AAKwEYA35V4SX4Ty9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Frenesi\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - possibly the best Tico food in San Mateo!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"7ea64185-70d3-4aca-85f5-f1fb2fb67362\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/3zbtvN3G7M6Uexhp8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Buen Camino\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - bike park with a great gringo-friendly restaurant.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"4cc52733-5842-4607-ad66-67f1f620cbb3\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/G2k1HY2YhBXrjrGk8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Kafecitos\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - modernish coffee shop with pastries they bake and a decent breakfast\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"239c069a-676e-4e8f-abc6-8e757413f88f\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/1PkYP9meFmT9i82Z8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Soda y Restaurante El Forgon\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - decent local cuisine, conveniently located on the main road\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"470e0ca9-8adc-4180-b318-9b3b18ea178d\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/55X97BRPmEQGB3n28\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"La Terraza\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - another decent local food spot, slightly more upscale then soda, but not \\\\\\"upscale\\\\\\" by any means\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fbd7a961-a987-4ec2-9c50-8724fd27469a\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/hKvcm9jxxJFCHFAX9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Mirador Aeromar \\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\"- local decent cuisine with a view that will knock your socks off!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"ce0b4d9b-a73f-4dc4-834f-4522ba429722\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/N7Hq4i1NP85dH7ZJ9?g_st=com.google.maps.preview.copy\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Restaurante Yummy\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - Fantastic ribs and rotisserie chicken. Can smell the aromas down the street. Always a hit for the kids!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"d0331f2c-b67e-46ce-9eab-8af72a9c81f6\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/ijKjNtCGdoMeLFPr9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Bocadito\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - great typical Costa Rican food\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"780eb78a-1f31-4723-9814-5df7563bf5b2\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"1ad98c94-41a7-48d7-8079-bd2d141cb7c4\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Atenas\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"79f30357-2205-4e36-938d-8756f5a1e260\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/gWvipbFB4PSS9BhGA\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"La Casita del Café\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - good coffee and comida tipica, and a view to knock your socks off.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"54113707-e935-4023-a826-4db78d633fde\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/MFpGYMC4DPpoXYNq8\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Monsoon Asian Bistro & Neapolitan Pizza\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - can you have a place that has awesome Indian and Great Pizza under one roof? Apparently the answer is yes.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"d055bb1b-4b90-43fc-a97a-3e3597010695\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/Z5NRTBW7VRUVUXCL7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Pequeña Polonia\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - in addition to classic American fare, also serves good Polish food like pierogis, schnitzel, Hungarian pancakes, etc.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"61a40cc2-2f4a-4205-bc91-b53d2122717c\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/gH4mobV9wsDi5WaC7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"El Jardin\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - classic fare from burgers to veg. dishes with great views and thoughtful presentation\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"89a6f3f7-74b2-4726-aad8-2cc3723b7e0b\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/sXikX52bGk1FNyHJ9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"El Balcón del Café\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" German/Tico ex-pat\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"9cc6f78c-47eb-49a7-98dd-0f01f185f6eb\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://<https://maps.app.goo.gl/F34ppFPqh9rZ5wCY9?g_st=ic>\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Chicharronera Don Yayo\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - fantastic bowls of Chifrio / get the mixed bowl\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"e8f56860-b23e-4f55-bc9e-531fbe8fc0cb\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/SQTsBEw1ZvZYp6cbA\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Ghie Gourmet Indian/Asian Foods\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"3e67222e-08bc-4186-86fc-87c2fd659c8f\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"2fba1acf-fc00-4003-8b8c-f50187398a88\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Ramón\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"a159f040-ec74-487d-ab21-fb305597d516\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://<https://maps.app.goo.gl/LGCSzBizXQMrupjT6>\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Le Sucrée Pâtisserie\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - great coffee and bakery!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"b5862f84-1c62-41fd-a21c-f78461e598c7\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"\\\\nJaco\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"a6176a56-a32d-4bac-aa3c-869e7b003c0a\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://<https://maps.app.goo.gl/md3QExayDHH16mgz6>\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Arigato\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - very good Sushi\\\\n\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"855a51fe-926d-4a71-bc35-1604be89a4de\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Other\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"4c6dd9f4-6f62-4f66-b99e-444db0734338\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://g.page/maeculpa?share\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Mae Culpa Restaurante y Pizzería a la Leña\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - amazing views, good pizza & Italian dishes (use Waze! really important for this one)\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"2e0079da-532e-434d-9bb2-f41151206163\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://g.page/Choco-Tour-Costa-Rica?share\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Choco-Tour San Mateo\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - yes, it’s a bit of a touristy thing, but not a tourist trap! Authentic chocolate tour, very educational.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"07327b10-b39a-488b-a20b-a139d647bade\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/5zeHg1PXEXLd7gd6A\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Raw Co Juicery & Food\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - when in Escazu, a must stop for a quick and healthy bite, bowl, smoothie, soup, baked goods and more.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"78ccf6d4-bb73-4895-959f-b24333589c1f\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://goo.gl/maps/LmcjhroH4JqvqdRk9\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Avenida Escazú\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - feeling like you miss US? Perhaps you want to walk Santa Monica Boulevard or visit Miami Beach? While not exactly like those places, this little street certainly rhymes. Pretty stores, cute restaurants & cafes, all outdoors with good parking and very modern amenities. If you need to scratch that “Modern City” itch, come here.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"e84f7167-299e-47d8-93cf-d97c21dcc47d\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://www.sanmateo.love/?q=wilfredo+mendoza\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Chef Wilfredo Mendoza\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - at Home Private Chef specialized in gluten-free, plant-based and healthy creations. Services include weekly meal prep, gourmet dining, retreats.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"56d15a53-6f61-42b6-b6cf-9634417e56e9\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://theark.green/restaurant/\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"https://theark.green/restaurant/\\",\\"styles\\":{\\"underline\\":true}}]},{\\"type\\":\\"text\\",\\"text\\":\\" The Ark restaurant offers a 5 course, garden to table dining experience. Reservations are required and must share dietary/allergy concerns at the time of booking.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"d38f8d4b-d7e8-4295-807b-b8e1b8d4f796\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"For Best Pizzas\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" in the Area see this write-up: \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://machucaelements.substack.com/p/issue-21-answering-the-big-questions\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"https://machucaelements.substack.com/p/issue-21-answering-the-big-questions\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"660f8ae2-c6c4-49d8-b70a-499a7689ae92\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/MzwvJ6v6FmVNLrF47\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Restaurante y Marisquería Leda\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"9366ac3a-58a5-4fbe-a66f-5fea8b5385e8\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"b01682ec-ccfa-46b5-b5bf-a0aeb8fdd574\\",\\"type\\":\\"heading\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\",\\"level\\":3},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Jose\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"2868ad40-39e3-4628-b987-e093676d3303\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/VBELF7QhVTKEk1fD6\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Apotecario\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - yum! fancy! #datenight \\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"1a47c517-2479-4dd2-bce0-7639a00d0b3d\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/NQv9M3YYrqASzr6j7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Silvestre\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - special!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"53f3550d-43e3-4a8f-938e-1e0992e0a28a\\",\\"type\\":\\"bulletListItem\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/zyUd2un4KJTjQtMz7\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"You Korean BBQ & Soju House\\",\\"styles\\":{}}]}],\\"children\\":[]},{\\"id\\":\\"5bed2d94-0df9-46dc-ae99-a8cbb9c1f2e7\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]}]", "excerpt": "A page about Restaurants", "version": 22, "category": "Shopping", "created_at": "2025-03-24T16:04:01.304172+00:00", "updated_at": "2026-08-30T22:01:39.823349+00:00"}	\N	\N	2026-08-30 22:01:39.823349+00
-c06a9761-506c-440a-adaf-8de6199224c0	7d7541f0-b76b-4429-bf57-3a5bfb8d191e	shipping	wiki_update	+16467338252	\N	trusted_session	8e761d0d-4066-4ab2-abb4-d2fc929b0d14	\N	{"id": "7d7541f0-b76b-4429-bf57-3a5bfb8d191e", "slug": "shipping", "title": "Shipping", "content": "[{\\"id\\":\\"0291af14-90b4-40bf-b9b7-2a3b1502238d\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"You can order from Amazon or from anywhere else and deliver your package to Miami, from there a number of Package Forwarding services are available which will take your package from there and forward it to Costa Rica and sometimes even deliver to your door depending on where you live or at the very least deliver it to Atenas and San Mateo.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fd36c032-dc02-4095-8df9-827130e04047\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"aad688ef-14db-4ab9-8b1e-65b2ae747fe4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Atenas:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" WhatsApp message them at this number +506 6054 4441 and request to open an account.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"088bc0e7-d76c-40a9-9dc6-71c426fad233\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"They will collect some basic information and provide you with an account number. The account will act as your name when you ship items from the US to Miami. From Miami the item/s will be sent to the store in Atenas. Once your package arrives, you will recieve an email. If you don't pick up your package, they will generally message you a reminder in WhatsApp.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fcb1f0bf-ff4a-4cf5-b0cb-517115f150c5\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Air ✈ Account# CR####LMS - $8 per pound Ship 🚢 Acccount# NAVCR####LMS (Min. weight 20L) - $4 per pound\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"3097c373-93fe-449d-8475-16dd0b9b3be6\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Address you will use: NAVCR####LMS 8589 NW 54th St Doral (Miami), Florida 33166-3322\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"eb239f71-cfdb-4529-9146-67c94e30d829\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I generally include my name before or after the NAVCR####LMS as some shippers won't ship without an actual name in the address.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"52bb5c90-d64f-4d0b-8bed-637655c568eb\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I've had great success using CR Shipping.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"44fadeb1-090d-4bc1-8ca1-108f0920a9db\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"b2bfac61-c604-48ae-8c3e-8cc82352cb29\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Mateo:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://www.sanmateo.love/?q=Rosco+Shipping\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Rosco Shipping\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - delivers to San Mateo, similar pricing as CR Shipping, but you have to meet him in the park.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"8739fde9-46d0-4170-97ce-d6defb359fc4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]}]", "excerpt": "A page about Shipping", "version": 2, "category": "Local Know-How", "created_at": "2025-03-27T20:29:01.812786+00:00", "updated_at": "2025-03-27T22:12:19.501+00:00"}	{"id": "7d7541f0-b76b-4429-bf57-3a5bfb8d191e", "slug": "shipping", "title": "Shipping Packages to Costa Rica", "content": "[{\\"id\\":\\"0291af14-90b4-40bf-b9b7-2a3b1502238d\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"You can order from Amazon or from anywhere else and deliver your package to Miami, from there a number of Package Forwarding services are available which will take your package from there and forward it to Costa Rica and sometimes even deliver to your door depending on where you live or at the very least deliver it to Atenas and San Mateo.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fd36c032-dc02-4095-8df9-827130e04047\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"aad688ef-14db-4ab9-8b1e-65b2ae747fe4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Atenas:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" WhatsApp message them at this number +506 6054 4441 and request to open an account.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"088bc0e7-d76c-40a9-9dc6-71c426fad233\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"They will collect some basic information and provide you with an account number. The account will act as your name when you ship items from the US to Miami. From Miami the item/s will be sent to the store in Atenas. Once your package arrives, you will recieve an email. If you don't pick up your package, they will generally message you a reminder in WhatsApp.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fcb1f0bf-ff4a-4cf5-b0cb-517115f150c5\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Air ✈ Account# CR####LMS - $8 per pound Ship 🚢 Acccount# NAVCR####LMS (Min. weight 20L) - $4 per pound\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"3097c373-93fe-449d-8475-16dd0b9b3be6\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Address you will use: NAVCR####LMS 8589 NW 54th St Doral (Miami), Florida 33166-3322\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"eb239f71-cfdb-4529-9146-67c94e30d829\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I generally include my name before or after the NAVCR####LMS as some shippers won't ship without an actual name in the address.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"52bb5c90-d64f-4d0b-8bed-637655c568eb\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I've had great success using CR Shipping.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"44fadeb1-090d-4bc1-8ca1-108f0920a9db\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"b2bfac61-c604-48ae-8c3e-8cc82352cb29\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Mateo:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://www.sanmateo.love/?q=Rosco+Shipping\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Rosco Shipping\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - delivers to San Mateo, similar pricing as CR Shipping, but you have to meet him in the park.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"ef8bc63e-8a96-4690-ad59-1195a4e57a5e\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"3088b5fc-7286-482a-a056-50d45e6b5f5e\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Orotina:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/ngQNV26RREU4A27A6\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"AWS\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"text\\",\\"text\\":\\"+506-7290-2221\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\". You order Amazon or any delivery service to US and it gets delivered to Orotina!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"8739fde9-46d0-4170-97ce-d6defb359fc4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]}]", "excerpt": "A page about Shipping", "version": 3, "category": "Local Know-How", "created_at": "2025-03-27T20:29:01.812786+00:00", "updated_at": "2026-09-02T17:51:41.228782+00:00"}	\N	\N	2026-09-02 17:51:41.228782+00
-0822f9cf-2eab-435f-8e93-a9eae4fc6a34	7d7541f0-b76b-4429-bf57-3a5bfb8d191e	shipping	wiki_update	+16467338252	\N	trusted_session	53ffc510-314d-450f-9ec8-df5614d9ddfc	\N	{"id": "7d7541f0-b76b-4429-bf57-3a5bfb8d191e", "slug": "shipping", "title": "Shipping Packages to Costa Rica", "content": "[{\\"id\\":\\"0291af14-90b4-40bf-b9b7-2a3b1502238d\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"You can order from Amazon or from anywhere else and deliver your package to Miami, from there a number of Package Forwarding services are available which will take your package from there and forward it to Costa Rica and sometimes even deliver to your door depending on where you live or at the very least deliver it to Atenas and San Mateo.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fd36c032-dc02-4095-8df9-827130e04047\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"aad688ef-14db-4ab9-8b1e-65b2ae747fe4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Atenas:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" WhatsApp message them at this number +506 6054 4441 and request to open an account.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"088bc0e7-d76c-40a9-9dc6-71c426fad233\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"They will collect some basic information and provide you with an account number. The account will act as your name when you ship items from the US to Miami. From Miami the item/s will be sent to the store in Atenas. Once your package arrives, you will recieve an email. If you don't pick up your package, they will generally message you a reminder in WhatsApp.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fcb1f0bf-ff4a-4cf5-b0cb-517115f150c5\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Air ✈ Account# CR####LMS - $8 per pound Ship 🚢 Acccount# NAVCR####LMS (Min. weight 20L) - $4 per pound\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"3097c373-93fe-449d-8475-16dd0b9b3be6\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Address you will use: NAVCR####LMS 8589 NW 54th St Doral (Miami), Florida 33166-3322\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"eb239f71-cfdb-4529-9146-67c94e30d829\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I generally include my name before or after the NAVCR####LMS as some shippers won't ship without an actual name in the address.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"52bb5c90-d64f-4d0b-8bed-637655c568eb\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I've had great success using CR Shipping.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"44fadeb1-090d-4bc1-8ca1-108f0920a9db\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"b2bfac61-c604-48ae-8c3e-8cc82352cb29\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Mateo:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://www.sanmateo.love/?q=Rosco+Shipping\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Rosco Shipping\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - delivers to San Mateo, similar pricing as CR Shipping, but you have to meet him in the park.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"ef8bc63e-8a96-4690-ad59-1195a4e57a5e\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"3088b5fc-7286-482a-a056-50d45e6b5f5e\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Orotina:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://maps.app.goo.gl/ngQNV26RREU4A27A6\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"AWS\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"text\\",\\"text\\":\\"+506-7290-2221\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\". You order Amazon or any delivery service to US and it gets delivered to Orotina!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"8739fde9-46d0-4170-97ce-d6defb359fc4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]}]", "excerpt": "A page about Shipping", "version": 3, "category": "Local Know-How", "created_at": "2025-03-27T20:29:01.812786+00:00", "updated_at": "2026-09-02T17:51:41.228782+00:00"}	{"id": "7d7541f0-b76b-4429-bf57-3a5bfb8d191e", "slug": "shipping", "title": "Shipping Packages to Costa Rica", "content": "[{\\"id\\":\\"0291af14-90b4-40bf-b9b7-2a3b1502238d\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"You can order from Amazon or from anywhere else and deliver your package to Miami, from there a number of Package Forwarding services are available which will take your package from there and forward it to Costa Rica and sometimes even deliver to your door depending on where you live or at the very least deliver it to Atenas and San Mateo.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fd36c032-dc02-4095-8df9-827130e04047\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"aad688ef-14db-4ab9-8b1e-65b2ae747fe4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Atenas:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" WhatsApp message them at this number +506 6054 4441 and request to open an account.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"088bc0e7-d76c-40a9-9dc6-71c426fad233\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"They will collect some basic information and provide you with an account number. The account will act as your name when you ship items from the US to Miami. From Miami the item/s will be sent to the store in Atenas. Once your package arrives, you will recieve an email. If you don't pick up your package, they will generally message you a reminder in WhatsApp.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"fcb1f0bf-ff4a-4cf5-b0cb-517115f150c5\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Air ✈ Account# CR####LMS - $8 per pound Ship 🚢 Acccount# NAVCR####LMS (Min. weight 20L) - $4 per pound\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"3097c373-93fe-449d-8475-16dd0b9b3be6\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Address you will use: NAVCR####LMS 8589 NW 54th St Doral (Miami), Florida 33166-3322\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"eb239f71-cfdb-4529-9146-67c94e30d829\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I generally include my name before or after the NAVCR####LMS as some shippers won't ship without an actual name in the address.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"52bb5c90-d64f-4d0b-8bed-637655c568eb\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"I've had great success using CR Shipping.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"44fadeb1-090d-4bc1-8ca1-108f0920a9db\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"b2bfac61-c604-48ae-8c3e-8cc82352cb29\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"San Mateo:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://www.sanmateo.love/provider/409282d0-8d61-4c10-8b23-94af838924e5\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Rosco Shipping\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" - delivers to San Mateo, similar pricing as CR Shipping, but you have to meet him in the park.\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"ef8bc63e-8a96-4690-ad59-1195a4e57a5e\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]},{\\"id\\":\\"3088b5fc-7286-482a-a056-50d45e6b5f5e\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"Orotina:\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"link\\",\\"href\\":\\"https://www.sanmateo.love/provider/1d1e01c1-12a1-4f0b-a85d-7e0f222b04c5\\",\\"content\\":[{\\"type\\":\\"text\\",\\"text\\":\\"AWS\\",\\"styles\\":{}}]},{\\"type\\":\\"text\\",\\"text\\":\\" \\",\\"styles\\":{}},{\\"type\\":\\"text\\",\\"text\\":\\"+506-7290-2221\\",\\"styles\\":{\\"bold\\":true}},{\\"type\\":\\"text\\",\\"text\\":\\". You order Amazon or any delivery service to US and it gets delivered to Orotina!\\",\\"styles\\":{}}],\\"children\\":[]},{\\"id\\":\\"8739fde9-46d0-4170-97ce-d6defb359fc4\\",\\"type\\":\\"paragraph\\",\\"props\\":{\\"textColor\\":\\"default\\",\\"backgroundColor\\":\\"default\\",\\"textAlignment\\":\\"left\\"},\\"content\\":[],\\"children\\":[]}]", "excerpt": "A page about Shipping", "version": 4, "category": "Local Know-How", "created_at": "2025-03-27T20:29:01.812786+00:00", "updated_at": "2026-09-02T17:57:30.359789+00:00"}	\N	\N	2026-09-02 17:57:30.359789+00
+COPY "public"."whatsapp_listener_status" ("id", "status", "account_phone", "last_seen_at", "last_message_at", "updated_at") FROM stdin;
+1	connected	+14355138943	2026-10-04 03:32:47.027579+00	2026-10-04 01:42:12+00	2026-10-03 22:46:47.025004+00
 \.
 
 
@@ -762,6 +840,7009 @@ COPY "storage"."vector_indexes" ("id", "name", "bucket_id", "data_type", "dimens
 
 
 --
+-- Data for Name: whatsmeow_device; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_device" ("jid", "lid", "facebook_uuid", "registration_id", "noise_key", "identity_key", "signed_pre_key", "signed_pre_key_id", "signed_pre_key_sig", "adv_key", "adv_details", "adv_account_sig", "adv_account_sig_key", "adv_device_sig", "platform", "business_name", "push_name", "lid_migration_ts", "companion_meta_nonce") FROM stdin;
+14355138943:1@s.whatsapp.net	251548433141916:1@lid	\N	2932211782	\\x182c6948374ff612eed727299b870c06084aad19abe96ac8694f380cf0f81e50	\\x400e827ff8edc6ba41f5e4775d5c8d4436b33dae7e8ffdd141a5fe1e0d5b4a6b	\\x587bbaa10aff779e2e54d05521103e0b0d43714cf97424dbe46cc5b70f90fb72	1	\\xa94fcfe35b5dcac1e487fc6d500285242040241135010b1d5b2b7b1471fed885ba15b93dc5aef2fd5b4ed1869b680de3c92a5c5400d3a2e3d7ab241dd866ca0a	\\x503fb85b31f950581ce01243979dadff37923cd4826a5042c0e8ecbdaa9c8673	\\x08be9bdb8306109ff585d606180120002800	\\x6d3a0eff85bfa4e1941637337a7e45f24882247c4f96c74cc265acc8f244935fbbe1165ad85242e0ba7a137fbc237c49087e9b8d95a5366c9f861eba4777578d	\\x87dd58b30d8d80043c6c6f02721cc0a4d2dbfd2b74adeea1960a008346661b7e	\\xfc5bef29f94d405885686a8b4f300b58eff0dd7d560788d1c5ddc557ed6b3396ef10b5db46736ef983d5d2de935e095acf864be28181c0acf5657d6ce75ad60c	smbi	Lisa Machu	Lisa Machu	1791059882	tIF73siCvswNGa3q0/AC7Hi/HPXTDnHSRj/mOAMj8ws=
+\.
+
+
+--
+-- Data for Name: whatsmeow_app_state_version; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_app_state_version" ("jid", "name", "version", "hash") FROM stdin;
+14355138943:1@s.whatsapp.net	critical_block	2	\\x3322d98497eddcf1651e5cf875853944b82b124b9124d6ce5ad0415eab295312ced732b76726b387e4da49ccf5c1f57f2c0c54a90edbcd70a6c664d61f32d702f806227f79ecb84b9fdaeb565f80365e4c42d4e478c371badb51938cbf70b875f0dd8c5e983d2c2b806a2e1a3e5db06fa21d3a8a0a3f3790b0331dfa2159cdc9
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x865b63781a767514f6511eede80d7e64854978358bbd029f55799cd6aedcfef6b14f6eacf09d0fc0e77f288b9b4bc44841fa98ad1c2d2c73e744bd36926761ea8dc40878f7ff0ddfe111c80435871b1f4d346e99b990b9bc35548ef9c0b42ecb66261edd164b96193cd77e61cbfed98b97aacb36cfb8fa6289852acbed8f7292
+14355138943:1@s.whatsapp.net	regular_high	1	\\x5635d989b7d5559700f7ec537eeabcaaa42ca2c198854011050370b71ffa251b924ea33e70570090b7b9e44be9782516f2eb9d9d0c60c95744eab3379cbc84643affd63d5d02c65f18649ba4b65423173372a76b26a8ea4a9086c433ccf3f0eed28b3b4587600f02e138bec4c05d3c7940daba6c7df03c6deda8aad4b1c19e7f
+14355138943:1@s.whatsapp.net	regular_low	3	\\x6f1e2046c32b6ad5964cfa384a3809a5d53ce48f14e6ef764ae6a8bfcc41bcd5f83625e8aeea93a9706252bff61c7544eb79b610cb43ff5a0b40d0fb14462071d40d739cbd0cc18a4e027e924848cf12509ba4ed0444b5e9e362dd8c9feed92e62a0ee5d87263095038df87ec04fc0907b444b3132bbdff8e2be39a848e33469
+14355138943:1@s.whatsapp.net	regular	11	\\x8082f5aa10908baf74de36963e2875f89ff8f3bf74541af5b43c7c4bdc9c0b526a774c4624429bfeeb8cfa35c5188bef3a52ff8ec14cb011faed6c3afbb50ad42cd63c867fb44897a817291565a306526844a188fc60b31c8702b309f37709fa1d83e0e010574e76337276f797b7143737619b7d87b7c39778201bec78ed308a
+\.
+
+
+--
+-- Data for Name: whatsmeow_app_state_mutation_macs; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_app_state_mutation_macs" ("jid", "name", "version", "index_mac", "value_mac") FROM stdin;
+14355138943:1@s.whatsapp.net	critical_block	1	\\xb9c216a1b143d2044ad95f7ec729942e079ac4379fcc6142d455d7799ec37868	\\xf3adb07624fcf517a0d341e7e3b50dcdb709a92c6abce471ce09fbffb66ebcb4
+14355138943:1@s.whatsapp.net	critical_block	1	\\x3405daccb9e21ea477dc8f272b4098e46ad80c8163d601e28dd7f2afc30ab3a7	\\x0696b74755753c62388760e8e1dc94d3f9baeff9982080e09db2c39a49ab7afc
+14355138943:1@s.whatsapp.net	critical_block	2	\\x3405daccb9e21ea477dc8f272b4098e46ad80c8163d601e28dd7f2afc30ab3a7	\\xf96392607bee47c7cfd2d1f59c5ded2e9cfb4e00140d34c4dc1b5e286888ff33
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x61a0890cdf45abda9540c93dbd3edcc74163cff03db5e83617b45555e1595748	\\x82ae0d15bab404e1d5a20c1ea07e357f8acef32ca935e90aaf0f16d61bab674b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa03924ddfd5c86abc6f612919544a7487299948991ea291761cb323a42d5351a	\\xa318bd8c2ca75663c0bd7f971da4330722204c8c023937394a0e8283aa5f4e90
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x967530bbf9b6999e09e88c8018fd2caa4acd103552d9558f3aaf5281a7677914	\\x8fcdf3e2bdf1f559b3a94a5279ed999ab9cb7597ea6cdc8c21d59d58627a8ad2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x25784b2196d198fb56cb0137790515956d01239fdbad4f129e707fd55b6633df	\\xf14fa9a7a2c73fc59d65f547bb1be2d05868c2fa41a157718a0fb8a80e0cbf6d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x47e65a6bf755df647d3d9767f0a222e034c79798b644315f0e01326befeb2567	\\x59959eafd0140d5de8a2ef04cf8e7dce45e9bafaf863a691540cdf30c8f4f53e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x58da8ccb2fd4e99062b1e83c1642c544883b981166cd2daa3cc6dcfe11fecf51	\\x3ffa176d1a89246dcbb312af550adb1ba7dcb6bf78cd53e4c79121cda8c91575
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7b9023157c08fd4d6ccd52981162ddd48363f1660414ab7990f98fb2e3378aea	\\x7f93f3de99f49402d8039a46668d16d51763ff046dfc6583836bc73a23e54063
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf4f06590ebeb3592c92ee3870c9e3b252b5de6ea524f8c1cb0bf2569cf7eb5f9	\\x33ed97faf1d5143d8f4f71c3f8806d0869ae0173b71992bba379209345893daa
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfdbf51ad1f5378f422f48375536445c9b617645d49a90444027b9f5925bdaeae	\\x0683c6951fcc3ce92e24ef339d7eb09ddc34d6aca14522f5437a57f47ee40d47
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe659014919a76069c09481f5c380394dd0bd91b40080d80e7c263347269a02b0	\\x8b3ed02b251e8b61e66c3336c284196a112598765bac90c0a2c7e7097bfa1b5e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbd7b4216778eda674bbcaac18eda00c481977a21426b3b627cf6e773fd567760	\\xcc535048d22ac3fed2cf667c6ef0ee0cbd6bfd2afbcaaa85924350f05a691d64
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x38a15b33030ab6ad49ebfaecf25ffbb49558b7fbb44704342583f805be12ca0a	\\xda60ffb227d040bf18737e051b914d503f41f2c1c9336abb9c657cd5895da33c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbf7bce91d15961ccb43f5e87fa9b099e57d20030a677b71ac94c35c9e13d6e32	\\xb5b0acf3dfd9ae369ccef430954d3868cb9af760903dbfb3003ecc3402713548
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe7fb672c44be920aa45725b9a00805987bbc1c5530a6947f5f9038b2b193c5c9	\\xb22c34f87fcfcaad7c4b89ca56044749d370dcb175e95fae22fc79c372c5a66d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd8249da3013ff4462b6ceec734519e192c5f04a7e2054d4fbd2344775724971a	\\x90ebb7ec01ddf508426ac5d94fcc06b6351a9ca55efe0af212c493db023bf51b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x369ccf2d44476c4bc6d924b124e103f46572e95647d6649a7169371ebb2a41a8	\\x20acf52899c016bbe7cecab589afc50a7c2caa987c266e21cc5a6e74713db72a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6a568bc02b710015586d6ada0fc13bed5d69786388d8477600ea7ab0d19b7954	\\xabe7c68390ccb21d5d46a3dcabe48e29ea25d44f7ed228bf3e0f9e7be91dd1d6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x13c3c8aaae08390a5ac249ae4af657ddaf964a5019766e336781812dd02e3e5a	\\xcd35b7ae769b7ba4aeb4eab8552de5b65c11fae0d7f5429642734731ec197b23
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x487242597e8a7007f1045c5ff512966846bef41ccdc4a7a901f3dd8b5fe30b2c	\\x21699850f836832c397f00dcc01cb4e1ff978fd13c0766dbb35968260f01fba1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2149f836ce4c7109fb842d357501886e59c8a38d57bd0e3d066ee31dd9b5fd37	\\x95159299b5a4b085fdce0cc0a2ba1d2a05de45cc5e7f368a22eccc3c71ced612
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4f3653f8965ddcd0e700c0a516b06aa5a0e740b153ea9d39f2aefd2f8335fc1b	\\x94c0101fa1a9da623134e0fab74ef51e62794132592776ba68d38305ad0ef883
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6f42937bb1dc99ac1e5356582285fa1f4525765b139a2290fcb55113d6b06324	\\xed903d76b01652d60b71790369c04b88cf41c60ad551bccaa0ca32d555aba260
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4f579097f4ebc680e0c4294510fca1e8daf09a1caed933fb25f299e0a453be5b	\\xf961dcdd36ae60d8daf624397042cf7da7d67030d0ebec4c9c3957b2e3283146
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc3440dc13a8dd6dc8d274889426482d1f8e50eac6031f1ddef5dbd6524c5d8a5	\\x17a6dc723d3f3e20258d0d4248e043d99a148769ab5499455cad963cee57d4a4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x16882702c2c0bd1130ed0a36caaf55f8f8296450361a6948641cbf07fc5c1978	\\x91aa040e870f5c3899e357ff37e1901ce34c75c17f3b780ccb6f19001a28710f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xff1cf26aeeca6a2ce76f503d6fc5aad8e57b59c8f36f3d472a9b546d14e97936	\\x6ce88b0cbb5fdf08537ae30aa0348fd07386c4e58808b2145bfc5d7498c167bb
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xcfe0de93b344f1e7aade3db52776fe8798128cc92db9fc5bb9aec9cdbd7f1944	\\x2ce06a575de46a3dfe3fd8215a51d7bbd92a9d0c1ddf9d6cd0cb0c1f968a7805
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x29f5af402dd98ee4624b116876f06a88557ad5f2b734c03e5f7f755653cb0bef	\\x511be0b15c0fd808075e48ed4e3d6537bbfcde9671ad1d40e69b4bf6f67a1534
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1eda1bf7c98d54fe831e7a5e6d3582e34860bc697232763389f3710fe53fa1e4	\\x17111d4b4092a1487c9caf84bb1bef92d085884e65b1ea2baa0db8e119515891
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x61b9abeb769e0477d967024f6f9bf32683ae8f5a660aad5fc55b6af024912ca6	\\xa1db309796cb9a7e7f2ae529b3703596fb5c08d507db267522f0c5600470b75c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4e08afdfc0255ad525b680d34fee022af3c98d897424d3dacc01c2abf2ada29a	\\x929f7acfd1713bdc8d4d1ae80d23b3851701188024a0824861f55ba1e96b94df
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9e101be0ddf97176aa4aca1c6a9b2f72a1b2d04c8940745bf0da7339c43512ab	\\xd60a8e0586cf04b74a4a5e776520ffb38dfb047094f37efb653bd64300c5a35b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb6168997ac3d348637c7b0e64aaec00784b1d753a113f98bdd145c8c044496f0	\\xdae0c6b0047714e8cbbb3025a44be4f833f4bf855504a8afa0ac92688d0c891b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6d01905baaf06698c8501aa61f8fa3cf371c6299849fc0284d2668d3110b0a0a	\\x1241792e691e9f88abe457eae50c57cbca024426f12ff5f62f67293fc1bdaebd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1528c3a976ddfc4dba1cc51739ef350b1bb348381e43e9eb5f7098462bccb1e6	\\x163873516ca1f369648f895028296c5d2c80912646aede4010876d7cba85e66b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7ef27cfd3e166eda30e353c7b869741e396d5f294f2f473d5e6be36ffbead772	\\x10d3df9dc40e04c92024fb712e38bc4cb937be2d25666bf0ac53edeb91315bd6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x233aa72f44bdb1931fd8f2220ee01814593c9f73efa9c4238454179fe392a02f	\\x3b8f5e5998ac5399f36683d935a2db0021465943e576055af9d856bf9c4d9cf3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0ac81f691520f5681c2635317964fc19e028ea677e31cb941af3db82d9d0b90b	\\x7039379dbe33dc863d3b21154a46346ddba27623bf8f3c97e6730f5a9a90d2f0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf6434519857dc693be4db88f0be51808565bfc7827693942d4e155a226af75de	\\x3854007c5d8b1cc0b147c025dcb5acd995dff26c5497b273884a4332ca9d05f8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xaa5b2063875f41b59ccca39068225ace12c0917c7c4dc07682e67f8a08ad9d6a	\\x521ff72d3744ae8e5f2508667971c0b45c7ed9ae92355d008183b85387829705
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa36b3a22725df80e2fa13b8235ccf2103b85cc8a9bd86dfe4ed8ea65e5ed210d	\\xb7ff817c9ebde3daf96e0012d18993691f29d36ea2096c827d9aec3fa7ba516a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9b78fd14ebfa7fc37dbc8672975e87dbdf470454a1a5ea73aab3ee8e0d2e0d1e	\\x71e27adf10fd9bb8b1cc43d0e0a50513ccbd92c72e102b9778754f05271da4cb
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9996477f7d996c274849659d8cc661a79b2aa7db02e3057a67254095537823ff	\\x987a305392915b3ced39ba5d934c6489f9925739cbfd6669e5e6f1b5e9fb4d84
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x89dca2cfc50bc9407d648c7a39708905df0b008c87066333ffc313daad33c70f	\\xbc260fc9c852b4a46034f0d4b60aa1e217847c92ec390b4979fe455606e7c4a4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x32f919f73799a2f8dca2013b21289c839253e3894bbe5a32a2b3bf1518a5b176	\\x4245b4c5a5bc80ff8c26c36556cee0a9054e3075afd55b5bdddc1d337aaef665
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x40a2c7311e8e1f3e5a717ebb7955687652b0acaa97ad1466a3fd6894534561cf	\\x47a4e5f50b2c47f71b907e53b486e585a55bbaaf70d29e68d07d72637ccc6123
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7410744310f3b98e48a38b155e8f8e745d37fdeaf2bbc9fbb725fca468b25c32	\\x0e6b54431190cbf8973f797ee25ec841162fbc6fb87a4acbf9d29f5105b30c80
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x177731b58f5055389dd6e639f88f7b2d4b8e354812bd954a33b00fcf450ebd11	\\xca50057934830165dabf55e523cc74508a645a0fd2511eb43d5d42e7f9aa2678
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb8354e017f6a660595a1403c732d2640721eaef8aa3de405b039971adb4cf361	\\xaf3d852f05f25d168d41ca5c3cde4e6e4c6c668eb36ba7e965f1c8783e114cc5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8e66c55614ccfdb407ade5cf3c50ef8711b4a57e276b15138ca5940280e7d816	\\x696ede36f5a271a6f80db3af3c8c1031d97d95c58963157fba98c588e49fd62a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x50910c62d8f453072a96538559c0276061926aa999d2ff09f00c38da7c19da69	\\x5811ca376b81fcb2b2c58c6de124e095f3e04e31b482ac1443bfdb8d9a5d2443
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xec8b396557b94f7b827a4bd1d64c63dfbda2a7a0629749c02b8396d3226debf5	\\xad95021e63d07061f97b4aa972264be3c5375424730921fa08cde7dc3f269c93
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7e0c06830a924dcdeaefbbf70f72dac5a14c674a2792ba904415457fce926571	\\x47b006563dbe54bfb5af080b2512518f6d1b3cf8b759e8fe237abb940d45e045
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa319f775d7e2c30b4e144f7605dd94057bb284799ea92be26cd3f030e5f0d045	\\xd38ac86c54356b6dd7116dc479b37ae2b19b7ea31fc4d0f13991888d0bd1825f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6eb7386b39cc793ba9c363564ffdd5dcba83b43006fedf633bd3bf357412bcb3	\\xf5c4eb16066253f9db8f6ec3eb6587782f0fbd95686eebce989b23796f6b9f65
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8d45635c89f9221014b6e21695360136ad16edce53352c68a9f83346dbcec3ee	\\xcafc20e070f09da9a838956c6f4c5add84806246275ea7b827f12fa7aca644c0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x315dd6f8d5a2173b3f31a96e515812d0508e16efca2142476d7f339be9f556b6	\\x945b5188c99f7a9526d36b6aaff052b6ed6697b96918b1777f856ea7ed31506e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x97a7e133b64f1a3aaaae0fb4128bc6add72242008ef10074a609341732916c95	\\x8614563065619166e8b6cf47865b28c0d54b62e13484d47fd631faa352177bb3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf1ac35d1d9c6d91b977b83140e581df555f05f42007ff703f300a23468622967	\\x9591e8e922bfb14cb073b0ff65c70e03dd313d75bb510f53f0affbf465232b09
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5a97c95098606ccfdfbdf107cbb1df78f722670cd2996a93ee846338d595807f	\\x7729ca79b6001117cf1611b4b88ecd7f495c1c4ed28ba6d40244278af8544f85
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x98aad967e077a1753465ef9151598784733740f23c6dabd2d1ca1f4d2beadff7	\\xd3aff550d1105ea4c1bd9ef62af2891d430e6535ef63e1a784b3012af9b8130b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa0b75ff0951164594128f7233fd78dd5b3c51316fe9638f624ae822fd0824e6b	\\x5bcb3c60b855030effd6a6634f223971fa3e39ef387735741be6fa9ba2a02eba
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x46b698a7096ec22f8a1c0864cb628e4c9b878f019a9265c99d0eafa364adccf9	\\xff4a939073571470e23ad54e3afa60674d58465d217741724ef0fd663d420ddb
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0d4dc4fd0c8651d2ae14623f2babed913edaaf007b4f2da22915a195253dcd11	\\xc133e4e8ed1d36a21fc18659d8f54b75b734db43248fe10ac74a7779ad5d7bde
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5fdfbca39a5dae2772a54eee27e6b162fd967ea8112bebfcc54f417439dc2af0	\\xf7cc246f1ec95bee9812afcf3ef01f4871c4b0fe8bfa8c5669c232424a8d0b51
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x53472c199303c085478cb54e2ad03f112d9f7dcdfd06eb8a043e5e5fcbbe35d0	\\x98ed659bb9c80495ed8e85fdc72d4751bec64d88248699c5f8d80839b2222c30
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xeea03107889209b978ad290de6450385040e739d25fa6e20122ec164bafa44f0	\\xc774739e783e788d323981502208f0f1d97cd26143a8b767556c499e9dbca5ea
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd039327e05635a8ece444728121a4be14f25d60efa008f39335c276c813ebdbf	\\x3f087fbcba4f67456c04c170e47a5d9970e39e1ee90472c940ff9b6f7884aeb9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x57fee3a3b3b4f4f8dd40617c8b586748ed84e4d5ad9e8a58f8c03e3c6b82962b	\\xf567bbb8c59f4a240a6f5141915c9448c1717c934001b11a0d53819406cbe79c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0e9293b51d4263b307538693e74703b358f62e1119d18e65c2645bae49b7dc85	\\x7fe249863585f50befa339923f8d1f000652298f6c751f9f23a308829c620264
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1a134a11ac9605d76efec42b7d3c64a83c23fcf896b3a22cb3ca79307befc7ea	\\xa8995deb431b312b1775eff038b1689b50b959b03a4f68270342979bf080568e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x45a243e212126fb7141ece2386c8f04b96e32e54f8a58d96077445752eda78c2	\\xa79740945d48eafb27a0a9af104e9a5fc35ac5fb86f22264df18055d173ed328
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x02d3314f3452e0b2206461d10004b9e1f917f6164548d7cf43e815b7cbb36fb5	\\xecdcc8f41682cfe8a002ab4d0106a8cb3d7b643615feafe45931f2e8b6d26ac4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x054cde03750d7115d311d1804699fd22b4c6db22c2375b741b3f548f969c0f50	\\x52040f754a4152407d4105a9ff5687a92347bf4f83a2337d3f97763e7073b46a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd15e886d135452dc882e47490c739ac1e264ca5ec5d0ab4a503c9224ca0faba9	\\x10ddab2a338d60b6610e01eea2dc5e7b2f53e153dc591e56ec9cf01f4be0b6ed
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe55dfd62f5e16f63b2d5a00e9b4050cf41fd1778f66dd0375f21258200f45013	\\x9f8ac5e6a5500c90a950efa09e6b4fea14fbc146cc93363c7e2f2060b8095d78
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xacc3cb2ad164884def3c937a8cb241f50d0d8c9b4d2988378a2bc8affca406f0	\\x9b4e589e4ba022ce2cb66d696c8980cb5344bdc132d94826b1ccd835b4d0b8de
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x67285872c355e960d887301e1113c860534d46f70c4fe924ed6752f3ed41e6a7	\\x2877c9c61f85c532f2ee2ee26543451fa9c5dbf144baf4a4383f4ca91902526f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xaba8137c125bf1176761728b91553214063eef8bfc9d7521db3d4384c4aa982e	\\xc41721dbdc91ee65eacee887d5562532bdb95e594e4206d218a4442590b211e5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4937fd497f018f81fb170b31899604fe68e61136e7d059ce4594284c5c1fe166	\\xe32abb8c0396cefa75bfd2f3054852296f9c6ef43a45f2ffb5a25911a02011bf
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x011c6581878ae5a91adf47ca4e440df8689b7e04e2aac4f5f09d5722a728c796	\\xf7abcc17e3c89edbc4a89e756d888b7124386f716e046b439726b3acd52edc47
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xabbcbcc8ac991a8c08ff3cc9f8cd33c068b493f395223c9dd435e25b94152792	\\xdb43ada00b661df0fe1cba7bccc2aaadd191439100ff4ddf6b953fc972072957
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd581740940715d41ad75f93da303b8b79b426364eacf4ea47f0d28cdb8d48a02	\\x68b98b1abf8f08b465bd79128b8603aeef09f6f1ac0cd3d297e876bf2ac28a09
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x927a1f1def8cffdae34bb478dc0fefab802a78e786077fbbd151c481f84635f2	\\x8fb218fb1ad74484fa9b3c0d3d116ee1762b5d1931cc01dba3995710aa0805ce
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9492dd427577286cf7af3969a600cceb0d0205ec971d201c0300be3fe3a1b01e	\\x0aec1d142f46960121fbfb7146bfdd3289ec44ce143e4b8055b2fdb1e7c0331e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfa914aff6be12353eb5a96ab98c42241890413a7426422258394d4728ed2d5d0	\\xb1344cb0048eed428402f7965332b0ae3a057cbcce8f09b57d7453f44e4b752c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1408a9186809133d010bb9959b73a7b704b5ed77906d92d382482201761c96f0	\\x90c076d74bfb9c3cb4c88027935bcae222ca33e277d9e899adaa856202dc8d68
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9657d89c2d4ae0e0d75aa083dd57a821ec54e3cafb51195aa5acb4b4dc667a28	\\x15c95f3861647f1d997b69f4cd1eafab0b770a663ac9f0d51730d40fa6872d97
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd516519561c5b6fdcbb72b289c298f295467b7dc7e38e454b1082989329f3648	\\x65eddc4aae42e767c25f85c12d82f71f09bffdf9f1f8315df7c0c350b91ff2d8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb7ea53db11cfccb205a5cb164ea58b9631c6098d14054a329e6e52861427aca9	\\x17de930493693a146d9f751114d40bd8298b94ba088c7c4cd53b067687d15209
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9aeffe3fdf2a264a044d3c6270a79ccec12adc5fe27deb9fecc5b51217f7dab8	\\xf6eecbf45ac7e557020e3997a981110c633537a15b290ebc921c4ed551f5612b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8949355181bd2d4c1dafc842fd4768d4d697183318b173f9fa73350efb13cc36	\\x1326fb8a3106cbd4724d60aa2cac8853cb5141435713645c45db2cc844c93abc
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbcd37c7554499c8c1b837cf53b7561c4060d89f88516044e245b0268a2e1864e	\\x7eaea24830c4760a20a3af5bf165f6d13e5ce2bc5b5b4904867ffe06de31a5f0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6ebed98e86f8421da8a9d520fe6065dfa7a4c98a082806dc1219e1711a078bd0	\\x72bb3c632b48a2c4959e58e664a570ac219bc6b7732b5a5eed19e3f0e7996143
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7e85d3c5027931f3b202a74db928d7983c0811534e1a93e774e172c42299d4d0	\\x52408097f6ab3e39b3df6c2fcf9ee9a9801629fe5660bdbbd223bf912f523263
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfc85d3625dd0b6fd7fe54bd4f4d1b1109462f1120085d47452ecbf3f49959432	\\xcdcf27b72d3110cd3ff38b66a03c82ff0a75f5087ea2965ab373d67a2984866b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x42cc8278d7cf6838b9720218d03bc731f60550268a59302b978b613b8565f2d0	\\x2b582802b7a27765591eabf67e691248a0185252d39be235d80a7cf58875e6d2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2dc6237dcd316a9ddf5f71dc16f0bfacaf4e968edcc03e052b2b69b93c87a636	\\x8be3381e910afdd6277fddea8c16db53a7145d9cfe7f4efc358e361fa35bfa7f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x324c30dad197ed87f2122ce9832d61d1f24bf0401a244aa5642c619af02c1349	\\x722d9d3e7be9999644a517fae29aef3b63c6943125ebde926578e74c3cf41f71
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x486e132a66fcf241f1a17da0d6edf8eddcb8c6789fd9c7a064bfa56f8fe9933f	\\x51b6ece569c8935a99e3643af685d3bb068bbf6c35a4154c5b5b42e437fdeb25
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb08e980245a02441c771806d8160a03d9e8182ce8affe4e19157294d3a7e4807	\\x26c53c62a339659e95a9be07987828b756c1ef6611b9eccea2bce0c5bcda6abf
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x20eef6572dcb1dcd3c95594358232e6486fa320d27d473967c35b74e05813d1b	\\xfcdf732f011e5066b409f6207a5c70945d216574340d2c75f662b788fd703a66
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf2e4e113cdf0417843f3e2c8e83a48e4dc8fd6f3afa94137d0974967ccb5b9da	\\xae240f235fcdc334769ecd13d8d6da850228baddd2801101fc2881782125de3a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x698ecfc400ec13a510169be57e20e921f02a6b1d42e2b77bd1cb374e18ee1800	\\xb5cca86b0332e4e81007eb6a5e35c0e77eaefebf606100f6edd5044fe3008f3d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe08f185d6947b6269a93a451c15040ade37ff2ad45d547ede3f1a372e54cc06d	\\xfa1eb0865fc30baf8891cb86323b2cc39057237709ec1190aacb37bd64670964
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2a37dc0c6b225e03997bf75b35a24cd9c728d4a9c7db4d0ced9b2a9b59144f48	\\x13f4e97201681a62bd27f99a9caff98f59fc1cb2658d3596def72ee5fcc467e4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd5a0722cd6ab37b3e82da01ec7f1ec92226e81695a6f6522985c734fc43762b1	\\xd014153525cf633b815c9a020cdcdfb47d39e4535b4259ea66bb81893645c309
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8f6592515f9b2822c28ce0ed1f9a7e1fd9195612a0fbf59d92da57adecaa3f19	\\x57604d1d1282e4d4bb3c7c32422b920c55353e53639c112a3dfa6500b877fa8c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x85d87a8c3c8a33d5aa499650da73070f687a47d790a9ba5c22c3aca2017ddf37	\\x3204a59259d437b363c7799d59b793959838380150eb27391b48db781ca50074
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x55d000a1b87ebbab26e66e12d97ecf1d315e8b38e852f723b53a15c2109753f0	\\x847a8dbd4f1bbdc7822fdaa9b82336ce8de337c3f51fbb3104ea8989829f37f9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4d533765c0f432c0f9db6da21d4fcd27a727ac89d5995911ec63cf8a419efe1b	\\xb6f1938983bbc0443e9722aee12c533504fa16ffce697f2e8f58141871470961
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x678810c6f71531c8d85c9d1766a460591ae9a571a0096569a9ec9a8ae40f4eef	\\x0b6c57389b9d52f2be47c091ef068d399f7a4f137640ce0f158dc65cb6721a88
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa26f40b5fd3f7f36e31b3e933c45d3b2c86f1c6bd3e99862ec6b12477eb8fc25	\\x4e95453dbf5a7ef5019a168a1bd4e584c4368486a6389aedf979047327f07e2f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7b623004bbd86b2ce49c1bf273b06cd6bcd2889b4afe26a776919bfe8e22e984	\\xed1cf03926296c93190d1c935e9285a555ede97f8d25211b63deef8da42e02ed
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7b9b2e959a6235980c7a7ca48cd60b58cb334616fe2a5cd2dc9b9d68705f1f65	\\x0fc9a67bc467d0cf53f80e0f4816fccab92bfa5549e0596ecfb6b239c3d7e65e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2297ab549c8c7d69cdf15b2a0f69505f0b2cdebe89932279330f3f9c9b14a6e9	\\x8941f1442b0b59eb88c3c4116cde7eea53d6702c0634c1f0059a75fe193eb1c0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x790509ec240baacba2a7cbb4688467d7fe337eff529fa34790cdcb095f69f0e4	\\xb58c39a262daa44e126abd258ae65239ea7ea09486f0e9f14e3525ea3871ff67
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3b3ed376316484a9c9cc19dbce4a337a3fc9b1ee8d82cf7eda78b41a0877e2d9	\\x29ec0fe7012051781e9581240edb124b59e7fa63449278152f8062f6f97d9d83
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6a8b2df25ad0e9139599b8478a51e375a2cec8adbfc25f702f881820bda42d01	\\x3a0ee9072b9f01110e15ff198cc2d6b726c083b9e7c2ab1d7d8eb3dc9a5a61b3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf2343524c098d9e87c35ff189f48afc46ec489b98078e24034be886912b0b3d5	\\x5394cae55bc4ba9c10d18f6502bf695cc09f52ea89bb9ca0d8d5ae22ab923489
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe8c20111c09ba51e92531e963491f63271bb198cc3ca8d427d9e0b49f8e4ab66	\\x1b15f532b8a8fd886a16ec29e266f1bcc97c6c01b4a86c8a108bcd7f14d4e575
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x67060540b360f1393e98a3539640387fdefc031ded5a6b4dd02af2442e6bf8c0	\\x8fdc70fc34cfae6e45295ef167a599b6a05db47d13a082f4698aa67e0d196979
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa29d5ea3f99e7eabbfa5800745f0e356f81958cb7c91418bca413003d300e289	\\xe32b2873365ab12fa5d83ad11141c5cd4394d1a879c81ac9555766d50b318805
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf2d8090d321a70c92c660e15003e3f36f8417f89c860ca612c5e4f6696de0504	\\x1bc40a383764af124462c974170de7cbfe3a43406f5a5467c68a410ada1526e9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x351800032ba34b90af13bcee5194888ab9770096aa4b30b491ffdbb20ca4b34d	\\x640d61dbad54dbc28edfccd96fdbef44443bc9e7585f0105b28c0e8e2c6225b7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x58f6ce8fc94adad38febbd4c60fe2ad74f4d89a0be59e02f0a5be603bcf66988	\\x7436f915c7fb1abda4b72c005dc5d85e6a6898957b38063608728033cf68511f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdbb30c5c45feb2c18281631d5b6219edeb4263e0dd464f7028f33a976ce3c0b1	\\x16381dbdad4b623013351403a519edda973333633170229b8fc9516e285380bb
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0e207dafec80824113087f7b6030d7fb3c91a931fcb8fa0619d378611aee155f	\\xf6c27c957ae8d5a225d8de041a13ed7e06dbbe5c1214741b955e187c60dc5d13
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb7088cdf6599328085c202b209548b593eb9198ac2ad9ec0785461d2c9c7b1fb	\\x6af788af09dadfed83cee59aaf33c86f5b615179fd503002a55f4c6cea898fe1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbd2700e445e4b223831632c8e07613b52a44d82880a5f108e62a24a6fd249450	\\x7e2a0b9b2a50a2152f205beaef667e7753547fe681b16c8f70f87c8b684a7014
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xacf12b944ee13a01a91f0e750104ef119c3eb1ffc049450a0b74ac388d9c27ec	\\x11e1ca3e6a9428ce92d160a106e97206f6599619d9275f4c0ce716d364838187
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xea496109b2d0fc6c2aacb03cfa3b5d74b34b0fd0e6ca9437965d7f6dab6b639c	\\xdf45f0dbbff5ebad89515de82c372a82cdec0af1a834693cf2ea0cf519204c53
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0a769b3c1afd5798dc60831102e6caa9b8e34cdf9330e00a888cc2c806323df3	\\x046665ba4d98338ac7f337f776f69361ce0db37c0275c339e75da87fac1a1c06
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7c162aa1d74914e7536435359be6d660de787f14dfc64581a2a38de855ecba2b	\\xe744b40fcbe387d09e1f3966a79e8d57606f2518f958e2f53158dbab9a3894f4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbc855326a606cddc88578d432083505a5e81d0916fd92d2c098655a8fbaf8677	\\x25a0c306314edf21256333bed1a482f7f75468be7f2c6fb6d488816fd04cf664
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7b1c55854cc5f3ffc4cb4d20a61072679fa58bd1b8dc0ba93882bf94e1514911	\\x7c582656a7d704e5d5c3f8f874a2776d1882b40c53505f2682985b8d960a279a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x75438186a5b3f0ecaed4895492453b142f0c6e739669276de2cfcf0f24c277c7	\\x018abb31b1bced557dd4decd5d424d52595bc9204168098b193a804fb4563017
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2b85e7fdb823c5cfe4fa8fe37f65f4380bb319cf5346d62ed62c2c3664759001	\\x8444968b195163fbb2f066ca5bb4288dae5209945c0d809183bfab8b68f6d8f6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x096dc90eaa8a739695b12a054c5344063febba70e22518e66922a3362a75cdea	\\x3718bc5b606198fabfce6b8dabaf303c87e22bf2d209610894cf838592f11029
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xeba8cd9971684c4b1eae4f364804e2eb4c94ebf13ba8075c92ba5b4dda6f1a4d	\\x11456e95c82a69690c5428df637f1ac250c884787b25fc82b299dd00e72642ef
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1ffba290100c306a6ec0f18d25baaf8df3fb80f7d9b6b5ed4e293bae50824d63	\\x6f8412e4507f1af117aa81af496bd6480e34a9ba0983f396b60bf5269bc4cd66
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x398a52e4dfba41ca104b91e526bea941fff3fa190a560025223f1ffe42f23dae	\\x8bc63e1b15e2d7e62dd6df9b5574a75490c349dda3ee0fd6d234be20d1442ab8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xcfd16816bb978c2be95cb7aa8d3a9a576f7dd00b0283619209aa248848d9d10d	\\xa95beab99e3ece7657f979c013f1a31598394ca37544a1cdfc0ab0999d8aaff8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x01b4524f483b0e5c07772658fabca6d0432707959a958d490e5d8b6afa408733	\\x92725c212541c4fa789d80d2e60832b27aa3f7a0fd2856c1f5f6008bf0caf645
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5462c591842a283f578ccecd00daaf8c20b0876a6a474ff546f5b65bb33c79c1	\\x93fa425537ed9abf780292020b1e0b6e0590dba8404371994f1fe02f6acff469
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe59a7ff65d7377c0eaf38bfe5e8230fcc5631ba73fe336190be4bbcc4d6eee46	\\x573960f9500a945ebb2d20fe57f7b4b38a55062f30e19e411732b4b5a006da9f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xed8aca984e57d5ae928864c8c9a3bbc0d90f8f1ba724c11f08eb469c318db006	\\xec7fd6f54a08814481c6948e8eaf6d301febc52dd5e2516a61181ce75f953c61
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb96ccd95815646b63c48763277f8004a3ddf05ae60dc952b69619c87aa47fd92	\\xff93170210fbc8be1e98a802aeb684071ac14b42d6dacf16fec4384099035a17
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4bf346b97bec792c94df1110ab46cef976da68b8d723d7fb652a7acd5f198552	\\x2bddd2b1faba2a22a5c41fc5457debbb55d8b567e3407e1ded2e88f9942ccaf8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9194900182a9fa7bf6320ad9b9f55d44e673dcdd8a1d50dfd875abea373dd478	\\x8cd9a3af6657874375de8a59f90a316bd45c4a58630337d05f51761f981be2d5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2dd87fdc601eca160acacd1888f450150d102952bc089c3111e1b3071df95c57	\\xb39c200fabb39fc877ee42f3e6a4a7a35f35c2e73de234f45e1bfc3b78b53af2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x02bc956dc87e54ffef518c20dca36bf17cb46567f7ceb61eed11e08f5d8050a2	\\xf7d5f004b8fb3eec1badb189cc378c5b16c0f6b0178a58f34a3f9a03eb0c32d1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9a44e182ce0fa08eb5336145d93eac2cc63d6e1a79d640dee79fa458bd7c2887	\\xe7cd85c9dfa395728412856a4ee1d666425ac7baec235f338af78d76024fe50b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x187f7cdf06a90bca86b40a2b3de6e5da474d3a2126fc324183a2c37c1aa52227	\\xd11c3ff97033f7f96b8e06315be968719ddd1db7f9cf680bd4fa05a6f0537dc5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x633bc138a59220b508198e4d7e9c953de6991cd8933e4786e3ee9787efe7d3d9	\\xf2aca11ac9a4c6ba51581040d898aeaf80b439084e022a440afdbd005731ae26
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5b8c9538f97c8cc3e3a81fc2b1541cf2d934571399369547d8eef2f130a9f050	\\x9f7186109f2a8a7a2527b799cc73a47a8d110047d03f2ce6bb7fa69a8c8f69d3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa45886486619a4331c0b5bb8befe819d7f14a426771a85115ffefde3af265421	\\xc3dbbd30bc3b96f805f37a1283d0ab7f9ff5918b770af8cd71ca82c0fcf6a8d1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xed3a11766efc2f7a3f806d834cab865ad9db153545c8b0a85b1075c3b8d791a8	\\x3c52b7bdd67c3931608dff2761fa790d36244abe24c3e4a134f8ea05f74d671a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1de33570a66e9cdcb2bac51a8c4b7677e5437659cff4e05a7284c068b5a4425c	\\x9add03eda23a2ce4589e3a6c282572ce67b0692ac75c6b7da67b48329a2fbaab
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2bec9f7890775eb74c5ab865d6bf2a2c3d02528a6d01c7a26a5e363e42bc2302	\\x6d6e83deebaa9f8253657530ac1ee2a934f9b9b4b0ce59714f6fe176237a4333
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x04a960c8ebdf186e43bb2df4fab6e837b1688e7a8524afaa0250f6fce9a0a0f5	\\xadcbfd5c23a9975415d4ea8b06f75727878f451033a1c92a39ce6ed5ea9f46fd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb52d2ecb9b18a261aa1e82487b36a756589d554fb43e3679a90182d995c23767	\\xb9a142a7ecac1134b53f67ebee9976047d4e85c458f49b3ea347fbdccad8f2c7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x077269ae590c8451565688791b769395ee8f120adaf2a0c10fc50757a1faf445	\\x82f5d123d394dff3709f40aa525008dee89201f5f5b5bb50a3408d9bc6ee88c4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x93ac4bf7000955b957dd7db6ad07fecc74a71d66b9c7bbe9fd0b167e6444afb4	\\xa1032e46fca8ee33902bbcb04f0bcb87518ebdaaaee73bd80ec6b643832e8835
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xcd844dc06b1b0b0c04fbd3063f19ad940d4395ca987f0ab5156b003b4fec6e62	\\x948a52313e48a1118ea9ae1173592267eb446588f404984437ec21878fe02ab2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa0b58ebe4e31504c550827531ebd27c56dea7fd082aa7cd2f12fe86817fb2768	\\x6f03ef65ed0ded84e0fda0fcc70aeffc1cdaa86de854268b90b24796f81eb087
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x64adc4d097673f1b1dbc85ac1c70e108051059ba1563039eb63ee94c754713d1	\\x46483703da0dd4bf32eafeb2fc174590468cbe6b29bf95b99180b1738712cdb8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x53327000f47c0ef4f0a153ed816b8f08ba2bf2150fb0dddc4aa4fbc18301aafa	\\x388ac7d6367213c41f643cb1bcb7a8924362135df0c50fc6ff63655188446a1a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2066ae147bf985aa1c59bcce998ee1610e4f4b4dbadad959e677c50e5b3f2d0c	\\xcbda6e9a55e69ca88675c269e9e2bd02a6a21736a4af523600ed2bc1c320d25c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa9e0c35d45d0f6b833638671c3fed8ed1e5b3943b7f79dd4a92118573d3a437c	\\x029e83751ec5f1b92e70ed461d489a1a7a5127dec29e63690e04a90e091c3894
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xcc03d67f754c6559e9ab35be1c794e1cc5fb3959654e3672d8102b4c7af398f6	\\xeb224900e0103d0c1617e4f06c22da944ae2d2bca0f305ccc5fcd591aba7f902
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb4a3e2fab9b46ed13fd516ac57068bef8a9ca088718c67e7205078980c1f3e4c	\\x7ba7bc369fcaa579ea3d76fe457ed59a7e84cd63772ab2926d1ed6636c3b23b2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x66029eb00ad176e029166a1cf3c43f7165d24b043e72ee2718825532ef89c68b	\\xb187745e87cb64691b35b0005415081997e17062350b03bb9d1d481070b25089
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4bab20049a9c7de9dd3ca872fa1c6673899cb0aeae623e6b373035771d81217d	\\x7422ce7d06ac1708134e2ae4f4579ebe45d1e6e6d4c4da3fb1f20f58cad71afa
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6ca0c715496b7f23aa1944d4418921eb6d466e8c635e3c7b3547e6bf97e2c1c9	\\xff34f1154b2565a2f6870e4606655c43f5f16c2aed68fe77040e13cad439e6db
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x547fa374b9a00c5eac4954646153c6f042013696733738f8a94c3f0b25134c62	\\x36caacf918e7de4bc4f01e8085f7ccc8e624791e25b1b6795762f00c8e4630f8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x899370cba52233a7e56529fa4d1eb3a0a014bc0a3aaf1b72ba9c196b26be60fd	\\x0584ed4b3ccf27f66ab6d40f1bb10124b9b6eb9410882647ac5bdf3bb46dc1ff
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x00b428e4e3230b05caf069f4dc6999074538a456360091847d464e804756b2aa	\\xd36cef1f9c2ed91aa5d5ca5c90efd1c310180e97b202e381c6efcbac9c35d5fa
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3d97a6535b22b850f6026b848adfacc6261d81d67b02b3014a97c15ed2d659e8	\\xf30fa4f92107c8580032eeff6bd6639450134911130564c97abe9ef9fcd270a5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x745ac15c71c4410296761a735f8eba0cb58e43b2d8eb125969afbe047af7c1e9	\\x333a7c8ee92d2ee5a3791ff5d448e5db185ce9c43c58f0980fc50e551e9bcc7e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x174cdf577c11b673e5a52a45989c3ee2544a78f824d1f0dcf4ad77e1d649b8cd	\\xcb512b57ed4fedb5b732f42f17bf396f2a6a3443be18e61913eaaff196010533
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc76728a22f0828290a2813097106290eeb84e70259b2fc40e2669aefcc04338b	\\x67e9949a6dfe0faf8760a845f8bea0b7febf3057aee6805059ab0c986d6579dd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0830511626d7f4235c87cec9e0a416a3458c0d0ee1370d7ed981b9d2fb959f47	\\x4eea7fc70dccdaf824c0a49935ebc8e21e5035efe53b0a56eb520d5883920bb3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2e3db98e7a333dd54bb742ef5ae8ff23401c8c441b0d097783c1352579438400	\\x4385b36f4db9cf51fa646aa6a8e9314688f2de988e4e9f983e67aa4c1f031367
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd4568cb58cd129eb26e806abe9b077ab9bdc8637f7bc4df9bedd335ddf5d8daf	\\x4c7b5a397f0d50ece7d6d9424a61993e2a07f709da067c4860421c73c808d957
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3c1d4d119223938a6e3cb3499c17e1e4893c168495235f6305be526297acf1ea	\\xaa26776f9fb50e5b85219800c6c4a512be15421fd33572382278ef8e6351a5fc
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x782b7962019550e415e1538e0aad3a47d8bfcd29bfe5c353771b65b855d4616b	\\x045bf0b49100ccfe96383701bdade54d0dbcde4e3c5f39928c5b4810be170b2c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x212d6d82886edd7b971397e5a861b86fab4930b79d8e1578d832b1b8e3e20928	\\xdfa6db6f8e3deb65481a07889f24b240d7ad800f49821ad44bede9a9ed2f2ebc
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd41d2257a6aada804dcbcd4edbf4c490b7d491841b60f3c5e9631793552ba796	\\x8df8df251757a32d9f195447b59da1a2b43e3b4a6dbf3e5a2369646b939fbeb8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3b5638533bb99147d44a87be95cb610a9eca54a40c0fbc51f637e23482d54d1c	\\xfec727da0828f4797447a90541e80ab819a54b8db53d86efc19ce1c8a4d7b566
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9b6e8adc727ed96e016ec6d26978142cfc1f86e08ac889b8ed3ee38039914c97	\\x6e26d4c9ba0e533d425f777cea6ecb19389372e44df787417cdf87666eb2b567
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1a3568c51bc8c3aae4ddca0604ffb4d954dddbcc28f82ff7424be8d40b517ab2	\\x165f5531bcfccba2f251332de260800847e8351a93c52100ef95658a340a8426
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfd28a0e22007ea25791780eec2732c56654751d73a5ce75dbf6bb6fc1c622793	\\x98fdad077854ebfaa6b4d5e12f24f81e8ff4ef075f9d37f4a339bcba980f635f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x41cf1da394290724e2e8a307a289311b7b9ca2571ac4ac058973fb98778b4434	\\x1fa815fe52697450b16afc797473ff21f268e43d22a20da70bfc7f890d239474
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7a685506a34e9f9a12b8d47ce7fe077b3e498991bfcbff380d6a04353301bb95	\\x249517d8352bdffc453abbfd39f5d4ba80c6e1d402b681aa2008c094a158a121
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3c1c8a882d1c7bc8c6946a78d68586944ecdded87923c53761f8e92f27277d87	\\xa84cec7ea092effa1e34a366580865a38333b6196d787bbe1dc5cdbcc7bbda9d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x99604c0526d13991e2feec6f6d08d4d9504fa4c54a2356ea56fe2c17651305fe	\\xecb85ae18df8014e5530dc5dfe4b4ffbbf4aee89d66cb95c3707c152a72fa067
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4b6a615c841f58b6af4fc5d6596bed56b8081af71f8da5ff9b17e482e804de8e	\\x4e1e4181dd36cf686ce3fec48e82d6b5685ec12996cf1f9b02c08851fe9d8940
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7ad287945cdae5acadc98e544f8088e3a90e72f17575231d6f084530414eee72	\\xf1b3835d5913facb789ac59f140c894494f70d334308dc51cf01b250cc74a493
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3231b72939c117d3fc991ec0d013b89a9bf93a674b28d234c394ebc6745aa61f	\\xd851e9fa8af70643d38b263539aa28bc9bb6aa233cd5796d01d278eb8a5fa609
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x04038f4af14c9270a215b2c6697900c7ded22c463973e552860640d7ef6575c1	\\x8ed725c688297a4f4fcd8dbdbb2beb24371e5f5265a13955f65c91cb1a0a463b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8782a436ef681114303f3fce8822f725cfdd9350e461d60a9342e1ade5f8d13e	\\xec0a6b650999c7e0d6c24e0c8e12c5c6c9f313498ee1b595dd24e7ae5dffd12d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x063122cc116a003db7307bc51854c7ee14f7abdfc8e39dddc49cc3054c73c24c	\\xf8be558f4b28eede30bc80557db0ee9dde312928da474109fc7d8716638b69c8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4c79d118083eb7f5b41555fb0a5db9bc109fd5200ca20dcbb1f38979584409fb	\\xd9fc61ba77c8c7e7902353efb0a8b28b055b1b40dc8c2f07192f4af51a075159
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdfdc1cc5696ca5cbd5820d504e97bb54d8aa79ca2c46b1ac0fccee3af13b3e2c	\\xe7ad6df6695dbb99a85c504e1cc821ef70d7d3373fda1ee6b0299d0391622480
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xefab3c028512e1429e3bf8f8f99bcd180086d63fcbbeb864fcebbd8fcf048843	\\x4f02191eb4d87d04b78dca8ea633cbf06786dd84ae0b3d0fdaef6f3447fa7cc7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbe6292ee6607749e86016a0e4dc14469d38933e42bbd2a7e685eec6110315a0d	\\x2fb0d3ef869df8529effdfe579687114f52f346f49d9e62cef3b1d460e7d0c77
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7092c0f9e931eab74d63e469304520c184ee06a9fa067bde43683d7f49cda0c3	\\xcf5a533d9f67d0ab6837024a27d9bd17577a04d5162c3745ada96e8e31cf0ec3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5c73aaf916716603dd9f264aff280e029ef0d4f0d35a43941d2d36bed2f1389d	\\x27d787edc7c5b1c8b0de2197382d2bad821ff8f1c76fe2c87c6d8f6f7d50b7ae
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x960973ed0323ff9ee0a36b5e90ea057297d990548e86a0568b173a755ebbd437	\\xa44b655825ccea4791dfcbc5d37394479a2a9d33e72ef28813a17d8056b421ba
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdb57c7c432d6c772c4325deca3115448b3475c9444c822b8494938d3f5e5a1cb	\\x443e9387e00703eab9476c5dff0651d7a53c4152da949f82f2e2e4f4ae544e94
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0781cddfa635b735ea2ae7584e5d9160f53575703ec833a625e5d3234245fddc	\\xefd89d1dfb1607d858b1a9fa99fe957eae13a8520c26ab862d56dc176c399710
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x02e5bc31995258e4e9fb88bbca05c715878e2353c5860e364e152cc8def7e8c8	\\x0d4917d298771efc01af46c275ee9eeca235a9e43ee829af70e6cb0c0691ea5d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf528cef7bc2e260bd9f6dca4f8671f40b4ceed064bff45cbca50880ae7a127df	\\xb8801af4b4ca817a81384583f821aaa64ba13eeb303b2dce463cc2368266ad91
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x081a70fcf8584ef7ad1c0c242bc1e8404d71dc1b371bc56493daecfc2ad01b2a	\\xf9fc24fbfbe0fb102e4a25d1793d65e3acb0dfa8f445b02940d088f19c8c8249
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc7c299afc3f912f5188865394a41df98ba3690621def8476437223e567d5b1f6	\\x56b2b2e68c0e22530c7138748bfe690e71e20f568e46b23a5d2678ce58bd58bb
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3deb6a3ce5eb2dea3b1facd404b3a21dd8593d7d1a384611e1f401bc75fe7a2c	\\xf25dbe68010aab6d663aa0d0bf544ba56d92a471a46f1f784cafa191c28d5d1e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc9b515f86fce8d2e640e8ff38086c4f5487f29db981ef290e951ed77117b6a68	\\xf959d54992419be54ed0ff4208b8e736996b64057ad0d4449aaff691668e88b2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd2c523729741af69cf285cf17744bc8bf277b01a8b5c2b78ba0625fedd07179e	\\xba52e6cc99eb110e46de9b12a006b63318fb49bfcf32bb06974dd1db31d2ed86
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x00e0160249fa5795587d6e3178712089d90788be5c8729c893551bad5c7635c7	\\x55aff5e1f310b08c3d690b1ccd9ce35b1623a4ad909833fa42ddd1e6b95032fc
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc054057037bad1f1dc7625dae726c0679429c5f78050e3f32e8fde24f893a74d	\\x71bf7836eb5c097fb35b4b3736812cba16b8bb7b6ddf7cc97356c943f4be51ad
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2bed47519add289d3c91490977a9863698173c4e71e4b2b69021300d7a0bfe5b	\\xf1c8aba87f48f119e0eeef551b6cb096713d4f974d16e8c7bfee367b7d15b4a5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xde967e04a9df7bb71ea5ac1d1408694ba973ee5ccbfe4f929493df5b1df3d832	\\x48736056fb5871d57aa7630f430814f3c7294b220bf9558414a87962d49e502f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x64e1104e8ed19a5621a2e168dda84b09ccde9b22714acbf4a6eb5dbcef582053	\\x8e33d128d00513cf576d51bcfe21a2885eb3ffcadb93b903397a52d4a3526650
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x67283375b939dfc40eacea851830028fa980e4f9089d47316334d37a07cd2ffb	\\x5e52f098eee55e2140d13e6c8d737b7e83d7f5f3c29007cfeb9521d8dc48f6c1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1dfc4a3d93065dd401b805a92d8b57584c24752627408f6b0f900fe7a08af51d	\\x62dcd17759b4f1f4a1c038b69dd46dff2e593226b6252e0068864ad808ee8fe2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe54ed87f9b11f2aa66a98e1cb91534fed1dc474a8aef8b7b0a745dde321e5520	\\xe351e7ab9dfdac79ed8dfb05a7a03022c793fbfa4d5d00c97e9f50092a31234d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x52ba0013be71b0327db5220c4818af4bc937e34969c3a55b2069e76ffb0cf8d0	\\x3ce6313562c5d2e9572796e7f87bbc6f9a697ec42305d3d65d065ad8210ab7c5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x85d36ba789b50dbe05385e1db26dab3fef8416a7084e8333f6c8b915c6ebfabe	\\x0df7e7b2ffdc4e6ce8b3f33fa78e75590e02659555a29d99f9de9d910f9339df
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd3a50bc2e74f2e2f51629acabec8e70b13ad90bbbee05adcf05f21805cf23421	\\xf6ab661ccd2e8e9572903caf83af6efffe0a7c7bd68776ca733995c21211970d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x472811fad99f93512e450ec9402fc05c1ea3bf04a7b213b25cc69b4258749512	\\x2b5378394400ba311b1f10d91a77dae0568c507e2a8208e1da575498d8ab4b4c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6c2c67e85fba8de44a9db454c693a071c07dc500fb9a9d7e613e116bf8aaecf4	\\x7b5335e7dec642b575b9699675a87a2ea69ba8779e2cfc920aca9627b344c2db
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd9ca4b7c5fdf5feadf06ef4ca8a67327355868837b1a3f73d907983432df166f	\\x993c1e00194f7fd65ef536aaf5a378e50155eaa72024db332247aa7c27808a69
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xaa3f04dbf0d453007a65f8c5926c97db031b126261c7a330cd3906d605528416	\\x791652ebee044f9a9a6aa2909236a5371b05e981646a38d4ef9a467c93fe4342
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1de6d172a4b2c3d064f52ebdf575b0f716fe53f3b11dc48f90debb555104db63	\\x13ae7f7985645efbd99e9026d05fe534a2741035e1a0fa74b540b456535aae7b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x225f6953f90105f6d6265e99432cd557c66d40813ac81758cbea59093bdd26ff	\\x7d5ad9f59b50fac8e57dda777f39254a24affa92386acdf52756afc82f1b717b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x52d26649088037148dc92a30fafdf62d3791b4cf1c5154c1cfe0f2429e9d1c3b	\\x1264d631b2de10adc8b8ecd110e9b585d4d6472d2a23d7b2ffd0f3373558d29b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x20272c4ca1c010c419285ab7ce369a5656f1657b3e057ece7ce1a66c39bd42c3	\\x599d5a1d02f9e7773e64f5d53890e932ef24d4f138a841e44597487a9528ad27
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe7bb04c556aa2ef5630f9ba1dd164f30fc4046303bbd7c35d1461739b5a51397	\\xeda090b2b13b39cb877d71dfa8324fbece5ad463ffc8026e081498df72a62761
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4d57ce96665e94592de779e28a2dae4155534148b9a4199d5bf0cd3082d610b3	\\x12572019bf3e5b6619ac25aacffaaa534d4f813f62740c153a3c55560c580b69
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7f78b9dd122892217b4ca7ab10dac490db576f3e2d6c30c6b65b93dc434856bf	\\x76a67aa89cbbe50f7dd3cfaf4040a2d5f8ab2dfdb30567ff6c58711c61db7c60
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa5b7e37287dd2453239ad192fec7a52ed43209d020280a758fe083c35e3330ec	\\x00d051f1fff845f068fe96b78f19098713dc48a41924f486c9932b68272c2e49
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0c99c781b3c86b31b832922890d1638a2bfe21f2a25755c22dadd39e48305f0e	\\x5bc98d502ae7c460aed8d98bbf557f4929468020064645ff627f54a7c8019207
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8b2dc5bb3495a7773d4565049c61166f7dc8a2f92f9481485dc51dfba978aa5d	\\xa75a5f86fee2e2ed432889fd075dc5d536f210b8299956870226e238342a1463
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3414ccfef6e2958e135dca2716c490c6781ecab9d7fc5767c1fef7843a71eacd	\\xcc33958e2f0263071aaebbab80a6f2248ea45e8802e2a19d69c4c13eb7bcc5b1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x323bb6ce8b0b8cd188d6b6e4431fbd4f4949f9893edf17fd265d3e5ce911169e	\\x8f505f38de8d5e0eaa0f3c3822bd6cdde8dbedca96c42634ccd3836fdd6fe736
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4bd4d326fea7e6ee59aa9f473af475a113d3e431d86419c7536b64f9dc497c9f	\\x6de159db609af0d8c63f229a9ef266a469ec1acd29e44a075a71f84caebce35b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe22893f2b88e61aa634f346eaa571dd23212222cf3fdb505d0447755da98af96	\\xae1ff59479ef3ea89494d3349ef0894bce1ee58a74fc9cf26c098708318f4997
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6e7bdb3ba4ac6aeeed90f250d353970d04c65e007ecbb9836712ff9aa00803ee	\\x613b0e1e774b64e3bc1fd2c2a816948bbdd81efc025b1e6ecf5b96beb8bcdaf1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7de0f0de5c32c2d90ac3eed222beec11f8bea9801f4f61fc5341ae9b3def2834	\\xa8ff0e3fd1c9d9478ef579eecf923f8494feceb8cd0a9bb09e5619f333c5727d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb1d723d1104826c90e0304e83c88f89c3a04d5b2493a483db0ff2a618a6002fe	\\xb20ee1df85324d10acdb4af3835469ebcb46b7fb514616e39c47672cbacb4ab8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf2b42f36f17432bfe0099cd5dedb7191ce9fe942a108cb9aae83e3401957b81b	\\xa3c94ddfe3c09a295cc562bf2a653dfbe5b7aa2153b7e805510ca095e434d69a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xec41d7ffe2812873d1ccf5fda3eb1bdea766c9c55d9f6f1a3ece4ac37dcf4d9e	\\xadaa351157116b2590b4cb253d42fbc791d5a7e50a2a64e0f2d630d9624c457c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xff1f84014749417da65072e31b3a564796d6ee77739f42aad892edb88175ac07	\\x4b3f802f388a39fdb81622a7891f1cd958d7a32f2adab4959be87687f2eb151b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x06aa5191ff9b5a84f0472cd04ed0279e18c29638505a2e386ddd2a3c283049a2	\\xbc9172cf1663dd1eba8d74a217851dbdf0ca30e388e499a91dada1c2c5c4d7cb
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xcedba6307b73a71921d6441e31b2f8db6651d61ef79a1196df21fcfcf271949d	\\x440e7b5da35a699ae9c14dbcbbe223fb024c46ed8b18093a8a2acb9f7512e40d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5ca7d0d1ba1c94a61be104acab8197a0c91935cdda9a01b27a642dd74d52b548	\\x3744f291ba9364c2231739dc8e2ba955adfebd8b18d3dc2b5591b8ec04eee294
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe6fb0b89bfa5a7013d54a06151178bb278be54e25c9bf94d818f6c871ffd8906	\\x8e278133b9fb5ade5aeac1e4a14c836eddd5bf081af725ccf7a69540195a456e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x636a8458a37336ee8104d985d6123cfca277664b4759757b4e100ecf656a01c2	\\x4003732ef328eceba1590681790545d24a0d4ad99296ac755560b046ebf47942
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa33e5948b78e70b7ee9f846827d90dcf2ccda25fc7c2d2d9870d14157c8ad41c	\\x355c47a060877501c50d49d82c280dfde371298852117beb4038cf3d64facf46
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7cf1c93dae87ba2d0efe752d89008d3be5493961fb22c0c9dad7f07386728d1d	\\x2638d3382250de86ad1839c14748676b76ab4d28d19196361d2cd9ebb06b0189
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa18f7cfc4c003930eb1c33fc96466f0812118c6bfa974f3417ff4dcb7b035af7	\\x499b4ca7c2fae46abef775134b0e6784b4fefbee1537508db4e218b2e66b34dd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8133cafa6cc421e53a0386143c82e3c8ce540dd9e4add5a3a7162e71bfb65810	\\x14185e3f4a573dc1ab83ef2035aebf69ca8b28eb857ad99fd2ec1d9bd03756f9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9bd602d32ff32fb9f9af7ce7041df85d10065dc3b5fef96ef055f4557a1c3af6	\\x01a8fc884c6363fdbbeba79087ca79ff6d61af963e4cd712abce48994f35c5b6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x721cb21bf078cb0187447d1119fb00a59032826c53c74ffa9df487813103ed89	\\x0aa764c38cb14694fcf3d2d29ce705bd25b26218afbb37bb73c6abb8eeebd2fa
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xef9eb67b5083c817e5d6323984582caed42c43b9711ce8f92714f164804e19c6	\\x6ee0c140103763c80146fbd402e8896b333004f46b1658f0ea25c89ed2f04056
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1962e65a37cded314bac0aae8303b888d6251dfb3d0449451643d44424f5299e	\\x731a1222adba79dd048ec2396320529abc18e0a42dca94827b94ef58829d63f1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x562b50f2748fe60370cc4f45edecdd0f03cf56c82bcc33a211dc389977ab0142	\\x6644aabe0c2ea36a77e538040b9906691475a350a8d18a6fead1ccce5aa41f47
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3c4d44218567b21ad62e6cd905fa0b71e6cd72f38fb6be52a191a20f668760c6	\\x52b4ed28b263db683200a5e00a868a10880958b4a9f1b62111e089b761f5482f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7d8438be939f58452006a31d2460a660461baa2e8c740ad6640eb0b25220086f	\\x5ac69c7d171891b915ccdb32cbb468981866c8ef1fbbb84178aae6a52607dd9a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x72feb392153c5c2ad3a608b8048e8802b142648db411897f2576701ae759333e	\\xbd92ac106d404edf318725fb2f25a08cc3cb58945ed839ff3f08bb1ed164d6fe
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x302740a7c329938fe1ec05e063ce9d5c7b2289d849f0f4cdc81787b8b87156ea	\\x1953e51400a3e000f2234a226079106932f409c7cb2d8b125a4ec2630c65e405
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xef6620c79b8ebac43f1c76dfe8c21311dead16214a44c923e5b4b47454d30399	\\xf54fbe7ce2db8e48d49b021e977a309f82b6662f669c0680ee9b3c8b1a479e3b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb695969d77aa1794f0f9e4b66e6e3bf8cea54468392bba4c20cfddd74356d468	\\x8ef0258d647e8187660be2774da83299527e46e88a793c7ab9621e5c656366b8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x343fcae4422fa159bae74190eee385c9b6181912fd422cf5cbcb35af5d81c041	\\xabbd8446fe1160542ed7f81213a252dbf4cf41b3c4670a1ce6c490a10bf27ad3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4cad51a85b5a87bb382ab236f7d60a64d1ca93fa9b47416e15874b93328e23c0	\\xa5fdbe1daa4db8caf3862126d4c3c4154343ff866977c614aea3e9f85a8d36e3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7fc60fb9d9409b5af2875c1c4be905a33a71ab005cced6fdf0845535e58aa464	\\xccf79e3011d97bc2a3dd5ff8ad55ce2821c2928393c34e69825f7425bc611c6b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2ad22b0e4582c250e8c2e9f0ed1224f7b06f767da950efef9383b4f971bfd89a	\\x1d25fe78afd5b8ba7e03f449d33679bab6458486f62eabc8c52d646e03a9fa6c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5409e716f3e9b69b469b195cb1ce6947ba7aed6a418b3c8c0bedbe7d8782d4ca	\\x2c404519e6602cb43c402566aa2adcf285b7b74a27f18049d538c15b108ce0f7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa19021e1ed52e360e014f7d668a490ddd1d84617884c51c4ebfba506c5115efb	\\x03aa79a1a712a856017699ff9c3b9b75027a44281ac13051e586b8cb4cd71c39
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8f25167006ab44b08f4d0418075e752ffa6a171e17b048af63dd909bc6768993	\\xb14b03f70babde3b8704747149754793d880898602ca29cd8bc384997f524c5c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x14e97d7bc70973cd616bf0f4c5ab1568105c89116dc531d5acbcab350cd9cd0d	\\x3ddb1a943005b9356e839c31ce33ab7aa5d5525266277938e4efe92ba1aafc2e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8363afb749e18f5a7ced8d1f7fa90c22e368eaebaf815c67c3aa99573a93cb82	\\x243dad3afa5d644dc3211b9318188d253b16d4d374d15a42d61ecaa3d6635c87
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8343d5bef4154cbd5dd33b264cef15e1aa52dff66d85c613fe63bc8788a057ab	\\x4b359bcde83a3e2899b5c66c0a1fd2a7b9f847d28f585e3b949689b7a97746ad
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa068862dbf6bba4d23c46314812e32d55a0885cc72f19cc666b2d61afbfad3b7	\\x920181beda261a71edf91e458e4879788b870d3139eaf3083542fc4298bac346
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd5d4eef955351d87e00faffbc66d49ce70edd15e8761010c2fa2841984f1b5a3	\\x9f7d32afbfaaa2b8844e7190ce947b8f3b54d9275b99c5fc507fd5c36cda316a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfc101d8d4bb4fcd2ae999c9b7325493b92d2757d3d295624a90f35a2806218c1	\\x13edd74400571cefa32f1b32189577a05a4af637e4774acf2eb7c3745757bfbd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xba5acb543cbacb6866f25c853e3f457d8ead049e9d4d3214c5534f80036015d1	\\xd93e1e6f31a51f8707d83f81b8d4a064773a94ef6f8f89de63f44e1b19e0bb17
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7ff39215658ee06bc10a93fa344e22a3d774effbeec5927cd7aa7f29c9b1c5f6	\\x7aa3fc9247a35a0631f419fa5537617791f459765c1c403608d4986ec4d10dcd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x96c6df8d245c0a3b491e0ff4e53c4881e82a9df650f30c06c10a58f84a7e640a	\\x39e91b07346790cf1ddc5aba5734ed587430a352fd7e7de0f7478e48b4447508
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x226fa5c29d5eed22452011aaa741a81a70cb71b7dd3c423a989ae761fa9a697d	\\x4f37ce97557dee7dfcd6d65d497b3371a6c37d589483d58e2394e3fb2f71de9a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1691d511212f7b3f32a0779bbdace222f60405dcf1f9e70b95fd828b6773ce0d	\\x05780df75f54f0e37409a9a84828a4626065fc4262c67a0c55d8fa1d2473c3a7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6c2c07bda4c8f91ef3c55db99d2a0576777cd736a6aa9601278486cf9e988dd6	\\xc23ccaa93af87a0cfef64e3c9cc9a8872a6b1e87e7831114f80d234c88c16be7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3d312675af0b0a309c50d56a29a5e24239f756f29c8b8275afad1ea32aa67e5a	\\x826379cba26f2d00259f28a9f8be1351978c1916569a1a789c2f4a09e4581863
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x60c0b8491a2f046b02d67ed24b52c8f5f35727fcf24252b974cb267a2ec7fdfd	\\x100ce3708957a885c7f7e4b69935927178f75cb3b36cecdfae514f70897b6087
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x76a959c53588aaa6cdc9e316a29c938126378d86592830eb8728ebf2c2fad67e	\\xab8767fc6a3f0e952babbf623576f203fdb6a96c6e3c7f7c90e85e828f4596b8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x11a64218753b20244d73971a10b252e2dff404dd54eb4a4fa010e130089d80f7	\\xea8d6f4b127e94231aac03c91faee8a099bfd7982f4a87344846e0562f07eb24
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xaffe0d869b75f8fe48fff59739b6dbb319a26ce17c96d82bd52881c8c63a75e0	\\x7a827efd1bd8f1efe105f08262abec013daf949083725fce796190ae6732d7cd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x87b72de570a8d189508625dd9ac8f19d566e435325f2e68de41aaa66e9779fbc	\\xb7d09d8036cb69bdc01be66ef08eb15f529963315c29a86c6b4929ed40c9a65d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x33d3b250664f657d3263044db3958e1f949143328190670ee9e956b0a9333791	\\x235a1105fdd973892f2a6ee6b74445360e91ce064afd59f0c7ed5cd0a284c66c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x28fa7434071b9396e858c1b867bc2a6c6ff087b3cce78b3d90f6480f53f345be	\\xcc25fb5cc83bb2858e6404c215ddbdf6ca12aae4514b6bf25df953bc15e60c1e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9d47518ad7545a5864651b83d98fa32a9ed19bde4291e49fd8061a1ce0920c72	\\xc5ae312838603d987ab2b2771ff0ed4da77970e0d25f380fddf39945b15a1840
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe75d276df5f369f5a0b81b477dad62c77eec048e96005e34aef733feeb98e8f7	\\x26b5046a6060c567c0b776a8ef876d88b12a370ec01533c0f560005d498f59ac
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xea2816aa91b04d2799dbef1163f363402a80ba233b18cac1899bb36ed9cdd55b	\\x833795e2e41bbb0aea054a4b067a0a1f85b6cc6ceff39de12cb3271bb6fd9e29
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9dab0690556a33b1d82b9f393ed0b2a4b0b12821bcab87169236b682ee395fd8	\\x603098ac56450cb89dff92d8618a0a9ecab48dcf0984b4a2e3550e1c35fb645c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe307732b282ff106a08e52c53cd5d2c328000a5af8b5376c75ec9bbe1bef488c	\\x410cee26921b654c2e342261e42956349d3349e061c820ba83b1223d496a505a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfa2ecd691f93b7303ff462397a5ef259aaab8deb7846431fb3c7ddeda21c6d1e	\\x51b0d43872feebe3c5fefdb2982e9ba94028f26bccd3ccbb9e60b6411138370c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x70d738fc0c599307f7add4c0d92d38ef1c244009816165073b75965fff7b4901	\\xbb7741aae4df284ca3bc0d165c3e5611f59dba947a52c59430506a80f04cc848
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x59f35904fbd92306618d9e7a7216477836b0333ceaa274b2a68626017eaae240	\\xddba3f613a6c2576292df634df0494ad97f4835457cd40707f4298cf9def044e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6232bcfc2830ce0357890fb62a7ef800dad13cb06fc94d78745382404150701f	\\x4f96bd764b0eba8659621970f77143ba3aa643e4c1b63c9e2cf34bd802e5a171
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc1c09d7028423b51633bf79d752e10227356d3529b2bb34d933a779faf7862d2	\\x1a9648c4528730dcff13742c56ab2e4fa852bf17f9d603f3d21bba2d54de78b2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7e5dbd937d923c67d57869299713053db915733201dbc517e57f279bea7ca7b9	\\x075a0ed4137a46ef098b7b0862f98fad17ae85a113cd5cfaa354e41a1787f1f4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4864636c1e838c40426a68173cbe9c8ec8a0070ada4c03a0ad02d24d8d38a972	\\x9ba1c9da2066e09862bab197691b6f2642edcd58666b347036ff2e4c16c5da2e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xde5d1c87408eec69a9305b094df488788883847bbbae245777ac24a355013c1c	\\x9af541ed2c705bbb934f4bf1c25094b7cc1e04b37f002899ecff4d066336e46b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xce28ff20be1f9c52dc96d16ceb44ecbc8c659f0c9c71aa2ea5bdbd489ec2989b	\\x16431662d01bcbcf553b2eb667a5e769100d9328ae3c9c3e2fa85be935174c17
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf2e467a227103cd8cb706d5ce86a60d1ba0e3737ab4d42717c5402f1966ae8fd	\\x4ae1593d7abc851b2bb78b38f8a2608201196518026fa18e339a7ee79cd8a87a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x13b8042468b517e0a7af9e42bfc987e262870aa29185b1e34f07c365588da983	\\x4b6e5b431b5a939da1d160043c03bb2c7622f153a434b850697ce529545fd3bc
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x13344099d32812c4b3af77bd2c64cda84f141a7ed58a1110578790dc8f49e9e9	\\x81784af7d4525d1ad4ee86a3fe2f179e8f837b188bf7a80acc8f0df6760e217e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2bcb7bdf15aaa90376f1b097bb07a7aca894a43f38b655efb0ef37d486b4b2d9	\\xd9c2b10b11ce9782f231b16a41fca832b68ca301a45a5b2a925812a671b783ab
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5c0db334758adb936a23a355c3b6ee6d68445dc3c853fc9e916617481db02c94	\\x342aaffcbf4077c629ca2171020276a1ba52252334708fa6cae032ca86f1c378
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x40eefe09b2a285a9402689ea14b1eb2ff50ab286979ff43ce647e722075773ff	\\x8ff23d80c1dd4107b888621f375d7a50ca77591f45e534c3a79ad8bcec2cdba7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x88812fde1ae874255120b5fb1be133df06ce8ff5b2d2fadd5f14cd1fc47adc0c	\\x26011f8c635c576b2e1bff07e79ccc30c2fe3745b94f698ac5db546590844be5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3dad5ed9de404814f757f1ae42c51adacb0caa807ad9ff3d9231d490ad9f1eac	\\xb66f52aeca46f0649bda3f02bc66530776c545e2d6f75d3d11d6db9c4966afb0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7b5d35bd7c599826bbda70894f16dc5de3d5788f2a929c1d730b2fed7e7a58bc	\\x2fddd79c929b2dacb2d6d48537c0ab42636751b7a6fe3fdff3e02c642658b847
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7121eb74c9b17b1da9896d843577ffad4d4d94a0fdee3b76da92be706b7d3970	\\x872be48633895eb236f15ea6abb4f9842b988a47abc44411833aafaae5982cc1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x91f57b610eb672576b8fcbf153c7a64a436776aae21ef7f24bf0f4e4fc7bfe9f	\\x198416bc1f0048a70a8993bc322e1e1d319a365bc3920df688e720c2a7a35bb6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xeaf95ff08776a8d29dcfed04c2f2eab3a903dd38dd4fcacbdb7e3fa382df4a5f	\\x471233a3d5c1514438b8c2eef48fd4d2efce9e6af1aa4167c47f4c1116fa033a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1f3d5d02782904d130add1c7ede7eceb27aa83e5dc6be2654cd4cfea2a3fd06a	\\xa02c99710e5e1b8c1c60daf52c6e0ebce4857056a65fe0765594c353e84f00c2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe69644838741800d368cdc5b3e8119804e26dd04c5b5863c5d9bffcbfd2dc06d	\\x975f295d64799581c6e2201ed2a52847e350e9956ccffa139538332f1dde5043
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9c84a68df376a8f4033661e0b63d045b3e0622345514305d4e3db516b14d7562	\\x7eec6b0e73e8efd7c4354c1baae4fbf92ec3514a39f86eaa001f3f4e7b235f12
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1c39596e5b3e19e28d58725ab51c4a1c023be6c6078818c5c3c35ff0d1b417cd	\\x23f4ed17c4be709485407cf0ae0602aa9788aab19b88920ce9bd7f83e33e8198
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8a1554a5abbb2544e3451570d5392a100634afbea23c4bd09b754e39c458ea2a	\\x4bea25af6fb495433d94a8bf87fa7a2f85b5c6ae883366a243b08ddbe3aacfe7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfb5969e0eebd91bdee363254894dbacf719ac1f2676eadefeafbddce78c62437	\\x97ca6b7ce9f7ac426df6794fa47d7a9582a6ccc613fb70826630d3e3ab0c4942
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe3a7b3073c66268d9dd9865c67aa3fa157e35fc70452685c43b42035bd01318b	\\x48e6a33ca9008b0c6f695089f966d5ad9b8ab9412b3196489b34f08450755e01
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5901467448f66451ac3d6221e0e50e0364f5d99179b3406bc85a9da7f60a50c8	\\x1c552d695e7ed00eb75c36016c8ef7f0b1d606905920f428d1e31cc3179bf1af
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbf1805fbe5e90dbac6e9d45b99f4dfee25b5700f55cc3a7570e3f67379cd1783	\\x3116a92e864ed684203d5794074f9f82fe42e21e831f171f006da052bd78c3db
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x615223bdc6fe201e660d636b5ce8db576976cf9cb2015ce9e67365e2db410ee5	\\xf2ef1455f9be34416b5aaef6b87602dae5df25922f4212586ae62ec30bcc633b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2a325530c3c19e855627f9c23690fdf19829aa72554d8179296a75cb6cef75e3	\\x0067f56e019929554675765d24b57ad1c2ad7b0408d7d4d3abe6547017d0f301
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x71ff191230ff4407d44ef375e55a9afcf15b06ecbe04ca1b7387a77b7d72db7d	\\xca3f9221628e9760cf3726491cc39a71d4ab2159c2b1eb5cb98d9f27fbcdf271
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf7d12be0a2c518a97c699cc7c6bf7c96ddfb380cc8c77a6406835086d0d4141a	\\xecb6c3d92818f064900f4d53e270939cead3aafef69d9a0c2f98e123134809c5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd42721abbc127e3458ead5ebc4d3461d51968cfc7e470e40ce9094ca6cc0fa13	\\x5348986ad212aa11b20662a35659541ac927ee79ec24c5fcfcfe50fc2dbf8338
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb10b777ef2864f144df1c2c1673f6231644b10f029078a5bd915c284eb367c29	\\x7ff98d9104801c92c8503a948ded0ef24abfbd7369afc95922be4fd718f6a43a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xec6b164066b524091dfd38d9129125252a16e0dffd5951fe5be289ab115cf844	\\x01d4ff60d8709683985b437780f622e69c1e399617df6e4999a4690e93cc7333
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x36a9f6fbb9357332242916766c88e01c438bb628c814f5d5f9dc45a6669a5a29	\\x8260d16c42b48ee08f3c3d39ab2640decc0e81e275fffaf32fda6d711a969822
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xafa316248df6abe16f6e674ed925a14f448e775b136410d92cf3ae96b5f72af9	\\xa30496b15c49a070c32f8a51f65f879829dfcf275776dca3b4bba3ef4cea18f4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8f7198d0c843594ca1dd20ad6413b59f3905b8a3748d3b0f7e50c4ac4f7aaa76	\\x8558ce7a4fa59c24f10ef7585dd15c2e861815be65f03c1b5a08d820bd865d2c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe5dfad510b1f09c715c606318203ff7211978eac4f1d19e436b0383e229e7963	\\xf09d9b8b7872c0f98f4bdc0db7614f573eb51dd98b3587aaa7fb6680c5c7835f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdfda0a88ee45b46b874e0532065167b459251a8571ab1d345948c3abc070a0e2	\\x7df270d83f4cd968c224fe9d708f4c8e57d16e623219429b6317ff18c96e1b67
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x559f8ff0876819669612e8067a57a93f850ec99b0ce332a1c7fb6bee73b56089	\\x0d845b11b8a731b45f32e2bf607efcb83221e7e9284e75b93b6ee0186c535738
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x632649dbddcb1e536b585c0af9df1f1e6bb6071c7c69ff46f65b58213edf9aeb	\\xbf3763b46dba138e3dc3db62d685e3fc40790ce90fddf77d21b561e1d43e371d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x09ef47424aba2c2ba25b5e9269890e6aa23f71577b111064db4d94cbdd718e1f	\\xee5f84d4c5a36a3862755ce12fd22869755356732598bf5b8bca681877640c20
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd0de2fa308cd963f2bb0d67005c5cee7b3dfd1aab7c6561805981fe88b220f13	\\x88ffc44a2c67122cfe33829cb014f5b647d55bde18c55818048b5435e3fd2329
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb4f497cc7348469d5de0701081ea903858bbfa089d04da9f2f5ccf33061369fc	\\x00f25748140528c1b7bf2879ba137031b14eead0510c5144d0559b6cf555ebcd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5ef0d608e3a8a6cbd3d68293847f5b7fcb6a1e30ff3566a534d6f54c1fad7913	\\x4d2db29d16d135cfef37a4dd052494f66341d9b5a2ff0de7aaba99d8a2602566
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0849cf0362fd6cab56fc1d0fee267e58fcf134eb3f9c176f4f4666b9bff03892	\\xf3202b494e92b4ba5654adc318c270915c6ef0e52f9c712300b378e1edcab703
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x57e341865ac815018d6c4ffbe3d62c2ccd77a739da0e69fb0743b8ddaafe47f1	\\x4747b03fb7b50aa16fae82980b4377181393e8bff600273c360c77c95c017342
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf6e380148873e4c18ff4baa1a093efc0b5ea883035cb739d8f48aebf494e2ffe	\\xbfe212feb4033aa20a8ed482f431fd0bc631a3e8245ec18c321ccc7cb75147a4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2aad55ca404b440c57a94f1000891a841d3b37d99a16d6614c5bc2bfcc0354b6	\\xa0d06484d677ac636db55aec1d32bfdc4ae88854da7e1286647845ca355136f6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xece1c3f2c5f25ad082ccd66982ee7364cb30185b9419cd961fa2a10100c1243c	\\x10d76e2144d8b5ab5c27edb9078c76fcf65f1b16a0548e3de776f5e2eca4eeaa
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9f75fb4643419cb8e3a48005efaa4f7f9314c5107b537758c77031827355e81c	\\x6b6ac8b056cd0311f2f6d675ddd05baa43db27ebfe1fb54d8994b1611d2c3ea8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x826473af15e0a0c620f9fc38cc993bb7ed25dbaaffdbc95cb344ea4b5da8018d	\\x90882a4fd20733b3f4544b4cfb9e2868b0ea11ebe570f99c7f19cf8c3a59c33c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5d10dbb35d8e04dc233110c8cb3bdf181832d1b703d9ea3f68a82839d035a80b	\\xad9e7f49e35dc0235fc37bccca0c662f9b29962563735fdf31c196da62cee734
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8044568cff3f468401b1a37cbb5aba69366e6f060b0f5f38c3fd3c2db4520ae2	\\xbfc359cdbf45f1d68ba7026fc7ff55eae6a0d2aa7cc32513f093c93748b27f62
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf733d5c90867315aa26c4f162e655c3fecfd9e1d14050346cd02f707b1a93f1a	\\xe3978630d0b4c54c9e92a2ecfff5e03fc8336722a4647b7c0ee5d0656e2fe7cc
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb8a4d20dc439e6591a8dcc89652571ab11056630d843358d1c2ce1e6e0522dd4	\\xfaa14c0ee14c82b70155a8b7dcd98b086d14a94126483213d2d6dabe0bc668cb
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd80a14c51630e7038184116aaef9d20935b89b2358eb2eb60861b446d1b7b692	\\x3029146019fac7e4d5294285dd908f2e1dc229f47349dd4d900845637d12eaaf
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5290e6bdb46d4a68e3f70ee2392ecd93f69834e333813843a0004bbb80b9372e	\\x5f96f7ae9ae86e4a51f74198c1aa5a8ad14e818d266dd67866442d960a1e10a0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x01678856898e37a7edddbcdc3ab635ed719efd301a84624cc7a89ee1246ed42d	\\x029b67cd78cd547d5c7f70a2457d3cee8aa1f9fb5d13868476108d4768773628
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc0d41cb77e672edd1c761c06a58af7180177b1c2fe86617cc396789617b438e9	\\x4b7149b0e591cda03eaa50187a642f46375c72e8b3cc41c78c8d7c417e614855
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x10cb3ab6952aace80580e84844077c9d2c43c8aa2180445496e323008989dc9f	\\x08f26f912891ab6711c60867396a51e00c63651d0ddea479cacd85f86006fb05
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xac847e9d30d9f7bd972205b7250e622176fd71cb57d41c8a8858332953e7c0a5	\\x0d343c5e9a38a1a9c1730ee11d1b981a4d9341c0f6aa8c4ff429ac0b4c350e41
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x07c099b2bfe13a32fed8b1018ee01a93ea8b9b21f26171fcd52c9d79fa20094c	\\x336bdd4f1e99ca89f066abddddf10e4186a21c08e54cb319b2b5496f155e56fc
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5c9506cab0a8d2c8737c703d7ee1ef484ff8cdf747bf202cce366d93e59d773f	\\x7ad20491504440deace0e1c464b18fccbb86c08f03e5d76ee97d244b5b93cef1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8d7de75f9539e0da26b8cffb70fb52d949a8e06c62b2d15b029eed872ac4814c	\\x5a97b7037f9a0ab536f0a1d4ba7e79e687c708021d7a74f9203deaecb138677b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x13191c1ce767e7d263847e962fa8f33dcaa1f8f708ec2b11abb2e4c74d5803f2	\\x89cc002b20b77a211c3abdbe7309188d321c08730d6df2d59b7c08e29add269a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf92a88f4c121d426434a7959fc09ab6305e87e69eed2d6d5736ac56df2eca79d	\\x37c7cd53ce762193aa182b96f248676b489b1325d509f2cda0369075d0b41285
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xde94c2426d7fbfe8ff988d2d4138c837cb98b05aa4d4032d2a60c6142d2a2d61	\\x4629d1cdb67ab1aa514c437f0f0a2a659dea48ef44fa6295ae5db8b33f07cfbb
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe004700309d0eb53dcbcaf143f5f4ca87bb4519787ae8ef435472407667da98f	\\xf7643759843282b06379b013c969e25af0cb8acb25e7b520c85cbe466327666f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5c3b7804d16de4ae5d42682ce94d82728fe6770040abd8f76ac2024d4857ece5	\\xd54d81888637b501a03d97e9a105a057b1be9e7d203fa0b713c79a5670bff132
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf5cac378f9a17292592e4135469ab1736be49bac7fede1136f2e8203fb36ad5a	\\x78fa9e584ba611b718199b50e25f821cf74c37694c46ad93036ec11c26150492
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa2890e7b247f55add52cf1a99df37f515bac88de23296f5d02644354550c8803	\\x1dc7abb06060ae963ad0fbf04750db7e58768b2977d4b372d0937223b25d0dac
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdc31779d181c22184c39814bb3d6e69d757721e44403282ef9bd7f064c0e3c05	\\x0a3e052b4d3ceff849af0313865c8a1761a00461236a26cc96e45a39a17bf763
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x22fc01300117a82e69ae37c5efdc5172c6fabf30720c6caa337ab9ea1d0cbf50	\\x51d94b9e0ac6af1be52378294836560594d4a0ab95dcfe7fc162e007c1f80aab
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc6a10f262c496f1fb074dea2ebe1f7d9c1158abd02cad3dade1ff23dc7b1ee29	\\x3a2c0bd649a90601fbf2f2f7bf3dac47b18e794a1247330bd36fc6a3695922e3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc6a1c136eacbe3227486cb338b95630a2fe07d2b183e699cd167257faa8eb4c7	\\xe7caf377efd16827e1749f65699e710a6b40de2441df36f65c28ebde9479d4ba
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x49a02e4fff78319a72675183645f297ab24faaa5ed5c6f6c100fc96919c63f73	\\x933608078d47f27a0e0495055e153d3e3812230d87dbe906e1d7a132bf7844b5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0c80f9f2b98db25ab8feb4c39d677161b4e017bbe8457297704866214d36f472	\\x94162f6de4b307827865091cb81af579ff50f7f2926f7d7068396b7a7de43ae0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x102e68824d6b514fb122a9413a899829c3dfced56fb473ad94833f02ce1c5c67	\\x5cf6c196783a1fbcfe43949a4d5c3ecca9473a4041f8f354b7b9d90fb9381299
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x01e54e18deb6e02430316e6d8bd021c23cde8fec1a026b9d652e7a371aa57afa	\\x9d7d511376cb4e9eb066f1eec3d1237d2af76265863237ac6d36d5f840c091d8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9d8528e7c35ba526026701bce02e34dff91220ea4f50463851ce596f34e634f6	\\xb57b000cb485a46896c51dbf43967d2d62298bce47172c226e6ecc34a4c6c736
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0d2078a250d731280bdc9b644e6716764395e3a4c9b2d7405cb56f05eff75248	\\x32b7352eef768e00bc795a9a1421e8b02035dbf4e19d8051b11cbb1de36e0504
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xaba21c619cfc5e27c8797ebb1274f3785a19b08bdcd33bd49ea1b300a25253c8	\\xdb863303aa917a6bce642588b9ba5479a19b54e0163b4cda57ab67eca71e919d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x20250a646c8e37252692d4c92d555902e488e651eceeedbe8d6f9712e63c4ecf	\\x9d58ad2d95c1f07748f328ae1f4f59ac7f6aae55c3234b055324533add7064f4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe54b1b522f8958b27bfadcf7116022413d401b421eb479f3f1000758ad32d904	\\x4a1441b89cd1a14d7ea641b1ab8046d817a04e2bfc1a21c3d5e581bce7f9455f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3719bd58867c9465b3f3b6b353174f03f3ed1ba3a9fbfb7c30fccac7e3e101f3	\\x8ebc6d4fffd460d55751ad924d4e4975ae9fffa007d4e6125dd355f53ba9d668
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8b501271361360306efff57f03ca081ccba07d18621dd734e04427db9c2061be	\\xa76e755ce0f7ea2bb8ffc8031c49b0a7499d6a40a3511ce1df86d425b2e6b427
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x930f0eec9f7c794557b1f807db5ecb3f8774a9571769b73e293f80e5e2b66b35	\\x52b54d8191a48e4d6c4f363362ccfef15677ab203956740e2c2afd993eda6e8f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1c708df471827ba0345aa8aa324b63c437cf8127724a6243901aaebaa689abbb	\\x6b7cd93b448ad52bb52f9a97f6f163cc175984636dcf69bf8cdbd4d380a37a0f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfb2906f17b98ab05c870a2bae1f0036c5362e7749acf3b4c771f957e1c6ba744	\\x72107272fc31c27aceeced43221d5824f21b7377df108040704f48dffaa02017
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x711ae70758d40406aa41c27adae0ab338dce562ecb98e8ed49b1978139cbd252	\\x246fa7ae8137d2ff849ce737fed33152e7a0dfd3e13a13bc95ffd08606958aa0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x767ca2d5f0b31a905efc9f54f1720b26da19bcdd9a47267fcef46188d04e6b9f	\\x6b705df9dddb42e587d8f786b838dd92b12b018c9b4dc2fd02db18b211142358
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x858b1da7be35d9c2e471ba7b812aa94eb722face0c2f108fb4b23751f200c470	\\xfb0246e8c1c5e8089477884de1ed5cdbc37ff9f747fd753e7397603a53aa3956
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfd4d2a2fe7b8510b88d823a011dc8260a7a41c652c220f92bc6564020cf9c07d	\\x6f31a9ccf37770e00800d29472f3a0d30497670730f0e2ff8dfef9b172ec9e96
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x95d371e3aa9a0e6bc9f3db18d0a4fc64d81e64bfb6a79b80f91cb529ecc4a1aa	\\x1df78e2a7a15cce6a18d3900f481644035e400c87f7aa38ae80b93bad4845234
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xeab610bbec91ff3bcd84a452ccad6b95b63b09ccfe6f12bba9356c8f1b543f8f	\\xc7b4f39ebd38499bcb022df4356fb6a953f467d2d718fa671ba2aa55f9f7655e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x81b26df0bc0c2d5242cad1be962a49695cbcc7bcaf030deb68dbeade083fec34	\\xe97f7039e2a75c936ff1e98d47c0cbdd6b4d3f09a592c91e64418cb19f55c84f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd02bf206fd892bc5e5e3861fc6a5afdbfe23b9f923306b333c63dedd19613a9e	\\x543b30a5cc3f2cce5188f158fa5fdd026821bd44a0768d2850c29694e0a87700
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf4f00c806cfb10544b3fac4763dd3da383365aa7221dbd48582f17913f7b17bd	\\x17546000194139d6a79469efff0d254ff3af8ca2a0bad9ffb39196be0b7dafba
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8274d85b12f0d35d6e86bfb35c170cccc0d9d40e87581c2856d964f91eac500f	\\xb059b81e75cccf472f5d7b5dcd047dbba57391bf04a36cda68f4231a377fbf50
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9f77ed58076c1ff9a7dbd5421e710a13a423cc2f5e7795ff39c182cc4eeec242	\\x0240645f1a1c27fed3f57952688894d0c39321a59f58e60a7d7e6719ab53f66c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8d15be5e4a076c952e9f4fe994bf125e0ac904a948a738612f0c95c6b5c0e0fc	\\x1366576d1963768c4835a9518c307cd877b2026df28dbe4faac36732a38686b9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xda2991acb9f92e987fc8fc333950d275cd0af2b5b46e5f632ac609b566fcc73b	\\x103530fe81db927596c7ab91548cc469ec7e580de76b46ede7dc107f079dfab6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x75108119ba2ecac6b59c5f6999f145f60b607b0e917c1d63c7ddfcac981c76f6	\\x26861138751229e16b23d96bd1d64a6e5f63e06f1d5cd26f94ea51b288413123
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x76e226cf3ec25543ee168f2f1a738c309b3dba6048ef10f8238a5a96f982a65b	\\x3ccb259ee83db6d14d1059550014f011b35d98bb63061b8be725aeb1ba670d5a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x14d7ddca3d4450534b30d12a909409a954eddca49f935c53f85e306d56570412	\\x8a75f3e069ea0c87f83306be518140f728b1f209ea4616c1aedfbc5d5e8faf1d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x180ef11e64835c8c938aceaf55c10669ba965e1147ca350f1303f85185a82ab5	\\x0c46d654df1024387839f9415e26f4049675d3a7649765344ce65d4335965101
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xaa696e71a9136b8c2d680933d636cb4f88455fe9f8f803b99f7a4f8a070c5628	\\xee6840743a0e4c11f89eb0e70da24e2b02a5eaa40436790e5975e739480561b3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x68f718f32d7e94dcc73118bc4bd21a836323b30c63185f88c9931af7ee17c2d3	\\x5e03d7be8735ed4d71d147bc4795a58855b657952eabdd25395c0088cfae41ba
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb2963c6fc299af102004cfdf8eb5feaa654c87fb88071890e201ffe86a68daa8	\\xc0d1c65def86144bd0aa579e91818fdd10a8edef395f273dca67d8a141e3e9c3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xabdaf3abaea5a4d0c97f49e9516b73e070e8240744630be34c868381c0b8ea8f	\\xabf6df28ed581ac8f78392cc338b79d665786c5ef3d1ab3764cebc6ec4b4e22b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xefd0689384596b695b41b951abdbbf375167ae49fc382c92d41b3780b0a7b386	\\xb5302ec7f7c99b7795e5984940e3433e0bbcdf96e19eb18c4651db780c6d486a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd8d20312d50aa53355c808d28ccad5f0e7ca707c4816c2ee7a2046a3540a19fa	\\x9f441abb606b2d06af84b4bd72aaeacb5cda9f8c3fe95d0a81944f04cf8c8137
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xcfd409d3a2de8fa35bf1a4cd9b57bccc4a9f995a8be82ceafc36124dda9fac45	\\x65d5df6fbdf18ef6a54e27c0bd141902dd72861848aa47c2dd6e498ced764e6f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5d1975b4f09204531aed9daa48aca3b6ab22148161b9e235d7c2277b38d5de99	\\x548433f3bfd2aafe12a14d94d0c64f03e8151f3afbe0f46f4bd5134b08316782
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xee711482986eb67f6a7369b5e68eb648676d67ae93116a378b1b755a1f5f91e6	\\x1722db2b3c7ab26224d721f25d49c6cb94c16d56d04e86e632d6e5e1642a1322
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x55d92aab9a8666ba13a3979b0ec27614ad14b9c7ddd8979aac6212b58533cfef	\\xa547fdd68fac352891ed831a6a292f96d59150c945a2e48a745267ea05f4a0f3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x049e27aeec5f961aeacc5a464636ba75e0f921c8e19102254e2e41c14c98d420	\\xd27d274547e2de6df85e7975aaa48f7ad32512aca636a317edb5a59212e0372f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9238084410be48ae76823c9cac16176762f487417aad5bc769f7445c70ee5cfe	\\xec4d0bc85c7016e74efdd42ec230088cc324aa0acf41bd730cc3dd989e2ad6d0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5d156041dceab6a558b135dd9c0311851c64597a173f5e3f6ab7486769d1a62e	\\x380c76741aa6c8923f750b8fc8d008cc78c04bf08c105b9e5649c35844f5f3e0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfe754a895888a9f49f74cf6a71db11be9c7fcb874ef46c85e8d357acaa4f3f2a	\\x50ae05438ae07ceff253d74538c3aadddd6cfc6ea647036783dad91aa22992c5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x357093f52c01d0cd6973ba373c36fe6f8a0405ef2c1e98ddc59aa6e15fe47d91	\\x6cba1dd703b93043f114d869fe3a1592e8e783b48602f906d59299c0739df139
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe777006ae3077827737e102a69a026ac806c32736773d110dac63a770302fc6b	\\x6fbadcb0870264012f959e3c52070340adc763efdf3483df99237a60d325f4b1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9337eec640dcc044043e49c689052797c75af5c49d52825d47908d3cd83331bd	\\xe8a80f3d38f4ed700fcd65feec15c8714a99f956fb40284920f61a3a2f8bd7c5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4cd7a4351412ee520537a24b111aa5d207519a85ef6f16b0afb03ad11093fe9e	\\x8f7dfc625fd5e28a479a5844ead757486d78046a7367f29c74d3243c6a888ea4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x326675f153c8de6e4e402e6af71950fe4dac870826dca9a438682586fde7238f	\\x37e133762258f60a71b3f4fb40b019b4b677ec0df494fe154c4ffcb622ea9e5a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x904001003177b30772ea5827dcc2c179ead71aede7fbbaa24d044e257e8e9fc2	\\x780cee754f5cb7237cd44f1c2dfbe4896a154cd1b09cecf593340eb0ffac5e86
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xceba84caaecc9d09a46760f94223061e6f698e59ae85c7fef8527e0a4111738c	\\xb9f95ffdf581f2a48ec94009ca5afd9732637f9623d8521f36eb48a7a8b1ef43
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x50216a6b965d058b53cac157a4bf32285d8cd6b6c2ed0d73f2c550a270cb23cf	\\xf3ba9a4598405dc0b997a2cb3af53bc5a4a6c81bae4377532e3ebb523f0ceb70
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9205fc1e132d27be693dcc779e1a3eda9111c5efb313909978abadb0c87257aa	\\x0f30055b8563f6bd950a97a4f96296a80252f953bc090e1f6470d270cc6abca1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdf01046a00f29d658181c0702ab03b8597c21141e4e2468ceff94b98c2ecfff6	\\x8f438b82be5a9411eeae2fcac6b3596bc290ebc99042088718d66adf4db6ec5a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9438aa2aa8179bacd2714fcfa14e969e437ab521038861c901c4a56210950170	\\xafe49163fe47402943566e290a29888fa64db634a73e57fc9a159335bd402db8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x598b39b4ce42a9df9c57b34c559f1c38c7a05f2812327c0eaec1deb42f30958f	\\x1bb70e49656b187037557ea0e936e972e7b19b8313bbba7bad2edd7a437666b6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1270e8bdd6b9d9dd12062de5cc1e4658ffddc34b226343cb01257b60e801ecc3	\\xbafe02892fe5997f9ee4bd4e9230ae7d65f5885f86c84d5fd060b9847a8c9bbf
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xce05f2259d601e56986f4990d0e0cd75660218c4c3eec6d1e18c538cd6ac7f07	\\x461fe1e38fe6b3ac9fd52a2bf498363822b2a279b1aaab655ee6cd385df92735
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5aed0c69e910cee40640652356067905c8d14d1c56a432b4e8b9cfb27c689ab5	\\x61ae406c4cbc7421a2ef686eaa7656c9f1ad5d9da3b5fa7a3dfc144360412237
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd1c7e5394614d64bcfcb8936a051362c902250b09ae6bae7e20dfd657c2d5f1f	\\xed78f23126fd1d6ac612ba90eac623329cce82ee7914036f3b218e60b3857912
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3453b7a1965e132b3f0b180abcde075eeb2bac7335edf6689ea9b57b19be5c3f	\\x2896e7be9b51698ff5894b9d0baf9e2b95c0f6622e9a1bc5a6f383029ba2d993
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x37fbe16f3fe9332f3efb361c0babefb01b7e5780eb594539cdbde323c3817639	\\x50f51dbeca685f789ab5b06a774a7c8f4825da3134a99cdf3825d2245061f9c7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc9e5ed2f90ab81d1e26d819a850ea0cce7ed1e86e9a20bb697b33f410fa4de41	\\xff8d394473e301d4a20f81317398fdaa690f835ad235222b7039598da91871d2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x24200f8f06629b726daecf672fbc9ed0c94dafefe156aefecbe07b2054fd1399	\\x9909252067709a6a671c2c0c27ae0b500b6be3c1ab85adf7a29b809c88c1a042
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4b7a52233fd748b06075a72aac3c86a0a20f40b61378fc173e179072652e940b	\\x23a148461beac234b7db32fdde8ae080aff6300675f8bfdd67c2c5f6d0e26a6c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2c92fa6caec764eb666cb82ad2a68e727832e35cfa1075570b567b3aa4a6fa3a	\\xe42fd1871a8c56d521431cb02ad8360b5cfdacf8d77a897fb07e32917c3e51ab
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb4b38243bee173b0dace60d828fb0f749726b6a14833bdea3d14ce7b2743df8d	\\x3c104f2221edab36450b5e63655f11629547ce315528575977e33fc901858b28
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf94a550dd768695570c3a75adc7553ee87fe52099a57a8a987be5b9c30a22096	\\x615f46c7b991378dbbd880fc6fb1129307d9da9f8d5e6b4cf9bc0340ff287fbc
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc4ba9dc7a99f3cbb29768dd85b9a6cb8a56d0629292a7ff2e61ff491c44c01f0	\\xfcba4feb7f84aed2adcae06d803961d40cfa01812bfd35dca099a30ea277debd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe3d24cd0c7f71ebbbeedb45b9a90f450d766a5a7d37270d053df4df1b4bb30a1	\\xe6b4dcd0aec94753a2312b12142fc71939a49bff24d840a02a03f268242d5881
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe85acdb96d0b65310db162483ea4cda8ea995d481853a06675849e3d3d4ee726	\\xbc473e073c2bed81756497885c2b6368dec78cb33774933f4a5025cd53c9efec
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6f04840833d621ffb182b1a6bc42e7b8659cf3076831e77c8c6012e4b677df40	\\xf4d6856b207e1194f6cf2efb78488b362069c2a9990d56ab45494035f7f96131
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xca54addc952bf05d34de7b71dbf75d8d092b233222717773ad32667111bf2263	\\x430ecba7da186f48223ded331ce89566f919100e27e57d40c7ad7e3d9c1b5166
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xcc90b6e731fdf4c48631b9ca539c7c64849e317a6a6b2056caf38b767c760f8d	\\xff2ed7cca559cb5dddd89d5d7102e8de14a5bad12f0fc25dcf937aa597acb631
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc002c7b1396f84b32f884a487a1c77cb741ba45334ba7fba8f9c7efaab11738f	\\x32ecf0bd6cfc96d89e45c5f4adefe2754ea7d2a2f4baa6e4f4b797bb93ed369f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2ba39d59d4e7da4fb8ee7f9aa02ad8010f8c91c817efec0c34a55d593f92be43	\\x09ebb985d4d22aa89e4d181adc63401230cbdd9bb6f4dda656a6ebb88b4f6817
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x55bb9cd08aab325bd15341f81f4b21c23b7ed69c492b1f75b494d356658efaea	\\x77a5a418f0628125f686877b8355841da4b3b8f5f188957afdefb7cf212985ec
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7742e1ca36caaa26fc6df651400511037d37b747029b08635c7675b2c6deb4aa	\\xa775e7ffb02046beebfbcdb9de88f474571d21cfdb7d2727b61cd6e8eb99d1fa
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb03df4f4a69ca2ad7167e3742b3ab63c46daa7d28a6332b28828d03c71afdcdd	\\x4956e9c5ebd9e2b2098f2ae363b39f163cdbd97869341bdbd4201cdb71193a50
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbf0da5cf4477f22e59fbbb6125a462c2ecfe5bc523dee152126ee24d74130fff	\\xe0ed97cfb2e67083333b0d5c887f5a8216bad8ff54d680ba3252625d68635d0e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4e1ab5bc40d87e4d3a8274801847102681b7f32fbd7ca320b40da301555ebbc1	\\x2c37f5c0d4762748511f344b576c6d76d9095f5f491dea7ea1ab56aad099d2c8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6d45eeb8026a185c27aad590fc1669623c1d1ba840e37f46b61c62017350daf0	\\xe81acec0a198927d64e1c9848c738cf255dcdbfc44ebc895280556acf1b6cacf
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x62d92ace6305b0803d42255771c79fee21a34bc69323fbe39d663531b732da78	\\x6c3247db7ee55ab1f2f0983cd1f6aa0cc3109144088a9813b2a10f367ecc979c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x003637b2ef52a2008111c2860d1d4ed750283957c0667ec1db92f12ca8b6d01d	\\xf1648a9b250112a0cdd8132d8dd4af7e36f7b25fbfb49d977f5c2127d0f93ca7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc1db70a9df174c4b529c6d34c0ea740ac6927c1cba71ef27ea07f875cd5658af	\\xa78398ec8a307377b939a18aba2c4db0480cdadd498f794f9cfe10dd0820a0e3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe6f9f0410454db819aa8891ced7f1efc24b475c79107cec0e150f22f4549ad33	\\x1e8e5257a569ed897b29f73327021ff73bc2af81ccd3bb8ba091ce325b913be4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xba16a05033a7ba8b063d3d5c89f57ed28bf7bad8e6e13290c4f36197927b6708	\\xff44dcfa87bfed2b643da969fad6b8ed566b62240b1383d4ff0a01f5f80a0458
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6baf70f81e708c1ca3fecdff8a6f150de2b2758aac1b81da8f7b277d4d06a6c2	\\x3595351114e3a072d2d3fd0f6c57095a9a84bb55e4aa4300f03a079ac51fa6e0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf7b95730d2a5153026e8e349d861d17e2a0c7f97999854b29809acac1aa3f5b2	\\xc974bf8ac1761ef300f1ff93c735f5778fe0ea20d23925c2e70710be1ced7e13
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x583fb6f31415ca10eba0d011438af1141a7d111136976583c70e6746b4fd68f9	\\xea12defa9bd627d1e4997e6816fd9d1fbd530c61d2d4a4870719bfb41d3589a6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x17fba42bb383fe707b341483d51bc442c0711b77504590f3a14c4d8a07ef10b8	\\xbf53b05bb638d1687ecb14c4095827aea9544f9063c2ee262216fc4b2ada2054
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x464f232ca6ee5962bbf11c7c0b890237951c91435311fc78df88684bb43fbd2f	\\x627aef0cd71d6eb39b39a443836037d537af3e1b6e5c508275b4c17812e67d92
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8d62fe264df698061e319647a5573fb95f9d7329344bc34c923f10a029324dfc	\\xcdd14e1d148f399f227b26c06ba9d0e0f03414368a198f270621824bba85d9ff
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdc77e56473eefca7f3c3d2773837040744469696f76a00b7ac3deb6c0dd5c7e9	\\xf1f39544af551ac9fbbd9b7f475e97cd296a74e32c2961673a06267856bf6e6f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x01bc895cc2bba5d507581b92616436088db8576028e82f1e81df571a29724e63	\\xda44e853a064765583f9865e62b4dc53154930c503b4eb9889afe1c21c2287bd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5b77c70bf7fe7adfdc2a11df64e453a45ebfd4a37ba7ffde61db023d0a16a159	\\xbe6423d11967d3d45141ed7dc4d9153d37e3f996c5c8cb293778891db491c132
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf39bf88ba68f5264c73a8381b159625972670f88340bedca5476eb9d121ae080	\\xdc1063c4b586b6a79fbaa0d8fc89ddfbd1bd62b5532c0c61e42f6d96ac9d1908
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2da1f614fba0a1d05c25e5856d0b22490577adc2103cbd46929af82a6db0d944	\\x81279fab548f1641c5f266bd964910450b97fbf2564b407129846c29a549a02e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xca4f8d505098c5f187b51a5db6d0c92163a63ea46f55800b51cf6f7ab447bb9d	\\xff714eba9e17f84e1c8119bc13cc0d0917fb9ce763d2449ba18cce2fa19e409f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4991e0129eaa7a0b67bb909d462e9e60da6246e29e42e4f3d02cd48bbbaec3a1	\\xbf99b00089111e6f69346d628cbcc8a1aecaa187b9763053e24d73534e682f3e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x16bd7431c75c9610935022ed223be1db9851157050b027dedbee4a2349827690	\\x79b85ec43f81e074fd8b728d1b20d966ea52e1c737aca614b64b427983e32af7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x227ec6b4ecf26331ef5ff3571ca407884cd989a01bb8b4a053d22f87b02fd5cf	\\x6d7ced4b438bbad50a2315c618a2ae9dfb10ca03e8cc7d671a1c948048748e0d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6126bf6494a35bab0e2ff3dbd816053d5cab0af281ebfd787b2d2648e4de4e7f	\\xaf192c860879b7b630c3221d754c4f1869eaa3bd0877dce2d784f8ecac35ba4a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xcd0373c32aeb36a603d09d3184e28c348b4cf28e13cdd741c48d91a60070ad1f	\\x59c0b4ae599e579ab06117f83aadde2436cc33d554ce3daa2f4836c9b11d84e9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa4e336ff9fcb326d5606ec8beaa5c6007ebc4bcbb41b58c37007009beb07beac	\\x28ca9cbcb0a9edc9a2e89d2dbbda016919c89aa768768f4ddc8804a212a61bdf
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0019d9378d8994f0235d94d6560ebee6bf4f39f47088623b3d074a336d5a0752	\\x2717667c5e14eea10eae4c477ea7b23dc31db9f8c24566b71c9f0be87001123a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x426e7c4f385b4f52c51f00fae08c6d389d0234227bc9e4614c51b52e3d34a167	\\xbb5b252881ae5de03d95637b923f47acdf5728618aee0ea26435ac665204cae4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1fa12d0111787f17c138805a85beba6ad3d2c4b7bf63231782b7f653ff35c855	\\x4be418c69d30c996aa1fbe10c135e46bc580225c66c1a4c7224ee909eb0c7656
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xddc4c1879604a6d8f2200945c49529f21ea1850d32cdc3437282246b54a001f9	\\x9e79d56aef4ed03b22e45e491dba7e8cdbc1cebf6353d1f1b074dd68ede3043c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x39e310aa60c53fc9a107be4d59df65e560759abe0ae35b93cb184fd1365183e1	\\xaad6f7b53ea649c0ed12676be8c9152750a383c2fed68265e29883def0ca5aae
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x455fa6970078d90b2e18213c4fc69368a3fe626a7dadabd4fc989dd47a10656a	\\xac5f4779f327354bc7aa615b28149892ff2167102d63e439bc3f6a5293e67293
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x729783e36c2634480a03af90fb0a2e7d8674e08c3799a37c6ab7a478ba0b9a4f	\\x91ae057f577ef32dbb54ad0e8ba88c79a7f401f0622c91681faeeee9c4d4c0bb
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x35153321357ac5a37d88825e54d3accda429b109e12b53f85c2bfa928caf1498	\\x3099a2ac5f9226087fbd70accc431b0b49c9cfbf572a651caef4f2137a12ed76
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x87352a018a6ebb9c860c38f3f2aff9aa4288e2016ff816238c0dab6c3cc844ef	\\xf6073ddc57a56e19bd352f2c826c42c4fbc6d67de42d65f7c9f0ded58ca32efc
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xda54a2b9c78f25cc20bba05adc4af5c366adeeaf21523a56795f9b4e78e6247d	\\x13318a3a3056d7559c332bdb167870a406f4ae879e3792404f4d178af71e5b2e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf44e8c1b4de7b44ad46ec6b6fbca566b05d44f217c4b17b767843a8cce9d5a16	\\x21574f05ba1faff84321ee84e8f439498a9c50e601873753f29ebad229173b7c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x57300c548c86e6a96d1dd75b1e5abe722e5c6b3a60b0ed8bb71f78891b707839	\\x87abddb47cf6ba292ce784880eb3321bebbde004420c6fc22f3c3731e2fda9be
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x658842e429b8d3f74cdf303f503ebd643830bd2beb9ad9c096c66a6e4a0797fa	\\x82b70feff6f8fe7540313195706beaab5bea3b4a62a483fdd31a1d42cd63e00e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbb3388bf953f6afd2f1a8b1fd9b5b4a39f7e45a7ae84b03cbc3585d79b21b912	\\x90f956b2ff48513edab3947e5fc221ff13bdbb8927768e8883d702413f8b7122
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9d6082da16f4e239aa17f65e22ee6e5ca126a1ab1254807ab90e409037ddb683	\\x57693dcfd3da4aeae755a9214b63c57c8f540ddeebf416e87317d3087423610e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5950184e27b91637aab64daf3fb3b6c925b4b4269e5acf11489aa82ec46e6704	\\xc77d162ccb1a6198430481d32b402c765dfd359964cac6ade9daa42977ada0be
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xabee07583a032bf02621efe0afdbd117c299af373b3cdd0de5a879552f3909cd	\\xb078004e25fe2449dfcb51f4491bc2f7e1284e54867ff6d5ee89a6ddba9b582c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5985040aba4d675fe3d8846d917106c686ecb100116bb2a950e01c351f69b545	\\xe91fbe9027d9fd59bbe45b87df319943c77e530219a2d236106ed9653cc2c9aa
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0c5bf7cb7c7b600200cb84473fbb57bd0740c78c297db03e4e15969d7869ac52	\\xc5f6e36262bc4b5557c30a2a20d8a8d661df79b2de305cba69d0165de511c3e1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6adc5846ba778e3263eabd275e20e3f7a75f84cbfb09c316afe1f11e183f1131	\\x527059f506f7fe54e414baac4a714f2cab5a0a43c1039d1b9c215111db8b39fd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb47f6228ad3ec0aed0f109b0296242bf824852c5cec8a0e21563e62ed4f90e03	\\x4252229a97f4295a2cccec0006a83d6e56474a6b137e21da0332e50e575e7abd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfe0491eb0f3610c5b3d9fde59b20330acf5d3cced31c8b41de66b7ffcd056ac1	\\x9798c6eadfde7be8b1a5d95267c9b8ca1ad1fc46c29400bcfbe7538c98c7d46b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa642c92ccc09b3bd3cdbf75042fb9e15aa7e0f2158b512179bcc44a2acbac9e3	\\x8f00108a526e7acca6dde0a84872792ca5901eac30931f59a5961e8df9769481
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0a888b39556dad4b534a3ab03d1cdeaf0d814ad61927382b921b454871f0097e	\\x611c504fcee93040bbb5bca0c85f86b20c8c0fd293ccaa49f60e539ba0cf4918
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0eb5ad0116bcfc0e779750a52eb44b17f2096fc1a2e6473e64fe4a88c615b578	\\x24a7bccde0851552eac90b11387c5ca2e1e2f47f8512de9cd57fd34a88c60784
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x71debf926d155a1b63685fef267e969424c22ceee3b08d3e0a969d89026aac8e	\\x21dc29a9bbc0e16f091cc580c9da9191d06048dfa1be1ebe378feefe4fb5faca
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3533d40a3610c64dca1c4640868a810d0870d2dd687c6312413ef6c09bb98d71	\\xe3bf663187e3d8ebcf6a4d111ea22f38dcd81cb74e3c5c6cc0dbbf27d514b942
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x50a6abf78864cc4ceb5464d7b1ee68b6af0d93106674194f4c6b6cea5a18960a	\\x5fa4673d0427c884b11de752aa2c1990961743fbe8b79c87e484969785f4b011
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2d198e04f0969ca0720938824693ebd48f0560f4184327e2e7d4311aee36e8d1	\\x761dee45dfff90d54f9a96e4477fac27f506405e65195942ef5d8f37d3064bbe
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2311770e8c9e2d6ed26cfccf727fa4bed6304d650aae9a23772641ee919cca7b	\\x18def3e1f93bfa7605941365a6799ebdf416f9114d048fb6a2572032d8a63592
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x30d70cfeb2259735b6aeb501b22ed18e8f6691ff41f331e414246cbb45971db1	\\xb97b980ceab6b092383725524b593c9bc720e27fd044f39b73ab6a1157ad931e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe7ee7a2cd6324f18a2c329717eaa8268dc2aeeb78376fe010555fcaca1305983	\\x9f9682191d1ae9a3b86919fd0d7008a84daa9ab7c4e9277428431f871a5785e1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x550354e40cf6e2391c7027e7baa21146d6ee727b6725fa7e8822fb2ad6ddc708	\\x04b06f8952bbbc60b2ca1f26352731fc0cee55608b91021329e589b03ab3d686
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbf73e439e85f9cf36f2336c06e046df359314f676cd538a3788966e0ce796ffb	\\x2a083cf988b42f08edae31fa5e1a4d3108b6fbc8838dd34f1392e1f1ab92bf8f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xebc08b3b3c014442cb41e020a11341f1ae5f5e4fe17d7bffc2ae6cc5b14edcca	\\x84d408ffa27a3c14497140c397063211e14b18695bde247f9afb3f2ca000dc61
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x00aa4e34cd41d795d949656ea9165b6483597926b4ae7d03ba8b82d8ff8a8191	\\x9c2256ccf5cbfdb52eabef1ba13f1d83d0719687db7a4aedd847a10aa68c858c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc5d19b5964abe2121e94ec438619883d92de8662316d6cabdf97195aeacdce6c	\\x3e80e6e387d3601460af2e8784bc60b36fe7250d3f12974de8bcbaf4f372a5af
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x449fe2add562007c1b1e8c789247b0cc0cbeaee781e2a7190dc1b093a37d72c1	\\x95b677fa8b86b187ec46bb3f788165be7f4bbd8ea01420ad3c1080854040a631
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x12f639f24db63cb967ce6850f92c8a75058ec5c6350ada1a97d7478aba16f955	\\xd885f05a729df328f1ae438d623088ebf6a196c5bc82cb5bcba71ee47ab85bb3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1111d7cffc87365096babb77fee69bcb6e1213a161747444a18367fb0afbabce	\\x571777a5dffd40eae1fef73d0bea01e20238c9be615d4947a1565bb66021d0de
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x562612db0bd453dcd8f8ea89cf6738f1f9be94caf20633a73bcf8d8ca21b2f2d	\\x310113143c97a78dd71cfde2b6ac5c80952b5c777bac0e1f0889e601ec0a4138
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x84d69bd80d522d7714175b1ba4fd23cba8fb6e43705b5d1ef9f3fb575fc416c3	\\xa619806156d79e388143f2bfc38eed2182ff54d123824528c1fe9609b616ddfa
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x288525b4ff2b7640f6ed098ee5235019e9ca906cde3a15a1cbe1b958ef8ac51e	\\xec39e014100a3f0d5ec081f49ce91eb7b9ae5002284a9eba9ca0f780e5f99d65
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5ecd5f00c608f64f0addd37056efd61ce1515506a7bc6bbcf8a0b6e72c917dac	\\x576cbadc2350bca6d5960602ad1afce8bdcaef4cfd45b942744b7a73897559da
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8f958da7777e305511ab7cf4ce678f9c702b181405bf52fca232c4c43895af24	\\x791e494b66dc30deccd244fe52ab62731dbfd637ec49e6642a8d96f6b7b5753a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x707ba105bcdb2d3bae530f2608ec1f12e90e02b39f6493d386fb9522da297955	\\x875488fbc34c656b4080a80f72850e9bb20f71773e9dfd4baa9b286b5ccf4f82
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe58eea83917836b2ebb67a5ab661e8211539de7da48bda5e991698f0dc85c161	\\xcd1ba269de71b2e8fd170578159c37a4ec2b592e775f6ee72305f784a8eaa819
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x75e5b15ddcaa625e3091fc153df3ced98979c0f557e6d321560d3a065769c654	\\xbec9d67ea54e5a797fbf9f00fed1ce680527c45d8537cab199278bd8e25fb839
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x577e460420843b7d19192faa72c3ade3310c2a8007ff4a563b62bf6d1138dc1a	\\x7b4685687c279d52d5a1004a8126355cc2aeec20b53207d06c14648f60ef3311
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x34761a58364b60dccfa8f0763e3eb507865532773e6027c9f22553160343c061	\\x135fe791ad2ff01572b4d268632ac76dde4eba3f383a7b09885008a6b66018df
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3f87fe3ca57891bfac11c2cabf9fd84d3beeb932044941b95b50290875a821ce	\\x33f51ad68d47ff3dca557c7b463f6e165f9ad96fca656d4f9282d39c86c75f2f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf4003dfea1d8d6a7031d99a37fc7423836ab88a5a2cb5f87412002fa6d36fe77	\\xb176dc055ab686de3e6ac3b2a41023840b5e7ee53edb4e36ba11e04d182d5640
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x22a79bfa5aec44ad65fae9097dcae7b71fe67fe224113499c01b5aa0e4f1135f	\\x40b4699fa7102da887099ab8782fc317588f743e488713f68187d2d268ac8a15
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6df08f4cb81d8d2050cf5d8c20ae6ea781beec521920696ae39ab09779937c0a	\\x5205afd949e9547d136f21bcd526c969611118ec97fda9f20b4b0fcb81b5abff
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8a23310f8fa02f78d7f74c407288f1323152d1ce72db8a802e1b37b6044cf357	\\xb1d316e2902ae6667b7d51eb41e9d3f018dc4f13558a0ddba5a71783e1c7c21d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x484b07eec8e72b610785831301e3d140551d290b620325e8931ce2c181fce045	\\x90009522e8a7d8347b8eb46b913dfa8f0fe00b269359de28312c56287914cf63
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x357278074705189875d626d327139add69c7d7428e2561070b7136f83260cb6c	\\x08be5fa3dbb892ed04faa8b5c1d9e6768a57c4f22f1c651fd42476db237896d8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x67e27c5cfb5c3dfb768dfea42af1d2d72f3c3cf56c7ef238a055052675034961	\\x5b9ef835e69666d3426f3ffbdea80120011b81a001896c60fd27e9bcbbdf7b73
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x26c32d4b3f80c7c3ac785ca688c346fc2c00c5d7b8f6c3c7f9056ecc32c617b6	\\xa0b3dfe3a3bf8f06a165e6fd5181f5fbb8891fbc0723e7cbb43ac4b350f699ae
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe493782ce65a9961c1b8f180a85e6afcb16f3f9a994da2cd164091315494b20d	\\xd90a609136c8a7600d5f3f031b2d2720d2901974edcadad2b214bccde99f3d8b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x150057b6727d05bdd71d8f6a89786739756a9cdb85ada3f1718bb47f977c0bbb	\\x51f2c63f8448a94cc74a5fdb46e663e6d91fcefb48b7aa817ef678a476049964
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5cc2dd0f0d83d50d47f2f0e47ee23733f718638d2f0e7ed7a7a9d2e9487f8d2e	\\xa1c0bd49a58a28f6c6c52d111c589c03f6ed022c75632ceec2464246b3cbdfec
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3339967f708330b54d9641846b49f30f61613c3c2956f57b32d39c93cbd3446f	\\x7de1447cb1de06eebe4d3e08cf5c4280a868be99237e3ed6bc6e7f437eeffc2d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x24d44b15e8637c79f58bafc82148fa5cde4831cad3b7e29cf1d54731c5482503	\\x3cae765495d766409e6865f4f2d79a1c99f608e296ac17d63b4a2d320d6e8629
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xaafb798c0dc8480e1e229826def517adef03b0d71aa45a4688872c745475aa0f	\\x47af14a8889cd465daa7b1e47f3256af45d3a8b91158a35ac9ae881021ee2a0c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7489cf7009e268a0d0579c10d4eb1114aff2887447fa57b86699bcfc4090d010	\\x2f44e0fca22a7efa5d3185c51dbb47bff04f550803533c4cc2d90fd8abfee224
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x11d1db396449825146cd7bbc38cbf1a11680eb0d51f8860723027d000243502c	\\xce68b7ddb1cafce8d3dd767c53a5fd750c58da78de23440d8e20e53231b3176b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x001299468cbc017dc12ffc4a9600fe400aca885c5cbedd89c123020a6b93754a	\\xfea953e77587e0d5e4ee8f008cfaf1de2b1025615814373a00160af9214bcca9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3a4264381e07dacf23fbc0541838ed6dfe24885dfca4e723df77f12a5bf46a2b	\\x6b3f336518e656516e4417f9c3e7c71535a191aa50d78253e2f0edafc32fb13a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe7e059c1e584381fa8d23ef9188c9fd347b2da7521ee3d6cab882b2bf2a1acfb	\\x0f43d7f1b6acb8e07ab9f84c12d1bb809ca8e5a51050fd0d1d033dfbb3f11211
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7ffdbb6ec4ea93063035c9455630609456d30860b3a82a5c4a03c385b8abc101	\\x7a711be1257023ece10a17324759fe06b4bda9fa16e344f1c607ca08c0304710
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd3c5e1b7d6cca5c048033cae6ae0931e6ddad8a54a27c75e332f6ae51a17dd2f	\\xe975730f60bdccb2a15a8f80a810b9f95ed5f9789a9e02b1dd1ccfe2a55cfc93
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc34e01afdd41e901a6b50d73d4644a6d16fb7d73d71513ec3dd446941d2dd125	\\x4e6645b5905cbc2306054bc602dfbcebc3fb96a568bcfbf333fe51b86b6ca9a3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8b23fc96b62b69de5fbf2b455c10b7423fefa62d91a4a094473a3eff8f81902a	\\x56c7b51e146dc3d6d3e2174546cb43447a712f5cfe5aadb75099faaf75fe898a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1582ee5cfc12b94c561bf59e56f5ca7b526386cc4cb562ae08f20b446460b5c0	\\xf6a684e79b38a94114c23474f9230791f5145c7d27da4b5fe309c1c9eddb504b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0aca84150aed8ef07526b4fe534f4368a1347496acd3163d6886dad7151216ff	\\xe7fc40d8be37aaf5ca7f7d5aa85e76d9766caf7b1210d781475f542ccfd00003
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x216fd5931062db193b0570839e280e9e0a7d2a76f0d19aa3c4c886e15f3656c3	\\x0e62b624ff322bdca9f042b121b3a93ad1aab55c07b906458d4123a2dddd0e6f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4b4929571bbfa51f7812278306f8fb9c279f94c62be3315d59a8bcbc79145988	\\x11e93349f77007e75fb7017d8c7aead1f9107d358dafc957b38e27090c1cbd76
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd86633b819ea6f653bfcbc1d6dfad7ebd146c3ff8744161759ae498aa4ab8d0e	\\xae1ab91f3c0b2ce0aea0ecf618d829fc35965c407d0e7f5732da2e4c3581af80
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x32eb2866f3d7b8f46f449633d1777b9489c685c90fcb92004659b0b1f2afac7a	\\x821e8578f82fdd6e7b101481c3b46f0769c117ac3d4ee256512e6bf9d27f376d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x56f23270865435dedea6935dab048fa53f95ec2a8095fea88b9d40fd2b60eebb	\\x361bc72520b6c2312bced2a8397e3ff54e267546413bddf72086249d09cc0fc4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3476e1bcd430ecf917f8b73d72342561936ecf01463d2f261165d661b8d59cee	\\xb7205bc093aa0fb7bf3f9c2e84182a609d6ab37c3f39c72a0671c32bf30a30ad
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0dfabcf268f1e0f691831992c641304d8288fba4396fd242f8ec76aa68db58eb	\\xa9ba8296bd7467d012cbefe753b75dae2966b39c6555fecdbb79e0a3ca92d4ff
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6d7060891bc3a863138b8fd84a32ec03e9cc4fcaa1ea94c89724dd3be59a6c84	\\x6a212580b19311325eebbafa0caaede3bc6ab385c5f3bb6d4aa7dc3c4018f3b4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf8e12b8af08737405de2058b387a7612adccd90f72ec96b7faf7800c658b8fa0	\\x4ffe242199dbe2cc204570e11571ebd1aefd00c037749eae3ec0ee5a7da02572
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe338fbc4548556441547cdc81bbcd31b23a8641855f17001eb35d30768ef0e80	\\xa2dca4002e8dbc2c49d50db327cee74a79903eaebc89fb76abd0d2a26813ad01
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x939e021fa70ea5abe7fd86233d7dacfd411a11464135d79cb4e059a71fd7ca0c	\\x800255fd7805338923280d73ff9ae0d2529982f90069417da2fec8478e0fad6a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2a17f6bef7a433cd0cb28e8dae557243c3ca3509bbe24a50e04e6c0191a15f8f	\\x6f7b8e81609ffd7dc8bb5f8888b387d7d1165224f0c6a31d8a02687e0488dca5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbe626b6c29069286d4d69dab8f8784d34e9bc6f8e387d4016dd0b72f4db35d2f	\\x492be84c0e728d7c9bcc2de0531192c85cd056d9ebea02a30d3d61aad6051088
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc63876c5653a58af481e296986b681037db25b2281b7769f5b60bd0ef2abde5b	\\x94d3c5cdb64f9c3b4664283971cd24a7bc87a736cc08e731514dbfbd16f95256
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x40eba6302b151ffa8a0d07987b5fa268c21a6ce1a54666cb8cd14654a6566508	\\x43b9e1365d40e01c4c4ba0a7a800c102fde96dd86b897b638d0c29c297c9ead8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x86af50ca164afb3fc575dcb4e570be5c9373d60c7076e659b42b630c3e31ee10	\\x7db6be540cb633d745e343de96f68347c6327fd6a2f8b345d004e948f6179f47
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd2b5ba10570952d510440975cc598cbf05e4489e5823eb490e06bb73c2097c9c	\\x57dc1db5e8608dbbd9b486d4bc2549ba9c2a6f20046239e70432793f4ce118a1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x950b87e9ecdd2e8da4a263a60f852dbc5f6aa583ef03f6dad0ed7f1291bced3f	\\xafc169c67e970d5f8cc0378f03a841e5f64c30c0f2c6ec04af37c737eb4633ea
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xab34b14f2e5b93ceef4608f0c6a85415f14012d2c0791f6e595043c60f1de0d4	\\x6b09ac26af68ca3f09c4a696f7da698ba1b3475b2801a757f38d156e79c1ac37
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc0312f77809f023afdcda30fb3ce30e94447edf1fc815a9435aee3b8874e7125	\\xc76faa91e806303803ae020e67f8653c8324e693946779bc07490d77ff96621f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4a0efbdb8e9c390b2c6259b50e859acbe1c4ab6a28d2595c060ec24dcfe3b533	\\xf7a198e8082ca8aac64cdb548e5a0b52ecb87fe80e2103b4f64c8423525b841e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbed0e3e9df541800eca37fcff87ac9a2c91e46f3b31079b89349b69ea038ba1e	\\xa48b456beebba6a6749531931a66c29989fadadb3bbda2c3bb2c3935e251a367
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xab6ee49ce7ad4d2ec167268c3bed4231df811854b5a7530ab6a8cf17ce2a204a	\\x7f45c1643fa7f9bcfbde87c460130f29a09dab54a3fae5e39d7bc8e4cd748c1a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa026dc44d42d347b3cb8ff37392ac36323a98cfe241ae1cc7285b0cb9cf03504	\\x39d9b8234cf584b22c9ca23495144cc67d541cbd1fd745ec889d1a219b2f9084
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4d8af5cf1787cfa16ee8bfda37f3bb3bcc1b56bbd883163947965303535e674d	\\xbeb8fbca68b6f9283427e9943aa5df5b72652a404cc057725db624d70417a95a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb04a2d47e6d963dbb34712473f7e804428066ba13b7d694fbf17f1d4bbde4c7a	\\x0a004be8062aaea31581d49ed88eb59e0655744abdab78edd5bc99220eb3b8ea
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4f0cc468f91370b15f55cd1b95fdca6829bc6744edb2b40c9231688628aee57a	\\x8632b267d8213013c0e4ca0e0368d1c1e0796038a7b5146f79c76833b640455f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1860c4c109e7912cd0dd5891b863528e66d675cafdc41c17fed96e5a1fa46b2e	\\x3d75f993430ce79a7890568ed8cfc0e3af1cc4e8a7e14474aa13559e3456cb5f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5b6a2ea0786cae4b3b946c03036430f86ca577e6d947519707766541b94c8df9	\\x065c0b35635da10caecdd12b0c8035e3d21440b74c81b9c38a03a9d53806d399
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa2b0bb6284b173f4b2441eb1a8b38f0ddc6b4ab521a53fe929a37c18033f6776	\\x5584c0448c225c38397b8958ced9ea76907d744d1fe335898b0313600656b3f4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe434557085e22172303500615b3db378d1e61bb277dfbfc9082ec8922eceba15	\\x1eb88e0819bb66af0c3adff144b2e6ccd536498a68faa51b8f43e6b67e0d0a85
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9a0ded3848217b85f817abcee6061f83f650db4be378e5137c7e09205f2e270c	\\xf5ed5e1ec95994d54934cd2f4edc8c51549dde1ec854040c8431dd402e5f71c8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdea399592a379cb058ded61c39f421332838a649118fc66b86a8ed4ad99a7e02	\\xa2e209a219a156b131a2385acf9fd4b174c758abd5bff2262f758edfa515c4d7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfcc722d077e86893dba727b7bd005f253b0993d526bdd5d8900c1eab3e9afe5a	\\xf00ceece19a57e5351f4a39ff1f3e6e30ef09003ab5dcc10bb4b0042ea4fe8ca
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfbc6939c550e6d1e09a0ea06b7ce6e152466144793e669d6c558690f139f0151	\\x1f8751a373742ae7b6e08f0b95e26c9b6bdc2867495beae9f91eb72fa690fcb4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6eb0761aa994002c61804d37ab1abcc365565857526b5e07709900885222bf75	\\x4288ab2886ab866bad0bbc4c68faee43ee511631f3dcb448510dcb40016b1ef9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb3168ab6775969fa596ce317dbe0ac6348c36c68643ebcd689946e06afddc434	\\xdf06b95c5f13515c40a2de02f08803acb678c5724db77b44dfc2451caf706b86
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x57f4edb389b837823486cd35caf86fcb36e97f5d1829a7df720173b7f0bcd1f7	\\xdc3ac0c273fdd3f725d8317a0595521bab78cda4e0e55f4ef29d8febcbba68c5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xed7fc01734849e24f4c7b6ee1725799b03ed476638885ba18365e65bd88444d9	\\x3920fcded34a05882dc7c551891fac9b7d6e45fcdccd35a94705aeeb1187a947
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x89293912fc7db91a3cb58a65c75f2023c4f3a9b5422643a2b5bffcf613d91521	\\xe13d5b784b2e4d4f9b01f43056ebf81645b402faeea19fa0a43239bbd78d6a6f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfb59cfc17261aaca043131981a438d539f403b094f7084dd9805c2583ebc8553	\\x46e082444964399c25065eca1ecfdf5d566a70131bafc8601baca8b026864357
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1f373c2f63726cb6a4211a7a68896469f4aaafac03702b73a358908345d5eee9	\\x1b4ab62a3232a17dc2490184a7798407c3fad42dd8add7c07da2930825dad7eb
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4b4b3cc5d165b23509a7649575c2de757f49a15f6931aa851763dba9b261cffe	\\x64ca581ac8c65067af954a03addca2efa4cb50f311e625d7e30d7a8dfc8b4aca
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8ba6cd8bba2f8e8ec3e3d72bbf27365eaa5a5b9ccab5634c072cc4389d38cc40	\\x032551713b63089709d478a6f8475083c643116df169e58dc98a5eac0a984989
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x99ae27a262ffc71447d2b6d391320bea63e06efb2e27a6a231eacadd9400a7ad	\\x89a4a898ca4c6bc4e357f4d49f4caba64cbb235aba74121e1e023d8a470934a1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb93f03ef568e0f2146bab41d456f7b57a4236b5148249c99232e4e2cc99715fa	\\xa42f70a336cedbb9361f7c640b2b2936e3cb5ddbd41b3f7ffcd87846224077d7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x35c21206b7412efb0ad353c616d5ce66a5005f6d70746f572507dfec528369a2	\\xee7dd1abf42c7c3a36322a3fe25fbe0917fe4b6675c0949b523eed5038570118
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfd991cfd306b04a248884c0e11bbbcb3cf6e96c622698dd651545e5578b54afc	\\xf2909a36a6b939986b8830840d16982a8745c8f41d2f9545b2193fd2887dedac
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfd4dfaf1730b219aca746fa5104f85eae4818df5b9db6ad915ea49d9fe2b225c	\\x1f18530a1af41c32a10914ad70cd12bdd924be5c6ee277b9ea1f6c098ca3c024
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa447d675828f49e2427fcd43bf552ce9d93b44cbf1cb1b96e6959b1bfaf1a23a	\\x8c2fd3f95f7960b3cbd897a04f80a35a968c9b9c29cb115cc0d865c4d8dd20f3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb1d6cc05fde4237856797851c06fad05b35c1aa39e9fcb9cbd5fecd9eba337af	\\xd8c726310f05b4b071c9da3ceb0811ba1d10617d17996f7b8f216c3184302b03
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2e50b3d77d1bc0a48fabdcc3d3ef48c97937e5ef54602eb25b1f9992e8fdf290	\\x53fbe131c6ce2a59f92e907110ee1bd4f9705d5824c6904c692c14356a9eb633
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa195dd9c9faf79330ba592e4fe6b3f39bd09022602151f9f4897cf281d6c2f88	\\xe1f3471210062c22a8562e4b151c63602deae572e7ddc9b9f3d5df661a107b62
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe231d3267eef3b1745151a3b0aedd6bb31171bbbefef067dd413e282f9e5a4ef	\\x41c104625c7cebb68c46f603d3a74e375da1f814e402d726dc515dc1f9b42023
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5bdac7dfac24af7d662e6b4d6944381d097b2fcd837466c7ef76b5c45c1b3d44	\\x807122fff8a562d89d057742de33fe1f4d11867b531bc9321a0e1884844b96f4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdff51be6d8d3ab9b731a5bdf58623f8943f02989ea977fa0f997723456dab376	\\x9cc18a50d849a9929febbf290bc413af1530a1b69cc3c0d4435fcdb66e764336
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xef7831bafe0a7302845c2a192011dfb8ba78b10a286faa1321fd78b45357342a	\\xfa86ff31dcb88ddcd67109799f99150ba5376185996f7be92da8c38fc2042f9b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x813fb06ed7ed33a0f41397776872b50cd88ec20b8e9fa9905e6415dad2de70e6	\\x2d8b02ef242d61a231961c71c10b573e53e99ad06e44e454b7e1793fb369f77a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa33162463f47a8b3680ee78bb22cc0c1661eb8b7e780b6446d56f1cee4f3827f	\\xabd904c5a27171d48c52a4c5f4cf8aa1f0704ee4d61712b0408cc23c38d3b59a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x75cd108473414566eaff3bb12fe262fed5de6508bfdb9c5da9304b11d0bfdc99	\\x8d58f70e63c3efbddcbfc26b46374166f8b4ce0c96160a26defc056fa7e74247
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0978a1250ca3ec6109b8584331cb9dd80bc373dae15719096b14a19b435d26af	\\xfc1656bc707ac04bb76d9781e10d61bc435ec82577257629b328f4260bc4c8c5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x68e97fd9e03ae29f721f0f259ebf2913658a0707948b9874f4f4559646292164	\\x0c0bc966341162ebbfa9b8bd1c21b66d02c9349902b3b207f69c39ac32fa58e6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x397879ef9952262c9a44e8a7301fe5a1446400fa8d513e5019691d7db09bd035	\\x910018b0134062ae9df6c721063100e4c5f22d8a3708aacc2b6b9b1aef39ae84
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x168913f3d137954151e4c1482faf4a4cf7254a105cfe76d1310d49f799255949	\\x2e6adeb82fe4f8d86585ade327fa42a9ecd1953cc9b103cde0ec9a10663b8b5e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4b6fc5a097028069207d080d534a58616091114f24dc9203390ecea552497b1e	\\xe4de8c9ea2bf283750f66f9b181e2251959905f50b9ed3a175febab123333b7a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb6eb65315b5f305dce373716f6130493c0914614e4bd326cded5cf5dcd9c2b34	\\x8f938bd3f57291a964d5ef9c335cfca270389fc41567ac48d118dff862061292
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6ac9ad60812ef96aa2439bfea4a3fed0964cbf808dc047bff6d8d1795f4ffee0	\\xdfb5374bb23c7a4e7fb3233ef82eea2005b7f8f318d9d5b6190eef06f8e8d823
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc130bd8f31cf20ad7464919f710fa8500169f1a86c084b032cc2a351108f7b2b	\\x79dd3ff9b59a6207c17a5c60fe3c615c3c9b7b8504048e1ecc838afc6787b922
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd72bb69605e8511ed4519f7424d53c6ab6dd4ccf8808ec89a6e16287d03fcd9b	\\x0794b19854022b1c5711511295defd7694b7a6ce0f4bee0f06aba45836f502f4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6e02c3d352cf1f98191fbc114f39ef2a1b946d5c57e02ec586897b0f57526519	\\x0c9667960568b02871094cb245a2e643d93490e5f029ee1228cbcd14e9e2d710
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7caaf57b254e2fae22b42090a4c05772c8c3fdfbe9975ee7a212b344d9bb9f0f	\\x3bf58557d65b921341c292b0f35b773536504d518d7743dab292b8ee39989b59
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xcacd0d37fa3380838f0c20c3b506c9f2fab9e0fb3fceed8b946df6ea262c0140	\\x5ee0be1600b0aeed4631319b032f6ae6b5744a0a48ff06c1ca62a827ec68691d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe52c5b7656491c10b57d0b2d1f3e6c969cc7f4f3ef49d908be8ea6cbae639bec	\\x3d76d2549f2100d93f105a2edea990654cd26563ff0bfe57c302ae21a436080e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8f4aab4d9e433be879b82c3fdef8d6ba4120a27289f1fe64120b5afa8e0bebe0	\\xe16a80e70eb5e91f39a4cecd05709eb7cdfd2fb56f02f2b64b742586a525a1b8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa0cb812782929d5811171887878ffcb570c5aee8709d6545b47e0cf010848d95	\\x4f290ba3b9f7109c081620c8816d4ed635ff9272e11b195733245fc040b145f5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2afd1f5650aa77ca55359dd4a808ade1b8d40319027289f329985b1481a230be	\\xd41fc676dc15548cb5de5c93d3e78bedd71e0f00182953636cdf98ef2d7c1553
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdb07974017334f7cf3809b3282284fbbedb22d981609efc7ce5954b459ac8aef	\\x95231069b291d361ecfd2b822b0ac089f96e771e68396be23b9b27fd02278d49
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x532a1cdd40b381bbdd36e1ccd88bd18ec45894b38b4cc40e306c5eb371594270	\\x3aede233a340eea46ec1894f6c9f2625ee75b2d0e847bc16d586a575e1d9e452
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x666b78d447eac7fa317a519530852417c35a18d2b5de942913eb1487c33c00d4	\\x190236cc444b47a23c11bd43b84feb4c5098cf1da89be04a8e37c68066544390
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2875e4626e78a899483a94e1016edbfa96a95971061de8eb545ad70e871ebfa5	\\x7235b411821548d43fdf1c5e1c65a1c16aeb7b156bbe9b5f960d0c1e2c759183
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1c5d83751f044a8f76a8af0a704640f10bcc561ea4ac9dcb93d0b85e8c5914ae	\\x160096aafbb0e69932b9010ca2f79d9017173029bceb7b670f44fc2ef3e9c4e3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x274930ba32a0e87d7e0769813268cee24ddd5185a6bac9c01efdee792cb68370	\\x1202764214439efa5bd5a3781f9eba5ed52016b480efa66e3fd9ae89bb8ad607
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0801a9db553b134c2b3ea493587cd8fdd896f2799f7f61ecb5a3272a67b90cb1	\\x338228ba66b1fefb8a995e1a02a156136b30f5e0e7d1c5a7416af3c8eb0b7bc3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x28a20165c080284ffce1d66f9d859d7ca12153bbc5acf9056ec56254cf7b7468	\\x7c06caa2710141137950450be0d270d823a3806299b7185c16df3eb988f77f1f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8da9013bf7e53a2d192449576946de00dec0c2718709cc2fda506b0d020c8d8d	\\x2bf06117b50795acdb433e116ffc7b8dd292ab68fefb3d7988ceb83fd2b1e193
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6f363a61c20f64db35c5ea09b8fce59e06d4254ed159af31c0fe74dc4c11162e	\\x5f63ae93c0ec69b3ef2bf0efa62a985677600aa15df6cb65bd6fd5f30fea3cb0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5214851ded0286af08a1d17e9b049a36377404beff885c85c5252520669055b8	\\xa538a9bfbee4523242cab13be83f0e7152e3c495cc581812a9dabd78da0d05fa
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3353f7a57b943884095443171c075d9cbffb59b28a5b3feeae70ec4d4e7c770c	\\x20671b2e38612915cac0956b4601afa8248256324a78dcc820fcb50d69c55723
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc3b0c405b47a0d8a30d74706cceb4a5dd0f23e1a2c764deedc7327653c8b493c	\\x9d784b311f69b58772c8067ba6d09fd3c8deb8c877242b2bdd676fdbcf3200f1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe711cae0d31be936b4c2b1b08b9504f8bea08277052b71b75de7519d2d132cc0	\\x4601ae2805c117c124734e15e0a3d61b7ad14d1fdc058491d152133169babc67
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x49a361324bcb92270a863430182f94f8dfb1f987b654cb92a65009a30bb58df8	\\xc69dc558cb619754fbfe4c752229b96f15c4c6cff4f93348b8f81790cdfd184b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6ddcedc5318c0682e590ea734c9315668fdcb6fb56cc720c4a9905103650a2da	\\xac9fea12f701002ab25ae17c8346bd62048bdbbfbc6bc9d04563dc1662a530e3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf31742bd6813ff2428c7b2200769ae156fba2eddadb22ff523356181d77ad734	\\xb256bec1424c9fb9b74c7f2e2414e2057d07d9d23ff221ad68d1a2161f2ef826
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1a7b3f40a6b04f64b85b3bc475ea004a38841e0ec2e96b2fd740fc5ad3532ec6	\\x2fe39ebca8ca68195d0400cee0042b22285befee4ce29d1d4a31fe249640b1f4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2eb4c3a8ba6fa2911800b688b37a0c6c30cca73660bf6a6741b48b4b6702f238	\\x0180d0af0023183e132d2612979791b075a32c6fb09ee7b3fe33d395ca86a984
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5a3c27ca86a4ad6699b616e74da09b02562935a5c25ba8ad2845ce6a556834e7	\\xeaf2d8c588edecb10fa098589a28ea698bd13e4f68e64d0a1d225e9e4f305191
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdd74f5a86ad9aceb20b521044988c36aad5c064b778d12d53a1fb29151947f3a	\\x0d5b529990cdb4ef30777ebdb46ff69a87c6276841da3b9928fbd8a5a25f7862
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x95200daa7889c8166ee19802023ac095c47a950651d46538f18af85e4826d038	\\x284d2af5055d5d3eb460e9bba0264c49094110fda8ba2364000551c9ac901312
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7f9afa3379d2afd8c4c67317e953925fb5762043724d494a579f1352cbc1ce5b	\\x744de52c3fe39e839aaa4e450cadd68672a4da825097aa996ed815a23b562d6b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8d16435a1e666e78f8c709a723472b140d5c7dc7285863e7e49cdb4a89b38228	\\x5d4aa7a9e7f0528a081dd920e433f7ad28baf8b7a4ce55e5cdbdf7415298621e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x31c94f5ff71d85b5533165b4c4bedfed06340ecaa055883532da167d4273e947	\\x9475b35309371e52f518fd7be2faf2c672f05815dc6c7b4a7ee515a4b43a30a8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc097203c296be4b471698fac1a328ff4589320f8ae12d850f8abdb74cfab523f	\\x10c475d961693e6a12548728f346489659e8e9d9cc0d74af4d1d3b7080e205f6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfaa09b62c723e5749fc807d84840ba98087920c4799aa28dce9e62eaa58cd983	\\x4d1c3b1650b2192b4d14e84c15591fb13fd9420e4509f7520c89dd0b739be6bd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9e01ed711b9e1e30135a8ef155c7e273351573044f4e0f3cca6e57fb612de98d	\\x2e7d866d2413389560b6fa3d44acc996eaa7687bfb315cc2c3970b875d4e45a2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdcdaed68a25d63226fe24e6419727349ade984e8dc3355f22640e0865c2de4e6	\\xcf700573f03f90c0ebf80d268d94c3fe1ee2608ffbd02b8d29064b580a2e2790
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4e818867f13a92b84ca92698605afbb7147567eba39d8604b49860337c8066f3	\\x48da0743d9a97b174594d2b1e0f6f57cdbee02ebd30d366bbb6270bb61a82714
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9fd3c329aa564e0613d32d81863ae1e8d8a0c9ba900b3546bc63211a6cdd2bed	\\x896d7cc3352c8bca6d021cad1eb3f5b772448b71e261a40ed82714db37f6aee5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x161daad11e632397a960d59487b6fa7beba874a913687776b78f3c6a77fac86a	\\x5d3d65ee0e1d07c9555ece0b5e6dd7efe3f536bb3f88ea9216f9a31f75562a4b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa1d4fcf349d118bf248ac273d36a8ee30b7371e14fc349c6763789c438b0670c	\\x30e19c3c4a164e0a12d7faceeec4f50ae2076ab87e515e6618ff28d727865dc3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb3e3d53f050b82fa567bc51ea737d5fc65be96f2dbc8feebef70ece8cddb097c	\\x74bf54fe19a3d131ef11454487922ead3736d8f885ddb0d5aee76dd45d65f90d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2d86e82045a38138df265075d6bc9f8bdfe5f9823fba370bfa197e3ef1cba9cb	\\x259ecbbe696d4ebe5129b005358be8a948691905bed0f05e8a1e3e52a76e9c06
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xff65e8cb368b3845d0e779d4dc8aacca57cdedda8e075041a162fc83fc8e6bb8	\\x2ec604540b19ad40516240f8cc6601327c136f7ec2db419739a5364c06a98c9e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfec5bcf9e35c21b032862bc1c3352394255846da43467f558835a59972550dd0	\\x833f17a43eaf9fe7761fb9aade79a7d41274bb07bf6c863060811f8e2fe2831d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf6817e9d5eba61fa5fb13f049e4a6b85e808a03bb63b2220cfa88242db2eb3ff	\\xd9ffc7c9041696aacc55fc104cd30cfea211c7cc9b78f2d61cead319cc1e560d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x04e8537d546914f25650a9472dd081730ca9d494035832dc41f98b652aecb860	\\x61c1cc8e1e6a8640ecc5b6156e8299884c29e37ca7b95d9a52ef201904612477
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3dd288c370513fc5a0b2ac8db21c6f9e0c0d63cc73f7935370c9fe4d472a5f25	\\x4d92cc2f9356b63b70ab356c33adc7a4aa6acac06ac0092f22cbfd5b4ad5dbc0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xaf06c3f0e84e8f82457e9165d63a9b26f47c57a48f6e422e79ea86cf11e5e93b	\\x6b135c6e7d063e1150ec242b850fa72f26732398d34f6964ebfb5476dff8a151
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf31650ac32c885ac912c806f25d4b4d4033e43c86c3434f94473e1728f59eb7d	\\xa101a27807d5a47a007aa939db56788f5e575e90b4b43954a06549396b7ff55a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2590e98546fa8cd94a5bfd7e228ea63bbc16c3ec15fefaedba340c9908d5b553	\\x38bbe45ac1140785e1e92743b30a25a6054f3f36c1c15666e3bf100f4960abeb
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb78816917ae0664c84a6fd5593e19b209fbd50699a7d34b5c1fe4c1c0f1ca35c	\\xf7a3014bebafd9498dcbdde2a499a93ce370659af339c4e9b1d7ce39522acb07
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8d8695e3abc134d6076d128686533ad3141a44f97a61f72b7a1e0c4b77465e87	\\x0119a60ee1e94623cab467832283572d0cc250d1bca53bb6bbd631d7eae90f79
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7d3ca4a41b3a64ce50a41b5b4c124c7ed4f7540252bab8036465c54405ca76fe	\\x29a35ccc50579a408304562fc2ca07e493ed32219b661a60f05a6627a38f7a23
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5486cfdbf25dd79cf51776869ee2eb94c4306b5afd58ea0d6aa2a780430e16f1	\\xa9ec675b26410a4f2b757e5d6b6487a86ed7d4859bd8132359c13ee11f561794
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8e2c401d0d44a7720f8a2e4e05c7355d2f23520441cbae27ed03b459bebd82dd	\\x6d29197af1d9178cd8a9427e28b717c9553ba348360bc9ba8fa1b8a8286bf245
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe18bfd33b1d06296028ff63e9021f8653da3bce9bef457267a9956d38e991455	\\x6190f748248e65cae43aa694af0f37b5e5155d75a94da4ce7ec47b2c35a9e50c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3970ec840e3abea264d7ab6be457058f0b5353dd8749e1bb65ccf9d10a8c2b15	\\xbaeedbe283207a869f559f258652cb9e0591301dbfb63278adbf8513fa4db884
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2179dd31e50696850aaa6ebc6ad27a40555c251c8484c65cf19427fd4a8050dc	\\x70a8c902b4e9776eb6064b2bbdc55e9d784bfae831bb160dbb27d90e697f9ecb
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4d27ac7a2a196b95c9e537b369c502bb30087d8f48f2aad0ad6e3d9e4bb1121c	\\x42499ca42ee30c6547af19d3b682b6c3815409b31d1d3d44fe49ad8636c0cd88
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbf1833ecdba6497c7462b824e4f9478a4c2e11a4fa2df05fb87bb518069dc675	\\x01bb66e15d12cdc3c85773f9f61c07b8b7573b2e2752a8f2c999ddc343f43af5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdd43cee5fc0a12ab24585155b877af26d74e835a6c9fe363317fce3c703fa37d	\\xe24f4ce8d26b028dd8b03c8bd5fdd4bd9628be479dd75cc7b6d0e36e21680319
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdb9e8709966ea58df17f21c9ebe683dcdda43127369e6a6a411d55fe45893466	\\xcd7cb636fece8f2bf2f71c17cd8c090855dde72862cf683f02e3f2c4d6f44f75
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1d723b5af9d921ffbf496b94fd150d6761449dcff3170ff4f2924813ffe2811a	\\x39dda72c9ac8c48c8c2eeae9cc08bc2222e6bda6249562e30df6a881d6c417e7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9141824fc0868fb57dc53a883a89248e0e859591e9ce88d95e664f691b06f7a6	\\x326f1110a9b9f05fc0d3b62e11033c252e20259d38c2c21dfcd9d751f1ff64df
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb7b09df2d657404ac4039909ebb7c80bdd5b959a65852c1acebef80cc802fe5c	\\x5311d62f8aa62774c47dfcb20f6cc62e7fcdbe0befdbd6196291af1dd25e70cf
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xad32fe62b6695a219bcf28afac3d725ad3b1ff884793dccc7f4672d8bca2e0e4	\\x3428ca21b3a64ef9218dacb749529bfcf0ca7f13030faf0f2dea5a02a03a87c2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8547b129f30431ef89732e20269f94f4750ca28cdb25f925ade7952a79c67f5d	\\x0d010d38446ae2dc4fabd3f188b1a2490739dff26a11912f4589239f983cdd71
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x931e40738433a1c5b7ddecbe3307dee0d4dc8ecd36c93d1c4543b2e952777e0f	\\xd255a72a9abf17dec1baa180d940f8b58fb3c6b398c7472a156518f8c90f8a2f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd808b48e580349faf95da57b139f694fc1d85070743ecd30a06f1bdf4a2305fa	\\xc0ba026ce6c2b7a2b93a2376cbfb67cb4463c07982031833e7110eadca72b076
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xab7b9c1617b6f71e117c1b9d49e7daef4480a3088ed87a017ef8b60468bf701f	\\x4af12a08e080b7d9bfcdb17936e522863f68f4bec8b67d4c79201dd75831503c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2fff03ea2e7ad1c9142c7a268fd430002751a2a034bacbd270d374f31d699b97	\\x71003fc593aa766921d8ef68154848713789748282355e33c3f1f5c3b912452e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1f41c41f56a66cbef56ab7ba40916cd28037cdde850c8020b6136744ae267e11	\\xf87b91599c989f0e353d247d194073a40ecb027fad537d7c921dd8b66e64b606
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3c3c3c4fb456096ea6fb1a9423fc68e55d18fa4fded5800f998cc7a50762d989	\\x6c4dea669ef06126ac66b7fb8f2baa54a3ab2bc98fd24271c98bd7a777981185
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd91e24b085f58af93e51adec37c94d9836daa1c094a425f7ec0ddd311a1cddfb	\\x4ba5dfcb4e0c456de58c456300e1ef577207ba49483f6df5d18278e9a705a40c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5b170f77aca8319923bd6ea6b47184241ff1ca56c90dc3392d20f84383544905	\\xe3e6080cfea7dd01306d18f7ed589134c735f6ee1e37c1f2fe0523c212086781
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2c6615e55310a33fb12c80c69e3b9692746a2e09f2c0f466f8e0c53017cd0d20	\\xb84e10cc7cccabe304e598fbddae27b1d5899b18daf023950092de810d897680
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfd1d149ab38f90e2474654f18e4d83b9ca5899c3edfbb23d17a64d602af8f323	\\x62f70566c0e9dcc29381a381c23ed7e5c2158199e6f2a0a7002c015583daa277
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x59d3ff0431aa1e288d068da1cd4ab5245c6d473211aa6a7c106cce02a5e5c221	\\xe3e64060ec74c2cf530109d48a08ab0f1b8ddafcab680f0a609535723eda4926
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8d638a535777afc4e62a73df355bfe94801fa0bb48af40e7c88fee2d2d7b5e79	\\xd85dd8a1d0171d042f20bcc8fe44d356caef5baf0dea771ed4cab35b4f508984
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3c9e38e3d200c2283969bbe99f5ac90bc7d2edc6fed47d6a042ea60d2b29a38c	\\x96d6018e8c7c1ae9b7fa5088f28936b47a99a3ce1127a84b899999d50d531a0d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3b19a86293c9c2beee952c44c5adcea1d15ce16cd890c30627eed0d17c6b89dc	\\xef01f85647d4a49b8e2e70770425e804933b8d066731d69997e7fbeeca9d4736
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x43e246424250f453511cd792e68bba6a00a18f16ae2925d89ad048c6ff5834ca	\\x6eb80d5d82e7884d5e46164b6029697f05c021be34da3b92da470b1241f9ac55
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9cacd534a53ffdfb2be82c3baec609012106632388bf3534d698c481a55d5792	\\xe286c4443d977e4b501cc225969cc89c0328348eb6d58ec9453e40c9446c34db
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x22f10af99f185760fef0ada851474b3d311ae7cfd836ec65e332ebb852e78e20	\\xf3d07689cd2606e87a8b706eca15a27420f22c67460d2fe76afa3c030becc5a4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7b8432e3f95aad35c7165b7517a562dd434725e8c722d9c5ab22c58a7a158d45	\\x82132f2d53c9e9d5789cfc204cae2c2979ba3de04f7ac3c40e1217584021845d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9961ed071a2f869e4aa4fb2484510dbbdf648f9edb725213808a94dce78e596c	\\xb2894788ad78028a07f3d1284125c12073c23124925dd0e35ce11e2e650165ef
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc06cb6ee3315dbbe0d695de041c1eee1d9e84d927627e4ddc39845b8ae431d23	\\xa9855b2281efcfe2bcee3353685e516584f40f50ce3331a6346ef616c2f53c53
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x163f6d8e28529b2fa96049c4f46c6165183cc18d513136a7745e5c934b9b985c	\\x4aee817edf6d6af1dff452e4abc9a02366bdd82652679d2ef07fdf440374dc34
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbec425d744fb689d8d44e21dbae8d34d093e43de69361fe2255f289f1bbce651	\\xc0c325366157c552db0b91deb7eaad39ba943fc65a6fe9b1ea2f82fbc81b6ae9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x01a6a90d8f054e63994a5304f882fb2434ef65aea96f480d77f45ec49dedb092	\\x7c38cea2d0d8c52fcd36258286d71ae7d41dadf8fae7b4c44b0ac91024b13841
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7a875a58c374b124f99fbddd639cbc696e43ab056ed8854c7ef95fe884ebe755	\\xd69f59e4180b3f0937d7524018fbae55d944ec3e37f0bfac546738e99adf7e74
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x509ae8b2911ca9cba6c259deefbd8e8fc1467b1dda5fe26a4500f792fd9b4730	\\x5e0f862181f273d9cfc3974d952aac467fc4b18fc5470f8eb9e9c62fb844a34f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe37bc4759d9417aa314a0762271dd42b3def3a67dc13a9aea1f53b23dffade86	\\x671a522e894a1575580054e95dd6704dae293edbb32ccff53dfbe510ea4250cd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5138a61e3dc3282bb88ec463f20b3d92a0dcd108486b99b277051b99cba3112c	\\x4c408a72b143b5d38c1251428b1a7389ebf65a2dafbf531832afb054014ec595
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x54dbab61c2c13ea3361249c47a4bd7cdb1c3c6a9b3265f041950a3ef76c83875	\\x010be5ed00289e537c6bb3f50a3269765b0bf2f2ad2bfb7193980856fab804b5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x06ed6345c56a027c382e75f56adada68bc890945fa56e54566d7bb763a42a6de	\\xbda26a4a005d9e4f5444c39b8de781fd19174b926b63447bf721f23ffb70fdc4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa2111015062e3f52b2ed9346b9f5f7c1b194c70dc4c761cad1320cb2b7b4639c	\\x73bca3d5ef2f32f319b6feba0ab9d144bc7a44b87a19b7c1eeeaefce408ff097
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3e831a2125512cac602af9f0eba8201aa2016fca58b5a7a54776ba655b2b00fc	\\x772777e6f59ad8465348a5514e7a4c200848da9993c2fab5742796d58f9e0ff1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5521319373457b7e16b050923b28e7d7a7ffa8760a0da3305656f725b75244ed	\\xd7827e95513df29624b50d6590921632d17c7f1b130141f3de923a237f37912c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd812f6b409899e2e8144aae4bfb4578b1fe2b4e41493e1e204c302bea8d21d25	\\x66b0924b70b72a8a67e25d35897258bcc697c0c85a1b7bc6aa620588f8468abe
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe1f9f8110a2d70cad91fce817e6ae9cca531e4f39d5d5c7494262eabd2fc3bfd	\\x3ca48015e93a1503f6c0985fc8676307478da16311ee4edaea34aef591f2090b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbe6e884fc79b30d29512f451866179ed0f0f6933c912254c44e9852182579982	\\x17cc021d039c9bb7faafba25492454a7e02c29f0e726b372ec7f7a986b5be3ca
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8b3663de77f782f74aa13db677e0f3f5aa1e936911176578ae9f81168db3d6d5	\\x769ec8dec302844ab029ecc6d41f59500c91aa1f2d5f50f9442470c24b89e7a4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x546fcb5d7f5e46ea92117febae50cb67d5369ef9a7130f45729663a16906fc39	\\xbf7ed3df8588e03dded915f705da7c1008d99e909ab0c3d9ef3c6819f500ec51
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5787a43454b355b0244e38955ce4d4c59f5ac1c1ef35be4699787da7efb982d9	\\xba64916c79ef2702b2973f99a46f1064717289e069002f6e37236ab63fd610a5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb54c8d59c89d37d2412a6bce2d84ff75e99b9e3f65353cb3441190434dac6bfc	\\x3a46717e5d2eba9c22b0faef495a2ffd6aae08d79064c63d129e04f4023c8191
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8b06cb3755d03e5ab5bce15abde810c8748db356cb672687818b00731bd59ba7	\\x08bbc1609e100484b2c42950872d7aea5ad149c9c98a40452fcb441d817938cf
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc351dcd84f4957d7c0e92c2352fa8996b7be448596026985ac081a641a140cf7	\\x705cc822bb3d4f4e66721320e66b4759d3623e6d8219168299d8c87e67598fb4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x43a1feb0a8c8565c96658edea1e7165fb553400c73896a7c7a1230cfe0ed3540	\\xe2dd23d6d9090fd33d04738607933222a179c153d9d4bd98aab39828248d9e0d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x584e3d6a8403f1cd839ae732a1220ded50a6dabffd54e9e8e5af93561a61764c	\\x92e1094c05d3e953b30c5e2c47b1f0e7d6150bba9749fcfda4eae3ac62eba2ad
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb7238e7ba2b7325683e0110f4ffc53d9dea3b5cd92ef1acbd2197deeb7e58a90	\\x5094e9c3b16e56e34de5b2367ebc3f42e01d77ccaf90555b7cbe71a742048435
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0dfce72aa73560d859b794cd283e564b24f55618022a5a5e6482a6ec9636cfb6	\\xa6d737f7f3c7ec51591738e8f0fd4c3b65482c1560af07ca3f4aa8c50a56f55b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3e76d0cfcc237b0cb7b5be3802c26fb954d20a0ceb0d874e7e1d0493902f696c	\\xd8f933487db19172b4b4c48088660e6050c39e17b5aa7c0fe56aa0980dc0a689
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbe94bee14eb2ea0dc997388fc6dbe347bd11eb56a5850492f4138b284dfd9120	\\x6a1b7b67051039735bbcb43cdafca7cce10c0e4e3f8b8e97d6c7904df821e86f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa92becd865e1010ae914337d7ce06414f87129ddc0214521d36cb010bd696c97	\\xe8b021e1a73e11340da2a5a776409584f342d4af67a0b3adcd56a649678695d3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x53b7c91914606bf62ca38c22ae07bcdbce02c3d3483c62c807cc184eaf6ff2df	\\x0bfc724fa657336a27719307f7e4b7a1aa91529f6b4358df338391f8bfa233d6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc4d3902abae3d63c6b2e2d4e17660362c6b1946614ef4a94f315f9b778df8083	\\x385b5b7bc89c4a26f320f5cb251bd2107d946371c7ddeb72381c8a8e0bb03966
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xac21f7636518642f5f7b65861f3d811d4b490c2698dd30b710dfd7b2c9ba28d5	\\xabdd4cdb17fa09848dce8154943544c5bd9269c199f718c78ea215863b2b6267
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9f3fb96cfa152694bb70f43a542179c9227e9bc133105ba363b23cdf74ad1bf0	\\xb4d4c94c7fa4527c4c6b72182576c8db857231ed038a63ca6708696a28d94ffc
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x28a90eef3b2f824a9226748f40bdd75ec13fa2fdaebccdc956877e970193dee3	\\xad7241660aff3e4034f7f0908d873f0ace25c6b449f42313019613ee100f4d25
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2402acd5ab65924a487725387400b355659cf400ba508a6937d456385d9ab322	\\x38cfad792c6250af62fdb88e0908f8ab3c1247e84841207b7e348b81183ec811
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2c43431f4895f827e1e482e16d579b4a058d24b1e113ce36d9591a535d2713e0	\\x625c49e08b08569dd801e103e10d695aff9542a6cfc71caf8ccae020b4c93e39
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3eaa80e934f8bb6b4d35539259e51a3d7382d72ff9ff374a9a5d383114cef165	\\x4c32d96274c9e8879d8163e181664eba90456d18c61a31eab0c9559585e07d83
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x462dbade17fdb83c9cb8c133790dc964bac2ae219e99455c05cf74052cd9dc4d	\\xea22071165796b2aae222e11c918bfed8ecbe4e477ed93230fdc4e98cebf3b42
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3e5b7821231d889efac4f41cf5c45c7f51b3e533f08a38aa2400db88d215f105	\\xd4ccceef5780d1ed730ee2fc19a498440f1dddec8a18f24d19ca8b53bbc00c8c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4f86b2374df25bb0bda6f0f8a216292dea087fd4fe3016dd011f91d806b576e2	\\x1184056711eae57278bf51d16f4ad734db04625f335327cfaa41bb39f3eaaa20
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xec67109d143535b6a991677aaef7897d3bc63e007a0c680647516ed1a0ae80c2	\\xc28cc84280768c7a7efea2735fc07b826e9b7ba7c1aa80410cea49d5be9de879
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbbfa5d625e37dfd0575163346adaa54c68df118191737bb31a748e7a9a503741	\\x7d0ccb1b1d5f6b95eecec0faf09ae0f830146207565b59379d084dcb32791a5d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xaf4c9fee8904c12116de8859737721b1f5cd8b4647f287574cc5633741247feb	\\xd9c1752b2e1d88f45d880547e331fd012666e5bd366872bf6a2d8cc61224736d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x171d107f3b3ea198cbe7d4a3a5a224c0dad7c552b94ac0dce7a57bec9c5b9d3b	\\x78d232464e6bb0fea7bf52c8a40383db965a8f06469f4a958231021d4efa0c5a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x90aaa8dfb5f97e7efa4af599d4004c424e3eac9223a5bad00869b3787849e885	\\xf4937fefaa42882d1b5dc3bed39098b1ab35360518663f50f70f6a4540f272f2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x542effd2f65cabf613c9e17372e3bd6a415e8f9b11a0f6f8f33d82dd2c68dcd6	\\x4ba613177e07a68ccac29b78b0f61fe06aa91b8665dd76a6bb5ed9e18c777919
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4eb24b33d2137fe91f13d82de3d98db310d5bf6b0180ce84d770e4e70a4c30bc	\\xfa59d45cbad546f0382848a5f5cea9c527f0776e58a571ec66b35d5e59aab5d8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x80a9cbe767be10ceda758f98bfc3cc925ddb332a2858481eb31c1b274c08d1ae	\\x35cbf44a466d65337800fc548a0240385977477804cd5a08a1235e511e8c4635
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2ce86d933283ed9f12962b84354ad1069969084c103aa4cfd47219afab5ddf90	\\x6bdb413317c5c91b579477f2a1b16d7792f24da97225bc89898c165060fe007d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf5b77ff91ad6c1d6982626e16c7e2fefe689a346797de3e354d25d13152fcd8d	\\x0f064ae019ecd32e8c0fa5688b80411e4537a239a7efb69d4df462e9ad903807
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4cb602be7ed3585c03d1af0d4d672c0cf119fececbc973609abfa23a2596090f	\\x23edf2585e8781ada4a1d99d6357b2562e3b47e9c29b289f56c41ecd8aae9676
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb912c0b13445c2d7f508ab2a1a9ec3fb9cf9034134716b63b45c4edcb19dab97	\\x8805c00a71b0cda56af3e0c816da82d4ab19775d74fdae48d38fbbc936eb09a8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x58a92bea8acbf543041ebfdc55a6523506bca6bcb45fc06f23cf4a9af3e72607	\\x316222f9a6702fb4370a4b3d225dfb0b13b0ca168f9dacd3c81513709b0578af
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x79764a8da01d71ebf902ea86eb5bd8103ce72013361526a4bce2642ff81c7d4e	\\x19e2cbd6cc94b85c8a03e986f0b8c1d9b89dde588c8d284d0ba1dddca07a4260
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7e2294d4984ab76edd53d4c93f960150aa1f705fbd79ff781dcf704561d9d535	\\x35aefde35741ba65151151255948b9901d758a229ac96ad9fad50b96c146e97c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5aaf2ee10915879c8ac04c57cb3e91884d79efed92b6f0fe9f627b90371958f5	\\x8a0e194099f6a15057c1241728ec765a9e2f371bb742557f90d36a8e60cc8e53
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4081809e6c9a09a6ce9ec7666df07bf7cd58d54f74e32f19f2465a7d06ac212d	\\x3a746e0831849edbf66fe9d5668c772773996f0a6896828da3c565c3d1d6eaef
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe83d364216d7d193d8f9d794dd73aaa218dc6cd4ca00c5765a31dce3a7cdd4c0	\\x86cfcc8ef235cf260cfcef18097289b506d2712054df69533421855da6f6e81e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x73d04898abcb3512a1309299374c954298e31cebadc1e74e2daada55d52b4668	\\x2ff7760b85d7a8a9bf7a464bda87865030f9c63e2c961aa98f2cf5d15a4319bf
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x40270b8c94e3fb0b5862b054bef5679bd0acb940540d73b8034b0168cabd46d3	\\xa5f89b4b38060eda77a246574fd4546df9cdcd70c06d5a43e949c99b5a427b66
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0b019ff5c9367ed75062a7cba9d8e600db9ea1923ef976af198e940638a95821	\\x4b12eb8abc2b6d1821d93a4de3dc789d47c2b09b323da23b50de71f1cc1cb3f5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x54f31b691054a8bb2ad018dcad2863a90c5eeea2c8315baabbe2c51136dad34a	\\x098ce54359e1e810ac3b1e9f8e204ad5f97ea1148d32fd034912d8ced85fab68
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xea85e646a51cfe3d583ccafb9bf402f2b8a8491e9e6d635d09335f8dd48cd703	\\x4b22b1ecf68e33853b7b39b4afd14a9bbe983b3b75988aba40edbd681da05048
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1ebd8ff7a3fb14dc7235dc115cc6ec8c2d11b7b6978699cc66ee12cd3c515828	\\x8a6db169553eaa8081b45700cfb9a68e2a6d2dc6435bc6056929287a0b255006
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6c9bd8fa6b7c4ee544fca4920e8f33b921527c8f470bfbc3d7ed41619309dec0	\\x3e7cecb39ebd275552c696f27f557db9ded7327373f9e09568748d3e095f8773
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf1058e311f3fe184e867bf0528dc53517a2ac9b68cf1e5d6756dacb40aedc58b	\\x2ce9da9d1e5edd9570ca2c16bed68b67171db042f3900d4a80dfc1de231553bd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x97f43be8c1d2babd102e2095c7b4dce837bd7d7b125c4f8ba1b59d238518016f	\\x43d973ad4c4c8e381d989e374d6cac3c3d57e8fa9e5bc2a04a184d58ceab2865
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x54157bff10c763c74ea3fc65f2b6cf864683499ed59ea83e7192f09162fd8875	\\x90f9a1e15753306f51b9b97f582ff4f3533c6f46d4365e3b795f02eaeefe299b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8708853f8a93cb56dfdd8387b96695bfea2646fb6b299a0190695b4170fc8f91	\\x9a0ec04cc3d8273c6cd83688b80ea43a11c7069484dcc8605dfe7b0f211fdf9f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4409ca5baa6f38b8b68d6919dbce2cfebf2164fe405841a7d7739d39dfb7abd3	\\x0dc6055b4f1052ec027d680998fecb28faddaaaf3cdf381c090c7a79ecd057c3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3b8f6cd6dd9350adf752c3259ca63ac50204e5b5bed4831c9605f5e872036a0a	\\x0d35ff88193ed2ef719c03d1909fd9a4a440f28cb329c9a82bf90a3d6225f3d4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x243a69b09970cf290445b033d60d4c2a69130f6352f56d5edd11ac624e3f4bd9	\\xa818464aff2a088b65fba0eb0479d1e21b80f85b85c2f3a6ac52d66e7b6fc395
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x150fad55e4e1f005a901ce5b6eba6f9e9614e6bafb4f8a088ffa4e9526a79ef4	\\xd7c4e970b9e1524eb494ea5aa10f34162fb9feeae99f5cda9e665d532ea525c3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x854fdf36f11846d8aa8034a9d935e4a362f719cd2820c7572cbb1f652fd16cde	\\xf58997b4a30aefc8bd82ed9d2e9f1076b164428a8cad442d454c1f608d2967a1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb844ce013633259315de3f0600ac67967c835f5753efb5837178987e178ede15	\\x85629a28afcefb8bec50849e887f618c0f8b4cab0b2c84547d9830e5ca879ab0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb3da6b7570a6509bbd2a4c3ec0d1c3784494a2f14698759a8805f98b6d71d36d	\\x66b5d74b91a43e8d2cb91895b9fa9fc0d63eb8674c8ad514d39b57a92c21945b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc27ab4ac55643b49c7e0c3c82f56a607135be22e12b7451053d62c021da70d18	\\x6ffc7d9978d2c90bae030be1ccce71e10e3c66343dab60ec8fe76c51d628d142
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc71d0a1fcce9de06f43770786df2116ea89fee84e7961d249e2ab8be6ceaaf5e	\\x4a5c87c42fc618402a0d50d353156b319c27a51ca0edfa389450dcc5517e06c9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbfcab86b3a6b1c93294f3572470e1f9fa5a4ccc345e3aeb5c59e968df4c4879e	\\x15569f44b7121f9f6be15d3517f9b8fb5afaf199a0b5e0376d036ef06873013a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9c0fc12e02aaf864fe954ae0380da50148acaec97a9f3e8da3a91b4032ae0bb7	\\x18072c550947be9cdb57c5a99d0745c480e2124e0c49f8ebf9cf5320557f7127
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7c38158027bec726148ea5fd9e87619edaef3a3ed36a044135fb63bc311d705c	\\xdd55ff73732434b671f07c5c7486189ee87b0e3e650e2fa595a4e412c79001e6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x66abaa5ee1b5b67d6a8fdc4aa8213c8894f698f769a84e1761e120fdee876d55	\\x718f01ae5800c581723a24e4c85f73a1439e93b46b2ad18bef86b3a45dd80a4f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x17bc6ab71611268ebd0ef443bd7ae59ad274984dcd6cde94f6c9d4a35addd15b	\\x33492a3c393debed93b66bf9a7cdb2676c3023ae11dc5120a75f10815f0f48a2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xaa5f175f7ad0c6e64d89a039b5cd348f614c9af12bcf83c0758baf87e75a0af2	\\x50812c1290aee78781075c281944ded3dc2bc7fcdd162e05bbabaa94f2b67ba9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8226a4aaaf71861818d223db21e194b9fd84667c8262cf301ba15bac2cf03cc2	\\xafdb7e9b089b7247714ea4fc1dbf6b10457c766e672c13ece584ac16d8de608b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8776600dfd706e920fa798ca228a33e90aaf4360f9d1060c4c6b6529b00751e1	\\x5bc24ce5cdefacedce4a461055988f20910bcbd1c9504cc75d54ad603fd0d68f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0b58405b215c05d6313d4427298f9652f5878b560690df215da67c6c619a3861	\\x3784088546345d7c9695a51814c173763e425b2bbe7967df6216c6bcd645979f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x51f668005b8e2a44050aa1d2fb9b09e09737b71f48dfa3a0a432c59ca3f25a3d	\\x30addda866a05d700622ee1fe502dd5affbcc896b39645f25ce72751cda6af16
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x463c649d3c588173d9204d469f7216ccfe3a6176a5c83129a954638f87155f25	\\x5dbbbe91c1bf2fbde3406252370b8551ff463ffa29cff68950e7d0f634ab97d7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4b2f305522af0d4675c77771d9b848fba7d4d718ed085381527399866f906ef5	\\xbf91e63ddd02325d9e2931fa5a8d6a9ab7c57c5245384ec997fe7c2195976d0c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3071eab00cf84cf7a77bd10be2b5dda17235d92d56069b62353b289b6eb58afa	\\xd3f51440ad5467381334e4cd3e30ea0f95b600274ddae3af0a805468e6317f2c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa564a8fec1503cabf8b8e2798bb8b3337260a15ef08a4886e195ff243bdf5cb3	\\x7913a86ae1f55251f9ef5a8501351854558d5310910648f4918834482fdc53be
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf27f6e3156aad1301b056517a7a106708e6fee88aaacaecddc64006e68737972	\\x5f1feda3c9aae2146980254bd19946cd5e96aaae49aec4f1944bc967f04bdb46
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xaf8b19c8a5193188c054d990de06b8cc58312d5140c6f5fa189d0abe16e49bd6	\\xbb4dc217822872defefc365260fc3c50261f6deababfa963bfce1bb5ef0309ed
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2e3b192c570933287ef2508010685f5c265e0dce50562300fc603b181cec63bd	\\x11cd62c518bfd4ccb9d2cf73f5ff84e8214cc0c617724c9b09fc082651ca2ef9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7b8e3aaa9e421bfe5e0c6776b19f8e812120a524de9fd6c4f0e0edbf2cc15bf6	\\xd78064f10327019c089bf563638a64a2086dca479a0f3d054d7cfa23cec78981
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc17d23c6af9cb442c16f558a6db87e3be48b53f930300237500c8febb67f93ab	\\xc4b691ba66977d3462ca52c3ed681de606c30b0c7e53dede52b877996a23da9c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x56592644e09909adb51a5d88077cb66b5d1f1b8c27799aa9fc56a9a07cea687f	\\x2571e70b917605d9395119578bfb2b300a780fcccb68c44bbae39703c5fb25ea
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe497ad2fdfeb1ba642121fb78e8fa1e8c8fcbf70ccd3697b4061dc68b0c3c940	\\x3bf6cdf26083cf48874cb6be54e471fa5567b02e0414e7898fa2938e1a1813bb
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3fb77a25cc17d5d5c6701098661b26842a9b5a0e384829dafb10eab6dbb29f11	\\xa8c47ea85652d46668209d198b1725fc717296a2c83f188bf5f9e54d93704b9b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8700e335e00cf63954d289f30b449b00341fd58f2ac1748a60fa762b2459ded9	\\x154675dbab39f4e750b44c97b3a7657ae71b83e75c7dad486620f39ca1c19f15
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfec8411fff2f448d844e46d1093a256ed7284fc42c68bdced02157374b48ca2f	\\x558effb46116fc51ddb7cd7cd54a41ae407dca5f6230ba04f03839c7ade88642
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2bc47bd1821187fac572a8382209c9eb61b027a9683064b6caad7b4a6b01d615	\\xe9ed36831fe8ab09c59305cf9ed768be9d73972aa0b34f2f7b1017bf2818e4e5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb5d8c924205cbda7faf7602d220415d143e5d587ba13a02494ad4b07c271d2a6	\\xb3e912dbdca482d170c419fcb94e7bb1bb4a22127532fc7781d176cfc3217c83
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd18c869c9414e48bdb3267972656aaa6a975cbf8998e661b3b0ebac1b1a4bf37	\\xf0a688f469dd75783a056a04e82287c7fc005ab75e914c27f2caf24e42372b5d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x26c0dfeae2ea0a677160926a4fdd578a5cd01655fb39b85ac639874958bded24	\\xd68c0a4de227eb8c053e5defe2b68ed5426ab1011700b92872f75bd3da42e0c6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3b43052d5803590fa4cfe2a70517f6677225839fa730386258a8007adbaccd13	\\x352755ad7c944f4462b381bc4d2cf063c4fad773cb765685009a55745f035992
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5f4c8ef216d58d5307ccdb694b0d23def8b51bbfffa8937459060cfd5a00bd31	\\xebb5965816a2e487b95dfd8a1bfd099cac62b1f11ab29796dcc4c8c730c9200c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x91c366938e60144c02ca52e53b65b8e4b72604c5aa1eb7cc9b70f8a669ed8301	\\x16fafd4df1414021bb5363e3492b467e3511b96935b6b33971bcc4a42082aff8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x78a8717e90075c43b1030b8af776df0dfec7632abf07f8c5a46627ca5ddee08c	\\x57210a346b84edebb424ea2eff7a0c30b4ce48ff5e120eaddfb1a5070957158a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4f260000a2d6572b4dbe2cd21246d6146dc9783e7d7a9de2277e05b1c634c3b0	\\x943b39f4ce45ce91a51a959a4842fd76656822129fd7553fdf11fce474553bc4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x69feb578f3ef97c421ca884c5a3b79d1de6e3a5481ad502d76c36ccccf05d4bb	\\x36d172345cb40724677ac2b5c75d91bbc2735de51791a567003fd5214b9305bf
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x422768251ca5f4780e73b8cd8d43a992833eeccfccf7327257a62844a04ecc70	\\xaee447591e52553fabd2a5d478757f5e920e8452f9642a8bf8a4191a0058366a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf28e7307292db1caaddb61b93b9250db8860394db1efa79ce33b510dd5623649	\\x735611768eec7267ca5ca319bd83ede78e1a8a258a6b7d1a2915c632c96ba9b8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb533f138427c4ecbb5bc68b53b26f17310b60378ff79016a77b494bbd81eb8ab	\\xa129b49be43a2165f76ba1af9ac2ec9ab0d4099da5bb34d367b0b79b6b7a40b4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x62a463d5557a9794e55491983af270e8dc8937e227bdd50ae6e481579c38a957	\\x3fafaf6a6b40128925fa252fb4e053f3f3c4556e2ddf54ab81340ea9c9abba23
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb25e354c1a06615e468dc327443dabb9195e62a2e80ccd55537b41d37991b2d6	\\xbfec858d9a08cdadc1e3bca1a09394ff3859abdfc954b678243af663ca507816
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2329dba4bb3a547165ad10fc064f5c2a02987c0d8f375948a281b0e25ebee4f8	\\xed256344214602776b1adedb0ad82779bb74e598e2aec9896746636c17a425a1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2e6d82e12a8740f11a8f11ee568027569ace383b02f56c61cc69c405b44cc8ee	\\x115f944a68e69c032462fb2a62dd8ea5dd382b42c7f2d52197ce5bfc55a2fdb3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf779f4603411b2cdbe711b09c5f3ffa822df030c4b02ad9c3d72ba9b8caa6a6b	\\xae43c259d02bfa8d403a18a637c1baa44bf8f76c295b3686643019ff3a7d1aa7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9981f7ff3ddb6beadbf87a0eba14666346ba9f2921638af63e12fc09773ab945	\\xad373152f4fdd560d6ea5e5a472a90c2f464aab456a4a25462eaf98a627e32c9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x537b8c58ddcf2d995e769d218830ecedd76c5c85e1f3497895aeb6613ac6908b	\\x1224efbb2aad8d02204af7ecec44ad88f118fd3ebf5085f4c95d088ad77e8655
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x402a32c6a9ad551f693a0359fa77efba1418c8af181e25a37f628d8483f9b284	\\xfc09265f36e3a15c1d488ebb4edd4b5e959026c043bc6d1048814f467da246a1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2d54afea34aabed94aed469a6f87ff9300bdf6ce56ac050b9cc8e14141395b5a	\\x02a016139c60a372e3d8698a614f4c2e3fd07ffb0f3eb39c29370cf22f5cfaea
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x35b7bed8c568bb39734d5e87f70b1cbbba9fbfdd8a6ebffb4cdfa43f4f90986e	\\xc5a5fa663933aff5ffa3f0f63b7b23ebbbd9ef4f3f7f4070285b4c52b1ee014e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4b1c699e1815d4562d4c3f63d550128d0874359acc2f4c9167d7cbcfb5d3ebfc	\\x3d944d37f6fc0f5667a9cec8800fa3461b980ee01542abf4e658cf927fc488ab
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbaf2049491d2fe5d13742ccc73830828b77ef4da977615cb7c0511173ff0dc52	\\x27c193987d53fd6209b63079de9655a057ea0020e65e006916b87432a200152d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8a05b7f5527689d0c13993037f82c36801b41a7c33b2c00a251f5264f07629f6	\\x256bdae0cd903c4f4bdb78dba24d01d7d7a88f7357bf58a890cb4d14d7812c06
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6524b702e57557f8790e533453bead904548d25db70138c61b9f88786dec2684	\\x971ddaa85e907625ae9030cd08bd118c0259200c276ed2ec2349cac877ed8fd7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8d7b9860240d3086a9c6bdb3077e94f6df1b736e4b1a672da891c96ccc0087bd	\\x946418173329cd6ac791826ed50fc8d60e1e7e6674f3dfa1251ec4685024ecbb
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x47d7a4a8a0add2fbc517c559e6fa22c1b7756ea8f0f76fdf31d9be0a8b59a072	\\x81c09a2d489c9717c021db701f106679376ff04d1f4b4b6cee07c4d2bb42a176
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3c81631b75a464c7abe732fd1260b0b01f685c4978b7f855725665093643e7ea	\\x2dcc811efbc4b6ea8791061d6dfa999f4780e32b95157cc084b8f7fc98fdc494
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x214cc5a291481490290e6916d4d0d42a470ba2cae7b357039c55ca7745ff1e29	\\x22e888e1799910ccb85361b9ba842cb19c71ccf02ae874ba53110452a5973699
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xeaf13d976a8bb86663caa1390615d3b147a4414426b18184e53d2c9e52e53cd5	\\x1a079fb2f553e70b615e1094387273e59b749aec32605c418e47b46743233c64
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x74b97861d680bfe3bc02efa169ffe46aefea4501178fdbcb4cbc96651c29c50a	\\x55b64ab1a09f7c000d85db2578b13f144157f59f5d661e9ae4fe653ca227b915
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x58b7f5e0185873eaaa8c4db8def470bac772d78af6d278775d7331658259957b	\\xb9a224cc24fb2660b8350da1056c8f1eac326ed3c26199ad242f0250171f75d2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x353f1338638625735749e266a757ff420c5b6ab38e2eda540992888faeaa9c78	\\xf3d75e011dacc90e6b92a7d63033d5220e99ca91691e2082ead186ba1bd0b194
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x856c64781a062ef8feb6ac39df467317d901cedf2aa46025a384808f3262e5fe	\\x0c04cd07d65db4e8adb34e359f875785f66eb2fd8853d9de46580d41e5e16a3a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb2ddeffcf7155cbcc68ca35f69b94ca6a3afd9602d06d236e2627bf7b375e309	\\xa45cd83fe8ead4488d2aa9c939780397066046ae93ade1f25751337569061707
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x88200aa2f4d881846e8fa009c3e6a3e930aead5a9112c528a665eee6a5e3b9b2	\\x01d0740309bab0e4b889729aff0400713d30caec13b0705c2879a078450d8109
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3420e03f2ef6e9f0bd79d3081aad2859fd9058f5238ebd4498e137b258f361e8	\\x6c4cdc3a5e21b010aa0ebbe54a316704cadd80636bee23d8089944c4d5f9ae72
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x47b7305a7dabfc231e2b4e07e193af46447886bb31178d45d7aff8b3536cfc8b	\\x489d2d3fd722ecfe48cc1bf8442213282c63daf43407ebd69ab5c3af68987a88
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x858851f5a5a588fbead285b6c4bbd942cc348babcebd280b43947dbcd93aea0f	\\x66fac481dd6e8ce189242bf64dd9d96d3fed714b2293b1df102a282642ca6af5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x29ab16f8b61c663cb304680694838687429f4e81dda8310f3f6bd18cf4e97c0c	\\x5bef34d90a4f0d4de972a223ad76a64f3f063048674141c33ddc69f936791679
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb9265710939a49617c1a2c5f3ad0671433080b1c251cbc880593b88db427f859	\\xeb22341b102f03cb3846ba3b60a5545623a0a6e616bcb117b5f70e3ae0b0d344
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdd5755b97496fb12ce3716c9484e64b88114a03193fcefbe58e0ffc15e80bd83	\\xd21c1c993e4f78c1a0a7a47b408a49e938d9e7718410fa105e0469e82eed49a9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x226bef6b98e2f7f9ba50a13c13146dfffb9b0d7e6285d4863a847bec0a5f1dd9	\\x10342a3fa80275d20d2b12994f18e42f93e1fd03144cdb42cd0903d78161ce2c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0d8876753c41a643405159716bd15f961a48d53bba3c9f62835c7584aef558e6	\\x25feda89f8c7f2698077220ebe55b87e661f7a4a90e511cb1f37b22c284eb487
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xaaf22c56712f729f4b1368d71acc084d9c59283649d2fb083d9a16acef609a56	\\x0852841f96bdc5f24298457e9938edfef27cbf6ac8623d3aaef2cbd4cca01ce3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x31a4ac8e1b6204084270ef92565de6346933d1499bb6836ffd750f94bcbcd2dd	\\xd58bca413944df2deee01c363193cda34a512e19558b25beb88124cc650c0e25
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdbc353be0acb3181c418abfea8f3f525cc50c489fe2db036fe39df95ba5ba1fc	\\x9f244a90d83fbf6d3749768cec93cbf1ff5cc9bc4feb96dc7cc6962d704495ac
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa781c92c6b64bcfcbb1730cf0bf8a9fd2a4f0d476c9f9d65de36bef16696fa0e	\\x4d62bccc8fc80cc3897a1b66ff47b8c20134a35731370289db6728ff4db98c4f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3aae41cca1632f01a95d87b17261922124b4b49e071f18b8bf67193bb552c181	\\x94557cfea121fba51358374689035c66e8684bcca6fd7c6bde8acc2aec9d8de2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xaba159fb6f8a75fb71a2e6b8671ba132590eff64b6b3d4e53190fbe42fe492bf	\\x286f65c47ab3558409b44789545d148451d27820a14fa027b613c1a317211c4f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe2b160f6adf366516422716902daa652d7449fc417d602818754ec9fcd4d81b8	\\x1515a63238dfa7f655a5a82f2481f94bc37e1ff0287eb14e99386067735833a0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc08f4595c87a421731eabb4c777448c67341c2b5865871451fe639e11c662347	\\xa413489ecc05ccdf1d08cdcd2801528cb8561e759c7101a971e07021eda06fe1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xdd86908df4f75361f3d213365da7beba883a642eb50a3b78bff24db89073f438	\\x401e0d22b635ca26b440b7ef9d9d2e67a3d08616c23a1aa89baa9e4dbc017d18
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xedb3152f2c191e285a42e42e0c3968de799aefa1a834352c023a0855155c3e03	\\xcad146a3ece1aff88c76d126517426cefbc3a2123fdfb262ded66cb7a7c24b63
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x15815724d75a403ed29cd922b8af08ecd07cddfb789e0921b9b4f9da4dee9a3f	\\xeb475a6ee453043a1156aa860a45f48d996ab764e73764a17c3e53c29aad64d4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x5b58ed542a47c306eb70246b2ae39fbb47f083501d7a6fa3dcc64268282d1ea0	\\x3a9a51f93e49877f09876283d43989697aa1886d015d29e21def7dc2d2d903ed
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3ec62f22ea49b34376fcb147dc73db73844a4325bf87024cc71c05d1e2d2d9f1	\\xf6e8205964c84c946b26d4737acf3805d9d14b0d9d4c98e6e71ab42624fcc777
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9a95d7c8164cf49d54743b82434501a99897b7d08ecde532f8dacc0b3d48b705	\\x7194ad674156c74bc2fd13918299b51fde045bded21a371a9736168c61d0f7b7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x754ba6fbe8e3bf56645f16a9b4420102561d8369e372fa24c250f822b7afe3a4	\\x6b86f10674814e88d7f4adf4d9ddcfc0bcd441f480b1386fb209a2cbcb6cd22c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3cb4b35622a972925cb5fb8621205a4ee031f3af69229abc39b6d1293f1f88ff	\\xd26391c0a10100b86916ead4f83b5e18fd3a8832122703c20b9dda8a2b828e75
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8b35c95a56db5cfb3c77c25a61b564d32a0365458fb137c279c0dc8844b5c463	\\xee9b9adf0837c2a68d7f7bce948ad2c80cd203520f5d10772e850c687a8aaa5c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1a86a5129a49597d1b334c12a17fd1ca0340639fc874da9fdde040c83b49b656	\\x902e7affccde1e9cc3601eeae1895f1260a5efedfd445e65fb95408fb72b83e7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9ff830e2048296847d8bfafc172a5d45bcceca0734f36cbb52ded6fe34cde1d8	\\x15df0043a98401b26a212f82008b0232c747acd8e5b2f468ea778274afb7ec62
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1f0bec71ab4d504bbb20a6bc3ea7196cabb503455a9e68752a7e60c0544e58c9	\\x64f3c2773832211517c1be0393b73b498f9ac98ad2321b889d59ca5b8659d88f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x2914172a179c53a570d610918fba4d4501af8df1ac6ce201230ddaf98b8ad6b7	\\xb2b9ba9d85d4638ffba7c4637640fe6035d8c2a7eeb8332687136df8623a48e5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9a7110963ced3b4c946a5a1961422fc054b2f3fd34cf9ad407eb2a9ce5d80a91	\\xdf68684dcda448947769019fdfb725da86d5446c7a3293488ab848b5849f40be
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa050d79d9f510b757993bd3fe7cd6b98d2b518d4235ffe32ad11205cf5372e73	\\xb088b9c481203f884eb04ceda55ae6c9faa7729b2447f411ac0c001fa4aaaca5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x80bb5d417007fc85fccf5c6b2a2a5a99ff2613a39b73d0d33e3a34e26044cf2f	\\x12f874f8d8992ebffabebd64838e5e68037dce4b398dea2fac92023434395674
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x585286d686c330f55058ccef7165d78277ec06189d5175a0f149195e2e34ab18	\\xc7223ec9b359eead2e4c9f51f74d1f576b84c52702146353558baca53fe98474
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3620fc8d687af432f1b815734d1443b0ad875a3930fb085a0dd42c2b390d95c8	\\x376b86f39a0f19e8606c122c5df74cbeef1d21f2329409d2ce1ed610d1c72095
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x33395dd362b54112c1d0748192dff9b56ce152d038bda0239b414b907b9fdd0d	\\xaa1625357985ad01f396b07503bc01ab9f078f984e2a6201d751c42b656cbca3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd7eeb4522285d0c0e36f4e57ca9ca61528f69216802513b4823aea63df630401	\\x7e1f42c4793b25fc75011f22417ed954e4148f7cc736f8343808dd668f5e71c5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x038bc2468d36e9a33069356e48e0da26a485111ae7d0750ca84a3f3e410139ac	\\x5138a014b96d72f1655a0bf6637e0897c7b9abad4417a3d24e8c6768576f261c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x35f5fe7bc2081ef6b816b2e66583b92300487ca877189d3743913318e16da4ea	\\x1ac5bb1924c0d0ea6666e42ab74dded6199a67f7898a47f6603b10da0ffb121e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0c7efb758b8a315861cbeca018560079d2dd5370adc5654fa38ba6824fa40b00	\\xd46af8ecd8e129a556eab5c0e5e3bbf951a6f3da4f0ce7ec97c8007e89cf564e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x67a160cb6a2a441fe887f61e7d2d96d7d069d5a33e088a4322b0491b57c43e5d	\\x0f36851ed6932a0fe7fe9fd9584b3a0730de65abcd8a3766e09469bf4218713b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x40f34c8ae021c91fe8a883231c7c26c4737c5540001b305876e559fcd6b99d37	\\x454006bcd2994156669e9c4f62f20c41eac247972a8c0adbabdfa5efb21bbab5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x25049dad097e110d8ca9dc9d4b994c070acc26776f869226859792b0f96ffb71	\\xd251bddbfebc0b1fb24767dd64ad74d9dff8dc52c7bcf0f18374e1e5a62ed94a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x72727dade548c45fd386d7b22ecb782648a4dc0d8db0758bcd0e056cf4bf97bd	\\xb33e8c2c0a5ae13e95498f1d730bd74c4ea1e72c3da9c11d479ccd554d393dbd
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xeef278a676f3905ea1a2dd8c92a1c3602b23085f01c9e751b9a1c51bc4c9fa81	\\xb23aa1b65473cd04a45c520d2f4d7d6734ef07f69a98187885afcdb536175efe
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3be7cd29668235ecdc31554e19788323aec6bc39274f913f7beba2cc41af48b7	\\x4698ca42d17a5a9d8ed365ea6be62b4b9f49cd32450f635500a0d637aa31e1ea
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc3e1ede52eae2b72eadf17cdd99cdd6bf070830afb1570deb21fb0be0daed2cf	\\x02dbf76462e2e0728666d2b377474d368e70dae1bbfe6d6f6b19c9772977a918
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xaa09114316582bb73a140c01acc9460e8b8fcb92195b981d895c3e7006ad0420	\\xa2a9b1adf8ee62e94ffe146fc936da1c0ed0ecb71904a335dc0da71111fac117
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6648007dee98eb0ab31338832560da675ab53e7ca904999e510dde687c4b6326	\\xf16ba5596ad3e88f20aab44c6098901cce95cbad4a538cfd91d748af18ec2b41
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4fcc0804cf0d16b099459dc5ddbaba94f78c218ea6ae0ae30494ba40eb1c8aac	\\x178fec78add34fcc27bd3898ad05ad35ac5362a7b4c159dc343492f244628c28
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x61538b17e1ec6f0704baab5d649253d1bce683ac91f3ec9321bd99c4f3a3f78e	\\x81df3739287bbcb0ce32e4c00918f9bb3e5139b3429079cb71cef7db6ee3bc86
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1dcdb1395cafc08ce2a25c9728ff84fe0e5894342124e5ff78393755192c4272	\\xb536ed17d0b6b3bc3c0a49e1c751832f9a503c21c016895d39d226fba49acc9a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x611962ef1b9e3cf1929d165558abee0321b42b7c939405d42881c2db5552da48	\\x056d6287cb295d9c07766cac94a2fa4fbc248b6e6c0e08bdf3e2ca4456ba8e92
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x38c8ea5507bb6e00fed1380ef7c9f91da5347c41aa23ab74ef3482a37d985964	\\xb7e8ebab085ea3555a38c5612ae9123b4dbb632e3cdc68af46d3473228073671
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x683a5b0bbece6601ed753128d87fafa4a09605a8fa12cdec4ec5691bc1f1d203	\\xd460f86eedcadcda7dbe88e7534a4b4c55f60a852533e14b2aed05d8381c78e3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4eb1fd8de29d2b0465b5f4ad81fd4fd17e14c5ccbf86bfa06410d12045faad14	\\x2f65c42cc118f5ca58f9e39b37deba4411f0285da704e92d4b018fcdb649db84
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd834fd1ec5ad05ee9aaa0180067ab13bf3fcec1fd33f2c09d334298bbd0a1c54	\\x1e0a623321cced7b61a7180a503b42b5bfb0fbbf5a03c9a9fa1d8e86ebfd42e6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb7299ca4695186a412a06489138c04494ab4368616adede59997a0d0d2671490	\\x4fed077ca829f48cca32d91a4caa9d87f3e42609d0b24b2bb2001ad6a3868f44
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe34b771afe55e2a2e7969f253be0c49567a9b7fb393589a4977f40b95ff507a3	\\x01dc190682f7e2c257129741bda77de256b02bdf83512d81a2cfb1f0a5d6bfd3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1e7d669b83faf695ac18017d7a5eda3e7d64643a80ad01205e26e129ac493428	\\xd9909730b09d6fbffd79f6c90379503414ead3fd78420d45c4cf10810b880167
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3c47498437ad2e609bb10666f66103840755cef166434352c5e364fa9048f763	\\xe1e35e97730213ce0c28a41471fc557ed338b9c41ffdeed46a7572ef8117c309
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7021bfc555c4c180f2a3581b78c63ce91ab202449295ed649e44b28141e6fd87	\\x36c87af16fcdd4b942df66e6393d5ea9df6a37e60454cab463f070ab9be2e02e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb3077d1ec7ae2caced58eaa04d86ba8b2c55ab6b304de2d5b03b59a6fb4c9f35	\\xa5d3b121255cf8b7ede2edd8378c5bddf513db280e36159b40f324b0e3421d6f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd7490dbee877180aceca5dbb88aec798cbc7227d4122095b049c29bd89c16239	\\xf2b1c18d904022e32e61fff37dbb422435626213b200dfd250a540a0ba2b9e74
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xcf71d8e652b68acfae19e0041cf2f16c44b87e695ec01b203cc7f8252c54d536	\\x0ed821019cda4214b1303673f67072fd92a8d178525ebe69c8f9b964642353f1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0c39464fbfea6ae4f70cb6d5137116c09997340afc252cbf8183780f96361dfa	\\x407e2f488dd10a14927adbd8cd7b84922d333175792a66ac4be816bdf5b0a71e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1c3ea3d90dbe62add864e9cfc5a78b6e8f1111ff5323999417fdb41a0952f2a5	\\x0dde1d14b0f2cc4fef4066807042d2db6581d87a0c561142256cc7d6414a5b8e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1526203dd7b76cc4ad0bcfca6614dfc51439c24f366fc0fd3163677d96c5af29	\\x84995b8dac845acba48d2faa3648abf67ef9ee9560cc207218b3adeb31efaac2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x220c25de66fd4a549c960642158653a3c486d528be4da7dbd7fa5964fc74de22	\\x1ad5e67d4f5fd54acf63e6c912228e7c934f02b454f43766730315a7906da7ff
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x696f1afb85b8f3202057a184d48538ee1520128f3a447027dd965a3aeb991579	\\xbc98365f4c42304d4c6eec90d198a5eaef0598a0b1d8b7af8cb01f8b49c2f565
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x203d43bf9f72d51eeadb965dc49ff9be3ec1c40d5d685ad4e702de0ecbf47948	\\x47fe79763582c276f9ca851593be432b3c918e0990f3961fa8c050f372f0bf4b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd3651d5420d7b99d25afee877b47ef13ee5963cc37e7a6d81f367e67b60cd371	\\x2e2d98a28528841bb9b1b68eb3c3ba04a41cdb764031623ee315e11ebb22d40e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x97723148966d346a32ad311d5ca0f8a3b1499072dc2b95a82876dbb82916e99d	\\xf0d854ea7e3e5ae2d1c09bc11f784868284ee03b8cecaadaf20b9f8fc7c9462b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd3dddf53bbdb05de5662b39c3bdb030936d79e5278e6e5cafd0b77d352aac28a	\\x44cf799062da6d4ba861d557fc32aaef3f260c5b3792be877ef3614aeb6c2823
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd8f3f1c33fdfdd1063c4d30a752f24eb183815b071809990836d7a1cfd3dd29f	\\xc8c453bb0e30096ddf26b17d6369708c996aa890e14cd25e9a106324f5006b08
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc2bc649a0c326ca7512ef42bd142d6576da0901190312f39bb41a01263375d65	\\x8747a62902702fd1e40a28be618b3fb9219a9bafc122a797ee6a1d4be5729752
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xb813080b6ea2434e7c8a2a1976c42dcc79acce2a5e2d61f8edc00bb5dded0f4e	\\xf2db40dd4780f627fe87094c5d7b1a1d9f5f5045e2dcf1cb4102a5c8629eeb8f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa1ec14c557652cc564ad0eefdbac985cd2b661a8f2dfc9454ce8792480d3951f	\\xbc4667021e3d2c8ae68f41bc82bb7ed50d465f3878aa606038cc4a0cca3ec247
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9d75949602e2f88ca84377113f03a92640966ecc275e65b11248dbcf1cf9dfd2	\\xd9f3abd4ce82313674f23505bf54a958f9f4b2995e69e4398a81f5d56c415174
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x927343a2d09c1d99d266a85f4d898346dd36ba65588a788fab8b69eb9d3c71e5	\\x83e048aae295ec772d2b689287af2668c86a7d6ed8a5768a648fd825fc9e0b1b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd741c92a2873844632bb3ac0b39ae420d0f97a1427de7c6bdd4d6b54d1026208	\\x449a6fdfb6c6810e0c787c01966b198d7b70d3feff4252c85dcd1852a69c8fb1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4091eb8cf89565bb085f706fde88f3e0c5b5133cb15e1c8f53fc79ebbac5967a	\\x095e09b5197588d764a75b7fb4840667907379d6498765eaeefdbd21cf1957e2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x684eca14060adf52b1fc6c2ed94a039d54d96e04f0a5ad603a81e32fe676b516	\\x8c8f4612f76409250a917dff84b830efb049c2a7c39d6957505215194ab01d57
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x71f92a8ea517f7e3d5788aaac3a0226f49e38fbb26eb3c1417c1d88d7887987c	\\x1883ce287515182583e8cf7baaa9def0de21047070cf026cb9327af14e73bffc
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0e0e2c23b1f68aeb3542eb6105da4346ecc9f64d01c485811906b945976a5a28	\\xfff3bb4a6b2bb94f191a6d96ba4e3e0529b4348f736495744fce94bcc0a6c6a7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa829f7358625afbfe4d5713c9846eed5c035ddcc8d84cf483e84c68b80b17dd4	\\x524a56fcf0d424c8a52e39f5e1b049ecd9727d93c9689667bf8f57684f1bcd8e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x25b752d54020924237c9cb0ffce457e541e4f07c9c0ff6cf1b5583df8c87674b	\\xe79f184954407340359e180fac6a386e274051c7407866cbc5a52a61a825eaba
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa291e518a28aa7010a5d5eb753612446f18b9ad02dff6804f82dd416da3950e0	\\x9f6b7a696371ac1b8a11c2c042747e1f70c3691264a75aabde4e28bb79a25527
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x10d1e1e6ca39680fb0414691c33107d7139fe93eae715191dffc0ef1fad85aba	\\x6c80baed19bbd3c3a74eda797b1d63b4e0b178f64e64ec1e1b32fa55b26c353e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa49b47e1dd06d610be5a647b92fb39f9a31dabd048ad13c1a6f1c47db3c0e0e0	\\x6dc7a2b78c52a1d709a29e5257d111441f90920d466961be06e3a6fe98be442b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9b82801c5ccd2ac8f91b811b19f4adedf83e720d3e47d691b0c35e7d5cbb903a	\\xcd4ecbd237295b3a3c568cb767b70429293ec9215d2f37c8d97ef38ba3d8e64f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc0bb7af85b013b282d494cd58affe5003604f71fb4aaaccd998d9a76fb213d5d	\\x2cbffe5e90c76b6a97302222fd5153f83672ed16e2f6eb72f203a2bbdda2b923
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x283e3139a04e1c413db829c83631f582e92e36e3228f615459facacdd468eed4	\\xe13ba70da6452ce70b39035848e76eefba79237405444b6a2ccc525ff0d9e840
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xeb8c640a5a633d434bb3430ec5d778ccf8d1ee24d5a158f33aae7a97ce1c7cc9	\\x65edd299779068a1266e3417dd3ae8e65e0483c42075145228dd71753fa6ec0b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd04ec8bfae2332806553412656520d0645d6198e8b87408c9b84f2c383370d16	\\xd3635c2f07cab10dc22e0a68045a5223cb1bb7a51cb09fbfa6ba2f1615a58ed0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd63142404bc4e67fa3ec2d10c97a696917880140203b6dbb1c4c86815061fcc0	\\x661ee30866be49ff610403a90a906d5fd64293f3e98d707b27ee0dd13a47255d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd7b65c772d53c1de30522fd3b90885ab72691093a14abaff24572ad9661220a0	\\xb4b003c8b0c9a15db45c78a19df6d7373aea3c04227a59f426aa401d6ace88e3
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf8624ed21db4939f7d486874fa554646daddd8380d3a9d39c1bb7c5ce0a9e40f	\\xa84fddb80eb8e6237d633c143de0dc09510417437439132a85110d5a1b91f8a0
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x44012090da82b162c6d8d65cdcfba549b8764d342a852c2ef09938b7bb62d95c	\\xe66cf017dbd63ff38c75f482480712a247c10db99767db217676191646c8e67e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x709dd04b9d3a982f4b6c2764c737ac449de3d186860848a8e3480b992d8c4668	\\x83e0838d15771b622e3b196ae67800ea861ed62a923f77ca1b0de01dfdf6ef31
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa2d68c0dc49998322dcd4625e98473d920c8ae83de787d49f7b87fde495a1dba	\\x97148618f3d322222e97af678364067278a138d89f78e081881a955397ab78ce
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa7cf9afa6e90306b7da8115b8aa04cf8d81a11d3b01fd68d6d5ecb409961b8de	\\x22894c3f87440e0f120195df3953bd311e75d638283f83c6c09e7db8dc4ddae5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6a612a7574723a1660fa73d7d391029fe3f7369e0af853a9e628fe75c1693b18	\\x0a7520b993e121434bd34104787a647a0753bb94c60017f1fa589c07eb428e34
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x32b7b5c966ff538e8fb7f7efc443463cd36aed5e560081151f8d10bc8d16e2a1	\\x4db8384875ac246b97ae3e494623922909be934df1993361ac84059068d7da2c
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xbb547f079eb2efd65074dccf3fdff5f6b09c674f3939b1c9adcd5d7fd09dd1f6	\\x2b7c93eb6c03b3408bad1f0ce123eebf09fb83f72346c6fef3114bae6a56f45d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xcda87cf3865d3da1e04659fae043cdc6bcbf0ed802146be0e448f380c681fbf2	\\xf5ce4172989afbf0411c9e33ad0e731cc2a1f05f00d6aa863115f6ee59a9d2d6
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xc11d57b47dbb2e53e14a8dee5c552b73c9210938e91cc8c1149d3d45c0b826e9	\\x34942186f9c1098f2d7bcfddc9c4baa5dd2d62df2f25cf3f1e44a0ab8b9b3c80
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7d32f685a5b6ad651565ed3403bb4e81ef702a1dcf75a9909320d344479c702d	\\x47c86122024d72ffc8bebe3a9f256c82300b57584b2bd1c51da810be1ba307d7
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x9f995ed6bbae2c51af598922cec428686d857a681427d719a342edbe83ff1a81	\\xaebf3223fbd234452f213dd40d0443069c6da8d5200d6f598a4d855c94e71cc8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe5ffdffec1e9cc0944ae8dfd621e1a97ea23d8281c1e891afccc2368b4d3de63	\\x39a3db2ecf2d64b783111cdc993a187bf07f5734af7403092e0355c2903b7ebc
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4918bab6ffa54192b7052e70c6cdf5ad218e5ef3a6bd01e2a5af4671574c280d	\\xe973482f4fd8f3a8a6a9fdccc9a4504e7141b5025f6a5274eee95acff174d56d
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xee218b7a9a3ce59e6e8bb99a6b50953b41211d1b8295d5b3776076131eabba24	\\x0fe80ef8c71a4c1424567943705c5616caa78abc8a28b15c1209bc11e66d3774
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x114958acff8ef3ea5af311f101df1ff650f5e8b7142a9dd82a4ebb917db67daa	\\x4a496428d0d8a2713018cdcf56a4f4d3f98cc67e270ff96bc17f1c0406059e9e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x58292654ce839bb8b7ce43051abd6aee7800a8f32466722cd195cba9a4477874	\\x35f883a45d0d59fe4dc36fe90fbb57e9e6877db1f7bbd08c07857f4cd9e21b1a
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x91eb03ce13a3a4aacaaf64df374293db2921e1c653c41261d457188b97002e6b	\\x2a99b36f93679f773ca33a1ce485c1219397a243a552f507506e03cd9ac2e91b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x909df141081c2ee9f35e1bc99f734fdb794295b76f6d3b8755fa236664f908e6	\\xa978a49645317514c4fe7532d8d1ef0d0b21734bfe73c3dfa5803e80b93667b8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x3d15f461f9b93eba4ddf169316ef4f688ff9411efc591cfd64a8f86839774327	\\x05ec78ee742151fe1e90aff8e928ed46a4a71a18d73d62415abffa4c418708c8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x11f9e6cc47af914448fee76dbe85fe04972ce1bd96e64338a07c01f1dc9551c4	\\xbf703d01af5e63a34177edb5a3c2e883f7dd7ca20d41474a1d545aa7ab868e14
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x8c1bceaefe7a28d0b6c41718c00c2867b2539296cccd396eb1ff13a15272ad53	\\xca26fb6399f6214109d4a478621be9b4ede5708e98ee83f8e8a626fa48a191c4
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4d12ba8c43c8776f7c54cf69f8fc61ce4d8b57132feac74073511fd24bce2b23	\\x80c449ab279c59f2c62d2fb747b06a8c0ec484d61e1b4af366a62b29e9f3d7f2
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1f9c95a4b29d75d482c77eed60edd50e461b284aad46ac0df0bb9f371fe6120b	\\x2ed548277ea40b0b500e9ec41fe93197510550df678e9f82c53d25a45a4fd4c5
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xe75941293c3f6d2a41e2bc6d6202076e243ce37605482a61bcb738dc8d938678	\\xb293b08ddc43d8a20fc0560d9693dc2a04a2aa25faeaa03c159c4d76c60cadd9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xcebae1f711e1be1c7b799daa64389b731059761c32d38deeeff63f02f971c0e1	\\xb673dee5b7c5a1a7f5982fa55e1f97275b50a31c1383a910aa81f6d78d20a845
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd2668c1a83a4e5720a6010d36d5cd14f29d9d5ac37c7ab3f95e49d0f3d545330	\\x7cd97ca0263895151e89c551f5109011be063a3665c95fb6d27156af9af82cda
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x11403747ac3c81bef606175100112d68ca66b32c17f9accfc279ecd8782312e6	\\x80196940c56336d7aafbcfb99a348aa9c2757760b45eb0015877b0c4aad2f646
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x6c0f0c0b897b199fe56851acf4ce4fd2c1d277c347ea67e5315449a89c1fd9ed	\\x07b2af4e20d8cd0be73be750bcd5abd50e5793964c8ac0a4edb5b5c52e0b931b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x4b1bcd778bb4209959247f0268e638219f0766868eff76422332c31805928d7f	\\x11ea2ae84ee7caae3d2ea43f31c01fac179dbb4e2a3cde047ee7de7088d0e47f
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xa2bef587fcfdc73b9d789df62d37ac2d862d8147e65a920a4f52e2b5ed2baad5	\\xe07091557914c4380606a21e1e4062de6f80358e7518fbf8f44124f67ff4acea
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x630175993ee830efc5a97a278e4aa3e00d2c2a51b57dde41da548004fad1c7ca	\\xa89c03e451b58d5a969eb2982f4d2dbe62bac4c58ac9a0285832ff894bf6b091
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xfee4f654dff3ebaaf011f707e56c0bf519f3e49849a932c1fff50362efdec90b	\\x746c2eb18b75465cf2c434d9b155758ee160a85766321eec2f631e61d0f1275e
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xd2b57a7c22010cab414a26a1dbd1cae787e11da6dae0afe5f6120c3f4a6037da	\\x70730b4127f5e264db04de123383d24a9a0ff9dd9b62c938812b0056130e3153
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xde264d9591a63ca77caface79867229b29a32746a36bf386df217f1691b2c995	\\x9be80ff0afcd650fe755b3fa9109fcc778206194145d756c19ff0d36f52e20b8
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7bff0486e43a75ade044a12ec955c6749b29c3efcad4b5b32c0bd255eea49709	\\xe36eeb89c3329d0f7ca2bd879df753288c629015de44cc77792ec90065ce4fbb
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xcaf4572ad176333691a585f80170c64f905d27cda39cdf514e632d4f302ca431	\\x7e3245fdc244927aa685aa251be4525f698bdcad7ee1d6e202fd1ff139d589b9
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x55d5addbdf3486d7c57389e0243d866b5c0f7dfa41f9dc7c308bd3a75bd719ea	\\x724594810208458b1cbfc415a85e16ff8624ca261f0adebd06143f5cd34b35d1
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x1baed612affa4734d549191f2ebaf1573ece1fc09d1be85441d8b5bd989a6583	\\x19c8f07e1f3637c793eb0e88e1812a5c454e5646db238ab51bd81ed8b510ba8b
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x0ec0bdbdf69d10a9ad53e6fa3ceb25b8446b303ebe4daf454436051938bfac32	\\xb09ea78002a3d9a18e10c6f26e133df7543bc78ac6684a4d62befdc91a26cb64
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\x7b445ec66322ea8bae398808d765dc3a580dc1171545885306713160664691e8	\\x6016e09b791c31f3fbf98a87cc06474d9a1b97f87837027e1cbef2da1875b002
+14355138943:1@s.whatsapp.net	critical_unblock_low	1	\\xf2a0e989582c15f3621ad516fc7888e8c71655c597880ee8950e3b1fc9a2cdab	\\x53169179094f45e690f9196d0d0c651f585d439ff2ab057cea7713cb69c949cc
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x1f6a8931b1b9533f6f5d996e6251b5ecf70090d4a6d3baa8bb73d0f3e225b4c9	\\x39955313c7b6778ba9cce0d22c05629465f7f2824af8800c81d458d04f5b7092
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xd4ed47231acec953703be1e107f904074509dcf286fa080b97e9fc0cec6e2877	\\x69683448b9353b53266e13467450e5385a503f13740eccd3951f003a8e33b430
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x2ecf9ccccfa73616e6704cba04d81c34a9e4d8eb85d43244a4c20297ff8b0eb2	\\x08ae9e2f83e636c4991821d788f3662f8861b6df3d9a5129ea77eafca25e0e24
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x1dffc3ab0823428e9e6ec53cef7809a8259a76de63eff3e92b746b24b4a56eea	\\xf964208ff3dc7ae88a8acb6eabf96925cc03d4b3511d6354961117516dd2bf42
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x541d328dde64bd5b23a639e6a974dde06cf1f36afa812ad17d7e259cc4de5c90	\\x9466b5fa7760eca18591e40d750b823c7a5a39f0364df4a4bc2f4e77dda088f7
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x8ded548fe1382fe83b0400a9320ae934f507e265101ee18f7f2deec363b02e34	\\x2a788566f6dbe15a8ea88c5976f109ddee29e43e2f8155cac66b4a3709705345
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x775228acee96629e4da17f30775d41ab128fe966b89a07cb4a983403450f48da	\\xae003a74223d2eccc921c719926bc47e0065ce5fe71003f1ac697c5f904ae990
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x56ba9aeb47340c38bb73ead6206906438bbaf8a1a950120c8f8eda7a42e5d6fa	\\x99151d4a8039935186bb2e3d4b3463c0bf7b7e00c47964ad29e45c3b7eb81f45
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x44adaa0a53c54a31dc8d81ce3d3a179e2c15f8f114cbbb25cf52a144a920168e	\\x9ae14d3db8c3c21f679e977d588e7602f50e457486e072d1bc9ae4646603b58a
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xb5c01f64b1ad40938b40a7e6dc17e23dc173f8587b0de5799f96f5bf1ae8e249	\\x08e98782a7290ecd43276f1727782b14dd56474cdf854b65781594fb0eb84e6b
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x8d53ec557a8626cef197724991cc4e7e6d06f59f4d760ea58b187ab4cc3e5fbb	\\x40b7121491f478f37b4b0f0c3158598b6cdb62e7713a9636b3c7e789af84f2a8
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x1afc8954f7bd83df6e97e1799667cb1f1f08cd7bbc1f2201da52330511ee0fa4	\\x3639016ad64eaa714ead893f843129902553452c1bf46f6e8ff93fd1133cd583
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xec978ae393b96763389f3feba30f0f7a6be8c57a94fc389b6f79bdba588cce07	\\x339b1d2556b885bb968f98f63307f69afc4542bf2170b07069d08eef5cfae2e6
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x4dbc5a0ce9b4baba20602b00692a6d66614baeab72f00e80dfc6b5133f46588e	\\x0fa241b6fd34acc6698b19c769c0de844442c0b949467e1d5dc953a34818298a
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xf3a832338afc3ebf18b9d6fdff74e6778f8a720f64f43291749be99447a6811d	\\x32687f25bad130092501dc9ac9fdf71e8d595adf23ef9db1b2ccf71021a4f850
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x5bb7f1644d0052012c04a5f3734ef5910941a57ffed56a1f56c370e2ec5c9071	\\x849458800fd2b6919ee23caa623622480160322d3691181669704de62e56e872
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xb0ecc982508c851929004f34886958ac1a3ef9ffbc23aa7b6ce1a0ec0ab2c526	\\xfc58fc8742150168fa9372c47b739cddfa6b8672681c695ff21c98e43a3cfe78
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xe3e79bdb5a7cdd1a7e08f6d915f1b9a8038693bb81baa2091922309cc945e4e8	\\xe70db37f8c2a1bfd1a637c56220124d6fd71b495a7651919f78156e4cb6cd381
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xb7c507f10aacef4aa71d74d3257d36bbc686ceabbdae36c104ebff438504e70b	\\xd0913189f9a2afe044c11fc8f9d5458d38adf99aaae1c9f064b07c4e0a45aa15
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x0aca3f56bc3e53f328be83921d9a260ddd0ec007f564c57e7a0d2ba3e5a3ba15	\\xfcb74498c4b10960e77f8cd18cc216486c80911d9f30997d381f34e277abd486
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xc7ae5e415f767be22aec2c56fe1e06bb0e32ebad2acb2ffb8695f1d021f49347	\\x4b154d86cec0196a95315b673fb2392a61b9b676c1c46a7b887f23c2ebd01983
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xc1c887d3904105e3e00e463bc7dbe4b00419b184bff2a91e26f23f0b25352973	\\xc2df4e016028f8b945baed051ff9faea8447698dfd5ea1063fe9a4e315baa153
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x906e53ec12ec55da006f64ab262abe144ab1acc641422d83d1237307f134fed0	\\x07b5d3ae5a01b935acaba4d52d709de2aa74e7616cb2e827a77e3f1667871cd6
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xabe05ed462cdf83bc7fac30de1f0f76e5c143ccd67674ac54f5714d71fb73237	\\x57f0e5d2b17d56bb4cb914360c8e053484aa0098684e2920570e309f32ba2c4b
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xe2c08397695fd1dd56a5a78b53c55905ebfa28ac0cc73353c722af9e530997c2	\\x8ba043891a3c40f625782eb539cb78a645995b85166f41c39d33e492fa071fef
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x3bbf777a2cf40ffb8f950f6d2124fdc02a29cc533718437eae5766a9b06c4d9d	\\x7045fed859e85d79c12c4275e85a4116ac6aa15d3bd54d46650b7a8baa17d18e
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x3d62d7cc86845b51aba712fbe0ea36b236616a25caebb1d720b2cf1d1e7fdb15	\\x1146dbf12874c272f3903d70ae0ad778910c6648c18ac7a0e295cc7fe50b51b0
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x0ac21349863c95f1839495dad7dc407e21dc82b12e03263fa32044d2f28d7f04	\\xee62c600471f10d2f17625328736225a62bab0bc53e40b4cdf7c0bd63a901145
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x4afd1db9828411f88252b3591b5cbe664c7c4319a3e4c2b4a8d61770d4f1a5ab	\\x2d91d0d67f997eeb6890b8368faad029ca5999cab1b9ed7920df6197a6e5a204
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xee09c923cdd37536425830574564650d4fd91647f90a141937e5966f048175d8	\\x394faec5311b58cc16186d64f27c330e2ae19ff5eeff3fa9fefdbe0f11418990
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xa4a943f25ffdc3874ec19e376b8f6ff59e6f868f9e42e27b4b907329ec31c486	\\x9e7fc65de57317b57c60de79c7827497190f0532abf2a32f8baa311872319bd5
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xbc50ac9aaab975eb1dc0244ae569c4e15eb59af0ff6c06532a8c03fe103b69ad	\\x0898dd526db877139ff4f96838e81a72687b61c74a10395d8263e5ed62d31033
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xd2e87ae120fb5da59b9843152e8a85da7b736242680cf91dc68a777e09b98ca7	\\x31bd79c8fd18b73c3619891ea2c6c518682ea33270eae95b17257c4305dd3844
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xc1f64722e3495e4eb88f608c94a32f4ef793b6fb9cc7742924bf9cd595cf1323	\\xaa4353e83d1e470b3b183d49ffe6c9aabe5a2344c7134c5d3bcabf598b3e5e67
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x9d239a966dd025f374132bee23567da6540ef54e3269f1694e4b06b94fe9f0c8	\\xbfaf211db3bd4b57afd087414e7cc29db6234a9ecb429f6f2dca9bc7402f3fc4
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xb0573c27a485307b074ddff2a86e375e5739acba28e0f4b67e288ca1bb7adfd4	\\xcc9374d963d06956577708525150eb0a691207a2b89965b7554d2f289f663e9d
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x9a93edda4a146474dcdc381ddaec0cfbd4e31be5b31b8382f1c51fd03bdb99ce	\\x3df1ea98dff4e5c76e43ca9797b9ae70ba7e0aff65a109d460435d15b2697ba8
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x0aedb4d73f0fa28e8cad33efe07f2e8d3c2b743203e70606ecf7cb52fedad9b9	\\x1c962391c18ffd2dd8d73d3dc4b1a6441a2e1c368b33ae28371b02bd948ec932
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x90cd7e9cc7c86dd661b618838e15fa308ac68fe10a00dbfe2d850f025b7fb763	\\xc9c00ec57e6ef8659c8837fdfb489a450eb750d367cafa095525aab7d7f3873d
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x8a30da4b145318b607d149b4fe5934a0bb83627e0b661365a9d1f8af1ee3c7a3	\\x0b8460d327e5bf8b19871534002d4a6adcc0789a1962139c1bd829e477e1a48b
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xf44d7a02e4151a7eaaf7981b59cd724e9f1448e9caf3edbe4b10d810b297a473	\\xa418853878b9a8ecc8483c6199f032b5e0911388793d468b0d201d050c7feb4d
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x0fd857e04ee1f3b39f1c674f72acac2edae0a346170bcc52980853ede6137732	\\x764c60d41347c47f3ca988264baefa2c182bd687512c262c1218608c4a20d084
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x12e27b83a7f20c82861d0c8243c404aa853efb6bb215d479dc6078377847a9b6	\\xb8f77cd954c16ad4e674808f052303d96192a51ea67ba868d11458c2d621eb41
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x29508d9a4eba168aa8ec3dd2c33ffbc0ff47f444b41e6e0efa1cc32dee87ff14	\\x3b79f570a808911d1e74255cb7ad5eac20be606799158ca5ae6227b53570f168
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xce168778cfc17f8d207eb873236f4cb3b318784c52a4fc8c019e204959d1ceed	\\x1f67852f892d391be17027c27b524551f6ff0815a5561ce9a9a8b5f468152624
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xb6e103252097e455cdbc6da212897f59fbd7705e2680dd0994c7ed4b717e77ac	\\xa541dfe4cd81a9c1c7a07c8e8ff04d95666336b44f990a4314d01959d04ef5cb
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xa82c5b1f3fbb28c1395a1402ad175b60358b4f8321d293f5ef96fe97ed31f5b6	\\x2cd00bf5becbff77990a37ab3b985ca2385e3ee485b4cd2e165062b80ec5a4c0
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x7a072fdb02e87d3843c6c92fd0ec07177499c952665544258f4d080563936040	\\x68b873499a791de56ebecaff46b3d1263a9b8e464effc52474bd7cea501af57e
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xe714c26593bef2c6e79c6d8ad69c76696972138c185547db24548bcd312fe393	\\xf5ed8f6a6133fa2229fecdc653ccfe05e847c60aeead8c03303742e3fb05d456
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x55fdbc1e019e15364db38f9e315fcbff85292806f8da2406f179310490e96004	\\xa60421f200d82248f001234f800ea32f653aeed352e698fda039e90fa86784fb
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xdaba1ed89f6d7ab791283b38d64aa48cbe0ab4976aecef8c7a4ff1ca44665ee0	\\xa0d0be38f21a5aa2db5caddf8b1e544b14f03c33cf95132a7de1b22d3094162b
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xced8e8c68051f584c69290f71a7ea75817ef606e8e291525c5eb9dd6c58809c4	\\x29b4612b4b05fcddeba6592ba502365ba68bd18e0bb0cf05135b130f8aeb7a27
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xa1def17596002aed28c6bff197a0cdc54590ae06667d2996f2f2932517c09875	\\x1d38ac8f80b56aa550492630f804ad32a04205fa8c88e4f6876c731c3ca98c55
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xcce6851c68984ab093db33b36239d23af73224f6cf84de788ff726c0e72f1204	\\x69b3a14a0a81272dd93a53462114218a59c9da573d6b8bdfab5e553a5fdc77a2
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x64216f0366d3fb21e34e9a8d73e0373a06863e67afbc0c9acac046cd774f639a	\\xdd2a2657d6a7393b178c7b6afc0e32c7dc56015890b002c5cee1de8aa4afb149
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x60b980ec2959459fcf1deb0d3616563ac347621b990f71decca33352cef02000	\\x196d3b5aa7fb256fd69dcf581bfcfa22af7dce5247682e38cf92a278d3110afc
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xe07ddcd14bd3bbf6ebb19e1d684b21668a1f029220951fe719193433071fa6d9	\\xc4d9cc68c3f0997547752f0094905a8e3e87b0a65828e2e185521d1e750626f3
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x6b43d67ef42a9cdcfb7f52b6ccf2cdae7ac06ef903f203b0859abe5277b737e5	\\x929981e2512c6cda10119c54324933708c0c1732a6c2ae42a8050f274890153c
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xd16dbbe30492874b4da3643d9f6a88c4f4f16e956d37c5d1ebda7ff9d233c588	\\x7909995d4a9a28fd042c184221dec079b70033a4031b577f42781145696071a8
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xc47b5d048e54dcf24ccef63da6830846aecf533bbbc68b982e0998eb46c8885c	\\x7c634c23f61ac1d163253e95d074a878c34541755e7921d762316243dc9c3e88
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x2f0a6c6cc5481fe713940ca9f842eb668a72c6590eca5020314770ebf7366bd0	\\xf9b8eb9df53e933bce3891aff8ada7139a1cc26fa1b530145f462d285b576155
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x93eae2d3791f6f3d916e0e9bde69543fd517b3c4b8860a6e29c6b1934d60bf61	\\x522ce621ae1c960d05dc6e5317fac15812052264c832c6f1915529817ccc109f
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xa894bad17563baa84ed7e111b23acded31ff0d7ebc03982b9c47a9c134a1d190	\\xed7eff94fd942b1cdea6c7d4144d034bcb1a3a346c17130cc74c13ff89445dda
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x304f9ca03d2e19dde5dbada7516b2a08eb177ef5462967d4bf6f39443bb8093a	\\x463fc17b09ee40efd36cd0c59f15deea45729e31cc01f3c697e13b8ebe8d91f9
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xdcb0158daf8a36afd85dda0046b8bbe76ca470586ae524ecadd57651565612c9	\\xe061d744a4f0f17b0680fe6212207429cbbea19e75c29da9313de3607546322b
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xaf6091f608f4977e46c0e2edbf0710364ce8784088377c5fbea049bda08807c5	\\x5e9b25cd818b10ff910c2477223c2daebdd3691d1d62a3fa3d4a091cbef51f99
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xbce1af9274449c972437f5cfc33324c4e77ee792581b478208f89d26ea6404ad	\\xb4947417b0fd3884eb11f2d8842bb9a22587e416197c9a3c517c1a80a8d5ec7f
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xb43dc6be363073f6e380232aaf08f12d0602fedaf027c8ed9679769c4907131f	\\x9e7b7a4a42b6ba3da6a5f90fedeb7a7a0954099f9676e50598c1ec46b0fb1138
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x6ff1a9dae8ba2ee22b86271c3b8ec4df1a466030a965796b56d5a1c404029a77	\\xab613bbf6b109dae72e41745f0ed83e2944516a2d6af4f977ba4e207cf441f43
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xe86d66565f8a613dfdd6459223ad0740db566e71b49e16b48579c5799c1ef3cb	\\x68a0eaffab38cbc85f5610f782a6eca00b6fc71f47c01dd557b4d8550daa69d0
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x16e2e27954ccfb1c9d5ede667558e27b6a679877b13012f250f26fb3fb5adb13	\\x3e3174faab4baab30899b4b0ad59d4748b51c2e7ad2ea40a4eb5b1dde36e9883
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xe5118aa5a680cceeeb09426bd19bf275b9bfb1239623ad6b60bec1e59be3198e	\\x15edc6f6e130a3305f3311551335ced7814e521e4cc8eba078e2476af640fed6
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xbe185311111f3f469f3ac5a13cf7f4598c48e6ac381fe9424a69857df8604406	\\xde3c50f63fb78d7af0792844908b830f77b03ab4aa67757e8e0b3aa3e5839418
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xd688841199ceb3723b099a00e2914ecc7c1358c5a6441ea1352c2d380a30337b	\\xa06323808389b10cb812a38487218847ea244e85cc43eda350fc9e9b2a3ab24f
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xb6d5cd470e3bc31b9af28f9664c95cf5eadfde08075da7bb61664f647416e1a3	\\xe52793b56a9eb2cfd1e6dd841e4a2dc8489b4739ce11e360c20f86d623a824fe
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x1490cb4bae797cca108dd5e1d3d887af50b13695132942a223f3653290fb65e9	\\xb522275f7dee2b378299a122d17abe184b29a7052c3c073fba494d2970d15d44
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x2b5b4a859971c6cb78ad7c61d6c3cfc73b0ab02e240546bf0af8e543d04f8be8	\\x1b38734f287b30601950c9d4b1de79c628d5643c1ac4711c3e1dc9be5810c050
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xb33b056631d990d66450b08e4b4a4f691c0904b40d48bbded199ccdaac329f48	\\xbbd3316adca1fdefd7e9b4bb682b8453dc2c6304fb943a38f4d039d5716b14c9
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x8225d801902cf61e82c745bfdd3bc3b5900384524824a8e25d4a2519faad50e7	\\x9b8a1af2c5836ce340e1f54e4a5900d7cb14376547f303b8c9966dd9a1da6127
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xced4885d97086a0413a5129b30ee9000465eb7db600288a9073291360d584163	\\x5353b871b80c72c118cfc913eaad65f8a4ace87c6f7072809e83c527990f74f4
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xc31149960725f0d9b25c1c49e2ac69d39b3fd940071221b734ac22780a477974	\\x706e30ac408167cc56f956a8746ba8f874dec531ee15e874a5e2963b92fbc7e0
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x046dc1c93b4f3ecc2bc0e7b903271f0ee545751e88a1e396136d54b5a420b67d	\\xb903c5aca72282beb466a7950ec72e6dfc1f4a8373fc7500526b2b6d8e736a5a
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x7d08c808a1023a857f951f5853f485d44a7d5da8f25509e5f71b508958708498	\\xc5aa21dc0e0181e18ca79298952af598795f428ac0172615b161bad70ee6bec1
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xcf214a094a91a031d159847eb9221d426116e59938629acf74a00b4ebcaafaf3	\\xe29e2fb644baa78c772f50bb899eccd52c4d9ad41f6e449a4f422972e1b62819
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x5a55c5380b85a01cda6c35baad2683cc347617e240502949b7dac8ed6d264223	\\xa76ff4b7f19b5e44221de80ac41f2f8eae7ea8c64dcd47dae43aa87efe4b8618
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x06e7b868b26b68935d043fe4ba4508ba138143572bc03a21e4a4d6b5a10c30b7	\\x6a49bb861c23668220ec4a3d56835596856b975b755ffcdb3adc1a77e97aaaa1
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x6e080b1ffb11dde6f7867a3103f4162e5af0a8486690ca99d04046c5a3f8ca9b	\\xb1fe32b0231446559c3b88625cf81f8a1727e1ec09e2f8a239a16897895a32af
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xef177b59e16acbbf8fb59dab19656e89c3987edc91e6bf3b0080f6e0d4e3dffa	\\x9198ef7e3154ee544e45492eb699857e7677bb4a14e75fc98ecf777ff1b41e00
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xbe4fb9ba56a9caedd648be7c85727a5f22993612b348827c1d34a1a3b474ccae	\\x31f3d2c06bc2edd8a07d6844c2bb38f0007591b69a4e8c6de5801fb5066484a9
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x31072add2001a5f4ab3d3a1685dcdd6573afae4667fa113875ae9efddf92eaf2	\\x052c1e3377123a5dab2d94d26054fa657d4273598ad9e4d8a03faa78bb08e014
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xd2b33c868da381a5c8676fb07859fe36550ba4847ae349586a8a0421081e6a53	\\x60dc6f96ee1f6aeb6edc933cf5130acd94c1e5ef503dd99801f56d555ccf0b99
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xc17a598ed470b51daebeaddc89cce7491178dbfee8322cede6f9c922a6a12a87	\\x642cf1252810c0ddab1eb555e074da20a34acd6ec90e4428db4bbc781ca3d08d
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x09d3ef86444364733d7db6b6bf102036af8f60cb191b15fbe96ad3ba6b3472c3	\\x0b2d38a278fa01f9ef5544ed28625454684a196eb0ca601d73ed06f8194b63b8
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x4db3ac8ec49e2bdb14e54a3b0cbc41866d9dd2030013d73fa0c78ab23042da21	\\x6c2eb5c190143bde1b4d1b3dd6322302dc59b314991fae6bc5815ba34841147f
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x169156132fd059ccf23f65a73e4c5f8359a9a68640c18329537fc6d3b7e7ec45	\\x18483db1fb8a240ea0cd3710f589a4391b24c62a6f7c829855a3220ac20883a2
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x4135503b31b054c4f7c3f0255e7abf95f7057a65e3b4235fa19fe39c38461045	\\x6e49e72859c1923939bebacf352af90cd9081d7b5e4969ecface3070b475eed1
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x0af75af440b3340054f5ea551b9956afc8b2c97d8a71e61492281bda0784697b	\\x79c96b70359d2d09d5e75e148ed91031826a69abb0f7dedd4d5409df031247e0
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x0e6eb407792dd36e701373f19cbcff1562e4a952b8f20622c71da5a2e2ac6a43	\\x83399c3ab86ee18931e6ec07c8b54c168e44f7235219489a8dd83f8a3009cb13
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x48f1990aa76d9fae63ad67ac6dec25d12b74c1a5f1cf79191eb3b4abc447d8e3	\\xeeb889eb5f147fb589993d429acc458ba4208b1377290ccbb96e1a4142c1e617
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x465b41d3c23ea7519cd1434e00871af9aee7dd1c9fde046fe42865db60d9a680	\\x1f2acd1c582469a5b99c88311bc45626dea73a5b59d2bee7acb5fa5242cada07
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x660c336bf9ef1a51c7bc52d920ad560ae1868e6be00c6dc6ca4518dd1ea3a8cc	\\x5a14236511def0df78594af96468b4a18c089329315b65a04e77e01e839a1ec8
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x2cf319a914923067182a5bf2234c5d6ef324b38be19a57b2a14244e204986667	\\x7796caf9b372e1339bd022b19f8fffaf519c0ffed02d57fe228f7d20fae41ebc
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x5cdeba47735ae14cf7471f6e1e7dc4921687fc5133d6d5efcd67272d15c9ccc6	\\x85086ceba6be60543f54b054dc7f71fe8bf0a0bda597546471fc129f39a4ef79
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x13c29984c8f1189e6f788f4d69fba87467de5d3ad3adbbb956eaf15936c4e958	\\x9c02ae1528b83a4438e563a469cfcba1415ff71e5d18b54d08f60dda06cfd79f
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x1eda8cde030bdca8db31b9aae2c780a677faebfabb5ec9c76741816eeda7ee19	\\x0ff27c319a5589bbdcb830f329550471132fd4016c49d4d0b3acf2c737f9cd8d
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xf3ee3d2089d9c66b876828e8ec52ae0d6e9a76ab127a416a9f842483cd95268e	\\x0755d8111106f60dfec802aface656b5aed00443c2a6bc53c80d2a7d0c32814f
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x42079d0dfd412470d73be9a609f6137d87a6ba4aaa49e8a27ac9b885970378f7	\\x747f840e1c343b6f76a0164e15d39f429b8b976cdb37e2d3a260f0de92f181f9
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x265150da31d9de3a2942f1651415accd71bdfb911ed5955d7d894bfbaaf72628	\\xba461e52a0377c3627459e736f5af14622eabe5620d7f71e94079f04564df864
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x301286ebbe4f256f824a174f3f85afd647e1a6dded5b99fc8f3b6ec509238c80	\\x53324cc49c99df6744067460757cb6bdaa1abcad0446f539c113007bed4e95c4
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x255d3671b0d393c0815f53392ecd02939fcf64d69217af9bb4437ec9fd1b183d	\\xfd73c32f6c80f799271491adec9f2a87342926eed2eacfeb24395fe3c5ee79c8
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x008bfa3d7e4b31d39d0328ac43277b823a8c9f68fd92a20a4c2fc5687018bd7d	\\x4ff168ae89c938b6c06afcb5e314eddf6fbd51f06eb7d66529c861bc949c05d4
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xd7e52457c595021fc2b97f0301c3cd58fda4260c3e78c27740ccc30770e8139e	\\x970f2ef3f2c0b40758012b15ef6499f84021a388e4f231d97901887aa8707185
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x5503e69b20017c6820b98e52c1b1ba5a7dfc56780a2dc7eb8e2edb9b51ca1617	\\xeb16f6a4e8bc0ac15ddadcb735dc0f6593a628c773c54498ed6e7245e4f03a47
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xab5a2fef01f4032f9f96af48bb88dc9ec9133bce0c809ae8809e872f19dfe3e6	\\x330a17e1364efeda76b040e25338095feac4898b4ed76ad3ac3a3f03eec138d4
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x1aa229e2c543cea3a30cf9b38a62f61ad7651186d9003aa24c1d5d12d005b6cd	\\x361c7346226912f51855d30d7aaf54e72158aee7f32976fe35e04aa84ed62383
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x3115f6b3998e2252e68f5845ecdffcd3260c4c741806c676e4b89ab33abfe2c2	\\x203e498f3961b92355876f9f9611bcbd4ea261a1ef7815db860946804e88a253
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x8c992aacd704c4e72a9f823f57ea279cb012bbfe61db6751d51467acd342b231	\\x336d91e9c871d1367e4b4bcf04ffe2bf396744de23f1ebee69ac488514c6223a
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xa0013ccd3dec365eaf81218b29271207746770a5d629bbecedb96a766f884f75	\\x9991e2e111f92114e5ad4a547d76f6e46b981e27cb713bd5076fa70b74704133
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x84fa9ff1dde8c86b0dd9b88004fc493aef14d96f551f15162bce1fdbe4ebfbd4	\\x0dfe8362f74b1b598a6bedffd5299b5e299f59fc88923d63091861e38fccc2c3
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x2e47b96752c080cf9e20004d86a0d580233a686b81c237a7b910ddbc3fc95a5b	\\x5bf7a58dd61efd7b793f435f61d953c17ae730a8c46c6230aaf0fc316f9d78d2
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xac9197e09f13fb1a456cf47942ba298f050aeeb4f2495925cf86011c8b5a7a3b	\\xcd25d9900831fff451943981a57b54faba45a25a7194ce70acaf7cd7d2afde06
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x779019031887ef2001bdc6c0988bb2c361606f98d54d26a281b765dd4bc91b43	\\x59b28e1282de3e83ed5dc441675460b1f87b7ca9f73be25d50bd43a126f55801
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x7fae17d2040d2a027d6bc36938f9fb33c5c8b9b5365236f4fd382fa0523db8cc	\\xff8145d4a25cb9fe9bd28dfc4993d56faecd2c048fb8b97416911f0f3eb1c7fc
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xf324c3de8621d488a563209fbf8fe2b3ba64af71b3253063ff3885ff76135530	\\x2cb99526555791b3b045ed2cd4e5af652164d49dec8d8860de06deac9c179a6d
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x45e3dbbed3020656c6525425dbee05a0b5ee00e48d8e4319343403912a943205	\\xf43df3befec8fb2ab213b9b1828e46251fddc03c753a523b072e07f79e26a4db
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x38e527b5bf9645f3307ec939feed468394ca8061f3cac4adfaf0a0a2f110a8d9	\\x667f10ff63f87c957b3b1c7996182dc17b04f718eecbb9dbde2f8f10c5ab2491
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xe975296f7075981650944edf5c1a0c3a6fe8a3dcc9616f5176ac9d4852ebc105	\\xa74478f63956c054ce3cd8215431e9e31f9731cb107ec910bac6aba5298ba0f4
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x526b3653d1a7a59d5aef8d6c658492402c69c761a971db5bed1a425ae2eb9537	\\x9ef1cf7dc3c13a19c5c3749a465055d04efdff7a1a238f3f15934c95d798fa2c
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x474db03ad3f78a1a43c36856279988408a015c580b1bf1b9d7a174d7c20bc619	\\x71cf2275ca427b4615573d9415f5ba7395641729bd098adb1df825b8b20bd57b
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x253d552698db4491ca950006fedbe305420fb51932a3bdda9139176b2f1202da	\\x53155a0052d6a3c0b913cfd52c92e5192fdc5cc104b5f811d11e1eee05a2b28b
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xa7f2ec4fd07e9184ea90cf5493d77896cf51e65faa6dde5963e43938d0b7109a	\\x27bca802e0b3c83a6bb97fa8eb932a19c99e247466ecd91055cc9d3a165870c0
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xc8a22f4c8a4b47203762c6ca3c8791cb00f072afd3d5f0824b1535c42c1dc316	\\x69e9bd94adc801a15369f1e1b134e62740a379fa560d04a7eeb98d5f58edd4b0
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x7e5df8346bfc93ada592077cf1b883c1ff1791da4dff910aab0102d1414bbf32	\\xd1c11a56579a83571bdf633342307f869007d4cdb92f64b3119405306d012f9d
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xfb14b0ad86e79af7c4bd2f12c60a3f37ff3a0c993fac21f475d8d55f6f2e70d9	\\xcc6bede87a901cdfa86037a4b5523f3d46146b4a44d93d1d9362d6482b2477e9
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xd4c611c3ccab3802b3aa04ff911a17a612b46cf771d31ed7a7588d8f26028e84	\\x70637d780fc50e012640a7b90967f61c8aaedf5ad2135b0a1c0d44cc4e574252
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x1a6ff7814abc83197df3e1a0c45044365d6c56c78652a1bc9936897dac23d10f	\\x101c11d71bc794dafc79312a5fa56142e125096e0cb52c0f7a9db4cb1fb36321
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x49aaa0b07866e1f47ea9270010785a127dd1ef314e585015f0aed22761551308	\\xe9fb83a5dc327a76dc065594e63f0cf369fe583ba95e781b57418d38d1cabb8f
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xae109eed0564b28664e0498abcc52ef6b5d67960fce3edf23758c47b1e228a3f	\\x46cbab1fa84186a195d7d6dcbfe7cda2508a4216080417d9a08fc0a06c59989b
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x6d38110591b6e7a5bc64a84564f6455e808f2126ecc2148ea07a2ac6bd948e6d	\\xa8d8fe5f8239d20acb09d443855fb2a1a5959d9bb41eab34d4803de10975ac88
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x6cce27978f738ce2f24810c24e12ada9759f44e1f9e2462f36557c9d4cc0a782	\\x472f8f2d2f245dbbc9884708a5f71475e6abc1aac6d5b35e8acb1f900ef6469c
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x53c2dbb2d14ea48d3269fa0089621714fc4e68ad1abfd8f5617b548a7a8bca67	\\x1d868f89484603f41e8ca15534b6c4bafad1b69979f63b4149eaad4af360328a
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x781c422b5209a4cca5e8c69f16188bd2b3f835ed34936da7a7ed0210023ec70a	\\x0841f2d9de5f634f937ca1676e6a7d2b36aabbdad367b9774001931b486dd084
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x8200baec7b22f457c3c5fc9fb9bfd41404819ed07b8778ea35ebd9a1df603923	\\x70a13ed595a0dcd224f2a0ac2705bc236bc89708115e3ed79297ba2baf7011f4
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x72745edd2126cdb00bded36a48e53fbfead73a5dd68e2de14303536248ce5bd6	\\xe83b1f9e04c70e5dd9b759fba40850ae27e57488acb6a2f1e0e71b891410dc03
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xbe7847099445d6919802e5a3dbb5cf57abb7a14d0604d4553695d6229646a183	\\xfbcf36820eea5fff633ddfe87e00369cd9b00455d10999d361b14431b0dbae51
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x96e84064a27f400aa000a1321f38068de6adfa4740d08665e28f996eb5adacd5	\\xcafc790b72ac63d901fc4cfd918f608e8ba8764d5f89eaa42e617b4f0bba762e
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xf5eb20d7f84588a7ff27fb3b7492d7140c459e243786d4744d9ad2e495cf8b31	\\xa0b48903128d6b1de9c08cf55cbef66de00e47a557739fab47d1636927f90f0a
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x8b064eefdf0822fa1e5316942d511b352d9e3e727b02ecb174cfcca04eec21bc	\\x03d7ca2ff95e385364f732fa8386b17c2698bcaf8e9db9b51a2381b1fdab47fe
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xcec614ca9413de96199fca90fe1178c5653569e6f31a1f326413a830f9bed59b	\\x734954b27bb67f353c5373cff3bf0cd0d202b4f8297615e622b3f9c3dbcdb180
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xcfbbddfbe273c535961517fe6f8d446ea47ae154e3c539ad13c32fa6b95190be	\\x59da2b3a8fde8867eac1b6c609b2d5c0049042b17a3c51cc4dfd47e9ece9c8cf
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xa77b942219f8e3160368732f661f33b178c803df7d7598bfee24951315cb21e6	\\x49aad2902427715e59f5d38db67c031dfe0bf2909c7d5dce096df2fe0aa75f90
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x52a908b1d735c142768ef813d9671ce1c7d463ac537cf2e71a71c5d6f0937619	\\x2acaecbe3a597dfc96b07b20d365d4ceaa14529e8db4efa54005f8ba1e76968f
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xf52aa54f6bd3f275a9be4004fd85f013b52fd55c89db0511e5d91c62b8d0ea3a	\\xc8ed962c41398d5562fe5aeee51ee81f7596c6fd526bcf20d4cacc04a9959a39
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x543d0dd966d8788725d582af84c88d1cf9fc6f25079733afbca1a8f3bc80c1eb	\\x5cbedf7cd18725f75ea1b779c19b471c94034eb6d6769fb93dd73db0c922f1a1
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x1f6b6ba968de77a551bc05a064fd12ac2bd9f2d91a3969d80be120a64d989e28	\\xe5cfd0285bc45bd75576bf94443e632aa831a7941cfaab1b5293e44a5ffe8451
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xf503f153ac9c080fab1224bfe31addcc223802f428ece4bc9f3c7399c56b8000	\\x196e54a31a0e3464e6e4b3d79fe15c82de7d8f10b2821f98da45277b3edad4e7
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x83a738f523d084d5221ddfd361e256c907cffd067d2968db19a772341f3f101c	\\x3680cdcb2b8fc135cca10e37ffc1a7b39203c4361dc15e7e363f4b29904c51ba
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xb9a193c98c7766381595c5fe5d85d8d0dad525559749b402105bb7ef2bf865ad	\\x3bf6e0f575ab2cf2e64215ac5c00d371df2e02ff2ccbb5f7641e5dd42593fe62
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xe02b1b83a0a7b423a633e473b4b8e7d8d585aa3db7c63e72a667deedc34873e3	\\x91b576787ee5ded13d197adb128adc9c4c383d6d31299b8681104989c789c795
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xa520358c11bba936352ba64a4874561ea941c4517aeb2dc22d1c618a42a17dcb	\\x364299c3127a34a5d57a19f33b0ac0870051087e2c092c4db575dafb442c5ba6
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x6fc26e6f0eb0a3b82da9ff6da1a8898b6b726dafd950748fdc24ef44ed1bc4d7	\\xec6fbdd7488fdd8b5bcf0ed5d25e3517f10006e18f8a0640c0d93d5f14a5ef19
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xe7bf6e997a9c8b44ad6a67076ac2217f992d128c6fa6f110503c34b0889627d9	\\xba166428d9c43bdcdde8ee3fd5d0d4539eefa9a657fe380c632c5765bacdf71b
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x6c3c9deb02b0d86ad2a7ba2e8cff55fa520e1996369361e3405ae5c24d8f6318	\\x0da625d8bb79a80a1731295ab5400ae043ae423b8e3401ac57e6bc8c8e10abd0
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x97e8ce81c7eafd5cd3f93c76decff493dab5337c8d1fc88c74bae2e018b0a10e	\\x27f0f96d58f2c1891c9f658b05edeb0dbc92aacf720000cc326634dde9e7ef2d
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xe890e09ef818ad09ae22ec9b973c6a68c7fd2ccc793c152c26ec0acc9b0be12c	\\x00f013d921c86271807123655b58743d78400b7c7583899e2776ecb255e65883
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x82ce8443203ae6bb10097f62201887f0c9e85a460fa038d082785a01a843b891	\\x71fe95cb5b07132e36f6eb8bbf49d343ff9337fe277db9aeca1154ed70261913
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x50deedf82826c88d6afa3a3b22cfac888dfdd21377ec4675ef72d88749103d26	\\x2e1e4d07016aa7e9ab018d2c6816052d8a514a2f4812bc655e1b70a0e4e7811a
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x3eb14761a555bf323acce896573ca140658bc471f1864d2dada881d3b3e76d8b	\\xba89244c3f51dbfd59314f450bb4705776f6db5eeb9a113cf29bc298877428f3
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x4b6dbea7d3b84be0469265bfcd0737a74768de568058efdda347ed354f7904fb	\\x7831cdefec14b1a9e7c6fcffd6ce0c5f2da9a4089a58d1cd120a2b49cc0e4cb3
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x3d56481eafcd8f76a2b86b78e048b137684a25ec3bb9b933b1e8c184f58dc9a1	\\xbd6e34c4347ac741f18078017e218cfcebace38b81bbb32c14c325fac947ac58
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xeb0d7eebc9eb7dc09c0f398913c6c213cba5afc002a3aeb2edf284699294c8f0	\\x85528969378e0f487eab193c771b3e8356d97200687f1fc650b327ff4876e340
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xd97dd90c04c291880913e73fb3ecfc73dd2798087770950f2d1b5715c206d265	\\x3fd1ff16049aba09332efee0fbd1661000e0b9fe27fad0ca2dff060998be5964
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x0c05ba642dd4b189ffe623c476c3979d730091645c4f0cff070ae74eb9e4f2e0	\\xaa80ac62cf7f0be398b4fb8de8c0bbb70e1a5d7064c66aa46a2eee70ef6661d3
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x2ef47c9076e53c68d869333564a167b5d8080bedb2ea7f91bc7b419bd98c62b0	\\x179cb84cdb4aec7e4e3e1694ca7a42087271e2075fbd693fe4f992edcad0acae
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x40816eb911522e873728da39103316ae155fe427905517d5a4a3779603ae1609	\\xd5d570d35b76aaea5717dad10c589fcf46557158027d4ee90487fbc3e3099651
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x8a850243cb3ed2c2e85eec10a4d8416fed2c4fcacea732046ce8501c1004781c	\\xa211fbb61ffcc9bdbad00cf457a90c2fca100897cd857d9592eb449f117ec579
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xb8aacde0b1ca2e512cd3a375d9dc3c92ec83f8daa8262b71372892f80981598b	\\xb644c60ed752b72a6d160bb243656ef88b29dd211597cd754f7346b210421760
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x6da2aa280f25d302559561305d4d4d15e0d8cf3e02575dbfd03dd7e26a5b148b	\\xd8d13d8495ab52b502cf24f7a5d2b1c7a54346c6bcad1a5853180135ae983dfa
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xc982fece1468017af5d3d4e571a0f9d1bb17aab9eab399638e198d7da31dd70e	\\x194e014bcfa56af70fbe267f0131be490e345b5b13217d7fe7a09d09e028d596
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x43c4d00d3bfdd23a172b85b03e230ceed98e40096541632764f70d9a0612a97b	\\xf865ba083dc9d283360e128d7ae423c618e8d3dea47fe5ec3fa57ccf47d727cd
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x206888d5c95eb749ec0d1f5144fb4cbff5aa8d48a62fd8e89b3b9136793c63e3	\\x8386d00b85b88fb044678086977da8f032725252fb84bd6dac31ddefb587091e
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x19fded8763d8ce33b98112a85a870954e4f64f2f78f8eb63a29cabf2945bddb5	\\xf4dcc652ffa035997130daa4d7f9396384601552be8c9b9aa8a191599d370636
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xe8947644e836d95f6c9272b5b4c03aa2f856a9747b239c32b0e0275840fa578d	\\x2e3f993ede11cdfb1ffc5db75e2e918fcebee81f96514efda89ecd9702582a9e
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xd088efb9ec26b562ee7b8010cafc61ffbcfe81ef696f7bd67279fe26a6c1ecfd	\\x44c3756d1c42718491f183a29060fb8501fe7ee95841e17be40558bb78b6d5b6
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x440916139ba23eac4dd56dadbd134f6488b618d3a7716f5042ce73eebf8b4f40	\\xa400a72b018f6a680860c1cd42b3f7103d485b7ea2e204a33cd23fe7bde4f956
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x538286bb3030ef0ee979b4567f716e6ebfde7b3a8621f71e033f7456da39ef3b	\\x02576bfbab77ede8f34a4d3717700f7bb7b5709315b561f5049cdbf49cf8a551
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xb33fac5a5e067c9d85bb308983de7c662fe647097c9b51afd44e880421270fc5	\\x1c3171838967e570045acda976182e1b6bcda5515aee23a0b96ff98f4aacd6b2
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x69ff4a4f646606bfed9b5f687858f0cc4788d399011755191bbcde47564c3abb	\\x3def3c0805d7a83573255d0b20c028160a349f2c486e50531723f639dbc068a6
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xa03217c214387e1238ff056efc836e1b9ef6f216a47255b7b0342ebb091ee87a	\\x6c73ef7600d945bc1eb8c440f09a96172874e96d2c6a7669d2a432e307ddfa2f
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xff48fa8d6089898724e9e23d99564b90d4c0030d91381c32e55bf3b32f3ed0a8	\\x134f00dbaada067b5ad6166158be3dc1a45e04874b9d7968059ab77eb70b554e
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x688f7ea4d41f3d315152e3aaeb440de963c492b80eada7eddf2585315e609e95	\\xbaf37874e26b2b50feab418d4658eaa3eb169b0d26e6f5b171f2aa39401f4670
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x24bf1e466683b0a8c95d85334ba7d21b45e4a78e22bb41d160a0b06838514e9a	\\xf81ab95ab748326ec1b4cfdad5f9a61f93d12e14e4f628c2ad2685b4257f79d4
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x8376408901a0126f54dcc76f6c65d585b537b65e2f92b3cb9fdf7f5ecd88c6a2	\\x6f9cd1c04a0a7e2ee335a85cb4f49f87112b1010bd15cce2ee55ce9ef94d1510
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x86e6fa280657d3a94338f682f4ddbda7d5d560bbd34e4a3c176fd80c7e8a22aa	\\xf7336216257ac40a68dc106b21f5c07f60cbad64df63c90429f2de1544521872
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x78d81bb14697d4a4270355a5c391b05a25bf9158b8d6d01385635134e7679814	\\xf51afeccab5d069ee8c27ba0e324833a6915dc7271b9ba703e69c6971ea7954b
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xaa0c0a43e83528faf5e7dffcbfa767ae62bf8731b54121792d4713034ef8d8bb	\\xd5858195e7c4c01d3a02adeabf46237878ee97cc9aaa4de44d5005ae40bc6f7e
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xf709c801701b476951a6a9aa01c952e9eab2aa0da33c379498ee8fd607185ca8	\\xf0dd6833d762ccf5571a2fa02b32ce426502bda90adc282e1435ed15d4e809eb
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x0de6bf97c8c9ab58f8f22700428696d2e278c8d276c214fa723531fc95264eb2	\\xfa9912bcccfe506f394f426fc6d05cf95329e1ab23cf6376254956cb261e1e2f
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x11adb7cfca5d013148cbe91fdbaf0408e71044d6b8d3978f3a05f5691e9f0fa5	\\xd16f0292717113b51b009be8e149bbff47f201c5376d7890b4aeb97eada8307b
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x887f27492c8e0dfea063e660260e43ed8e61dadedcb8500ba84fbd00eca6a24f	\\xc9dbf7e07b2269f2ac717a085756b21d77241e7a6dec753773d1ccdf834cf382
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x579d7ce1b3d5beea378a85d58b69e1f83fd4c866fd690d777751f5661328d476	\\xc9a6a7666b1e07ac04a0e261f1c9675253e28980aad2377a6ded4a281132f5d8
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x025ed35fbe3258ee5f99ad4d4c650a22b0d63228480f9b23f48f4f53c76ec8d8	\\xae76440f531616c5abcc59ae02e8449b211da56d976c8994195374d4bfeddd70
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x9d9da14a5903f6a6bb1e22bcad193759037d7d3076d801305d01ac1f9372d38c	\\x91f799bdbaae9a5c333c210d48b948226e7cdee12b334bff1251e329c3cba747
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x7f73637a6825bd3d85762ff89a6a9c36579745f8e7f6b21b640b90194a523fe2	\\xe17e2a244de883b3140bd75af03982815104515936348218ac51fac5333450a2
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x947d8cadc9bfe92a43a30aef92e50c1a8973a6789ec118df0d9e7ee3fe4a4d41	\\x5e4205ee71f21b251fefeeb70004dbb316c17d5ad4168cd0fc1d8f9b2d46f997
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xcc46e66cc7eb0e4b86c6c5db682ec1bbf28764ef31980fe1af3de0fd839b8436	\\xf643677b7a471f04f89f6b3dffdb67e1f1abb47feb35263ebd8f9e834595387a
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x522b07e3cb3be5711e9d8a222a1c3e58b631a3e151a519197914d345fa92089f	\\x80001fb1bc8e089c20fb1043f2d878669bc018d30acfaef4afbab50c66678b25
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xb5b978876f23db8afa7d8d07f595144e5d4dd5156684d1d50c93d5b695951381	\\x075ec47616743e471832f7db29cb5dda36b09e39007d749973537b5f3fd49654
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x52e56c8a50d82884f87f64a3ef45fc9331f16ade22a7bb0a5a9fb359b8fa9e54	\\x536a328cdd146b6eea38435a12ce314aad2dda71e4c6abc35cb175b7e382e8d1
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x70181b6ce069fbe992cf9ababdbc9bb566ffba7f7c5da61546a830d776f7343e	\\xf0240b9efe08cd0746419a75f2fb394827374e835b03d74b30348c9b0d8dc04b
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xc26dbc15778ac1cbd7aaec0eeb75961ed284ab6b8179cbfefe5839829dcc71f6	\\xaeea91478e0f84a9df64dbdb09da08107849b2668430bed68d7b7e3a672e0039
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x6d44508af93e52385bd9ed63a10e3216e7ca9db80578eef7db549c1702737920	\\xed1e09bdd8abb1d97e3d3845a8566f128ba3b1ade3b6d91824db68db1b64d176
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x7760f93b10fbee811a10d8d6a4a5fe7d509d048a6e0ace807fcfa7078bffc808	\\xb58ef9b8226429fe56e54acfd92022c146aa24877c62490e26bc1984af49db43
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xb0b81ae665119fbe5192cdf2b69472a2095dfb93df8ebf0adcd1def676442c68	\\xc9e8daf3ba1658407f2d136dcd24c270163abb04c4dea0ba4fef05332d743e15
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xaf92bfbc1241bc734002154fc29fb2926c7eac54f25f59da14d26ae39de0fa0b	\\x3cdc5b0f3a1b99f80ddda02e96400af4e6432eb89547f22ad272061e595e83ff
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x849fe81d4d518e65680b6e9b6077b28b8360e916145c28ab06c221dd303ae704	\\x1c3d717a9459cabc796aba7755dc938ec6e6f61acd18496f2cb30c8e3e1abb8b
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x37a583a65d3b7d8652aef89f8bee74c9814e6a787ccaad12a8250df0d7fcb6bb	\\x359ee159f5afed21407ea330d42a53a1a04ae2ed1af3c2c25e5d4bb233b1395e
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xf8807a804a80b238d406e724136812fc37e9e4bf3600b53f812b80d49a84ff4f	\\xbf094c9f3f44e8cf95fd24d8852a5277f7b78dd114e63db0f2a24b53dc62078c
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xd293711e460a17e2b5411f735036e22c776828b5b8638039380f907890b38469	\\x3cc43689e35414638e284328ec93e784da4e28b3d668474ad37c99701ec5284a
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x431b989052689bab23c9585c85bbdb8d4f049ad66e3c9b024e47b59328510699	\\x95ffa69f0ca3091870d6f0172510eef9fcda08ca1ca75ea5879bd31a1d5f4dbc
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xfdd22497460fb013c25fadb476733b98d5b07723704a77ea24d9f62736686310	\\xe05f6386f450ddcfc41e25f33769903ecf84e9ab4068807684ad9a96fe70ddb1
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xf4cd39707c7ee51bb3846c6525f7c0a8be8c4520a1b20ead102c77e870c3dbb1	\\xf165dc9eda7ba5ee405e21d7de68d06619221b261be9e21ef88e6d2bf1c80c89
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x148e9502790b607abb368dd1ed9d9e81e514a0d16cbddf0c2c3bdfa2150434ea	\\xc3851b4aad98505c3ffb5b4de1a3de78d6688c017fd41774d5d20f312d0de690
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x85a795fffe574085ca25c498abdb47d16785d775c9f8cae8250124f939214519	\\xaa2fbe6fea7a992bc861d8f7eacaf6315d48f5e86485f8c6ecd9c253c66a7140
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x5f59073c4856ed7cd62a777796711178ad4a19b4f1a3b1b5d8f06a4c60259292	\\xbbc09ce46ec96d6bb1656fa03c1f96be2dd0acaa67c57ee2777f3c7355d2c214
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x51e651804b8f4c18e0cf1fd1cf2f4a3873f98fa36b9363dbaf3dc36d7b0e809d	\\x86df2863e540d3d5f9148cc03605fab3b58552d8c95990ff7f61050315c20c27
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x399e8333fe5c05ce3aa18da07ed27cdaf656d792333b2a22d82973842f27e29f	\\xf149e6c47620c78fd39ae480b610f4707b44802a23d3af0f42a8ea7aca4c4768
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x9a6f375f215bdb582eb64e3e32e5fad6dfccacde2d9dd086305b1f274c2af58e	\\xf505adf90066131970556d50fc2875c9316aa3e3111dfa8d5b242be0e44ba6b5
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xc78898ad3f8356da83879d21796920ef3b56bb7a109a8e85ac12811e0484a39c	\\xb3738ca412e80283796e38db2c4b94678494cfd3b397255ba6246a8e0a98d9da
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x14e9b398fe77c9dcbe1b99c07d9bd782056f619202a2e32d4e35f3aba251f847	\\x4399a2ba024441cb7c1d81bfe9068ae0e709a72625f334208f638c296a1ff0c1
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xab6505b205eae223026bdaa683088ed4616439fb8e41c94b2b4a0b1ca49ea932	\\x25578f7cba131ca83a72777835aa5a811461bfc9484e9e8189bcbb3d757bf0d4
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x1cdc7f8ab2f2d28c3bb4461e33711952944c909c801b23a25a4b3aae679e085c	\\x765caf85385ab69de4a58f778af1f8c249fcce0557d22d0ac4bf43cf9417b2d2
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x42a44f799afdbd33907f49b421d7b72976c03afa1adbc50d8880c6cedfff6061	\\x7079b05d78cd31463a16747066470726cfa98987feac947ca3d49e425d3cd3ba
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x617c05f3b81a01d934e4ec690e56fdcff29f60a2f348079efc58c6c63757f4e5	\\xe53ed2bb2b1bd0edec018bb1cb97dba5725d7b56de83c55beb7957b5d28c32b0
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xb95642ad940de1871b599ef62feef8482a0516b0d3be32d876c889ada3cbf8c8	\\xb8bd1e2f8e2c22e82ee552b7d2bc219aa28b0c03b140116f877879c6cc6ce1b3
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x18e81456822608de08549dce38b01778926942e223488980933168bea4d6b4bf	\\x2439386a49ad0c6d77797b2a473d32a7771630e0e5421489050ba5e8ec698d0f
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x248ed3472d9d7958cea22e438aab49d40dd6106ad34e1689ef30f7efbc8c0b0f	\\xdf30b1c017a15059bdfd384efb402d14ffa872e796bbfa0819e6c4d742669e23
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x0eae6767d76fbf5be16fe8945cb2b6362bfefad63a4a8235d106202577e23422	\\x8cc451947fc9f9c19e091868b0f48a567d23b1ff8f480e5c89b4f3281f9a24d4
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x9cd6805deaee6cc372bed85f1916f5d24920ea52f51b098ffe4e9b50cc9a8516	\\xc0f3f13802b6e45f6eb2ce5e76cc8bb1424fd10a93b0f26a23a891a7372928cc
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x28c63ba4e9603f7868c0c346d48d9b825af4db32451ce8ece6a425a42305397e	\\x9d0f1f5eeb5269eb3d131e4b027a5bf069e2032f1f9c816e37c266be90a94c55
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x4ac692ad933bea711dedf0a3ab0b8f7e297b6c8ec8b2348ba21d64023f508707	\\x6ce7c215a99048a0828441b9e1381a5823354b5933c369fcf452222e052fd48a
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x67bfcb067b2e10dc01544db8f2faab9e6b669234a5f16a2182db51026a458154	\\x827c4db13901414639e77a52df7cbb7d746d580cbb01557cbdb5fc94f2aa4cf7
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x508154088430320f87084db8050c3c7970dd64a1753434f8f1609c7e198d2a53	\\xd490d991055e31e9d8d95443f71443fa20959863dc79c0d51c42148142452872
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xc1e4dd86e72ac94dcedc385838f1e651e9e51a3b411fd541226624dbf86fba4f	\\x46342ddd8f9fc5cafebed6de48b7265cc7e3df8a8b17baee37fccfb0e3582027
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xdc8a42dd04b3eab137a0ff5175d00ae0ddc7f2865c1ccaaad9f3af0b2f50f5a2	\\x90d718a6f14bb2aead23d250dc1c52efe9feace5b8fd11a0fce120cfc32af1eb
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xdd582b31d03688d56f2a97b9281ce7a46aa1c847b41a9cefeb13adf59fe77562	\\x31155abcf452a3ff9e827c3c63d8fba8b2839eaa925dc4f83824d9a234d9ee2e
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x5b992c721a3632daba22c92b7c83e85e58646880cb2e15897febbf0dc4923951	\\x55a948726af3bb8b5f85994435046f7ce2a1f16c0a1a0467aa8def09a1aac6be
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xe451e299e2939eedc511bf94e9586086ec299d839e137b40d91e8085646696dd	\\x52244079d92fc62e6ba0ce64528d96a4d07335bef81a1ce26b8dff5c8102281e
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xc825fa311ab2efc56717114658585c97e60d1ee1552aeb3128e331efaba1ca2d	\\x3a3156392d733bd844e17eb8cce6dc842602b97d9ce8c96caa67142823a638d5
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x61318d0110e7761c2e4e51ef623a4b545c3c09ed4a33a43565f2bb477b962a24	\\x5f2337d7c61ca36f45297a9c9ac58b39fd7bde500ec73637bf5c3d35237dc503
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xbeaf3a1c19faeda85d56ad502f21f0e169ca09f4031601540ba1f5907f157065	\\xd048d4e313d0c92fbfe68092cd26e2ea91a6386e23f90bb8edcdfeab184ace47
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x141a2d16bc6665655d04f99ca303b86ea13dbd10814dd245972fea5fdbf0e760	\\x2326c3a8bc27233694578594057f3daf349031ca606dd7c79e8f34ea08f87c11
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xa2cd43fcc2f9cc081ed01371e98021a34647cb13f10ca57a2e925d0f2f2724b1	\\xf9ff79b92065887ea4a0c5462ec87f4b74e74470e46b66f50b9319224ede8b8c
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xfa8a4051d2adc50d934360c4b169292f9048a71c57876df254c76c6bb843f10f	\\xad21734940df394ff28ec767293c49e6821d46f9da70871c8c026a4f78239520
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x15fe4f8e516c6906f23fb8601ad439825eced5a0bc60df797cd65f933e6535e1	\\xc8e11f9bc38e6463dbf76964d9f4408ca828ee9eaaa0a0b14388c6c95220e4ea
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x9a27404b0f3b26ae1194f9996d69dc8b69c1a5063e4e00bad3ec80a3eb030993	\\x475db7c8e70d60fc3b353d2ccb688a0f0ae7ce91971d32da645f604259de0d55
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x4b1e19b6f06bdcabeec122e8af389158913feaa53db68c24dda01361f80e1364	\\x1af04cfa9518313b73fef2dd460a83ea7108a2515b0ec4af33ecec57d3845502
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x3c2648ba263a8ba4cc9aa6bc4380e54564f0b4b4421a67fbfb9f510f5f7b53d7	\\xa232ccc6122b9ae98b108020b6277a381f803802575241cee44745f91bf13518
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x3f1b65f09177deba285a6f2921ba229b530b65cdf41334c174576d70b3f34b51	\\x27a432198975130f776168d848ab485c2cdf88eede4ce16351d841e1a4bcf098
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xf9f88763b5b1f94b5389a7672bb686c6624a4e8e649f1d74b84181753f625c24	\\x54c34b9e60bd2a18c6dde850068bc80c5e012c15fd9f620c6a705a8dbaa0b111
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x37717f90f194e3ef5d21f027336060ebc473eca4569f0a2fddd577e947f924a6	\\x4fd7b7faf565ca230e51335fe997c2c1cd07b052c7a9c19312807532f2edab45
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xdbd1ee3995fed224089eb9855448fe3ca616729fa3ee12a24845dca16e7cfb75	\\x4db32c2f17840552c575dde2fa5658ecc7294401b0d8c0922956f4f6812a81d2
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x93b765777d9c158bd1da2587183cdfef5255fea72e6a5416ebe2c4ebd708e864	\\xe550de545ea55e2f09225c47f83dc8f1244f521a40a6c6bd8c766012ed29ccf2
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x94e019c8c21e048c58e43e86bac7ec34fd11f77c108ce04a4fa2aab8c465924b	\\xee75523cd6fecb8daf50123aa150b94061178f08ce1ee580d4e2cbeaa9334436
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xe246b69f48edf5c01e5ef504c88890fa6403580110b97847bb9b0fa4ef134756	\\x2b22dbc576b2512f85c8fd140a3775fde927c18b0b222bec8b9e3b1acfa83424
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xbccc40b837101f48fc4aa29e281a291aae3c903cd511c0d0c5050efb63ef65c4	\\xc90ad1f4947647f77a2a721b78740fe3a4de56ae9f03ae1fce5706501ea6fb3f
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x8e65cfb42e43d6c2497e52b287c26ca7d3f0a3244b11715e5b09647639d76ca1	\\xc7448bb0238958046d55978adef4972073374895f736531373146619a811276a
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x286090d1cd17ca8f05a822f44bc74c47055ab0df2338c5448671f1e4144285c4	\\xbc859cf57691c0f119198a3841ee0544de65b4b4279a21e813eda4f9414723a5
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xbde0cbcb2d3ca1dce1a826795e4357f88f0a859a298041cd2a6532a6a1be8f4e	\\xb89aebf022cd9cda6fb531cf3a00e1a3a64c4ec3f637bcbf81fd5451659e85c7
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x2ba26ff2b5ea8f818f118f91117ab722ab1bc2c4ac8c7a04984bddb45f031df1	\\x1ad7771da4488871c6e9bec85b97c0a0aaa1020eb346c24d63541390c3009e4c
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x2959cc27546741aa6e050235f792017f2af6395e2b1d4cf5969b81bceec3e712	\\xe5cfcc0d04659f8e589dc9b20f79d934861f1e2446366a3fcefcd859639625cf
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x72896b147d72c63e19527a735894ae87e2408b12e1c94aed1f803c884679b99c	\\x00cc5d19db4c6b041412f792df4dd2efb14d0e69d43eec7ab0fce7db8908828e
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x0ab958a79deae229f303593eb1130ab9f638a9175f365220a7af23e06ad3b199	\\xb53b9ae4b75b66f15db8994a9eca97f0f30853f2e239168c9a4f935fe2b99c5d
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x3f9322333b4f9f8da447846397b52aa7215750666e3d4cec1819b7a5f43eac3f	\\xafbe80c8afdb9f3cd35e12f929e6757ce23162d2c6318261abb69966ff46efb8
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x2a6595a8a0c71e764a872e574cc2b161f96d9414c01bc70930035ad40b45a908	\\x43abcc3e932c1534f0362eb8e43e423fd2b37ff525dc120102a904a0bac51b8e
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x3bc6f10bdd7700da11a0e6e6e2196150b94a7255991cb91810eca73a400d645e	\\xfb6db30a91c7b15f1967e425f69f06e37e0406fb0ea3679a4c1c66d3dc8c72be
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xc9e9ab9e63b645cfb3007ed8a73464f9aea2a7e2b2e3af48813c3590e8f990c7	\\xb7e13dc052833d95a61d74eafbacd6ca91bd627f2a8c3f0122777c65cc23364c
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xaf447688adc9d09396d02835f9ac23808cbdfad5f04fb128f65cf0db82ca1fc3	\\xc735336c15309788f412569b7ef00bebd85c9eb3771d4cfdd209a24226a09c40
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x607bc718ecf48955feaf70bf4ad257c2ac94ce249db337165499dfe629d8d628	\\xfbb79987a0bbce0039749b74210da8865eb4e6e74cc027b5f3d71e9dd528bef2
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x9d390e925654bccd4b25254e30193b4c086ccb6501b2be01b715e0a26480cb9a	\\xe62530771b3a215f554f38617f2e3d40b3f2dfe615d2d8cab2882ec34c967b1f
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\xb59b303694f815d6b2517f2104a045097489c21e5ed9376c22188124c31e661e	\\x3e7af2407c8ce31a4fb4a6467fb25545b9c1aab06832e9c924dcd21214fbb47e
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x9bf6d10639252b2e1b6e7f1a639a4732c4d8e565a4ee63f4d543f49874b7d230	\\xd85ee24eacdaba541e6814f9c107b428c2772ca131c275b932deeb57bfcd626a
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x0e574613a988238b91928f7b2b870a7d990a07ac7ccfaf6da2616ab29670156c	\\x2a7c3a291397d86bbe64f6175015d581a4f61d02c0a12872105b70a315ce4472
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x5c5226f03e010282dd72e84827a0e1e35692e98180eb58e79ac2a194c0a961f3	\\x9386297d7144e14bfbb6d0dfce89adec44ea9e687d2c1ec3548c76fbde0a61a9
+14355138943:1@s.whatsapp.net	critical_unblock_low	2	\\x3d5ff7494f5041d33eeb4315b109630b19f7b9d166fabdf361c4ca2d4c622072	\\xf031c2363f41dd76248e94c61e8b697c2991f23123211243e6e6933388047a56
+14355138943:1@s.whatsapp.net	regular	1	\\xc6a734cce9b17fcb364bfffbf851867264796f83ebea9a252747868c85ae30e8	\\x3a8ccf4067a7f26d40289ebb5a46f6f994487b4be54f7b248e2cbf81fdf663c8
+14355138943:1@s.whatsapp.net	regular	2	\\xc83467e9e0ee093c9fd6a616790824d243f2747ed290e7cd416852ba70975326	\\xec03cfb4b31c68d5946e732f5f692033bf8394cc6964da80713f14940f13fe97
+14355138943:1@s.whatsapp.net	regular	2	\\xfcfc8e0500916a1178e671d2496324914c25f8d7bc3048225af097ee278c0934	\\x9537d5758f1cb58a730fceaee0967200876a363f83b35be2a5fcb119999e33fd
+14355138943:1@s.whatsapp.net	regular	2	\\x7f385d593db51ac3676069638cf9f2c3713625ded592fb5740244534d4b3cfb6	\\x2980122f7e3d3b25c292232a5fea0b9dcb8e62135042eeda1fd59878e1f777c2
+14355138943:1@s.whatsapp.net	regular	2	\\xa0718dc04bb228885771ad2e1d7b7c03e655d0daee65a65176ab7f1465dc22c6	\\xb6ab888eb48dc1e348c31283675e2d486420547607adc2968b8dd99eba295174
+14355138943:1@s.whatsapp.net	regular	2	\\x53a0a032aabc41882e3312214c26cdf9d70ace9fb56b3649b2ce437c05294ac8	\\x2b10183d936fadfcc8c3f1d5c4b3fd62bf0e936b286ca51e49175657a138f070
+14355138943:1@s.whatsapp.net	regular	2	\\xd0606e4659972c61d839a11ee943fc17af6c8c8e5b72e648c8dc7d802f6dd97c	\\x00b4d474099ce77def068a19a43477115b6cd0592c085f99c29859f65e16e315
+14355138943:1@s.whatsapp.net	regular	2	\\xe847cbced170e1e7980f82bfac356f2f9d49932ebc28df9148a55bf894855a9d	\\xfe06ad9244c64e4021a09a4b06b6d6f12f9fc117c4ead5a9cc383ab300836a4f
+14355138943:1@s.whatsapp.net	regular	2	\\x4b1e9241a865eaeb9c52bba47eb053dc57f9bc9c91d0846fa32708befe23b906	\\xd9d60aaa041a419ec8b1841afbf9c4764d1da3a197ce61993ef6cef46b07dcbc
+14355138943:1@s.whatsapp.net	regular	2	\\xd92e2bef4c6e17c6fdd414529573b53ac03a360b8f160ea28ce72306d48fa9b3	\\x97c8475cc99153b48522018c67d5f5e7b2d988fbfd8211152e9adb871516aa02
+14355138943:1@s.whatsapp.net	regular	2	\\x08258ae03210b38ec2897b200b7539f579a03d9faa3fbd019df9856a9b74e89c	\\xec81335e94933d5e281f6c103ffdf40337cae4535efeacd34666c127b135e554
+14355138943:1@s.whatsapp.net	regular	2	\\xda872d9a3913974b5d41cbe910354febd2aa47933838d9492ea56d33549d8127	\\x655f22e47d36d80019daf8ab7bd3bcba2d2a89e3dcf04969354535239db47422
+14355138943:1@s.whatsapp.net	regular	2	\\xc6a734cce9b17fcb364bfffbf851867264796f83ebea9a252747868c85ae30e8	\\x12d8254f692dd23cadd5fb7b566758647fa942b7572cfecbfb4b10d4c3a6595c
+14355138943:1@s.whatsapp.net	regular_low	1	\\xf1389ed5ce924bd62294fad18771f1ad03bce36215d601fa7e96ab249cbc6255	\\x7c35fb271d83af5b7d47367323fae836c8c44efeecda2b3aaea2e7d78bdcdee9
+14355138943:1@s.whatsapp.net	regular_low	1	\\x58658bc27f794faabf89f66d8a785437d976e6980cfe69ea0a6740863f94efc4	\\x9d2a006434464728ea2a3776f9b2ab450697cd55046e1f1edb1b2f89ca0dbe6c
+14355138943:1@s.whatsapp.net	regular_low	1	\\x0e5072b4f0d77bb537b6af5bbfb6bc215dab972ef0baa9c184b117a84ab84c4e	\\x8d08a90c54d1ae24c8399de7c78c44b8ad3bf3a06b249d4426cc7711b818671f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x672f31a6953753ee45354def13cd19013b1433c7e1a6cfa73ada713e1fec6fd5	\\xf0a8d58d20a28aca85a46cbe2a29a0cb3312383c3694fcb61e52a37b6a0dcec9
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf11ada7d6e9653383eae3fdb3c0527c844856b3bd50d87126070eebfc5116bba	\\x42f7f9f168b05d54eec2c3adeca95094ddb737a2a469f73aecdb03fe9dfcfcbb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x01f1aa9252bf8ac07b7cfa06757458d6c000c58910ee5102c3061d4240b23081	\\xc8b8612b7b2decac09dd9a9c664de6bb283d7bbb97248ae373a9fde2d122ae6c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x52afe763fdfa02455383b054274289f38b6f7cb6e3937797b6c08507b67dc589	\\x55221991b506bcdf671372b94038c8c2507f34a3ff623d957895ea75dde689fb
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfacb3b927d73b042537ec9e5c338d5abbf8bfdbb20e081ba143f05cc51dc0b46	\\xe6f8ad0ae7fe0900eb2486b221595acffd92afb57d5357de1dc0090a1b8226d6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6df289da233286932aa5cbbd6fded1b3fddde91e701826556537d8b819eed48a	\\x2bbc986150158b0ea989abb73f307f2b81f49616038b85a6fe91e8c02ec122bf
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4b17a621724a1d187bbe9858fbfc60dfc8ef99c6a1824c5d56c7c4b3661742b3	\\xba988f2dc505bd418ab6bf3aca52db69466b570d37b583eab7424007207928d4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x06f210cde552a1d7f91b7d6955e927ddff217719b909cf8915c329c311c62dec	\\xfd839260339778c4958c0d7a39b86c4e960a5b29f503080f861154e50550c78d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf662591e842eb20e6a9bdd6b94e6e5b9540ba88591c23f82dbfd5b69d4c9b122	\\xfb76cb9adbf80b17ada1b4d9d2c7536f555e08614a0bbe216730ebf9cf4635f5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7b536c97bb6595c0b8e414d23e740afeae9a690aff90221606e275d7a1acf0bf	\\x3db30d382f0559898fa1d34ce2e85c1782486440b843626904b358bb3e565602
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd2e54b22a4a56ee9b72ed9f891901bc274fed99d831965759639064e38ddc43a	\\x69b1e0bc7838617c2621415dad619dd72394c4bb1a28556bcf4a4f7a10f9dffa
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2ff06a5441424f6da54c2fb2072b5a94de63f3a4fd30eadd310a06ca905d79d0	\\x2d546ba2ee697f97ab7542ca1409515050f162f7dc7f3ea786daaf043fa1c342
+14355138943:1@s.whatsapp.net	regular_low	2	\\x59b083ef54ceb65896da1d8d20d8fe9baaa26a6babcd870f16ba136183810ae6	\\x76714af8aeca7f622c201b545d42992036eaceaa29ebf599b45ee96c63de409d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x61d1263124310e6a4903dea3fc60fc375e8556faa85917948c0adef642175763	\\x6ef27bbb2345a550099bafd91c2b60fb77bd90da520cfacf7425b0bbcae63d24
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3e6150d1641432e703031075a8c9d681e3e043cac0a0d161d1e2d81d3651c02d	\\x01238cc846ffc17e33f32a3a7cdd7e351af5807c2b110738172497db32520136
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc89d076bae8c6d97acac953d70ab5cecc1a0bf84f0e0818399930b2ed21eece7	\\x661d3cb5da42593619e9a32362d57fef23a2975613c6ea86c261b0dc26c396da
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0bbdd0d7b8b9dfd9a8516e15b72b7bfc144e2a2c95c57727e77102121af0a061	\\xd15aea171a078a7dffc0b37a6ed23e62da75f8a375993ccea2b78c65311cf9de
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd9c87e502d19ce226be5994799d5fe57692b2dc7279eac7b37ddf1a613333589	\\xc36ded33d42e184db76322cb5d0cfbcd83e3cdddd01e678d1f6f80d2fa43861f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1a744ccfaabb434f1a136c35130253fb1b0799425b17fe25f60fcffbc996408a	\\xe595661155b32c01c105d7c632119c22317b5d51d5eb748666764c8a585f2e5a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf73e7d2e518929410916d9c362082fe0ed84b0f7e6eba1f6dc2cdf1968917c82	\\x49777f3dc17a4d15bff0150a4ec75d03644fafbc0c5f24307befcbf5c90ebeb1
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7c2c44747c386df6317575e93aeadfe6d2e78313d060c1b223d42df0f978bc84	\\x4e01a95fd455e074da2a91cd5afa320e93b5de3e52f9f709684340c148908811
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4ba71bb392ca4e1d7cecd7a3917ce344440f492f54bd92878705ae181fbe6130	\\xf7c1595efc020755e8a1ad9dd780373ead105682d8a96908e4806817a7b16fda
+14355138943:1@s.whatsapp.net	regular_low	2	\\x453e2fbe898a082948b82561f1764a7810e193c843a7879ddd61cde6b68d7a13	\\xd545537df714c9a4a8728947e1be18cac6465095d04c8ed3ff0b83257b576c03
+14355138943:1@s.whatsapp.net	regular_low	2	\\xefc89d5b0c1782563851fce47b1c357425324785a6c0e5ba5315abdab85569a2	\\x3819dc162d91188e1da566395d8cab0ba9f04ce4d935c56c1ff551ed4caf8fcc
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa643e19edccb7cdffbb0a6d172311ece5f0c55858d6e61b5f999001f3fffcd7c	\\x3215baa21cbfce5bf6fd7dcb389e51dce5968ceaee0ea63c0e5f7e013642bdb8
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfbf15e9ff1d0cf04db22ce2b83db13b343b9b3908246d9f8d553ebbedcf31765	\\x631c655070c45b43ac02f9fe0f62e1857b017d55fb087b177b7fcf6df693abd5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2449c095202e60330af1319203f91fe4a2279716e1976627192b18cec10189a6	\\xa0526dd21ddda2a7cb427a718d2cfb737f9def476cb5a32d0d26498786cecfce
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdd5e3f95e7e4cc9257bd2d84f0b40d8a6279c175781693df5923956f74b0c805	\\x78de1de6f255e4c7119ced834e8d306665fba2452187faca2a0f3d6d99b569aa
+14355138943:1@s.whatsapp.net	regular_low	2	\\x370ec7bc6c91328e228adbce2371a85294d2fab610beb78169d140777daee39a	\\xb261bd7019979d530c621a785b3bb2b49b1df0f29c3a26511ba1ba1109d151b0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x306d184327913e1b78a0a8a105070a2a2a283e2ad68628fbbad1bfccc48f82cb	\\x4078ff93d39fd78fb173895e06f20926e1450dc2691abf4f4af61c122a64e4da
+14355138943:1@s.whatsapp.net	regular_low	2	\\x50643f792f8dd5d3b901c82a2211dc2ddceb83ea2a604d7cc7e4d4cea28ea971	\\xae167175e06124e0100b1a09259095609e19eb40b368f4560e212d4f3202597f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1fb6916af8074e9d520e1cc0fdb509c97120e3fd1e171fcf3f2bb21013beaef0	\\xa12a4be4a3b808c17d2fb9052c03021d8296bd38b72a87643f918c5b14701359
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa18d28885e63933ba41c867906aa651b86cc52c1c65ec3bae47f8a1088daf184	\\x4a61dab23b298c904a9fc1239304ae4846d90fea26edbcb0e3b5c24e0894bfbf
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5a858720e1abfedbed327ec74c17e1e8db3bc20c1549880aac761cfd593e830d	\\x04a536456c1a019c1b809cc0cb74e229837540c68b2bf833df407b1e887af23a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x613088f34d7333a69e0888b663f2317ab3aee538fdb74f11bc53ac35d48908c3	\\x59054a6b1c50a03f1ae0daa4a647316c19f3675c23cefaf5e7b9bd6469307ab9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1d7a0d947cc8e061a93434a65a19cb45ded14430e034293536bdcbac93bf9458	\\xb35f1b32f2eaf569e3985f79bc17ccf8ba5b80cdfb5bc210cb133f2a4ae4c266
+14355138943:1@s.whatsapp.net	regular_low	2	\\x077f7d521df60564d4e6e6878ca3f15b71bfbd8ecf525f44af7fa33d9beab963	\\xbc866521128c08591b715310dcb0a84fcbe35575a5a9dbdffdf5d09db1336a55
+14355138943:1@s.whatsapp.net	regular_low	2	\\x45a7d6d446d1f7af53af708b3868830c07a066e9ab5ac9074266afd7fba1cda5	\\x14d8c4a7db136e964ce4d22b6391537616563467f9b8e7aab7fa2eed54e92f56
+14355138943:1@s.whatsapp.net	regular_low	2	\\x18faf888c44af93c86342d6b0a8f6cc3f80795a5bc2b20360e4a741a6f93353b	\\xc4d0b5124e7b695dbe8f6d024708177b2975ecc03fe1b5df8ced590c7ab7a90c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x523896f02ba8543318d7440bdc82676afd5e3b0763a3d43d81e3885cd6ce2cb8	\\x3e6759f3cd31156d7c597444c73445c631d1ce28a3a0f3fe28a92b3c3263a16b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7c2100acc812a0bd2825b928845dec43a3aa9f3f9e3d50c63bb4f06615d28cae	\\x55b0adb5b7bc00734968f5c1d144f22362cb439361ab3c1e5e03971f64bcc162
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbf1ac0a93c8d8b8908c74d218ef9ce2bf6e5f2d793195fe2bdc317efd765e204	\\xe306b96cd197fbd05104150e4edc7772e6f5fe9350def831c70b5aef72aefe61
+14355138943:1@s.whatsapp.net	regular_low	2	\\xece271cc984580b7a02d380b14d9f9a1108b19c8ba7fc80ead0b64767ab35a23	\\x60c7ace111468a8c7403f5dfa020dc800eb708abca31c3a898bae8ff1d794a7e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf714d6b01afe8006ca7c106efd2120c3f0034c49d6e9ada1aa87edc99bda87aa	\\x248817243b8978ffbf3537eb31216f880e5d7fb7c9b855763951c70f44b8baac
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb68505fcecb1d59e773ea0fddf1b648d9c81308decc52f243d48c1a528895c2f	\\x020fe5ced9ee7a077d2738ccaec1923291740b9b16dbffe97f04213261fa95ce
+14355138943:1@s.whatsapp.net	regular_low	2	\\x94ca01a430027756a6c25e5d8a7b4a8c096c1212cc1a6805cdf9867bb34d5410	\\x96af44eaee6b89ffbfed5d428e0360b8ab6d9b24cde62d0472190863a47b1377
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf2952a5ac875d750f5db1af7575ac671fe94c936fe0941ddfe84c681baa52c78	\\xd95be1819b5dff5158109eef70dde11bdaa30bdeeeff53e81ca841f75a5a8d03
+14355138943:1@s.whatsapp.net	regular_low	2	\\x39dbc4a57c83d7c7260539660d85d79ac874ec175ee0eb14e3a6c176f04f67a6	\\x944ff25754633430763620db580d3baa7121000bf521cc638f4304aec60dcb08
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9458bc899ddcea2eb436db6ce404c7155ddc95e5a675165689cb37dde7820757	\\x8b1c9ece2a237a74bb5911bc2196d3aa501fa9c0aca13a38056811e52843573b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x29a3c104f565b10b8701d3c281bc0dd68dde976e35d2af679779de6cb72f1b89	\\x06a4bca178f0c34e8b3348c9669e0607a2ace9bc0c8938bdc92cf3d95340eee4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x40cbce8837e07fca2b6d38b9e1af062166e3563c934fbd2db7929eb703852a83	\\x86ce7349d24551a1cb5e2655a4c6edba5168fdc3a672c06408124976c2253cfc
+14355138943:1@s.whatsapp.net	regular_low	2	\\x48f7f8a32b1e2470a7d0477be86b631ff86523b95d7ba55a7d2ea0c82e7cebb2	\\x2539cc94af2938b4d617233acaa984f4c7666eba6a251c695efef60d98544621
+14355138943:1@s.whatsapp.net	regular_low	2	\\xced8f90546979026c56aad67220de99a5183172cd7207de31cd96668910c122f	\\xdde9099c813c86c4e804b6f57f2756ba568181acc5b005819411caab0109f895
+14355138943:1@s.whatsapp.net	regular_low	2	\\x842798a18b434f554a27f28f2ec2be3f0f5010bb75a9f182c0165f00143c410e	\\xbe854602c5b9af61c263581af554f70d51d88a524548da3b640e13ecf192096d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x19c70a3410712412105e538b7abf79b7399fd9f1ae8d2f0ed9ea74c392e6ac34	\\x31a596389fd06100df923a473eebf62a250c3115264f1ed58ad0720bb14f886b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xefd2eeb7f29d01b25cf8343fb4245ebfbbf44fbb71f9af8ec0ba320b4182d7d4	\\xcee8691ef005e1c3c8b465275055f3d3989500e0d8e2f2012331dd275ab002a1
+14355138943:1@s.whatsapp.net	regular_low	2	\\x05e96e9ea04bd9accceb4226a486f95524847627ccc14240e1920edb5e0056df	\\xf5f71faf552ce0f7253b711af9e6d5c116d9135183409a2be0d800fc94f9254a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1168a4d532af27103571d7c6f67eb9fe76c8322cbac6d6361962d3c940d0fce0	\\xab50b72b7cfe5b50c7091e8a0353cdf55f69a6da4416510b6ea36607ae69e624
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6c3d82753905d467f52a01d38d9b6b37f30ac7f006fa69d1877817345ddde0e9	\\x3e1b0ffc95c739372915f82dfc39fff21cd2b25eb1118ebce1cbac5e16bf4f68
+14355138943:1@s.whatsapp.net	regular_low	2	\\x17ef94d6d16456ca39ec14e17c67af5b9f72c41e3ec8fa9d35fe4020b71155f4	\\xabb098a35b3634b5a5d4680dc71c7c4ae7af582f27e7aa23f7ee6f488d1196e7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x640a89bcfef5a2bad49cd0580c1288862f6762f6b0a9c2a674ceaad8adefb62f	\\x3ff41434ad9bf85fcfacd11ae8691851f480602e7ef8f9c49b2d88fbe1ca4b71
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6b09b32d6d7b77eaf7643f499c2de7df0fdaf8daf6e2def2c3bebfa1da58cb67	\\xc1ef5e5c4c65a556ce6241ffaa8c2102f1270749558e21b3e4abd952d99a8089
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7640951537b68e733b1dc446ba756cc48e8f5ba44837b384ebb9bf7528ebb6f2	\\xd93900d649d90ec9cdc1340695ae4e1cb5f64af49f7b0c308a208887bf8f1a83
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa57ae520293c055df0cfaf1f515641b805e62b824f99ffbbdacc518484bf61dd	\\xa57824704f4c1e02d898b08ea7c6ea62d028717470d29177e96676e32979b219
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa00e88a85a3dae057ad3a0e8f992a2e9a99864ea6aeeec4b3e0fcb7f226b6679	\\xa72d6452a125aff29369ef295c293031f93020474899fcdd90bfeb56c88b4f4b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x437d65daddef6734dc4b6eba7f23655778e361854471f8811b1f3e314440c752	\\x65ec47ccc813f1f884f0e8afb398baa80976e63dfd52ee2c6ffb6560e1eccba8
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd433745f7211c7aee442b2ef9de9a67dc0f324abb12de56ef8025e742bc802d3	\\x3616b4b5887c34456da0212fcddfd9cdb781d38f7a9b4536d20cc8ea435fd9a7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8c02761e3448ca23ba82a69670fb3501356a09131376a1583ad097c5d8cf6f31	\\xc0f73cea32c30c2cfdc754a935f9bd5756a3b7c9e91dbce9351ef0e7520a13cf
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe6da378b5ff29e5d511df9a10a5f7dd0983501817262049cc52ba78ce832014b	\\xab27bcbf962ab888ab9ee58d9dea6ab4db899a860032d20fa392aaa2965b3769
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbbbc88e400305212a8c181515a72925e3f18c70d777b87d2f5700a8716b23016	\\x11a18eb6b02b57122194e52f28646830cbee5cc02104e0a39281c81052fe2dd4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x806180f33b2d00291caca6a9fb44ebdb5908eea18814a33ce00ee881db6d93c6	\\x1de8ace6e3157e53d710b027ba272680fc43dd1a489034ea03c8ea13e043e181
+14355138943:1@s.whatsapp.net	regular_low	2	\\x16958aa973e8bc6aca17849ab5248694c45f82e80a17f175db68aede154e5234	\\x0fed98e17f182d705f066cfebbc6f5fcf0daa713ec94859c119bc65746e2cade
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbd3d990809db98b9fc29458cce0ef7e4301932b000266981e6d72fe37ae41811	\\x147c66a733dc7fa600c341a6bc47e44eb2faf9cac9d19cc2ac936348807facc2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2a719432cad9ca90947b5ddd8c849dcb268597aa75a829ae9f513c480f0fa5d8	\\x0fa77f80715031b0c04b553daba07ffb03b298ddd224f0e942939c760c60f770
+14355138943:1@s.whatsapp.net	regular_low	2	\\x49b3c64f3c62a92fc3ecae189d0b8db06dea76d8408f61b459225813aa6c8fb9	\\xa619939aebf775b137bb69576438af98f71fdc7acb3e3907182ed8a37a44617d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe0b2619209c1c3f1456a099e62b8cb3204189329b944235912a49d5b273cacf6	\\xbea2a1f4231e804bdab4d3037526affa8f5835b0e546c65f29edb5567501a37f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8d565e07070411771b191e3976e1173235aea0052b83f467b706a8831c289c18	\\x1dabbb54e89061ff6fb1ccb05ad8d4badce606a1921c7b0633116e4ed653f05e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa6c9cff08ad9533ec19025037d5edaa39eddfe7dea3ec02b4472d23a046322b8	\\x344d279fc2aa6e8e86b2af0e54f3b489cc87859b1006455cb1ef7bfe9ca1fe35
+14355138943:1@s.whatsapp.net	regular_low	2	\\x72c371eb9b65fe7b75abb5c8c7a56c17817b3b4548a2b2a53bc8ab134c0be902	\\xd22f42ef68038c87178efbc35c64b3aeae444e6be9219d253ebc83b55664565f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3431c964fd4e58b7e763e8abf44bb57b8942fc3764d1382c527a8fcd8ad45fc1	\\xe01d05b883ef3083c6d3a95aa9d920eae6066c54e19f13d2a64bca793e7b07a0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x21f173434038138bb98e92f78a5ddce0abea5634c41285fa5c1e7cca36b90698	\\x9be7ac2f4816929b215a203045e9488c6e2c911cb4259b3803b6715809c2c680
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1af63f8553dcba97e4422f1019c043f9366ba6fe3138505444bdec6fcc01e468	\\x82268645fb4e9959914b3d67b6c7fea2ccd34eb1be4ecb1f59f2890c2fc15a6e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1127e5a8044f2b6486480a956aa3e327f687c5ddbbeac60189a7f68c9c99c0f4	\\x8da9e8ac852967aafa9843d96e79a4ceae6cfac4240dd7b9bade019d86a1643e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x15e0834703af8e9d04ed56a6c93a833e351fdac35e3d82c70c8d97d6eca50247	\\x941893e089dfe047aa59b56133154e8d97d8cb70453309c8a42cc81b7b3b3a62
+14355138943:1@s.whatsapp.net	regular_low	2	\\x86fdd16c2aaf1fac6e78dc610fcc488de67f503b0dfdfdcca18196525be2b742	\\xec9fd4a5c24d01953e4d9e627fcdb0ba0a80c1cb90eff92b72408d78908b9ae3
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcd491447d83064cc16fb04d9912e8ec8af7b70527e09692bcccefedb7e20d185	\\x76b83b4bd586d6262021cf7d753e4461f0bbe2b3472d91b2846e965060e8d551
+14355138943:1@s.whatsapp.net	regular_low	2	\\xecdd7b51d209c3e905ab46bc576b7fa707128d9ff25efab5e648e4cc1896372b	\\x7e56708b8caa0e1211f87e9bf1324ce138d5dcd7f7b6754afef8630bbe4e4e76
+14355138943:1@s.whatsapp.net	regular_low	2	\\x276846aba060b1806caafc19c5c6cc92595aed3168a294d0dc816fcd3eab7ee0	\\xa7d6d306a735d9cf6124e0b1b4dfe27ac4fd1243aab8f826828aec255cedcdad
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdddc18dc729132924cbbc17a979a9756627f35c143f79d9519086ab229bc1b33	\\x7afd722ff1a05851296c5bcc3009472fd5e928705804b963a773b9f48f9c91cd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x61abcf02863b0302221614c4e61f195cccf557c93f9c2092588a7ef7dad649ed	\\xe2aa1d5a9e122efb30a1c5b343bddedb733a3000b07181900f5769235d39ec1c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf07137cba577746cb5197a21fcec1500248b7bc7568619834e0f85055f36b5d5	\\xf1547ded98b276802c8e6834193de7a99d801c8d653956dfb5c24f3bd19f6469
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1955b6273f83c701b62fe51d82d6414be915acd6e35d13acfafc97fe8e4a38d8	\\x103dc85a6de11c88a39d09bf2bf744c767f14faeada8ee002a754c79a208114d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe3310339833bc85d768c4e4abdac8117cf138ff47cf04b76d840454c3bf91ac7	\\xbe368ba5cef6507f3640ba477fc897e8cfce2a07e09d756958689cbc9dfd391f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xda9dbd155f18000c341ed2810e04df46d48400508acb0a8069bf836b96aeda0e	\\x31c90f38ede688e2746d214d73b028d395dc8eae5c5237f6cedad9bc2443f63e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbf76c17ba625f62b2a245aaee5a226effc714089245581ef74418cc8ad4dea04	\\x0f694a032c59b90480a3bfcd0fc69e2b4538df67a8773ca655d3f4c442e590d1
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3e5600828d6d1c8fb777c62f28ef16c18c223541cfdc5185eec5b00a40119cee	\\x68ca7a5268562c72a62c3a4a484e441ba9b3b8189ee2346ca518050b7c5b7d09
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2daff187fa9ba5d97fcf2552ea2b6934d74621754e9d84ed8e196856881562be	\\x16d788a80aaa4dbe43c924b9e1818c73ca9408f6b320c2ef378d96b15d96a1a7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x454663b7b8ba01793343b3e0388586ea6d8031bc8465e1a734f92945ac58e484	\\x63fe45b14bc30820ebb421950d86aed954e9719f7733672bacec1d8143f75804
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd07117e37aa103a771bdef8b14349142b2fe3466f459808b3a5817b29dfe8925	\\x487d311237bc8cf9a26072319b63330edebf95bfec82b5e0afed8a2f25a7662e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1f0effa84e939dd2c05d74fde91e6a20afdacdf0cde3bb21cd884729902824b3	\\xb8312d6fca89bfa91fffd5dce8787604fe89fecefbd27d9ff8f9eca6372c9d94
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6cd2bd4bcb21dd0b42f6fb2772a8e0b66a9dae97d711ee020b70d815507f1654	\\x8496c1d95c55b28e089409037cb1283a5cef496852549a0b39313bd0e8aeeed9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x09be911e5ddedb0447a34ca9a7c7eef5c07589f5d1db41b4796cf75499edbddb	\\xcd071ea20839d9eb1174726914bb5c30191946c3f96ffe24ad17c0f2d1bc12e0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbe4325c0ea4db7233e89133ffad5eb5bd89f53d8d6618482fa1abd4b03126d47	\\x40c0c612c5fd456c3c017a628525fc9a4ea1ccd9d7145e3690336f7481099f67
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbc93d72ba2d3301cda286e12f8816318a695b68a3a9f1c8a14551f29d66c6ca5	\\xee19617c90b781573ff04f3e9ad4e19225d10b09b0a813cccaccab50d774029c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2c7ff7c004a6e422a4b26b5f66119309d76f07467ac2203e9f405daf34558f7b	\\x6ec08d28ad196b7a5fc284b2d707ae301e522337dbc125d9f43a0fbe7cd3ebf1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd01621ca09c4acd6167f9918dadf36029e1d89a7a2afd9560e79f28fac20d411	\\xbed538a09c09b85795bfb8604d20653ccb16d49fe9e927f2ac965e400a2add0a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2fea2268939833c5f2f5b1aeb45e363b7e72ca27eaf91be218edea641dd570df	\\x12ea1e49a3a557323858dc0ca244a9b1a85beb562bab46243008c7cf25598167
+14355138943:1@s.whatsapp.net	regular_low	2	\\x84ac69c186c853d1d24e2764b879d80eea1ffaefe338e298dacf631d5640dddc	\\xb2fb3d486b0529942c53081ffc3d6ebc8f844dfc2877aea666f17f2934c6b4c7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x634f92a15d935ea1a227a7d39fe3a83e1742fefd36f0899d43d8f5578323c858	\\xe8921effe27a31b4253a8586f3ade108d74f403b1be6f290f12647a7348cd637
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1b437120569d7ea13d3e4995d74b62c92958a36cdc5440f94ed8b4bb3d515f09	\\x03051233dfb712e647f501d25b9d7ca8c7720b11afd898ef89b9f6a8a35f49d5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7c361b68b6cdbab102b5a2b9d3845029cc8483c3a46dc12e42b0cdb3861f71f5	\\x37ccc5f79a8fff7fecbb3ad662d39520921106cfa495eb37c45bb8161608bb28
+14355138943:1@s.whatsapp.net	regular_low	2	\\x21f48e900b47c4ef76f00658336b29c0fb7aad27a2b8b6fedffb1288c45a36d6	\\xbe68505d8c592bc5a3c1231fd99dc612cbc36de40273f5de24837439e23c5507
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6b934840e4a4e2ccdff335e24cacdf04118bc13638cc167bda35db9c006821c3	\\x25c52b683dbe734b4878ac0110f1751d85418fed57a4da5501bd281bc84a22a3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x22d35ee32f38a9245adeaa974d28cddd135dfbe89df31c3af6cf3e444745e088	\\xcee12df973d3b43a356d4015d5df3160f039e7a2507951a107ac77c4ee8ead35
+14355138943:1@s.whatsapp.net	regular_low	2	\\x081967f98e621b35ae388e282a6fc36e7cc5c3e306d7533371fc1739e86bd077	\\x3f552ba175e79649695d8877023c1cd2059fae09ef3885a21c5350fba8d24b39
+14355138943:1@s.whatsapp.net	regular_low	2	\\x884273ddd53776293a376b2e8f670fead8da5bd9461176367744eaff345732ea	\\xbeac2e642bc874088a3ddd3e5d592e2f396e28cbc238b125cfece35f84f29000
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3fcfe436a0a337949604b70210c38e81d0f3194b647bbf1a2ffc47213c9b2414	\\xc2df9dc7d23f70f84da5767c5c1f6ff319d5a78626b97897b83111c92e7873fd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x015af344bcc623ffdd8b6b5a1afe0de1a01641de3beb3c18a50e0d7db55b9886	\\x0e22f1c8f5e75ddac29f46033f249bcef3b6cfae0e88b6a901714ec37e3e69e3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x367ad054dd613eb29162485626338100d9e046a9c9016d5fce138d5595656dd1	\\x34a030be4bf110afd27c6f47b083a2d4a541011d1d64d056cf7b670cfa73bdcc
+14355138943:1@s.whatsapp.net	regular_low	2	\\x71950e6ee4325a20f151ce70c99f5b603da593aefbff8b18948839647184e9a1	\\xb5fbf6a5d6e01f24444defe30de8ef411b4fdb679961d0e92430ccaa6cd59a76
+14355138943:1@s.whatsapp.net	regular_low	2	\\x684cfb0cf2b88f27ccb123c729763db1391e6ef590732cfcea5667dd61bb3649	\\xd93c26cd4e131c83aa176e4848af3bc2d2d1565cde18888c8b4abfa09721c192
+14355138943:1@s.whatsapp.net	regular_low	2	\\x781e3a62259e68aff8319bef2148c81045c0ed7a7f8f64e049c92408b0aa1167	\\x57533a526c6b3dec57eae517e646eda8ebb48abf1f3f37c91f2569b2d884a4cf
+14355138943:1@s.whatsapp.net	regular_low	2	\\x24434332dc2efb69ab0ffa284832140adf6f8ecc21b4190f852a3c851d1299d4	\\xec6ce226df753c690e9f6a852a9bcbede584f76284b815f5c2b87bf88cf5b433
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa0fb915b58aa45b9603f05ea3779d9fcf0b23ae9d4ed56f90a9afb2b6cb9613a	\\x0720fadba3bd0e1b41b235728b08fc89eb5af55e795d45cd2e01286fc8899830
+14355138943:1@s.whatsapp.net	regular_low	2	\\xce54c410469d1b08aa3d5b3e78e7c22adecceebbe100020642a2279f060208a7	\\x6ae0b09604adf8536794d79e676ecf098d047cf2d2c413c9af71815141a7ae95
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2dca53bc923ecfc77a3530b6dae72444853d74614d7f59bc8ad520a847986398	\\x76700f2905f24357dbcc0469bdd9f88023af3d2830d9adba0fad0b4a1582a68c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa61fabe1a10b37c19beef0bfcd7bfc15c13d3b89daca80d2824fb8115ca9aba9	\\x761a046780f06a31c0d40b2875091d23eac55d4edb4e1dd494b4448623f9c10f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa234451d2e8926749106acdd04dbe139886bf231efb4773f9cb8eef5456d68a1	\\x962ea2c50ec0baa23c63dab8b8a7d58802a4d00af00468089b9bb27c6079f9ce
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbd9ea03b1477719f10c9a7f951d888ea391cc515f6d523c3abb67d6ef02aca3e	\\xd309ab72ba760c3a407ce2dce9398960dca962dbe946b156b85d72d347dd5dd3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9721f8ee679d55ef181e744773244107938ac62fb708480cf66708e56355c8d1	\\x8de69c194a44e78ed9885620a717127c5d84d30bed37c7311a3805abe14bb9fe
+14355138943:1@s.whatsapp.net	regular_low	2	\\x97234a9c0710c2ab51fa2bbb8fc7e6d842adfb9b5f1a6f0ac6295e1b4eabb2bb	\\x407ff27724e5a11896f05efa02b41533625ceb58dc4dbfb448ce0406cd1b0e00
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3688c06abfdf57331e6c8bde67e1da9f9c1010585b3bbdad31faf4d2f26ff378	\\xad9373388270ca10d779baf8e387a3fd7626ba98dba84ac7c55af9fb40ba084d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb6720a7405a29f463107fd92d0c6c1da849269245b8a247cd185e706f0276491	\\xbb58cea291d3be1ce1c5692f65ea60c896043fd2d8b913f1b50f33f5f1ddb8ac
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4af556122d9916392449f497cd5ad7507c7f4fe4b8f0f5513db2506b00c5a475	\\x2fba6d57488feb2d041c823ed03a9fa2b85be954fb1e371048b897365328ec38
+14355138943:1@s.whatsapp.net	regular_low	2	\\x42c6acdf5291c94ef38f1bf1703d3d02a9fbec2c71419228c53e58bfdce6ca93	\\xf442756e6ee3b553ef596ebc37dedc40b1884acce615d96027dd9f22974428cc
+14355138943:1@s.whatsapp.net	regular_low	2	\\x435522b3d62505de513bc77ae05d0cbf43506739beb130e003035ea2761ffc5a	\\x8347056bfa10b79ce5bbc037c07127c27a6be47af58e85e606b01858ae4c6db0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe013870a496a643d73be4c6da67b1a12b67f841e7e4b94ab5183415e65fdf44f	\\x4fd8f58013a8fc3f5841cc79f752770baa8099bd5483755e3e1e0b73c77a0abb
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbeb3d71938cd42fed24458b1bae19417f7688fb50cfd51c7167891f5531ef5fa	\\x774715b7c245789d4a806bdd4e9fd7a1ba83649f03a3bc552629334b59755cf2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x967bc74d0556d9460807f047a5e63a3d4cc42febaad3765e2c9b696c32ac9634	\\x0e5a368054478d549a9311d6f1a781522ff821493284aaa1b3d9a2ffc3000d7a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe11d24d267e9bea89ba93008e449f010de6d54148eb0b2209d4167226096b630	\\xe2089c0f5db214b7370da4977629c8a823b2a1c9419e3565b171cf6f272abbe4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2b9d83658595fbb6b5419357d66e73beb81f869031f054f9f5451aa1b147e615	\\x3ca15d2f6d89b34b736be7b2d4dc5c01531cdbf05bbcbe162ec09c01255f77c5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x40de542739bdce2c37d58958ffbe15a695860c0c1a2b61c9b6c177ce7f0da094	\\x7249443eb4c1c50b0222937db4d6efea157a712b00c16b7494dda0f32a4962aa
+14355138943:1@s.whatsapp.net	regular_low	2	\\x344ae200c729c6729d8790c01eff02603372f31cb780f4d79602440e51d33f32	\\x0c223b42c2dff56ea3616b86cf9182d8583fdf038dc1b66b4f3863277fbf3ba5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9a537658d1fd8bafa73e42703575664657b75d6c8a1bd0feb13f57d26e852db5	\\xcd1cbfbffd7746745b9d5bd2a666a2d78fd51209da89357acb1453917e2ade95
+14355138943:1@s.whatsapp.net	regular_low	2	\\x30907a994c0d155029d6cbf583dc0d720709d12119fdcb9bf46f18495ec53470	\\x76f45ebecd25ce4d29ba553d59cf5d772b1c4cd107b110e0ce1d68c3693acdb3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x621b9a59b4e76bfb048acd19137a2459f9b3446574f8a2e37adc9272c6115408	\\xef1101953283bea72d09dcdae88f3e4a0d6043afccd65938a84661cc92c00870
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1f06a5e330d7725d0d7719e89d0be639468d4dcf18c21787ba5de3b0b501100a	\\xa893ad7616b2b067375ce824922827b7b78f3065de019cf247f6710a34dc9539
+14355138943:1@s.whatsapp.net	regular_low	2	\\x323410fe32fe3fa58fbeda4f6fbc74c231cb7e33e2f572c755b5aa7d53c6cb31	\\x0993b31e8b25919f092a54b5cd79854ef40654b3bff188bad580d79efd9ffb17
+14355138943:1@s.whatsapp.net	regular_low	2	\\x89a07baddf1f7e4c69c1fa33c1fc30dfe555ead24f2a47d13b9cae3900c46c28	\\x9bb2114fea93bba42e3b89addc5b52e06d5fbf1693d77107c0dd2ed35eabbf66
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9a176071ce7186c98519c7580262442ed4260a78a1752355e31a9305038b98c4	\\xfba7932e937978d4133f01f5c9941cf78c13e46470bffb9a47f0e7a726f81693
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb505cd7fb74510afba34180351fc9c4df6e4244067f1e0d878765851125d2301	\\xf1e4359de470d2dcb4758a306e3d6baa09aeb93efe405440be7ddf0ab84ad80e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8f764ddad2452267aae5c421f7e40b441f4ccac5a3a4d0e752c4a0ceb462c1a3	\\xb0485349798f3c228eb2ee44dfcedb98e1602764d14de7347e0ca75fa7f18f1c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3b071a88c7f4dfa8ef258a52dda53ac26e3ff967c1cf33f0177695331f8469eb	\\x26e5cb48318457556db0446a8aa8518a21f32f6ca459087f931a016700c1008e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd6beb576e3f86e7fa151daf6845aaac3b2571572b7c64c2775b5d87d58de9455	\\x315e7ac3aea01e457bd6f223c416fd91820d55454d08dcf4736e879ca8484be1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdcd337c8184d29a6f399e5107c862f8c71529a41161a84be3aa15280b95cc412	\\xd47277e69756e666b1f2497fe93138f9346e61e6b972a63741ee276a3bf566d0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9d7c9545548bb83432a7b30be6e89b7877a6a5951e142744b7a45a539bb9d45b	\\x25f2bc7ab79388c7496d5a6bd1d8bfc36491bf56ec80bda4af8db91cdc1dafa9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7b30dff7b429cfee90c2b22390ab0944e702a04b87030399ad9c999e6d51f39a	\\x527c6af24460dbceda55507dc49b292c5c1f342ab72736ab182a87a9e6390f5f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x599ce3bfc2a5c8daa31de798932e45fb6f807c049f845a721d52639243182d70	\\x87590aafc48895b42a94f6ba33a3e5e64601cd761bbdd335898b900cc9b35598
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0a902fa9eb35a22fe0a3d424837a0f8708d391d5b82d0789690642a903f1422e	\\x7f1ea74f57d6abbaa126a8f9e7c68113e66086bc1eca2a673a9629b950e430e4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4569a9466989cffc95aad0a7872144f10414d45d669e98bf8ce7792faa25b4b0	\\x6e58f6728c47a72106191608ecd5a2be88bf93f6c33c8e086a4ef36b85134452
+14355138943:1@s.whatsapp.net	regular_low	2	\\xde44856915b48ed0822fd3cd4a9391c5f75a0edf7b14c6413de6ce7716a117c9	\\x630206feb8baef94f6a333be50dd012cc8521e350651cd7e286b448b0c11f153
+14355138943:1@s.whatsapp.net	regular_low	2	\\xff63295e24a54a45c025595884a28217abfa46f82bc6c05f925ae31a769d0761	\\x1e79030b56f626cd6c99e70e3646444c33aff164124c0587b33a19df59fa51f9
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdbd5c7cc7fe4e7267379cedcbca085968ab86f4eb0ab30333fa3ec40902d5297	\\xf76b9728275d649238db31f1d3eb6ec04cfeb434fcf5e7b73595af952e16ae3a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbe209163632bc38ba7b74c5297387dfb938804c61ddc9b46626308acc44a48b5	\\x4d4172985e37a131339539e7b8a7f16d92fbd81f758251c1e8cebab72b98ad38
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa191e8543c4914766ef4fd8ca867167cb438efa4bed58ef6d4e88172eddf9c8d	\\x3ac4cd5d7a7096eab1880ad58d46c9ec297b665ea8f6760bac4308007888277b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcefd5c0d89deaff14d4daea7aa784e454d7ebd803b3771187417b685b1b28d9c	\\x1bdff25d5821fa26f2852ab38f393ebf324e3548d2bd001c8037ed257a0290d2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x60cde8f95efc1beeab663bdacc2a570991a5ef1376783a2a8bc4fcb53b9b951e	\\x57832977dffa7b9b332fa1c62f1bcd2395e8b7f4a6e0ebb5809216ca39946e15
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3099849bdcfa3cd4d93d97ac4a392af5ae86e269d035e29acb6f29b8ee067e90	\\xaa1933bb3fde9c2066b855f6da71bac658474e76e8368ef88a86ef55ffa73687
+14355138943:1@s.whatsapp.net	regular_low	2	\\x84839372884e785ea7f46d17c2449758e0e82b0ffdaaef5199985d70a22801d2	\\x037bb4f186c03a1608a600d391e0df1c15b3233d672ec830f75b94df926cb2cb
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe4f5e332dba18339560f6635b18a1d74625c52a00b9c1d693055d819439283b1	\\xd6237437bd6fbf929bd65fd28221ebb4c3d7064de750a8d3821d564895a3e652
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd226f8fdc7a1ca5f5ea63400d14c06687f130ea49fc077bb9cd2662f1c401543	\\xcb1c331b85efb48fe167cce711bcb8de060f89f0e65f2a627693d682b5e8c0e7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x42149f91c2ec70b788fed119ec7d3ac35f65eeac1536ac8324ed893e0072eb01	\\x896e58b3ae6c52c6c67430bbf161043a240e725d9ca2ad919801ecd386bc83c6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0bd7f1bf266d14bc565265c31443e4ef3e9abe22dfc0f8f38dc7010e2d9a14e8	\\xb61b8aa7f17a3e8af4e8dee176ca8de332c75c5ca90833db8a3398e7cfedc496
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6d97550d61f2d1d1fec1d985735606eea284c54d1b1d112dbf0022313785df22	\\x4130084629ee0e5656509fb458a81c9a08485d084a61dba91f55a3237bfd067f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe40401b95ea3b3dbc152753fc36c2bf2507e3f3c276601277d5101f8a3085abc	\\x2b19757b8fc0c42b066e8af29dad6aed0b4e0ff8a9aea891c60ed0a3e99473b0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb611fa14735d1adab7145917dae35d88407b7c996fa5f12868423c61cd8ae52d	\\x7a2d91c42cbaba61645083951396ef3b579a236a2eb142fcb3ec5f6d10194159
+14355138943:1@s.whatsapp.net	regular_low	2	\\x533fe599bc02450a417636e01938c2ff0a9951382be5c55bd30fbe5b49526c27	\\x6d7bc1a1ccd477dd4a657779bdb75929d8756ac37525d7fa3149ebde9f3f7efb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x92ca018f986e5ea8c77397a64d7cbe8a7ef850ee3b1a38e834e0a7be5182a449	\\x250fa6579216fcbeefc115f967d637059bef89de343424860bcac18a18c3f3ad
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa30540c6f50e058946810e5805021ea8543c110cc15b7b6b82dcf6adb0226ac0	\\xbae11eb462a0752421402328d29fee4be4efdac13ef8910aa522fee607279b57
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1f48c747cfc5aedffa9180947d15b9b85e7bfc8a73de9194fa157c87c3e92ffd	\\x5cda0db646acef170e6308a4a8b9f666308b9ac944fc8de2bad36a9c9289655d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x91260f21d2588d0663eab3be6a7331151aafd5861243f0caa66ffe12757ab7fb	\\xd666b4a23ba0eaf101bcd597bafae09f620a0a5cb0ceeec54b4bdc34409db1a5
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbf6155c40561f3f99174b21b63f15f3976eef0d599aa6c01f15eb3b3195e02b9	\\x06270216e17bb7e7838ede6ece896d0291d13bbae06d4b14758fae75b837467b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x369ca32636ae7594964fca3ff8b91257784ed98137c97fe38c4bf70ac9eaecff	\\xea53ec32e490f059ba8f2c6b866de6ee7fd5417fdf308e36723b5a0dabd288d8
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdb78c7258f7b4b66b8c8b3c04427c109ab3b227d4620b700cf9ac28527e76b0e	\\x3ab46dacfa2b90f6473298c987fc136bc5a9d466feddead5e9f1d4d86abab28a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x20be5bdc5235d1f8c8f3233071f94b7eb64b9728a229a70791e0820bde416cc7	\\x9638c1f1bf6ac6ab87e72f38fac12a354055f30f8697820010d46e13638b68d4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7ef438cf2d5a83da04912e4e9e4286934f9bfb04fd20f5e4e03d79c6469ce9e5	\\xeae2c1fa9f250eda703b0c615b979b00d197c3cedaf74d9c718d1a82c8addf7e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x50e8cfcbe86f6c253bdccf3a6a12c38185605fa8fb422ae99c6ddaea8bdb61e3	\\xe6466e8eea03fe4e4710f50f96703d933699ffcee737bbc2931fed186d0d42af
+14355138943:1@s.whatsapp.net	regular_low	2	\\x79625c715996500b4db6c56e82265ac3301ca16f927f627147498334b7cebb42	\\x9cd519a8e8811f6eb919cbecba22146daf7e728fd2abbb711073b53539ff7bc2
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa57897cbb70f70ca6b48c67171678adcd8c927c2f745a1d300ddc71d157177e9	\\xbb0c51af01e2e75da493f250452092419a00136d25ff3ba1c42d88a2dd37796e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa318393de631d7eeb033b267801747bbeaf28e16124e801c6141d0d88d65cc9a	\\x38a35a5556f27ed0666941ce7bdc4c034b93fb5f2db311b36485a6a7db1204fa
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcd01537b6cb2712bbb180b43ae067b84b9488c61ba85421766b3578e50ef87cb	\\x711e8942c8bb4d4de9ecddee7d9c4f760b55d01a070f1e8612d3bc5254134ff6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6dfd76a0805812dfdb774f8c7c62eb0189db780efdf09b90fab424824ffe8a42	\\x7ddc9991e1580c0446aa1fd21fdae004f95dbdbe62b68cdbbf38ca507979bb14
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1b57cf7cb9e623d5449e66c74eb1ea07587e6d659bd12ef583615fc3b6adc746	\\xfdbe6beaf79c08a2ab8ffc74f177aebc6bb982854fbb3daf77a51cf3371821d5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x830d3e2263d1835542f1b65c40e50a2676beba446cf33573aacdcd5fe4e8c1c4	\\xc06d476f1e7c2dda3dd86d957209b3938c2b3a51349df855b4f69eb247dfe3e6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2be822207230f071201b7291ae903199de99e7ccf5bc5845d2c68f0864386232	\\x7f502ef5faddf0b6c0e551dead08582f10599dab6d1d148313ac53afaed8b6d2
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc77ac4256d81b03b0886e135c8ae72ba8ea7308f5b362dab3aca1bd8a30b7ab4	\\x834ac3472e3409d5159d5a6c7e6a9b79fa9d4ddf4b80fbefb275074597e85e42
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa23f836c4faa4d3913b0e1799592fcb48a44b43a378f5dfc7cbd7abb9206cee9	\\x2ec70eeaeaebbc0b8ac97355996900db061e856c5eb29c5fe87213e47a8377a2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x906e998d9288f4f119cc8c9df96da70c46ac444bdef99672dd550202babd5f07	\\x2ef24c1c68a6f1a76a04dce4d388117ba8f65300978cf51edd74f97449915c72
+14355138943:1@s.whatsapp.net	regular_low	2	\\x00ce82b8d287a5c202fc906fd36bede30283b5351199f191bb17712d0f44d367	\\xdcdea2294e3c1309a2ce7a06973544b1c647c6d22f6d0bf7af33f99ae91341ba
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0bec75eb7ba42149db20c0502aba363b9eea6faccc0ec35cd7185838ccc779ca	\\x1393a42b1abc6092bd95d75d4413260981ca3ef02f93f162ebf43a59204a5cc1
+14355138943:1@s.whatsapp.net	regular_low	2	\\x18fac6629d322f458aef5062a9d0938d96100059f0ec7fa437f56388e7d2aaf2	\\xa69eed98f524ab4bc104043af66e21fa92bc2f59f5ed8f0aca9de7dee95bda53
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0398b9689bba709751927fea246d36e4747ecc6cb296fb825e5595c1bbea862a	\\x03a84a8a469f8ca70372e9697c14dd3a56900001783091c90b92588644b24157
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf6d5ef92a89391c881a83825c215b7f4767f4406b304b4d60d48b307393e1af2	\\x8ea093836a06a01190c6f48c125405b690089c5007557bc4bd8365a4007aa466
+14355138943:1@s.whatsapp.net	regular_low	2	\\xba12d6c1893706e7a4e958061881ef07ba89442b7145238106fbf15f2d979042	\\x1f7cd7fe2fe414e0a27aeebfef969b313e8472d2f1bb694c0a43c0a562ce7eeb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6e734e693cddd12206231a33dad81ea3bb5e8b993e7f8eeec23568562649909a	\\xe8f2100d9ff7ee26d7fd183b7997a3112b318e016e8d462c9d4b2a22baf4b807
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf4429f224b20980cb527b0a22cd7da7b85f9abbe69cea2c8a8bad61a7b6e17e9	\\x0567f54a1e21363fb131dc4e37cfdd2c5ea4be4bd084750fe57c3c4d74a1eeb1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xee79e01eed785b7ef2f6d5d7096c3a4e645e8c447470acddcf07cac96faa916a	\\x359f1b7039fd6e4eaecb3715a15d94aafd75c92c50285127282a29156f040393
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd3318cc024ff8fbb1ac1bc612c8ff85be922d5fd0771c44cb2ae6c516b237f3d	\\x2ff4b3ac56ab63b6620fbb7cc65c38598f083901baea13ec1921f9c40e470d2b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x261cd2c4dca3da4314864c9265239ff58d42cf82055519f3ac8266e1f5dd68ed	\\xdad69637c4f20c3cf35d7bba3d037aacc4e3b3b6ca971ffbb0200113ca05a017
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2d06a6ee753d9952511185c25cf6644f56e1b7d21f0fb01c14ae8da51a4d661d	\\x1e1d411d108449d760ae1abd3a223cbf356c20107c5410bdaa4f253fec8dd1ec
+14355138943:1@s.whatsapp.net	regular_low	2	\\x382208b32fab5bdf3a62968813ccb805fd3a637191fcb6f9520f4dae904f32de	\\x65e1c44d4d435f20a2b13590687fa6b50222af525fdcdd4f3f7f9e9b9e5fffb2
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa793f037eed52e4b808fcfecf88606457f33141908b76853bb42ebe2d3f8fca4	\\xc62ecbbf0a42959bf7296e1ed038417fb2063f375fb8f49c04282973ad1a1e68
+14355138943:1@s.whatsapp.net	regular_low	2	\\x129c4b70572755bc8d07c04dce911b27867cbe4d1518c805d85765d4e3052ca1	\\x50c8b597851fdbe6732812bf7765ea480e4e8f295213a2bc437ee5778fdbc05e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3951b043f31da0c91b6e038c727eb02ba43ac52c7b0508c1bc2ae3845074e74d	\\x35d8e2903d216ae1faeef189a22fac40aaa109b60eab0f6c288a6f7bc97e2c4b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4a8f17ea3713cecc95196d7519c7cd342e61df3515ca20fda2079284ebef20e1	\\xf544928e5adac78e0d6bb09dca6a31d8b57274630a7148a4b54f11611b60e80b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5939d41fd610af95e95733abd69a25c55f978ba1744d1fb467bf6378f8256747	\\x62d2d395532bcd2a9fdeb9a91c0a1a7fcc4a77dd762010ad2ae916c1f49de3d0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc945db9d9b94e866c6d0b011ad81bea37bbe38e1817ce2e48da97aef1f069814	\\xb41247e1c9ae6800200198e623351d5610f3e0b65d31e399b8641e0e402d9d7e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd0a2c6025d8403728f051d0f07673988629be173749c6bdf6f19e79d422c46d2	\\xf6c32e943a5a969eb1f92732b9840b305022fd82f7fbe5f5f819bb3a79356ef0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb35e2f2d68836903eb9f30941e61a116a0560d799f7e332b5e9d9f8c759cd00d	\\x4073e8554df8e1a3e3e1a27b35d9b41e7f860eb542c22a210563a55fff98db98
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5ecb89f7098173e7ac1f3c9555c4b7baa53f6f42bf937e6f9b676e1a7e241ba4	\\xe2d42eca7b776fd808bc4b4cb9b2c979f9e91cf9265d6b9c682e4d6407d7d0c3
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa555597bd4ea17135f874ced4ed88f45eb881e53f08f0f58a88c4ab474606f18	\\xab8fb6f5cb2f07f7249b44e5b4202eff6f8071c0398b07993c40f359a630d7d9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4922d4b79b621758dec072d9d5a118b2db3b59d26076d615ac34b19959fccfed	\\x31bb959cf1830444173d3675d10320ed87762130dbfe025347a89230db90cbf2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x15d7458d7d1cf53e77b3d2b35f99bb1a36729781405684347b2fb8c6d6d081a4	\\x82e8381efcc6a8f0d9d7c199d2d5e6653d4fbc1ea9a14cfc744c1604559fe784
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8f383b6e1be87f8952fab39b40864a586cf2311c0ba739fb4178bd167c6182cf	\\xa3e5d50883644360166c423b6bd9e501d9293b5cb579353d1b98ee3c3fa0bace
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7409d9c80938941912fc1e770a3d44b72fa5db3c9caaa7904cbce727ade36bf4	\\x56b9d542f9465f2afcca55e8c2d6bcf452048dd7c5f158da51d0c8e6ee65c03d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7b255e54145a23ba32a6ce927c39432ccaf8c00f6ac3bbae375e9e7dffe7b7c3	\\x671a4124741486f852d9f42dc672ee7a45fb73d8254176dee527cf05e036ff0e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5ef35ac722e99f65a7fc8e6b4f15362c9156526c71426e6143e10282897b41be	\\x0a27e33cb9f8d5552cac1acfc7057ebfb898ff9ca15b32f306f966c4eb7744e0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa6055a6f138a3da8847f14a3bfa5938dfa20a2ed5d66f72d3b986216cb3e3d97	\\xcc4fc684878f95f9771787b6469b8fbb4aa818bbf44baa1646e4e1507d8aaa9d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xff0528635eda4a6f696d6f9947b4464db85992e43abe34da28cc4db198d92957	\\xd9ea762003d769cb92bf3c4b1b0a0d744e5fe8e603b0437851ae4e9a4d8c5821
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcd0cbfd7eedb7232f6c73eb8543aff07ae91a1b3125634a3334e7aa6803ee07a	\\xad141fb19bedbaad4956ec1100b4c2d2af683bb24562a6b6a762f1869ffb5e82
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5ba927c106c74fdeb1b9d409c18041d90b8424b9ad8d2c734e5bdf520f648de9	\\xcfe330fe3a8d67e848219920261906cfa623a7a21fff3d0296c893c698c535e0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xde2cc0a9b75c21a5d07ea6240591474ff0168dc54b2b62a84414c87950e5ab59	\\xc720c20d0d707ff37c7163971207239893dd3dbcd2fe9f1a44a5c56479aa7baa
+14355138943:1@s.whatsapp.net	regular_low	2	\\x56dd8333432232912c8bba16a5f6eacce4feed91865d29fa8e47067ab455f0f4	\\x796c6a36041608d6d2b5d853d26a5ca0f289a78113e6fdc9348ff34221ea264c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x321cfb38028b0328485fcae4b45bbf8aaa8bf8d154c3e0a08c091dd45d4292eb	\\xa17a52bda1ef0106a9978b8d67edb547e9a2c6ffff2019b5440ff1f23d17e66e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x03145aaabc5fb5908a7c901703c735920fe5103182618b48270748b16fc27db4	\\xae01f4dcdef784be658bf4d17db074b9168ee47d983ddeaeff153964b1527d7c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc2fd0d104c52580ac559fcb52fa47fa9b107053179e6d259132dc6e664007e16	\\xb947929af81435419ad91f04b7d2ee2c6470544a4f7516df90a946d2c2873173
+14355138943:1@s.whatsapp.net	regular_low	2	\\x00500bda1741d4098441b3a71ad87c82fc9c9bb7e46447b3d03194b186c67592	\\x9b762a4d439e6d9fc5cd278e2bc8f10de3bc2b99b09920f294a8b6af21166d36
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd698d8ca0bf1e89dc20cfd9c3bfce3710777a6cc37fb2caa40a78db9c84396f6	\\x4c14be06380e3fd5ff136372d086ef8ee80cc4ad268334f18d3c21d60184c573
+14355138943:1@s.whatsapp.net	regular_low	2	\\x79079c3b58a7bd30bb88bb7a0271fc991bbfea45d83abef519c42da148752d88	\\x58ab11feaab2a48da8fac662f3ca8ef73b10b3db2e4a56bb24f3f2d3039e4329
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7084b97b3286abcca6ba63ce91f6c96e3879fc1af471c6249026eb83a4a2379e	\\x2a3fa2e156d1a2a1ccf4ddaea4eb4e07bd372410e2e052ac52a84348099f486e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x00569964cba912bbaa34019b4abd2885856b9af9468209d333eb3f8b356921cd	\\x02538093e53b69e76ddf97bc031b420fef9d9fbfcd73880c91c7cceb41ba464a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x32e28c7041c9c6dec345855301bee051b4d2f708be31553a93ae2434236213f4	\\xd279771e2cf4253948d75d16ffc8b7053d8bfa09684712dbeb3e094b098d9fb1
+14355138943:1@s.whatsapp.net	regular_low	2	\\x07a9c46fe5e692affdbfa88079b7d6d8568e4abe403ff6d89e33675ff10d248e	\\x53e1dcf2a5a7947ffccab9dc75142526ac62b4ce48e0586a9a4f26cc4d1b02c8
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1fde933c700f5b267bd6e7907335d212a0ad117bd822a1f24b3b42e1d0d640e9	\\x1aeb32d6515b01a5d8796022932fca0a0bf55a4ea2fc75886c1c0167e0e0ae45
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd5525564926cd6e446080c942babed12315e4412352f9b98ced2f738e53719a9	\\xd769391f01e54d32b65ab2cfbeaa764d682f5f99e70916be464d6951d7587639
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc42345464e778fd3239773dc51e1daf6303933b97b74a1b2dbbb1910ee15275c	\\xadfe775d3541a904b6487ad07e16f29825fbc284e6d4098487245dcf429de6ac
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe6d35168d38e08a9dc071ef7102845987f0765ecfde00d838b01691735395c12	\\x4de99d864816d53c0b5a28344e043361f3d1249c918bb8d591e29403e39eda1c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3f0ccc321c3f903f8e2742c57a491a8d12fa698b510faef0ce47f01f3aa843e6	\\x4c2a2ca097120edb7250913da8a8b8fa67587e55c193175728b42290cb4fa56d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xab500656f177464ec390483fad28394aac3e723651b85785aff8cd59859322ab	\\x2cbb372cc24634ed04ba02a19ffab1d2e14573de405a713ad6b7720fa27c75c0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x46d0767a6ee5835cdddb527b2a5780d91df3a3ed7fe4c4832a51873f4993b8b6	\\x5cb56e417b4129776773d9c5d418209ba24c81025988a23b0a6e30227ee7f238
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe24b11e2084160fec8670c3edd87dc6e6341f46556a5a6b94c8875561b5b04bf	\\x0cde5b2a828c9a438df54b4befd985ad7a485e4930708d4f8b82a783b6b3ff23
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa3b302aa53677de8625148e2638eb498886a882c5848f820993bfe17f73dab33	\\xce40ef89cf30218af5be026638a123a20bc9717114f3487a442e5a00bb131b1e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4e2727bdf4b85f747615525d1b21877a6ae3195b0c651485638732e18f40c5c3	\\x14a28d908581b20bdcc3ca7f6a2f6f3d27f21310293270d689db3136b5da356f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1db184b816dc80b0354b7c6466d9b683355dcd3a329425aa02aa67159b0f94ee	\\xac692fea91180b97540f35e7d4e1f0d2b14391d4abed928be252d0033126a603
+14355138943:1@s.whatsapp.net	regular_low	2	\\x02c167146ca870f4865bb1ce9b1808ee9618c270bcbcc5f6db2f4c706d2924f5	\\x6356279f01360bb76df210ed955dd5bb9850fbd5e6f059b5d1983358e9f56246
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5eb4de4d8d4deb3eb5c66751b75264d2fa28402db401a5f7e8b6f3ef831f1170	\\xb8802615489944933a146c9379bc3166ce1f6b85877084e49ef93061f95913a3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x004e7ad55703659b58aa0c1f1e08b5b294935291c7821a9f875d8b364d3ecb4b	\\x17eb214dfd9da4f4ae4c6170f447f90db8caf232e91704607b33f75381314332
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc6785629a56430c5570091af01824ae4e53490079dec0f5255616881cdeff41c	\\xec964d76cd2b4714af243a003c96a47d0a77d662031a68d71843c44d260d7297
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb8404882558e1d117ba4884b9b2c3958d30a48361bbcaca43c8f7bde1d78b7a7	\\xabb0b3dfa1752fcf5a201bd6627f9b720982ca536105847f949a19691f0fb1ac
+14355138943:1@s.whatsapp.net	regular_low	2	\\x19dc279d4997ecf76879eade0e86982abef1ccc27031700db91b950736addf5b	\\x1c3801062d3bd53897336486c09e82b7d1928e17a1b182c4d024e1680a65b0ae
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9612be4336aac220f9e7cdd6fe7dff229c4ae57b1123c686b3f4a9b9a4e26e90	\\xf561c86133686b59c04f94b2aacb392fea8a198c359c0033e89e857501e96b7e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x356871d2621d1385ebf39055126a60736d0c1922cc3b9def363ce16a79750ac2	\\x361ef16767df920e94681412edc5a0aad65965f3eb3cce9bc874a14ff7c67f83
+14355138943:1@s.whatsapp.net	regular_low	2	\\xab60e982690747e8154e70ef16cd4614434c579f80510b446f7bfcd0c5531af0	\\x623aeccfcf4c2b5a75707476a7672139568609046e64435625658b0cbe66cfe4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3d550e66d53fafb38b77288e144b8fe2ad1902dcf31c3038b3cdb46e3f31b4cb	\\x7c3af6ddf97967d668f74a8ab51a9acb0408754420f83f1efaa9ebb8caa38e7c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x691a8a3cba72cf0434edfda26f2908bf3dda1d9acc69a99b543d37f0057ef145	\\x4eef99ab310bcd19695ef3343423579bc8bd677ef97762881d73c4adb9ee4849
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0845fd0bfac584082ea3f63731086a85a3499a402422fb3dcf60e51e3633e8df	\\x7da1425986803531d75bb40753c4f5a1cfffb2fcdda2df0eb108e46487c20f48
+14355138943:1@s.whatsapp.net	regular_low	2	\\x917c6b8da71d3e80f24d1d8461a26fd9462e7ebdef8a066b821b253718f8abdb	\\xb7e73b72d7ca30167b9db6f2f5bff55beaa5f05e80858f9e63643f6b9b4f5a7e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9e34dddafb730d1aa89836af90619b8ebb6ee538c36dd320474bf69b4dad5d93	\\x79cc22e61b9329228abfc64986febf5ea54f5e6060c51805994253b4c94d9221
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5daca00ddf40746c76e1a2f639a939db69b4daefb85c9008ced1a04798cb230d	\\x7aae7c077a8d32551b49df5886cce39e7db238c90318dd92ab7268c8f9e8eeec
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9bd5519cbba9eaf9fe1fdd65b8651aae2689bd4154212fda5830faa3202a5e9e	\\x3533dc392520bf03425ace59e94d18d0c30fc4cc79eb8b8997cbba05b93858ae
+14355138943:1@s.whatsapp.net	regular_low	2	\\xba3a5908cbe71116441e9aaa37aba91b0853abc83b881e97cdb44775f4430647	\\x360931b560e3b6e08fe2c73dd4055de6572361f4247cf79a3b5ee9423f9fb6e4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0d1316e692a1b08930f9b115ae3922e2d3a4b0df473348e1e38f5e8074dd93ed	\\xbbf3d44aa187566337d6187a09e14fb9e786b846173d4ef71a8521063aba4ab6
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfa917d02db96d9220177b0675638980c53c42ed183051139d6726022040cc9af	\\x43d84f86300d85b4900f13fb692cc6eb2a474f83d407a1a3cfec066deaaf4b44
+14355138943:1@s.whatsapp.net	regular_low	2	\\x16cebf9d78756e08c030a170f953bb362a625e645342634b32bd46a69c5945c6	\\xd957384c14e2bdb40a4af8c5e9f847a087a7a68b55c0bfcedab0c5f5694c4e99
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7b78d7ea1f1a1fa84a71c8a60a6be0d604386bd904ec3ae71b9b20e30834ab14	\\x1a086d89db60b6b9983068b63d55d8879abec1bae84f6edaf83a3e3d3254d2cd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x16d5bc8653259753e19e1e4dca923dca1f5a16d57ee560635ae8802cd1b9ed3b	\\x11b4a7d4893395912252fb692c2e15168906f950522d7f73d0fee907938da2ed
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7d209101d5c2f0766660ec00272fce4adbd02ac0fa480653dad23f20e8255e70	\\x81e69baf38a3bf3c67607348a1fefff2a2f3f84775fb4102f0f91bdcd582221f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x55dbfc3274872e8b3a4f8e44ad83d3ef683d5efd83ffb28ffc5dae7f4ef4b1df	\\xe0f3e4c3739db5fd1abe7c46f19c9c624ad25463509af67fad61aebf12aeb3c0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x382eeb4adac6b292bbe4449996cc550f9e8c598e2836587b9b978125b35a344e	\\xd31117f9006cbb8a2d9c655518b3498af7d38cd78bd54938ab15f21bdfc1ee9b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x995e66a3bf458cec64f29f09d0603684fa3602c35a3f2c38e65c7e498050b2f1	\\x99bb24d4c217b9db100be8517245df259f14a12ce4ed741e45aafcd41fa7c337
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9751b885c7874664fcd1d9174a38e7c15d2861768f1c5fe4d51cf80d3e7b14b8	\\x96e7a336387e8e208cc010a423a446830ae9abf399fa865d587d08c025ca40d5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8ce1b92286cc5e14c3ba637337154803c24c968bcd66f8f7b7c6b87940ed025e	\\xddcf19aeaec2d55b7932fb9b2d463ef1a50cc84fbffcda37ba42f83866567d24
+14355138943:1@s.whatsapp.net	regular_low	2	\\x85ff1d959edd12f1be75333a7ce91a2b8a78b6687a7f2f52368fd94bc9cbe96f	\\x48ec9c997aca77c4fb6b3d8da7c77279709ae5719ae0a0846c5a0599b35dd883
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5f4ea41f8572fc048c6b2c147ee8851de1ee2124d142c9a53772885a00219c14	\\xae02587f575b8539442afe7fdf990d98f9bd37a90803a8538034d53867d8cf68
+14355138943:1@s.whatsapp.net	regular_low	2	\\x86a45493d09fe79bb5a3be3ffc099b58031d970f0db1cc4aaa9631d9f03618a1	\\xd2e2c2b4c461100b4be3578fa9cbd9d93728df82e8545abce7677aa2a52dd79e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x93f1868e8f61b1ec210c55e1243b9546df6c892a7574e678df78522e3056173e	\\x0bd06478ed940eb2f8f4abad0583ab69deb067295bddd31a7629b3375db3b9d7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x13af630e5dea386c0b8a99ad8a8f75f1ea9643ea1c98f2f5b8be3dbfbdebf77a	\\xfb39b05e3c8d334c45cc0e3b64d98aa42033c08af6334b0d0a59e1482b5d3987
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6d9c8edcd4bb033dea34114a1d92584180d1e17ecdb21d9c1cbd866471c414ab	\\x186a6ac74dbde2936e517929a473dc0ed0e25422f055ab519cacdb31d6146f30
+14355138943:1@s.whatsapp.net	regular_low	2	\\x745df76289a7a9b436c1de0d24ed6f77d0c6ebfb27ecf83c9a62bfcde93fb816	\\xde79e1c929f71b8b4392fc9ed4b93e978405b0bcce4c50e1d3faf7bda715a598
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4c1455c5f8989066ace1892de01034fc041565d6e9e861fc5df38c64596239c2	\\xe80883f8a69f156c0f16f8b755108e745e1206dc0ac1ace3bc00ee5cd564b2dc
+14355138943:1@s.whatsapp.net	regular_low	2	\\x843566191d78be83de515213828ad6189985367de73f5b13bec5da6cdd1f93bb	\\x6b02588d6922a2ad0c7e2c0a9bb160dfb5b9835725ea812d29b4004bd566196f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1e4f40911c22abdd6f0e45db04710b72e70a3af704aceab9978a8591f06ef1e4	\\x9f47f2e8c9f91558fad24ad8b21496cf75ded237562802f159a6a22c53071e95
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7a3233de91d5bf6c827d07f9acba1c111ee45e251af89c157ff63276aa904242	\\x26e337cd77b7764e92201de93c996bb2c5982cffe781a1d4970c3d939161a5ac
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8622e6b39be35fd631180fbb8075610153a8c22befacea596480a4d4c3cda8dc	\\x2c62ae8c1accc575792da9198402d9dd4ec3e859acba41f29d0e91133ec4691a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x58658bc27f794faabf89f66d8a785437d976e6980cfe69ea0a6740863f94efc4	\\x0a0dd236c68712bc60f4712b641a6a61e9541b7ac245005e7c843c7aabf8e060
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0a0f683ccd8789c24ef624b2626149ead4382bf0e44030557423670d03b43142	\\x1f700d159e68c9cb1ae9e379cb5832dab31782345133cd77d21f30615e7b0bc8
+14355138943:1@s.whatsapp.net	regular_low	2	\\xeb9c635ebdd7c1ee27df75aa91df256a5284b3c2bd6696900a24e643547930d3	\\x59e457cbcfdc015daca2f8ab2e636cbb398b5ae2a5f132c7d4fd1cf8ceaf8eb9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2ed2f812ced95014378927ff6f9125f48671dbcd9f57568962c7aac747ec0447	\\x72aaffe7c28aefbdad117b20125742484bf72a73a223d440b77447ffaf4c516a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8dc7bb1e327bfb596f586fbd7b0fdfe54038799ccf53085e3f952ba4e6c72066	\\x3c792357ef37c5ec827d3b5cdfe03817d1f2333adb5aeb3c7b76841a65b73100
+14355138943:1@s.whatsapp.net	regular_low	2	\\x60195204f2f442d1edf8102f32df95127069f916044aad68fba801b06b22375d	\\x565b7e161006749b627912332962730b48bbc97c39a3a9a994577993569d5c8a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xac62584e1d1bbe80d60c6939e67733da6938f1d595bcd4e8ec8a458af68d91a1	\\xc651cf480a74aa9adba4a9f346cb61b4fd71388b4930cc16a2c61adb94d69bcb
+14355138943:1@s.whatsapp.net	regular_low	2	\\xca030b4da7034892c92f078592332fdd0666070b0b95e4fbd3dc55a449137921	\\xf3f1f19993f16cd1ba5241b3f476b0ef57d3b037e16bde6eecef78d6356a6c29
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb70d91cbb7b325b42389b9876bee5da4fec92bd28a02cf9d8a0410b8d91a0df4	\\x67238f5d387dd4843829a69a5e370cba9931ef6b857d164a1f94bab745bee655
+14355138943:1@s.whatsapp.net	regular_low	2	\\x166fb6b486f88e985e3cd4f19389dfa6d4bdbcbc966e73f4fb00fae11a45f63f	\\x8467b20b95a7148d661f75605f7ee21721db078e7aad9b2620a902172e30e93b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x42e05a16e9632d5470b3685e28a909ce6459073a0e7bb1172e870f20653e814f	\\x84b427a1c0fbea3de523a65e711a9ee206cf0c1151138b7ed094c812e3c27e12
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2dc48fca06615ae5c71d7b2b9f3cd1a5ec3095687dc077c15440ed711d7091d9	\\x8a5a87571d566e93bbc06183ac8f6cc91856c571f05f5f99ebab2c2c2607394a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x81192ce2dd9d0481810c58e571704b2bfa41bde139e8219337b6b49f8de2d403	\\xa5c9303fb3e71b1a49b70bdf3f478c3f91d292feb81c5d44d14e69c8983c0787
+14355138943:1@s.whatsapp.net	regular_low	2	\\x72aa9607ebcd52e7e09b7ba29a3f1503ff24cd6e9abfc12f3958ad75443b9fd8	\\x85dac21dd34b2b2507a5668d252176fd26631a4adfd660d55c39ac4a79c9eb43
+14355138943:1@s.whatsapp.net	regular_low	2	\\xaff56b055107f878d7cf25996a19e88e166b938cb8e642a71fa39961376c834a	\\x594fe68e308c77cf7ba80c5cc40e68540037d4d3f9a3c8809158cc1f7be28c8d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd63de388e3f5516d797d9bec8939eb62ca9a8ed4d67cd4fb0072f2dfd05a91c0	\\x58c4d8514daac23203cd4284d194cf25e1f7fb8307e4bc9ffd8c6e07b41a28ec
+14355138943:1@s.whatsapp.net	regular_low	2	\\xeb1fb35b97ab101902c01a20033a47c10367259b51d678570d14b105bb81796c	\\x2ce88576fdadc0704c2e34a6b0064aba5739d0a92aa2021025fd69ea00386048
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6b80f0d05fe119db7b7da83eb2cc4568cab1e7428ec1e7a3c39c9bf9021fc952	\\x065f42f3859a32d0655d24afee9a75c26598b3e2f6940459c9916677698808e4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5ee790f67d0f3d983d6282cf95fc75f875fb4678adbf7184dbb0bf4809b590c1	\\xaca9bc8b90286017ed26446e73fac3ee0633f3157fa9993931c95edfcee49822
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbba317fe775ddcaa92ace80ae1c4c25aa986b587576b0e22528e3b6523793f1d	\\x0ac9448b7e5531c06da4f9dac0c6648efeb780770a7db500a99ef40c360f0077
+14355138943:1@s.whatsapp.net	regular_low	2	\\x806d19b3a48239d3b525b92682a0dd18e3ead149da82f77e93cb78005e2f1dee	\\x8bd8f26f6b49d58f4c912c9866aaa329e28875d0efc179cf199f9cbe13603973
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9120218a612cf388d203ba80b8f9efd7c28feb1fc580c38716594feb9df5fce9	\\x14ace46526a4963ab2774a8bec5b61278de1ec9f8f32f01b70dd0f4df397325b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x189ef91eb8f352b99bf30efa2cfa3b5001dcaf33f0a7f9a6be6653acb4186475	\\xf68a0e1044defcdd3ab86f89d7a152a85d2a1cd594835b4ea86b7bbbb00b5d3c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x51014d60e7e4941c38a264cd9a102547496476de6cdc24d7f03ce8b146258374	\\x6d1c0dac8e18b01cf9a84a986f59a08639e046a8359c69910f1d56c6e5bddbef
+14355138943:1@s.whatsapp.net	regular_low	2	\\x00ecdfdd4a2a518e00f8304ac594550131364a18880c4a5124b8c7015e02794f	\\x956044e7410115ea3e2c92332179a2c491dbdf67137eb3737422845f084f1d85
+14355138943:1@s.whatsapp.net	regular_low	2	\\x900f484298a10249cc1b9d7a096a6ac5ecf8c691d131774ae8636af5857f2ef5	\\x74d451d673803b557a4fa30e1977ba4a3de6dcaea4f7b36ffc8ca4ef6ce7dd36
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd1c37bb648a439c2ee3f228ec28e202663fac59b946fbee1115f38cdc7a5c39c	\\x484c711a3756ba70ebea09a80d1464e2446d6999bdcdd81ec831f84d5fd672ac
+14355138943:1@s.whatsapp.net	regular_low	2	\\x75d990cbd8037e2bebcbc81cc3714329016ba233cf54a2e99c1015cf0c62e155	\\x7e22a822a6d2c49d7cca52e8e70cf4128a9c69cea473c312608f6a0508771f04
+14355138943:1@s.whatsapp.net	regular_low	2	\\x56e6186ff4bce703f19239f094f19dd5e460611b7a23194fb9774584177da6d3	\\x9e7798f6085c8e736a940955cf1d7cd07937b1fcea327838ea2141e3f88a2673
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf414bdcd51e1745a5921b680d4cdeb1df008ab20c3ed6700c1de6d44f44eb01f	\\x7c27583a5fa4660cc4da432994579e777306344d0ca735510634c886b16370eb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6ea7aa2d75bf526c610a9d8009999b37206fb89c26dfa056041b6e04436ffdce	\\x6416110a6d7c93d1ec3ddcb4e91346963c2650fb135f4450b4ce8a5062d8872e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc0275d7f9b7d98c658fedc7981153af9c1de17214ba0b06f71ad0ff6230e987a	\\x8862b5386992096797e5af05490b3a02c489fcfef0634cf9e76a1d5fc4a3ae8f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd271683a4c98a1158bcd53f131127f1824ea2d1350c077824564c8f15fc9f416	\\x26c7e2a32d794dd92734d19b7f863d9744ceb3270905c72c3ac75a72c6aaf506
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdee297620555f03f5bd4f5dbe5ad1030d4ee3919a2a18b907ace40ddc24695c0	\\x2ff4ebb808987d469b16384f2b3aeb119c9c5e75331b1ffc5b274dd8d2e9a9e0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x40c1a8501e61a2581e092a7d8c43d8a374675677334bca609de37d26bf929a03	\\x9a01fb9757123e79c989fd08e73bb9b50a607cc617ef73bd224a42b8eab3f9cd
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe15bf10dd3adf58cd74ed43c37daea3aa83977e79cf0f672114d78c3d6450193	\\x40b5733c3218cdc9286f4d47f600fbf90f4de8797c4475a0e8297041a561f97d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd01094651cd593c59e37fdaf9ae633db6424ebab02d1ae4683c58aa81c5a0915	\\x13e913b26afde98be6a4882c623d6cf0bb756669e3640d4681d718fe57057ecb
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf0ea4e30cb3aa9ac38e2829a29957145c2fca76376ddf691aecb7f9b3eb15fd4	\\xcfd914514b632346022f00ffaba945f564cbdd92065c9c7b8ed501720b5b2ed0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xedc39c099758f25a1fdc404a57dc1e09ae5070e42c63f5848ec838d3f4263320	\\x5309daf6b6054c6e0878121175ac6926098db136f6511864f1ab5037618ccbcf
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfc62314ad93fb69a0bec3c28171443aaf44ff95de78e66edfbf40c2792e61325	\\x1de319a6daace0c131a6e61e1d6496a9ed8a52d38446aa76e52f163b1f578a38
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8e4ad08b820f6df95d16c97e1b18cfcf979af73c2b8c780b38d91525ad739524	\\x5f81fca7e45ee09f9f0d1e0fd6b76ca700078f1877ddb5b562e53a422687fa20
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6a50f07e70c828c76ce1ce77dfc5d994e908e534d3d432338695971780c42745	\\x9fb2b1c27de015ea03905fa73c23cc528acdd496a39cab348f1dee8db90d7103
+14355138943:1@s.whatsapp.net	regular_low	2	\\xeed46d1b3cfb284fafa160577de11e805e4b416853defbf7d14fd74125924c50	\\xe729ff8e0c309a1a7b53384b1c795445bad46615cae8528524b5de969dcf488e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x83cb6fcfa0a3ce75ab9d77b7ef06fa779babc78c2b795e9fcbc01e865077ed30	\\xe7974cc5bd16350b55d539ea35b12f4a980d89f999e1aedfc507d8983a0b7a90
+14355138943:1@s.whatsapp.net	regular_low	2	\\x41b9cc0176c2921c0e6a3fe3064da92c00f5ea121b14cce4e75f408f056c90c9	\\xff4c13c06661b1ac4edbc0ee2f06e9e74bae69508e1ec4af43e8f8cfd36c2ea4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1c680e3caa2d8c4b9dc2fd6082586c2fbc3c8629efb67eda4f09b212ca8565d1	\\x52a8d97b2be04c733e312d0013c415a567c48aa92d29073b553605f8640ff1fc
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf4b9fc0633d4c8bfdde9aea5d7150ce9c41895394b5255d61091b05bdc998716	\\x1bec4a8b177c59171e9319a1e291286f25238e367de25cff30d172fb5b8a88aa
+14355138943:1@s.whatsapp.net	regular_low	2	\\x75ee646f06ab9d53d4de6e4c45c980a66a3c4eb437339f945dd0ea81089e6c55	\\x8126e192cded1bc4d12d5985c3b1928820c563330facbeae8557b84ab7ebe618
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0bd6e09c3d7337aada534d68213d9ff88a8dcbb0469ed2ba7f0c9064cd8705e6	\\x886b296bf07e1f2d7aa5ed37cb9052b0869a45c85d16f4ee43284d06276d2dc5
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf072152cb027014b303ab8991f11068d078b3aca4b55a04325f930052878386b	\\xd2eac0a30524bd1dc1fa4be7a710b036cefc2e7b584ebe8728887744c686806d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4b5717bbaf8a6a1fa468439196ab5558596f11123d998a2bffbed72c3a857959	\\xbe8ee452e9302f0cc9a0fd76ce3da8dc8561ab7e265df6e12703536603073646
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8a61e57ad3e38e507608de84e61a134774db0209e377d50847e28fcdaaedabc9	\\xa3fe3b47f68c02eff4bdf0f7e63ed1558b8e355fa0c9657d57d71efc0894ccac
+14355138943:1@s.whatsapp.net	regular_low	2	\\x78849d0b4e88a5fda0938f9367a1ce69c54c4bb295407cec19fa8683ed160d7a	\\x0e414d4ece80a562c1886b1532c079bfc3900d8bca9d65149ec1cd3bf2e29c9e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x89624babc39e2d6cc6fe5f285303e487c16d897f27d1228f5e9cfc36855dde91	\\x15c2699972d4d6fa30ab87a2622a1318b2caac5fcf95c27aaa18c36608578fb7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2ed9e44b19b206d8e670ce00d172a6641507032859ebe232ef426868084969c2	\\x8799db32123294dd773ce1840c931e4d58ad6471d156610675cf0307281ccd3e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6225ffb89a501e90c9e519172cde091e93922abda5d4f7f7dbaf8a92d0bec407	\\x0bf838cefdf27f1cc36cc46351744d5e408545c04889fa9c7106ee35461c0c12
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb96e235fc4352aa382c108679ef1adbcad97ac6f01e361e8c429813b8361ca71	\\x2498287ec8ec0a437637f6e0c91adf3f0c69e725cb648fe00c63352e22cf70a2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4ccd2a613de495d714806330a7bc07b4e28aa0e8693e045783c7c192c3117c60	\\x2b1cce13c09752d8e35a49a74309af62ec81a195ca7cda8a80d7d820a721507e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x33be43f291b37c580e9b86c8870c1ad0559807f48faf937ad383cd70c499e4a3	\\x109690a62f6ff1ddfd9239aa20332462acbc9ea9d23b73630689b38f196b95e7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6918eeb431ae080942a41b6c858221bb4ee31eb9776322249ebb453d5a74aa1e	\\xd086eaeb458a443cd1f5ecf6051f2eb317e5649ffcce0fd4dea81a6e34679efb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x27bbc3de9cc46691767590e5db748b9b507211a035c459fdf39f7e8edb48b3f6	\\xf8c437da65d4fa333eab3c8b82f59a84940a176cedde0a9cc73eb07fd2fbf095
+14355138943:1@s.whatsapp.net	regular_low	2	\\xde368ddb60a549806443256393d1244addca5133171a92ee3490b68569706dc4	\\xd5d5be5535dd5ea315dd7522baa94797f9675ba22faeb558a6c0047912343bb5
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa8baf2e6c293d5d5700faf6b3a4232dad2adf1e6fff4a63a09f2984b3e370bd1	\\x3d5a2b3b78d7097fc4dc30d3f19ca921bfa07c7759f925c89d31ed30db9c7322
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8e101389c6eb4243c0f54263e9275d3690bf99c5cee361818d8db7a441a0f417	\\x21318450ec447dcefe7859bdfe79f93fab81fa97748c393f2dddafdd29da859a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa68d870c034d40ae84dcb26fbdb8153830e4b28728a74f73a35a5dc299267443	\\xea09e9880de81878910da49c341fcf60a7f5e35cff4590fa2c553cfaf1ce9d9a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbc23d2f735a31c67ff44e4c66a3a24a11df48befbca35a9b34d2dc69457b4bfe	\\x22fb51a9bef611f119f146368b184aa0b490ff1ecfa56b3d7cab8cbe2b2b6fb1
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3dd80d8c62b3c6eab4c8f9bae684d08c3e12a51089834abcbec82f0dceca7ecb	\\x3961d6206efb4a17cf896f4a0b85bb8f57d83a8ec3d1717feed544cf534eed42
+14355138943:1@s.whatsapp.net	regular_low	2	\\x562576f70e728c49a30b8dceb0b42b73c4449f25d50c0d3b2dc9e26096ab2598	\\xf42737ed5ecf6a9de24f059e16454a4a11438af0a786fd28fe4f1e2f5144d2ab
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0e24ea1f8689d1796669646bc89e0a3cafb575fee02960a1745c9fa86bd7b13e	\\x4e17f1c915ec692eb7a4206766914793f8f45ed1764b145ce99b954c97daaa8f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6e4e8138426ef9445727fc53c2c171b73b0d02ceda1c9d1e5720c5c5230f7e72	\\x443801189a1f0df309d375e533a7240753388daf08282a1ad8e9af4531c4e621
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa9152f596eee1aaff6d53ce5b314f0f6402c4007b376de8515b2fc69c39e1421	\\x494044fde05f1ff7898f7ecb02e8dd17b85404f2eb16b9871eb6fdaad1b4748f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfa8c3d6572e29b6b758b7f89cbf4b3603b427a7cf6e2710e79a928ac063b4698	\\x82b332c8347e1e0650719a48f4a3b91b9a8004cde017f7bfb4011986e4593a7c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5033bd56b3e2e0925b87ea17e3ec428adc38a0479e0a2642a1e66e692671c8b8	\\xb0052bbe1744eb0f2c64424265603403bcc49e71e71459489c289ae0c48529d3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0a9ec3beb5cad032d48132c5d856dbdad5946c7811cf38e4fad0541fad13dcaf	\\x3d958ac0d0fda5db775e958f65c1bb7e8b0e79ec514d188f0b128cf25de04e86
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2812cee1928082ff32611becc014f69d1f4da416d224ec4a9e1790fa6a40a1d0	\\x3877fdc2f05bf3090e5f379bad2b7e121239e4aaf352d1fbad99bf928efaf1eb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x70140ed95f39847ca7fc8395bf930bef79730676ebd2dbe353450433e694b06a	\\x07450db06607104931130176357c78bb52f205dd806f91057bba50e91b3b4a53
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe0efb4d15b37bf78cd8836b49a185d3551136cc41be582e919942f7e397cb9d6	\\x08f9bdda73e29126bfdf110ed6183422e480c048f13be22a1c0253833cdb5cdd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x079b9e600ab4eed7dec207780bbfcff11ebcf0aa2df15ac70d8ec6403f5df286	\\xd509de37bc2d91d02416b0f1ec12b49974e42990f5acb5904481840c0ba48908
+14355138943:1@s.whatsapp.net	regular_low	2	\\xde2d1ed6d4ae9d00269917c3859625029ed6a3cb8fcfbe857daf8e5324311e4b	\\x16e284bf3b2cc9c565b37ab62fb13721aff10c76c500383e19e1b22a1eac9c8d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe1d29773ff59d532f404a92fda8e292affa8fc2d421b7fd6f21a21f70127c213	\\xee14d199dc89f72419c413668927e932f777f0bf646433451cd809a91a22b460
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8c46cb67533bd2011299efdeee331c2b51e9f8dd2f0219cf71a77f28f66455cd	\\xe0bacb9fe6eed67ce944634d58584516028d649f4373b214e72584ffab02570d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf794236bc3d8705d94d5b35eecb305908373455f6f65b4fefde3bd26ec27e63a	\\x78432e4d61b9d4b79e85c779302566e29dc09e0f8b0f78e0506e944067ea1c66
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd28603d3d501b03913bd3533afd74e781e0f8aabb73f7f1a33001a100e40531c	\\x63575b0fd7028ef5f35d5c3e27cfdca4d2731794001844a04925910746d6a706
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5f929825fcd959cc20bac13517fa7e230abcfa2f65987106596b1c7ed75f3006	\\xaea2977be070d89242cd4fd51fedbeb086331ba91c0fc4f482d055909098bc47
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe0f9dcfa92e86ec299359e3acaafbe414c5b7fc24a189cdafd4cdff30b02d023	\\xd6784a81f1d31fa6d6abde119469fbffc16ff3e0f20df67986d6c089a1644631
+14355138943:1@s.whatsapp.net	regular_low	2	\\x88bb166c5d673a2b28bdc4ddedda84523e276dd6f43fbdec4b56ed5de561a95d	\\x07f6d00dbe24956388a33a627a2780ab7ce25182cc603fc0e4a12be4fa512a7d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3f803f2dfd7569391fc7eb073cb9ec9f66beb1f6fd49b49e4268063d3cd8c9f7	\\x700f81870b0d8070d6c8be550153af3d1bfffb31e1c763b1876aed144875b9ce
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2e5e7cf69deea00c27614fad4142ffc8e584f92e5ea2c7584bc9311444cf5abf	\\xa44256d9f5b1355f4455cd3474d8e83f1c8088bef39292fcdb9e921ad2748934
+14355138943:1@s.whatsapp.net	regular_low	2	\\x59bb57226cd975bf47589959c13d07d29ba63751d93b865396cf7f56f5a2fd3d	\\xbfaa157378add1f578276a55fea43803245e0b98cc4452669dadb6d74bafdfb4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x92503e7028b7e2a5fb2284beb13fbcbee7fbbfb840175d2870c7e39083eb2ef4	\\xfdbd223c88cda2e43e5d7a8ddee22a9b6432af6b72b93d6a7a76d30ac2c14d8d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0d55a241091d8ac1a1f2f0213d18d43584bdd5986083b3a91ca2cf508fb324ef	\\x196639321e47c4315f0e7d7bc4be0622dc9f80eae9901d90d7740f4cab2a3239
+14355138943:1@s.whatsapp.net	regular_low	2	\\x46233f23110227163afbdfd009ad0159aa08acdf85965fc1f1dc352472e5e865	\\x43288654eb09690882c42390119292011585a5403e961684c1df59236daee731
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc6dc4d0fb78c243b82f695f90945113b67cf1861c34b4e5c59b0dd3a66a4a9b1	\\x6c3b7892ede4b4eea663da3fc40af3c31cb51132cc2f1afb7cd30621a2cc04c9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x186d2d35f12bf817fb773dbf4e154134c66471e0ba7daf9377d140873255e5f1	\\x45ca4fcd373fa53e36b3c9b4be8088522a30aa0bece7004a8d365ddd0d352336
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8fc73fd70321bb96bde84138aa2c3daa165c3df2ca0d903c4799c80c71b2e395	\\x08534d8c747f51dfff1eae3de6746402ce4f93584931f0fdcbf555ab21e816e6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x270a8944c04dd77e50d0404a7dec1360fd1711015e88169e9dfe69cfb6177ce8	\\x37d295308092b1efe59f1a5578af25242661aa284ffc6df85767d395f3b53994
+14355138943:1@s.whatsapp.net	regular_low	2	\\x01f638acbb07e4b38fdea6f22436e7bd03d0017d998b89b4f95473700712625b	\\xb9b84ddab6c4a7310118b797b6278a999172df49aabb74b96ff530133a2923e1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc359a746a800b29ee9273b516d4d0200863976c4a61dfb0ddd62308655737c8d	\\xee3bff0dc3638a5f5eb68ac0b99daa1f08917ec96f0c7a97a1ceafeec202f543
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3afe4b964aabc2bf66beb51cb398d335389945bf49be03e08c8b006aa35ac2c8	\\x848a8f4b284b81d761ab4f6b51e83392e7f121090e047f021614f431e859be01
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7d74def15c5f6778cf3f6b7206830e724181bfc1c163784ce2fbbc46a60439c6	\\x7a33764a63d488c8e3f4b3c8308410a3119fc9456e66a15c12708a5f770598e7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9b224bc275415cfed4c48b298c44650d79358d1a004daa2fc6d01bd3315c628d	\\x5f827c2d8b48ba89693867e172491968e8368aa7a4b360127abdfbe807f46f80
+14355138943:1@s.whatsapp.net	regular_low	2	\\x98c61da9509605a2c74964ffbc8282b57d2ea5853d22bf115114af065f2088c0	\\xae19d4701af05425896be4313df71199e0439a689763a99188e9bf94aa08435e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbe1b407caadb2d4ab14c1e365c542e28d384718349064c1af1f220232ad6e3ef	\\x2d207c63c56fbecce47f1001bce02a04143a88b1efd061c9f7ff2e09307d5840
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3da4d2ff6bdd9c11924a90a70d0b7f4ea49bac1b224106ab9e527f203942df6d	\\xd0eaabe0a5caafc15ec5b9f29f604a4829dec21a821fb88f2bcc487217c03b96
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe75029df88c8c21c3ba86312157cfb3f887f9f78500f5f2dd6bbeb535c2703b9	\\x10c26ecc8d683a80f522b425fef4497cb300ab95473303c6d5798fc1f5eb8b98
+14355138943:1@s.whatsapp.net	regular_low	2	\\x95231ffb3d674642d3aac2985bb83a56debf07cf04c6cedc2b161337dafd130e	\\x83ba388b4dbdc3a03c51c38ed314b273456dee49737ca3c252461c95f21f18be
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5233338f6e073ea9435d8005fa1abacef778e7f0d4b63f9ea7a41d8ce60b0238	\\x5b6ad292f71b42a0c79a17367350d65de36b128075f4bac754e98d41eeb1ad37
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb5b21b12f22097d89aaf1a4a768828727667a93807e2c3c526892792f97949ea	\\x5077f990ad9b88e48cfb0056b93ba32b601608c2240e2248c7641cdaae2b4398
+14355138943:1@s.whatsapp.net	regular_low	2	\\x147c95a6563aa8d4432e132abb95ba2ed77bde68db3d76d4c7ed1af09268043d	\\xa308447c6d25e7a64110c00ffddab868c2f96302ed52ca46cafa5c800f96aeef
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa0bd67117fd1068b1c465068417352a26c6aca8e3f4fce5dbf1d3c84c22ae792	\\x2152b7cf34a6c40dc0aa589a7affc92ff8eb8d047507df4e5388edf12c665b08
+14355138943:1@s.whatsapp.net	regular_low	2	\\x475b5c8e8f163cbb4a526537f557a94d93b27a50da29aeb319567de6bad8ae6a	\\xe21c5dc5009ef89ad815ce16aeeae49aaca578b878c22bab03fdc86f96d6cab7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x31600ab52ecd55dee3558b49748f8c0fb0bbd8aee65cf53c2dbf9e54e481c05f	\\xd44ffb823a19849569784cef85cf64e314a8f8d0fbf1c49bb1886ac01b07ae42
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0a179c7da8ec169229cbcb6a1a1d898cdb46f8d3c601310e20ac7184d293d920	\\xcf166bd70d16c45b4fd19f963b9bc998f10126ac5c7087ee76ab629110d1e06c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd835cfef0782519fde3f94571b83cf36223408b523fc1bb8af83a51ba06fb521	\\x6e9998e1dda2251e797d50bb102e8e6200e7d00c6411cfa36da393ae3ab20fdd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x92cda9d6f27ca1beeacc7cb728cf62562fec8409a2ec67db1ce1213b35a41d66	\\x793c092fd0b5910ec547a1a081dd2a795d24481d16b675003807a6f26f875150
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe7e55d11137981159b98dc522515c6cecfb12e63cc3fbf3a436f05a05870000f	\\x82c26d7f213b4c023309f330f641b64092c92fd5a0c5b51d295ff5801931e027
+14355138943:1@s.whatsapp.net	regular_low	2	\\x39a076dbeb912b04b5a98d766efc0cade6e9bf81b7903a29a6623c4188610a84	\\xc35a65aadc6bd90ba8a087e8b918289d14a06937dca5e17065dc9dadffe3220e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x603703d34bacb7bd3157db2fcefa53b834bd1c5ae3ab1ba977b9d76d35aff6da	\\x2cc0cbc578aef7c02074ec31daf0511e6520d933bba794f66edd9f08917e7f48
+14355138943:1@s.whatsapp.net	regular_low	2	\\x626e27d703ee11f9184c728d3f853e4ce5337e1c09522a58a6134a1bfcab960e	\\x4a8d525d47269f6f25e1c1c93a7b0539f4c762651259c4e8ddefe996166e3eb9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x14a0dc62c890ddb8af3a04051d364c437e5a518a429f814f984e7b14b1ebd66d	\\xefdd591aebf6ea8d6ddb54665d342f548ee5f67fefcaa816c328b095da5c0ed3
+14355138943:1@s.whatsapp.net	regular_low	2	\\xefe687ec430d310cb33360f109118998e4f17acb90f86663c67b9fbefb2185c2	\\x7afd5fd4558d3b9818c630f836638acf7570ea0ad5f7499cd5e3766caed2c368
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0c33a8a125210a9ff85d07eea1b686b60e571c5d9080bae01eb7e4da2226b5c0	\\x821a9c30113e6d10ff33c2e84aaf1fcbf1fa1437f1bf353e191df7c630236a1b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb3cb3768a997fa35413cff509a4f960758d33c7aeb8884ffee48b4f31451d429	\\xe02b6744ad8b44cdc57848d8384be40f985bf13c7d15f94fbdbe61b74e4f3407
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7bb6b74f3d3e20f90c0ff97d3d92d4130ab445db6fb39392ee710aecd45c6da2	\\xc31759439207834cbc8cf79c8f384d70059eeffcf2d4b88c14b48d8abfde18e1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbd1beff61cb72e34fdb9997d7a2986235977f2c2c877b7f6fbad689b2e3ca3b1	\\xbe3d2ac2944a9ec434b8d8923d9f63147e42bab1481b64f7ce281db6a7ca5192
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd5259d4897915ed16eb78d5dfc99b556b64f468f8f3ceb06a63f51c4401d2a99	\\xab560f7a789feaa826507bd9835116826caa4c5a7f04a39676fae7cab6fb624f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x89b02d0f0589d797035a663e2a986b55c58babe2962fcd5768a10202d370ec26	\\x229af3048dbcba81f9b3985a51edf0b9cfcdc59e633731bcadcdd4bb51148465
+14355138943:1@s.whatsapp.net	regular_low	2	\\xea0d53b7d6683186ef4be3efa177897109b81f8e3369af231bd46a77bd233f92	\\x78a76d2d94a4fe761bd4e5739c207180688adc8c7ccc30b0cf24d112f87e311d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7559813af4a640035fff4476d28279ab3f3774adbf4b85a8315df26231b12aea	\\xa38879d3336f36ef0b6f6806fba2adcce35cacb197000f3bcfb1229e099f1735
+14355138943:1@s.whatsapp.net	regular_low	2	\\xff020c7e158160babec6629691a9db2b143305f953a376f8bd213ee1da520779	\\x82849ad4198f2e5c62ef975f8028ec0527a3608ff958743d663d659f893090a9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9a10f026d7a8d51a2633cabb0325bc6238079ba463fd0fa31b2338f3643adb3a	\\x4792d5aaee6035e07672a18b7079382713284d0ea56b7f01e56792668ebebec1
+14355138943:1@s.whatsapp.net	regular_low	2	\\x66ea91639ee0e5ac52a29964981d3ffb2aea02001ba07ac6e344a5478a02b326	\\x54db70ab4be51b7adcc46689180514de5da0b99be9fb84af913cb89d7e2c36ef
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc16b3b57ec84e016455396da4c36e777bbb76c478bfa2929b8cceb399a392ef3	\\x45b1148c0469c98950c822d42f1a679995b67c0aea7270c6cb615b4837a855af
+14355138943:1@s.whatsapp.net	regular_low	2	\\x20864c1a6c196979b47142737dbe0ac0f84a588b55c79956e46ac64b9dabccdd	\\x518829f61fd08d9abcda701e86f9c5d501a7372788157a09ce2a2e02cc2e0dca
+14355138943:1@s.whatsapp.net	regular_low	2	\\x30a2cead39a3e17bc846badd1051ff5b24e86a7c34126022a1201146c99fb3b4	\\xe8aa8c0c3acb630e875e13991357c469bc0b98403d7aa97830d894cb2f683279
+14355138943:1@s.whatsapp.net	regular_low	2	\\x16542799272cae14faff8ac98695732aae0c669eaa3d3ffb660d999ff0b6f947	\\xc45d272b5834abfa374f5fcc6c519c9ebacfffec27f6ff04dc19a11ba201ce33
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb30680747111a6cf200a719203d657af78dc7d2c50f44897bff8f753bafc969b	\\xf512267d2b8a21fd22ee4b1366a2fbdd46379e242663075ca868b5c557c5ab8e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe3aca7eeab1e2e605e64ed524e020268deea1301b33a53e542fb75d0e8d3569d	\\xd73059c9bc0e50b9740dec8fdff1b4e8bbd5a6664152fd959c6a3ae5f87e3546
+14355138943:1@s.whatsapp.net	regular_low	2	\\x253ac06a120586b070f731f87df5f30b8c2f770c046bc6c0c53e71c0f44f50bf	\\xa36a950b2e873346be27cf39bd66c15d6c70f8cfec3c8a934b61af4294a77894
+14355138943:1@s.whatsapp.net	regular_low	2	\\x91249bdc2f477428097b57f6f765d97e767e5bc09f8af4bd09330dfacf8789cc	\\xac4be00da5e5191292c2f196120ed0cc8c77c0b1553a56a0d273bc76b435a950
+14355138943:1@s.whatsapp.net	regular_low	2	\\x26ee2b0713befdf9971a12985f5426a091da220c24fa9763ab8492c50fa0bc46	\\x6d4a893910775b57d0bb81fc0562f8241dc4f6030d3b63d646fc257ccef8bd68
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9c06814040fa4feb79a71b587f25483e22dec4fc34836a2bf5a8b56ae6c61f05	\\xbbdd273470ef340d5b4c19f1f946bc7c8a6a2f459c4e05cad9900026b9215dcf
+14355138943:1@s.whatsapp.net	regular_low	2	\\x107c6db937b71303ebeb0959ef748e2ab128f20fcc4ad84d9d24c30ee89cfefe	\\x26b26ddb5e24541ba7605edd0b84ec374e3ff5f9ccba2aaf3ea5eb1590f521da
+14355138943:1@s.whatsapp.net	regular_low	2	\\xab99958dc2573e16729401031691af215f9d58c7a5b41c6a2fb788c5aebab6ef	\\x3e22cfe6c1a0a468b944c18c894b1ff6ba40256fcdacf99953b4e2329cc9386c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4379774fc39fb1b61502f76670f19ba302b648f5fddb5b33ffe6eca7e3a8c791	\\xf12c7beffec44d32d3625a01f1b3971e91dcc527a4f62438e9e830adfefb15a9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7e92e1a41ed7b146ee31bee25150d2fba75ae0689f54efc4df528e4cf6b08434	\\xc702c91db2237267e97f93861a73016bedfdf1c8227e72a8940fb72fbfeaafd0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x656c9f726d120218a8505f0a36a6e45097256c290c592863a7f0654a140831bf	\\x93d8cb36fd20b7b4ff1a508c66575a5c336e2e9ff402d480ce018eaf178c4d0f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8296a70320671237f44188ec1c700ac083bb6e8a071330a7d94363ad1d1de6f7	\\xa5e06e0c6b4f354ef76517a2d42c35292553deb49cec8e6c3b44b57f27ab197c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9db1cbf4e6fa4e6258c10503d60850a9f618193bfe169eb0ed625906e2187c9d	\\x3ba3cab89c875c99cad2b75980ad24161e345b5fdd8f4e0d18c975b881e1fdd5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x39eb8169d1ac8838dc5dffb71e4b69d1e07b2bc2c8c36a8c56bf82c47eea1c61	\\x980f509b3d7ac08df349f72a302546f8334cb52c437f5c3702303f1001336b6b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe3072436bc4ec23f9734690d9f49cd717fd764157aac9e050de340a6388b1900	\\xeafa594d83360eb805607b45b95de15c9bb176eb7c9bb9fc8887e537df186c27
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7d01578aa6cc4753f616ab9e1174b00f3f420de41b0e7eeed6b16b6047599fa3	\\x5ca6096cebbff7d532fd65b2f6a57048e8899bf1160406742d677a35e271ebd0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x36c6f7ca3808f8cbf7606f94896744616d8bb967156e5da642a577a1ccfac081	\\x9ef821108553f04a739f56c467874192e8b87daedac2255a280df40deaa40f31
+14355138943:1@s.whatsapp.net	regular_low	2	\\x99939081c9d320334dfcc55f47d3c8efb845e41204c2cb5e3339784247cc89a6	\\x8960e6258760ea23460af9428cccc710319dfcb87a7a20a73dc5c197ab7757da
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf2b8932c23b69ad19906c84218273fedee4426bf750882546367a155735e0e70	\\xeb1fc5f6dbd58dca7fd3afcd58ebd74b9e955642a0bd0b6d5d4b7623b7617b65
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb397131d550a570feaf0357baf50b3617b664a834dd25a5da4bd226b49bd7b1e	\\x19e6a1ccfca76d8ee23f621ec32a8d09572b38a946c1a43af66e9f873b9c5648
+14355138943:1@s.whatsapp.net	regular_low	2	\\x77f63764cc9104851477b2e9e1ac4c4f7c6c77cf769a7ef50ab8fa802fe93513	\\x270551fbca0a70bf7134c6cb4bd14dd08ba361b39eb043c0bd9a655dc5e84bdb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4ebb2d447ff7f889c648aed11dc4b449d8d27e5406fc180e30a688fb0e2d4f12	\\x4c877dd0d767922debb7481a5a52b7aa349e757a9e06e2810c80fc0378c507c2
+14355138943:1@s.whatsapp.net	regular_low	2	\\xeda04c32120113b84ed3626e753c658c07799c6364efd814b3d55afac0a0c30f	\\x00ac34ae1fe79d0ef3a8be5acb058a2025691e323ca7479d1614afbdb6590e10
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8beebf08085a24cd833518ea6112c8a503f0f72ec6f2b804aa74e5ff63defe34	\\xd0d90bd0932bb960a3292179d50b8a5d3e36584057e9255ed6781ece2e822016
+14355138943:1@s.whatsapp.net	regular_low	2	\\x649c287fbdea005dfeb502c15418ccf33388120fbc509c3931c3e7d038e2b164	\\xa49f23d30bc95a339b759f844b1680e97559dc48f92e0da092c3f2a2fdcd8406
+14355138943:1@s.whatsapp.net	regular_low	2	\\x98a2fa8d16443dd2d4e6ba3e1b9b31f531cf0f13eaa93c82b38bcd5d91ddaba3	\\x2aa7bbc3218214db71f8534c2233673aa4ab429ad0062eb20cdc58cefc869b7c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x64ac54f2af9ea745dcf3025bf7336258a847886dc48e9f03616272939b25469f	\\x0ba0425a75af54260115bd91da3624443649eb43c44b01ed6037b9771205dbd2
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdf10415045288e668066976d095b3cb44449d09f56f3335bcd55e562551c4391	\\x9e62caf6dbe3643171b2cfd1c491f055505bd4f222e31862d9ac4a20219d668d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe1b9dcd77763b23b4c2c006b2130155e4ec02adb9e4bdbfdb4444707e5df124a	\\x14ef5637d39b0a1a8025bad27c5b59ff9cd31f96fdee0dc4c3e1f5adc184ed19
+14355138943:1@s.whatsapp.net	regular_low	2	\\xeb50028a4cba90b5f7777596c623817f14e3eb7af06553c8f79000264bb2b600	\\x09e089dda4bde041a766488e6c84883fd9c49842ad7f39bdfba7d0b4c04b0d7f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0c75f6ac06c33282a6d751010c7fed6f2f750ac1cae3b6e7bbc128a00823cbdd	\\x109dea73ca54f91537b9e0ec94df7b20963bba190210d0840a861a34b081a855
+14355138943:1@s.whatsapp.net	regular_low	2	\\x38c6615a6f7240aff187cdaa00446052b491382bab3ceca6674d6bb057c3b285	\\x493a018ffdc46b8603ea1d7446edd336a8ad2b3e20127fa1755932fb9dc0e98e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x75b4e3c00ab1ccc65539d39c81f942edbe4589341917e767155145ba06a686e0	\\x2863c38169a80591f29f69a3cef6d40172f611bb14a69533397722591843273b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x618a751d22d16464b18a7ee578cd912b03939275df773c9415df2a6622f9137a	\\x74bd181feebe1bdadfe6693cb4b37a57b30991c2d5a4f9bd0c4243f47871cd4f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4b9b91c5b2f5e8ecdc4db8aece5c2b12da98fab7a56e95283b59b417b2c5a2ab	\\xd19dad6a03b089c8fc5a00e89991cf0e1bb43cb56c7abcfbc567ea4bb1fe8040
+14355138943:1@s.whatsapp.net	regular_low	2	\\x55a9c7e8664a036963aa396c842142435159ae64f8da343961d768d21da4d310	\\xc9d0b21f821cd2dda042d9edf6bab3bfedcd932f71529da09805fd4f6f0c86c3
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd832ace9781325aa1f6b6913b0bbdee27f9c6ef34302acca279003434e7f08de	\\x349abef7aec7b24f7cad589f2b875ff2f16d3b9421776a96cd023a7aba03f7c6
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb3466b1db876b74406f568a05e212793b6eadb24b594919eda60289c3e278454	\\xe0404cafad971f434af4b9a47f2d15ac3ee6b2435df33998d154fc40251f8688
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6c454127fbdb72cf98e5390440b26716106bd7595e7f037650f6e582160408da	\\x89f78bfbf684d1b7962632bd5d0873bd17b741a8c41ae69e22698761361ab62e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdc9d1c3f522ec8a28690cf13813b28217370f3635c95136d43f56f80e2e92428	\\x4fcf9b30ef479b612e56f9ea3bc6bee0f5c3c15b65ce9df66f35cfc83e9409dd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x40a936c409f4b39e6e0870f5d6b1c2f7bd5dcfd472f2702b787d0843a290c925	\\x3b507ad966e9bd11c6fe3a5de96ad48eb9d38039237b103d3a789b58c7fdeff4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8a63b0f61e99c08972355ba7cf353dce678e6ed4bf89623d89d2427db094dcd0	\\x5e78f3276baf87c7a1e344586b9b0a0f33981b3d2453ff54eb1e20d7f100584f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb5775d7477f8c2a48f8965824dc20509885b888eea888c83cb6574cc881b3998	\\x8cd05ec205935f03c30692b8712b69c8700e561dabed2715a86206151a1607f6
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd81bbb108a33c0c6cc6ee869a5ac897aad2800ff3fb93cf41a67a587fd03fc0c	\\xcdd75b02692d5aaf4ed82567595c204bc2f56d682ec4a984721f49c32bb213d0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb8f523a26cfe8f799e837f60513018a9281c553557a2ecdc3701909a0fe3af09	\\x9d034655da7c61afa8dbfea685212a7035f087b6f7b64cbaa2c320486a97a72b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa31558e0325835aa32b5081effad92989948ce47898c9489511a3fb4ff0f8ffb	\\x228ae1cc1e2c95e2d685585130c463e2d20a5e6ad977350e368f1be3d0f065d8
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4a1b8aee308be5fdbb5da1ecb44f19a370c318f16c2d09195a9a4fe293b568f4	\\x2d38a6f3a4e0d911cabd84f163a7bd45907faad557ad3979a4bbf7b468fdf64c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc631679175bb9505c932eaad16ddf99457e0874fb8adfacc5727e094bb177548	\\x91951dc5bc74a8bea75edaa15a3fc3ebd0a008b424c6b3fc3ff7f1fe9b084a2a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfa2d5f7ee5e9254ff64e08b3cf37192f696d72006f3c0e60a182f6a98eb5771b	\\x3a2648de09caa3e07ad3fb253f6cd493a986a1924daf949bb633ed161081cd88
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa33479cbc90585e8b734fa7c474335e426dfa20a91d2c0ed5dab3e6c12c264ce	\\x5f71cee0b61f3e4050721410efd8d496151e341b97918e4be11711d766ae3331
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa1bf95d3fe433c168dd820fc8b402d8d3b27b392c7d5bebd8dc0bc7cdab40bb0	\\x4a2bb7889d519741384a61f4051c18da5d3aa0a92fad292f280cbe167ef40f1d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfe6c66a0baa63d899460e457141dba3ac74708e68f58e13d35ce8973b4197adf	\\xe1f51e5f79dcf0ad01a160096a322a08e89ce9aa79e87d1c0fa9ba2d0ab60687
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6aade59aabc9cad1c8d284254d13cb84f26858d629e10e5fcbfaa63a8f0a10d2	\\x7d6986b4ff7e6ca22106e3f5f035cc58ed2c20704a01bce0e936a9a11bfd7562
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd326ac09f27b41cb528b95b56c785d54694450b0fe15e31140741a72ceea6d5a	\\x71078355a2ec18753a8abcfd4e2cd4af5f0fe02d857f6d5b913f30c238a114aa
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd8fba7adb44ba6769332ba7b616b22acd0509c3e492d0bac2c73131429c29756	\\x3ab330889bd0c5f1a8650280ddabefea1a49b7331ab2dbcc5974710604bb5276
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa20924674295348be23273ed622a4f123189ba0a481a3a340cd537e04c724b4b	\\x1758d37484d1ec54e74b0af139ce950d1ab7076fa9a7a5e8834fd80a885850a2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0cd33be76820ef8e7f25b57d41c5098eb4464c66330edf6e3d07a840fa2f00c2	\\xba3f56d59b5c176cbe1ffc7ba54b0a8480118151f6ba1bea62b50daa66f1de8b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbd895a8bc66230b33005f7e3eda8462128a1988148d10dac878cf9c1517deebb	\\xf87ae3d93824182f019ab44f8180b53aaaf5d5fe74d7288d8176907a26c1d3d0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe12198f3a4b250df15f99084d0276cdc4f12536ab26a9efc616c3084c6c5a180	\\xcdfb635a25ee6d68eea21938f3f641f0387d3ddb6564afbc00fb2efb062cead6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0a0a7063efd197e39e476f2568fd2016a38bf40bb60fccb1bc874f123eaef8d3	\\x14b72b3d52568ed11bc7ca07b0540f44b85708e799006551aca76220242ada7e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa28e3f5676fd90989aecb340ba575bc8c72eab3448ac55328076005dd5e0413f	\\x8939d398232966b0689ebdfd52dd004b916c3daa9a700d1faa15978408a99bfe
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6dc06557afa63ef4556713a3e19ed701993b8ca180429dbe228cfbc82da9dc75	\\x4f4877f68a8766e131cbe873a61ec87cadafb46dcce09fb1fda6fbcb641531a5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7b20a751e750372d9e145ff63aa01fb5b291f7b53862b66212a4602898c553b0	\\xe86b82359bcec300409d8210befdac7f9ebfafcb19387ef279bb5434c214fb71
+14355138943:1@s.whatsapp.net	regular_low	2	\\xafe043338c03e61780fd89ab9c4409396e3eae3e308f9fd248d0fca4f98de7e3	\\xde8f62bdc5dcce63d96074b0fdbd24d33e26539523888769c38a21a7c79b99bf
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8597628807a8e503b1a2644e04ca5d05ee79fd3b1c18f57756401b02eababb5a	\\xf4e27b02a4aff5189fc459bfc88e887fbb4f2561eff664c9b4082ec7670ffc13
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa5e11b046e2a33efd3cdb9b591c0610647d901546296618c61b9df1b1497c680	\\xc6269ffd7d9a37b6e526fa99f4fadd3098fb9f13296a5e60843ad2981c1cfe35
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb12c31534caca76ef84faf52956d21adf5fcc40b16d02a002e632af7adb7e2d4	\\xe651a093625433c2dbbe1d42b2bbff7cb55bde3c1aea4fc70bd54580db826829
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa86ce958d665246951c2480b4a90fa1cc0e388c84aa04538a537e4a0245ecfa9	\\xa1a0da265d0c0db586bac4e547503453316dda7a072566792c34ed626165e817
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc077b905a6c7f629dfe190fa278d7e2114e20569b1d0dfbfc8e45a2dfa313ed4	\\x11af22107abc441598b9ef53a04886d3ee345bed1f14d8ca20f88478b66943eb
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe8e177ec6137ca8c40980615ca0bc804e00457a213daea7aa88f1335ae842ddb	\\x00885ef448abb996bb44d878f7d86dbfcdda06fe42e865e3d765d0de48218692
+14355138943:1@s.whatsapp.net	regular_low	2	\\xed5baa518b08d19e9c69b0058addbebfb0730f878e0234be8c951ec105dfd0bc	\\x634575ad48ddcea1c5aaab20c7cea86ca733ead32b2dbd23718675e059352103
+14355138943:1@s.whatsapp.net	regular_low	2	\\xad15ceeb4ecf264669f07379fc3a31561c78eee44e2d76639d2437bf8157e6f5	\\x0f92a19794b022a226660890d78e5feac2542a5d57e2ec32d3df810e1125853a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7ad3c641b119baa6af3979df0f2756552960bf41cb9e8cb4339c8c4c7c8baa61	\\xc7ead89d98ce44b32f72c548a92117ddf165f16dac3e191af5060a335be03286
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdacb092777da784d101190690df3eb61140fab5c8a93872e40893c26e70bc8be	\\x49eac5ef2621c329d19f8b635f37ae334c77e8c98abe335b2c4d1d1df474cdc0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8e21f37e9776bd7b13a9988ed7354892d7a391756aff5063828f9f5c714115ca	\\x1b2567db41a054a51c3c17c7ed1b3d8318f136f55a7f139310b61a3bd6b359b5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x927babb26e4c8deb0cbf58d15720ca0bc81b488b691bf4f0ef6143f9516c2659	\\x1114bebf1681672f7891c46dd636eef078d49d5e27b6235d9f8c2e16db37ed71
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8df2704abf80898b133cf76fa79c56c68dbb62a10d7fc824410082d8afce3080	\\x977f0569e781535b9e53a6d6ac31e688bbe85457b0e2f07f7769a9d8639b1f45
+14355138943:1@s.whatsapp.net	regular_low	2	\\x68d72dfd844898e53a6a3f871e7d17f6f4e5c9cca8187f78686a9dcf98834b83	\\xe8492ab9d35ac67275a99d93d2b7721e201772f2895039fe8994653b7289b02e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1215ed64f495adfb00407776a14bab7af3ff9ca533cf90c92dbdc88b1ae8dc16	\\x3c72cdeb8155d681ff44cbfd89bf0464942e4c141a5ce58b17dffc12becf4b01
+14355138943:1@s.whatsapp.net	regular_low	2	\\x06e7debab9091d6c5be3a390bdc60c3a9623f7b13ef378fc867c349251494758	\\x645fe00cca2f786611966f9e3dbbd330ca3f1e37206278c705c50f6bed2c2bd8
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbea447ff61243e48d0558731741dba6d9aa119a69247cec603bab800854d070c	\\x0174b6faf04b8f1475af01d1ad16e4806755755c2e1b3a5cda0e89d675efef76
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfea215fb393e8c2e017d9f783f50f73d234560e486ea2af1e1b4fd9c9095f422	\\x291db33b93b9872be9ace8cb46e6029234aba63fa13acab04121b0e51d76570d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe44ab41da7738b2eb31375ae5f7cbb04fbce316b58d7ebf43b9a48f0daca89c9	\\x00fe3cdc210312d33a59b0cb80fb9afc2ff2a623f20a21139bcf072fa3f20cb6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2fd2d949822fa79725b3de47c4c29dd0e7414b52c1fef0ac06c2bb0957a87418	\\x095a62eb8a1fccf0bdf041cccc3890a564a59ced1ca9f9eaacf6840f4d6c347c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xac04c280db6bf1a5a600be890165b4bd2ea611b51a0ddc2fe5ed669dd2e79de1	\\x4d98fb0b1cd3bb695c3203ee53c8eb26639cbfa5b0c7815200beff796a2dc501
+14355138943:1@s.whatsapp.net	regular_low	2	\\x81b5428c539fca0b0a0eb7387282ef8d2a5db0c4822b00a053d29c6d3ebef315	\\x2c688723c115e8dbe5a1f59d0f0384cdf8ebf3ef1c1135288ea8240a09f7fe05
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa1961c24a84f600a8f5af6f019d753ca7de541a44106a70688a9b00c2c95dad8	\\x616672b02fc72f2cad42042d0c1673e97cb55ce46d26e15436a8ba1a04b8d40b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x10ee4514bbb66686ede63d5116ab1e5cc6ac87bff5e485ade52132acd5e363ea	\\xcdee2984d2d4851d8d7ff5985d16c88ae9157e9952fb4d6000623b0498eed62c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xba25ccfdab8932c01e0d675f798f63735b1253762e84a5c8985cd3e82f2f9ada	\\x7feb8fe329854e9e3caf002aff0791c3590b170b39d8c4730b0745da6c886a51
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc0a3b95144efa24d1653f9c100afcd1addbf3e4a4091aa026583db43591dd983	\\xd4a182a77d07d637eceea5292ebf51408ed254672d1014c3075f858db0631a2d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2f76ac1951951116010cdc4b965f6ee556e74d37513f34b859800de3a134b626	\\xc5f5805eae6991992117019b053dd96f6d3bcf288a3ce0fdcdd73c86cbc1802f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x84fc90acd724040e12bd3a73883733b48c26acf0f8fb05304ca8769ebbb242f0	\\xae333bd9d2bd21d55a1cc054037b3ad0ecc21a6745361e10cc45b5daf2a73d82
+14355138943:1@s.whatsapp.net	regular_low	2	\\x952f07209290374c320903ee6365dcff04d992362f0e57ca90dd40c19caab4d8	\\xbde6ae761cf4418aeb0cf9aa7ca201d8cee37e10dc31a95585799ec73c6558a4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5b6f3d66cb01683d59fe07920a33f86f237f1592b770cd6b9d48887d512932a8	\\xccccd085cc140a20ec4a846e53c4606720213a6486f151ce626c2dbc1a68d996
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa5b1cbf146079d60fb74a928796d357485e560e3e96dc8e3c0665ff281404ee6	\\xbeef446a059f9e21a3fb85b0ea70fe930e0e132d8da70b8db56029cd901e591e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3d92501a30f93b5c4cd095ec058b88989c4d12ad07a32e252dc6b16bde4c10d3	\\x3bbb0a32bd9d65a3ebe3942e0f894c7e4c5f162cfd00dcf5906bd3f03b9789d1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb1b6fe6c722f3746e0a65ca09e71a43187daece509879620da5a24e5ec9243a0	\\xfd01363e8cd4e6dd1ae88d4adbb338e79b712bce8b74f99a90690168e96c01c6
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf3e4441b8122a78d1654c132a47e10ec522603deb05c512038ab9201982a6dc4	\\x1c75e31acb1e33ed7316304bde9b29b59f922e3fd30f768d2e3ffd441c995f87
+14355138943:1@s.whatsapp.net	regular_low	2	\\x245690fb48583ea87766f768b6eab61bfff5b67b3764b507272be0320d10120e	\\x8b2d471d728eee968154edafc8ec1ba63452ab7d8d275b02bd6fd5f505d3fa13
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf45b7612d3c4f7a6be379eebf5b2602cf3c7a59372a0c7355339acac83120925	\\xd5acaa9aa776ac4b4d4873f65a98b7973b4fd6e073c8cb0bda5ed27abc308fb3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x029577b53f4d448d1fadc8f20ff6c07cda4f59e2f72adb9feab8b1d382e80c32	\\x0ac0b6054869324892e76a63ca2f03905cbf7311ed036f68d57606a7660b3054
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0253b74a5ebd3207509610bbdf3f1fb5455620828374fc140e059c24f71e24e7	\\x0f6a6613b5ae4bdf244d58f8d37f153848fbcdac8e2c76c3e66f340685c3c060
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe96f615511988fa6f51a3ee0a468542bc7c4e13e6a57758a51e21386403407a0	\\x09b4d0ea1da28d2dbc905f5a7402735f82e64a473a7261ac1fc8bcd212f10656
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2596609a27f23f65d9d81dc0eac4f9bdcbc7555b1144001ae7ec9d7500c740b4	\\x913e9476e89dc7311b106c2e511d91fe7d57d8ca0486f4d17a3567d0606c85cd
+14355138943:1@s.whatsapp.net	regular_low	2	\\xca747c6af9167ab5dea3e5e9ae4556d90798b19749739fe7fa1410a13c5eba2b	\\x4bd9044a68dd1d843815e23ec7ceb01c371d6630aa9a3204f1a9fdd3030ae88f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x250333db45c69aa6f8fd7654371308068d03a8c9a173a81e722dca927b549de2	\\xca34b3b141bb246558bb12b4edc6f04df63455eba8a7130b07622a68640006ae
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3b77266233f914c9df43977daa69a7554e764b8922b86dbe512003fe842721e4	\\x54c912d61bd5326571c2b6f31181099da81926427b183e197e0b9db6ac42ac2a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4302593bcae37e2716daf80699224730865fa06cfb123dbc1d303f09086f8113	\\x6e1a86ef5c1e80ea75262bd620805775b309183b9279586ae6c2884f1b45719e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x00d2fb3e16eab6972c4d91c0926326fc2465a5c4153f53f6f22ca5ab4ef5c566	\\x3a383d9f12b51bf9831ba6064a0defb41e8009df3ef5060801b13d5100363ddb
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa10bd08f542eb58e4ff19a7b2c7eebb9f0ec19ab6217cc6ff1b5bba326f02880	\\x0c0202eec48a15e823e3dc428e5b62b284bb474ab7c52dc6384e9cc2b03d11c4
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb726ce2dd114227e49b538bf6b4f22b9421fbbd9908734e1a07362e632dd8123	\\x233d1297b64cf9465c42878301fe92ff409205c6552ed45e7b5e92cfea43c272
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8ae8d45cef96b93c56ec40b7bbf5400331aa0ee6c25ca01213284e65b6121026	\\x6c4ce38ed332d8641ac45ec1c14d7de3136ea552788bf6875b1935fb75100caa
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa5084014dc399b6156a2567f0a532a5d61d2585b8b4ca67bb948aa0dce41930f	\\x460b7182751199953a40a0fe2504b16a29262f63a50928af1da32ba7c30b1c16
+14355138943:1@s.whatsapp.net	regular_low	2	\\x393bb76d601c759708012260f864d67c494ccdbb5da554ac92d7e11d7bc11b29	\\xcb60a60bfd4529aaedaad1eaae3571f6d7287de7ecf8064ba0eceefd2b8e59e1
+14355138943:1@s.whatsapp.net	regular_low	2	\\x53ce1f1408b8f5d62beff7f619b83acd087b67080960f740d25cacb2076c13fc	\\x1dd2da5cca15211b4598c53330e116f6cafbf5ff9273bfd56e75336f5607ea78
+14355138943:1@s.whatsapp.net	regular_low	2	\\x55d714521167a1e069d3f3ce4eb24d26a9e219fa012538cc5284c922b95ce0e6	\\x46fe1add77cef0f6e7442821090082f8a5c17aa3cc8f4ba4b3763bf6319eb80b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4e680aae3194133f1c2ce9cedc8297470a593125ab66441ae9c0e46f73070c73	\\x3044180f9a7b97663c38b7c944971a50921a35d5c27de7e304f790686a4bf8e0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x05c2eca8c06a7e452f527142fc1e9988b02cd197b990e3ef8fe7f461ae3c8ba0	\\xf130f9785230d2cd2e82ed94669c28867cf9f565f71bed46b4e723322e756bf9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x84e3f81f6dbdd7bda01df6f2e037d86943204fc7d67498ff32c4da85249262d6	\\xc53e90a89a320605bc622f696e2d217abf2f473e575f62597aeb99eb4ad2de5f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xecbe38cf9e86b3d65f66e0369e742dd12746e99bf1591f2b8e8fbdae0e54389e	\\x3e9f50ffe58f66ae313ecd26502163594d5cd069f3916d7b705c8d9d55470e1d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfd0fcf6a74525bd61151cdc9a23b52b8efe3e3ca4f5a344e90d3f35e52e4dc9f	\\xd67bb22cb999b1c4db448f284f23e2a9bfe93a360e74e59f1c441ccf34326b68
+14355138943:1@s.whatsapp.net	regular_low	2	\\x577bf38913af5367e72f0e99a31bc00f38f559875aab845ecf671f623f4fd011	\\x64147a6420b89df5690f4b9c345fdafc25b268bcf267cf77a321dea4b5335d7b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf51ce6ffa396096aa55caa3dc514cf9f9a32d669d6acf56a843da04179c2fc03	\\xd4ae272eb2cfec372a509ea9a62c6d88423a9e08ba698a677480e1dd005c2c89
+14355138943:1@s.whatsapp.net	regular_low	2	\\xda7e91cc66c0dbb69dc6e88fb6ab16d3b808ed125aa304ee5438b42a93d76746	\\x3da888927bd57e3ecc86dbb4f81205ac4e1ffe62c3efc6491741bb4eb452c9fe
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7ea7272c509e27ecb783a65aa87fd4e2ea7625629d79d76900a745fc0b332c41	\\x1a6a8c2833cf411e0b4de0aafe3ad6a3d4e31a471b70c93ee988d8c4d2e02ee9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x35806709312256085b9cf95347265887ee353a29beeb771d5775fb82c57aa8c0	\\x9e44e3da1dee7a1d3e488000730108e935dfc3f09633e79c18246871c89f3829
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb6446c597ba5735afdb4062515d7e90a385d02d9bf94964d1e35e29dcd142620	\\x144294f6386c647c1e345337289cf5a8e4e3c83464e1f717d958e0d6a2c73e97
+14355138943:1@s.whatsapp.net	regular_low	2	\\xff46684714b2e68f8251e031dbc6461ac51fdbf6e7c4cd614fab15b2eaee8b75	\\x2c7d244e2ca9c1ef9620d73bf0d7b691cf382c7177ee2eabcef187b27ff9308e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd8feeaafee6e1cfe39f41b3a8fc352469157a68f0fd403f9f808cb17f398f14d	\\x87ec0b622a3832b0091a62e661b79ee9c6b8244a322fe579088f8b9a8b89c92c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3dda7f89e21153449afcf66d8fb14558351bcac29c67585f9ed83e4fb351aa8d	\\x3314aa38b8927ace77c68d933723e3f17a15399dfc081ba508691a99e350db32
+14355138943:1@s.whatsapp.net	regular_low	2	\\xaaf834c42f7fdfdb6fe0ea8f5cd01a59a2a7015a9f45ca1833a1c96441293faa	\\xa32aa502f83f21d4b8a0bd1d6197877871c76ca63989c68d6cae2509a831423f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x214f8f2c5015e07f76d4eb4e7f2671d30975ad3932e2e211d8224ecb968f5ce3	\\x037b0b2defd49dc719142dfef93c8935e944ca03e6dc19d99e418e4beb381857
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2bea6eae4163c551c4b92c5646c4ae53826db11fed8868b64f449249a43c6c2a	\\x13aa1ce7c7576d6511be71213d4fd6cd35ffd8b0b75ae7a493227375056ef081
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb1cd2286ef8103d1b381eddf5c7b3d14f9faaa47de9f2d46c310cb610b38cb9b	\\x5652ae0de5c1635ca85d550a7eb89bc6d27d1d20258683ccacbe86fe781f83ec
+14355138943:1@s.whatsapp.net	regular_low	2	\\x269ca1d0198d7ecd221bca4053cfe2d4b16060a4a4c2bf9d031e4ca40158234d	\\x83be339abf0b058c11690b8e2e79d3c9666b48e00e195a405a6d3cf8a3efebcf
+14355138943:1@s.whatsapp.net	regular_low	2	\\x06bd08650605e0f13a128357ccd4ca4b909e6521b72eadbd0b96be6d67489326	\\xf79df627cdccb7ef33a674bb88090a8ffa57bad1c77e612de21393dd9d42c36c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfeb27f077c24d1a47c389b76b1e47505251deeb82c1e26647742187ba014e0d8	\\x275d3e3b4999c80e1c4a318100dfd9ff6e8c4768b3f6e165419b818ee62bf303
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5e08ca5eb6a30421fba6e1f0db2e8bdd8b51d03185827de3d1feea52a333b55b	\\xa91fe8f9a185fe5d5dab18ab4933b3070b8b26fcd59d7ed7b7d35c17ac9c0cbb
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa0c505fc80958480e41dfcb5578b5c49890e482bd91e49ac6a1008ea19fe1e67	\\x88dbe04e25cdc04532f52ccc6ed55a2489a598e23bc3b6ac6f00cff6c459a909
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc0104781782b9c25f64a2cf6f654932bacf0e2d6ba51864b918491daad367ee2	\\xa2c260345ad9872c7f49fbf159902608b2990833c18b056628fe3683d99238d6
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfe6f3829911b528818150eefe2ed6922827663d228cd5b910f19a590e19885b6	\\xb7bc6b4c18b29238c5272e873c4b0f882856f75ee4e18211401c62731a311cce
+14355138943:1@s.whatsapp.net	regular_low	2	\\x521b25548515d09ccb94749682752e43a13609437f68ed28663376a719608e24	\\x7819289e0be26a7155771d42c2c8f20a8e4c52fb41ff1908b790a0fe11d785b5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5ea96ee45d8fdfbb513f220de908f66ecdeef3ec42835e81132a772bd8377ff4	\\x2ebf81f2a4b94ba7da0a572953f111db777fc7b7ba5040bfa05c0a781bf5c793
+14355138943:1@s.whatsapp.net	regular_low	2	\\x72f9871942d5259bd8db92c4489cdb2c9c8f5cba4c6f675ef4fe930fb204a29d	\\x9e9febf2fff2d961e41ae3f851b84d092208baee3d54decce92a1dbf1f2cdbfc
+14355138943:1@s.whatsapp.net	regular_low	2	\\x520cde7362afce865699421d6556eb40241a19c955d2c95cbf827fc82c496d94	\\x826313b498bdcb9d828e1cbaaec43fc79fa8ed7e62df27984413c520376f9308
+14355138943:1@s.whatsapp.net	regular_low	2	\\x22a3f7bc629333fcdde90402a4063f002296a2f1c53d6ec7cd1d4fce515f9e9f	\\x3daecac0d3c6f1a00bb5383e70830f7fff3b1444efe45c2f1a3d450e18f3fa20
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe3e1fd4c19f0b34bcad2cdf49c11096eb6eb54b7818719d009c7234daaf8f3ba	\\x23e569ff1414f3ed46ae04574d20de899247f63e9931af443b7f7f56467cc66a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x48963a233fdbf7709af6d07b99893611f3bb16e81df2507efa8f5598f81c8dbd	\\x95370130cbd5ded5e1e239df7dd9f8c05f7d982132e1340a36f54cbb3ca14253
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0d13459d6f401367fb994138e3dc12c00459f29ce6a37a4ac6334c610ca0636e	\\x589218817d32908aa3980b475ce4fe44ea5af665814398dd170be98e05dc0ea1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfe5b135a9c6d81fc92f41d774e461fd67ec76da6a29228dedfbb7049c928be0c	\\x28ae893c7f99254cd1df0d4a01e4215468cc0fe40124f4b477aea74725314bc9
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbe3b58d73254323805db526bff6a9dc688898e5feb4c7f1d170a1344bba1bf10	\\xb5a4787c533fb45266ea23986190996f1cb6aa23b2c7fea95965b1721706d7d2
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd76efac1447c081e5dcf3e476e467015c298f91f8b447ab2b10ebeaf9c0bcfe9	\\xc30e6bfd7e73065b02e80326a94ac710e8d1c67e413feb1035fe12d85ee9017c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xaa8ab8e5080d2a91c0dad3a6ec0b19b328fcbe3268736470e83cd00ce12b649d	\\xe302f05db751d65c574751e5f72ec830136304239ecd95ff6426b3431f864dcd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7bbadc1cbb8450375373559f26191e28f33962db64093508c111588d83449bd0	\\x98a6e6dd502f7487c918da720adff88e8976dac93b859370f3e141f6c67dab2e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x33f8dedf4c86ebc82c7d912e47650818ec0adca2a2a9eb0afc9f400f7db0cc19	\\xb5d962a8ba00ece61d2ce1bc24c315ffeb6862470c8a65ac3648c548fe8ea43a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xedf287ea7620deb120fbe100ac981ef106958057a67c876ec4aecabbd57ecb3e	\\x4c33b3777ac347c01b527ef04c5fdcf68b18bf1da8c6d5d340f8cc09ba2a5140
+14355138943:1@s.whatsapp.net	regular_low	2	\\x988ff20d6ca2264fb52dafb782c5b787ddd1c4051df0c227dac94e5a49a9eaee	\\x0c332c6d252048ec8b12e5e76be177dbbdc11c6b1cede970fb1e1650dad895bd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x61a9bdab61ffc3e3d0f5571f9d1942618a983f79717e23d4799721e29524bc51	\\x33ce7d6581ca7ddaa73a3172a70e9b4114e1889cf2e1e87db9f33cd4f5fee3b8
+14355138943:1@s.whatsapp.net	regular_low	2	\\x49c54de75e1263937359d74b4ded7daab37e237f3ba08bf29c59e93efbe97e6e	\\xd6a234ad36a3840c7448f592cc0262b1420df4338ad22d168fad785ee359bc20
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1cbc9b94363214c26737e54dd49321fd7459e5315f6a6d9a1ff1c3014a7a48f8	\\x230a4371500024af7bac19bdfa9df3d62c9cb0856b017029279cdcf2b907fe93
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9efc19e2c05e368877955dfd724b57b44bd756f615ea6a4dfac84818a55a2264	\\x9fccfec1fc5d45edf6c2100b81a851ef5f6de4c30714b0cfec52ab3a63d2c707
+14355138943:1@s.whatsapp.net	regular_low	2	\\x83aa0ed4cf996bfc486b22346fba29935539dc1399af903846135fdfc59aad33	\\xd0c49172432f003813fa3548cea8d13e692310a503af043ff41c4c158414be9d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x788603f6b1b3dd5bbaa542ac9aa57270fed675c3a0f18c7aa9a381fed6900411	\\xe7314c9c83c3db4316dd5d2de234785bf8c961f294d79b734855b142089f130f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xad578d6f8c35e2681a3c999172c97ba7a35ca2d3cf5dbd0baded99eca90bf552	\\xe2e0803b154cf103b68ce529b35b54d61401f5f4c844424f57105c0fb5375c2d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe65ea52a712fad9128d59ba58de1511edc56986c0e4475b62c0de56cf4e23b89	\\xb4e7d6d754fca6417e9ae3c074e293c6b47106cb0b027c7ed2f62c010d208065
+14355138943:1@s.whatsapp.net	regular_low	2	\\x30f36b275f443eb7320846c58dfe86bb7df70aa361ad138c55d833cb4033ab97	\\x3fea2c0f98ab90ec8ca2be47746803fe824d242e4bef565a4afb0cc052357964
+14355138943:1@s.whatsapp.net	regular_low	2	\\x80b70e6b38281fd71328e7fe0d3f1530d1578fcb946c8d9d13743a6470192a41	\\x467792fcca64266d75c833dcd9bdcf17b6b902e945714f7045a81e37b8e3d340
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2b872871dd65d625cd6f77a94847d3793bc65ba4c74b6a5b7c42d5fc814b0421	\\x0b2ed8e294c6a658018be6ad00c87dff8a0767799f9f2fb75beed36d02d1decc
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdc4193d2eb34a08a44d044c69b3500c9a9217766218de3078abf961f9a6ee66a	\\xfef62c3cc819571e6e17118836754b9b85007ffb43cfbc5ec0f1244f097a0415
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1f733e6119b0dc5491a830267dd3de7cdedb7025d6dd1c7a2ecff03b6ea7c76e	\\x271a69b2f1e9f2c0b194e0ae1362de2c26ecdc3931433a71980531c5e868035e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x775bbad6b28853656d98c37ba316be3d39507ffa8f67614a819e894b43ced301	\\x8aefd3cc2538cd7f0421b9df0b6d17bd650eacb2fface5ee0cf31d49a2e7a830
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc3cf7c47449fadc84949c407b0b86e12dbb8040963bab0db8f2a91bc63c5c731	\\xbf7af82d973f4545857fec85f289bd4c93e7d8923f87a51152c22c73deef7dbd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7f7e94dfbf88107f35c80c3759dbab4b92c4b85e5e782e1f748f9d53ad9cb448	\\x7f1aa881d1a54431a527a5e22053868df964f03a8f8812aec7fab1a2f10f07b6
+14355138943:1@s.whatsapp.net	regular_low	2	\\xce61b1baaba0c8291e2bedf514ba32a22cc5b26f2802855e92f7ab07d5cb5fbb	\\xe3c7084123985b9a3532ef9c279547df813097e22d47c5d2b090efbe6d426541
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9b15e33ae24e24ad3c4d6714f9da3a664dc3c0489e2c18da8b1980f67b030827	\\xd6ce8c5c3edde54c085f9412f0c0bdaf9be69eb26c0f8bcd9fc6cacef24d50b0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd2f03ba5eefe61669cd81b6c12f925759e0d2f915ca016a2504e765df0130d5d	\\xa50257cebd2ec150da507bb58bf3bfa58f04e3b6a3f5f3d0e7584f7cfee343a1
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6d1d2c53e74f6d15b6bccb8c2a4f9037dba1738029f1ce5d6e94c67bc8053bff	\\xc8d2e7ab0f7bc11cf407b2fc6e690ce70d646f55c7175160bd2d7bdbad7c1349
+14355138943:1@s.whatsapp.net	regular_low	2	\\x09be351ee19318a44c607df754a6e3a98d7fbb7cfafe2c1b056d916953bbeeeb	\\x633262adf167293b7c888b156716c06ec27ed1134ba2e22956caa121906c4707
+14355138943:1@s.whatsapp.net	regular_low	2	\\xeb0f509a240b3697b7338f2deb4662c2001b376444356addb22bf9a5595a5059	\\x070dd64733cf25403c3ece782e26444b18f3753ed04dd3bb7afeaddebe0c41d6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x86873154c564428879a7109b4726aa6a779ebed813f993284160a9f17391bfa4	\\x8eaa7ff22686d030466ea482b9182f53224804a77f36018a92702f4515787e0e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x99b1e1c2b514e92afa1eff061a9f55b3b7ea7932bd97ba540323e3992e6338cf	\\xa35a0cb5e6cd1ec0d4bb953ff2806c6e6f8b71f6861f695e9bd768b8ed44d188
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2a5fc53557f6203ad81415d53308a55fbc24a7c58e3b8d2535664888b6fe78d5	\\x14b945767cb8048966aa52265e4037b0c607ed037c76b176b6e2a4ea69a0bfeb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9023f11bd01e724f443e4bdb98bd67417e6bf1ccfb2403d8d49254b39afba1f8	\\x27b911ad9c4027a869e9ec30580ca6e4042cbc7739903a2c4cff4c94f9e110d0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0a87f82d312634c1fd1c5884c39ce6754ea5de8cb17e4dd1efd08c337b184da2	\\xef47631a76cf3451f5395b1402146a4de1155bda206af10977eaee979da36c9a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd2299d7c376d40fd34f35b411bddb80c3cd7d74aabb26b64d8501d4223ece14c	\\x033392de481912d731bb3f604529e6cabf89091c400240819dd50f147bc91732
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8e9b2b852dfbd6c5336dab34f63ff0824accb8a750596aef2a98c49c238c6825	\\x58ccdb24ea91a151ad7f6b30af0eb651ea7697c9b617483ed12284cec4c77ecf
+14355138943:1@s.whatsapp.net	regular_low	2	\\xaeece5b111df832740f763aa7bbd89db7a56b52d04ff3272e5f14a0788ffaca7	\\x52daa5dd118509f0fc503bdcb7e05a758a33caa663257ea46e1f08e62c074c1e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe214c3b96e9fcd832652a565dcf352e1fdf9ddcb4d55fff0cb4bb7ad0d353e22	\\xf806e8d8fefbdbd1bf7532e7dfd84d65d1515a2266f77d127247d45f16ece0ca
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9e455346e01c053ad91870f28e823587d8735ad59555cce69b7524e4407adae2	\\x86496907ae8febd4475c0519295beb1eb96e3728c0c1a514760d22704319105d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x68b94a222f517f79d195818b9a1c2cb466152c92771706ccaa24241dd1517c70	\\x6b0457a52cf69fe78e8725ca30917d2b3229f955fbd4b687034848189856ba3e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2c13c38428b14589f5dd6937af4810bd9ebe6f68155a5e2095f9188af89578f3	\\xd19c97f410bf710d24893d0f8adbb750b8125bb25cc8deed7772a0749a65d325
+14355138943:1@s.whatsapp.net	regular_low	2	\\x37d7f6f66232633018b50bc1a2e80449e6f6d9c1fbebd12d23213842fdf48440	\\x419e1c13b1ea788c79dc631ee5251815a6af01c017fec155acf78f3285984f25
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd379feb3cc1e25146968100faad204536a2e22fb62e7a20fca3b30f106afb342	\\xa5f5c126b8c938a8c27700c4f5bdce98a7bbcf613cc39dbfb02949e18d252d6d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc0c951a5fca6728fc7b90842d9b6950dfdaae9e7a00965bb41a921b4bc8760b4	\\x3771f64562be589bfab76391c1ab5cbfdb38371f530130c0fc34abec6f3d9caf
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4336cba84b378a5bb8ab3c6123a0214e805b06363bc35f61243425ccfaca0e41	\\xd7bc8c8e7554435646b6a6570fac9c41859a4e9d07cbb2d51f78631381ddba83
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfcdc96d766dd369b8c241032ae1b840d29a23a438925a1e002e9ccfc1799bfb0	\\xd81e52de7151e4af2fab43566633af9aa54a0305629111b4b6230c3387a25e97
+14355138943:1@s.whatsapp.net	regular_low	2	\\x50f67fbcc3d34c972333653751d6d8390b41997bde41f78eb6c24ea19f681196	\\xfae76fda60e3be0c4a760fe3e2dc886c33ce8f7cdf2b56b9789135c5f49aea4f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x74e2a43e8c1afa15fbeb09dc798c6b9b16bc33f3b0e5e69cc8ee82e4e0defa92	\\xbf7879164609c3e074204f6b114d3545816bf0972bf467cdffabce8cffdd62c4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x043de85b5b2a0f989ff79015e9b43d5865bc2b97323b397fc687d2ae8546c249	\\xc83777fbd6c2de25fc309cde25e2d7c2f8c1159846c23bc55ed4d7e432d0ea9e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0f3adfb22243eb3ec1900c102719dc08e66b81428bfa5a23a0e10de5a90e9d10	\\x9163f74a98b117f52d9c5672dc5aff377d15cd767af067e9c5e6f390917ae76b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x539778e22c4841d699fdfdfa8ea29aa07237db5b70f48b985078531e2c84df11	\\xcf88d3119691da3e9edb0e9ec25a7ccce07757a4a5740ee6ef10ff8ded1af85b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5fd8d88608e922e8b41e4084ab7da9f3fea632f084edca727e179de62caaf147	\\xe2f5bd85da3296c53e25d7fdae767e0a41c628eb31226790fbcdd1e0408bded3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5f09ed7d855085aa8b4c951f7dde480acd87c90119ddeec27308334133bc15f9	\\xebe816eb70bc4ba50e69cf62b5ea4a147ea83981256425cf4e7ec42a8fe4508c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc8904faa6c40218b5511700230e7c7484f81eeda4fac5122f132b58c87130219	\\xfc0dbe32904c8b3ef08052842ee55050f42a7225fc9b597b5f1c2fde591d8c19
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8404d3c3babba219155aa3a02c68e055c11c07d0f76d08988ca6b5a5ae718676	\\xb54442b857fe95431a223c508f88e168259a9b4dcc3135d2d209768532d35f81
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb38cb9526d0043dfef928a98da34e66391df3351e01af6108c58ac48cc9b28a6	\\x8dfe62edc8720749291a2ecc6267fb5377367592d841fe0fc2719267ab242901
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd9203d6e9eacf330c3f09de95500bb7666dee5eb01bcaf11dbb599dae88d9bc0	\\x71c80c1ef130db615ef9335b5b2445cadaedea6bba80e1848ba4bb68e07d0f3c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x67a3184a1459ddd16dc408bf59cca0cbb31300584b85d676a25fff66e2ce8310	\\xcf3d48e145a2038850ccb4a31270d71caaa6ef1b4a677790e09048a18875b8d2
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb712dc13572c370b395076e1603d68d8969e0f0915acdde4998aeb1a915bd3a8	\\x563e316ff9fd39f13931aee21b23a0d3d06486c173a4b77fd051c5b2472e8d3d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf336a2c45002fdc728346bd168e1d503a1634e365e380c8895119df083c8285e	\\x48b32c15820023a332937fd0255db76e82c42abd5d1acdd52346e77b315146df
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0e5072b4f0d77bb537b6af5bbfb6bc215dab972ef0baa9c184b117a84ab84c4e	\\x891085c580b19ce1a1600f3a4138f81251ad6415c2a15e2a4e0fa95ba2c19a07
+14355138943:1@s.whatsapp.net	regular_low	2	\\xee52c2be0a85167828d0cc6c778004c4befdf9af3c7945a70e64134b6d6a7d1d	\\x428291ac4ef83e23c21cffffbbff254ab758ba654e3d9e884baafb05891dbf33
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2835fb94952f75d49237246386565d71fd034ab4ad25f070ba07c23d801c2fa5	\\x577c7019efc2fae56381dd9e22b8b9390a1f77e3fea3c6bff71104870d757d84
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4e7d80be859a86490566779fe8ce03d26e71457d824debd9caa18c0b0746796c	\\xade647d032949404fd337c9b2febafa1b53976b07b49e50b104c28ed6a768698
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6e60aa6879c5976cc21ab4879d2f867c5e9fbdc1772dcdb4f2820959814afd33	\\x693b4e5d1d1b84660dac22e3554c71132c3297ccd9698b7a42d6dc3060c10fbb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0a12d5e31da1e9c820194bec8bf1691e4411aa9340f9c6a1389e769cef377aaf	\\xf72250ca156214cf30c323e02dca4014a9ecbfcb8d2cc76119bffc61e8f08e63
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5eae6b94e2ceb64e1bccc521fd938e702030c140122c75c86203aeb8ccd0ace0	\\x6c58c4432a7cdb84ac5cd2a1ca22b2f8b4868ba11e55cca8376db122c95a334b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0442883e6b6c1bbba9df8e146063afb1d32563bac4b51e0f40567939244ac0dd	\\xf8188074046d3152d1a951952dd36cc2db81c3397b86f774ba212d041d787e84
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3e86d796b730f4b8372f20fe51605363950610599724f9d7907c00348b865680	\\x8f8a5cd2c0d4d857a03f958adad79616da2052ab93c6b9f062f9306c505a89f0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcac412753751fe3f64f688639887af94d4b75294172334099ed5fb212c7d3252	\\x8250648d0af6e3384c973a9eee035dcc29cb9149bde9c0389e86e94d9cc64265
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6c67f74542fae0288d960207546194c94c45bae4e6be9a774e9fed710453102b	\\x6526a3f4e68c1be5b84c3d43eae1023ef3ddb752e172089b170f82ebeb85d1ce
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa8184f9ec6c2cb32418bb8fbfbf3e74b7941d91352f7a0fa29f790638050dcd2	\\x0ee8b7103ac70e718c078b4262bc88926fa2b51c89200d290330b226dd686d0c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x622aa6c0f3bcb7ff330506d8e688fefc492730dc5ff7f5a9d0777474dd1710e4	\\xa479314b200abb5ccdb82345d03c9a54b49b71342ac9319a1564a930ca97c312
+14355138943:1@s.whatsapp.net	regular_low	2	\\x71c9437ea10910f6c9e45b00a8cbd85f57b14b4b00208a566387c434d1d69201	\\xcb2fd7f9e27dd112f207a10f29a141c70a6f99b770e2802fb88b220ab4346414
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe57a980e02e835feb3b4c37a35fb3b7436f4ad36df5160f9b171f29203a25f02	\\xfa0ebe017127bd5b526af8eca4e6047462ddc240bec31108115e81dc341064c0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5bddd70c253309893cce1fece6a132d92c1254417720f2a2e248334ce5fd3548	\\x71edc3b8a5bbb504b1e29df0c775f63bca9ac4703b2ff76ac9f22d14d9d7d581
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbd0c07955fa6a4c22e0919dfe8b081e843d6d5f18d888806a2004816695b9905	\\x2e675c0340912c944c8cedb955e747365caf601547931da45cc2e962acc912e8
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd60c92838270fcd01373c615db9d46cd83ba0acac31b5b58aaa58789bbb8c693	\\xad9f18d0aea1e064c2c2706f7bc8ccff66b1d6779d06ce9f7bf8294ac34b2df0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3b7406645aab56413aeb51cff80129cab97408e3113c404b482b43ea3608300e	\\x33d7d120cfe79afd0aeeb9397edff1d0624f9a2b17a99107a1bdd12c8f25028d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6fb1fd33005503815c3b5ead77ceade2d4fb675777b90974e44bcd718ea7f2c7	\\x0c61481820df5e7555570cd96632d547c4bd3c98b35a20d46a115763c94e8371
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6ee93371caf281d15e0c311e4d382725124decb8627a3b4c518cc891f47d5ccf	\\x3fe67ff4b1834e2674c4c2a552209b20cc1e13f9cbae72cb7de2f439d5e6d08e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xda7dd7a5d3fbbfd0246e9f20d6efcd98ed4d249de23fa3dc05c1f2bd0d326292	\\x9931a2e951b5079ae5a799fb4e167bac24471614310c8bc3b9cb4135599f3e5f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3d5203d7a6fa8159e010934edad560cac550e92d17a44fa4d70adbd238731d7e	\\x6fe9a66be86dc7d80783df93475878744fa72dacd535cade418e8a6219ccd39e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7ce2365a0c020add60b301f9fabcf1b6ac0f8c0ab7d1ccad662f248b149c33ff	\\x56e13a0fc359b6da5ceb5c1a94af3f3f7ca6a6a23f5163d4566f74355f5c4c22
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc3ef0912bfcdaa1d549a31809828042fc1f999c42a3310e1457f618d8d173a44	\\xc76e437648e8fabaa1a7ee795c9fd8b5b051d644113cb18c98154aaf93e2a0b5
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa22a1775f357eb733af5cb4de1a05c8f4ea1877fbab3e5c1c98fdda2f8d1dfca	\\x3c49298c58a8e3d8665b3d94473dcd5d1aac3505ed6a3db80809158ff1796eb6
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcd4ce8ee7e588d7b911f08db07f9944d6203347acbb5db9583c40200b63c932a	\\xa69e72967f00fc328c2b83c4e86206e33aa2401e34e77f64c1c047df59659649
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfd1e8fc45c50482f9e1c9152c3eec9d02d7706d179cb7498f786a8ec3eef62d1	\\x9042f9536bc39b62efbc1213060a77fb0dd45c0a3cf2f37de41f8dde64d2bddd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x362ba6b2b3107084ccc6df98e181e5b4fc8b75f8ea6d4ca842882117bb8f502b	\\x6598a4157bdaa5d0256d859f02c53ab27bd8cd75da9c7a17cfea0341d214fb8a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd006cc58b2940cb9c1137098b4cc9ab5d2f561cb8ef62b4e923c0ec1bfb23274	\\x72c2d4a90fdb3b4b4005c3f6c6c51153d8e71288aa51ff09d7472a2993a4f73c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x041c453797470001750dfe34618f74f15527c0f0940299355918ad0c0d977179	\\xf340a25692fac10de8c4a76ad358ceab6df14c31175ceceae2bfb89addfd8fb5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4b18fa51ec1465d18125b78ab8a6e2b175b7eac8063eebcb518416c8a3b087a5	\\x7383e9eb001ce234f559c7e2449277372989292f4d37a2ce785a512793ffe003
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd9d67c6fb407b17053d49d2bc4dd2547b5e65e105348c1d8d7d1c0fc5904d5ac	\\x19d72a99b1842de3fce78361f54002827a691b0f41d7bff228f9921c2fcca645
+14355138943:1@s.whatsapp.net	regular_low	2	\\x93325f49d90122678dc193c3255b7366306ddc92dd7a3efd9847eb06ae77633c	\\xec01f63594cd71f86a37f0ceabb6b63e41fed13df2b879dec61c3eb2cd5f66a8
+14355138943:1@s.whatsapp.net	regular_low	2	\\x374069375117bb167cfc76de2b487e7bd215795f08290687fc8ed0337fe3d7ce	\\xe72ff0a16fc33199be0d65832b66698a21a3d064c0d8f5d09ed12bfee6a9cb0e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x971dcd9a2253ba35f0ab9217b55d3bb282f6db4418dae773c7e63b7147b02c67	\\xa47b296f8861681911ea1a24a05db2c1642ad3fac032a6f4b476af303ce63037
+14355138943:1@s.whatsapp.net	regular_low	2	\\x497fe423af2ac0dd26abb300ae478f1a4bda6e0834874b5d192e95138ea2f9a6	\\x7cb605e31ccd7e8625604ee66440fbb893e042c2350767737f3c4b31cb630001
+14355138943:1@s.whatsapp.net	regular_low	2	\\x40b887638b315fe016763da52bf5be2da61ec074497c6354843bb2ac414c10bc	\\x4155aba7f468c6e167550b907b3dc2192d0fb6987bedb2eb1c4686957fd5b362
+14355138943:1@s.whatsapp.net	regular_low	2	\\x90ecd9c881dc4813de16f9eaf695ede821aed0097ebfbab565b2f0b157b7bdcd	\\xd166ad20ebe385a4a2fe4f64674a709b3cec850852d135c36bb444bad536ac2f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x57f78733d1244584ff20417ebe59833b9cacbc6f54c1c578b84b1649e2b0a306	\\x9a6ab9453c0cc0827cb8c39ee54ed26fcc2a3e43b46b154f30ff4a864c3c19d4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x14035252d52617193ef0203a691b3c65848808e1b21e83a862da0f187ad317c3	\\x994b0c12457bf42aab3988da8295064796acc8111acd32656d89a13726fd3a5e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1dd4cc45a4b04c2761713b86386a68cf4737ff3d4ced4ddab4aaf68b42d4dd15	\\xa0c609c36c59a8fe0677d2595f11ce15fe53b29d402ab48ab1f7d00c27fb5724
+14355138943:1@s.whatsapp.net	regular_low	2	\\x77dd27c9b70640947e00daab1eaa50f6cbac40e4fcf5d9d017e416dfd0aa7f71	\\x4099832711e25dbae7a8ea73e0f3030a322d96247bb261059dc7da0cf57cc1c0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8262fd3727ab49af28560308c22c9074261b79d49063454643d2195c953d9be9	\\x80a337fe84492cba243319c8f8b8b00863e69268b3d52463e09819fc9e9f14c5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7fc550f693c1d70e153ba5c0d2929a1ce0096cf2abb026870da77e3c677e4af4	\\x265086336fcf16caa16a01a5ffc805c7f6d68babad4eff94ad0778d2ac6449c3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x64938858757d12027e0b8b657b89fe61afd795b7fe9fb4f29001a5fe50c6722b	\\xacfe17e275878bb10f9b5b2089e6f15e2ae70c5151bb5d56b2c5a9a2b86c6441
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7c5928415474b954688ee4b8fd8e4b9782c3b4bbe7a43c5a41eddd30b8b0c4e5	\\xeeeb15e807cecbbcde9ececfcac3a223f5da6cb1084238631af874253ff7d661
+14355138943:1@s.whatsapp.net	regular_low	2	\\x441fd498b3640b1fe71b16d7716a501377a9811d27a6912577442d9c7d467728	\\x069c0264e513402cc2e1ccad5b7a163ec2405172d0c6a4116e3954c573886109
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf279fb0d13e31940ed62d8f61df8e9191a495f16f5ecb1b343afe777053122ff	\\x9c05b3994e8b17455bbff1013e3b175ccb2750d162398769deb601c17cbede56
+14355138943:1@s.whatsapp.net	regular_low	2	\\x067ef975cc1c6d8b035461f0066fd3f64ca76c28b1d16b7f75622d21a030b708	\\x9871efa58111125ea82b145b8732b910c5758c68f3be2a735cdcbdb5f6e3abd9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x56a22c396c84c3eadc3645284c10cd8324d06bc97993e6f7b60f60564de59c30	\\xb746fe84a38b22495830162a0313a8e0a57f9015112b067c0184505e223b8ac9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2e9b1f55e77e40e7d4d88382b920ace26c58834ecd7c2002dde18788540fb2a6	\\x183ec6ea78e4002d048e428c3f0484a69e956813d7498c0905b19ad0140813d4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7a1d17cfe1f85ec74fa12d912ab0b9ff46149dd2cdbd6a841cb6845addb74a29	\\x39546c89c5cb9ef1973761d23f95cf858abe5a481f4a9afc34d770ccc1c8354a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x114c5073fec9bc90245b4a505be535bdf707d72eb536d56531d487f82f4aa322	\\xe059ced56f4e88d6b8235d0de7b51a689f89c596abf4707d62ef4850eebd3537
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc9e51f61bd57d70266761659bcca02e06c8dd953c9fc3e55dcdc83c6d69995fc	\\x8d4f8e0e76e1136fbc712ebe21ed67686beef1935c1b131bdcf8c0d56222c640
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8e1efaec03bf6878f7233adfe5804443d2e908adcde1e68bc4061a258d4c2055	\\xa70637036b64fa023eeff88964a367c48354c9829931a035c4187b2e80a15c7f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd6391654a7ed0a8292594501fed8283c471b05b9c3237dd31549d39f1d53af86	\\x19471bfcb59f914f83969207a642ba0a9ebf095f0acea7a072c96f29a4ff1ab6
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf527de7a24187ab870e2cb2809fb5caac8966c67750bf347d4f8fbb654b6c0d7	\\xd0257d9aec3e239f139a71bd95f67963fe0e5fb1d22a95ad9487c516e00fe2b2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2a116975a8ffec9184d9cc43b2b3fc7f044dffe700a19c661372e4e8d16b4ee8	\\x7f0290a66c1bcfe53747b0088a45c82b5e697f4396b543424f40c18432d74a25
+14355138943:1@s.whatsapp.net	regular_low	2	\\x558bf77418eb3cd7f37cde40319acd5f886778408af91e94b2c43bfcd72b346b	\\xbe2fd1d44ebe63e50939ceafec32766f215240dfc34e2a86166a02c2bcea11e9
+14355138943:1@s.whatsapp.net	regular_low	2	\\xebee3a3c2162c5fe2cbc43c42b1f2ee778dec3cff4bc147fb0131e4477a222f7	\\x143df5be0d9ba59503e822eabfddc3f6e5309a455f6b7d64e49fa12db9f940e4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x03157d118f670176c6dbd90b3b038123561c93ebe0cb66c7d829fa8ea09a52e7	\\x2ec318c99ec4f923a3866fdfc84adf1668cf57cc007fe2c5d226558ece43dfc9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8031611036593906fe28a4b87161ab29eedb67b3f33744d9a2ee813854561679	\\x8eef1465888a356ab077a723a94f1fbd8402dada090f2dbde1077e25caa5848c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x23f192e4aefb5aaba54db12399144d0c76db5eb83cfb6d4588b652972aca4d70	\\x3886e659107804ea697380aa3157f3435f143253785ee0b8aa4c3aa8ede14d42
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfd7d0e5b98f46b4b513830b178ce1bb90dec00c1ab28bc1e5ea093b59fa11fa7	\\xb53ff0abf28f7a099681ec0ab43c52c752c895c2f95eebb30b8f89f8ffe8bfda
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6c12f9bef73cca5ad27b743aad311b8a8d6f630eccd1a333b32d645cac4f0f4d	\\x911273fbb95fc83e7069c6180405981d1b4e30c3944d09c8717fe90a69285478
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf054551df1ce0c6c72ff353ab2f7fb6026f4e7d55e159add20953e3f279c797a	\\xfd44387876e4935892a2dd07862e98604709601bd92271c961339846ddab139d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb3f43b1c2baf2080ec624201d5a1eb82844664ac3f51b4be12d1617c1b7a9dde	\\x9b129dfe6304c16e1795a68dcc3449d6aa64cdcbefb1c93143b55637664c0568
+14355138943:1@s.whatsapp.net	regular_low	2	\\x03a36d90d8248fbca647cbbf6c049279df287f4271741050bb1b5ae7b55b9575	\\x88edf52c661f30aa2b3538a1b7ab38d394141ed6d0590d3c62d5cebf94a9eafd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1db75a6c0f5bf094750bd551fedd3c0ce5574892720efd3d48a5f6de197b2538	\\x506ab9b97dd8de0523fb088b3e83251af6fa2e9751eec6a9ae253b33bbb5f29a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe13d119403f1baa8698b4145fd1c7f087654adaa80cf224c12c5f0b8c9e05532	\\xfc5d19fa63f70d0d9c013aa69dc031a295dd19b659edf5dfdc76faa5b9ae8065
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2bcbc53c6af6ead76db6a365f154c5c6203d870e0aecf744d80a19341f636b4f	\\x0158d906b3436920beea85462e5f26cc1a9bc25796fc3cc134f84f6dd756d915
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe95457912c7262205919adcffdaa809c630d201c5967107b0da0ffdc7571608e	\\x6338294da6fd4aee8cd31e2969338f1ac7ac8600b1d14591773efe8cd80bebfa
+14355138943:1@s.whatsapp.net	regular_low	2	\\x42102aa5a08465a65ef2e2907ca566645fbb5acf60b5fd19a74a9884f2b350d8	\\xd1f578ba3883756563b90e52819b83c4395e276973f3e0766c3cc2f6bded59be
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa0bf8667a5ff05fe36e10f585de528aaafd989c4ad1ac026ebdee49c908e2089	\\x583cb96348b4f8eb42d6fa210ccffe313313277b59e64b0c9c68b28046b7af9e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x73dbc1cb9ded47b09899ec17febe0381630424ce15b402ea54a949a1d9ed1f16	\\x7180584d618dbf37e56fd4cb665c2d649e2dfb103e712ef65b3c446fdfd1f64a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xce0a5e70309372b3feb56c3cf750676ab6eef12253ed9702876995a38f9c4a15	\\x4bdc0389196a07cf66256ef9f7372c076c59ca65dc8c6061e94bca2b33ea03df
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfad274eb0407ccbe36c6c3a2b07dbed10cd94857629d65293d1042eec0a2bd2f	\\x380f667d47e54192f0071a16b2cf257ef47946e0c6bbb60838eed94682511fcf
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3a72190f2225bb20960c5d0ab3ecc35a3c1b0fa02a62155adf850213e657eff4	\\x8b406f25372a1495e24a69e8d5ff1049f22a103d466c2ee4e5c01cb55153560d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x141d5503aef28e2f0973bd837984705dd9a9bd3d9ef1e8ba1bf8a7dd5aaeeb36	\\x1bc89669b6dfd0afc1f441899b6b95ef26da4079e62479c57dd29489d97b65a4
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbd399b22cc438eff2a2818a4e1182f0dc0252fcc0c4bb4a09561433235aa01be	\\xf07ba7b5b022fb5b5530e40ff184ed031c414aa8004b50b9231bc964934f118e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb6e18f7455a27952494547bde8a90a1ece6088ba37a4db96168eb3e7342f3b27	\\x73a78c650041f660adcef323d1e6c5fc6b47a54135db2009ce8e8552865cc612
+14355138943:1@s.whatsapp.net	regular_low	2	\\x27da7b59dd733e4705d732151027eff68fac602d0ac1093d67c0b97284ec55f7	\\x9126a9cba5f38837a9c5451546a59c7a1783025075db7310b64fa460bc8a1cbc
+14355138943:1@s.whatsapp.net	regular_low	2	\\x369da2214e3f61589dc8ac8c3e507789533a108c200881da64e9de5c546043fa	\\x1f282bbf6e097236fef84736993c3a95b59b3ae469bc08bf0db0cecbe76b403f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xad8263e47a7512c8b2e4c681113faf67bc1d2a83ec2b0f596d39364b264b77f6	\\x03921ca6ef177ad9b37225e2e60653e749c6a21357a4d522c8f90be53a8f071a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1525b4fe5d010e9de1838a78e49feed1d5eaa0e3bdf64b66406dfad65d2f7925	\\x3cc1054b2d6200155691e1fa6c52da9791111b605c4dc7a6555ee5cad6f87c3a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x472bacc7520f340ff81dfe0ba5c24095f73e4c5c11ce17908dae9a79f58c4819	\\xa90880fe38f2c0cbb440696c70ce6c189547cacd29cfb04d933a0aaed7510d15
+14355138943:1@s.whatsapp.net	regular_low	2	\\xba23a0db58ba37c1e66b3825c02adb1fae0139fb7138510c133133f0a74a7d2d	\\x94fb12fd12ffffb5bb3dae0e3d9218893ae9319450cca2057f38e5c365c3ed48
+14355138943:1@s.whatsapp.net	regular_low	2	\\xaa34e1281c486831ce126854e01717739ea10f26f887d32f38e5adef0d334478	\\xb6fc093661992a96048bd6888bf0cf6f02cd44c62eef24880efdb1910a665494
+14355138943:1@s.whatsapp.net	regular_low	2	\\xac5f029c6cc49b771005d7843300bf0073330fb0a437db5e3f62b2a7198266bd	\\xe24bf2aadd5154a55c82e68f4979f447f192cb32d57ae9dd4a4a420593762f9c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x03b763edf8199dadca2e86145abf0e7194a86f1237eff869cc604398e2b213d2	\\x934343947c2443a6f3213d174251fb010da58896f842b775760811f0eb698721
+14355138943:1@s.whatsapp.net	regular_low	2	\\x42a1dfb0bfdbb4533600839a0955425e3349be3ca0de190fd4da09b4367dd79b	\\xfa50af023bbc87d573ec9ab32a5d4e2ab0c1c9a25c75305f206c3b0f9b0ce292
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbe45dd77f55536135bbefebc4e027542a8b0754b8daa26b074b565bd1da3ba15	\\x87c1368036ec4ed3d6645890ed9c6932adb577d27a0a26d1ac8fbcb9a3755a71
+14355138943:1@s.whatsapp.net	regular_low	2	\\xad8df89c59a808aacf4eb14aafece77286cdfff0dd9ca09f111d050528b8e644	\\x978d04fa9d07fbac003355faf312e13ce88812dd00abebc452a987f53f18951d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1f3abf523bf63377f7828986f6e857ad2a52ae1e3387b484b2bd5a9038700658	\\x8e9be338ca999f8e66ec54c806d4ec3f44c829fb9e9417403a309bc93f354909
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc5e41b15b5647679efa16693ad919ba6a1124529eedd4c15bf23e2799db2b7a7	\\xa88c60ce35762c1be870ec239a83edeefafa6cefa405824c1ef374515f569ad4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x97d44bc44ddd6a35c392f2f02bb705aa8b9b7457ba5d548b23588760a167c8f8	\\xade8b7aad848a104d9758f6f223d059d74486d10c8ae2740c70b371bf5f52c42
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1345b146a13ec4b678aa16b12c22b0f377859d54b6865d616a46121173769fea	\\xf9c303d9b884d87dfe719c63c477bee11d502c34fb1b3d15cb8f87c7c27a7825
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0ef89199fcbaa23ed7e96bdafbd851568f08b1ef47e59f68640ec69de2644016	\\xbe89f82152123f80b87123273bb3aba3505492a3a1c1bc3f0fadbad41b3954a8
+14355138943:1@s.whatsapp.net	regular_low	2	\\x05016239d991e3a68a35846eb58e849f7943a813db0d9fa66d4c89c20374a68a	\\x4d9ac34d1bc45b5420e55d609712ca742092a85a016b8f58582c5ee2e46c62f8
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcfe4805681407d8bc5d8b7d74536f23791a732f0dd00d534cfa72e9ea18df558	\\xd9909f34ecd156dcfa82d9c3312346a9bad4cc80228794d5d7ea7061af6d216f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa47e2471f69f1dc8c42843ef82a1ab3a9450dee62dfc79467565e6653656a7da	\\xef6a281d535b5a9f8cfc6d759a2d9dd84ebd14d7a4990d8fe9b74e127326473d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x840a69a9b735fd6e43d4f7118e18c2ec7cf50f293213169de91478060e3b8692	\\x91144c728ae67abe842fe8a31169374dbc8a2c96ab7b22583fc1b1c62a55522f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe56bc336315c8dd82e8e98879959f1f58f11a47754ba7cd9a17bae059338df4f	\\xf902b85d8dd06185b0c27002f1f1062e1d81ce7d9b8d8f59bd36106af1a6cafe
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd441e8c6038e30598cf823bd44c4bebe31116b85c5fb38aaa5cd0421b3bac59e	\\x5f20bc38b3b10146946065fde6e778c00b059586269b286ff5098e89297d463d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xff990e130fa6d4245d7ca62a7ac8201800dcae48fafb3c81bde60f9158361693	\\x1b4dbc234e9c9cd2422a300e0a64ed9396cca88b1b8e9b315a9eb262979b3714
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd566c8420db17d90d096b963a9cdf608134bfdcf571a49587478262deb57a2d8	\\x4948281083add6bea4ce5790311577fafbdb65a14601cc892e8642cd6de427a2
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf23722885852cf0a8b87d9fcf7f0212cca53e15546108672e30ed70e140c7ab7	\\x7e172e088c85fcb94219d51f3774cb9eba140933978995b73d789951bb752f65
+14355138943:1@s.whatsapp.net	regular_low	2	\\x13bb2a04f41d004f5ca5167b2ae6bfadd11c1145fb9b3dfa81a56549228db5b1	\\x3a016921b85343b6d8645213d555807ebb2a43886e1605a0df3d2ad6acbc7a4a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbbc3dfc4cef24ab613ce23cf7faefc3a0e22741ecc7d01defe3dbac8f777935c	\\x58e39a093f87cceaea72753e1377c82a28c725a182659177c66102384de58e61
+14355138943:1@s.whatsapp.net	regular_low	2	\\x07e837db357230a02d2f7db9fecf65a3f775133ab5d6cfe2058a0cbf93f75b7f	\\x894c00dec42508ba6122b95d34f9e44dd3dd146c993046ec58fc071c51718cc9
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb1f67cd8c34daab8916ff808d346e3b8f094ed5d6b3c9d0973eb10614b2b50c7	\\xef763199bb614d8afad9f859dabd63f597fa6aafb2b00c0c4a049e18a50b4c6b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7389fb1864ea9918f0b47b1d0fd41af79446b5dae9d1027b32ba6bc09df3f8b9	\\x3bf4a9b56707ec14e5f1a398d520583a90a41d9b17ef860436f75b66fe2744dc
+14355138943:1@s.whatsapp.net	regular_low	2	\\x30795e49b3e46777bb4d94a214bf093204f72f26bdc93192fe6399904a9a4b45	\\xbd72f901bbdf23e293204ce08c4d07f3084fb2ee714f60d684dfde19021b7d1c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x96dd1e0dc8241bc910d31a4e569bb8dd11bd42ade446110ffdaba77469e94b41	\\x6dd091b77705a7a94c9ac7cfe4508b3418510fe356d9ca690408dee29cb00437
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1c4902b2415e80e20db99d008a93bf1e7c7056e2195b16bc5fcd46aacffb81b3	\\x9a52dc685a67b46766f52504fefb21f11c503f3f8e7f479522253042e17807ea
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe48f142d55900f20da7e314028cf2ebd1197cfdca9f01655ee04e5a18e9c7655	\\x9c2c534b41d498f3aebb721e656840a25483ca16d7a13803f4ba1908eaba24c5
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd715e41afb1510f1f1225e121606181b2bb558c27c2d7080d32430a5cb142264	\\x47e519249337e006e5f1b29ea023a9ecd8b3cc66f06a201651f9f5705b5448ef
+14355138943:1@s.whatsapp.net	regular_low	2	\\xeb9d9be0c3e923d88132a7aa78b174be930c10e0eef3fda941553bf5b3b3fa9b	\\x44feb759f118ba093adcca83389345455e683873b363bb8fb310bd8c7e1dd84c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7b79afd808b5b3f67bec8955c5c68b53bd83add535783dccb272317c9aa277ad	\\x04d8dbf3cf3317395bf26aed3d7fc146559e547839971a72f309aaae5bb95765
+14355138943:1@s.whatsapp.net	regular_low	2	\\x99d0682ffa01bc9cad64a73bfbc0eb49872e7afc27c288ee5d07df1c5febaa45	\\x5ce0b62d78961020f0ec3ba591607af613cef22f9fb85d66de3c2db33b7562e5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x68d6615561acd6eeb54a8a69524de9472d6354da25fc5c1787ee7e617981a468	\\x81007e74481c242e1f67ac754c1fe2775fe9c0cb2bef0440b941a7ed3023d747
+14355138943:1@s.whatsapp.net	regular_low	2	\\x72b5ba63d5bd278f6f55ad53899bfe4c13169efa09b673da5734c56a91cd6724	\\x4878a72c0eea37d0d40242800f32d3c56ad129ba471577708939612d0af38d7e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x31ebeb89af6f2815d415e43f6c5d817f7217fa8aa2fb1355d5744b07b7e178cd	\\x58ca18e874f77c8a07c02ad931df11ec62a2893448799b26238154b6fbb80096
+14355138943:1@s.whatsapp.net	regular_low	2	\\x696bcee27446df71f043aa93c611e964edaa65efe5eb44f45b17b4a480af5df7	\\x0af2c10bfbe2d0b23cbd60ab042117b82c032833b3d3dead98446b83b995ebcb
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf09c7776b428d8734d8b30f5932850241a50eb0825654d7a07f305746bd5bf18	\\x4edd71242672ae127f7afe4bcb653b1184268949e27b1a52d18d3e9c346b12cd
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc5d508f8a43c929235fce671459edec415e462b83b42284024ff7ac1cf502ab2	\\x488fbc79cab3450858638e4ed3e61316c8029eda8f19a06fc371eaf691d308fb
+14355138943:1@s.whatsapp.net	regular_low	2	\\xca56be1b46fb93604424020f030a8f2d0f52122cfc6554a9d7dc6503c9388da6	\\x9428b80b82c6b582b3d601f6f7912d7c49c5e9b1c9dcb0720d724563a9d83e97
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8b16ac1f87f9a194d837d5b5f6cf681e5e52b596d138904a6e05f9eb9982dad6	\\xeb176c2c7aaf8ea2286b70dc506c794b1f3687ca082a435dcbf807da63789454
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6bf3590cd6faec5262670c666634a2fa033a535c4b5f89aab21dc111d9de2b89	\\xc171a0d4666373dfc383be1ecb497064e460bde6c788923c27a15fb395eba4b3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9bbfe5afda458192d80db70c00f0c1b0a5e77230375380a816ecc356a25b66d7	\\xf53dd79ce9d5668838dde9215189515c21037d3673bf857ab67fce8216cd1054
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0dd5a7e9141e5821f115ba94c2aba4353c936e981c61601eae8deb0e7c2c9518	\\xa7eec0ff0d9ab774653cd7d4caf802295ab92355fab9d694a65e7e3df9a4f2e1
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2cf3c458f5d32fbed016e1e9bd8b676ccbfe081452618587769f66f9102ad2a5	\\x4de4fa8d99c4e98aafe31070537257a3ddbf1484d246f2b55a872e3b4e34ef30
+14355138943:1@s.whatsapp.net	regular_low	2	\\x007c492ef740090f6a2a516fb6d0eb7be90fa3c4ca7e65f979a316e0134f3d8e	\\x7d2ca965cfda033ee0d3a37e2c071336023ea26fc1eda8b8a5bca5c8be24b538
+14355138943:1@s.whatsapp.net	regular_low	2	\\xef6746e80baebd910b0f0e9d109448f78f6ad93dfc855bd40d369360c6fddcf3	\\xf3561d0f6f622215e84529d81e4b735a8766a63da805570cf4a7fe5f0eed02e9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9ba59b74c0b06df4c5c4a33eb4afc79b3faeaa09851bed7a4dfee2a2d6ebf664	\\x4a88f2aec3af8866b4cbe043234f9768ed7e66eb2022ebc3815edabe40834a4d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xda91dba657cf7954222bc39a9c3f8bc2d2ff53a0caaef5f74b2c810b5d0cf7a7	\\xed4e486d0fad6b185514163b8d7691105d4685e363b3b57f21bd2ef76118097e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf0261b9b94311f06d93bfeb12ee43d98b5d318716f9c69f67f5a5bce22f0e7b3	\\xe664b9afe8a4080b3ec5f669d2682494fdd2562441740b28ddcb7e26083b453c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0e03e19c5f6974faf24f1674b861d6c6de34a93ab9ef1f287e7424c3daa74214	\\xb54e96a638e3beb8ef8386ba708ac48e9d4ddfcd91f33746727731fb238c3fc5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x13167fb9a56c8ea7eef755697ae6fe32f15732f847e65b3995fec4ced3600929	\\x6767073dc88e13a074e39a1062611d98eff154fbd8eb26ce48c241ecc0d611a0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc83008ff58e2e34978a954b5698822731e9e2c87396ac56954905d86daa362f6	\\x38f313698c0f859f0e963ef7f7990bd6cf4240ae5bbad4567fc75594c622aa31
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb741872ae61f475d40875b5388e8a7f0b427f04ce9e96fc9e222193046169e4a	\\x7ddd53bef9da21c5b3c0330d9963da2d320937c97225141c191ac475cd9c866a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb1efddbbd19d66ec63964f974cecd92e6e6766683ed3e6b3511a016f3963427f	\\x49cf96bc3708fa4eb01246a7ca5e5baced58024793d11b5bf9a57d3653af177f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x152b19b1b6e10dc93ad32f0a3b5c7d90f107fae9f401893b19f2219400372dc8	\\x034ba5400a5399cfc5fc9dfd3f55748f50183e1051eae9e9dbe274078d472b6b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x40bcd0dad0810a5a5f094d02653451b21db15373adec181273b9c41d3bfb5086	\\xfc4cc352f842b9d4bc72283e92878b5072578b274545250a113fbd1166bf6359
+14355138943:1@s.whatsapp.net	regular_low	2	\\x026f97044a9081b9129129394edb09991d32167e9df9f34e402007ca5beb578b	\\x7e6108fbe4f0992bbb4d196594d40f85023332b50b00fa935e3dd16f6bbe73c6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9f489392eafd9380084eaee07a78c0b3bc9a6d25caf691a80af07c421a21bd0c	\\xa1e577fadf5bd65c4236165a0a927566dc78a2db42fd6629f20a73f2e3837c3f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x319b4d777b170c26647a4a924e59919857ced26f70cece54adb24b02630d0789	\\x57ebb62907c6d502406cf178fff58efbda141f52392b921398c02f06420cee97
+14355138943:1@s.whatsapp.net	regular_low	2	\\x77fea7cede8f17a513da915059e6a2303f4c5a4c02fe1fca8a338136adf294b7	\\xbd3e69bb22a427f0c536d39ef05fa5c46adeac224c8a05ae8c8339f3afb71ea7
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb53835a579c14b5ef6a591c4915c0b34f9bbd1a6d83d2efec520c45811bc467a	\\xf0d771cb332c37c47d5f5c37f909384f2bb02b0408c0fa593104e2bdca7652e7
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbbe4904be7d04d4cf87367b703c48de24402db43a0963aa37ef42c1145a6b112	\\x843308d543739dcf17a952daf6ea3a3b3e3d469ad5b74a51f613eabe3bd41ee3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4d3260b634bb9707c664c939a67a74140ed47056224353dfa11cc9d7fdd763a5	\\xb78b0c5ea415a8be95e60078723135a1589907091bc9e13fa6e5a2d29e5721e8
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5eb190169747860c756da90393febf10d453ca255c09ff0db006ebd672f22c53	\\xf5adf87aa3b3e53e2b0285bb87f2cf1c9749981e3a85b7c8e97ef59f7c94b01b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdf5beff9b35d8c61c2cc0d625baefd7282a8270bd82200cc8fba4666ef5ecfe6	\\x486b20f9d235c38d585bf8391462651933bc8ea167d87292afd11f3556822189
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5bc593bb56822d6ca298e1d93abb4cd1be0d1c2cad518a7757f083afbfb03ad8	\\x00b84f0d5f330443bfebdd725336f5601aaf56c1b055297bae583c5c10086773
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1059ecfc3c528f1b28582eebc6dc0579e167875968dfd4cef74de8cbe6c8e54a	\\x5bd5ef7c8b99a54800bf516908900aeea3dac5c297304756027a123ffd9df910
+14355138943:1@s.whatsapp.net	regular_low	2	\\x82faf6601fa90310107f1028dca413abe57949b13e74b154b05581146eb98ae9	\\xabb9964f75da54e47bbf96cac20a6a004bef0fd00720c32ea65146c9f907d5b7
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf382d4bad3aa7c7b0fdc1b218cd87cd73a7f64221f6a6a65773c47b6ca24ccd0	\\x34464be8060125c9410cc4e52ad144d80445a9a4ee97253d777398264f2d8312
+14355138943:1@s.whatsapp.net	regular_low	2	\\x12b27120a8d1bf146457b6869671ec3cc46ac2c2c243bf2dde5ab48df077c37e	\\xb3b57a9a40e218522a7860b5150949822ab103a109c6c12f1c9c02775cb6b01d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa7b1cad7c8cebec806717379261a481fdb097e22564187f29982d86e82bcda0e	\\xc7254af6e4c007cf4740a1e075c7b8f1c5ac78ad116be7dd6ed1281366e3e6cb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0bdbda0c9be4b2538b6d49fb79a9ca65737dbbc138fe260285c075fd764586b0	\\x4ed182b2d3dbbad8619814488629f510893c92e4560b330e5c5104ae80031e18
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb9071749e11aee748fe99029964a9ab5e6b343c1a9e00380701caf3db198bc64	\\x17ca303195d4907e37bf8cedf09ee54ce5eea4d62d2fca88679a4b39b94ee3ec
+14355138943:1@s.whatsapp.net	regular_low	2	\\x850ab6ca55c1cad94d75d0939742c3047aec08bc80082c6f530fbf7a38ae0781	\\xac8d82364f8ddf65e3a17a8a19d008e01fa17e3b609f6832a736b018a8c267b1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf4c0b1b12096d2ad2cf83b4b1ba1546719d287da32e3b909c768e84c552b8e10	\\x3066598d4710121cc60806f4caad19b5c54a72b19254e93797011d3b7ac2c0b3
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa60ce5bb3155704eafc72836756fb14ab60f0e5b4edd63c50af6879dd8e7552d	\\x7b24342b5e46f2b3985601f83764e80794b978fe1463d2220cd3737ee2c09bb8
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc1608b26f4f5295e82ed7844c56664e903a9cc2af69e5ce6adc82d7324dd00f7	\\x9fb5780c07322df7ea948ac812163764853ab3a77d62d939730a9c23132768f4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x71313e956ba7c9e4ea7701ac72f4376ec2daa1c083d027efa3e15dda5516173a	\\xc5894376e798c7f5e1d56e27617cc57970e3ca03e515edc6a7e13486bf1cdfa4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x488a50ecc36527469fffd1dc32a3052e0f89a12a1e57b422d2af5ed44bdc7397	\\x8df38cea0ce859b9b4c2135555a4a11d0ea1fd6068203d421624d583b83d0e80
+14355138943:1@s.whatsapp.net	regular_low	2	\\xeb5cc52988b30a45ccb0fd1b33499ed2e485ba254bf86fd7854842d72f26ab60	\\xf78df1448f1f798d525b6f989d63a3041e176fe06c37f82b37fbc736c237e30d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x58be1e82382ff246e0361bf00920734272be95fe3958dc652a9e63fb71515206	\\xbfecdcd219672187e64be9dcf1dd363cd6a8351467db2d5ee462d2efeaa18061
+14355138943:1@s.whatsapp.net	regular_low	2	\\x19edcaefb6a5f3e273d118fa64fa70728964841ada1a3cdf5cc92de9161d5bf9	\\x851e6d6fa6564f6e6a47810da91b1bd7aee7b5b6d979539dd02308bde03cbeca
+14355138943:1@s.whatsapp.net	regular_low	2	\\x80300d3db0e156fa4291262eb250cc9e8bc9f1a81b97317ee2d643bc9163b9bf	\\xe65d1a6cdccec7231b784bbc01b61222a028625fca75d15e24ec33829f990e75
+14355138943:1@s.whatsapp.net	regular_low	2	\\x73e85ad24c481cf8260af7549a500586cc1d029c488642bc77683f228eb77aef	\\x02963d54449fdfedb79a2da234c538e8fb9b49adfe833c0466fc40129e3e31de
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6e0efd6143787c60198e750e8de007b8feb5b9a672a5c775c7f5bf2ac39c1ecf	\\x1bc4b06a3ddc170f37211abe13578f3883ac57325b50595a1f0071e872843364
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4edf9de508bd86e14505f0e459d85809a4640911905871d32f24d4e170a1dd66	\\x4f0564d747abf36f13abad69f1f615630a2f1434a3aa1764da9eac2ade469c5f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdb0646f8007032189b276b248876dc48d14a14cd9bc66c5bddfe2d2d9a750610	\\x5cc35f045b8e6e3625b15bb0a3f11e7d78aa810ae4961fc6db4d93623f88cc19
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe60f4ac840ced1cdf5444543e3565e3179559e85f964a04ecc90b232b289f670	\\x5ac8fb368b321b9342c86b04f28d80b9a1a25c065432afb511089310b038527d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x04b23370ff020bb5163cab2f74630e80728ed4467dfd7fffcbd4bc71cc76dc83	\\x86db7baefac9d667f4e81e2686fd334433cbb6be8d77b36fc0ecdf9d775fd1f7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5b6182a6be4cf89a6535f7fc71c6990b5c12ac307ab0dc2539a0b306f7028def	\\xdc6a9884e47d3a72966ea1390736836e0f8718f637dd328ead68212aeb13270f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa19a467f3352187fb74a3937de66caf0d53bf91def004056f2ed04a061150467	\\xac67e8c9c4a7cbcf43841ebdcb22038cea07d7d3c3df227c3952e34be401f4f9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1c5ccc23435b83c52a666cf7d763ae4449903c6767c2baba88d95ac8bab7f416	\\x22e007c4891c239a0abacb77784cefc2a7902dda5ff1bc08e2bc4ab56379a60c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfb96292458321a5fbdc460b8b45dba023469b08b0c119fffe8627dcf7e199b58	\\xd95b4f3c11320c52d339b2f70dfaf970f6895d3e836258d23faae20da3d985c2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x409b8ce07562c18db17a8c77d7ad70487cd3c8a1e4095c8675bd9bc192247cd1	\\x941fb279cab8e5a14fbb645a2c7e0494012e4be976f32a9561040340b4f8d85d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x144dd75685bc839d21816dee644ac777243f3b28122166c1ac0bc67de325ecee	\\x4f7e8ed8cd59b65a46e633aaf2839ea0212bef04cf8828b63b096fc8593f03ad
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf7428b455b0307b775d759ff966290eb993520b8735bb2ef30063f5469fe3254	\\x7a225045455ca38992d81aa6954a6b0506ce35ef1eacf0ad9d48f2f190842edd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x313c257df09549a4d92096af57fba795934f2df1573e7a889ba7fbbdc2c72727	\\x47248c8ae2c70a176fc839660f24b0304e273bf236963cf35f3af7778f3fc931
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdacbd04901200e1c9beeb6a3043daecfab4c89f1c8725f75839f3e7b93eb3f01	\\xe18c9e20d0c17bc3371394c68b82760ab9c23d1827c25680008baa1ea4fd9b49
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcf3cbe81cf8fc402b11108acf79a56fd706990a4deeb8f9addf38362b0a6be2f	\\x2c55d220991db62ea776085b75212c2eb163fb509e3afd163d8104b4625d2b77
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf0cd77278bd617953946464e42768363a157406a65515f0877709ecfa251c5cc	\\x80fdece54b1736e5b54741c90f5404a90d4d002af4d6e90038828aa61eeb62ad
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2fc806db5ec7c197535341499f2beba8526e2a876b19dbfa2175cc35bc2124fe	\\x24b6592744da847b1971b73cc6e0e10e9b963b04accd5cc2c8e27c0ec8b3433b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x43321454bf90f2feb06435f2cad6f4ecc114cb10ba541cd2697996bf665a4342	\\xd198bbd9bcd5d97f49cd92253904e069fac9b2dbbc4d84c25c667724eb80eb25
+14355138943:1@s.whatsapp.net	regular_low	2	\\x898f10ce58d027fbe64011ebcca755e8ae7bd14c965623006963e7a7c421be58	\\x2efdcd6e3c52b666dbc4f2b331c5dffb5136603a709d44c48d55c6cc2883a05e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2def9fde26b313287c2076d42ce97a0e5fa64eb743eefa4ce13fe744279932f9	\\x39a064b84e11badffbb97eb5b9a59743be24fcb4200b5de5f7e9c042cf230997
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2448a832fdc10270209bff7e3f0f27ed4cad17ce24d7991615f02a9aeec10ae2	\\x3dfa52d3bd8fadf94e080163435641705588d3198c9bb52d07504c3bc6d58c56
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5c76169470d6f9c026a990da289500324eb903d2e7ffd555d8dbd60498ab09a4	\\xcf6dc3d39d5e05196a7966c0e15a0e7b3d28e8337eb69075ee4b143eee76311a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x42d6723ede0ee1427fde8099c876f073e36e20a630fefe4c06f6a7fc443c017a	\\xcfa09828d25fdc7eeb758f2a7defca1ca380bedf64ff5a009cf55d3523d8be55
+14355138943:1@s.whatsapp.net	regular_low	2	\\x16316492115452525e6cca8f3beba84e4cbb2f6db72bc79d4dd9aac6b126ac36	\\x7b659ad0a20fa7468ee92c267d22699d3e8f55224e0b152f66656fff0a788713
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc66baa0c2c828373c247cd86934b8604bd8e9864f596c387102b8d3a3f79fedf	\\x0906a41d4bed8cd61b664e195821bd4ca461f97dbb0b5b810fbc692fabe6c0e4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2b3f9b6df93bb0b9c6cf16938501012c6c99da168c661fa3ae3c92573fba2be1	\\x11a5a8c32c0e352d5b44410cf2440e26a6f0b3fa74f53b3ba3f9ba99c431cc35
+14355138943:1@s.whatsapp.net	regular_low	2	\\x94a186a4a811b10d18669bdd55ca024f599fbc09b628328334121cb85d472310	\\x76d90b9de57167a085e44c03f60b5dd6724a5c8369e02279454f316433630d86
+14355138943:1@s.whatsapp.net	regular_low	2	\\x088bb9d2a4119a72623dd083e70b4527b34363239033c4422a1c863e45cbf593	\\xb1f62737642bc877f82ad69eee7b8b6379bbf0c718e715e66966dad9aed8df0c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x66c440090d990dde9a58e6034e1f23670a0998ea30764396a571196d410b66e1	\\x7d301e4af384df69ed9b7f0c387ee61ff8caae014caf14be4c7249ed0850cbf9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x920041ef51075a7ad51ce98422e18f6c1f35ca95c580ad949d02e9c2bae41783	\\x645eb04fc48637f546902bb3dc724d9c3a15f8cddef6010d8071dbba2bdf65c9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x47c698dec52a5e15bc616aa309ab8f090db47b555c02c988a7fead51122638eb	\\x28316ca5ad4e4c7d8b7e73d7030e786872a52ce9a7f63cc5fbe03d2356b47ca2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x11f8fc2e9612cc1086fa2bb42e8e227e9638fc5e899d13fe052a3613d6704660	\\x5f1a20740a7b1e9229c92db341033455851c3c706656e4bd52300cc80d1e5b52
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6d773d09bb02958e0c5407dd9a2d72066b571c0dcea2105f865ca44c38ac96d3	\\x8a676e28cd23a79a4732e8f1c8cbc77743e1c3fe635c6247d6fe0185d0fdb5a6
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe28c8d34813a4112c70c16f7fd03f38b512452a0c04a6b3fcac66ad004627f5e	\\xf16d4de6b65b4d69aa8a6cb568aa9ca21529d95803846e24f0418cc0a1ec057f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xea9b796692fbdd76559cc9678b89d5ddebe7d6eee4922bb9350a8f08ce678713	\\xe154746cd4e7c654e821a66d91286ceb0a9530cf74c0776be1f6a6d31ab6903f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7af17012660f73146875f627a558225f82c25b0b9e2a4d93703b99ed460c2e9c	\\x1127f9ac6441fbbb934c535e5fab093342212b3cc69b1a3ce69eeb9185a91ef5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2dd82ef441c76ed9c972abc90596eb455fccdb176159872be83470a5bee83d7d	\\x7e49bc1c21686075c7008445f83aadd0ae87cfa169786377a5dc88ced010f8af
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8b53ad69213545414add0efe3af4d9acd1866877016d7f0eb87b85179af76b0f	\\x2f1ef37ad90a15ad0ab395dba29a9dc7c822357426c67639da9f96d87215d963
+14355138943:1@s.whatsapp.net	regular_low	2	\\x46f4d5abfc54a12694f463b96d06daaf4193275989cb02ea6fb1e2a60a2c96d3	\\xd3a760a82a71d1e32f55996e1e41ff5922e2c5aaf67ab0b09286d9347d1d3c4b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe595d3230b4a16eb1b66647ef5d0d9de5a80d2e793c298d78370bc1a7a6b929b	\\x062fee9f6fe5b480c8a9c5113cd44070ba53b0b19e119326e708c98813733501
+14355138943:1@s.whatsapp.net	regular_low	2	\\xac13ec53fb13b967371a4bc88277ba28923f776777f8de398280427685eb2421	\\xdf240d15d42caf78241adf75e7abfcd58a49c295156eb4f915dc1ccc3ed28de9
+14355138943:1@s.whatsapp.net	regular_low	2	\\xeda823cd973af77bf222e538c0fdae1bb6f6f54ef8820a8a133687a16a600c73	\\x28856e5c111887fb8e70d438886c8d10f870dfa7a5ba28814e96fe7f7e53ca2c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x25cb7a1ba73440f3284b8894cab571e2143b62c71746c1fbebe3b62ae9379385	\\xff2d71098c256057c2bf707599bd1e41f71869b8483daf14774b4f8932c24204
+14355138943:1@s.whatsapp.net	regular_low	2	\\xce2ab0b59e0d40a5b0b51342b11b425b9dc9e915b402951764f147b1cf99f18d	\\xc762014d07ed1b5399c374e5acb9cf79c4d7c56f99649cee60c575d399fd13d7
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe1b8bdbdf79e139746dfea67cc29aba13154fa0bb3a1a8815eb71c66230ad595	\\xfbf4e16e5207b7bf8eadae461949c71d7b097f101f0c79963d5e778f5220007c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x80b35499058f1502c220f6b591bbe484e2df9c489afe25bea6e366a07f134f1a	\\xbd258e1774d7af85d302df6572f296af7bde43f8404f5d3b7ac22fcf81186cc9
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcba3f5dcd61a1756f821dac34837a625d716f0b47f0ad6c4d2c4f9831d447ac6	\\x57125c8554e64db79e5f483ab281fa19234378070c7da878b39396219d70f05b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2579b674d8434c292428880eb9abea9884be11911529870e160011c78fc516c0	\\xdd7386d2cb01682023eabe23bd9f876949208ce54e3e7ea0c0480d3e12b73b6f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf1389ed5ce924bd62294fad18771f1ad03bce36215d601fa7e96ab249cbc6255	\\x73613e72b3b26e651a6af1c87fe31cf22f1c58392d9a43574d51f72004fe0db5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5c35cedfdc6c6ae40e6324dc3d988942a81ac1722d614f275430f7000df06370	\\xca06e13dec01faaa87a50b5a2170ab276b9bf6643da2fc0898fbdacfd4212cdf
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc3b71703236b8c299d492e616529bd1b7b9230c59b91feb5c4b7bcd1cabface6	\\x452328335373bf7425034824193d5271ac714e2964421a5fa0dc4f8b4b54d068
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9179f075cd2615baf9759617cf4af8d168cd3bdf4ba8ecea8646962d500f2a7c	\\xaab6460544d04f235654baac86f9645bf66cbc34ab68c0913cbda094a700b22b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb36c8f1a79189542f31ee533de8d8042106c94abde62495101bd0b29fabad9de	\\xee17728de2be03183be9cd0b41cf2a6c841ad72e11d2c92eb38623376c97e6d3
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd3773d37527ed41c69c191c11b6d9120a751dd39e7d5be7fb28949244abf9540	\\x0a74af930e7c084fd33a0d0a3550b9f36b823a389afd7da08884bfb4a33250bb
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd19ecc64c048a40728459bc70a6dcc06ed72ce3037fd9c1e7fb8aafb796d374b	\\x952f05e8558b61bd9617a1eef654b8ae2c1b2d86885e37e82ef5cf816893123c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x907de39f4ae790212020cc15ccf0ee807a559dd5e94be99bc504b081b427144b	\\x321378086ffeeb08305a9ee24ffb8d2017d48f8751c3666a0e7cee62f94320d1
+14355138943:1@s.whatsapp.net	regular_low	2	\\x21e6465e814ea07a63bad93bbce28d418adbe7dc28643a59b72f86ea8ed6eaa7	\\x35b0b67c22bdd09db49f4edc234793cd06b6696b5d715ab53b7b0876e56dcc2e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf299ad314e8174c0528cffa38f6485fb610d173425e50e080598c191435f5c5b	\\x4797848514c84a20ffa1c75d692820775fd57a0253b232f9ccebafad90641472
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6f3bffe6d6143822093251933911abb72ef7d56eaf2fd3a92d0cc46e3aca0813	\\x9badec6037d598a70fae2f3e27b8a1710c0b5f0adfabc91e4f91a09ce094fee2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4d015c997a46f7347e80310e5c15e686487278279f19e8772e38908eae5f2c44	\\x598adbe8abd9133238b434eb591d969c964dd72ecf5d6de14e7e7560b1b9dab2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x00dddb65c2cd41f71d27db01c0a531a9038a2ab2b34c14480c9c3f4142145b23	\\x42879520019fe159cfea796c8ab21166ed71e36e0cc4899f2ff4aff95d13eb93
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4b74df8f3fb7642f15bd3566e22081671b58f8fa6b89bfbc643163099ca9dd8f	\\x2c561a7df9842665ad98b132d45e9f0334eb2fe61e3ad7629053bca970698b17
+14355138943:1@s.whatsapp.net	regular_low	2	\\x29129273febb950311e22a14d63b460acb93251203ecb0582841a0cbc36a8736	\\x3150f30cf6d32c217e35b57d6c3c4b15a6b1eb92172da91563c93b03f92232ee
+14355138943:1@s.whatsapp.net	regular_low	2	\\x29ac1105de97fdf32eae75a14f4de4fa95614b16f6efa9932cea4b23f15039bc	\\x6696bc704597827a7c87bdc25517d8427610b8875ea702cb38d289b030ab066e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x06b9f8852bfc85db62a1c18a3598794922c16f3a2c244b78e8e317fec3bdd1b4	\\xda7819ec2cb6db9c562ad3038f19364cd73585f1194463cc71d26726c6f87447
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe50912d1daacf07b995f7fe9062940407884728bb9bfc1c08740138d52201f5b	\\xb9f9a2806000e330f1f18b321c1e9644de1b5f0bb34cb9b04024663202ad7bde
+14355138943:1@s.whatsapp.net	regular_low	2	\\xed52f418c8f6249f027b9bfb8b85f4d3562b01ae861a016160d8776ac31fcefd	\\x80063c2ed23db32ea9ee5878f2cae5a5e79eeb319d55bda2392c47e58d17beab
+14355138943:1@s.whatsapp.net	regular_low	2	\\x607c8895e3ffd43a6bd37e01db35da7d309b0ce8e9fdc6da05baa0af042293f4	\\xcdcb714c4409291b096f55bc6a99965fa5c8000f20ed7f5898e55a87ee986654
+14355138943:1@s.whatsapp.net	regular_low	2	\\x70e006e090dacd4efd66599908f39719bc7b8ef46ec4defe3b91e3ce8423171f	\\xba980701de884a061ba9f5f2a13a47763606c955217e12fee9b46545409cae40
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2bc0e531a7035f547a52b05729e27aa30f103bd9f454c8904cf76abb10479d61	\\x7f61fdd46908bc8dd57f4050d68bf5375dabc9c46674d84c93d1a61f6a46971a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4b469d137f2f2323acc131c7403b6177ab97b8db54bd7bc4443e650f06cb8c6a	\\x4de163141cca94e8b98b2a67cea927a6658afd01516f9e118f6d124f00c2f18f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe33293301a7b2bae377e524997a5dd1277c9a0eeba8d359860501d5c708852c9	\\xfde25c8e41d443d76069c4899736d99a47eb3900bc0a520ee0cb23abb405067d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3cb342ec87eb79854f2f216091c0927395687738435d20dbe2665277480d40e8	\\xb55b6100e15fa79af3e50bbdad6db499d88d5cc3010cd981585db96f3186f6e7
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc40006719952651520cbf747c069b7fdf53cda783d51998cd42704701917dcb9	\\xcd5c665a83456459f07b254975b67cfa41b52ecb9c331c64fccef336d8087266
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd49ddd3b5bbf3137a9571a811b9a25109185540a17c984ec41cf6e3394c0c3a7	\\x1051bf0d8492832197de652733e248927a1f90747911564b9490e2c84f9307c5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3fc3806f4fb8cd7a41878f4b5c73afb3e403cbbc910ca5d32aa2eeaafb109d75	\\x6473c203c8cc3e02ddc63e16b89001377d6b4be58c93174a29e158fa435b2025
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd0caa51756ae872852bfe6486ce19d3a13df82d34d730cd5cf06ec83f1130353	\\x606e97bd71623c4d1ce6d7b99af5026c3fb819ba67b94188a3e8d6873232ed98
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2c902f233c028425ea3e1f60f64b2a2fda1156d9cc48fa700e0aff39cb4542a2	\\x561749120b4c4481d66030f1883570fbcf077925207bbb722e741c234555802f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf4b8663a29f6d7e59fb8b49edeffc5c2aad552f3ce5cef129411a7f2e8e60df6	\\x26fbe81b79dde653ee652c9d29780a13f8e47788e2a16d9260a2d1d5a8123fbf
+14355138943:1@s.whatsapp.net	regular_low	2	\\x49d514b8d46896d8eeaf80529677818a39fb2c45d2b191757e28d414a1e64a0f	\\x80a6a57fc1eb8c09365a027d4e86ead3f4fb2918af8233a0e0f1a6255d63f4ec
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3e1f8a2f45dbaeb5449b9a6bcef2a0547e9548686ea90a4937e71ca3511c8caa	\\xa039cab0b13ff5c256d784ec62ce5afb40f5d65b59600163c19e1b85fbb3bc3e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4eca9c18e0aa83f5bc40e57215e2afa0857a084ad99a4435cfaca5fc1f0fa75c	\\x8585e711bac4453407dac48d7c9b67ab84b9c04272463f48ee9ab44f1ef8b095
+14355138943:1@s.whatsapp.net	regular_low	2	\\xaf1f9294e509e465a24c9a0801368aab8db87ded8ecb1d0aac8aea85af7fa136	\\x7a3f61c61a1f2e8757ec2747b0c6b95d4d2dc817568010d1819edc5c0862452c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa0c9955181e2e6857551b043d629e6a11f430575d31d587b1421d385e9e1468a	\\x8403d534d6bab26f27e03ddb566d849afa947a67b37e7cceb402204e9396666a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x89b480d6ea6f4d214d53108297fbb86e2e8f9193b20028f1dafccd1be4ef6eb8	\\x5824b0eda99b219572117d914d4e7db36bdd2b72a02466c1be29953ec0503599
+14355138943:1@s.whatsapp.net	regular_low	2	\\x59852410697ead9ae1272ff7590c3f43bdcae3164b198e1abab0cd7753b6858f	\\xbf754d9499d368be3fdafc9f739215217c82e27f9ddc840b2a99b125034ae523
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc6469e80965e1de9dcb4796556074613691148efc5313b9a117a5ecb874a3456	\\xfc9b087bfeaddda4fd08b4cf69ff3d20f3ef2b264db874247d676a70af10e3f4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x783c998d50196f551f2d5a293ca7353ffca97ff7717b28a172da9d979ef7879a	\\xdb8d1919658015f65ed412cad67afdf47fe5937f5698717dea69fdd415116ac1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xebf194b5db1d6f944be9f021f5118f65e467edc00f7c98487b9df44af6b77263	\\xaca1d45c292b3f469eb50f8558c1adf681f834f45bcc45eff4569e4a5c093507
+14355138943:1@s.whatsapp.net	regular_low	2	\\xeb2222a26f6e722754a2ed66bad138d7a7851753e4bcca2d278e080b36689273	\\x230043f7287678e0f32e30c7e5ff8df62991c919b69f66608baa196a26b8f6fd
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb109a0de726d8822aedf1ef18e7a7ee35954199addea680adc7197d6b0bc76fd	\\x13be72b28cf5fd1de6635f9e40669c32b2a87f1c485c151f8bf5aeb9926ceed2
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbf7b4415228ba4fdacc95cb7e4f92c394e65ed501a259448dfbe2b69039bfab0	\\xe2cbec7c142c41e4337f1bafaf02397a9a321b8557ba70e797d25a5e10484d95
+14355138943:1@s.whatsapp.net	regular_low	2	\\x17c9d57629f1b7350ac1c54395df649309e0b3535248aaabffc4325e0937c6a8	\\x5464657d3d6a496eb47402bdefa1c8b8ced99d481118ce90eca89240c3a1a3f7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x74afc2206b26e0df91b3c3f199d1cb9f2459aaf72b529ff6842819cf27b3800d	\\x4819d21e9d64e10384050aa65a25401d976675f39f1a1eb18473ae90c6b924be
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd2e498a6938dd95a3a16663b08606092659699a1dbf5bd68f6431a81ea798374	\\xc2e279d900c98b9d34229330519780efcf4c7bbf1d0831438ec209cdeda9fa4a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3aa5c78e90b0433a89b393f20572fc6dde388628fd3128753ca680af58eac4ff	\\x351dd5881a75658376c5e4da56b3414f7898b54b9ea553b90dbb218f2317edf1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa5d87b19b4dcb7ac51f4a905264d3e969ca90c36d5420aa80699c058f45a6606	\\x3847e3c13f93bd9f07b823af2bf8d0be74ec5f8f20e87bef4e5c32e1f9848fef
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9d8e1c4fbb8a540a228c1944ce2db7f4b47848f43160ef88f1cb1ddd0f525c5e	\\x68a3bf3efbd99dd9dfc757ce807435fdafca26009d55fde3b03a46fd991fbaec
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb288beb1fbeb9814e23acd8d1ae28ca5092e52f27298a51ab670c77a22c8c660	\\x7415f7c11f16b0309e16fe7c61dda5a3288514778be6fc566d98ae3ac5ad0d1e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb68a381d8fb440e21755e7f3b58277fcce350c19ec27e12a1867ba448cb214b4	\\x3f437ee4efbd123371ce502e39485bca5387657d39b83a7ca82f386a0986ee79
+14355138943:1@s.whatsapp.net	regular_low	2	\\x709d53c3c856861cd898c42592552452f8e33fe22ceb895a682d063e8804771c	\\x1194b44334eec722d70bc6516fed128e75458bf88bf4ac22692d82002d78a98a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x531b286db8a355e3891c9e2aef7e25aca64eb190921feb9cc07686f22cadacb9	\\x97bb2f631f73d679380d085d7327846acad6535a2e1731cee19dd4d8dc5b7f76
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa8f088372ee4051785c252eb5323ade748c55d59568aaea0d7e5918eb3f0f6c0	\\xe62200026a553b0647e1b8b69b06e73cde7b5abe69b49cb82ddf5595ac7c2de0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7b09bd80418a40e5631842bf85ff001eda040dd3a658779910be35dddc9217b5	\\x9f309d488fa9c047c9e12f7d602097514a3e5228a4a5bee50b84bcdd4e0213bb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0f7342382ba96cc8d14ac7902907f7180d20c4227cd46b0eaa4c75a6264fa7c0	\\xb781d9c77195968f2cec695318f0ceea8d339294d809a183a942de04278a2d87
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf01bc2d8536d867f486f898242e9ff27bffeb9fa9f18feb0fe3fcb6c0f0cf16d	\\x3657ae602c6c7584508a13ce65e134e8c53864aa137ac12d10e93fa67c8dfb46
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbe303a3166ab56357080cf50bf45244d2466da925c32ff24ba57a5ddebe66528	\\xa6395b8a5c6306fb472be1a39a451c47fb5d6931b6e4103db6012bf81731bf6c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x995f15bb92819568be843d85c556fc69fcdc4c5776f4272de7767b874b500ad2	\\x1752d7a2ec25810b212498ca9610d24058ed8dc208a73d792934dcaa8c6ec2d9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x92620179e623a8b8aa565216ab3485f4e217dbb0c72d4acf184e03777636a37b	\\xc2c3af8aa602ac6fe90977ab8f859a9c2418700dbeb94e215ce58f405a3fa63f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb4274985541326d0038aa7f0659ef00115339cc0c1b534b2ea2763fbc0ed643e	\\x7e90d40f747911808ffb5776d9c3343ff953078de4fbe7f4fd034a6851414d93
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7bd3299d867ed0b0b9f8707bb4714f64a5f95c4056d649bdf1220586b9a584eb	\\x04f360c70edc028a0cdefdce2f12815ac42af336d496914f004af6f7201878e0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x019d499baf402f59c0aeae7707668d0a22f5fb9ac52d210dc6ed751a332cd613	\\x735bbb70e19c1c7ddd310dbe7f0640a8edb9c97c85bba89763b2af0eadbe45c0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6ba71e05200476a0d7710795ba96a48d37351d666465433526fa41fa39561c48	\\x57c2f4e518690461f9e882ad5a6d829c863c3901f11e9408dfa1ed2b55767778
+14355138943:1@s.whatsapp.net	regular_low	2	\\x54ef5e80dacfcaf65cdb71483446a10312bb073e26cbd4869528961395f9649f	\\x62d5ee16992626624d0b389ec4b35d1168e83aa9d16cc4d4cc33516d8096001f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x59ae489c28d14dda4eaee6ecdd5362668fe8260d1fc7b835e80b9fbacc3c10c5	\\x1eb04f123c6e6433d56a15eebca4ecbac291f667c5fc87d01642c25fb1b03316
+14355138943:1@s.whatsapp.net	regular_low	2	\\xccca3b02c33527e895214b5ec7bac47ad12c4927875b6d53fd7cdcda9183796a	\\xc53d7e1f968fbf12c724477e948b963f96e275efcba7856c165ff2169ac167af
+14355138943:1@s.whatsapp.net	regular_low	2	\\x801094689b4d4e56fcf5bf95e00c451e49f945e0ef9f5c4cc5f7b526ecf1254a	\\x7709597ee8d931045be9bffe71808127c05e7213d7ea447ea68c3fd0ae9acb32
+14355138943:1@s.whatsapp.net	regular_low	2	\\xec07bd18bda96641e4ecf42730640c019f425d3bac637b41fea90d842eaad752	\\xf05124fed05bcc0f62e66269e5ec398afd0cea9c7f7e420198f86752d866ba86
+14355138943:1@s.whatsapp.net	regular_low	2	\\x17dee217bbf2ebf57f6f12628fd59cd2ab45e0b17d2e322780e67a79a2b5b64b	\\x7e1bdef6ade43cf9cbbd447eeca8349dc3731b38447edd5c6bfa271f923aa945
+14355138943:1@s.whatsapp.net	regular_low	2	\\x680e56228fa2c6d68c91544e4657b2714a293a3fce0ad49794bd054042484211	\\xdaac5b41a94af208c300a71144376c956c537788ef7b9dd6700ecbe3ea67bf5a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2947da30bc3a186f8fe1cdf413bf60659fd1855c80ab6fbb89a9f3d7c983a687	\\x7cb553ffa39231c949f86d364c30de699bee3728aa0691d8aae7071e0479d60b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xca6757b3dc12b9814d90951d6d376d347be9a84d00ebdf1437cd18934172cf40	\\x38f42c98723fd22dac592f166734ef20ed2c8bbe39950d466fbf451c467ef01d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfe5c58da1820e8fd6fe040c6297d543b9cbeeb001084c6d0f3cf6a64b3d3b4d2	\\xba48f35682453f3fbea29e5fdb44a8b0ab7395ee419923a9c5cc4dfd9e1e96fb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0e0b13600b56b11ae2998ba17d0a67a4d76a2398124dfeb844a225e1421f9962	\\x78a702b6cbed8a2af94b99bd2215d91a7352750a1bb45c6873967190dab3530c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe0704330ff60e301ab2276bf7fd6284f2395c03578b0d374cf908d14bcbfc4f9	\\xb5cbf9127e9a339e85b36106b1178de1f4a133ceb9c9a11ce9720dec7e3a66de
+14355138943:1@s.whatsapp.net	regular_low	2	\\x401d52cdc83a18a390fef2dccc7d006ff52e14e1fcf28889880993ad0ef90671	\\xb27f6f03b2b51cd7583b125f03127c09242cf1548192fdd00244502b5cbb2604
+14355138943:1@s.whatsapp.net	regular_low	2	\\xec7b9cfe45d4cb26f00e694347158f278183cbf75742d5b1ded62276249a08c6	\\xe5c4c5e9a48ddc758a7ce18e84af4daeb28e64488bef44469adfc9ceed9cb94d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfacbc8c6e934934c94352d363c09595a1fd101c2fc3efc9b4db7792a5ed5ae5d	\\xb96d25b1fc649d064d5d83543f1c416a6c904523404d31a7739d914162602c38
+14355138943:1@s.whatsapp.net	regular_low	2	\\x85183f2b54ee298672e5b438beb132433e107cb36c97e7962e3603fbbee73df4	\\x81af7680a8e465544736b916678b487867a965d51ba63813dfb31a2196e2f01a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3dfae871537a84f8abb7db6710a3d47855e337cde9e778c8866b4ca537b2d658	\\x6a999d75973bd0de29cb0260289d480abbe78d46e4e87a36721cb94bf6d3fc63
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3e4f19e1a19fa906daa93248e9e4f3c7698e8b42e57e0cf72898a1180153599e	\\x18c62789175f962a08f7cb83af0d18dfbe4e33d09ad9a9484dac4c8f5d4a00e6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7b63be624ffaabd2c08d1da86189de2502c85fe5ff8b36930e60d263059b1feb	\\xe7a032f15520517a84cfca601af07cfa09008b97bcc5520087fb4440c27e20b0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbd5fd8dc059811e010612226a934916b7b68d7af0c049f50555be9506c956034	\\x4b4fb5262389656c50c7afc9947e6d1d92ec416b199e17b339b68ea00983fff3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x83efdc4ca7da573ae0c011029ce523d9771a1f39004fd98ddac196752c93c52a	\\xf3af21928bcdd3958a357e276699a218e39acaea07cf07989156efcd862800b5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1f464c5ec12c67d7fd2b9295ebad0aee4aaba6b1b71800971a90a43ca3fbf9c8	\\x6e0dead29bb3c2281e2439932ed81924955d9dcaef6e91fafd60d669ed0afb1e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9ec5c17c19a7c51ca0659b0346b8bf63b9e5a7c901665bcb9964119b47b3f259	\\x10bd2c248f404bcf202b261d3fe26daf37514150257fa1104aa3d319c6faa568
+14355138943:1@s.whatsapp.net	regular_low	2	\\x282c8230f41e0b90843f2edd2c450b61719f8c628c90048fb9f7e76e0e9c74b9	\\xed8c7de7ea29d2d1e7f4427aa8113744276df65a24e1d5a27478bf12d1661ad9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x26ba3237e4390c1e3d8830656b75f02e78f1251d8bb1abfed5343fa4d3c788e7	\\x0fd149e479a0cc04c78e5dc07f5a4969a9912ff2a49ceb346c0f8f7936773152
+14355138943:1@s.whatsapp.net	regular_low	2	\\x97deba88ba8f4c7bb660b055098408c08ffc8654e3eda998c59453a0c3ac8dbf	\\xff280959bf02f2d580a84cb4d836a245a7e9eeb2fed0a046cee84eb8893548d6
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe173eeaa69c59752a9f40b6a510a6621debdf69a13a5dc1d19dd4ff86355eb9f	\\x5a982309cd01c37b877575b64ea425d0f26dfc4bf710f1b1c9e4c1d8f5d98165
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf127cde5ba373224bf9f1f1939e6cc5be4d4bb54bd418a833ef2a31502d4810c	\\x49fff40953198e48c28201b5417a2f9cf904762fedb3bfcc86c414bc6797e31b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfd25e29e89882f2692d392836830dcbf4fa3a73af5d9c44120844809de62056a	\\x4ac641755387c851f43a41cf77c814dda1fac3285407ce69e13b03173b0d8101
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf6f9dcb7b055351116d345163a89ee1290eff0b369d80beb71d02ba8e2382c70	\\xfbdfcbd59e021266bc6483f3edcc0091e57f2db2c0738e0a4103f482aa51d4cd
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdcbf2294c1a5202f0b9823baee2f1e666a41daa0c1e23c34be30dbe11e78138b	\\xad68b683358c0c61eaf60531c07dc25493dbc464ef60cbe79d509a5e31347283
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5d6105ed24ba141fd4cd5a9274141cdff2fb42374bfefa5d38f2f684cb45b20a	\\x19273171a99cf4873c2c5aa28b8e79d548a8e3e472cc28bd2712d1a8f45f4228
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1887d8183bd3a31b1bfc14567845d98aee9fa3d71b60ad1ee5b58e19738f87cb	\\x54576866146cac85aa9944956f6c26e48632f670d937df8abdc132f72768e7fb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5a66dedb8b1195bf33d24e74420807f569214b2e3fc1444e00449081f3a36ec6	\\x6ee79d50b91dd626ec3c7441601c893bbd6af56a21dd473f8cebc0b19e35d2ed
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5656c4a2584a42f8cfb5d8560c28d49d13a4d5aec244cc92eb9cd0315b664cdb	\\x7c0bd6910786fe513bd6d66389c1e236004fcdf0f85b6062db01650d265680cb
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdb90a126f7c2d3be31ce1b308e35ff9118e5788f08db62feb2b50a6f9af50cde	\\x640dbad8154ca595eb8f053bcb60b9c25dceb790b037901801895920e12e91f6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x784d434d27eaa14af4d8492cda43c398a960f5712d17b766a4b9638b6e90c851	\\x6c33dcfa4652a47408449b4cbdefcdac69e5d727894ee458478f3deaf535c42e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0bb2e1238c7b87f2c5e4c6baa904cccffa8acb733520e6d3382a349b9ffefa48	\\xedc60450ce81ca7c814c7137df3035b87ce99ea720030f16bed4830cf6c75820
+14355138943:1@s.whatsapp.net	regular_low	2	\\x39bddba14028bcda22a522994978dd6e7b8b139e82ec5f295ba2bd39725e86e0	\\x74467efe5f4a3fffb501d40fd7996b46f67dff43c776b230a9ec422d97e99717
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb63d9df76e1eb89d26005e524471df524c38d83ad461fbad3d51c978f09fe204	\\xb2dbdebb0aff1e966f74b2cb6ab91ba95a5034e446baaed09d226a8506586e5b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6a6336342e257ba85b04d3775ea5b6eabc283c96a9eea30f652041324361534b	\\x3c49717082b832d9edd5ce117932ca3f16f06fdc6550391e79e770a173230e92
+14355138943:1@s.whatsapp.net	regular_low	2	\\x80574e8c1ff8d43bf586971e18e967247dbeace2036c6ad0959cd61e7753dc6e	\\xf0dbb45c5749764f46d5c0831a236289a841269bc7b4f958624c727d638b4ccb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x35f232aefb410dfd6af980ac7e15b6e37236407918895a129a455d99feacc0b0	\\x05728deee606d685614a1ac074dc5260cc023e597f49a3297198ef056f4b3a6e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5659cf39e277db787a93eb2aa03e0984f6e7a078910fc8d30e81694bf3e64704	\\x9be683f629151660a52eae39da9b9ff4dc66d10a43d918052f31b55dfd82ae7a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x59b58c46bcb4cdcc8a7764001b9fa8766c392254d2da0bbf6cf8719497e265f1	\\xfd946f5dd1e2b7505cc3430048dc2213699153ae3e740d602f5bd230ba038607
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa956be7a88565971076718872e78ded0d70c62846b179cc33081dd220ff4886e	\\x66a8abbea9b1f679686b6e3980c451762892adab1003419b76960a8e8f0b2bac
+14355138943:1@s.whatsapp.net	regular_low	2	\\x96e6b69345481dc5b3c0a060bb8906dbdec2df8d1ae96b6982ef4fd49c973bfd	\\xba193dc31dc62073907e72e7090cdde07d7b0ede3558fc1eaafa585b705d4f12
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa7336e4255cc1236adb85b67b539025a4814fa975f9b6e764e6acac8cd5f89f4	\\xc09a54f7bcb4e4fddee26d4a86f78b162464655199cb93df901c1f6d654d80e9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x655081a9851712ea3303576b8f8ed9ab4a3f52e14d764f6930775cb4f09d7ede	\\x6b25d2db46b3d64a0bcc7d5e78dc0f81979ff9abc6d70907d3d03b5ddfdcc6a5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2789b4cfbf2a2c26ff21d81eacf97d1e3f92f57c828a2e1ce713c95b849bf4d1	\\x25df9c0f8be3a6be23883886f6fe626972f96713354d6d1a4293e118ad7c4aab
+14355138943:1@s.whatsapp.net	regular_low	2	\\x62086bf1ec9b8c91ed363c4832db6ddb4e214a4c5da43da708731c20096c07ee	\\xd47e10af69c14ee27b6ab3642b9a1d7f079b4f9f4d740c1ce33722f6dc206c66
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe8778fbefee52bbb2b03056c8d914ed375aed0d17c28372f6888aea61e745b8c	\\x410d35739709e0d00136a9360bc44178574ad2283a6ac810c95b83dab0e8b696
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfc4c8f39c22735bc462d58da2bca5366e53827973b9e26be4f52d48cd28ce2f0	\\x65ec38867f16089b14fafb47bd88d2ab53a7f1d87116c839504f97eeea9ffc65
+14355138943:1@s.whatsapp.net	regular_low	2	\\x55e8d8458040f399a79b6ab913c9b9a8d698e90af603b46488974f3dba2164f1	\\xebc82d7077bb8d680980fcad2c9dd8309163406a533caae938b90f444782972f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x69b1b2170c74c2e2dcb53ce9fb830b64633374515f52a62c37112dfd99eb4a22	\\x9f62abb6b1b39ae19d6c3555dc30d8fe2af50790a58a103e0441668d33e04854
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc57c97c9dc46ceeeb8ee47e0527d545e1574730b82ac4b30c2e8a2208993213c	\\x0d93a37ce634b938f98e8f1e3d866d251e386215fe12369c14cf93dc08a16ad1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe3e33604004ed7d7cfd51e91b0c83f68a996dcadad977c9313d11e6e7605e909	\\x6e61579aa73db115f55e7086515dec58de4fad4876131996ab15bd82b154df6e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4fc154e3d6ab9d35dae5d853cd101d6b7d2cd3f94968f009ad5397be9f2c8bba	\\x208dbb661b8112498c6602da60d6e26e25ac64ac798bceddc59a45d3665e90e9
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc91a6735f9eee724134b12c86fdd66e71e1ed58c0aa7b2175d9c92db25edbf63	\\xdefa58d2b11c0ae161fb94ccef9908d442c86b04ce128653d650ba440ade6665
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6967faffd8dd6949c816d6d09ce9d308e39893cf8d485c315ba2e0e2bfa3d371	\\xd795bc6107e6b16aa5f2fd3010c2b4972f37593853be070a1007973aa2ea858f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0f70ac7b413d919eae70668bacf994b87ab8a05cc574eaa7b4cb9ad0e400427d	\\x506175fb3a911525c20bda4242f6c07ff7639cb07e882694311bffa69cbc8af8
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd538a466a8be1dec2a5529a66f4bbee4ef6956e06b3852b4fdf4258f81921bcc	\\xd24c3c3cca7a23e9e97a87ca4b9b5f5905da349613ea9a07d34aa98efaeeb169
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdbd7b6690084bebf61f88dc0274eeaef69a0ac339d4e18d03f15842d0fca81b0	\\xb7e8ca6637405af06888ec8de2c601641627e31400433f85c0bb36f85be5b4a5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x99b178771b69c078fc334c59ac11883fff787b386cc4d566729395d2df34be13	\\xf35b696f54f7141a20598a4835010164782601bfe2d6947bd9d67b88f82a7b4f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xba3f4f796b1235a23272833ee4781f2c05282047af54552d5b42519b21f9128f	\\x792ad9732d33327c193633da19033269963515dbd7bee14e69d61537f1e5acf5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x271f01ed64f2476b454be99a41db88a95ebbeb9fa4c1852da7f16f568ec8742e	\\xa9bb22e894fdde61afad57b72fdddf75404cd19541fc9901c5dedf0eee1b123e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x01eb573857c2e9827348d0aeacb9ee807741ecaae5e03aeed06b21f037f98285	\\xf81d5e0581cca6ad4a79dca8c76b020af8b48a2aaac8aa7e77aec59ef815d587
+14355138943:1@s.whatsapp.net	regular_low	2	\\x05c9192ed08d7bcf64b5d3a0cadd7804d01cb67715751dd68d5a5445b99e79d1	\\x20d758b7fc62c32de1c79a8d0a09568f327c563031a8526855ac5601f5c9798a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3e843eb050bcc28c1f65cbb79177edcb02a00aa4ca1c029d79245658f8295362	\\x346ee62ec5a343aaa665444f02db73124162dd76b63af76509c0f1d1cabcd50c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd676c83fcf5b0f22bf0ff0c23a5cfe08b88ebdc4296f23618b07b2f504b572a9	\\x92bd828d74f2018f3c9db1bd19224f53496c8cb09bef74415fb721205e299ce1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb018b7985881afaa751c051f8cd76239d89b05b2c5a41a3618629ef9494604b3	\\x61e6ec6fbe4743be46d41497df0903ed9fed73b292820ea84162d7eb343a3710
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0eeb7c0c19bc8355a8b1cb4d7b2ff419a7387cf3a99010b8f60bf9e0696bcee1	\\xc0b05a82e568bf3c14467bd839d3d5a31a7768f782fffd994dbd208f813ee687
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8dbbfcc6ca86c7f96c0c66bca7ad6a949367e7633633281ed31ed83585843271	\\x416c8c4ecb069a92346bbd065ec54ad2dd4b75df561e2be7d17155e7129d6be4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2c02eb20b2a8a8ef2d86627ec5df72878933ddd7e752d81c768d4ec84c1191fa	\\x4e4bdd2d837d849f614bcbf35b0ea9abf73a0310a5b16227d921e203531c528f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb07204002e9b97cc4bcaef9e1b8256b18f2f529d3ffc6460bec928d300e8a1ac	\\x2cb1cf13752b6dc452228780cd221fac8369198c5235de39c0fd4930292368f1
+14355138943:1@s.whatsapp.net	regular_low	2	\\x34ee79b90210d7579043c1ad2bd2fa46a80326f41e99f4f8fd7766fc0f89bef9	\\xe4e382a38b38a3236bcb82a2eeffaf338d2e21fb8ae0e7a11d4ba916447de333
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd02dbaa93f318f0f3fca98781f36d2aab179da7da9baaf8947e16adde33616a1	\\x31ceb1860ff1c3ed807d6fffcd96d3c08fad4f3a6a1a56e6fbe81b0e2b8d37d3
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf07af96edd94ffd9461d21e07ff2a398a979dcff0067c8132cd8d2ab8a3f44da	\\x523691487ae265b65223bd31181af1f72b68677de085add58e831bbff8c897d9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x38f2bc5ef199a2b7383bb4fdb83a8a3848f3a5eced18806b0af0735dd1938498	\\xa2256246871646e015a2ea283e7225b72b26b7442dc677537669fb9ed2d09af0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf302880e2fa2c8db7970b01f2cb5457d6e8de69af4ba09360ef7d26451e5dd6e	\\x8ae524717ec0694ae61d2ace953d5ee4339e26a5d35d293a2ac9e7dbecdddf54
+14355138943:1@s.whatsapp.net	regular_low	2	\\x23f95b12393ee37876e17c2ead3cfa68ec14032222c9987d002dc930619d6be9	\\x28f7302112a0a53fd613278c84ec36e4ae1cd9b8a2ad0e449ddc83bf25b92972
+14355138943:1@s.whatsapp.net	regular_low	2	\\x069af0c3cc1ef50c753c7a4cae8785ac11681cc74b47ed97814cfacfb65d0dce	\\xaa05784c64dacd643fa4b5a440332f2999c543913b537717a2912379d3a383cb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8f54e1c17da9d96eee98a4e6977c630f852a5e9f0e32ca9c54bd6269fed16ef5	\\xa2e07e24a423144a0e8ed47e9a9ec29e16107f6857ade9e591061122fabd8c05
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd85a99da5d2864f418018e5e74fe46b9f5d6e7f4bc24f8e55e411e744c88377b	\\x3781bcd39f5da2784ac47d7d0e72d42ff56d5369ddf844b789c73d871df4f153
+14355138943:1@s.whatsapp.net	regular_low	2	\\xce7ff08582ca438d9adf776bcb399d02d901e7395a3a075cac72f0f0b0c11442	\\x7c7dfac33234ec694572255055155df52963f11a30a38959aaa580ff6fafbbe9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3472003f8a55133457289dcb14e052070f8efdaad76a9c8e77011ba007e72f7c	\\xe2406af327c1c86edb3d1bd2370996dfb86c617631284953da1c6e58e8445bff
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1a2e04342f0bd0c0119cdd59afef305c7fc23a0c71aeac11604aacfdcd85cca5	\\x12fb9acaa02c6fc382b3bbd3274494c5fb13287f2278f60daff02da4c5550ae5
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf309af06bf0f8043f059b678783bf0c42ee1e32a8c9a541888ca7230001fae1d	\\xae4d8967c75dbbe1e5516872fca4dc2bd5472fa3927c62b8f9636f79619a5d34
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa7766035d9e1992c731aa766c8b5c0daaff15b1b106dfb429794ec84aeaa1264	\\xb4e31669743f9ee1344038e109a6080b7cc677ad91d0be089a6e1b329c9187a7
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf5532c399a323189e22a649246577d71929f14dc8293699025aef3843b90a5b5	\\x4dc4a4a4f498cd6bc8f5350ecc521044e90fa2cde6c9e7bc87590fa13414f7cd
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcbb260c800e9412f95b49c23fd22c3906813a30f553855b1da507d8253895d94	\\x828e8113d382dfa5f424b96c9e4fb9a60a7c12d5ea77c46071799f1515371ca8
+14355138943:1@s.whatsapp.net	regular_low	2	\\x90b60a45598dedccc0fb6bb73e79cb63fab64de53a67ffd8baa7827a7caf1822	\\xdf0cb3a50773504fd409bbf353e4ba5b5891ad5040fbf50489b1f9b47db4f364
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4b7a3f09a45be05bd33826c9a3c0f10b5e0ffb2b8353d35e9e6e932ab0972427	\\x21497ca8e3b1a9eb4a56b33c9d8cbb4cf505976fa98c7b70a4eed305774bd2fc
+14355138943:1@s.whatsapp.net	regular_low	2	\\x21e2da53240df2f2fff6451fd7ff7fafca51325e4c81b737977a3480fb38f0a9	\\x33cfe50baa460afa6903edbec0cf2267191b9cd20a6be3e0d37e12e5e394d905
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa802761048809852e5960cb18021a05f23d444a3782d7bb74df01ed20783db99	\\x8e316359890c427dbec61b4981491f644c2bdb16f543357fde0405ed7f1d1e17
+14355138943:1@s.whatsapp.net	regular_low	2	\\x28c00bec238fac7aa6989752aa844b21e20a01f9f938907ff7dccb452dd8ff40	\\x17aea965d0b9e1f904c4b699d09d985fc87e0693644aa6f46389591ee475cf9c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x78c1dde8517fa83168205b6fa3dc9a52daa31d3f19524af26e7f23740b3424af	\\xf26c042c9a8e685bf33bbc2c350eeb184233706614626ef9705de8f6d63ae4c1
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5e4da0ff5bc88e518af3ba106224bb1af6bfdbbe1ba133df45e1dd9d5787cc80	\\x18d831c5a17ce7aa1b6c2dfad318c1b361aeebfad01360b2d5c497a4c72733a9
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc3e1792bb444adb1b40f35f8dc3dc5493391bde82ed38ae539df3a821b222956	\\x46d276504f0ea1723bc90205d61502beadbc1db496a2a6111a70ecb0cc9d5d9e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbd903ae12c76ea326aba872a8206da06237ff6eeda7d37fdcb15235df781b745	\\x6464624962300e72657c15289145b5b4e222c61d4120394b02ebc38a2412f72d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x01679525bee419f77ef7cab53e3e86a06a5fc3bc761c844b0c325f96d3c67aab	\\x3e47fd0c256b72b3062fa44f9fecf4946ec3e187ed3dc32c9e72a8294c6d38bf
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe88777cf8651b0404a2b3116c29e7a66af699e2abd241bc4b7a3b0c2c9599d05	\\xfbf32d49d9b23e4cd939da169876e559b9f1e100554dcb13f900e9614343409b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xaa63bb9d86342f28cebe246cdc6b4448b7dc9c5fc7e5c69f59dc2fd494047a02	\\xbcd3978fda7c455a511fa9f5d119e1f2e6c63df652905b6c8ebb355de62f4182
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc3bd5379a5858e18ea96db99b2b2ef5a24eca8c179706c093a6c33ab7c6f56e4	\\xba6a73f01b367a767fa86dcc5a143da2d8f1cacde7ed0a49e85cc279ec70f9d5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2d49b0df77de48996455b22aee235456fbb8098b96da1e2eef68cded4b35d3e3	\\x5ffab6e92dfeae5678273949784889200b0510cdd6f81a5b0ee3f83d34272452
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5d58dbe4cbf3b7b8f0825749a8c9c94f94a52a11009400fece451b63a50be2b7	\\x0b1ec654d1c575fe9bc6ac7eb7411c09289a53a7cce4b9bd3976ad45efa01470
+14355138943:1@s.whatsapp.net	regular_low	2	\\x049e5e327f3bfea456eace11aae065e7659727c3b9c56640f757674b129d7a79	\\x428667f8c28221af949f65caa8a7a09636092252031a54666bc9806282c18cf5
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa6d4194b246003de06665a1f5741ef3373b8f91335c65bf918610eb9b32ab8c8	\\x87e3f351cf82ce12ebcedc95f77a566d58226a52324a8a12c08f54a62c9d7487
+14355138943:1@s.whatsapp.net	regular_low	2	\\x555d484da712bccbbf619b76e102ffa6d1f587c8bd14de4e72d212b1e8b75103	\\xc809e4192dc0d447bb7d2236d5f29426251f8d8373472c39856b73877638a0f0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x78d689e2deb45242854136a6ce29acc1b7f6464bbec9f67e695f66e3e678959b	\\x41ef0bb5032257cc08735442af0f31eaa0314560afcd543e59b04386e3f651ab
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbeb4959eaddb3ad7dbec3d9538f8adf6ed09b6e25d46c46c8fc43f3404cbcb5e	\\x8a3366de69a41f38172f2f8dff21a58f7dceb1609749694230fe6827703cdd55
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5ac96e49c520b92bee938da2a4e197b3420b865b8041c514c92290599d698c55	\\x484c751ef746233c00f0e52a2f38792e653597b008a97e90cf2bcc295798b12a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcb08cfc2d0be0e8e37f7a12ac9e5336f0047c6052c262dac5b99a2d30f13a90a	\\x589fdd485a37d8f71e0993cb13e29c042e23fe74b7b95a8f342bb07745c2ce96
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd4f9dfaef4e44c0c033927e3613b8bc894e6cdc66e119a3e2d5fccba4f67303d	\\x1d3d1ffaa49a20f73339a2d8d652b53ca9f8c15e5384696c5adad381931ef2be
+14355138943:1@s.whatsapp.net	regular_low	2	\\x01e40ac53c8522bc863d8a0d88f78f47f58e93db75f1b217fbcc54452418a03f	\\xd5fdd681109927d3953df96a6a99d23c0f7bfa77e1cdc4836196b17db9dad5d4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x965fb349f95494520c0d80eb0d4ef049ed31cce72812edee9e3fd065c0258487	\\x71e3c2443cc3352496b41a547feddf9163352652317358dec703c72f7b90284c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x655f0baafee27ffdd900dc01491da4aea88a2fa4ef5bd371a88456c708089573	\\x9d63809cbbb022ea989573657ba18d097d580fed61447ac9720cf5d36ed03f55
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4062f97839e5d1e596e6ae40403fb427ac9e40647c3459f9e086ef8d8f61db35	\\x4b9f018235b7101a06cfa330255426c5aacc48b0826f6b7a13be0ad3d5d56f6e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe0fc8f607b8112b497cbef7766f621502e66f5cb9b41e9dc8e045de03aee8d2d	\\x7f416321672661bc7271dcea7271e7d66cd9aadb66251af615d0a645921cf842
+14355138943:1@s.whatsapp.net	regular_low	2	\\xefa2943de3e07b6b8337808b05149b75d9b8c30259f2db32ff35d830c8a05a93	\\xacb1c531df8d3ad90822af5c0fabbaab39ff177513bd479ea5e1f17347f1f894
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf2ea28fc70b7d23e6cefeb5de71fb6b60e7f345e9495e573a2e5706e1556c8ae	\\xb4dd72ea86e756609f95da77e2e1c10f17e5d6f52d70a979bfe3eba2a30aa968
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7525facd6a80b8d52041160bd480a887c5a7dff334f13a66191a1c9eb4f01b4a	\\x7a66e9a759a7c33abe7cc9ccc5a1702358f8688879869d44cec9a7ce6270453b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2377fade8deffab019b23cd80d6aa00a6de4d5b4292cfaa0c7e8f345db637355	\\x8eb0d0dd152b145b5af2dd44434f5ae6b5aaf1ca08e9bab2d57277ed9c7352b7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3997731013e085194100717e9152085970fe377ef398468efc252ffc3c9ec23d	\\x2a0e011291444b273452996149ae2a0185ae4ae474e948cf8c6399ea1dbdf5a4
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd25b6c1869ff8dad4dee41ea296bc73760346dc0df85313242d3a3d93339338d	\\x5a47f555957b4fed88ae7ea2f2cc1613a11be8359f239bf9846789c5c75d5187
+14355138943:1@s.whatsapp.net	regular_low	2	\\x26ce855b8cd39b1588e1f3ab8525b244d024f7fbe3f8726c67b1391a070b8c71	\\xa8844abffc44071e5c67739fea4000c663925dbe54686de85eabf128b56c9677
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe2149591072eebd436675f818a010c33fad173078fdb4fa1e206c552a00b2b46	\\x2d5eef47415b83bd40a379a5610118f72e003ff84739204d2b19236cf57179db
+14355138943:1@s.whatsapp.net	regular_low	2	\\x735021ffdff36b85b152828ed46f2aa1f5ee41d937170cee69a37facec1e0231	\\xbb9aa8d44fac867e2eb471d5ba31d5c67dd724cd731b95e2e44657a4db537f6c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xeb8c2655b096a076d963997a3a02ec90d8eb82275714ceb58d0e4f86e0b1c6f1	\\xfb090a732a175a2acd2051d877e16a2224925a9d4dbd3b092bbbf2004efc4d31
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3a2f04d160840714473d07bdceb1a0dae0ce55a4e6366313e29df4bf77786e48	\\xe513fec7a3572c8a966baca8d652c8e89369e5652f35acb82cd49be3129623d7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5210efa36de2d193b7004e8c7c3bf636b8f4c8bf95bab220799f792d9be9e3c1	\\x8d2cba2d43129042a310c375321af13e762b6d0baefbd23991e7aead2563c4bd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6e39c2a0ab1b647eea207d393d56cf1a520cf042139e72c1154f86d8c52f92d9	\\x564b4956e78a08a26b59385f2ba7581bc7a4d7cc7161c7c0a372e055f53ecb85
+14355138943:1@s.whatsapp.net	regular_low	2	\\x009232191e0b4fc5a86fb054c05ab61cc1fb5a9ec92b660f24d3f063e2b6eba1	\\x8d79556adf1bf09830708001a5e9fb63e52faba2e8d750340038a48703d3179c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd4d2874e2c5cd60ae04d8f2ff427b9c0fb395b10e74310704c0ebeb4c2dee2ba	\\xde16bfbaaaae3d16f051894feae57d5dccaa2faa4ba03bfd4a10626e6583664e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xccced79c37510a92123048c307c2d87f32154b8b1b46f3538a0c304b68ae72cc	\\x90be20fef6cf5d51c36bbe52a0dd8d25df6b374f4b5f473b3a2a73f67cca282d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x60f945c6e7a028f6bbb2a906cb0dfc0b0d9ace463b59ddae6b1fa50c04cbd784	\\x8939e1f7f838b8e6c032da97f4ba5a131826a179f9fbd4d799abc0f28da22f7c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x27e4e253bfc0729df478224b80f6ad2d360d36e3d5f8213f84168d5b96e15927	\\x419af906b07099b056c3341380108645e695a755c91a72248028c58f0d5c2a58
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9aaf980bf416f262515f9e43cf8f3a1a6ca3f1ef8ee1935e2e61f62c681ec73d	\\xbb81f8ac68da8553a1a3846373273b111f654adc1e0a817d342e684a1a76e634
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1b866b52cb347a0af63eaba16c46a6c66387fd850da74feebaf177aed19cf976	\\x4a2f13ac6e7186f10c3120ee2de2b168546caa9aab544e2737022a13cc9a0666
+14355138943:1@s.whatsapp.net	regular_low	2	\\x022b86d9352f37b8a6acafb7629256272180e70a23a38bf183cea0072beabf07	\\x965599547011785cfd2bffb0c7d466f9b2c736ec7d7fa75e68bfeb9ae07e3137
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf785b573279b768d7c53fcf5aa7fe7fa3ee85bcebfca7d214b6c111a0e39600c	\\xacf05377934d58e75ec57f065b3adb762b5659977a5e1c85cfebf77e602a2ba4
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc32da0863bdcdac82b60cda3213973223c283880b4306a2aeb6bbf305a66b6ce	\\xce63fea26202218942f23485b6a3b3ac452e18448649c7fb8bfae53558558c98
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6057afc32ab02cceea8fae78cb36ae16e56a097411f5f799bac872c5ac27602b	\\x535d96d6d4ac8ff43e3b665d256160f4843ded4d35c109f5ee9c472e3c1b6947
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5273c743cd3c60d2273346b77ebcbc5e9548b8ff79086385e08acf384b5463df	\\x39b3ecdd75843a5fcea1ce7210b4405885cd58f9cd57375a0b5be2e0baf5874b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf31a522b5a04ebcc78d287de22ef7c98ee7e04a4c96f49e4a4e900d2c06eb90b	\\xf7dc74ef6c2587de827d6e1368911a811e856c9129f4061f8d42e37d0d20b255
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb1d96f789062bff4cbd40938af45063308a696cefad10c4f0c7dc7bc48e34fb4	\\x8c7876b953fc85867b3fa64a7e1746e2e6e2b9b11b51a7486c8dae6763ed9dae
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1988ade538b928829cf86c4241568778e30fd1eb2c223c6aa933be663a144a0f	\\xe6e46b28d222fe22e6875ba550ffc287b64bf776a17646f230abc9bbf66a9443
+14355138943:1@s.whatsapp.net	regular_low	2	\\xca764693d24ea4a122e683e86a4398699c08220b338f38d9500ef84e864765fd	\\x6ba7e6a6b5cbbca8c2918c9da041b01f15af3905cea156554d31b378fd28de8e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x00f865e1c9c8bc891b1b44402379877d26bd9ad25942a985fad2c33fe5ccd088	\\x9abed70d53058dffd16e2b770cee26e43ef0ce3eeee794b943de0a2324fa9ef4
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe6f792a403f4a2cf9ec4d31166cd8a6dae42c9e211de81221a28842050098966	\\x152d6500b2ccb9f3c462c0dfc1c5af7d630116ef8cea860353a6e53b6000411e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x58fdba724855be9a795a920707e9db6d919111bae89c927ee9459fb5734eff1a	\\x2badd791aae440080ff59bc68f9e041a6beb1fb0c60da431a2446b13deeeb9c8
+14355138943:1@s.whatsapp.net	regular_low	2	\\x92a8f4bfdab68f7222ed05529a89e4610e15cbab69cac02b40d4ef298286c828	\\x232c992567154c2ff9bf5e762f3788bf17ea0c7640fbf862130566437019f37f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8bcda47da493a49ea4e5f0eb4137e7c5127b30b4641fc001bb60e6b633dba603	\\x80e5f97b9067b8d0ae5c2c73ffed879b74c1320155d0cdf6de762034798d1337
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa08bc57518b25ccb925f95ceb1a7aa22031e5f36b5b52c1553907bbd05e877aa	\\x419556903601a6047d6e078006f7b3e1647b8e69762e98c591d36e7eb055183f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3db7134ef87444e73e62003d03c6bf24837579727176f3b94034aa110c575a9e	\\x150fe6ab0c301a3a6c0b0f0ff9d7ec025d7d45b4780c7479a35bbf96b8d67b6c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x866fd912808851f96101e45383a4abc51dc1c760d5b08a37f3583f36ad7a240f	\\x7b611069fc847bf6a5d9db3ee4f6a8df4e2344eb28ae408e077833109a3bc9a9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x06b136b0580ce4fbb0177896e0e3ad536ece3cfbda12de7e781394701724f5fe	\\x1ead7727c893bc9df9ece31980a5d982414219456a868e047fb6fe67827c086d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb7f9762084051ecd6495df12592ea0ad75996e9f3b85c66f4253bb9bba41642f	\\xbf568f15f2b2d38cb83f937aad4351070b0dbdb436c0c9eaad48c586083d6b7f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb8995b9f99954e7d3d62de81b398e8c5b310c9f5ddf43230c648704569db8232	\\x6d773bfddbc35fed3ff8988afca28aaaf52c21c8f677d8bb1f2a1e611f1a68c6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7da2651acff363c84a51d6861e55bea1ab1cf7183ff0a7fac1498873fc1a1f04	\\x77da2b5e46d799b075b1238d42dcc847e85c5c350cfcd1405fb44135adeb8997
+14355138943:1@s.whatsapp.net	regular_low	2	\\x08f3ac7f53a8a3577c72dc4cf2ac9767735a4c398438da272df26a162efae9e4	\\x2536820ffa84e703a11ece901f4338bd1fcb165e3af04837841cf91383a63af4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1244dffbdf413185d48723b59a2bef81cb60ef732e531a373966ed1fccacc350	\\xbc30bf331018bf61eaeb55896853a92899018254af651efb7e47e08b5ea82702
+14355138943:1@s.whatsapp.net	regular_low	2	\\x205aacea92c1750961ee60f059b4e46f0b544d16c524650874ecd5246bd59ee3	\\x7268cacd153fee77e022f52f4e09fbdd596bdb1728ea309e63f6736037033923
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf70cf358004b9aeeb52642c1d51c2eec4307b260291f51f996241d8e4a342481	\\x70afb46a10a966133bac5ac6eb2e286beb881c173813466d2710cae695faf0b7
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe54cd2c16093eb6b092ca121660a5007e7753aa7b82664eea719faefea8b4f12	\\x19c7480dc9060aaff0ccceaa5615ead0c2b2fced19cd3c7758a840c4e859094f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcfca784c59110762dcf4c707a5efdad99eac467af1c7ee7eb3cf427a80319fdd	\\x4510cb64a5dce7aff8a2e066ff0139ba2b87f523906c07d9eb5285ae06e38617
+14355138943:1@s.whatsapp.net	regular_low	2	\\x36a835c988ddba4e10b52f764c14e144ffec1e2375a60f8487e575994a74a79b	\\x69c10b8a09ea91e00ef669be700f4551a8d5da2d023f883a6ee94dcf98820df6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3a7a700096150e4195827ad773f682d5845cd1de811fe46c03088577c5244d92	\\x57bf7023c4595674f3e70cd9cb23dd974876e79847c475a9b32b4335b1f04ada
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8bb864c4c1df4a059e4eb3357c8a2ed2fb37c5ec4ea0aaaa3114365785ee159b	\\x574c8816e909d9e454d13535ebbd46814154956f3a5247950ab9803707cf9426
+14355138943:1@s.whatsapp.net	regular_low	2	\\xed889728ed43f91db4691e2bbe7f90462de4d59aeb712e3efc958c369f22b21d	\\x374a3b97737607d4066ba520e74fe65db0daabcd396d3b32338d5cd79b438a17
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa2254cdc4207a48036d5295ee0e09c96130d930a04b98ad4f61dd571641d45ba	\\x0b71fcf5a84129561c1016979980e3dda5fbec2b7b91a552ae1bff7efc6cde2b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc57c781b86ec013ff3ab585a2ea959b244373b37e9f801f8460d5a51cd2111e8	\\x8265e1fbe8a74e81419a62981b1dca233b1c22b9daa6ce0322cdbf63223083d0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x004ed95af55ef41f8358ed626c2bae85e0efd358262b8d1bf9b9cc4945158813	\\x23138cc0b856a48f21004bf4d89386f33c0fa19bdc94e3ae5fc2360d00b6efd9
+14355138943:1@s.whatsapp.net	regular_low	2	\\xacc9a2bb2e679d60624bc326a606ab4a11cde9744d53e2de8f01a7769c332572	\\xcd7f1131f95b61add96a99882bd51ef1fa3d6defe4ac882a5ae9d017a320cc24
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd5d39a96276de03b065ef69234b0af27fb7a3a5fefe72f050457a11e01c87c6e	\\x1aa2ca3eda74d5d7cb9f43bbd61f530a2dd536a817b97d7fadcdcd6d0f3dfeb0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6b1451aac74043764f48c0a5085f53a9917af8fa4a361950d299caf8d83c1bdf	\\xc5fe6194e10ff04205cdfab768acd82b3f6f3846567f5a9fa0f0fe1b7ca065bd
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe1005e26aba9e3e529b64668d0d8a4eeccf8dfe86aa8149cb7444e4f5e8b9c21	\\x91a69b5a4bda27c8454ab5be156e743fdfd1bf34ff20dfec05bfbf7b4d50c723
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6ff80b3e056400f34b76d3b7ef1bae5d046f53c392a36ad77e96bfb2d7dd7080	\\x9ad87bf577ed452cfe902fd80063ec7442636aa0d43ad2fce204eb69b5a18e1b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xca872433986f449bcdf31d460106c981f2780ba62f747e2a6c7f2afb571ae553	\\x86ff354394d25def2414d9112caaacb3d2fab8516f1408f79a52a5252058f203
+14355138943:1@s.whatsapp.net	regular_low	2	\\x97b4db82bf97af9191e0ade1b8e8f07d8029b28c0b9e9f3b7a6087655929f1c6	\\x305988ef8eccf1d3993c6a0e18cd0aad0ea258aa655d43ea3c59d44d65cdbb89
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4dde1ca84d027a0c83a44c94a11f1f0f670b581c81676afd2201ff546a4bbb47	\\x9078b63f02d81091844f22827333631294aacb7e35d5daee2a0f95b27551184e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x13db628342f1ea68825e65776ec9fff77c0dd141a354f1724822f906afcd85e0	\\x25e5ac8d0ead6a5553cd781008743796792e8e962ccb2d4665d48d2c3b3bf613
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa55079e40a1e8dfa9d0905cdbe726b7b87596ed4cc16c9da515eb4e586b35532	\\x0e695b1af16420399ae6ae6bd73c5b206316a7999c20b96b3150ad712ea3d9ac
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd7d880125ea7dbbfe37f732682dd0db67d2a241569c5212c308e0963d102115f	\\x9315064d77043192ad38102bee0df0a8d9f88086b1d263019b30bd91f724e933
+14355138943:1@s.whatsapp.net	regular_low	2	\\x13bb9c9fabf923e951b51afb60596fcd9f247e60a151bba664a0029cf5243414	\\x26030ab38544cdc9a728766e6dbe1da055fd51d5b0d54aed32efaa3d55a0de7b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4409ef1de7df3a8736940f25fa1b303a1fdae567dae01b1467532e05387c4038	\\x7fea12613844d43c1de3a2f0171eca692316911624f73e73e9931abcc8f778fd
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc55299b474e7f147233dbee855ebd98dfdd8409d85a86814c35c11e8c7c24cdd	\\x3a03f9a5ceb4809c866398bfd8d2057bded005bf760e389f071f13f508694f64
+14355138943:1@s.whatsapp.net	regular_low	2	\\x41d4a670f9f744b6c0ca3d2efd329dbe8708334efbccc49a02c8f51040f3a6de	\\xb14e1b2ab5b5f02f34f2e1cc122b3270d660cc08d744453e530e4cd8f9e9d490
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4f0c7f2335512b9e86b08df64ade410723936a7f7fafcb178c898c0ca4844247	\\xbb6bc91d52568283864ba4f6900e395e1305df00b31af2d26ccb8dc9db5ba33c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa55fefdab9726da30fdadc8e70c205c1ba6e206977f2131cd3495cd165ecc65d	\\x4431167c9ac780ba2bce998736bfd8decdc35217aba949b94ae149da893b1e8d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xffc443b9af642349ab1831d87da97996d5d37ebcba11da234131dd3650c5894f	\\xacca73cb59302e1d07e4db0e51e5187897311ed949bea1e8fbf43808f53c4b70
+14355138943:1@s.whatsapp.net	regular_low	2	\\x76dcfb0583e31952837c4334e24ad287c0629d19a9ddc69a489e08c5e99a1328	\\xd708c0c55581371e8abbafee739d84a4e80f9b301b9c9bde173255f6fc124a0d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x024d61da970ed2a2b22bae006e3c3879f146e605c60e92c1aa14103bcb3a3d3c	\\xb65a7c61927f3ebb7c038f8c86ff3a9eea6722a2f14d63512435ead78a34b61e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x007b06a78f62bc179ef1f9852adb8d6958ebdd33f73626317f861ef15c631ca5	\\x7ce0379a1bab112b6139d25c1494f263233ef0bf3897a2affb26426b83baf52c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfeebb1529c671d8ced1f1e6498b26e4be28518e4640d97a7c18f1f2f16ce1e92	\\x1eef20cd861cb0361664f63d872fa621525ec447163adde00daa13ddf9c3470e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb76134f9dd16f6c9f2ea8b8280098a1be48da79e0da671b3c9ffe6f70859b022	\\x29858a199b6890a5e70a047280adc5d934fc5f24f92294964f1bc21186ac73c3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7e38603b76d612700283a8e469fb765f290cb9672a137dfb1e150182bb0e8c10	\\xece5e2bedce23a2694ee2397cd0a7374dfd3d99e312649b472c42d3d8ae0cf1e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb024ea5cc06ffe4113c7e5d2622f757d0e6394eab5995a1b225bd4e5ea0cd23e	\\x22b64b9a0656fd988fd26e1d8169c39abcad7fb102492bdfaf02cabfac216e5e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8e8fba8d9e19fc0581c56d0cc54e5d5cf3f3328bb330c8dba67de82cf76bc1c3	\\xc4e64c12e21c710cc5b2513ce88afb80c69124e6dc08c4f62fd3b901e0176a97
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1d4f3c138b5791ec5a04671fbd9350ad1b7611b994ba930d1b1621d9541e3de5	\\xbf3d815035267ed42e9e0f6edad62e1fcc40bbe43e56069b7f14d83efe6b0013
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8811e48511bd0214723555eca8767270debe6ad0e87bb9fcc6ba947d2d3901cd	\\x3834cceec628d11548be014365b793d735ba7a47f2445b44f7e63e61bc464752
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9a79cc8017ef7e49868c30cdbee52e1d57957f71d69cc93b76638867b129abc6	\\x8cf8ea81ef38c50c6d2c74dfec191067a2a02a5da4d07c7d36c72034ff8447bf
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd2e1a11e9ed9327a6c096784c48c9d850bf0463ac42c306dc0ad6fcdccffd8c0	\\x56740b97685569d68a473369fb80427949ab434c8ba065bb7b3bf9e541034c7c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9dbbc11b879d867067cbb2db3534ff460e474afe3511ae276a4f37a3357ef138	\\xae6c282750dec068540bff02e2e757c7435511ffee0b254f139b7352ba3376a7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8c1946f0bcc48b6d4c3862b8ec7bc85276d2925d53d31218f5f2114c1a1668e1	\\x41a90dd2acc7c1b16be39c595df5fe7a1c1e0e249f8fe1ed863ad457057fd997
+14355138943:1@s.whatsapp.net	regular_low	2	\\x71c7901c2253acbb8fac0deadb6f5057f6876838ac7f4f5141b1dca8ad2b3052	\\x1f95a318679f8a87890c2a65f389001373a235ef2dbdf11098354da84a67df04
+14355138943:1@s.whatsapp.net	regular_low	2	\\x32cd92e4b85a4b0eeff87a777d9b6ea0e34a3e536b66cf55e905697db36ebef9	\\x3961925da1d1088fd34d2eeea71b690d665bee7f6c8be748b19427b9e98d2857
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2330353b9680aaf42e95720a3adef72dfd963e20c317ebbae84c4396f7b3376c	\\x3737b9eccfb9c98d672edf468b4dc95edadc9a9d30a0094b4a488d142db6677a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x554a748923ca39787e509cfbc0859f9a0d0807701c4e052ee3a6323e25a5d67c	\\xa4ac8e837dd179758a68f8b061a41d8bd4970636c2134a18e06dd8174ca440f4
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbd216aa49ef8b359aa70cc3b2abde4bb3da3ec3b1d2ad8c6a89ab949d967b343	\\xf87fdd69a78fc6e44f89ccc5ba113f3f1a419c16de60d173d513ab79a94b85dd
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcefe11fe2a89774d213510a9603d022a1f28461d2b8bdfd8c564e3a089b5ae5a	\\x32ec59ce405532d6a7c7ec6210cd010ad8bff23d944211559e220511c880e689
+14355138943:1@s.whatsapp.net	regular_low	2	\\x84b61d7ec2c2180bffa46fbd334f61aeb6c1c7d9cca28aaf9d16f6f27535f66d	\\x820db5cb99863809e5b6acc2783033ebae4989db68814e1bc89f1d90c13e58a6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x59d191f0ce3f293fbd73d7da9a2b7f34279a80f4c16cc2cab95fb0e2fc86a4de	\\x75a2480a3c49dd4d789ba6642aa5ad390cad565d5cdeb24034930652355f321c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd6483ed436d346bf3b23847fd425733b7b061688036b2055e02a36dce6c9505d	\\xe02e571c3cfd2dc224ac48efb086e47a2aecf0fd7ddd88ba80a0715fe800f9aa
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdf304a58acd5ae01b537692bd1f59032cff943dc87fe4c222611142bb4768576	\\x310bdcde813753dbd08445d9eef11c884402e7880f6608474f5282e3b198db56
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9d08dff2229c2617c6813eb1d04053027d558f9d4c32e1b6ac9cc2bd1fc339fe	\\x9efca54f4add0522403ed78e35ae77753ca8ecdf1f7b7921fc1e2726de8b32be
+14355138943:1@s.whatsapp.net	regular_low	2	\\x53f39ce764ec9fcb7b40154a8ee5e619363ae92c9b7fe8bb7fb09de0888c7519	\\x16e814037dd1d584d31a822f2251ad62215a1e92c0a6c9c3b474d1e33d0dcdc3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x77b10864fe1eb6e4a2bb128b2b9d0a8d7a06c5c890093bfdda0a8ec39fa42417	\\x0b2083d4d5de83d3a04a5c21aca411a8abfa44a72456a6e477fc2186f8951ee7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1dda82423e2b69179b7c0fab9c8f68826dfc923aa40b4cf98abea9aba08deeb0	\\xbad7f7b968d26aac49a6e30ff69fbdbde2d5868412c15ba61760756a2e8c1b1d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x27b2800f5a01a080eba0a2b48c1087f1d2a7a23aef9f3d41d7e921c4a9f1e21e	\\xde8130c48d42cedfb7764a3f19771bbec53b5371ea27be1559c8f71c23648d50
+14355138943:1@s.whatsapp.net	regular_low	2	\\x721e8d96e0f0bc84ffefc41ce0bf141ac117bf2a83eba3b80e1c73afdbf63838	\\xd9272ac3a0f925a7c5fa2afc77fcc2c0faaab236aba1fa692c850b66e207d3e1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfd420c8bacf3e9fc35fe95a20b518b06983b34f827e443f3ec4d50a83968ccc0	\\x252f3993b70a3daad2b4e14757ed284a2749b660b6b81cda5887ca934a7a02db
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6c797de88b9d824e56464ee1a5701053fef594c1a6783c9b1f50cb40a14df897	\\x56089fe38f000ce397bb312bdd9e02cc4328511a738c2115040de9a7c5e3ee00
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa4eec652ec5c597e52a4e13e344e9b22bb150994277d151ef20752dc2d6a64ca	\\x8cd4e20ce5c681d5f04e495a3e0ecaec2d7064e6ad9ade4516ba1b229369a85f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x258e8be6a3488b1e9cf04f78ebc96786327c2b085a589c4dc4e3094e84d0a1f6	\\xf1450dc56f17d38e72efbad27ccbdbd9cfd28954c14a9aa241bdeef746d2ac19
+14355138943:1@s.whatsapp.net	regular_low	2	\\x58bb0d9f946311c41e30a704592974fb122b2efda2880ec6f405c93e80d03313	\\xfbb89c530de702c7b7f26e33c8953f88ebcbbf59374ceb13d3eb53acece4392d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9a643aab7ecb26bb382645ccf95b9d19384ac2df111bbc86aaa2fa4ea63bf0e7	\\x46d7ea1862cc6f10b2049c819eb0226387c7de669f4687de18defdb89fc6bcc0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x724c766689e6f61f4bb86ebfb81959a29b50b1041c5ad857eb08ea6c11949661	\\x4d8b089022f8c8cd39302f1d71d4cc59aaa2de66104733ac80422f51db91bfb0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xeead66327bfe023245c185d4cb6d222b4503d9d3eae711fd8d6e272932622af5	\\xea10127971bba7459d7a8a8bd69afb344fb028e0d5d630a546cbb35ab0f44295
+14355138943:1@s.whatsapp.net	regular_low	2	\\x386712e70e6d3bf1e272ab70d2cee9653099fc3aaedcf3042859149c339a3eb5	\\xd36bbce191f1dc5e478b88b72c406ff1b4abffad417d8381a1b201d132b3a184
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd6bb166aaf327d1b7053e39749c5b4295356d1efdde5efb64db7204fb1ecacbe	\\x0072269a3939d7d67a2456d910b35a9f84ecdc05f416619f2ada21af681336e2
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc361ffbdb570c607ac32677724c34b1b1c36f279f836518d8c260dc882b20f34	\\xe60e3749e8c6a505423c2d3c95349dafccb817cba89b6ae443318e356c653874
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3448744fe79d70063452a732fc3e13be4a83e99898b2046db68debf566c5ffe9	\\xfe8e58c532e1ca5e06741763a68252c785437b8d3d5d45dd3d0c29a42a654cca
+14355138943:1@s.whatsapp.net	regular_low	2	\\x889f2ee38fe4f39b02790e5f3c1e97f1733e440f0daca0a5edbe4813f8f52d22	\\x5ae8869cbd0489444bcc3c33b178fc8ec6110a2eb7d3fc42efcfbd7b2235200c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2cba0a467f930bcdd50f64ea957ab13154432f33e78b46b54044ace6d199941f	\\x7fdb5f8dbda4b6580ff38ae3d23baf94396bf7e9a9dce879a154b379495de098
+14355138943:1@s.whatsapp.net	regular_low	2	\\xae8eb99239acba105d4b9ffcabd7e467a1697cf236eae41950cd80407608a78c	\\x5061d78ad6e2e12e9e3db1349e6ce38c76448f5193485e533b9dd0c24d06faf5
+14355138943:1@s.whatsapp.net	regular_low	2	\\xaab56165b38f4b67630d9f18aa8813cb3516ffd79a070e62f3f0a1738faebf4c	\\x1b04d18fcda52e248da62fcee9f17f1c9b6c11e77b908e44ebea710e5d609808
+14355138943:1@s.whatsapp.net	regular_low	2	\\xaad43d856195977be68c0047afeba9a27c5c34f1d274bc61388b8a4f458cb015	\\xc9e1bd39a8430e4d99e395e2d133baaccdb6e8c70ed4a4922a2ff4eb241c3db6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x21840c76d1bcc9611b17870d2aa5f41c8a10c763053f7e8656ed158630005346	\\x4eed1287fdabe1630ae97efcfdbe62d7eea61ae98a5ec6ae775459065ce2b63f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd82c47b8960b85044be9ffbb4dadd2543fdf23f24668bb25f5742689b8a33136	\\xe6ba699832fd1985d2a0c2a9cc3808d9aff6b1d8234eef4cce37e21c7c710a41
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcd8d29d081d931ec587200ec7c46db42fcd7a4c63668e036840e67c4bc00c272	\\x2177a1877f9b1d07768ea89e6deee3fadd8b212a89fc346bc91d0b820f2a9ff7
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf7b40cb5d15df75bc12eab5c6eae9ace86dbbf7c5142ac250c8d469a9812f9c0	\\x953b163a6cad9c1d3c11130e6488653325a9865e95fb66e2f0e4fbed6d6c6a57
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf72b4edb6fd1710f5002db4972aa50300fb9ed7cc27adda43844360998216f80	\\x4580776347a7761ea599b153d15592495bce67e59d0acb809a6422a82810da90
+14355138943:1@s.whatsapp.net	regular_low	2	\\x796b263bf717bbeb3200907d1f2f55985506866b0a6ae68dc2b69ddce0d77cdd	\\x265ddbf6a42193aa17dcf4a786056dd7b58c7654cf1027338c0bb7730de578cb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x337581fa735ee4b7b85fc9a08faa4cf67787dcde2bd56605db3829d4a64d1a8c	\\x31a227429e43799b04a78bfc16c11e7ad880476668ee672e769c668bd32cfa4c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2b0e8cd686078380a864045e5b88ff0f598c79baae75eca5f136e1bb8a3c17fb	\\xeec960de0a710754279fc3dab95af73b4d41f0c9c7845bd57eedf10de05d3a84
+14355138943:1@s.whatsapp.net	regular_low	2	\\x44ff5197c55129b50df3f068219901c4bc921b6d4df5a85bb87509686e35a4d9	\\xac5d3adb761730ebe0a3cebb5301f8c9798ef155282c8eb263d6d3a7f9123ba4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x964bb73c8021f0be7a15332cf44558805731150934f01094d2df34ad02259963	\\xf176fbe30d05b8d8b03d0043cb6a28c9062592fe155c2ea14424a362dbd0fdee
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfdcada94958ee22b63454b0077c9d20a86dbb2278ef3313cefcc89384960f97a	\\x1ddc847551cbc6e00b9813e3d6e7de9b2dcc5a167a080ce028c298cbe70c06d5
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb94780fd5e7ef03d63707a8a3529d1fdde2909e72a025fbdfc5bd6331a4e8ea4	\\x2cc74e0045d586611546802743825f705bf2f772c676ddcef0d11681982c57b0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3be283179c4e09376b76b2528940efed393368e2dad7cc5e82772c4970fb32c5	\\x3399e2bdc11d92cc7608338f3e67821e7a8ed07ecad8e72c4cdecb1328901dc2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6403bb894e04e97192b5758c2cb77e85a0a480931aaa73bfbdeb4cfb0a3a99b8	\\x272058f019eb16244173b2055efa0c2a04d31ba9859e69710e5e976c8693a3d4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x23bbf77532b483b3e627e9f1ab59039cd5c7b535ba828649ae6c7f8c73f6acc4	\\x057a279d08f8882b7cd20d9d29b8214581f9e7c2395a0aa50fffa2f848a8e3b8
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0c33d6cc31186f4727c96ea7ca5ca5a23a7fdbeda8ad8ade8283833aa82e2b6b	\\x77bb87e05e2a503bb7fd4603cf174c6a30634f45270ca5e5f03c645e4d64917e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5695d5b3ff0a104dfa839f9bae8d62f78eec8979ec9561abdb7fa3d6364c70c5	\\x6c6c634337049efbc2b80cf96d6ce07ea89b8b8929bb2688c9013854701c5f93
+14355138943:1@s.whatsapp.net	regular_low	2	\\xeb4a6eef6cd17486e349e55b1bca608a343571c8846dbe93c53822cf90df35c9	\\x528994c6c5003dbed3687af8c8b704b50ad9b0f385b749772a74d37ff5613332
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1522f72105bd817d9fe7f8ad9807c2a874815f2a4a6e2f4fd225f9ddb8554809	\\x0b9f247f0b55f25b78f34cd0f96478a74ebe762196f28d6dd6810eae51a52c73
+14355138943:1@s.whatsapp.net	regular_low	2	\\x87592f69f62a255365b319d6a9ca6bae3921cfc8f6b7dc174eb5ca04627eca54	\\x2e068c405c38cdb889224e16a19eafc3c24ce153e1339e29f54ab163efced488
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe6f197d456a3fe6dfcca3c8482fb2c446184d44c98c709b0fbf8d2864da4e101	\\x085fc4a0fefaf8920286044fcd5c0c622bfe651ecd9a5567bd7acf48553ccf17
+14355138943:1@s.whatsapp.net	regular_low	2	\\x12b886e0118df52f6ef90f82be6413c86e09df7782bd2d8065aac94e01dea25b	\\xd0f7b820e15385e316c3a14656df67c10874ba744c7440c44b4de38671cdb7b1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xccda8883553c6e764c4e4fa6e9ccdbd836ce83939b95fdc5744dc3433d544cc2	\\x5dc1fdd8f92c4f3026c2f8b5608f6c6800990c037e3b188d727ec47590e6214e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6ff9265ddc1e402fd00563e0daaa5b1e14d1fb81199ce038df0a99e528b0341f	\\x48f6d861c204f23bd342676fc6104dc2cd05988dd2fb2e4e0cf052c213554085
+14355138943:1@s.whatsapp.net	regular_low	2	\\x42163419ff959f16665e86e5fa84bf610f07d46a41c3f3c5be1ecf8bd28c4d85	\\x43699212f65326e747d2d3c6d10be13d759033c9329badb4425a10809eace2a4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7b07aa1e4362c530846420c68daa0abdf33ab6aacf39ce55a849dca06460ad19	\\x6ab392574e58468cb63533c63bf71fb1c73358cb0932fe641a75c9b863d7cb86
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5eb956be8c6cb5fdbca073d2879e911deb7c957e7d114a572714ba8117ab9bb6	\\x0a18bec6d9730c8b56f562fec3e81f83011778cc1eb87cf56d06aaeca85e1d01
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc26482c03bd409c1a3a5e1ac3c69272de34f9eb0f1dd5cb6bca6fd3ad6b60900	\\xfebfdf4fd372a42ad77b57e0bae1ded7ff73aebe661e2149740fcc1c3bfe3354
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4f6592286c812ef682e9996329ddb9981ccfc266287d879d7ac1ab9fbfcb447c	\\xe1c2b2b408322921df5ad2ca6d7fef112864bda9a6e6792558a413ba6d67fb7a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x231df08ec25716c1507bd49ada3e21f84fadeb3ecb08864b6bb4ed9af7c1a2b8	\\x387bf3e0ba1d82fb033a82616bba2a69fab3cdf61bb3d67f51d4d318bb7cfedb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0bcd8c39748c7d2cb7975e54bd2032e7e2336028f40aff10e9d3aa163c03f495	\\x36cea618db31d6052000ca6a12edba67f0e63d84e20515690eed4b4ad0520760
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf744efdf0a95104bd12b86f4ff1fbe980bd7e7d2445c65146340822f931d3c66	\\xf2e38fd7a131e6a2e04561207158d9fcce15f1c35230e2ba672489a3f06db1bd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1c2ac2f18b38267d588ea7bf30f1be7a920a8e28d14dac3367dccc48244ef092	\\x10c7a282628bd3a148dab6e76bfb77f568ae0d7245751d6f185b4940e25d3cd1
+14355138943:1@s.whatsapp.net	regular_low	2	\\x82d9f0be0f58c8d01bb186ccb5583376b6f58d50a49f78974ba1b442a84a6cef	\\x91c4850154de68328e1e4ddbb7f0b4c4a34a57a172644a253d619349d25620c0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4474456bad3823c917b169999a553b7e3392b613881fd30a854b1254a88d4f95	\\x8a2de2c2e55392fa49f83bbfbc9477c1385d1132c8487f54994f6b8cd7c7511d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x245657444ab32c576d0cc592ca75521b313c50234898905ae0cdf28dacd94375	\\x68a7eb115f4c01ea7c228ab6848596d6e641a4e7a899f0bead8143049cf8dfb7
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8b9e4cc89a66e59ad0ae8fa9a758c877a5980f88e308e4f89c1a7d9c692906c5	\\xe0873af8fcbc463bb5aa6acfb3e107c49088aa63eacf8dcb1b0e71e2a148de37
+14355138943:1@s.whatsapp.net	regular_low	2	\\x543653069936466f91d8b79bbebef977ca6cea6510fa4ea70e9fec8fb757e163	\\x1220e645c52db4c50e32dacf7d92dd2ceb71262c0e3d2ab6cf12d59b15164236
+14355138943:1@s.whatsapp.net	regular_low	2	\\x51e551df22979d6a8b5c70eb6887a27ea1a3e7060732ce936e015789b5afdab1	\\x206ecf9d950078e668f608ef8081ef4e19249666a8228ad4ccb8e6e53ce3606b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfd5ef2c72002a83a4be6371c7c878bb756d245c12ab2eacfe842651273016b84	\\xd1c06c7f9cc06c7393007ffc8f922293a21f9050707196abddeeae0bd27ecfd3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0a4b1fbca8a6604c48cd7f45c01f2b4cdc7d32d95c63d294a1d49781190021e4	\\x3e341f15d53ab80bc28abdea75a115c7b66e3b92415fabab4b8a0c3eb90e0c73
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf4af3528e46dffeafc199c45be660d9935003a14e24965617467e59051100288	\\x6d16e9c0ddede6b1a551a332f9b99f252b78c70d2589314e72493efed46d052d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfa62d46b040c322530b6a38cd7f8fb0cf7efb62b17f26de90c3223e2e80959f8	\\xce8093762f526e020a8f31dbe59f70454cfa4bee6484ca4c78cf00b29e2cab7c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x165cc3cb5073e68b39bb2c69b7233821449ea7b53ce0d61ec0c10bad82d208a1	\\x0b91fdf31aca1f88100b997f0fdf6e3a2d46ee2475dbcb9060444be0cf1538da
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc2166930ba66ec955a3116e8a7708703509c0c7e0e554510f34586021c5c5cd6	\\x6a1152c5510907855af45cd00efe7eade93e8ddcda1907443c447b93a80a8a9b
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd1f6d8537f458f75bf1827884e42d3afbc7abf4e5890ce3728e72b1df2ed6eb8	\\x0cff2b52fa5b70482714f4e8f9b66d6dc9cf100746cc57e58a516e8594382b56
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9fb6b11cf42f266f7f430bd966c0286ff63bc9e264058735950f0f4208a20f04	\\xb16ae3a473fbd5a36c6fb5640c031410e1b077ed8e0302a6de437327251e8c3a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0f716c3ec10eff569aba05aafa63256e8394753e7fed027ddfaff8dac9f56266	\\x9c2ee07584b2fbbb5f98ac804badf82e3bbd55fabd04aeeab0bffec74cca796e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcfc77fcb95f53283f7ad84a8f56c09274d044fad3b4f48bfd99c7f447957dfe5	\\x9fefa2784fd64f26aff892619acfc0bbd5474b6c69cfa3b123f2eb94e323dcbf
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe75e7526b648719f3613148688730460c13aed4311c1d52c9faebf50153a5d09	\\x031605069ea5293295ff4b2ca24b44090b327f554d38a0fd37b65667697c0f22
+14355138943:1@s.whatsapp.net	regular_low	2	\\x68e2ba2e0a3c4355c008480fc812d4134eb08e67c46c2b5f289eac76412e9076	\\x61eefd2d476ebb82639bc6a53630ec292ce7dcf4f1817ede2567efe8e0042504
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd8f7ea892acb25037e60ce914397e9aaa2b961968645bd2c18ae6a5b1f56d7dc	\\x452c84f28aadf5101ab4afe756966f136af8e75abf8b788bfebd06df9c2dc599
+14355138943:1@s.whatsapp.net	regular_low	2	\\x58de8741bd5ed472d862174b515363c734541d7cb1854b8c072e72c520a1cf4a	\\x93e091a004aedd945298572f2f8fb1f2a0207fbf2a0ecebe7d7b117dcb6e3e37
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2ac0c16b25e6d19988dba08dd4e0f24c7ce82313df43096678595bcae5de8db6	\\xcccbb89f81104faa882c8b8e4d6ba1f2b791ededb4edf82a957728699caba259
+14355138943:1@s.whatsapp.net	regular_low	2	\\x929b1d7a3c6a62bd23dfe004417fcca185a4f15d2c25bcafa56540c517e9e26b	\\x8e597e2b35a70ad119f99848e77cb9513c4ad437f37bfa5fc647e5e5896591ee
+14355138943:1@s.whatsapp.net	regular_low	2	\\x533470612260152357d4f0181cd4456b4eba187797dbc0d1fc5a2538d8f89e61	\\xfd62a1bfedec52763ca37b61c2248e713ab9f2db57b4fde840287cbd5ed055ae
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfa8b5c90e08b064fdda298260cb528454cfa0b82225566b5c96c968ce2c98c4a	\\x56a68c100dbc94c25b228b12b21fcb24adffa39e0cdfd8d47af941a7270ff9cc
+14355138943:1@s.whatsapp.net	regular_low	2	\\x815e917a26582471de36d9c4dafb412b93d06a2af72b64764fc9ac894c567907	\\x1721c961ee2b9b25414701ae7feea22cd6b5deaf3abffd382dbca2a0caa1cb5a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x191ccbe486e5fa93a36a4656872f50ef98acbdf0f584a0da413a4702c442a62d	\\x8868616758d8081e8997f6b451e1889873c30776402b1e0dfa429ba1c942dbec
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf2f399d1a79af1cab9506d0ee7607bab07a85f282826702dd1132c3aff1b1df0	\\x80e8bf0806c3cb8e75834149fadb5f4a6e04c79b655402856e89a5318cbb9381
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfa7accda3880e23979d530e6f128af0a43042d41e9df90ca1983173a109986f1	\\xb665f5b3c6c08ec4c58645da4e8e5ac38a4203d05aa92b453b1aa51910a8a235
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd112d3bf97c3396d060cb94c726131ee70a7bc456b412cd10368b0b2ae91641e	\\x82abe030d339cbd29f9c5444bbea1731fb4982f30a6cc55fa86372c260d2672a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x53ac73cb8b6745c197ed47f64e9f3d3633067325dff94b553d17489f4e9868c0	\\x51d1e837fa0cf13c5fb3db78f17d7723c0065e4d034d571dbe651c6c13203839
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8bd308e739e31823eb3ea0add555cef7585f5fa6a36abfc1aae103cd732ec777	\\xf1a089cc4a538379ee4c53450accf75111900f5a85a1e4747e0cc527b6bf251f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x534153d53e268e0bc8623bb332964db669db30669ad38f5e56551b94ef47eff4	\\x3eb65c766db96cc284631fe6c1a442cccba249b537baadf5c6526b53720cd8ae
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd98ec727bd6b316cde2b175657b7ac22e8a946369d38c4e0335bea3c50d7d09e	\\x1f4969c382ef870a610208d5b7e2c1566e3f5516abeab2a061aaccc76f70b92d
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd4cad085ec71a804abf972597cd89a9e2238fec15106a597869920972c192add	\\x2de00e4f40dc4351383e446c6deb1830c35b4663ead740d8aac43cde28d16cbb
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcc50d55a5a9726966e01f93d2f139700cca6d935fca81972bfc159b4388f2ead	\\xea26246e2c6cbfa0b25a5d153013a6791516025e09bd02017f899130ec82ba09
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6ae603fd954903130c13fb22a53ed6c331f5e9e4f8eb2bd273c4bfbe0d15f144	\\x278bc31ab13b829ffaba93b8fd8391c69d91f35fa496506c62a3363afeddd8c2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x28866ecdba94c0a2de2055121b5923af60f30fb0fac4bfb1b6bc4f62f8f903d6	\\xe8572649b96fdb62e457ef0ee6dbc2ef146b7c66d9b0c646c8693c92debe1651
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5e1862bacd8f9a46eee54cc3ad9cab9374f0a25df19f4880902393e2eac0f200	\\x608307564b3bada9a33aaf8c0b9243728e2ccb8ec417de94fea41cef10590d36
+14355138943:1@s.whatsapp.net	regular_low	2	\\x713c421bf9d934a49cdbf035f104308911fe0c0e9909499dd4d596f02b670f1f	\\xce9920787020b5be788909c087c50dc109f01352ad77397eec80d15a9cddc1bd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0a3f9d87f157249a77df482b7fc1b0a8aa3c3161de0eccaf94f961065f515d5b	\\x21ae5ae5d10491b06778e4e78f528fa36e5408f5345e20e7240d504ec4a9a85f
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd7c251366ccb2bb5ee22cb893213a4b02340ed73e90d1ec540fedeeefd9e01fd	\\x65ba5abaf424791b1e35273a19a42a84c528b847bc8d52ba0a8a415d2b9b30e3
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf9f71d47d1a0822768cb1a8e2f3a0fc335c4d3aa48db3b788d199a736bde2058	\\xeb7fb639c98e0a0cbd2aa85e1508bb30b5d92615c2714e5519477a41730a05f1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb98fa5d751b5c9713cec3a95aa7e107ff51ef38df889e2d2d3637eb99d8f0dd1	\\x78df52d01557733e807564b6d52a1bcf043207450ad2f60c5d3073042276c856
+14355138943:1@s.whatsapp.net	regular_low	2	\\x19e336f96ae2b336f34ece3e31e71f38ea3d38be05cf257954766ad32858545a	\\xd2527b2499724e41f75f67763cbec1216c2faf550bb235324937c79f90747d0c
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfe12fc166031da827d0aef2d4d83dc83db631aa15515ef1efd855915f92b4bee	\\x5896ce1f359f4e93f3c298b1f694f5d837fed73ebd2fad8029f5c320dbe7aac5
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd4e6c0411a5a9bde5cf1bd638caf9ac27835794e1275368fdac1fd88a68dcc0f	\\xb5b9290e690b8dd00968169c27974d6cbc34a15a201acc3edd1abb2e36201625
+14355138943:1@s.whatsapp.net	regular_low	2	\\x09e357f269b1f517fd0866b0783d2277db50647835052645d86db4bd4710b652	\\xafa84096ba448f2dbd334d2b4bf0c085c3a6f0278c4621d071bee53e1513dae0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x401c903317d4ad68c255cb0a5b4cca5d5f0081200589c01c611743ef02498a8a	\\x53707f2c68b730b01ff07d648b1cd60ec9884cd2addb002e2af0c1ff600f0190
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8cf36f0c3dce317707db05e833895cb3c0b7e6a4f12681df1c764a396a4829d5	\\x9f581142400997480f1124606fee6eac0feeda11d76037b9cd536a5902c83c9c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1e1c7b35932c33f0be911be69466667de1e35cb9bd91de77ec2dd33264dc9bb2	\\xe4df87144f4049e0258938e8438d14a370aa8722ef8e464f3739e8f3c1af39b9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x43c61906c8438b769e6c3650a0a07735267a2ef3dd7fa920fc0a94288ef5c1af	\\x646a85a5daab664049f17b7553da99fd74c751a8ac34ba1e00df48857edec8c4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6a5038cd17f5063e9d11727976a47e4408e50155dc49bdc76b676fca1fd0e2ca	\\x079e8528b7ff0b39ffbc1eac5461ac30585a2100af07a78fd43e4b59d87e82fd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x21a9057e94ef219940337ae16bfd4b2adcafdd76ba15624a9741832253e81362	\\x8ed67b4151ebe3cdd9054d49548333db1c2363ba2f261fccff8ef8fdf4242115
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbff81bdb17d2f28a69b11e48aa315319d41c23426ca99b1e792b9e9cb2293c16	\\x06d5bdf0ecb796a91edb82d7bc4768ade6608805bcfb43d52295800e0ca25867
+14355138943:1@s.whatsapp.net	regular_low	2	\\x379681ed6aed4befb7030149abc303d8d8bec96a4a0d46db0cabb4f9bf8f5758	\\xba04741cb8680726115fa42a257ef0bc648dd4064a74b67318166cf4348a31b9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x75b188423481381b38bf0eb017e7a83a04d4c01678c8cb07e3a86a03f1df0d47	\\xc290261cfab0b96f9b83d93c48cee12025cc732c08fe90a93e3d9d0ed0195a97
+14355138943:1@s.whatsapp.net	regular_low	2	\\x73406f4ea11825c51853c9173c96e2b94679bfd43cf3dabe2936bc56307dfdb3	\\xb035a9ad12b38fd99863be78ac86a9633e638dda2667e8820b57caa45a027546
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1106beb484215335c94962588ffd427f4bfb4406eeda9795c78710369d650de6	\\x2e91b81ac6a49ab54699a5c7eb63f678e46aaf1fd5f6991e1a4ab8becb682482
+14355138943:1@s.whatsapp.net	regular_low	2	\\xeebbec9e02ab76b36005f84d4b8b15d252c539f0fbe39c9c9fff8b3db8c1e2d7	\\x6296763bd826e1191761d50b6f02f343c854b15bd4b4b544798de8b100d32286
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1046ae4f5b2ed9ff63be6b001919e6e7800f9f63cb1433f932fa58fc3ae890a1	\\x2875a61f98ffea3db7141775fae9e71e906e5402b1014b8a86ebde103ffbd615
+14355138943:1@s.whatsapp.net	regular_low	2	\\x096042c92df654bde913da6c2a6d8d443a47b28c0002bb7c6804d30e7055aa01	\\x536b6c4725ac6059c767ff7c8c5711d2fce693b98c2aba687e56cbbe080ca248
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb2ddc4103500125238cad39c315b61cd7c83ac2a7387a2430b0618dd1fb1bed4	\\xb8e5cd78319ffc2a6d5f9740871b23d7c28ebd735eee47fea8112235263596cb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x45c8bb4c0b766d36b376f05ef6e9dc9312fdd539ed9ac826e3805bcf02fa6aca	\\x755bcaa80755ea571f485c6c69c98f7df17656e4f4bbedfaf45caedb493af038
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5e6304ad671386fe3efef02c4113d06f7b92ceed87f73fef99c37c58ad9df1f3	\\xc7834b3cdce96bd28f7db17a9117ce8870bf593ac0d8ce0120ec50abc181fff2
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd375d9d9bb130a648bf05fadb89828d890a83ed904fa45c37487b75f43302c63	\\xd7c4256a7be7ba2bfaefe30af34cf8e9403a1f6bf60a91f31393b789079ed228
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3b517d586d68cf25ec247201de976a8bc01075e4f8df57f4c7c015ee11982542	\\x6f25d2f7c245a42acbda0b6ab7af5e79060621ad0d7a19974f16a652e5a0cd03
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1f892c7ebe5bd402bed49cd490e49032915e9e6131f20c61f2fbb63e25709805	\\xdfddbcfe777e3e6fdb4308e17898b8df7bf40fd182b7d86ee849c319e9f0ea91
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7365bc34c247ac403c3cce7cb341b5a12a2848de55fafe4a3d9fc2cd4a707a5e	\\x00323b5cba6ac68a894dd11965715922d02ee88d543e4294681f0198ed9c1349
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0c3eae670be607fae4fce49236ea8e508b0756402464a8ecf0d17290f4c18409	\\x4f59176cce130e753017d390cab1a10d4cb4a7f1dc1ef65f89fdb6ef965a16d3
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbaebdfa8255f92dc63477da401416473eb20c85f6b43615c89f733b93c62461d	\\x8a44744e3d8879e55dace8b2b2e8ef148e4bbf949f3a39b35b5d04b3ed2926f0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x44edfd1d2bc96093cc914b993d5dc52e96808c4e9718620d0d311f303f4096e5	\\x87eb7d573d73fe181561ccf761369d5e859366c2658872b1f11c5c0a05b83ec9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x01d3c0a87ef27645f0b68b8f87b8565411ab28a09f82a9bfcea5c21d9cbd4b9f	\\xd97d89e9b22307b66e922cb5b160bf5c0567563f41107fe6ffd847d3681f99e0
+14355138943:1@s.whatsapp.net	regular_low	2	\\x48bcd9dd6b2bc1a50d4a9b58931a5b819f8c0b3e3ee6eee23104feb74ab55d55	\\x4f56ceebf76b0e0940f25701d9fdb5d7c3a5b692e54a34a36bc0eda11434071a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1bf5da50f6f6dfe0f4f0c508cb7c7979836d075ded0908ef44a10d271e4b9f6d	\\xb0bb5c76fab5619fba256b7670f32f324a6fc6f26774deffe942f5b43d58bda5
+14355138943:1@s.whatsapp.net	regular_low	2	\\x74fbf5ae49e3c2a157d2262c853b479c74b4149302ca773a93f6e2d051566dcc	\\xe6b1690680abb7f82efce10e842269a23b713041b326e5d1e636487e58f479f2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x70757c19cd1c2aabc5920d4cdfcccc6cfa0416b80bdfcb81b68405b5ae002dac	\\x15039202e9438d7ebf8761a9e23ac88931ed52744a268c82db06a243528f6b78
+14355138943:1@s.whatsapp.net	regular_low	2	\\x01e0d250733b8ddcb8be385f4e964a8409c0aa6bd5f787249407cf55be5bf8c0	\\xfd1c7cfb7a3947fc9444fbe65a8c1a8d35df9551b1b7132c54ac1e37e4ec3790
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3c031a1dd9bfc8cbd875baa484f065958d893d01621d05d0a1da4e44bb5f046d	\\xabb1ca63cdc2bf864732c6a4ee423bc7ab81811d374b2c4765d52d6ee72354de
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7d8493a7e6f38fe442e2800b43a3d3dc569001bbb92c40014c851ce81e50b531	\\xd7b373c22dcaa922de277e69abb14ea499acba4dc7f7c77e7ad0dae99cde18c6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x54db98663687cb31121a8ad379b24ad5165f415633b3201d0a2eaef1f5f61d42	\\x86f1f7a52484f3ea2b5806bbcf72cccaf7c2a109020388e164eca177774c573b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x7d7105aa8a6054f94abb30cd6196ad985f91ce1b242cc7975732418b72e89462	\\x5ef8286ecad9052ed57858139771fc1e9082c629c6149bba9b2a22f9f2e20780
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe6c2165f14403adc31eb3604db3f7a2e68d6a3928ca6720ac9090fc89fca7507	\\x2a1fd6d66baee6bef7f22d944d64b3f2854ed11cee37b9b08ef9b57ce6cb9b97
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6c868df4d34185c3a34a5c97d778753c1ffb7bf7c41181ebc2599f6d99275af7	\\xd7fb08e217b8ffa63125ea13946be5e9fd527d49a3f2e6bbc5f8e748a2c64c5a
+14355138943:1@s.whatsapp.net	regular_low	2	\\xab25971981a941ad94d8c4c9037aecb380aebc8378f35b8e8a388b943ebd973a	\\xbf0d1fbf5077affa4c618109cf2c3efb0b2dbf9aea28d5310746bd52bf293fa9
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbbc60b02b4c71cca6c8d01da168298b58290c0b61d2dc256611417cee7f3d921	\\x1b270d391c14bb876f10f0d51f27a80ea2050e537585ecf2b6edb687d935fcd8
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3878e0e46cb4cac28b5f5dad5d238f5ef63b72cf4cf8330983cd836ebed49e96	\\x6f2bfa81c4e5974100c4aa79aeba59ba4a747f78cea5a8171dbbd20856570f2c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5b79e7194afd510585a0abcb38dfce6e577f095405868bc7ef7a2d93d582638a	\\x2bb93c6a0afd2244e71e5c5bf69cf7a80d24b9b880d70adcc4dbaebdd80574ae
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd0fd9ae60a6cb955661fcc3fb222adea9b44aec85525a3ea4913a5be10059aa2	\\xf7f2b97998d75f435d5028ab13c24f3e2ffb4aa6de884529facf0dd7ca9c0a33
+14355138943:1@s.whatsapp.net	regular_low	2	\\x342436f37f01db69787620d8bb52c95c03b1229dbd08bb8f28a5b0a81ef0d79a	\\x134bac71dcaf5f33e8bc1512346400744f1e4ab6b8e0c1f97cc0bf09882db3b4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5e789635050d43f9feae276f912b07b62077a2b6ba7185539a6d84bd83adbffe	\\x7f3a1b7218079c4801d48d37167ab13a5d7b68c1d7d47ea7619447bb4fc378c0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcb0ff7b7730e62d2c3038fcf4ce719e2120f75ec3df714a696cd72291df5d5c3	\\x3f4818cc98baa4db8d3a9a18a25921fd707d9ae0aa408eff47c8e3f05c77dea6
+14355138943:1@s.whatsapp.net	regular_low	2	\\xbfb47bbfc4482c12dcfa228f8aa2505f91dd3db960e64d5cba34372fcf07f1a4	\\xa82dd66b5044f9dcd1161c38e110a04c0adf334f114777fb4c5fb255c9b80d3c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x763309b034593bcf213d250541d8f1c4f8920864e9004fca5bf433f566d279e2	\\x798c4d220b10c960fe27bb252d0dff9bdbfd194f93c0ff8e260397634e515f11
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0de7b438133a059136198c2ff7b82a35e7a63d00b7ca8f9d15b1cbef36d763d0	\\xae9e787db4a94d2e84213771f7ebcaa4a90d627219633eb88bd4eada8406f0d9
+14355138943:1@s.whatsapp.net	regular_low	2	\\x38276e408850f32c620ac901f5b4c015de6c8bbc5f400b28975a403a9b944c11	\\x5412869d1d9ca35e79880f2bdeb378f0a1b6c0ef7fd103e5379d766dff82e5cf
+14355138943:1@s.whatsapp.net	regular_low	2	\\x49c8550847c06d56d69148fd59c7e48ab647b8367c60ec83a4c2390b11a2e460	\\xcfdb037b16cad8ab88f62c4c1f857f1c14a0c7350515bbaf031466b7f94b369a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x258dc654e84eba2f42bb190b5e528aa21ade170764f1aa44dd346e0e19062f9e	\\x407a1ed522bd4ceb7638ea07d802abd8b95063ef40d56ac60797720f91709add
+14355138943:1@s.whatsapp.net	regular_low	2	\\x08fa374d6df6a98f8c9ce323c41f7da8e87bb7329cc726e30e11d932235f00c7	\\x3913335666180ca2f510e754fb81c4b296d3c8c9f02947d8f6e31f9a9a2a9e12
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9633ec7c11d218d8df6d8b987bf49b06e60616a94cc16f751b78045947bd4766	\\x7e918bfa7b3f0e4b5511d4a3fd1aebcf7260e4b5b19a7889e575d6ac5de4769c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x152c2df72518306ba3aaadf52b57d4ba6e03f75a527ca96eedae344556453300	\\xdd4313aeace25887147d44519fa0ecfd2b13630670d97b0865d143514baa0872
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4afb7beeb27d8ff7ca1ff2bc04f254870f5b56db7daa03cfbb488c2342e01cf2	\\x8f81377372033c1c4ca09e8b5f2991c357791237590a36fa59415e7ca269cd27
+14355138943:1@s.whatsapp.net	regular_low	2	\\x65e02fefc46732f3e3182bb57a41dd768f039ef09f66ad72e6f3d15ee47ac7bf	\\xc53777b352c357835f07247deabf838c50edfdd1724994b2c47cda8e5f780f10
+14355138943:1@s.whatsapp.net	regular_low	2	\\x285c66c6f7a571b22d186be3ef3e957f2804343ea6482993481d7a8b03c99083	\\x70dd4ae444e73308b1831c1283a8bd9f87fd5419540bd8b2042e88b1b45d0991
+14355138943:1@s.whatsapp.net	regular_low	2	\\x09ac4f5b4b77788431211e535564e1b58ce9a8954765ec142c732456e8548d2f	\\xcea5b0203d234bc9c0ea6e74b93b077bfa157ca0fade2702ad6675939062291e
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdcf34dbb25218bc1300655d85940e247e0fed4693b721e1d82694db962d55707	\\x76e03f2eb411d6508b9a3a80dec9019f7d9426a366894a299663ce2d8d04a1aa
+14355138943:1@s.whatsapp.net	regular_low	2	\\x64fa4132227312b1e85306f762437ed8d17f9bc8d96a78016cd70ee6d663c8d8	\\x4075371eaf28547fc5d3485508a22d215f9350bf4559f8859daab862c24fdb27
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8147f1710f5139321f5a1553714ff62ae173430085712f15d930fd34f7619109	\\x6ed17a943011f6384d561bd05bc699135a5a95ded5a2d1abf353f8190aff2c94
+14355138943:1@s.whatsapp.net	regular_low	2	\\x19a0865f9f340f02f0f8dbc1745f42574f025de394cec8a4433e7598945d6d60	\\x00913cee16426d5e8fedd446efdc1f34f971c1c93702d5f6417f3110e3a57d88
+14355138943:1@s.whatsapp.net	regular_low	2	\\x91f20b3d92e8a24cdd7be5f7d958594b492a08f9e0dddc775675dc1fbd05f8b7	\\xacb1a9f6b0a273a48ec3f006759c09dfeb665611b47cbb3d9774db6191eb8765
+14355138943:1@s.whatsapp.net	regular_low	2	\\xca45c4e930785444dad45ddfce9af61fdf5bc3deb697922d78c886c41c93989d	\\x135ba94a1200df7d7f31bd44f59cab86d6b1b49c375a5ccf7a29e0691b1814d5
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcf447dcb36c0562865dfb0b64201dd11ba5dffc498f1c98a7dd6879a70a1e280	\\xc4895878cdc96a4b72533de8e7db67845d4cec7209e33f4e04aaf1ed7d60251d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0733a01cce5de2ec44a23771433dd6dfeae10e101bfafee4469675ec344f738e	\\xca64338c0a9f059f2916b65bf871c74f2b29ee3fe19dd6bf062d6b35822a4312
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3a79539ba96a14007f87ca107f10fc3eb45a2b0fb1e8a99bfe6a6b09d6182191	\\x743cc3f7332b971155c8180fda92357fd6b7802c6ca2a66f2d160c89dbeb7e60
+14355138943:1@s.whatsapp.net	regular_low	2	\\x745d7dcb6b038a894f36e08a2e8c054b8bedecab33510ecf4aa6eb6ce57bce83	\\xec662d434811a3c9748cc9efce003230d981ac9417a85db9e586e060f9baeda1
+14355138943:1@s.whatsapp.net	regular_low	2	\\x66d96d400202a9b18c31c180f2a36e648043b4fc371bfaa93473c86ff5119248	\\xeedbf66ff444f3005e23abff2cb15bc863f1ab13c8577d4639427f3f3b529da3
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc52fe1b7b61a5b885628429fbf2e390d970eec2cc70d10e45765ee071413fee9	\\x0a8e8893d1108b11042b998a5b5021e29f4fd96690d4390301af0037d8f11f12
+14355138943:1@s.whatsapp.net	regular_low	2	\\xdadedb82ceb7b34fc555308421b1b6b5c3b262664880554e23d5575617855e5e	\\xe60410e348690c20afd164a5ed56232ef2d90ebd9d6f9d3a1715060fcf605b93
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1e3923a23f6b36dee0d03a9b189b045f8de644b7013558fdd3a5f8c0e099bb79	\\x0f66aaddd3e62c0718ebdb386ef9f9c696b41b15ca23e59f1a7cb3dfb48ab90f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x43dd5cad7cf2553f214ca81d6c4a4d1255be80cfe1899d8572317832c0e880be	\\xf0e68d5b19d4c07d870d53a69bcdc9fe8af696d9aaadc42e5c1b2e16c6a26283
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcaf5d3aa53b4380da32059615820daabeb559de38347c0ae7deab9d0ae120fdf	\\x85df31861d54078b5e0d0a2f5cc5245bf839e9b8d6e84f058fc6080c77f756dc
+14355138943:1@s.whatsapp.net	regular_low	2	\\x09eefb5d1f273ba417971e45f3cbd4fa55003543a86d5a444d1c8fdc4e76ef62	\\xc2b9a25278a69eec7556cdbc35f3866ac1c6ca95be9773de8f234e6709678469
+14355138943:1@s.whatsapp.net	regular_low	2	\\xa208f989c558abf6dad611dfff3b5e53c34451a3363e758ae8f40d2b53d7aeeb	\\x0ee97ee12a3db6337830129799c1b82c5dc7054501a636265c9325e657b6814d
+14355138943:1@s.whatsapp.net	regular_low	2	\\x72bff2c052ba9d3099defed561c0fc99efe6d4ff26ccd6e70d239285999692c0	\\xb4a2fded7fd0c64ea15d6b6f0055bab4b4c1b98e0f9ac7ae805e1f894cbfb5d4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0a7df152fce6e70a880233b134f492fcdca9bb0c00c989a73c440da5c78da2d7	\\xe0b6215512b520a057f56fa8a828740b0859293a99f93bd36377c8251aa17889
+14355138943:1@s.whatsapp.net	regular_low	2	\\x580ca4fd38feebd01a451db84a16cf0a23775b2a92ab5047145fa39178189200	\\xbaf5a0a26b4639b2bda5e622fb87f6551468cd4604750ab99255db6ff4be027b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0e6cf4f1ed8bf34524ea26af6a933279ac147fd8262ac2963936656380265057	\\x5e6bb402df2f7daf96f209e1ec9d73bb02dbadc50d3e3a1b6895ada281696ded
+14355138943:1@s.whatsapp.net	regular_low	2	\\x90c09f22a839b6a362c3dc6e21cb7823f478c428ec9c71d910408f64aa737a58	\\x14e0e974a1758b6e3e2fdf43188728d3324c77db6671617db00a392893049d82
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc7e5c6e788e76b5a066bad11b395974e7f995feadcbfe4b751b8e3402134d468	\\x276c53ae86d3a6841165ae41a9eeed39d7c49d9ba669e899b1b8bceeefc8ce60
+14355138943:1@s.whatsapp.net	regular_low	2	\\x899d462d72f4a96db3b6584c8b51787dcd556581e79ab8372b8fe915c7679d81	\\x23a22c706a756df3025a3041e07c33d502477f81b4f7c7d7d78f85f7d9c4887c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x39f7716997f6b97ff366fc7b9460cfd62e6d3ee138bda3a7b24e5ef869f46e82	\\x4fc3a72133cc6311b20a022a22228d6c7544fde08a4ec9e9e3e207459e4e6799
+14355138943:1@s.whatsapp.net	regular_low	2	\\xcc0edd3a781e7ed5d2bf47ffc1e87adee9e18fead0ab48e150963763d1c541bf	\\x616a8d2f7b05ec701b3ca68962d29fa5bd0865406448cbe52a1b81e05addf614
+14355138943:1@s.whatsapp.net	regular_low	2	\\x52b1ca8b105eedc6322be17e29533cf810bae51348ed0a68c5295631a1c5f77f	\\xc7cf08c18bf279d34dbc32034cace75e72133ca719b1cf49d4d3dcf0ab416de6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0ec1963ae7b88f9bd854902a0c6815be2b78838e30a4d5940cde576bdada2835	\\x3af9cc691f95dfbc9ca582e00d35c27be3d1b2e114479622656f9ac649dca64e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x03f77041481f65a5ef86566b25ff064d8f1fa7750243081f77e8202d19c50e56	\\xc4fa309ddd6c8c38a24d0d093625478d2511b27bd8da0612bba3a7e5c72035cc
+14355138943:1@s.whatsapp.net	regular_low	2	\\x94193af064fba5fae16b18276b7a3c8971691e774a2b557d1b068f7760c5ec05	\\x6460a63b0f2cd8518edf8713c6e938195101411f77f82d64406fe859bdfc7ca2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3dbd064f8f280714a7383d778add5c65daac5bcbf55ddf4daba7416f7c7ea1c0	\\xf478cf73ecb8ffa8f22f941dceb137d348e1a41f9976b11cb06ada0d108e57fd
+14355138943:1@s.whatsapp.net	regular_low	2	\\x66dd92cd8e2ba89749d6aacf8e52094139e8bed0edc3c2008fd599b161cdf816	\\xfbe9d40f7a37c82d3f6ca52a1a353b1a8a618fb76e376c3ce1ff48931fd0235f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x93d53e655eb0f7b37ddccfd2e249ae563f8b2af29462154ff07d90aaf3420b12	\\x1247fbcced535e01db3b152787c279ba9bb74ce80fbf36fd48040dbbc09acad0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb704cdb737a3365f652ffd00c864c56a2b80b077934cf241eaece827fed4effd	\\x28e4ae93075c3a2c83c2af57957d7d10ee9c2a89364a8345583b9418aa6e1a30
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5d59c553528a99a8e590f43fb5082056d11cd0c7eecade609ca7510271e4c5da	\\xc235fcb4652ce969bbf2d3871276d3d201864c0d52c8bad1a710c93800f3ccda
+14355138943:1@s.whatsapp.net	regular_low	2	\\xad01d234fd596af72ec04957b379bea054eef9791628b863f722f7487535d86b	\\x6fd9755a3edf15c8f37d2ca577f1543c148bee3e78eb5c9bc280a2ff1f93cd26
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2ea982d3ff6347958ebd48db94693177584c514ee89566add2f8db3e51f5eb24	\\x43ae1be11691d292925eab5d8349e245ef338a2009b928c73ac154598623cbfa
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4fd312aaaa5ad998a5b4d110de6684f6c8ff3f3962e714345b761dbb2c52d80b	\\x59cef1ad9a9793b408d2cd696e0c2ea56bdda938926dccdf58d7589fc24d28bf
+14355138943:1@s.whatsapp.net	regular_low	2	\\x087e9de5a82c644502a3546385ff1c4248c13a53d4892c9b465e6cb09eb38d8e	\\x4a1c8fef48aa4b1cb7a216ff5e8e0b0de9c3f06663cc853dfcb9ee27b0b499d1
+14355138943:1@s.whatsapp.net	regular_low	2	\\xfd1894e1ffcd39ec2e786b97a92bcf1fcacdcb2496eb79a20f324a75288ef6e6	\\x120f9d7a171c8fe72d029e9bfaf88f7ab4cc5afa578fca29061594c099a9cef0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf2b2cf9c826701b46bebffe3c8bd383c695277919d6b34a198239f57ff7c5fe4	\\x1cb3fae8f0ce148211c6397009a5222ac95cf882faac797e8fd4329e5c00c68c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x85b33ce1a13d54b4ea08ae2c8f7d2f3de2c3b36a7e7f38ff038db9f800313576	\\xcbb3d889f1ca87d684df4c25bada089e0462b95a3fa61ecce8e3394257fe2a94
+14355138943:1@s.whatsapp.net	regular_low	2	\\xba9a3bf4560eb762311ea5ca05649592e55ade4b8c11a0a3490e382c05b97ad5	\\x36e3d6bbf04ba4cbfc2d3dafa1da2ef623627797b4fb6c99746583295ed8c2c0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf01a0477ad601bccec5f13e903e93ba39217d3344ff374b27907313662d8263b	\\x42fb3bbacac17c7c26362d02846c5a37f3d90cff89cd60299757db578b7d71f4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x25aa71f493387013754d4a4beaa379f1aca1ae9add8018c91e84e600bea399cf	\\xdba9d47db2bfeb3b07933dc849575c18a05ba332b7730d8a151029d72f764709
+14355138943:1@s.whatsapp.net	regular_low	2	\\xe5d00c6daaf2c43b7b31d74b1fe0122f5972ae43a6cc1935dee59e21d6de5aff	\\x884ca6f901b2ba719576adbf4194d450ca0817e2ce8e6779462a3940287b81a4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6bd5789ec1817d8aef7f4da754b3424a180804990ca2f95e0733d5a779ea5410	\\x369cabf07bbe2531ca063b538a8422b691ce4a47051259eebd92b2f2fa9460bb
+14355138943:1@s.whatsapp.net	regular_low	2	\\x00be5cf22139ecaa622ebf60c1486f06aa82cba03398a63cabc6beb74cbde15c	\\x0272a49527937f06efbb2f4bd7baf902d1580bdae70efcb6ca80740ff07f70d4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x05e1c73af0cd02fde203210e5f11838441eeb49f94e27189353fb3f73f811e00	\\x34c8688ba8e2fca309b7236d942eb4267be6c56d4f3e19ec71c552f293643e8b
+14355138943:1@s.whatsapp.net	regular_low	2	\\x9935b7020d2a8db90d88ea27f286680d46d73358fb6d2ae54fd4bea9e1a301d4	\\x5941db9d54dfcd4a8b1825af40ae44459d758fd1a987acc8a8387a0995e6febc
+14355138943:1@s.whatsapp.net	regular_low	2	\\xb818ce642c8d62e943c8ba15a6efa09d0eb8e5d9cbcf2cf66748835f2125ec6a	\\x2cc02700cfcda87206d11f2e435ddb63e8e022e9579252a967f4ad1254abe16a
+14355138943:1@s.whatsapp.net	regular_low	2	\\x73f01fc3c89d6b7008b07b2c238fb097ba0fde5f81ffcd5a90479f215152b52b	\\x3e6729c534364245f6e942c524f922ec39fd0ea41daee72caa9a5e0edaf02f1e
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4200b841a5e64876a6ab80d547c61905d2c3d534343f1fffd40758ec94f2a3ff	\\xb0352617046e9891439275b38d773aff5ac565aabd227211b7118b7eada1d3a4
+14355138943:1@s.whatsapp.net	regular_low	2	\\x714032d0bd984c54cb2d27a067f4ee2d770e45802bc94976fff6acdfbcaebd4e	\\xb9539113a08ab5f963c85ad3eba1190600eaa908d8b9e63ddc57146839aee5b2
+14355138943:1@s.whatsapp.net	regular_low	2	\\x644226c689d2da4a9162c584ac8e55dbaa1f2d6aadaad7cf3d09ceb89beb608c	\\x39f761eb09e5014b35651cb396df0723416bde31a393b450108728e093a0ed63
+14355138943:1@s.whatsapp.net	regular_low	2	\\x886a4db6cf76786a1f4b5458e8c9bfda358458d8563305c2624ed5e97315b30b	\\x79f6bf0c75eac61f597a6d58522d03307936ecf25578c8f8e3f844dd6b2b4978
+14355138943:1@s.whatsapp.net	regular_low	2	\\x831ed5faf0c7651110e81731ce8788dd7ab6507075023f7047882b286c48cf32	\\x452346cda78e37cedbad42d9aa9988457a1dfce604d1b46ac5babf00e522a804
+14355138943:1@s.whatsapp.net	regular_low	2	\\xc546003b1d28f482e742c9a29ca7468c9e23fc315f3db4a6e4dbd06e6e457d4a	\\x7572d3ee407f779279cb2aee58f97dd0c431e71eaefe2c93ba21306c58c35108
+14355138943:1@s.whatsapp.net	regular_low	2	\\x2fbc057264af591056680a27792616f2c83c1c70980f1b0422331033c5243fb8	\\x0f2404780355cdd4f867cbdba46f2474b8713d690bf44a0716ae091baf9bdc09
+14355138943:1@s.whatsapp.net	regular_low	2	\\x4e344ae2f0715b17cd2ad01edbbd2fec84009a6f942982075e1d826bfbd83309	\\xda9cafad8d14b879735b8339db5f6a1b2d1c06ae3e1ecaa2fbc527b9c04fc456
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3fd0e8b5248e71f3dfa249be8a0cba3d03de444750ec1e24501e19b252a99b91	\\xbc7513b5b68456c938561a2a56d09586e0374ce6c53964b46aa00c0114fe6400
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6753c5d62056641bfeda29b6487ce0023504f2c8b638a326a10953f883ed5103	\\xa034af342a91d987df69b75b36996a8f21028c624835d875df0677fa42b862f8
+14355138943:1@s.whatsapp.net	regular_low	2	\\x3944da32a3c69a1e129e36058b6f5023e086b3811c52b5429e069e5a01e7c713	\\xf75e5c2f6dfc54a7df77b40a1b47357963053eed3a2604a975ce2567a40d45b0
+14355138943:1@s.whatsapp.net	regular_low	2	\\xf2087ecddd5ff1486dd25aa126af10c70494443c0ac086e1ae521d0f6e9926e7	\\x3e258d3e73284e120982e0595a2c6e567576f29ddcff71c11a1219dcf22f589f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x1cc228a5bfb0d66fed9f8453cee23148e50467aaf242dfb924d911df3b804da6	\\xc90078610da851a0a32e1d9ef14302847e065ca7ef798bf930e722a566a881f3
+14355138943:1@s.whatsapp.net	regular_low	2	\\x8cec45c1c53d510cd0153cbf5d5ea47ae987b0e5621522684c3029464bbe96fa	\\x26516afd08750983b97a2648ca1752c22f4c00e52d49dde72abe3722390c57b3
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd044fb44e0621f2aeaa71c928db1aef4e039ab3d0e18c4bf310ac6fe8183fc96	\\x3452c3795fac251245bf4b787dc33db3fb458e47712260ce9a422026aa28a5fe
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6ee5ac6b3d6c30fe2751daf63888a9f0ded41ae259ce744a14ead241ebc37358	\\x6bbca3f2b0f5e1f369a9384437501833a37f87a17f437eb840d7b53fd704fea6
+14355138943:1@s.whatsapp.net	regular_low	2	\\x48c51222d422b628e5cffc9bd6527fbb8728c48f2b30c20bb2a679fb0af68dd4	\\x94a7d6115be984dcca8acd1595b514467f0d8f31ddcf44da570932293a8c2c2f
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6a769467cad14dfd68c464c71ca3fca86fa9b8f308d6ca3f9d4bc2aaf26077b9	\\x6a493360f556edbecef4e6f0fd263132b47b107491b2101c792f88eeda5498ff
+14355138943:1@s.whatsapp.net	regular_low	2	\\x6bc48a52274676217faa3c56a733bada2bfc8cc16671176e94641e0bf95b6806	\\x56e6b528875b693667964839f290300606117ae63329c81172750b6e4a29f370
+14355138943:1@s.whatsapp.net	regular_low	2	\\x0120d7236fdb63a4b7c9e0a780ea9f246e3c31338b2d3d1e683316418732cd06	\\x16011c5087a068f930bc16905d94819c181094b1193065660c1f746b1342ed12
+14355138943:1@s.whatsapp.net	regular_low	2	\\xd2c2a6bb7fd516cf61987d96b1e3e882071e32355b11e6459bf035a210a75e19	\\xc2c3090d66c2357026ca9f3938355fdec8af83391568f95beeecfc26233c9299
+14355138943:1@s.whatsapp.net	regular_low	2	\\x5cc6ec62526c8ed9b49bd8c67d9a3fa06ad598ebd5ec90305b83f28d122bcea3	\\x08f3c4d3d81ef8a34e6bd43cf10e1b70de760afa023f1adafced366d79396c1c
+14355138943:1@s.whatsapp.net	regular_low	2	\\x77760390b142505833023b22bf85eb49fc6645c572f32765d30db8e6fbc473af	\\x58c9454a67bf9c03ee2188aefc718b2d8527dcf11c319640271928a75a8a2009
+14355138943:1@s.whatsapp.net	regular_low	2	\\x664f225102aa64bb5b33d85b05df75d5be54ff7ffed421ba98d2cd60107d44ed	\\xa5b29fbafeba4c30314c75357928c62dd78110f2512f9bf655464e5cc6efbfd5
+14355138943:1@s.whatsapp.net	regular_high	1	\\xb6a45171b7ec92c72b7b4de14badadd26634e96430505891a5a84fd133f4acc2	\\x924030350cc8091e6b89b63581a1e015744acd7778dbd7cce1145ca9e69b2e46
+14355138943:1@s.whatsapp.net	regular_high	1	\\x7c3ec8c8b6f4eeb16da37ee136840d3758411a7de0d2fc369cc8ede9a2e807bf	\\xba6afe3c44806a0914d1b581be99282844e754110ef32a7e77bf321861a9037b
+14355138943:1@s.whatsapp.net	regular	3	\\x82900e65bb89ff2e9a087d932099206d0bb6741590999e439ea9d4b0e72328b1	\\x18857fdaeb1e4ee8ed03f815a5725641b64589659c36293a226389f66db0c930
+14355138943:1@s.whatsapp.net	regular_low	3	\\x698399972ca9c1d932b5566cada52525f2f5dfaf460dd5e38a1bdcd83216eca1	\\x234ad55801b969a862a13c4ab2d320a76967944addc1e51a38a61b22791a7991
+14355138943:1@s.whatsapp.net	regular	4	\\x143f485f136f2a2485718eeadec272b12ece4a0ab9eb143935eb64c5444facee	\\x993b1ec5d883a7a2bdbb152dbf6a45e7b31490801a0dcd2dc5b09f46510caea6
+14355138943:1@s.whatsapp.net	regular	5	\\x657e33278000df285f8cc094ae5c6535ded0428af9a0d40624a392bc5a62ea1c	\\x4c6ccb6b47ee81a0ca876a47c1662795d584edba0613ee129478bc004d0a8ed0
+14355138943:1@s.whatsapp.net	regular	6	\\x1efe55b7b7e5609c0b67917e3050123cd23d51c37a64608dd5123e34d88179e8	\\xfde819bbc34bdc9c447d1da09170f449fac609e242d1ac9de00701fcc120b8e8
+14355138943:1@s.whatsapp.net	regular	7	\\x9d6428cd746068588234c505742f182bba4931b48e2b4669932d00994a82e3c3	\\x8023902662b0553396e36b3ce8ab1491fc9995f1ab7c1f8667fe59ab0485ccac
+14355138943:1@s.whatsapp.net	regular	8	\\xaab310b2ea7274e4b96e646c60e4ef1b102a2b48044b09c0e78bcce3b62ed472	\\x85469840048ec545f2d27193e9866a36c00ee775f37e51f0da4c58ddee19b302
+14355138943:1@s.whatsapp.net	regular	9	\\xb706c8f0cc03e51852d57962a89c38cddd3ada86aa7e63da65d8d58f2d85987b	\\x08a5ac8b4fdd880bb6cb4acacdd5b3db3c60ea267efd6c141e2b9d9dab9caad9
+14355138943:1@s.whatsapp.net	regular	10	\\x951c5e6285b861d8809d2975cd1819d666bd2d3cb8985042333c97ce93f2be82	\\x0047963b9ca2e9e340cbdd5d3dd25459abadfd396021a1ec622b27a1c72849e3
+14355138943:1@s.whatsapp.net	regular	11	\\x143f485f136f2a2485718eeadec272b12ece4a0ab9eb143935eb64c5444facee	\\xae317986e279e2a491b96c26d7191dfd6c5ae5d6b61baf13b5cf6b08d8c568fc
+\.
+
+
+--
+-- Data for Name: whatsmeow_app_state_sync_keys; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_app_state_sync_keys" ("jid", "key_id", "key_data", "timestamp", "fingerprint") FROM stdin;
+14355138943:1@s.whatsapp.net	\\x00000000567e	\\xb7aea366fa0b90bb8ee6d466546e7623696ef04362ce3b92b64236494c928592	1791064742160	\\x08be9bdb830610011a020001
+\.
+
+
+--
+-- Data for Name: whatsmeow_chat_settings; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_chat_settings" ("our_jid", "chat_jid", "muted_until", "pinned", "archived", "wasa_root_secret_id") FROM stdin;
+\.
+
+
+--
+-- Data for Name: whatsmeow_contacts; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_contacts" ("our_jid", "their_jid", "first_name", "full_name", "push_name", "business_name", "redacted_phone") FROM stdin;
+14355138943:1@s.whatsapp.net	19174949574@s.whatsapp.net		Zhenya Zamostina	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688511676@s.whatsapp.net		Florista Orotina	\N	\N	\N
+14355138943:1@s.whatsapp.net	13474395950@s.whatsapp.net		Irene Ryabaya	\N	\N	\N
+14355138943:1@s.whatsapp.net	19549533545@s.whatsapp.net	DHL Express	DHL Express	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688137276@s.whatsapp.net		Guillermo Uber Orotina	\N	\N	\N
+14355138943:1@s.whatsapp.net	50663683333@s.whatsapp.net	Pushkin Café	Pushkin Café	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687540026@s.whatsapp.net		Angie Casa Nico	\N	\N	\N
+14355138943:1@s.whatsapp.net	50670127654@s.whatsapp.net	Mario Cardona	Mario Cardona LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	15146194466@s.whatsapp.net	Marie-Hélène Fournier	Marie-Hélène Fournier	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176640656@s.whatsapp.net		Vladik Kofman	\N	\N	\N
+14355138943:1@s.whatsapp.net	15204473525@s.whatsapp.net	MV bot	MV bot	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174881076@s.whatsapp.net		Alex Stiman	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178361406@s.whatsapp.net		Eli Feldman	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686733275@s.whatsapp.net		Oli	\N	\N	\N
+14355138943:1@s.whatsapp.net	13035069776@s.whatsapp.net		Kevin Spark	\N	\N	\N
+14355138943:1@s.whatsapp.net	18082833880@s.whatsapp.net		Sophianada	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178680246@s.whatsapp.net		Audrey David	\N	\N	\N
+14355138943:1@s.whatsapp.net	13472689579@s.whatsapp.net		Tonya Climber - Artist	\N	\N	\N
+14355138943:1@s.whatsapp.net	393319651576@s.whatsapp.net	Anto Barberis	Anto Barberis LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686635203@s.whatsapp.net		Frensi	\N	\N	\N
+14355138943:1@s.whatsapp.net	17203464957@s.whatsapp.net		Bruce Goldstein	\N	\N	\N
+14355138943:1@s.whatsapp.net	17189097316@s.whatsapp.net		Alex Ducati	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685258482@s.whatsapp.net		Uberlinda Cleaning Slow	\N	\N	\N
+14355138943:1@s.whatsapp.net	19085918600@s.whatsapp.net	Jason Pereira	Jason Pereira	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688995143@s.whatsapp.net	Allan Pool	Allan Pool piscina Orotina	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683096402@s.whatsapp.net		Dr Leguizamon	\N	\N	\N
+14355138943:1@s.whatsapp.net	32475785878@s.whatsapp.net	Ana Co	Ana Co ESM	\N	\N	\N
+14355138943:1@s.whatsapp.net	16512761477@s.whatsapp.net		Lyric Raven Tlacotal	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177230473@s.whatsapp.net		Fred Verkhovsky	\N	\N	\N
+14355138943:1@s.whatsapp.net	13649997975@s.whatsapp.net		Claire Virtual number	\N	\N	\N
+14355138943:1@s.whatsapp.net	13055708000@s.whatsapp.net	Kiteboarding nancy	Kiteboarding nancy Key west	\N	\N	\N
+14355138943:1@s.whatsapp.net	50664255072@s.whatsapp.net	Amanda 	Amanda LEV Amy friend	\N	\N	\N
+14355138943:1@s.whatsapp.net	16466454117@s.whatsapp.net		Yasha JCH	\N	\N	\N
+14355138943:1@s.whatsapp.net	16039436545@s.whatsapp.net		SPAM	\N	\N	\N
+14355138943:1@s.whatsapp.net	18082625483@s.whatsapp.net	Kiting hawaii	Kiting hawaii Josh	\N	\N	\N
+14355138943:1@s.whatsapp.net	15153059665@s.whatsapp.net		SPAM	\N	\N	\N
+14355138943:1@s.whatsapp.net	13478038860@s.whatsapp.net		Dilya	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177573434@s.whatsapp.net		Plyazhni Mark	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173094204@s.whatsapp.net		Roman Kalika	\N	\N	\N
+14355138943:1@s.whatsapp.net	16782627119@s.whatsapp.net		Cathorine Violinist	\N	\N	\N
+14355138943:1@s.whatsapp.net	12037278576@s.whatsapp.net		AJ	\N	\N	\N
+14355138943:1@s.whatsapp.net	12019123775@s.whatsapp.net		Dave McLennan	\N	\N	\N
+14355138943:1@s.whatsapp.net	447398208794@s.whatsapp.net		Alyisha	\N	\N	\N
+14355138943:1@s.whatsapp.net	79251994804@s.whatsapp.net	Антон Бобровский	Антон Бобровский Anton Chess	\N	\N	\N
+14355138943:1@s.whatsapp.net	15852332077@s.whatsapp.net		Kristen Amelia’s Mom	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661282909@s.whatsapp.net	Kimberli (Javier’s hija)	Kimberli (Javier’s hija)	\N	\N	\N
+14355138943:1@s.whatsapp.net	919900111226@s.whatsapp.net		Chetan	\N	\N	\N
+14355138943:1@s.whatsapp.net	50650003588@s.whatsapp.net	🌎 Terra	🌎 Terra Regen biz Workshop	\N	\N	\N
+14355138943:1@s.whatsapp.net	31686269808@s.whatsapp.net		Mimi cultural de	\N	\N	\N
+14355138943:1@s.whatsapp.net	19144712631@s.whatsapp.net		Susanna Yoeffe	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687544777@s.whatsapp.net		Alex LEV Monasterio	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661908505@s.whatsapp.net	Ariel Mayrose	Ariel Mayrose	\N	\N	\N
+14355138943:1@s.whatsapp.net	15126451111@s.whatsapp.net		Christa	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686483111@s.whatsapp.net		Jason RBI	\N	\N	\N
+14355138943:1@s.whatsapp.net	13022612667@s.whatsapp.net	Whin Admin	Whin Admin	\N	\N	\N
+14355138943:1@s.whatsapp.net	18083839737@s.whatsapp.net		Felix Hawaii	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660882502@s.whatsapp.net		Marcos Constructor Roni	\N	\N	\N
+14355138943:1@s.whatsapp.net	14168033240@s.whatsapp.net		Jon Ninja warrior	\N	\N	\N
+14355138943:1@s.whatsapp.net	17182073501@s.whatsapp.net		Zhenya Fisher	\N	\N	\N
+14355138943:1@s.whatsapp.net	15103161424@s.whatsapp.net		Nzinga Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	491716521357@s.whatsapp.net		Gerry Deininger	\N	\N	\N
+14355138943:1@s.whatsapp.net	50663319397@s.whatsapp.net		Araselyz LEV Nanny	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684794888@s.whatsapp.net		Pronto	\N	\N	\N
+14355138943:1@s.whatsapp.net	919042375909@s.whatsapp.net		Irfan Driver	\N	\N	\N
+14355138943:1@s.whatsapp.net	16463881481@s.whatsapp.net		Vadim Greenhat	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685929000@s.whatsapp.net	ESM- Austin Morrison (drummer)	ESM- Austin Morrison (drummer)	\N	\N	\N
+14355138943:1@s.whatsapp.net	50670882637@s.whatsapp.net		Chris Car Russ bro In Law	\N	\N	\N
+14355138943:1@s.whatsapp.net	17322410855@s.whatsapp.net		Masha Emerel	\N	\N	\N
+14355138943:1@s.whatsapp.net	17188736334@s.whatsapp.net		Biana Shilshtut	\N	\N	\N
+14355138943:1@s.whatsapp.net	16316038548@s.whatsapp.net		Brianne LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	918765120565@s.whatsapp.net		Rupesh Naina	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176011925@s.whatsapp.net	Yevgeniy Chernovol	Yevgeniy Chernovol	\N	\N	\N
+14355138943:1@s.whatsapp.net	15165672577@s.whatsapp.net		Sanjiv Khandelwal La Garita	\N	\N	\N
+14355138943:1@s.whatsapp.net	14355138943@s.whatsapp.net	\N	\N	Lisa Machu	Lisa Machu	\N
+14355138943:1@s.whatsapp.net	15512169666@s.whatsapp.net		Ramji Venkat	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176674276@s.whatsapp.net		Olya Khaseleva	\N	\N	\N
+14355138943:1@s.whatsapp.net	17328224642@s.whatsapp.net		Dave Tabora	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173328884@s.whatsapp.net		Felix Shnir	\N	\N	\N
+14355138943:1@s.whatsapp.net	61412483621@s.whatsapp.net		Simon Cant	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685818839@s.whatsapp.net	Cristiane Sampaio	Cristiane Sampaio Sula Econuts	\N	\N	\N
+14355138943:1@s.whatsapp.net	13472181928@s.whatsapp.net		Jitender Kumar	\N	\N	\N
+14355138943:1@s.whatsapp.net	447932806119@s.whatsapp.net		Trudy Eco Villa	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687101076@s.whatsapp.net	Pablo / Paul	Pablo / Paul La finca Horse Dad Uvita Farm	\N	\N	\N
+14355138943:1@s.whatsapp.net	79031501696@s.whatsapp.net		Vildan	\N	\N	\N
+14355138943:1@s.whatsapp.net	50664126883@s.whatsapp.net		Fernanda Patricia’s Daugther, Cleaning	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172549669@s.whatsapp.net		Natalia Pitel	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685467602@s.whatsapp.net		Reinimar Yose’s Mom	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683430403@s.whatsapp.net	Andrew AirBnb	Andrew AirBnb	\N	\N	\N
+14355138943:1@s.whatsapp.net	50670265203@s.whatsapp.net		Joey Carpenter	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660268824@s.whatsapp.net		Cesar Gamboa	\N	\N	\N
+14355138943:1@s.whatsapp.net	17209908998@s.whatsapp.net		Gosha Danilov	\N	\N	\N
+14355138943:1@s.whatsapp.net	14168450729@s.whatsapp.net		Meggan Lev 7A - Interior Designer	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178484693@s.whatsapp.net		Vladimir Sapozhnikov	\N	\N	\N
+14355138943:1@s.whatsapp.net	17788924010@s.whatsapp.net		Mansi	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688147707@s.whatsapp.net		Christina Casa Sula	\N	\N	\N
+14355138943:1@s.whatsapp.net	18145044189@s.whatsapp.net	Deborah Vahanian	Deborah Vahanian LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	19493824648@s.whatsapp.net		John Clough	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688153902@s.whatsapp.net	Fred Costa Rica	Fred Costa Rica Builder	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685483309@s.whatsapp.net		Nicola Tarot CR	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688614565@s.whatsapp.net		Jost	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177963055@s.whatsapp.net		Misha Bike	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660335266@s.whatsapp.net		Karina LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688445024@s.whatsapp.net		Charlie Security System	\N	\N	\N
+14355138943:1@s.whatsapp.net	50671044587@s.whatsapp.net		Solar Frank	\N	\N	\N
+14355138943:1@s.whatsapp.net	5215525593454@s.whatsapp.net	Daniela Luján LEV	Daniela Luján LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688746752@s.whatsapp.net	Eli Vargas	Eli Vargas Simon partner	\N	\N	\N
+14355138943:1@s.whatsapp.net	12018195275@s.whatsapp.net		Eugene Nekrilov	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685521717@s.whatsapp.net	Casa Victoria Café & Restaurante	Casa Victoria Café & Restaurante	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689650016@s.whatsapp.net		Antonio Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684225718@s.whatsapp.net		Gerald Laguna Wood Inside	\N	\N	\N
+14355138943:1@s.whatsapp.net	12153007036@s.whatsapp.net		Armen	\N	\N	\N
+14355138943:1@s.whatsapp.net	12062513930@s.whatsapp.net		Maksim Noy	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688082110@s.whatsapp.net	Finca Luna Nueva Lodge	Finca Luna Nueva Lodge	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689786115@s.whatsapp.net	Eber VL	Eber VL Alegria Farm Manager	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688016746@s.whatsapp.net		Paul Roscoe Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	16469576295@s.whatsapp.net		Natasha Danilina	\N	\N	\N
+14355138943:1@s.whatsapp.net	19179215213@s.whatsapp.net		Sergei Lischenko	\N	\N	\N
+14355138943:1@s.whatsapp.net	19738307724@s.whatsapp.net		Alex Nanny	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683076800@s.whatsapp.net		Teresa LEV Casa 18	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661418720@s.whatsapp.net	Rosa Elena LEV	Rosa Elena LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	14232844099@s.whatsapp.net		Iyan Adewuya	\N	\N	\N
+14355138943:1@s.whatsapp.net	12253419925@s.whatsapp.net		Sarah Saltzberg LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	18067878019@s.whatsapp.net		Jonathan Wheeler	\N	\N	\N
+14355138943:1@s.whatsapp.net	33603017856@s.whatsapp.net	Oshop Oliver	Oshop Oliver	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688016866@s.whatsapp.net	Mila Espinoza	Mila Espinoza LEV Silks	\N	\N	\N
+14355138943:1@s.whatsapp.net	18436832273@s.whatsapp.net		Jen Casmere	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684847430@s.whatsapp.net	Nidia Ramoss	Nidia Ramoss Attorney Andres Helper	\N	\N	\N
+14355138943:1@s.whatsapp.net	14168940908@s.whatsapp.net		Jess LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177548992@s.whatsapp.net		Diana Murakhovskaya	\N	\N	\N
+14355138943:1@s.whatsapp.net	13109369213@s.whatsapp.net		Eric Ryckman	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174992946@s.whatsapp.net		Robert Piano	\N	\N	\N
+14355138943:1@s.whatsapp.net	393483722397@s.whatsapp.net	Saraswati 🦋	Saraswati 🦋	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176781581@s.whatsapp.net		Vitya Vitkin	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172020386@s.whatsapp.net		Alina Yavlinsky	\N	\N	\N
+14355138943:1@s.whatsapp.net	19082085857@s.whatsapp.net		Eva Sverdlova	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174156840@s.whatsapp.net		Carla Visser	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172875011@s.whatsapp.net		Elman Uzhni	\N	\N	\N
+14355138943:1@s.whatsapp.net	19015690881@s.whatsapp.net		Slavik Fishkin	\N	\N	\N
+14355138943:1@s.whatsapp.net	19415573718@s.whatsapp.net		Carla LEV Across From nate	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683972493@s.whatsapp.net		Jorge Jorka de Espacios	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173659905@s.whatsapp.net	Natasha - Alexm	Natasha - Alexm	\N	\N	\N
+14355138943:1@s.whatsapp.net	18605143426@s.whatsapp.net		Dima Pavlov-pfizer	\N	\N	\N
+14355138943:1@s.whatsapp.net	13372580880@s.whatsapp.net		Scott Louviere Peru Puerto	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688002144@s.whatsapp.net		Gustavo Tow Helper For Elvi	\N	\N	\N
+14355138943:1@s.whatsapp.net	16466756454@s.whatsapp.net		Sebastian ESM Partner	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688395643@s.whatsapp.net		Sofiah Thom	\N	\N	\N
+14355138943:1@s.whatsapp.net	18573347992@s.whatsapp.net		Maryna Savitska	\N	\N	\N
+14355138943:1@s.whatsapp.net	17324768602@s.whatsapp.net		Sushil Kalyam	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688158782@s.whatsapp.net	Gabriela Matamoros Leche	Gabriela Matamoros Leche de Cabra	\N	\N	\N
+14355138943:1@s.whatsapp.net	447922323141@s.whatsapp.net		Kyle Turrubares	\N	\N	\N
+14355138943:1@s.whatsapp.net	15105305302@s.whatsapp.net		Kathy (Blue House)	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176485704@s.whatsapp.net		Laura Zaltsman	\N	\N	\N
+14355138943:1@s.whatsapp.net	16468245279@s.whatsapp.net		Rufina Nanny	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687398019@s.whatsapp.net	Samuel Rotker	Samuel Rotker Sula	\N	\N	\N
+14355138943:1@s.whatsapp.net	17323067871@s.whatsapp.net		Sina Peyrovian	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174780927@s.whatsapp.net		Zhenya Zemlyakova	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176928929@s.whatsapp.net		Marisa	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175581301@s.whatsapp.net		Johnell	\N	\N	\N
+14355138943:1@s.whatsapp.net	16464312260@s.whatsapp.net		Dylan Hoffman	\N	\N	\N
+14355138943:1@s.whatsapp.net	13474054645@s.whatsapp.net		Igor Sherman	\N	\N	\N
+14355138943:1@s.whatsapp.net	79672151018@s.whatsapp.net		Vildan	\N	\N	\N
+14355138943:1@s.whatsapp.net	17186373468@s.whatsapp.net		Bracha Cohen	\N	\N	\N
+14355138943:1@s.whatsapp.net	31681030467@s.whatsapp.net		Dana LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	447539872545@s.whatsapp.net		Carlotta LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684434235@s.whatsapp.net	Marvin Castro🚌🇨🇷	Marvin Castro🚌🇨🇷 Transit Bus	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683331431@s.whatsapp.net		Alberto Wood Worker Mechanic	\N	\N	\N
+14355138943:1@s.whatsapp.net	12025508282@s.whatsapp.net		Muslim Dautov	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685175941@s.whatsapp.net		Monsoon Restaurant	\N	\N	\N
+14355138943:1@s.whatsapp.net	5219981536048@s.whatsapp.net	Shaka vibes	Shaka vibes Kiteboarding	\N	\N	\N
+14355138943:1@s.whatsapp.net	13477294224@s.whatsapp.net		Olya Remont By Gosha	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685163313@s.whatsapp.net	Ojochal School	Ojochal School	\N	\N	\N
+14355138943:1@s.whatsapp.net	19179127962@s.whatsapp.net		Nash Panchal	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172829990@s.whatsapp.net		Igor Gorelik	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683995428@s.whatsapp.net		Kenneth Mechanico Neighbor	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683746544@s.whatsapp.net		Lenor ELMEC	\N	\N	\N
+14355138943:1@s.whatsapp.net	12016946722@s.whatsapp.net		Andrea Finan	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687772582@s.whatsapp.net		Lucas Ciro pizza	\N	\N	\N
+14355138943:1@s.whatsapp.net	14242417661@s.whatsapp.net		Flynn McGettigan	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688746072@s.whatsapp.net		Oliver Sula Hot Sauce	\N	\N	\N
+14355138943:1@s.whatsapp.net	971552728182@s.whatsapp.net	Ahmad Naamneh	Ahmad Naamneh Architect	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176268372@s.whatsapp.net		Vadim Bel	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177442600@s.whatsapp.net		Eugene Klig	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688894563@s.whatsapp.net	Nati Shanti Orotina 	Nati Shanti Orotina 	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688359502@s.whatsapp.net		Alejandro Arturo Scott Tenant	\N	\N	\N
+14355138943:1@s.whatsapp.net	19295751655@s.whatsapp.net		Allen Yeong	\N	\N	\N
+14355138943:1@s.whatsapp.net	50670798577@s.whatsapp.net		Cristina Viquez Agua De Pipa Delivery	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174465296@s.whatsapp.net		Roman Mazo	\N	\N	\N
+14355138943:1@s.whatsapp.net	14847532218@s.whatsapp.net	Seth Bradford	Seth Bradford	\N	\N	\N
+14355138943:1@s.whatsapp.net	50620010307@s.whatsapp.net	Luise iCe	Luise iCe	\N	\N	\N
+14355138943:1@s.whatsapp.net	17183546040@s.whatsapp.net		Eugene Alperovich	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175726444@s.whatsapp.net		Vadim Lisak	\N	\N	\N
+14355138943:1@s.whatsapp.net	17273310796@s.whatsapp.net		Jenna Hipcamp Cabin	\N	\N	\N
+14355138943:1@s.whatsapp.net	16466234788@s.whatsapp.net		Roman Tiraspolsky	\N	\N	\N
+14355138943:1@s.whatsapp.net	16462043279@s.whatsapp.net		Sima	\N	\N	\N
+14355138943:1@s.whatsapp.net	50235715455@s.whatsapp.net		Giancarlo Florit LEV buddhist	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176641751@s.whatsapp.net		Eugene Yermash	\N	\N	\N
+14355138943:1@s.whatsapp.net	51958194174@s.whatsapp.net		Bernhard Karshagen	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686767899@s.whatsapp.net		Alejandra🐥 Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	12154328996@s.whatsapp.net		Nadia Gurvich	\N	\N	\N
+14355138943:1@s.whatsapp.net	17324474132@s.whatsapp.net		Nirav Mehta	\N	\N	\N
+14355138943:1@s.whatsapp.net	19144738212@s.whatsapp.net		Michael Zurakhinsky	\N	\N	\N
+14355138943:1@s.whatsapp.net	593969059711@s.whatsapp.net		Dani Spanish cuenca	\N	\N	\N
+14355138943:1@s.whatsapp.net	17858408331@s.whatsapp.net		Maria RBI Workshop	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686146758@s.whatsapp.net		Adrian Furniture	\N	\N	\N
+14355138943:1@s.whatsapp.net	19084994638@s.whatsapp.net		Mark Freshwater	\N	\N	\N
+14355138943:1@s.whatsapp.net	972523682061@s.whatsapp.net		Shelly Ariel wife sula	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683643017@s.whatsapp.net	Cerrajeria La Genial S.a	Cerrajeria La Genial S.a Key Fob	\N	\N	\N
+14355138943:1@s.whatsapp.net	12017532667@s.whatsapp.net	Zoya Eugene Alper	Zoya Eugene Alper	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660017238@s.whatsapp.net	Heiner Segura	Heiner Segura Water heater Solar	\N	\N	\N
+14355138943:1@s.whatsapp.net	50672896746@s.whatsapp.net		Qualitas	\N	\N	\N
+14355138943:1@s.whatsapp.net	972542440575@s.whatsapp.net		Dror Zohar	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173096181@s.whatsapp.net		Roma Poly	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688172551@s.whatsapp.net		Randy Díaz Tennis	\N	\N	\N
+14355138943:1@s.whatsapp.net	50670119946@s.whatsapp.net	Don Luis Panes	Don Luis Panes	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684991487@s.whatsapp.net		Namuwoki Lodge	\N	\N	\N
+14355138943:1@s.whatsapp.net	16464172452@s.whatsapp.net		Georgiy Contractor	\N	\N	\N
+14355138943:1@s.whatsapp.net	12013124223@s.whatsapp.net		Kalyan	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687972541@s.whatsapp.net		Jason San Mateo Eggs	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175360336@s.whatsapp.net		Jason D'Silvia	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175977124@s.whatsapp.net		Mari RideAmigo	\N	\N	\N
+14355138943:1@s.whatsapp.net	13473239804@s.whatsapp.net		Maria Cleaning	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683429353@s.whatsapp.net	Arq Victor	Arq Victor Montero-Dien CR Architech Regen	\N	\N	\N
+14355138943:1@s.whatsapp.net	14135378071@s.whatsapp.net		Anna Stein	\N	\N	\N
+14355138943:1@s.whatsapp.net	16028121569@s.whatsapp.net		SPAM	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684508444@s.whatsapp.net		Brad Libertad Glamping Tents	\N	\N	\N
+14355138943:1@s.whatsapp.net	19179685891@s.whatsapp.net		Anna Ostrovsky	\N	\N	\N
+14355138943:1@s.whatsapp.net	19734591142@s.whatsapp.net		Steven Glantz	\N	\N	\N
+14355138943:1@s.whatsapp.net	13478862660@s.whatsapp.net		Alex Rubinstein	\N	\N	\N
+14355138943:1@s.whatsapp.net	593996456991@s.whatsapp.net	Sofi Ecuador Spanish Coordinator	Sofi Ecuador Spanish Coordinator Tapia	\N	\N	\N
+14355138943:1@s.whatsapp.net	16464094749@s.whatsapp.net	Nastya Boxer	Nastya Boxer	\N	\N	\N
+14355138943:1@s.whatsapp.net	50248803116@s.whatsapp.net		Dionico Guatemala Driver	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177339054@s.whatsapp.net		Max Gelfer	\N	\N	\N
+14355138943:1@s.whatsapp.net	12127862028@s.whatsapp.net	Julie Ski Shoulder	Julie Ski Shoulder	\N	\N	\N
+14355138943:1@s.whatsapp.net	12124959295@s.whatsapp.net		Ginger	\N	\N	\N
+14355138943:1@s.whatsapp.net	15038964064@s.whatsapp.net		Ece Utkucan Anderson	\N	\N	\N
+14355138943:1@s.whatsapp.net	13478824879@s.whatsapp.net		Gavin Simms	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686420606@s.whatsapp.net	Or Haleluiya ❤️🌎❤️	Or Haleluiya ❤️🌎❤️	\N	\N	\N
+14355138943:1@s.whatsapp.net	16314783793@s.whatsapp.net		Gabriel Garrett	\N	\N	\N
+14355138943:1@s.whatsapp.net	17753388978@s.whatsapp.net		Trisha	\N	\N	\N
+14355138943:1@s.whatsapp.net	16178720339@s.whatsapp.net		Dina T	\N	\N	\N
+14355138943:1@s.whatsapp.net	17185096825@s.whatsapp.net		SPAM	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686695251@s.whatsapp.net	Whitlpool cR	Whitlpool cR	\N	\N	\N
+14355138943:1@s.whatsapp.net	12026428149@s.whatsapp.net		Maria Panina photography	\N	\N	\N
+14355138943:1@s.whatsapp.net	79161559651@s.whatsapp.net	Андрей Кочешков	Андрей Кочешков	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684681414@s.whatsapp.net		Piedras 8468 Miramar	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688714878@s.whatsapp.net	Nico Pestaña	Nico Pestaña Muni Engineer	\N	\N	\N
+14355138943:1@s.whatsapp.net	14155470715@s.whatsapp.net	Mike Greenberg	Mike Greenberg Franzi friend	\N	\N	\N
+14355138943:1@s.whatsapp.net	15056991033@s.whatsapp.net		Ellen House Sitter	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684729565@s.whatsapp.net	Hazel Refrizumo	Hazel Refrizumo	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660942011@s.whatsapp.net		ASEM	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178596710@s.whatsapp.net		Will	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689245334@s.whatsapp.net	Mae Culpa Restaurante & Pizzería	Mae Culpa Restaurante & Pizzería	\N	\N	\N
+14355138943:1@s.whatsapp.net	19734944312@s.whatsapp.net		Inga Nasi	\N	\N	\N
+14355138943:1@s.whatsapp.net	16318387089@s.whatsapp.net		Srivats	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176642789@s.whatsapp.net		Zhenya Bokk	\N	\N	\N
+14355138943:1@s.whatsapp.net	16466209560@s.whatsapp.net		Fati Sanii	\N	\N	\N
+14355138943:1@s.whatsapp.net	16092737907@s.whatsapp.net		Dinesh Gupta	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685003222@s.whatsapp.net		Costakite Kite Surfing Cr	\N	\N	\N
+14355138943:1@s.whatsapp.net	15038966396@s.whatsapp.net		Clint Patterson	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173257840@s.whatsapp.net		Catherine Addona	\N	\N	\N
+14355138943:1@s.whatsapp.net	18602122695@s.whatsapp.net	Lucy Jimenez	Lucy Jimenez	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660479619@s.whatsapp.net		Ivan LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	12017885051@s.whatsapp.net		Ohad Barnea	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684150257@s.whatsapp.net		Kid Kootzin Muscle Therapy	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688265221@s.whatsapp.net	Blue dream Cr Nikola	Blue dream Cr Nikola Kite Surfing	\N	\N	\N
+14355138943:1@s.whatsapp.net	12127314287@s.whatsapp.net		Edward Mermelstein	\N	\N	\N
+14355138943:1@s.whatsapp.net	14692943890@s.whatsapp.net		SPAM	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178368363@s.whatsapp.net		Cynthia Hewett	\N	\N	\N
+14355138943:1@s.whatsapp.net	16469200238@s.whatsapp.net		Katya Nanny	\N	\N	\N
+14355138943:1@s.whatsapp.net	491718172857@s.whatsapp.net		Daniel Coffee	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685228364@s.whatsapp.net		Joselin Maestra Teacher Dulce Nombre	\N	\N	\N
+14355138943:1@s.whatsapp.net	17183772323@s.whatsapp.net		SABO Mechanic	\N	\N	\N
+14355138943:1@s.whatsapp.net	33699675518@s.whatsapp.net		Margot T	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689495191@s.whatsapp.net	CHINO Radiapuertas	CHINO Radiapuertas Doors	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683133128@s.whatsapp.net		Margarita Valencia	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173195042@s.whatsapp.net		Zorik Mazo	\N	\N	\N
+14355138943:1@s.whatsapp.net	12016968422@s.whatsapp.net		Michael Iosebashvili	\N	\N	\N
+14355138943:1@s.whatsapp.net	13476015409@s.whatsapp.net		David Grinberg	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175421618@s.whatsapp.net		Maksim Berger	\N	\N	\N
+14355138943:1@s.whatsapp.net	16462438219@s.whatsapp.net	Dmitri Terekhovich	Dmitri Terekhovich Tanenbaum	\N	\N	\N
+14355138943:1@s.whatsapp.net	17184962596@s.whatsapp.net		Stan Gershengoren	\N	\N	\N
+14355138943:1@s.whatsapp.net	972548010178@s.whatsapp.net		Shayla Uria Partner	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173783524@s.whatsapp.net		Cary Davis	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687189169@s.whatsapp.net		Marce BG	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176488903@s.whatsapp.net		Ira Oleg’s wife	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687538231@s.whatsapp.net	Melanie L Wells A	Melanie L Wells A	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661785642@s.whatsapp.net	Eduardo Martinez	Eduardo Martinez Drija Appliance distributor	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173043006@s.whatsapp.net		Daniil Sososkin	\N	\N	\N
+14355138943:1@s.whatsapp.net	50671963286@s.whatsapp.net	Lisa Costa Rica	Lisa Costa Rica Conflict mediator	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176120748@s.whatsapp.net		Hamish Wynn	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687981484@s.whatsapp.net	Fernando Cook	Fernando Cook	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173488040@s.whatsapp.net		Simon Recruiter	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688692174@s.whatsapp.net		AS RWS	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688770895@s.whatsapp.net	Tacotal- Backho Manuel	Tacotal- Backho Manuel	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178466843@s.whatsapp.net		Mikhail Alperovich	\N	\N	\N
+14355138943:1@s.whatsapp.net	16469465885@s.whatsapp.net		Jean-Marc Piano	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172736310@s.whatsapp.net		Sasha Koh	\N	\N	\N
+14355138943:1@s.whatsapp.net	14136952698@s.whatsapp.net		allan alegria Casa Nero	\N	\N	\N
+14355138943:1@s.whatsapp.net	18018108809@s.whatsapp.net		Andrei Sereda	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177158300@s.whatsapp.net		Alyona D	\N	\N	\N
+14355138943:1@s.whatsapp.net	17329831833@s.whatsapp.net		Vadim Usvyat	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683262379@s.whatsapp.net	Elena Escalante	Elena Escalante Yoga LEV Iyengar	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687387377@s.whatsapp.net		Vero Sula samuel Wife	\N	\N	\N
+14355138943:1@s.whatsapp.net	918610805728@s.whatsapp.net		Nathalie Latham	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172029909@s.whatsapp.net		Hanna Glikman	\N	\N	\N
+14355138943:1@s.whatsapp.net	4528976807@s.whatsapp.net		Mariam Samimi Wiwe RWS	\N	\N	\N
+14355138943:1@s.whatsapp.net	16469209358@s.whatsapp.net		Taras	\N	\N	\N
+14355138943:1@s.whatsapp.net	17189137477@s.whatsapp.net		Gena	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687439871@s.whatsapp.net		Alex Almendra	\N	\N	\N
+14355138943:1@s.whatsapp.net	16097213959@s.whatsapp.net		Andrey Kitesurfer	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688484958@s.whatsapp.net	Luis Acuña Limpieza	Luis Acuña Limpieza Tanque Séptico	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688345135@s.whatsapp.net	Elvi Phone Orotina	Elvi Phone Orotina	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176074931@s.whatsapp.net		Stanislav Dudin	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684266091@s.whatsapp.net		Ana Cata	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684052525@s.whatsapp.net	Mimmette (Merlyn)	Mimmette (Merlyn) Suiza Francesa	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172250004@s.whatsapp.net		Mark Kleipfish	\N	\N	\N
+14355138943:1@s.whatsapp.net	919942993021@s.whatsapp.net		Yuvaraj India Amma Transport	\N	\N	\N
+14355138943:1@s.whatsapp.net	13472848770@s.whatsapp.net		Inessa Trufanova	\N	\N	\N
+14355138943:1@s.whatsapp.net	19734497709@s.whatsapp.net		Paresh Thatte	\N	\N	\N
+14355138943:1@s.whatsapp.net	17543664961@s.whatsapp.net	Jeanette Escalante	Jeanette Escalante	\N	\N	\N
+14355138943:1@s.whatsapp.net	12018030860@s.whatsapp.net		Lenya Fromzel	\N	\N	\N
+14355138943:1@s.whatsapp.net	19179915843@s.whatsapp.net	Dmitriy Portnov	Dmitriy Portnov	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172701709@s.whatsapp.net		Lisa Spinnell	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175094584@s.whatsapp.net		Olga Klepov	\N	\N	\N
+14355138943:1@s.whatsapp.net	17325279242@s.whatsapp.net		Ronald Ipad Screen Repair Nj	\N	\N	\N
+14355138943:1@s.whatsapp.net	16033218975@s.whatsapp.net		Ryan	\N	\N	\N
+14355138943:1@s.whatsapp.net	17755251285@s.whatsapp.net		Pol Costa Rica	\N	\N	\N
+14355138943:1@s.whatsapp.net	19134440627@s.whatsapp.net	Erick Landis	Erick Landis DJ Earthgrooves	\N	\N	\N
+14355138943:1@s.whatsapp.net	998977055933@s.whatsapp.net		Dilya	\N	\N	\N
+14355138943:1@s.whatsapp.net	50259679135@s.whatsapp.net	Pancho Boat Tour Guide	Pancho Boat Tour Guide Guatemala Attitlan	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175417325@s.whatsapp.net		Elena Gorenburg	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176577679@s.whatsapp.net		Masha Pogarskaya	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683052705@s.whatsapp.net		Carmela S2 Parent	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174990410@s.whatsapp.net		Anna Azaryeva	\N	\N	\N
+14355138943:1@s.whatsapp.net	14167355084@s.whatsapp.net	Ange Alexander	Ange Alexander LEV Casa 28	\N	\N	\N
+14355138943:1@s.whatsapp.net	12142365000@s.whatsapp.net		Eva Peace Temple Ride	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173300011@s.whatsapp.net		Alex Mikaloff	\N	\N	\N
+14355138943:1@s.whatsapp.net	12013962287@s.whatsapp.net		Scott Prosser	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688772385@s.whatsapp.net		Alejandro Salom	\N	\N	\N
+14355138943:1@s.whatsapp.net	14167202024@s.whatsapp.net		Nomi	\N	\N	\N
+14355138943:1@s.whatsapp.net	14154972419@s.whatsapp.net		Garrett LEV CR	\N	\N	\N
+14355138943:1@s.whatsapp.net	50671559673@s.whatsapp.net		Tarzo Taxi CR	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689467392@s.whatsapp.net		Gerardo Wood Man	\N	\N	\N
+14355138943:1@s.whatsapp.net	15145010405@s.whatsapp.net	Marie Anne	Marie Anne Sula s2 Parent	\N	\N	\N
+14355138943:1@s.whatsapp.net	50670116179@s.whatsapp.net		Paulo Car	\N	\N	\N
+14355138943:1@s.whatsapp.net	16463690162@s.whatsapp.net		Viktoria Makarova	\N	\N	\N
+14355138943:1@s.whatsapp.net	18603167799@s.whatsapp.net		Keith McDade	\N	\N	\N
+14355138943:1@s.whatsapp.net	14152597918@s.whatsapp.net	Alan Sternik	Alan Sternik LEV San Mateo	\N	\N	\N
+14355138943:1@s.whatsapp.net	16174075060@s.whatsapp.net		Vicky Polyakov	\N	\N	\N
+14355138943:1@s.whatsapp.net	19082276943@s.whatsapp.net		Yuly Shteyman	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684055175@s.whatsapp.net	Liener Abogado	Liener Abogado Lawyer	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174946569@s.whatsapp.net		Alexandra Shainskaya	\N	\N	\N
+14355138943:1@s.whatsapp.net	15166506231@s.whatsapp.net		Max Avramenko	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178047871@s.whatsapp.net		Oleg Kleban	\N	\N	\N
+14355138943:1@s.whatsapp.net	17876466777@s.whatsapp.net	Luis Jose	Luis Jose Mendoza	\N	\N	\N
+14355138943:1@s.whatsapp.net	19179683214@s.whatsapp.net		Vova Kuperman	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683203636@s.whatsapp.net	Jimmy Cheng	Jimmy Cheng Wong Mecanic	\N	\N	\N
+14355138943:1@s.whatsapp.net	50663322070@s.whatsapp.net		PorceramicA	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174396584@s.whatsapp.net		Alexander Moroz	\N	\N	\N
+14355138943:1@s.whatsapp.net	18452420113@s.whatsapp.net		Alec Tentrr	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689211254@s.whatsapp.net	Gas (propane)	Gas (propane) Orotina	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176045370@s.whatsapp.net		Vin Green Tea Via Dvoskin	\N	\N	\N
+14355138943:1@s.whatsapp.net	19015691865@s.whatsapp.net		Valeria	\N	\N	\N
+14355138943:1@s.whatsapp.net	12128109286@s.whatsapp.net		Sasha Batanov	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685740203@s.whatsapp.net	Anny (Anyelka)	Anny (Anyelka) Blue House Cleaner	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686399469@s.whatsapp.net		Sergio Salas	\N	\N	\N
+14355138943:1@s.whatsapp.net	17077877047@s.whatsapp.net	Kai 🤙	Kai 🤙	\N	\N	\N
+14355138943:1@s.whatsapp.net	12016943803@s.whatsapp.net		Eric Stern	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176002969@s.whatsapp.net		Nino Peace Temple Soup Channeler	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174059659@s.whatsapp.net		Drew Gutstein	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173191058@s.whatsapp.net		Bilu Jacob	\N	\N	\N
+14355138943:1@s.whatsapp.net	12065388075@s.whatsapp.net		Todd	\N	\N	\N
+14355138943:1@s.whatsapp.net	13474953640@s.whatsapp.net		Rica	\N	\N	\N
+14355138943:1@s.whatsapp.net	18029893162@s.whatsapp.net		Jeff ESM Doctor mat	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685173191@s.whatsapp.net		Wilfredo Catering Chef	\N	\N	\N
+14355138943:1@s.whatsapp.net	50663804288@s.whatsapp.net	Terapeutamemo Shiatsu Liberación Miofascial	Terapeutamemo Shiatsu Liberación Miofascial	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687249140@s.whatsapp.net	Goat cheese Delivery	Goat cheese Delivery Ronald Rodriguiz	\N	\N	\N
+14355138943:1@s.whatsapp.net	19292256714@s.whatsapp.net		Patrick LaFlamme	\N	\N	\N
+14355138943:1@s.whatsapp.net	13016592999@s.whatsapp.net		Alfia	\N	\N	\N
+14355138943:1@s.whatsapp.net	19703932338@s.whatsapp.net		Bela Uvita Airbnb	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689824242@s.whatsapp.net	Gustavo Solís	Gustavo Solís Insurance Broker	\N	\N	\N
+14355138943:1@s.whatsapp.net	4551905434@s.whatsapp.net		Soren Kildegård Kirkeby	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687354370@s.whatsapp.net	Samuel Aguirre Valencia	Samuel Aguirre Valencia	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178656431@s.whatsapp.net		Michael Reznik	\N	\N	\N
+14355138943:1@s.whatsapp.net	13474321130@s.whatsapp.net		Asya Gena	\N	\N	\N
+14355138943:1@s.whatsapp.net	14014405553@s.whatsapp.net		Christie Wilson	\N	\N	\N
+14355138943:1@s.whatsapp.net	19148151357@s.whatsapp.net		Nicole Neiman	\N	\N	\N
+14355138943:1@s.whatsapp.net	16172907274@s.whatsapp.net		Inna Penek	\N	\N	\N
+14355138943:1@s.whatsapp.net	17132525492@s.whatsapp.net		Tommy Wilczek	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689014466@s.whatsapp.net	America Dental	America Dental	\N	\N	\N
+14355138943:1@s.whatsapp.net	16463191382@s.whatsapp.net		John Buddhist diner	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689620737@s.whatsapp.net	Fabiola Kohler Showroom	Fabiola Kohler Showroom	\N	\N	\N
+14355138943:1@s.whatsapp.net	13474092312@s.whatsapp.net		Alina Peace Temple	\N	\N	\N
+14355138943:1@s.whatsapp.net	13472686702@s.whatsapp.net		Mariya Makarovskaya	\N	\N	\N
+14355138943:1@s.whatsapp.net	50663436770@s.whatsapp.net	Patricia 	Patricia 	\N	\N	\N
+14355138943:1@s.whatsapp.net	13475988147@s.whatsapp.net		Yana Brikker	\N	\N	\N
+14355138943:1@s.whatsapp.net	13104621219@s.whatsapp.net	Kelly Hopkins	Kelly Hopkins	\N	\N	\N
+14355138943:1@s.whatsapp.net	14383778228@s.whatsapp.net		JP	\N	\N	\N
+14355138943:1@s.whatsapp.net	12066604648@s.whatsapp.net		Sasan Dashti	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689609564@s.whatsapp.net	Carmen Lynde	Carmen Lynde Herbologist	\N	\N	\N
+14355138943:1@s.whatsapp.net	14153020641@s.whatsapp.net	Elana LEV	Elana LEV Gummies	\N	\N	\N
+14355138943:1@s.whatsapp.net	13126468884@s.whatsapp.net		Harry Costa Rico	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174060060@s.whatsapp.net		Vince Trotta	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687949622@s.whatsapp.net		Simpe Drija Repair	\N	\N	\N
+14355138943:1@s.whatsapp.net	50663461408@s.whatsapp.net		Will Verdura Sunday delivery	\N	\N	\N
+14355138943:1@s.whatsapp.net	16178036079@s.whatsapp.net	Kostya Boston	Kostya Boston CR interest	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172040461@s.whatsapp.net		Sergei Plitka	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172082913@s.whatsapp.net		Dasha Redensky	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174782727@s.whatsapp.net		Mila Jeneste	\N	\N	\N
+14355138943:1@s.whatsapp.net	12054336047@s.whatsapp.net	Maddalena Equestrian FL	Maddalena Equestrian FL Horse	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685527717@s.whatsapp.net		Harold Ayahuasca San Ramon	\N	\N	\N
+14355138943:1@s.whatsapp.net	16315138555@s.whatsapp.net	Brian Costello LEV	Brian Costello LEV Brianne	\N	\N	\N
+14355138943:1@s.whatsapp.net	15208919869@s.whatsapp.net		Aaron Mike	\N	\N	\N
+14355138943:1@s.whatsapp.net	16464697635@s.whatsapp.net	Anna - Overtime	Anna - Overtime	\N	\N	\N
+14355138943:1@s.whatsapp.net	17706308758@s.whatsapp.net		Maria Mv	\N	\N	\N
+14355138943:1@s.whatsapp.net	50664465384@s.whatsapp.net	Noah 11	Noah 11 Valansi	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173308692@s.whatsapp.net		Olga Nekrasova	\N	\N	\N
+14355138943:1@s.whatsapp.net	16462699307@s.whatsapp.net		Dima Talisman	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660565185@s.whatsapp.net		Marcos Orotina Horses	\N	\N	\N
+14355138943:1@s.whatsapp.net	17817107215@s.whatsapp.net		Natalia Lynntyai	\N	\N	\N
+14355138943:1@s.whatsapp.net	13052248324@s.whatsapp.net		SPAM	\N	\N	\N
+14355138943:1@s.whatsapp.net	19256994202@s.whatsapp.net		Vince DePalma	\N	\N	\N
+14355138943:1@s.whatsapp.net	50662536248@s.whatsapp.net	El Humano	El Humano	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684736304@s.whatsapp.net		Florian Kuster	\N	\N	\N
+14355138943:1@s.whatsapp.net	14848345472@s.whatsapp.net		Jessica LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	14588950729@s.whatsapp.net	Juan Pablo	Juan Pablo Rudolfo Son	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175890661@s.whatsapp.net		Ilya Bikhman	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661626373@s.whatsapp.net	Body shop San Mateo	Body shop San Mateo Pito	\N	\N	\N
+14355138943:1@s.whatsapp.net	16476281535@s.whatsapp.net	Joy Marcotte	Joy Marcotte	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683316235@s.whatsapp.net		Arnoldo	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684016116@s.whatsapp.net		Cata LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685019264@s.whatsapp.net		Fernanda Nanny	\N	\N	\N
+14355138943:1@s.whatsapp.net	13237080352@s.whatsapp.net		Nisarg Parikh	\N	\N	\N
+14355138943:1@s.whatsapp.net	13475226582@s.whatsapp.net		Michael Lexus GX	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689497174@s.whatsapp.net		RWS SCHOOL	\N	\N	\N
+14355138943:1@s.whatsapp.net	998909191019@s.whatsapp.net		Anvar	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172073283@s.whatsapp.net		Margarita Barrera	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173624524@s.whatsapp.net		Anna Shnir	\N	\N	\N
+14355138943:1@s.whatsapp.net	50670053115@s.whatsapp.net		Anna Sansaloni LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	19293107563@s.whatsapp.net		Donald Sacred meditation Circle	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172262724@s.whatsapp.net		Anna Tuzhikova	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176588444@s.whatsapp.net		Sonya Bekkerman	\N	\N	\N
+14355138943:1@s.whatsapp.net	19732160885@s.whatsapp.net		Neeraj	\N	\N	\N
+14355138943:1@s.whatsapp.net	17182521030@s.whatsapp.net		Rabbi Shimanov	\N	\N	\N
+14355138943:1@s.whatsapp.net	17186144947@s.whatsapp.net		Irina Kotikova	\N	\N	\N
+14355138943:1@s.whatsapp.net	19085904964@s.whatsapp.net		Michelle Francheska	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172702740@s.whatsapp.net		Marina Hirsch	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660043560@s.whatsapp.net	Son Thomsen	Son Thomsen Alegria	\N	\N	\N
+14355138943:1@s.whatsapp.net	13105313361@s.whatsapp.net		Roberta Blahut RWS	\N	\N	\N
+14355138943:1@s.whatsapp.net	12015720469@s.whatsapp.net		Melissa Cook	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685952880@s.whatsapp.net		Maezer Ackerson	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683648020@s.whatsapp.net		Carlos Car rental	\N	\N	\N
+14355138943:1@s.whatsapp.net	14154246183@s.whatsapp.net		Adolfo Boxing Coach San Francisco	\N	\N	\N
+14355138943:1@s.whatsapp.net	447903288737@s.whatsapp.net		Katie Human GF	\N	\N	\N
+14355138943:1@s.whatsapp.net	50664454517@s.whatsapp.net	Jose Francisco	Jose Francisco Car Bodyshop	\N	\N	\N
+14355138943:1@s.whatsapp.net	50671156162@s.whatsapp.net	Valeria Piedras	Valeria Piedras Naturales Sula Posters ♾	\N	\N	\N
+14355138943:1@s.whatsapp.net	19732167585@s.whatsapp.net		Swapnil Daptar	\N	\N	\N
+14355138943:1@s.whatsapp.net	50671209936@s.whatsapp.net	Margie Manners	Margie Manners LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	4916090897836@s.whatsapp.net		Andrej Rudyk	\N	\N	\N
+14355138943:1@s.whatsapp.net	447903780724@s.whatsapp.net		Laura LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	41763725100@s.whatsapp.net		Romain Duverge	\N	\N	\N
+14355138943:1@s.whatsapp.net	14157221967@s.whatsapp.net		Kirstin	\N	\N	\N
+14355138943:1@s.whatsapp.net	12677167439@s.whatsapp.net		Leo Berkov	\N	\N	\N
+14355138943:1@s.whatsapp.net	50663281366@s.whatsapp.net		Vidrios Monge Orotina Windows	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177429999@s.whatsapp.net		Zoya Raynes	\N	\N	\N
+14355138943:1@s.whatsapp.net	13476285279@s.whatsapp.net		Irina Grishina	\N	\N	\N
+14355138943:1@s.whatsapp.net	16465336050@s.whatsapp.net	Julia Linetskiy	Julia Linetskiy JCH	\N	\N	\N
+14355138943:1@s.whatsapp.net	16474650422@s.whatsapp.net		Sage	\N	\N	\N
+14355138943:1@s.whatsapp.net	16179215690@s.whatsapp.net		Aleksas Hauser	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176978084@s.whatsapp.net		Ritaly Rappaport	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684121620@s.whatsapp.net		Gate sigifredo	\N	\N	\N
+14355138943:1@s.whatsapp.net	17322843800@s.whatsapp.net	Green Hat Kiteboarding	Green Hat Kiteboarding	\N	\N	\N
+14355138943:1@s.whatsapp.net	50764641522@s.whatsapp.net		Hunter Lilly	\N	\N	\N
+14355138943:1@s.whatsapp.net	13476617254@s.whatsapp.net		Boris Gligich	\N	\N	\N
+14355138943:1@s.whatsapp.net	13475833009@s.whatsapp.net		Alena Peace Temple	\N	\N	\N
+14355138943:1@s.whatsapp.net	14159024497@s.whatsapp.net		Isabel One Light Tribe	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178058414@s.whatsapp.net		Tanya Ticket	\N	\N	\N
+14355138943:1@s.whatsapp.net	50670130759@s.whatsapp.net	Andrea Macias	Andrea Macias	\N	\N	\N
+14355138943:1@s.whatsapp.net	14437390791@s.whatsapp.net		Alexei Dounaevski	\N	\N	\N
+14355138943:1@s.whatsapp.net	8615317171691@s.whatsapp.net	Luis - China	Luis - China Rudolfo Son	\N	\N	\N
+14355138943:1@s.whatsapp.net	17329397510@s.whatsapp.net	Jodi Lancaster	Jodi Lancaster Equestrian	\N	\N	\N
+14355138943:1@s.whatsapp.net	14693018722@s.whatsapp.net		Shane Carroll	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684040014@s.whatsapp.net		Angie RWS Alba Mom	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177637615@s.whatsapp.net	Dana Rental	Dana Rental	\N	\N	\N
+14355138943:1@s.whatsapp.net	32489519087@s.whatsapp.net		Jan-Willem Rombouts	\N	\N	\N
+14355138943:1@s.whatsapp.net	50663189651@s.whatsapp.net	Erlin Gaitán	Erlin Gaitán Wilcasji Internet Install	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684660840@s.whatsapp.net		Lili Koontzen 	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178462248@s.whatsapp.net		Ella Shteingart	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688299743@s.whatsapp.net		Auri RWS Vale’s Mom	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685245330@s.whatsapp.net		Rebecapicante Chirripo	\N	\N	\N
+14355138943:1@s.whatsapp.net	50662707816@s.whatsapp.net	Armando Chavarria	Armando Chavarria Bus driver	\N	\N	\N
+14355138943:1@s.whatsapp.net	50662712193@s.whatsapp.net		Annemarie✨	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687650146@s.whatsapp.net	Mimor Venegas Express Alegria	Mimor Venegas Express Alegria 5 Small Deliveries, Errands	\N	\N	\N
+14355138943:1@s.whatsapp.net	13127209145@s.whatsapp.net		Pepe Maderal Anna House	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689885910@s.whatsapp.net		Bryan Sula Director	\N	\N	\N
+14355138943:1@s.whatsapp.net	12674761111@s.whatsapp.net	Kiril Sushi Monorail	Kiril Sushi Monorail	\N	\N	\N
+14355138943:1@s.whatsapp.net	17346040133@s.whatsapp.net		Erfang	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660716796@s.whatsapp.net	Jon Mechanic Lavacar	Jon Mechanic Lavacar	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684749859@s.whatsapp.net	Sushi orotina	Sushi orotina Hanami	\N	\N	\N
+14355138943:1@s.whatsapp.net	14133866718@s.whatsapp.net		Jane Tuv	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660127722@s.whatsapp.net		Thai CR	\N	\N	\N
+14355138943:1@s.whatsapp.net	17184900618@s.whatsapp.net		Igor Fradlis	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177217311@s.whatsapp.net		Alex Budnitskiy	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173756462@s.whatsapp.net		Ellen	\N	\N	\N
+14355138943:1@s.whatsapp.net	50670079595@s.whatsapp.net	Printer Shop	Printer Shop Coforsa	\N	\N	\N
+14355138943:1@s.whatsapp.net	447720314825@s.whatsapp.net	Communing with the Campbells	Communing with the Campbells	\N	\N	\N
+14355138943:1@s.whatsapp.net	19092349638@s.whatsapp.net		Misha Kostandov	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174144746@s.whatsapp.net		Dirk JP	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176649792@s.whatsapp.net		Victor Balta	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177036069@s.whatsapp.net		Oksana Parkhomovsky	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174077658@s.whatsapp.net		Irina Kurakin	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686769800@s.whatsapp.net		Sushi Dozo	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683491757@s.whatsapp.net		alejandro bahoe	\N	\N	\N
+14355138943:1@s.whatsapp.net	19142621221@s.whatsapp.net		Stevi Petrelli	\N	\N	\N
+14355138943:1@s.whatsapp.net	12818548984@s.whatsapp.net		Ian Costa Rica Car Rental Cheap	\N	\N	\N
+14355138943:1@s.whatsapp.net	16466102000@s.whatsapp.net		Zahar Mikaloff	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175355786@s.whatsapp.net		David Coulson	\N	\N	\N
+14355138943:1@s.whatsapp.net	13057107649@s.whatsapp.net		Felix Vasserman Handpan	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661239646@s.whatsapp.net	Brian Abe	Brian Abe Jamie Ex-neighbor Lev	\N	\N	\N
+14355138943:1@s.whatsapp.net	16075920459@s.whatsapp.net		Mike Baker	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683619588@s.whatsapp.net	Guru Sant	Guru Sant	\N	\N	\N
+14355138943:1@s.whatsapp.net	50671083314@s.whatsapp.net	Yarib Alpizar	Yarib Alpizar Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173928388@s.whatsapp.net		Oksana Brook	\N	\N	\N
+14355138943:1@s.whatsapp.net	19145899267@s.whatsapp.net		Michelle Konsdtat	\N	\N	\N
+14355138943:1@s.whatsapp.net	16156845873@s.whatsapp.net		Sam US farmer RBI	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173757698@s.whatsapp.net		Haining Liang	\N	\N	\N
+14355138943:1@s.whatsapp.net	16099222295@s.whatsapp.net		Laura Griffin	\N	\N	\N
+14355138943:1@s.whatsapp.net	16462656853@s.whatsapp.net		Gisha Babby	\N	\N	\N
+14355138943:1@s.whatsapp.net	13477330903@s.whatsapp.net		Alearo Peace Temple	\N	\N	\N
+14355138943:1@s.whatsapp.net	16469573354@s.whatsapp.net		Zina	\N	\N	\N
+14355138943:1@s.whatsapp.net	50664025615@s.whatsapp.net	Zipline avellanos	Zipline avellanos	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685013112@s.whatsapp.net	Monica Mayer Mckenzie	Monica Mayer Mckenzie	\N	\N	\N
+14355138943:1@s.whatsapp.net	12159011785@s.whatsapp.net		Evan Herring	\N	\N	\N
+14355138943:1@s.whatsapp.net	14694065570@s.whatsapp.net		Tim Waid	\N	\N	\N
+14355138943:1@s.whatsapp.net	19703191084@s.whatsapp.net		Amos Whiting Climbing guide aspen	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175445724@s.whatsapp.net		Irina Tanenbaum	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173763991@s.whatsapp.net		Mark	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688028417@s.whatsapp.net		Fabio Mechanic	\N	\N	\N
+14355138943:1@s.whatsapp.net	13476618000@s.whatsapp.net		Gena Josh Brother In law	\N	\N	\N
+14355138943:1@s.whatsapp.net	34647934667@s.whatsapp.net	Efoil Club Barcelona	Efoil Club Barcelona	\N	\N	\N
+14355138943:1@s.whatsapp.net	50663404257@s.whatsapp.net		Jus Elvin Daughter In Law	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178922139@s.whatsapp.net		Ken Beinert	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172996498@s.whatsapp.net		Vadim Gorshkov	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686378919@s.whatsapp.net	Daniella Health Coach	Daniella Health Coach Petar partner	\N	\N	\N
+14355138943:1@s.whatsapp.net	447875147675@s.whatsapp.net		Matt LEV Laura Husband	\N	\N	\N
+14355138943:1@s.whatsapp.net	32479030536@s.whatsapp.net	Vicki Nielsen	Vicki Nielsen	\N	\N	\N
+14355138943:1@s.whatsapp.net	16824354691@s.whatsapp.net		James Nohinik	\N	\N	\N
+14355138943:1@s.whatsapp.net	19083303534@s.whatsapp.net		Justin | monaverse.com	\N	\N	\N
+14355138943:1@s.whatsapp.net	16099331976@s.whatsapp.net		Irene Nydees	\N	\N	\N
+14355138943:1@s.whatsapp.net	12678251235@s.whatsapp.net		Kaira Gui	\N	\N	\N
+14355138943:1@s.whatsapp.net	79539667707@s.whatsapp.net		Tanya Sasha mom	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685796240@s.whatsapp.net		Alejandro	\N	\N	\N
+14355138943:1@s.whatsapp.net	16462075749@s.whatsapp.net		Zlata Golubistkaya	\N	\N	\N
+14355138943:1@s.whatsapp.net	16469424094@s.whatsapp.net		Natasha Lisak	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685606302@s.whatsapp.net	Andrés Peraza	Andrés Peraza Mover	\N	\N	\N
+14355138943:1@s.whatsapp.net	50663808030@s.whatsapp.net	Bianca Silva-Landis	Bianca Silva-Landis	\N	\N	\N
+14355138943:1@s.whatsapp.net	16462453539@s.whatsapp.net		Michael Birman	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661261829@s.whatsapp.net		Byron Electrician Costa Rica San Mateo	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660505054@s.whatsapp.net	SMART POWER - Solar -	SMART POWER - Solar - Randy Aleman	\N	\N	\N
+14355138943:1@s.whatsapp.net	16462395854@s.whatsapp.net		Mike Shin	\N	\N	\N
+14355138943:1@s.whatsapp.net	4369911154297@s.whatsapp.net	Alegria- Julia (Austria)	Alegria- Julia (Austria)	\N	\N	\N
+14355138943:1@s.whatsapp.net	4917645883647@s.whatsapp.net		Maxim Marlo 💙	\N	\N	\N
+14355138943:1@s.whatsapp.net	14032171782@s.whatsapp.net	Teresa de Grosbois	Teresa de Grosbois Vista Mundo	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687061804@s.whatsapp.net		Manfred Muebles Wood Worker	\N	\N	\N
+14355138943:1@s.whatsapp.net	13475025108@s.whatsapp.net		Gates Time Warner Cable	\N	\N	\N
+14355138943:1@s.whatsapp.net	14437454617@s.whatsapp.net		Sam Diener	\N	\N	\N
+14355138943:1@s.whatsapp.net	15108471146@s.whatsapp.net		Pia	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176575242@s.whatsapp.net		Matt Glickman	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685322730@s.whatsapp.net	Randall S.	Randall S. Rbi	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660777832@s.whatsapp.net		Fernando Eco Villa	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175841226@s.whatsapp.net		Meredith 260wea 7d	\N	\N	\N
+14355138943:1@s.whatsapp.net	13478855571@s.whatsapp.net		Lena Elk	\N	\N	\N
+14355138943:1@s.whatsapp.net	19145597293@s.whatsapp.net		SPAM	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683059081@s.whatsapp.net		Patricio Connecta	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178828080@s.whatsapp.net		Susan Finkel	\N	\N	\N
+14355138943:1@s.whatsapp.net	16466759655@s.whatsapp.net	Na’ama Moran	Na’ama Moran LEV Oren	\N	\N	\N
+14355138943:1@s.whatsapp.net	32468070678@s.whatsapp.net	Kars Gresel	Kars Gresel LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	34670854242@s.whatsapp.net		Toti Vales	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689546365@s.whatsapp.net	Material For Road	Material For Road Esteban	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177763965@s.whatsapp.net		Zhenya Gosha	\N	\N	\N
+14355138943:1@s.whatsapp.net	17188014483@s.whatsapp.net		Sergey Cable	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683947979@s.whatsapp.net		~Billy😎 T Line 	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173701885@s.whatsapp.net		Maria Vinnitskaya	\N	\N	\N
+14355138943:1@s.whatsapp.net	16467619540@s.whatsapp.net		Tanya Baker	\N	\N	\N
+14355138943:1@s.whatsapp.net	5219848072567@s.whatsapp.net	Kitesurf Mexico	Kitesurf Mexico Isla Blanca	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661337479@s.whatsapp.net		Jesai Theater	\N	\N	\N
+14355138943:1@s.whatsapp.net	14152549874@s.whatsapp.net	Aaron Pava	Aaron Pava LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50672624055@s.whatsapp.net		Lloyd Lucille Farm	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660599196@s.whatsapp.net	Stephen Brooks	Stephen Brooks	\N	\N	\N
+14355138943:1@s.whatsapp.net	16463875685@s.whatsapp.net		Ilya Pogorelsky	\N	\N	\N
+14355138943:1@s.whatsapp.net	18483913966@s.whatsapp.net		Sofia Cheidvasser	\N	\N	\N
+14355138943:1@s.whatsapp.net	50662223736@s.whatsapp.net		Anibal Miskito	\N	\N	\N
+14355138943:1@s.whatsapp.net	19704090222@s.whatsapp.net	Lynne Baer	Lynne Baer PAD	\N	\N	\N
+14355138943:1@s.whatsapp.net	19789797701@s.whatsapp.net		Sasha ESM	\N	\N	\N
+14355138943:1@s.whatsapp.net	16464271833@s.whatsapp.net		Victoria Danilovich	\N	\N	\N
+14355138943:1@s.whatsapp.net	16468725506@s.whatsapp.net		Ilya Medvinskiy	\N	\N	\N
+14355138943:1@s.whatsapp.net	17187955704@s.whatsapp.net		Violetta Shmulenzon	\N	\N	\N
+14355138943:1@s.whatsapp.net	50671758494@s.whatsapp.net		Pablo NovaLuce	\N	\N	\N
+14355138943:1@s.whatsapp.net	17327542053@s.whatsapp.net		Alex Maikowski ESM	\N	\N	\N
+14355138943:1@s.whatsapp.net	50664144440@s.whatsapp.net		Chris Flanagan-Linderman	\N	\N	\N
+14355138943:1@s.whatsapp.net	16464724605@s.whatsapp.net		Anna Vagner	\N	\N	\N
+14355138943:1@s.whatsapp.net	50662932423@s.whatsapp.net	Allan Sallas Airport	Allan Sallas Airport	\N	\N	\N
+14355138943:1@s.whatsapp.net	12156809492@s.whatsapp.net		Yana Platonava	\N	\N	\N
+14355138943:1@s.whatsapp.net	12012405992@s.whatsapp.net		Vadim BNY	\N	\N	\N
+14355138943:1@s.whatsapp.net	13472658918@s.whatsapp.net		Larisa Nanny	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176137514@s.whatsapp.net		Yulya UD	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688571506@s.whatsapp.net	Carlos Gas	Carlos Gas Z Orotina	\N	\N	\N
+14355138943:1@s.whatsapp.net	15037803303@s.whatsapp.net	James Unger	James Unger	\N	\N	\N
+14355138943:1@s.whatsapp.net	13472031131@s.whatsapp.net		Jonathan Khalavsky	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172081980@s.whatsapp.net		Eugene Podokshik	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173743584@s.whatsapp.net		Vladimir Tikhomirov	\N	\N	\N
+14355138943:1@s.whatsapp.net	16464651515@s.whatsapp.net		Joe Oleg Tenant	\N	\N	\N
+14355138943:1@s.whatsapp.net	972503302112@s.whatsapp.net		Uria Tsur	\N	\N	\N
+14355138943:1@s.whatsapp.net	12022225714@s.whatsapp.net		Jacob Heyman-kantor LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683441934@s.whatsapp.net		Flora Vecina Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	15102292819@s.whatsapp.net		Ari Brudno	\N	\N	\N
+14355138943:1@s.whatsapp.net	50671704447@s.whatsapp.net		Larry Drummer	\N	\N	\N
+14355138943:1@s.whatsapp.net	5493816392430@s.whatsapp.net	Metodo eSe  - Luis	Metodo eSe - Luis	\N	\N	\N
+14355138943:1@s.whatsapp.net	13477373435@s.whatsapp.net	Elena-dog Art	Elena-dog Art Sedova	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688328730@s.whatsapp.net	Athmane Stone Sinks	Athmane Stone Sinks	\N	\N	\N
+14355138943:1@s.whatsapp.net	12063545347@s.whatsapp.net	Rob T	Rob T LEV - Tachi	\N	\N	\N
+14355138943:1@s.whatsapp.net	584125320454@s.whatsapp.net		Junior Spanish Tutor	\N	\N	\N
+14355138943:1@s.whatsapp.net	447866121787@s.whatsapp.net		Kyle Turrubares	\N	\N	\N
+14355138943:1@s.whatsapp.net	15185050484@s.whatsapp.net		Marthew Obrien	\N	\N	\N
+14355138943:1@s.whatsapp.net	50672978288@s.whatsapp.net		Kevin Alvarado Aguero	\N	\N	\N
+14355138943:1@s.whatsapp.net	15852024362@s.whatsapp.net		Austin Gilbert LEV Investment Advisor	\N	\N	\N
+14355138943:1@s.whatsapp.net	12014104509@s.whatsapp.net		Luba Kogan	\N	\N	\N
+14355138943:1@s.whatsapp.net	16138834618@s.whatsapp.net		Cathy Wenuk	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683618444@s.whatsapp.net	Esteban Andrejuk	Esteban Andrejuk	\N	\N	\N
+14355138943:1@s.whatsapp.net	13476627268@s.whatsapp.net		Ksenia Bay Ridge Parrot	\N	\N	\N
+14355138943:1@s.whatsapp.net	15712597304@s.whatsapp.net	Heather LEV	Heather LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	13477207753@s.whatsapp.net		Mira Gafieva	\N	\N	\N
+14355138943:1@s.whatsapp.net	50662200442@s.whatsapp.net		Yesenia Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	17789661811@s.whatsapp.net	Jessa Sicignano	Jessa Sicignano	\N	\N	\N
+14355138943:1@s.whatsapp.net	381643373431@s.whatsapp.net	Ivan Petkovic	Ivan Petkovic Architect	\N	\N	\N
+14355138943:1@s.whatsapp.net	17189136356@s.whatsapp.net		Pasha	\N	\N	\N
+14355138943:1@s.whatsapp.net	34651555367@s.whatsapp.net		Whin2	\N	\N	\N
+14355138943:1@s.whatsapp.net	16467524980@s.whatsapp.net		Ricky Kite	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176016610@s.whatsapp.net		Max Bezrodny	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688614906@s.whatsapp.net	Edwin Serrano Villalobos	Edwin Serrano Villalobos Electrician	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688007117@s.whatsapp.net	Carlos Sansaloni	Carlos Sansaloni LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	15149988556@s.whatsapp.net	Natasha Azrak	Natasha Azrak	\N	\N	\N
+14355138943:1@s.whatsapp.net	17577174283@s.whatsapp.net		Elliot Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	16048418228@s.whatsapp.net		JP	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688848610@s.whatsapp.net		Chris Chirripo Airbnb	\N	\N	\N
+14355138943:1@s.whatsapp.net	16145066783@s.whatsapp.net		Doug Price	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689810960@s.whatsapp.net	Ronald Quiros Campos	Ronald Quiros Campos ICE	\N	\N	\N
+14355138943:1@s.whatsapp.net	17189860449@s.whatsapp.net		Gary Kahan	\N	\N	\N
+14355138943:1@s.whatsapp.net	19707798732@s.whatsapp.net		Celia Hale Permaculture	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685861195@s.whatsapp.net		Refrizumo Service Orotina	\N	\N	\N
+14355138943:1@s.whatsapp.net	16462960041@s.whatsapp.net		Victor Nikulin	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688842018@s.whatsapp.net	Elizabeth El Bosque 	Elizabeth El Bosque Maderal Bosque	\N	\N	\N
+14355138943:1@s.whatsapp.net	17862809159@s.whatsapp.net		Noel Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	31627832277@s.whatsapp.net		Teun LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	12679848454@s.whatsapp.net		Sema	\N	\N	\N
+14355138943:1@s.whatsapp.net	447873709565@s.whatsapp.net	David Hooper	David Hooper	\N	\N	\N
+14355138943:1@s.whatsapp.net	4526187777@s.whatsapp.net		Lasse Wiwe RWS	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684264364@s.whatsapp.net	Marta Resino Scarpellini	Marta Resino Scarpellini	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175732528@s.whatsapp.net		John Fathers	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688707659@s.whatsapp.net		Andress Manuel Antonio	\N	\N	\N
+14355138943:1@s.whatsapp.net	50672630425@s.whatsapp.net		Erika	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683761982@s.whatsapp.net		Fumigacion Confort Ecologico Pest Control	\N	\N	\N
+14355138943:1@s.whatsapp.net	16464313450@s.whatsapp.net		Alex Potter	\N	\N	\N
+14355138943:1@s.whatsapp.net	16462610481@s.whatsapp.net		Alexander Mitroff	\N	\N	\N
+14355138943:1@s.whatsapp.net	13477680604@s.whatsapp.net		Jordan Sheldon	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685957514@s.whatsapp.net		Cristina Muni	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174958182@s.whatsapp.net		Ross Lukatsevich	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689538636@s.whatsapp.net	Raque 🌿	Raque 🌿 Maderal silas Neighbor	\N	\N	\N
+14355138943:1@s.whatsapp.net	19147879603@s.whatsapp.net		Eugene Prakhin	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689823169@s.whatsapp.net		Gilberth Taxi	\N	\N	\N
+14355138943:1@s.whatsapp.net	79151952382@s.whatsapp.net		Marik Rubinshtein	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683383422@s.whatsapp.net	Kapi Kapi	Kapi Kapi	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683404342@s.whatsapp.net	Lorena LavaCar San Mateo	Lorena LavaCar San Mateo Car Wash	\N	\N	\N
+14355138943:1@s.whatsapp.net	17187916961@s.whatsapp.net		Ed Cotler	\N	\N	\N
+14355138943:1@s.whatsapp.net	59995622022@s.whatsapp.net		Kim Kiteboarding	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683716661@s.whatsapp.net		Antonio el lagar	\N	\N	\N
+14355138943:1@s.whatsapp.net	15059476310@s.whatsapp.net	Shara LEV S2	Shara LEV S2	\N	\N	\N
+14355138943:1@s.whatsapp.net	97239771111@s.whatsapp.net	El Al	El Al	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660047774@s.whatsapp.net	Louis Car rental	Louis Car rental	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175485968@s.whatsapp.net		Serge Arkipoff	\N	\N	\N
+14355138943:1@s.whatsapp.net	16463790686@s.whatsapp.net		Home Mazo	\N	\N	\N
+14355138943:1@s.whatsapp.net	50662375518@s.whatsapp.net		Solena LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689570051@s.whatsapp.net	Tobacco Native	Tobacco Native Coyote	\N	\N	\N
+14355138943:1@s.whatsapp.net	19702149623@s.whatsapp.net		Jacquelyn Light	\N	\N	\N
+14355138943:1@s.whatsapp.net	19549933476@s.whatsapp.net		Crystan Horse Club Florida	\N	\N	\N
+14355138943:1@s.whatsapp.net	13476937525@s.whatsapp.net		Jane Shtaynberg	\N	\N	\N
+14355138943:1@s.whatsapp.net	13473857198@s.whatsapp.net		Vovan RussianMix	\N	\N	\N
+14355138943:1@s.whatsapp.net	16464968106@s.whatsapp.net		Ed Zaydelman Land project Consultant	\N	\N	\N
+14355138943:1@s.whatsapp.net	15173433111@s.whatsapp.net		SPAM	\N	\N	\N
+14355138943:1@s.whatsapp.net	593983894536@s.whatsapp.net	Linda ecuador Spanish Teacher	Linda ecuador Spanish Teacher	\N	\N	\N
+14355138943:1@s.whatsapp.net	13475541415@s.whatsapp.net		Daniela PeaceTemple	\N	\N	\N
+14355138943:1@s.whatsapp.net	17818012011@s.whatsapp.net		Blanca Barrantes Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	17027559262@s.whatsapp.net		Brittany	\N	\N	\N
+14355138943:1@s.whatsapp.net	19733809381@s.whatsapp.net		Mike Lepak	\N	\N	\N
+14355138943:1@s.whatsapp.net	13472650642@s.whatsapp.net		Nadya Nanny	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177946181@s.whatsapp.net		Eftal	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660510707@s.whatsapp.net		Fonzie Mural painter Lev Garage	\N	\N	\N
+14355138943:1@s.whatsapp.net	17185515798@s.whatsapp.net		Scott Turo	\N	\N	\N
+14355138943:1@s.whatsapp.net	447718168185@s.whatsapp.net		Adam Mexico	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661082991@s.whatsapp.net		Leonardo Megan Boyfriend	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660653935@s.whatsapp.net	Krys Polaco LEV	Krys Polaco LEV Massage	\N	\N	\N
+14355138943:1@s.whatsapp.net	16467346502@s.whatsapp.net		Mia Maikowski	\N	\N	\N
+14355138943:1@s.whatsapp.net	50664604174@s.whatsapp.net	Gene Aumson	Gene Aumson	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685444895@s.whatsapp.net		Cerrajero Osva Locksmith	\N	\N	\N
+14355138943:1@s.whatsapp.net	919035824173@s.whatsapp.net		Abhishek Narang	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686329391@s.whatsapp.net		Didier	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178659202@s.whatsapp.net		Maria Pavlova	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175170958@s.whatsapp.net		Semen Electric	\N	\N	\N
+14355138943:1@s.whatsapp.net	19082854552@s.whatsapp.net		Pallavi	\N	\N	\N
+14355138943:1@s.whatsapp.net	19732719834@s.whatsapp.net		Michael Blahut D.O. Physician	\N	\N	\N
+14355138943:1@s.whatsapp.net	16463698469@s.whatsapp.net		Anton Mostkovskii	\N	\N	\N
+14355138943:1@s.whatsapp.net	19145842660@s.whatsapp.net	Hanna Dylan ❤️	Hanna Dylan ❤️ Human GF	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687124215@s.whatsapp.net	Itai Hauben	Itai Hauben Permaculture Rbi	\N	\N	\N
+14355138943:1@s.whatsapp.net	18456167664@s.whatsapp.net		John Shults	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177429568@s.whatsapp.net		Dina Stregoica	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686889930@s.whatsapp.net		Alonso Windows Installer	\N	\N	\N
+14355138943:1@s.whatsapp.net	19542990209@s.whatsapp.net		Spencer Kramer	\N	\N	\N
+14355138943:1@s.whatsapp.net	15034773405@s.whatsapp.net		Zach Anderson	\N	\N	\N
+14355138943:1@s.whatsapp.net	19179684135@s.whatsapp.net		Ilya Gordon	\N	\N	\N
+14355138943:1@s.whatsapp.net	16316805100@s.whatsapp.net		Tatiana Shelkova	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688539725@s.whatsapp.net		Mario Alabadi Hidroelectrica	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686519090@s.whatsapp.net	Dominical House	Dominical House	\N	\N	\N
+14355138943:1@s.whatsapp.net	447964425975@s.whatsapp.net		Sarrah Cherhabil	\N	\N	\N
+14355138943:1@s.whatsapp.net	15109262937@s.whatsapp.net		Jay Chef house Sitter	\N	\N	\N
+14355138943:1@s.whatsapp.net	50641018888@s.whatsapp.net	Constru plaza	Constru plaza	\N	\N	\N
+14355138943:1@s.whatsapp.net	46733777591@s.whatsapp.net		Serge RWS Science Teacher	\N	\N	\N
+14355138943:1@s.whatsapp.net	16125089061@s.whatsapp.net		Michelle Baker	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689714081@s.whatsapp.net	Marcella Citrus	Marcella Citrus Tangara Azul Ojochal	\N	\N	\N
+14355138943:1@s.whatsapp.net	13059169264@s.whatsapp.net		Canel	\N	\N	\N
+14355138943:1@s.whatsapp.net	15512082931@s.whatsapp.net		Irfan Hussain	\N	\N	\N
+14355138943:1@s.whatsapp.net	4917630313573@s.whatsapp.net		Marta LEV Kalari	\N	\N	\N
+14355138943:1@s.whatsapp.net	13475155745@s.whatsapp.net		Yevgeniya Karabash	\N	\N	\N
+14355138943:1@s.whatsapp.net	19179157202@s.whatsapp.net		Jenny Danilova	\N	\N	\N
+14355138943:1@s.whatsapp.net	13035944010@s.whatsapp.net		Scott De Velder	\N	\N	\N
+14355138943:1@s.whatsapp.net	50672372193@s.whatsapp.net		Javi	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684562648@s.whatsapp.net		Kimberly Casa Sula Chef	\N	\N	\N
+14355138943:1@s.whatsapp.net	19202151033@s.whatsapp.net		Teri Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	79178418078@s.whatsapp.net	Yulya @kondrashova_fitness 🐢	Yulya @kondrashova_fitness 🐢 Fitness instructor	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683310719@s.whatsapp.net		Vadim Nails	\N	\N	\N
+14355138943:1@s.whatsapp.net	16027511701@s.whatsapp.net		Mike Sedona	\N	\N	\N
+14355138943:1@s.whatsapp.net	14152729840@s.whatsapp.net	Sasha Markova	Sasha Markova LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	12892133327@s.whatsapp.net		Mimi	\N	\N	\N
+14355138943:1@s.whatsapp.net	13474402673@s.whatsapp.net	Guy Granovsky	Guy Granovsky	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661435930@s.whatsapp.net		Yam Aisner	\N	\N	\N
+14355138943:1@s.whatsapp.net	19086923665@s.whatsapp.net		Zhenya Kitchen	\N	\N	\N
+14355138943:1@s.whatsapp.net	17189860440@s.whatsapp.net		Ilya	\N	\N	\N
+14355138943:1@s.whatsapp.net	16465154337@s.whatsapp.net		Mikhail Krel	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174887334@s.whatsapp.net		Ben Krull	\N	\N	\N
+14355138943:1@s.whatsapp.net	50662170977@s.whatsapp.net	Alejandra Castro	Alejandra Castro	\N	\N	\N
+14355138943:1@s.whatsapp.net	19702221721@s.whatsapp.net	Alana Fournet	Alana Fournet	\N	\N	\N
+14355138943:1@s.whatsapp.net	17187534102@s.whatsapp.net		Daniel Sosnitsky	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683592067@s.whatsapp.net	Jerah 	Jerah Thai	\N	\N	\N
+14355138943:1@s.whatsapp.net	19254947036@s.whatsapp.net		SPAM	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689964306@s.whatsapp.net	AG3 Proyectos y Construccion	AG3 Proyectos y Construccion Surf Board Shaper	\N	\N	\N
+14355138943:1@s.whatsapp.net	16048385074@s.whatsapp.net	Chris Maderal	Chris Maderal Steve brother	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688686396@s.whatsapp.net	Grace Y Ivan	Grace Y Ivan	\N	\N	\N
+14355138943:1@s.whatsapp.net	17187496303@s.whatsapp.net		Elvi Gorshkov	\N	\N	\N
+14355138943:1@s.whatsapp.net	34625067600@s.whatsapp.net		Jonathan	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683139365@s.whatsapp.net		Gilda LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175284804@s.whatsapp.net		Kieron King	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683384172@s.whatsapp.net	César Porras	César Porras Architect	\N	\N	\N
+14355138943:1@s.whatsapp.net	50662109364@s.whatsapp.net		Steve Costa Rica	\N	\N	\N
+14355138943:1@s.whatsapp.net	17328296551@s.whatsapp.net		Oren Forer	\N	\N	\N
+14355138943:1@s.whatsapp.net	919707760667@s.whatsapp.net		Divye	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683326153@s.whatsapp.net	Lisa Eggs	Lisa Eggs	\N	\N	\N
+14355138943:1@s.whatsapp.net	19294005210@s.whatsapp.net		Shehzad Nabi	\N	\N	\N
+14355138943:1@s.whatsapp.net	79889882626@s.whatsapp.net	Yulya 2	Yulya 2	\N	\N	\N
+14355138943:1@s.whatsapp.net	16466757015@s.whatsapp.net		Andy Legg	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173731059@s.whatsapp.net		Erik Yankilevich	\N	\N	\N
+14355138943:1@s.whatsapp.net	15062511416@s.whatsapp.net		Meli	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684908664@s.whatsapp.net		Eduardotierraroja Car rent	\N	\N	\N
+14355138943:1@s.whatsapp.net	19703793315@s.whatsapp.net		Susan Brady Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	17059998588@s.whatsapp.net	Karina Wildgoods	Karina Wildgoods LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	380664962487@s.whatsapp.net		Anastasia ESM	\N	\N	\N
+14355138943:1@s.whatsapp.net	12068906793@s.whatsapp.net		Tachi	\N	\N	\N
+14355138943:1@s.whatsapp.net	16462718408@s.whatsapp.net		Filip Contractor	\N	\N	\N
+14355138943:1@s.whatsapp.net	16465228773@s.whatsapp.net		Yelena Aerbukh	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178652301@s.whatsapp.net	Anastasia 💛	Anastasia 💛 Budnitskiy	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177471821@s.whatsapp.net		Alex Yampolskiy	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176285691@s.whatsapp.net		Irina Arkhipova	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689633412@s.whatsapp.net	Promoción Social	Promoción Social DTGV Muni Roads	\N	\N	\N
+14355138943:1@s.whatsapp.net	16129636511@s.whatsapp.net		Linda Ostbye Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	18054558472@s.whatsapp.net		Tom ESM Ceiba 25	\N	\N	\N
+14355138943:1@s.whatsapp.net	41764149495@s.whatsapp.net	Markus Naeff	Markus Naeff	\N	\N	\N
+14355138943:1@s.whatsapp.net	50662237434@s.whatsapp.net	DTO + Hemalayaa	DTO + Hemalayaa	\N	\N	\N
+14355138943:1@s.whatsapp.net	19082951273@s.whatsapp.net		Sunny Kapoor	\N	\N	\N
+14355138943:1@s.whatsapp.net	16463019744@s.whatsapp.net		Zhenya Strumba	\N	\N	\N
+14355138943:1@s.whatsapp.net	50671262020@s.whatsapp.net	Sasha Markova	Sasha Markova LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	17182164748@s.whatsapp.net		Seva Pinski	\N	\N	\N
+14355138943:1@s.whatsapp.net	15738642046@s.whatsapp.net	Sara Yamtich	Sara Yamtich	\N	\N	\N
+14355138943:1@s.whatsapp.net	12697209555@s.whatsapp.net	Kelly Norman	Kelly Norman	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683210135@s.whatsapp.net		Sheel Tangri	\N	\N	\N
+14355138943:1@s.whatsapp.net	13476286053@s.whatsapp.net		Dato Contructor	\N	\N	\N
+14355138943:1@s.whatsapp.net	19788669332@s.whatsapp.net		Dave Byrne	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689096479@s.whatsapp.net	Barber Love Organic	Barber Love Organic Hair salon	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175864133@s.whatsapp.net		Veronica Price	\N	\N	\N
+14355138943:1@s.whatsapp.net	50671630813@s.whatsapp.net	La hoja Verde	La hoja Verde	\N	\N	\N
+14355138943:1@s.whatsapp.net	16462435047@s.whatsapp.net		Martin Walsh	\N	\N	\N
+14355138943:1@s.whatsapp.net	50663271381@s.whatsapp.net	Ferretodo Ventas	Ferretodo Ventas Carlos	\N	\N	\N
+14355138943:1@s.whatsapp.net	50671008987@s.whatsapp.net	Chirripo Farm Los	Chirripo Farm Los	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687720062@s.whatsapp.net		Yose Nanny	\N	\N	\N
+14355138943:1@s.whatsapp.net	16314569324@s.whatsapp.net		Akiva	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178482253@s.whatsapp.net		Marina Bekker	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172570233@s.whatsapp.net		Alex Grinzayd	\N	\N	\N
+14355138943:1@s.whatsapp.net	15129039203@s.whatsapp.net	Rachel George	Rachel George	\N	\N	\N
+14355138943:1@s.whatsapp.net	34687123075@s.whatsapp.net	Paula Coscolin	Paula Coscolin ESM	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686877667@s.whatsapp.net		Mauricio Bansbach	\N	\N	\N
+14355138943:1@s.whatsapp.net	34651038774@s.whatsapp.net		Efoil Hondarribia	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686905063@s.whatsapp.net		Jackie Mucaria	\N	\N	\N
+14355138943:1@s.whatsapp.net	19188120626@s.whatsapp.net	Larry Haskett	Larry Haskett	\N	\N	\N
+14355138943:1@s.whatsapp.net	18452423560@s.whatsapp.net	114 Neighbor - Timmy	114 Neighbor - Timmy	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689511185@s.whatsapp.net		Daniel Puntarenas boat Guide	\N	\N	\N
+14355138943:1@s.whatsapp.net	14192903470@s.whatsapp.net		Sergey Nagorniy	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176370373@s.whatsapp.net		Stanley Nov	\N	\N	\N
+14355138943:1@s.whatsapp.net	13473667529@s.whatsapp.net	Anya 	Anya Zicer	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684098225@s.whatsapp.net		Jan Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173327454@s.whatsapp.net		Krug	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688533318@s.whatsapp.net		Comunicación Casa Sula	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176908479@s.whatsapp.net		Elya Leonova	\N	\N	\N
+14355138943:1@s.whatsapp.net	15148064264@s.whatsapp.net		Hani Auran	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661331336@s.whatsapp.net	Alisa Aster	Alisa Aster	\N	\N	\N
+14355138943:1@s.whatsapp.net	15623915091@s.whatsapp.net	Nicole Reese (Fae)	Nicole Reese (Fae) ESM	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686578195@s.whatsapp.net		Jacques Fournet	\N	\N	\N
+14355138943:1@s.whatsapp.net	13477558452@s.whatsapp.net		Delvis	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684238686@s.whatsapp.net		Marce LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683085248@s.whatsapp.net	Eduardo Urbina	Eduardo Urbina	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683622267@s.whatsapp.net	Goat Farm	Goat Farm Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	16463612407@s.whatsapp.net		Alban	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687071782@s.whatsapp.net	Jose Pablo Delgado Fernan	Jose Pablo Delgado Fernan Avellanas Surfing	\N	\N	\N
+14355138943:1@s.whatsapp.net	16463318012@s.whatsapp.net		Ira Berger	\N	\N	\N
+14355138943:1@s.whatsapp.net	50672785173@s.whatsapp.net	Confort Ecologico E.I.R.L.	Confort Ecologico E.I.R.L. Roach Pest Control	\N	\N	\N
+14355138943:1@s.whatsapp.net	15306157847@s.whatsapp.net		Kaypacha	\N	\N	\N
+14355138943:1@s.whatsapp.net	17182887026@s.whatsapp.net		Stacy Serebnitsky	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660366112@s.whatsapp.net		Lucia Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	14244654300@s.whatsapp.net	Danny (lev)	Danny (lev)	\N	\N	\N
+14355138943:1@s.whatsapp.net	14036304846@s.whatsapp.net	Teresa de Grosbois	Teresa de Grosbois Vista Mundo	\N	\N	\N
+14355138943:1@s.whatsapp.net	17186124981@s.whatsapp.net		Rudolf Kelner	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685200990@s.whatsapp.net		Ileana Food Delivery Lev	\N	\N	\N
+14355138943:1@s.whatsapp.net	79117190060@s.whatsapp.net		Stepanida Шевченко	\N	\N	\N
+14355138943:1@s.whatsapp.net	393475478263@s.whatsapp.net		Emilia	\N	\N	\N
+14355138943:1@s.whatsapp.net	447414748534@s.whatsapp.net		Pamela LEV diane Tenant	\N	\N	\N
+14355138943:1@s.whatsapp.net	14152978003@s.whatsapp.net	Bjoern Lasse	Bjoern Lasse Herrmann	\N	\N	\N
+14355138943:1@s.whatsapp.net	16174486550@s.whatsapp.net		Milena	\N	\N	\N
+14355138943:1@s.whatsapp.net	50662756142@s.whatsapp.net	Ivan - Sgi network studio	Ivan - Sgi network studio	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684978341@s.whatsapp.net		Vinicio Peraza Orotine Lites	\N	\N	\N
+14355138943:1@s.whatsapp.net	16468944678@s.whatsapp.net		Tanya Krug	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684920751@s.whatsapp.net	Carbaio Taxi	Carbaio Taxi	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683683115@s.whatsapp.net	Sloan Toilet Distributor	Sloan Toilet Distributor	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685135335@s.whatsapp.net		Cristiana Margherita	\N	\N	\N
+14355138943:1@s.whatsapp.net	16469968864@s.whatsapp.net		Michael Girshin	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172395930@s.whatsapp.net		Cameron Brien	\N	\N	\N
+14355138943:1@s.whatsapp.net	19179215426@s.whatsapp.net		Yana Fishman	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176479536@s.whatsapp.net		Vita Levitan	\N	\N	\N
+14355138943:1@s.whatsapp.net	13868041555@s.whatsapp.net	Lindsey D’Amore	Lindsey D’Amore	\N	\N	\N
+14355138943:1@s.whatsapp.net	5219984295321@s.whatsapp.net	Emir Car Servis Tulum	Emir Car Servis Tulum	\N	\N	\N
+14355138943:1@s.whatsapp.net	50576591291@s.whatsapp.net		Shaun M	\N	\N	\N
+14355138943:1@s.whatsapp.net	13366181033@s.whatsapp.net		Kaylee	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661672425@s.whatsapp.net	Johnny AC	Johnny AC Orotina	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176134399@s.whatsapp.net		Reha Tutuncu	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685015500@s.whatsapp.net		Efra😎 Mechanic	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173739256@s.whatsapp.net		Sabina Veksler	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174953342@s.whatsapp.net		Arkadiy Furniture	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688298564@s.whatsapp.net	Orotina Print Shop	Orotina Print Shop	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688001221@s.whatsapp.net	Deco Rock	Deco Rock	\N	\N	\N
+14355138943:1@s.whatsapp.net	51974294333@s.whatsapp.net		Liza-Marié	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660499990@s.whatsapp.net		Marcelo	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178680747@s.whatsapp.net		Dmitry Stasyuk	\N	\N	\N
+14355138943:1@s.whatsapp.net	50664198413@s.whatsapp.net		Diego Araselyz Husband	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686634306@s.whatsapp.net		Pablo COFORSA Printer	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687249292@s.whatsapp.net	Grupo Jambu	Grupo Jambu Fans Jensi	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176961400@s.whatsapp.net		Jonathan Gold	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178421271@s.whatsapp.net		Elayne Safir	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689613056@s.whatsapp.net	Jonathan Lara	Jonathan Lara Guadelupa	\N	\N	\N
+14355138943:1@s.whatsapp.net	50664657216@s.whatsapp.net	Britt In Costa Rica	Britt In Costa Rica	\N	\N	\N
+14355138943:1@s.whatsapp.net	41779665632@s.whatsapp.net		Monica ESM	\N	\N	\N
+14355138943:1@s.whatsapp.net	13472675628@s.whatsapp.net		Ilusha Jch	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177107492@s.whatsapp.net		Eduardo	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688095276@s.whatsapp.net	Poza Blanca	Poza Blanca	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685857093@s.whatsapp.net	Honey Lady	Honey Lady Orotin	\N	\N	\N
+14355138943:1@s.whatsapp.net	50670199107@s.whatsapp.net		David Bullon	\N	\N	\N
+14355138943:1@s.whatsapp.net	15209915112@s.whatsapp.net		Eros Ocean	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689430902@s.whatsapp.net	Gannon & Krishna	Gannon & Krishna Meat	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177036363@s.whatsapp.net		Andrey Myatlyuk	\N	\N	\N
+14355138943:1@s.whatsapp.net	50251850916@s.whatsapp.net		Byron	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176922307@s.whatsapp.net		Xaviea Pittman	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174350077@s.whatsapp.net		Zoya BudnitskiyFriendCareer	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684113441@s.whatsapp.net		Carmen Cleaning maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660162569@s.whatsapp.net	Robert Faulstich	Robert Faulstich LEV Tin Jo	\N	\N	\N
+14355138943:1@s.whatsapp.net	50670700909@s.whatsapp.net	Andres Gomez	Andres Gomez Immigration Attorney	\N	\N	\N
+14355138943:1@s.whatsapp.net	12068532056@s.whatsapp.net		Chuck Alegria	\N	\N	\N
+14355138943:1@s.whatsapp.net	393481860243@s.whatsapp.net	Alessandro Brisa	Alessandro Brisa Boxer Kid Australia	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687078230@s.whatsapp.net	Inversiones Solalpi	Inversiones Solalpi Water heater Panel	\N	\N	\N
+14355138943:1@s.whatsapp.net	17189086474@s.whatsapp.net		Lubov Elkinyuk	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688599592@s.whatsapp.net	Anne Kevenhörster	Anne Kevenhörster LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683541987@s.whatsapp.net	Steve Friend Truck	Steve Friend Truck	\N	\N	\N
+14355138943:1@s.whatsapp.net	18084519100@s.whatsapp.net	Why knot kiting	Why knot kiting Jason	\N	\N	\N
+14355138943:1@s.whatsapp.net	17046500942@s.whatsapp.net		Brian hollie	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177978147@s.whatsapp.net		Jane Greyf	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683038009@s.whatsapp.net		Laura Architect	\N	\N	\N
+14355138943:1@s.whatsapp.net	61476050710@s.whatsapp.net		Julien Tonino ESM	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175891825@s.whatsapp.net		Vladimir Khavulya	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683703069@s.whatsapp.net		Karmen Cables	\N	\N	\N
+14355138943:1@s.whatsapp.net	50662242201@s.whatsapp.net	Venta En Línea EPA	Venta En Línea EPA	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687857348@s.whatsapp.net		Gustavo Rojas	\N	\N	\N
+14355138943:1@s.whatsapp.net	13057109097@s.whatsapp.net		Michael Florida Real Estate Attorney	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175202167@s.whatsapp.net		Dmitry Metlitsky	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660875570@s.whatsapp.net	Matth Sula S2 Parent	Matth Sula S2 Parent	\N	\N	\N
+14355138943:1@s.whatsapp.net	393494735691@s.whatsapp.net		Juan LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	13475465671@s.whatsapp.net		Olya Monastyrskaya	\N	\N	\N
+14355138943:1@s.whatsapp.net	15876001835@s.whatsapp.net		Claire	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178056034@s.whatsapp.net		Tanya Portnaya	\N	\N	\N
+14355138943:1@s.whatsapp.net	15713329183@s.whatsapp.net		Justin Langseth	\N	\N	\N
+14355138943:1@s.whatsapp.net	13473855560@s.whatsapp.net		Alix James	\N	\N	\N
+14355138943:1@s.whatsapp.net	16463200056@s.whatsapp.net		Danny Broker	\N	\N	\N
+14355138943:1@s.whatsapp.net	12485069565@s.whatsapp.net		Dato	\N	\N	\N
+14355138943:1@s.whatsapp.net	13473515211@s.whatsapp.net		Yasha Rubinshtein	\N	\N	\N
+14355138943:1@s.whatsapp.net	13473516283@s.whatsapp.net		Marina Marina	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660342677@s.whatsapp.net	namaste Indian Restaurant	namaste Indian Restaurant	\N	\N	\N
+14355138943:1@s.whatsapp.net	16469322466@s.whatsapp.net		Ivan J Kriakov	\N	\N	\N
+14355138943:1@s.whatsapp.net	16175290784@s.whatsapp.net		Oleg Peace Temple Gaia AI	\N	\N	\N
+14355138943:1@s.whatsapp.net	19548810978@s.whatsapp.net	Young Equestrian FL	Young Equestrian FL Horse	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177437539@s.whatsapp.net		Elena Gusleva	\N	\N	\N
+14355138943:1@s.whatsapp.net	19149127646@s.whatsapp.net		Andres Gonzalez	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661414565@s.whatsapp.net	Robin Shaw	Robin Shaw Sula	\N	\N	\N
+14355138943:1@s.whatsapp.net	50664271877@s.whatsapp.net		Mercedes	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175144543@s.whatsapp.net		Alex Paley	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688866802@s.whatsapp.net	Eric Rivkin	Eric Rivkin	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177718378@s.whatsapp.net		Yulya Agranovich	\N	\N	\N
+14355138943:1@s.whatsapp.net	18012623296@s.whatsapp.net		John Lift Tickets Utah	\N	\N	\N
+14355138943:1@s.whatsapp.net	12675760803@s.whatsapp.net	Dan Recruiter iOS	Dan Recruiter iOS	\N	\N	\N
+14355138943:1@s.whatsapp.net	13477402246@s.whatsapp.net		Asya Gribov	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175188726@s.whatsapp.net		Roma Genov	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688904606@s.whatsapp.net	Alejandro Abarca Maderal 	Alejandro Abarca Maderal 	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688929717@s.whatsapp.net		Rosco Shipping	\N	\N	\N
+14355138943:1@s.whatsapp.net	14169090135@s.whatsapp.net	Siya Zarrabi	Siya Zarrabi	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172244963@s.whatsapp.net		Max Mirkin	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178387588@s.whatsapp.net		Dimitry Goloborodskiy	\N	\N	\N
+14355138943:1@s.whatsapp.net	50662171481@s.whatsapp.net	GTM Ingeniería	GTM Ingeniería Topographer	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173455123@s.whatsapp.net		Esther Katz	\N	\N	\N
+14355138943:1@s.whatsapp.net	16468538658@s.whatsapp.net		Kolya Peace Temple Yoga	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687845628@s.whatsapp.net	Costa Rica Asada	Costa Rica Asada Maderal Water	\N	\N	\N
+14355138943:1@s.whatsapp.net	50230730413@s.whatsapp.net		Martha transport Guatemala	\N	\N	\N
+14355138943:1@s.whatsapp.net	16172377773@s.whatsapp.net	Barrett Lawson	Barrett Lawson	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174464516@s.whatsapp.net		Lyuba Nanny - Lev	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178086933@s.whatsapp.net		Will Peak	\N	\N	\N
+14355138943:1@s.whatsapp.net	18057059372@s.whatsapp.net		Lindsey Pollaczek	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176854281@s.whatsapp.net		Sveta Panich	\N	\N	\N
+14355138943:1@s.whatsapp.net	17812642677@s.whatsapp.net		Crystal	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685838112@s.whatsapp.net		Refrizumo Service Orotina	\N	\N	\N
+14355138943:1@s.whatsapp.net	393758727241@s.whatsapp.net		Walter Boxing	\N	\N	\N
+14355138943:1@s.whatsapp.net	12693656800@s.whatsapp.net	Nate Norman	Nate Norman LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50671079722@s.whatsapp.net	Eduard jaco Restaurant Cool Fog	Eduard jaco Restaurant Cool Fog	\N	\N	\N
+14355138943:1@s.whatsapp.net	19179450160@s.whatsapp.net		Katya Azarova	\N	\N	\N
+14355138943:1@s.whatsapp.net	16044464571@s.whatsapp.net		Joshua Scott Class Student	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684656820@s.whatsapp.net	Playa hermosa Surf Lessons	Playa hermosa Surf Lessons	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688371295@s.whatsapp.net	Dr Julio Sanchez	Dr Julio Sanchez Orotina Bee Doctor	\N	\N	\N
+14355138943:1@s.whatsapp.net	18473375410@s.whatsapp.net		Lena Boyarskiy	\N	\N	\N
+14355138943:1@s.whatsapp.net	13472204449@s.whatsapp.net		Lina	\N	\N	\N
+14355138943:1@s.whatsapp.net	13604604949@s.whatsapp.net		Paul LEV margie	\N	\N	\N
+14355138943:1@s.whatsapp.net	13473519862@s.whatsapp.net		Lena Gelzaid	\N	\N	\N
+14355138943:1@s.whatsapp.net	16463391944@s.whatsapp.net		Lena Feygin	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685833567@s.whatsapp.net		Elvin Salas	\N	\N	\N
+14355138943:1@s.whatsapp.net	61402873522@s.whatsapp.net		Piero Brisa LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	17186196166@s.whatsapp.net		Julie Paritskaya	\N	\N	\N
+14355138943:1@s.whatsapp.net	18044367713@s.whatsapp.net		Jack developer Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172245222@s.whatsapp.net		Brandon Sen	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686441225@s.whatsapp.net		Cristian Farm Diamante valley	\N	\N	\N
+14355138943:1@s.whatsapp.net	50672996040@s.whatsapp.net	Muffler Shop	Muffler Shop	\N	\N	\N
+14355138943:1@s.whatsapp.net	17347097456@s.whatsapp.net		Yuri Astrakhan	\N	\N	\N
+14355138943:1@s.whatsapp.net	12066690439@s.whatsapp.net		Amanda LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	16465529790@s.whatsapp.net		Serezha GoshaRemont	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172733731@s.whatsapp.net		Alex Zeltser	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173090907@s.whatsapp.net		Anatoly Golbin	\N	\N	\N
+14355138943:1@s.whatsapp.net	17185364778@s.whatsapp.net		marina kelner	\N	\N	\N
+14355138943:1@s.whatsapp.net	50662492137@s.whatsapp.net	Christian Mechanic	Christian Mechanic Orotina	\N	\N	\N
+14355138943:1@s.whatsapp.net	16146321355@s.whatsapp.net		David LEV Vanessa	\N	\N	\N
+14355138943:1@s.whatsapp.net	16048414283@s.whatsapp.net	Bradley Spence	Bradley Spence Alegria	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176732699@s.whatsapp.net		Alina Bitel	\N	\N	\N
+14355138943:1@s.whatsapp.net	17575315351@s.whatsapp.net		Yndon Clark	\N	\N	\N
+14355138943:1@s.whatsapp.net	17049424754@s.whatsapp.net	Hollie JOHNSTON	Hollie JOHNSTON	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661402482@s.whatsapp.net		Olikey Coffee	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688155454@s.whatsapp.net	Alfanso. Earth Moving. 	Alfanso. Earth Moving. Backho	\N	\N	\N
+14355138943:1@s.whatsapp.net	15514041111@s.whatsapp.net		Yuriy Podoshev	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687027059@s.whatsapp.net		Scarlett	\N	\N	\N
+14355138943:1@s.whatsapp.net	34676447483@s.whatsapp.net		Adri RWS Spanish Teacher	\N	\N	\N
+14355138943:1@s.whatsapp.net	15033083139@s.whatsapp.net		Shinei Zen Walkers	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174459028@s.whatsapp.net		Irchik	\N	\N	\N
+14355138943:1@s.whatsapp.net	17862866388@s.whatsapp.net		Danny Gonzalez	\N	\N	\N
+14355138943:1@s.whatsapp.net	15163141406@s.whatsapp.net		Ella JCH	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176984230@s.whatsapp.net		Ilya Kravets	\N	\N	\N
+14355138943:1@s.whatsapp.net	17189155023@s.whatsapp.net		Anna Si	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660167421@s.whatsapp.net		Marcelo Bronstein LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50664514547@s.whatsapp.net	Joaquin Alvarez	Joaquin Alvarez Gollo	\N	\N	\N
+14355138943:1@s.whatsapp.net	17328091781@s.whatsapp.net		Ed Pagano	\N	\N	\N
+14355138943:1@s.whatsapp.net	16178066585@s.whatsapp.net		Paola Trivino Ark Herb	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687716181@s.whatsapp.net	Dayana attorney	Dayana attorney Gomez Helper	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683010646@s.whatsapp.net	High Lights	High Lights	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173068600@s.whatsapp.net		Dmitri Gourianov	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689258229@s.whatsapp.net		Pharmacy Compound	\N	\N	\N
+14355138943:1@s.whatsapp.net	13155594517@s.whatsapp.net		Anna YashaZhana	\N	\N	\N
+14355138943:1@s.whatsapp.net	13037751583@s.whatsapp.net	Eric mv	Eric mv	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688471490@s.whatsapp.net	Maria Hon	Maria Hon LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	15137081988@s.whatsapp.net	Jennifer LEV	Jennifer LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177437681@s.whatsapp.net		Ilya Nassonov	\N	\N	\N
+14355138943:1@s.whatsapp.net	18083598800@s.whatsapp.net		Jenny-Li	\N	\N	\N
+14355138943:1@s.whatsapp.net	13478667373@s.whatsapp.net	Vyacheslav Ivanovich	Vyacheslav Ivanovich	\N	\N	\N
+14355138943:1@s.whatsapp.net	420734641596@s.whatsapp.net		Mischa LEV Chech	\N	\N	\N
+14355138943:1@s.whatsapp.net	12012947047@s.whatsapp.net		Zhanna Rubinshtein	\N	\N	\N
+14355138943:1@s.whatsapp.net	16464568309@s.whatsapp.net		Judy Lopez	\N	\N	\N
+14355138943:1@s.whatsapp.net	13475126388@s.whatsapp.net		Dmitriy Goltseker	\N	\N	\N
+14355138943:1@s.whatsapp.net	14155238886@s.whatsapp.net	WhatsApp Twilio Sandbox	WhatsApp Twilio Sandbox	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177482285@s.whatsapp.net		Julia Klepoo	\N	\N	\N
+14355138943:1@s.whatsapp.net	14096790660@s.whatsapp.net	James LEV	James LEV Anderson	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177346031@s.whatsapp.net		Frank Coffey	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688361627@s.whatsapp.net		Cristina LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	447702575177@s.whatsapp.net		Nebila	\N	\N	\N
+14355138943:1@s.whatsapp.net	50671570381@s.whatsapp.net		Ari Ro Human Friend	\N	\N	\N
+14355138943:1@s.whatsapp.net	16175150825@s.whatsapp.net		Christina Kopec	\N	\N	\N
+14355138943:1@s.whatsapp.net	491781709540@s.whatsapp.net		Reinhard Coppenrath	\N	\N	\N
+14355138943:1@s.whatsapp.net	61403022310@s.whatsapp.net	Celia Brisas	Celia Brisas Casa 10 LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	19739783911@s.whatsapp.net		Bibek Agarwal	\N	\N	\N
+14355138943:1@s.whatsapp.net	17187818385@s.whatsapp.net		Yulya Elterman	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178622000@s.whatsapp.net		Phil Schatten	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686324247@s.whatsapp.net	Jeancarlo Gollo	Jeancarlo Gollo	\N	\N	\N
+14355138943:1@s.whatsapp.net	6282145341911@s.whatsapp.net		Elena Aya	\N	\N	\N
+14355138943:1@s.whatsapp.net	16463732993@s.whatsapp.net		Alex Shtut	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683434204@s.whatsapp.net		Ana Araya	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177579611@s.whatsapp.net		Marisha	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689172222@s.whatsapp.net		Max(Massimo) Nicoli	\N	\N	\N
+14355138943:1@s.whatsapp.net	15103327654@s.whatsapp.net	Richard Weiner	Richard Weiner LEV Casa 8	\N	\N	\N
+14355138943:1@s.whatsapp.net	919810012757@s.whatsapp.net		Jitender Kumar	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176921175@s.whatsapp.net		Maggie MD COO GS	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688419932@s.whatsapp.net		Macworkshop Escazu	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173613406@s.whatsapp.net		Edward Weiss	\N	\N	\N
+14355138943:1@s.whatsapp.net	17326147782@s.whatsapp.net		Val Beskin	\N	\N	\N
+14355138943:1@s.whatsapp.net	15403929490@s.whatsapp.net	Ian Inspires LEV	Ian Inspires LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	13475637701@s.whatsapp.net		Sonya Krug	\N	\N	\N
+14355138943:1@s.whatsapp.net	17324078290@s.whatsapp.net		Misha Kiting	\N	\N	\N
+14355138943:1@s.whatsapp.net	17604703933@s.whatsapp.net		Diane LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	19192449952@s.whatsapp.net	Catherine Phillips	Catherine Phillips	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174055512@s.whatsapp.net		Rutitskiy Kuzya Dima	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689978487@s.whatsapp.net	Cesar Carrillo	Cesar Carrillo Car Rent	\N	\N	\N
+14355138943:1@s.whatsapp.net	50662602967@s.whatsapp.net		Tasos Gallant Steve son	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686783580@s.whatsapp.net	Luis Jorge Ch U	Luis Jorge Ch U Sula Bus	\N	\N	\N
+14355138943:1@s.whatsapp.net	59996900335@s.whatsapp.net		Thomas Car rental	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660057526@s.whatsapp.net		Alex Love Organic	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689544651@s.whatsapp.net		Richard Cuñ Appliance Fridge	\N	\N	\N
+14355138943:1@s.whatsapp.net	447841459209@s.whatsapp.net		Nitin Blackrock Sonya	\N	\N	\N
+14355138943:1@s.whatsapp.net	15104354422@s.whatsapp.net		Merlyn	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688979073@s.whatsapp.net	jose arias	jose arias Hacienda Rio carata	\N	\N	\N
+14355138943:1@s.whatsapp.net	59996700809@s.whatsapp.net		Matthew Curacau house rental	\N	\N	\N
+14355138943:1@s.whatsapp.net	50672522226@s.whatsapp.net	Jose Bigott	Jose Bigott Sloan distributor Flushmate	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688949434@s.whatsapp.net	Motorepuestos LARUTA	Motorepuestos LARUTA Hazel	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686369111@s.whatsapp.net	Scott Gallant PORVENIR	Scott Gallant PORVENIR DESIGN	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688377379@s.whatsapp.net	Marvel Sanchez Gonzalez	Marvel Sanchez Gonzalez ICE maderal Fiber	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173703487@s.whatsapp.net		Konstantin Elkinyuk	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689229790@s.whatsapp.net		Maybelle Ballet	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683832053@s.whatsapp.net	Esteban Alvarez Quevedo.	Esteban Alvarez Quevedo. Lighting Rod	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175752142@s.whatsapp.net		Slava Kitchen	\N	\N	\N
+14355138943:1@s.whatsapp.net	13059058222@s.whatsapp.net		Cristy	\N	\N	\N
+14355138943:1@s.whatsapp.net	50663741090@s.whatsapp.net	Casa y Mas Escazú	Casa y Mas Escazú	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177710566@s.whatsapp.net		Frank Pinto	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177488820@s.whatsapp.net		Maureen	\N	\N	\N
+14355138943:1@s.whatsapp.net	447912611482@s.whatsapp.net		Jules Evans	\N	\N	\N
+14355138943:1@s.whatsapp.net	16095750748@s.whatsapp.net	Roman Remont	Roman Remont	\N	\N	\N
+14355138943:1@s.whatsapp.net	50624284848@s.whatsapp.net	Dormicentro Orotina	Dormicentro Orotina	\N	\N	\N
+14355138943:1@s.whatsapp.net	5219988744245@s.whatsapp.net	Ikarus Kiteboarding	Ikarus Kiteboarding	\N	\N	\N
+14355138943:1@s.whatsapp.net	18622460683@s.whatsapp.net		Jamey Lamanna	\N	\N	\N
+14355138943:1@s.whatsapp.net	16462890436@s.whatsapp.net		Marina Zurakhinskiy	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687402216@s.whatsapp.net		Arturo	\N	\N	\N
+14355138943:1@s.whatsapp.net	19179523824@s.whatsapp.net		Volodya Rubinshtein	\N	\N	\N
+14355138943:1@s.whatsapp.net	50235710616@s.whatsapp.net		Leonie	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176780049@s.whatsapp.net		Alex Ryaboy	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688975555@s.whatsapp.net		Jai: Alegría Village	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688572742@s.whatsapp.net	Roy Diego Chaves	Roy Diego Chaves	\N	\N	\N
+14355138943:1@s.whatsapp.net	19493948585@s.whatsapp.net		Dimitry Voronin	\N	\N	\N
+14355138943:1@s.whatsapp.net	12483202942@s.whatsapp.net		Mike Utah ski Tickets	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689476567@s.whatsapp.net		Frank Lopez Transporte	\N	\N	\N
+14355138943:1@s.whatsapp.net	18082805203@s.whatsapp.net	Dominique Pozo	Dominique Pozo Jamei partner	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688314832@s.whatsapp.net		Dave Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	12064984378@s.whatsapp.net		Phil Andrews	\N	\N	\N
+14355138943:1@s.whatsapp.net	13475178843@s.whatsapp.net		Gulchik	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175607676@s.whatsapp.net		Yura Fishman	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177968558@s.whatsapp.net		Eydelman Ira	\N	\N	\N
+14355138943:1@s.whatsapp.net	17187578398@s.whatsapp.net		Liana Mazo	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178646860@s.whatsapp.net		Serezha BNY	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684301092@s.whatsapp.net	Yahaira Castro (Lily)	Yahaira Castro (Lily) Limpieza LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686596585@s.whatsapp.net		Petar Bodyworker	\N	\N	\N
+14355138943:1@s.whatsapp.net	19046526443@s.whatsapp.net		Kyle	\N	\N	\N
+14355138943:1@s.whatsapp.net	16466596996@s.whatsapp.net		Lucy Walton	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177411856@s.whatsapp.net	Allan Shaw	Allan Shaw JCH Board	\N	\N	\N
+14355138943:1@s.whatsapp.net	79251591071@s.whatsapp.net	Ivan Shishkin	Ivan Shishkin	\N	\N	\N
+14355138943:1@s.whatsapp.net	12019825080@s.whatsapp.net		Susanna Mexanik	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688199450@s.whatsapp.net	Merlin SELECMA	Merlin SELECMA Electrician	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174063241@s.whatsapp.net	Green tea	Green tea Anya's	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685395454@s.whatsapp.net		Idit	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683018092@s.whatsapp.net	Annabelle Airbnb chirripo	Annabelle Airbnb chirripo	\N	\N	\N
+14355138943:1@s.whatsapp.net	17873159697@s.whatsapp.net		Vivienne La Paz	\N	\N	\N
+14355138943:1@s.whatsapp.net	17187882263@s.whatsapp.net		Chandra Sunkara	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177577619@s.whatsapp.net		Yael Hymowitz	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173630608@s.whatsapp.net		Lucya Gorshkov	\N	\N	\N
+14355138943:1@s.whatsapp.net	972505786787@s.whatsapp.net	Rony Klachko	Rony Klachko	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177164203@s.whatsapp.net		Vika Larisa	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176537030@s.whatsapp.net		Marina Peace Temple	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661782241@s.whatsapp.net	Vidrios Herrera	Vidrios Herrera	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688398697@s.whatsapp.net		Tow MA	\N	\N	\N
+14355138943:1@s.whatsapp.net	12019488436@s.whatsapp.net		Sujith	\N	\N	\N
+14355138943:1@s.whatsapp.net	16463608051@s.whatsapp.net		Coralie	\N	\N	\N
+14355138943:1@s.whatsapp.net	19142169701@s.whatsapp.net		Daniel J Gilbert	\N	\N	\N
+14355138943:1@s.whatsapp.net	17188388054@s.whatsapp.net		Massage Alex	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176217006@s.whatsapp.net		Gary Etinger	\N	\N	\N
+14355138943:1@s.whatsapp.net	50664743385@s.whatsapp.net		Harold Tree AC repair	\N	\N	\N
+14355138943:1@s.whatsapp.net	17083592517@s.whatsapp.net		Britt Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686924353@s.whatsapp.net		Yorleni Cleaning	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688709681@s.whatsapp.net		Fumigacion Confort Ecologico Pest Control	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689538898@s.whatsapp.net	Andrés Flores 🏐🇨🇷	Andrés Flores 🏐🇨🇷 Attorney	\N	\N	\N
+14355138943:1@s.whatsapp.net	19179915560@s.whatsapp.net		Alex Pitel	\N	\N	\N
+14355138943:1@s.whatsapp.net	447557221639@s.whatsapp.net		Paul Smith	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175090415@s.whatsapp.net		Tamar Ramez	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683094390@s.whatsapp.net		Ross McKenzie	\N	\N	\N
+14355138943:1@s.whatsapp.net	12063485115@s.whatsapp.net	Keith S-P	Keith S-P LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685165544@s.whatsapp.net	Felipe C🍄	Felipe C🍄 EPA spacio	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176589555@s.whatsapp.net		Anatoliy Ryabin	\N	\N	\N
+14355138943:1@s.whatsapp.net	14136952697@s.whatsapp.net		Chaia Casa Nero	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176488475@s.whatsapp.net		Oleg Gorshkov	\N	\N	\N
+14355138943:1@s.whatsapp.net	19549010652@s.whatsapp.net	Di Sciascio Equine Solutions FL	Di Sciascio Equine Solutions FL Horse	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175003300@s.whatsapp.net		Terry Tiger	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683230403@s.whatsapp.net		Augusto IESA Electronic store	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688485488@s.whatsapp.net	Jorge Vázquez	Jorge Vázquez Border Run	\N	\N	\N
+14355138943:1@s.whatsapp.net	17185418594@s.whatsapp.net		Andrey Biomass Group	\N	\N	\N
+14355138943:1@s.whatsapp.net	13478662496@s.whatsapp.net		Yan Kashepava	\N	\N	\N
+14355138943:1@s.whatsapp.net	14387631199@s.whatsapp.net		Sherry Envision	\N	\N	\N
+14355138943:1@s.whatsapp.net	13472768691@s.whatsapp.net		Olya Zagaika	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172970303@s.whatsapp.net		Marvin Kawabata	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686070721@s.whatsapp.net		Rodolfo Aires	\N	\N	\N
+14355138943:1@s.whatsapp.net	12019602515@s.whatsapp.net		Stas Skiing	\N	\N	\N
+14355138943:1@s.whatsapp.net	13059034554@s.whatsapp.net	Alex Sula S2 Parent	Alex Sula S2 Parent	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661151614@s.whatsapp.net	Ross Lynde	Ross Lynde Allegria - Ross and Nathalie	\N	\N	\N
+14355138943:1@s.whatsapp.net	16468363579@s.whatsapp.net		Alex Mikityanskiy	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175723950@s.whatsapp.net		Jim O'Higgins	\N	\N	\N
+14355138943:1@s.whatsapp.net	17184044905@s.whatsapp.net		Anya Cleaning	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175780584@s.whatsapp.net		Alex CouchDisassembly	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687738072@s.whatsapp.net		Junior Wood and handyman	\N	\N	\N
+14355138943:1@s.whatsapp.net	16468814812@s.whatsapp.net		Vadim Shaikevich	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174888089@s.whatsapp.net		Eugene Vayseberg	\N	\N	\N
+14355138943:1@s.whatsapp.net	17072238049@s.whatsapp.net	Bruce Burger	Bruce Burger	\N	\N	\N
+14355138943:1@s.whatsapp.net	12014523455@s.whatsapp.net		Ivan Krivyakov	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175777784@s.whatsapp.net		Charlie Piano	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176084527@s.whatsapp.net	Steve Merkle	Steve Merkle	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175198508@s.whatsapp.net		Gera Sandler	\N	\N	\N
+14355138943:1@s.whatsapp.net	393333893567@s.whatsapp.net		Eduardo	\N	\N	\N
+14355138943:1@s.whatsapp.net	50622925752@s.whatsapp.net		Wilcasji Support	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175382304@s.whatsapp.net		Noreen Cavanagh	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173716723@s.whatsapp.net		Mike Lubin	\N	\N	\N
+14355138943:1@s.whatsapp.net	15093080460@s.whatsapp.net		Michael Rainey	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172048701@s.whatsapp.net		Bobby Meshoyrer	\N	\N	\N
+14355138943:1@s.whatsapp.net	593987947077@s.whatsapp.net		Javier Peña Spanish admin Equador	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689710058@s.whatsapp.net	Ceci Cell	Ceci Cell	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685843019@s.whatsapp.net		William Lagunas	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688327750@s.whatsapp.net		José Tow Truck	\N	\N	\N
+14355138943:1@s.whatsapp.net	50670177501@s.whatsapp.net		Taza Amarilla	\N	\N	\N
+14355138943:1@s.whatsapp.net	16048628376@s.whatsapp.net	Veronique Cardinal	Veronique Cardinal	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175759207@s.whatsapp.net		Arthur Gutman	\N	\N	\N
+14355138943:1@s.whatsapp.net	353899842148@s.whatsapp.net		Owen Fox	\N	\N	\N
+14355138943:1@s.whatsapp.net	13472002000@s.whatsapp.net		Stas Leonov	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174567289@s.whatsapp.net		Viktor Raskin	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688786098@s.whatsapp.net		Gilberth	\N	\N	\N
+14355138943:1@s.whatsapp.net	50672707082@s.whatsapp.net		Francisco Elizondo Paul Builder	\N	\N	\N
+14355138943:1@s.whatsapp.net	14156760459@s.whatsapp.net		Bernat Fortet ESM	\N	\N	\N
+14355138943:1@s.whatsapp.net	14162012407@s.whatsapp.net		Jamie Alexander La Eco Villa	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685347247@s.whatsapp.net		Fret Handyman	\N	\N	\N
+14355138943:1@s.whatsapp.net	16462483848@s.whatsapp.net		Martin	\N	\N	\N
+14355138943:1@s.whatsapp.net	59995202562@s.whatsapp.net		Nik Kiter Curacau	\N	\N	\N
+14355138943:1@s.whatsapp.net	16466448325@s.whatsapp.net		Vlad Rashkovich	\N	\N	\N
+14355138943:1@s.whatsapp.net	16466444348@s.whatsapp.net		Marina Greene	\N	\N	\N
+14355138943:1@s.whatsapp.net	19709489944@s.whatsapp.net		John Kennedy	\N	\N	\N
+14355138943:1@s.whatsapp.net	13103104116@s.whatsapp.net		Albert Ferng	\N	\N	\N
+14355138943:1@s.whatsapp.net	17325380457@s.whatsapp.net		Aditya Thakkar	\N	\N	\N
+14355138943:1@s.whatsapp.net	12063595270@s.whatsapp.net		Milya	\N	\N	\N
+14355138943:1@s.whatsapp.net	4369912922203@s.whatsapp.net	Alegria- Michael Kellner	Alegria- Michael Kellner	\N	\N	\N
+14355138943:1@s.whatsapp.net	31614407732@s.whatsapp.net		Frewin	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661250728@s.whatsapp.net	Charlie Car Service	Charlie Car Service	\N	\N	\N
+14355138943:1@s.whatsapp.net	50663780337@s.whatsapp.net		Meggan Lev 7A - Interior Designer	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683360586@s.whatsapp.net		Joe Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	15307981427@s.whatsapp.net		Mariah Ganesha RWS	\N	\N	\N
+14355138943:1@s.whatsapp.net	17274527526@s.whatsapp.net	Elasa Tiernan	Elasa Tiernan	\N	\N	\N
+14355138943:1@s.whatsapp.net	4915117666382@s.whatsapp.net	Judith Gitschel	Judith Gitschel	\N	\N	\N
+14355138943:1@s.whatsapp.net	19173623031@s.whatsapp.net	Natasha Mikaloff	Natasha Mikaloff	\N	\N	\N
+14355138943:1@s.whatsapp.net	17183620970@s.whatsapp.net		Andrey Butov	\N	\N	\N
+14355138943:1@s.whatsapp.net	19739065035@s.whatsapp.net		Nandan QX50	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660707935@s.whatsapp.net	Julianne Taza	Julianne Taza	\N	\N	\N
+14355138943:1@s.whatsapp.net	447932231910@s.whatsapp.net		Rawicz-Szczerbo	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688988448@s.whatsapp.net		Cesilia Madris Finca Maintenance	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661536011@s.whatsapp.net	Marito Cardona	Marito Cardona LEV Surfer	\N	\N	\N
+14355138943:1@s.whatsapp.net	17326102937@s.whatsapp.net		Dmitry Starchuk	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661973363@s.whatsapp.net	Alfredo Surf Encantada	Alfredo Surf Encantada	\N	\N	\N
+14355138943:1@s.whatsapp.net	19179039568@s.whatsapp.net		Rita Kaminskaya	\N	\N	\N
+14355138943:1@s.whatsapp.net	13076905918@s.whatsapp.net		Matt Jackson Hole Guide	\N	\N	\N
+14355138943:1@s.whatsapp.net	50685321662@s.whatsapp.net		Diddier Costa Rica Harry’s Neighbor	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683049449@s.whatsapp.net		Flavia	\N	\N	\N
+14355138943:1@s.whatsapp.net	16467343492@s.whatsapp.net		Mila Rubinshteyn	\N	\N	\N
+14355138943:1@s.whatsapp.net	13477810184@s.whatsapp.net		Rotem	\N	\N	\N
+14355138943:1@s.whatsapp.net	18179911528@s.whatsapp.net		Ali Nohinek Lev	\N	\N	\N
+14355138943:1@s.whatsapp.net	19544105419@s.whatsapp.net		Kite Fl Kid	\N	\N	\N
+14355138943:1@s.whatsapp.net	13159281824@s.whatsapp.net		SPAM	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684850634@s.whatsapp.net	Sarah Wu	Sarah Wu	\N	\N	\N
+14355138943:1@s.whatsapp.net	19788281357@s.whatsapp.net	AJ - Goldman	AJ - Goldman	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689678012@s.whatsapp.net		Jose Bermudez EcoMaste	\N	\N	\N
+14355138943:1@s.whatsapp.net	19199697818@s.whatsapp.net	Jim Jubelirer	Jim Jubelirer	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683140825@s.whatsapp.net		Carlos Espinoza LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	12067711587@s.whatsapp.net		Lilly Silks	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684498050@s.whatsapp.net		Eythel Muñoz Rudolfo Son	\N	\N	\N
+14355138943:1@s.whatsapp.net	16464505362@s.whatsapp.net		Lena Gelzaid	\N	\N	\N
+14355138943:1@s.whatsapp.net	14694326773@s.whatsapp.net		Srikar Dandamuraju	\N	\N	\N
+14355138943:1@s.whatsapp.net	16479658825@s.whatsapp.net	Olga Loginova	Olga Loginova LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688676676@s.whatsapp.net		Alexander Barrantes	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177427737@s.whatsapp.net		Badalian Katia	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688570579@s.whatsapp.net	Kike León	Kike León Shanti	\N	\N	\N
+14355138943:1@s.whatsapp.net	50663968585@s.whatsapp.net		Porceramica Coyol	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688858626@s.whatsapp.net	Jumbo Car Costa Rica	Jumbo Car Costa Rica Marcos	\N	\N	\N
+14355138943:1@s.whatsapp.net	380930771730@s.whatsapp.net		Vitalii Gvozdetskyu	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688931797@s.whatsapp.net	Simón Rodríguez	Simón Rodríguez Sula Facilitator	\N	\N	\N
+14355138943:1@s.whatsapp.net	50671608849@s.whatsapp.net	Cat collar Importer Cr	Cat collar Importer Cr	\N	\N	\N
+14355138943:1@s.whatsapp.net	46733777891@s.whatsapp.net	Dzana Ferhatbregovic	Dzana Ferhatbregovic Tennis	\N	\N	\N
+14355138943:1@s.whatsapp.net	16178184488@s.whatsapp.net	Connie Citi Habitat	Connie Citi Habitat	\N	\N	\N
+14355138943:1@s.whatsapp.net	16466734747@s.whatsapp.net		Kevin	\N	\N	\N
+14355138943:1@s.whatsapp.net	14087714957@s.whatsapp.net		Vaillant	\N	\N	\N
+14355138943:1@s.whatsapp.net	19179695052@s.whatsapp.net		Yale Fergang	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688868406@s.whatsapp.net	Tin Jo	Tin Jo Restaurant	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661066073@s.whatsapp.net		Allan Taxi	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176698560@s.whatsapp.net		Alex Pinskiy	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688168065@s.whatsapp.net		Gilberth Madera	\N	\N	\N
+14355138943:1@s.whatsapp.net	12532228496@s.whatsapp.net		Stefan	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688225241@s.whatsapp.net		Gaetano Lovato Architect	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177535883@s.whatsapp.net		Elina Cotler	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175319022@s.whatsapp.net		Gelya	\N	\N	\N
+14355138943:1@s.whatsapp.net	19179150574@s.whatsapp.net		Igor Kaper	\N	\N	\N
+14355138943:1@s.whatsapp.net	31618946497@s.whatsapp.net		Mirjam Maderal	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688135786@s.whatsapp.net		Leo Horse Riding🏇🏻	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688244995@s.whatsapp.net	Pablo Termites	Pablo Termites fumigacion Orotina	\N	\N	\N
+14355138943:1@s.whatsapp.net	17752238687@s.whatsapp.net	Jeff Benson	Jeff Benson	\N	\N	\N
+14355138943:1@s.whatsapp.net	50670127348@s.whatsapp.net		Carla LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50661310754@s.whatsapp.net	Marion OstiopaticaCR	Marion OstiopaticaCR	\N	\N	\N
+14355138943:1@s.whatsapp.net	12016476474@s.whatsapp.net	Lara Basketball	Lara Basketball	\N	\N	\N
+14355138943:1@s.whatsapp.net	19177540488@s.whatsapp.net		Alex Mikityanskiy	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687039136@s.whatsapp.net		Luigi	\N	\N	\N
+14355138943:1@s.whatsapp.net	13476933878@s.whatsapp.net	Gary Melamed	Gary Melamed	\N	\N	\N
+14355138943:1@s.whatsapp.net	12016756013@s.whatsapp.net		Aakash Kommineni	\N	\N	\N
+14355138943:1@s.whatsapp.net	16263755749@s.whatsapp.net	Oren Schaedel	Oren Schaedel	\N	\N	\N
+14355138943:1@s.whatsapp.net	16466676429@s.whatsapp.net		Roza Krug	\N	\N	\N
+14355138943:1@s.whatsapp.net	50688682422@s.whatsapp.net		Rebecca Ferjuca	\N	\N	\N
+14355138943:1@s.whatsapp.net	18024587011@s.whatsapp.net	Melanie 	Melanie Wulfman	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686090371@s.whatsapp.net		Ellie Bear LEV Karina Daughter	\N	\N	\N
+14355138943:1@s.whatsapp.net	17187106698@s.whatsapp.net		Sarrah Cherhabil	\N	\N	\N
+14355138943:1@s.whatsapp.net	12017070909@s.whatsapp.net		Garik Movers	\N	\N	\N
+14355138943:1@s.whatsapp.net	18287074835@s.whatsapp.net	Charles Eisenstein	Charles Eisenstein	\N	\N	\N
+14355138943:1@s.whatsapp.net	19544485009@s.whatsapp.net	Real Estate Beach Club	Real Estate Beach Club Marie Bellitto	\N	\N	\N
+14355138943:1@s.whatsapp.net	18582846746@s.whatsapp.net		Alex Ettouati	\N	\N	\N
+14355138943:1@s.whatsapp.net	50640000646@s.whatsapp.net	Grupo mecsa	Grupo mecsa Lighting Protection	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687035396@s.whatsapp.net	Uvita school	Uvita school	\N	\N	\N
+14355138943:1@s.whatsapp.net	50664153983@s.whatsapp.net		Leonardo arquitecto orotina	\N	\N	\N
+14355138943:1@s.whatsapp.net	16127152122@s.whatsapp.net		Ethan	\N	\N	\N
+14355138943:1@s.whatsapp.net	12052498822@s.whatsapp.net		Patrick Crowley	\N	\N	\N
+14355138943:1@s.whatsapp.net	19179718183@s.whatsapp.net		Alex	\N	\N	\N
+14355138943:1@s.whatsapp.net	50683906777@s.whatsapp.net	María Cardona Vaselli	María Cardona Vaselli LEV	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660636363@s.whatsapp.net	Lab San Jose	Lab San Jose	\N	\N	\N
+14355138943:1@s.whatsapp.net	19178269788@s.whatsapp.net		Stella Binkevich	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175798169@s.whatsapp.net		Olga Oleyarsh	\N	\N	\N
+14355138943:1@s.whatsapp.net	50689776340@s.whatsapp.net	🌿🕊I Am You You Are Me 🕊🌿	🌿🕊I Am You You Are Me 🕊🌿	\N	\N	\N
+14355138943:1@s.whatsapp.net	12014508793@s.whatsapp.net		Kevin Lu	\N	\N	\N
+14355138943:1@s.whatsapp.net	19172795520@s.whatsapp.net		Pavel	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175966873@s.whatsapp.net		Max Burger	\N	\N	\N
+14355138943:1@s.whatsapp.net	14152607408@s.whatsapp.net		Nikita Shamgunov	\N	\N	\N
+14355138943:1@s.whatsapp.net	19176739809@s.whatsapp.net		Allen Peace Temple	\N	\N	\N
+14355138943:1@s.whatsapp.net	13122189019@s.whatsapp.net	Marta Cadavid	Marta Cadavid	\N	\N	\N
+14355138943:1@s.whatsapp.net	50687081757@s.whatsapp.net	Roverssi Alpizar Proyectos	Roverssi Alpizar Proyectos Windows	\N	\N	\N
+14355138943:1@s.whatsapp.net	50672991929@s.whatsapp.net		Robin- Atenas Crystal Shop 	\N	\N	\N
+14355138943:1@s.whatsapp.net	19175014320@s.whatsapp.net		Yan Korosy	\N	\N	\N
+14355138943:1@s.whatsapp.net	50684866380@s.whatsapp.net		Natalia Dancer and Spanish Teacher	\N	\N	\N
+14355138943:1@s.whatsapp.net	50686042407@s.whatsapp.net		Olga	\N	\N	\N
+14355138943:1@s.whatsapp.net	18284501872@s.whatsapp.net	Stella Eisenstein	Stella Eisenstein	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660541617@s.whatsapp.net	Nathalie Vachon	Nathalie Vachon LEV Ross and Nathalie	\N	\N	\N
+14355138943:1@s.whatsapp.net	50660267459@s.whatsapp.net	Silas Jimenez	Silas Jimenez	\N	\N	\N
+14355138943:1@s.whatsapp.net	19174824447@s.whatsapp.net		Dennis Berish	\N	\N	\N
+14355138943:1@s.whatsapp.net	213185047081126@lid	\N	\N	Anton	\N	\N
+14355138943:1@s.whatsapp.net	16467338252@s.whatsapp.net		Anton Gorshkov	Anton	\N	\N
+14355138943:1@s.whatsapp.net	204861886963865@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	22578961854567@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙36
+14355138943:1@s.whatsapp.net	96916004151330@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙69
+14355138943:1@s.whatsapp.net	275715475910892@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	5081114120248@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙90
+14355138943:1@s.whatsapp.net	235098003783743@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙60
+14355138943:1@s.whatsapp.net	71782442791099@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙68
+14355138943:1@s.whatsapp.net	184249953038473@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙59
+14355138943:1@s.whatsapp.net	71975162630217@lid	\N	\N	\N	\N	+45∙∙∙∙∙∙77
+14355138943:1@s.whatsapp.net	174552537649188@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙81
+14355138943:1@s.whatsapp.net	12717549174801@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙67
+14355138943:1@s.whatsapp.net	205720444239932@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙64
+14355138943:1@s.whatsapp.net	185946716807277@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙30
+14355138943:1@s.whatsapp.net	186423072280803@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙91
+14355138943:1@s.whatsapp.net	233547520569354@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙86
+14355138943:1@s.whatsapp.net	88115851051075@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙90
+14355138943:1@s.whatsapp.net	163204563005448@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙39
+14355138943:1@s.whatsapp.net	47596911468778@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙12
+14355138943:1@s.whatsapp.net	26951305687081@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	205969602674856@lid	\N	\N	\N	\N	+420∙∙∙∙∙∙∙57
+14355138943:1@s.whatsapp.net	158437249925357@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙56
+14355138943:1@s.whatsapp.net	88575227990117@lid	\N	\N	\N	\N	+45∙∙∙∙∙∙46
+14355138943:1@s.whatsapp.net	223793666601189@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙33
+14355138943:1@s.whatsapp.net	7242019549374@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙52
+14355138943:1@s.whatsapp.net	167521491656830@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	167688508842173@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙49
+14355138943:1@s.whatsapp.net	109813941969136@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙81
+14355138943:1@s.whatsapp.net	78331680657584@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙25
+14355138943:1@s.whatsapp.net	275483564486731@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙15
+14355138943:1@s.whatsapp.net	1327262335115@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙77
+14355138943:1@s.whatsapp.net	71215372857506@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙69
+14355138943:1@s.whatsapp.net	127586751512810@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙62
+14355138943:1@s.whatsapp.net	180397266739324@lid	\N	\N	\N	\N	+81∙∙∙∙∙∙∙∙34
+14355138943:1@s.whatsapp.net	142992463679688@lid	\N	\N	\N	\N	+33∙∙∙∙∙∙∙39
+14355138943:1@s.whatsapp.net	85186515595367@lid	\N	\N	\N	\N	+972∙∙∙∙∙∙∙08
+14355138943:1@s.whatsapp.net	140677392396395@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙44
+14355138943:1@s.whatsapp.net	17532140396606@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙03
+14355138943:1@s.whatsapp.net	176257153122354@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙16
+14355138943:1@s.whatsapp.net	150066325123106@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙06
+14355138943:1@s.whatsapp.net	103122181558487@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙79
+14355138943:1@s.whatsapp.net	149134283673702@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	252088927961259@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	242141699780743@lid	\N	\N	\N	\N	+61∙∙∙∙∙∙∙95
+14355138943:1@s.whatsapp.net	151539599569053@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	152415588335687@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	275840298393716@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	225151379619884@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙91
+14355138943:1@s.whatsapp.net	210123104452684@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙65
+14355138943:1@s.whatsapp.net	198109812490396@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙06
+14355138943:1@s.whatsapp.net	124752022753408@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙03
+14355138943:1@s.whatsapp.net	42349065433109@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙57
+14355138943:1@s.whatsapp.net	147914563305565@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙90
+14355138943:1@s.whatsapp.net	248932026347720@lid	\N	\N	\N	\N	+61∙∙∙∙∙∙∙57
+14355138943:1@s.whatsapp.net	46175579308055@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	260223612780612@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙91
+14355138943:1@s.whatsapp.net	203221444346078@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙32
+14355138943:1@s.whatsapp.net	99785629524036@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙45
+14355138943:1@s.whatsapp.net	279701356593405@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙88
+14355138943:1@s.whatsapp.net	257002336968913@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙60
+14355138943:1@s.whatsapp.net	104161597227252@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙73
+14355138943:1@s.whatsapp.net	219144024306@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙16
+14355138943:1@s.whatsapp.net	117948475773123@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙84
+14355138943:1@s.whatsapp.net	35699919196274@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	270385471832101@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	167241765126301@lid	\N	\N	\N	\N	+41∙∙∙∙∙∙∙32
+14355138943:1@s.whatsapp.net	26328334119039@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	108302029574372@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙02
+14355138943:1@s.whatsapp.net	73247043358879@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙81
+14355138943:1@s.whatsapp.net	25422112813157@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙63
+14355138943:1@s.whatsapp.net	109157147500739@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙82
+14355138943:1@s.whatsapp.net	187514027552948@lid	\N	\N	\N	\N	+48∙∙∙∙∙∙∙94
+14355138943:1@s.whatsapp.net	83318104178850@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙43
+14355138943:1@s.whatsapp.net	147068337299465@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	51372170948707@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙02
+14355138943:1@s.whatsapp.net	148193702629489@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙24
+14355138943:1@s.whatsapp.net	176308457836796@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙53
+14355138943:1@s.whatsapp.net	41828921380989@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙33
+14355138943:1@s.whatsapp.net	34840942510330@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙76
+14355138943:1@s.whatsapp.net	132529923293410@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙86
+14355138943:1@s.whatsapp.net	119357325709518@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙34
+14355138943:1@s.whatsapp.net	202993693651093@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	6300800970982@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙09
+14355138943:1@s.whatsapp.net	134466987122792@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙27
+14355138943:1@s.whatsapp.net	160430097973466@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙76
+14355138943:1@s.whatsapp.net	15148752314478@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙12
+14355138943:1@s.whatsapp.net	92363607253236@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	63432472674356@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙34
+14355138943:1@s.whatsapp.net	113421546700903@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙20
+14355138943:1@s.whatsapp.net	228686137683993@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙63
+14355138943:1@s.whatsapp.net	112755927433455@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙20
+14355138943:1@s.whatsapp.net	32388398723198@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙36
+14355138943:1@s.whatsapp.net	121483334521068@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	52209790279689@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙34
+14355138943:1@s.whatsapp.net	8083313057984@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙92
+14355138943:1@s.whatsapp.net	193642962636938@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙45
+14355138943:1@s.whatsapp.net	39294773264484@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙02
+14355138943:1@s.whatsapp.net	264213603827779@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙56
+14355138943:1@s.whatsapp.net	27496431009836@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙95
+14355138943:1@s.whatsapp.net	266120518967414@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙91
+14355138943:1@s.whatsapp.net	72112786116675@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙59
+14355138943:1@s.whatsapp.net	59141884252298@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙58
+14355138943:1@s.whatsapp.net	236931904483384@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙39
+14355138943:1@s.whatsapp.net	180165506248894@lid	\N	\N	\N	\N	+32∙∙∙∙∙∙∙36
+14355138943:1@s.whatsapp.net	220130109837522@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙58
+14355138943:1@s.whatsapp.net	39724337078514@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙03
+14355138943:1@s.whatsapp.net	36679188521102@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙54
+14355138943:1@s.whatsapp.net	237834267042008@lid	\N	\N	\N	\N	+972∙∙∙∙∙∙∙05
+14355138943:1@s.whatsapp.net	101808005496943@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙91
+14355138943:1@s.whatsapp.net	47120170094735@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙39
+14355138943:1@s.whatsapp.net	61701567344855@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙74
+14355138943:1@s.whatsapp.net	227341343158398@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	30253934231713@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙07
+14355138943:1@s.whatsapp.net	227899705704514@lid	\N	\N	\N	\N	+52∙∙∙∙∙∙∙∙∙13
+14355138943:1@s.whatsapp.net	228453722927268@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙66
+14355138943:1@s.whatsapp.net	115710781055100@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙81
+14355138943:1@s.whatsapp.net	62247011381386@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙87
+14355138943:1@s.whatsapp.net	130327209111646@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	119456210620597@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙88
+14355138943:1@s.whatsapp.net	30249572147225@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙36
+14355138943:1@s.whatsapp.net	133569288638710@lid	\N	\N	\N	\N	+30∙∙∙∙∙∙∙∙29
+14355138943:1@s.whatsapp.net	279357641732346@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	1473274466519@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙98
+14355138943:1@s.whatsapp.net	144134924943411@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	109590419083513@lid	\N	\N	\N	\N	+32∙∙∙∙∙∙∙71
+14355138943:1@s.whatsapp.net	165141643554842@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	170136690544773@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙57
+14355138943:1@s.whatsapp.net	243580580937778@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙26
+14355138943:1@s.whatsapp.net	238710272606255@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	128918342365291@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	280873765183686@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	272932353925360@lid	\N	\N	\N	\N	+34∙∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	182256937250946@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙69
+14355138943:1@s.whatsapp.net	203758147522694@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	279125696725005@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙40
+14355138943:1@s.whatsapp.net	10329564135541@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙40
+14355138943:1@s.whatsapp.net	229823800713370@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙36
+14355138943:1@s.whatsapp.net	211681892368536@lid	\N	\N	\N	\N	+34∙∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	219000399261860@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙83
+14355138943:1@s.whatsapp.net	74762999095305@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙99
+14355138943:1@s.whatsapp.net	243894130331750@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙09
+14355138943:1@s.whatsapp.net	106498042638378@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙39
+14355138943:1@s.whatsapp.net	4118907191354@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	52433145344001@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙19
+14355138943:1@s.whatsapp.net	81505795760186@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	72546309382286@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙91
+14355138943:1@s.whatsapp.net	215246614569212@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙87
+14355138943:1@s.whatsapp.net	118012833226897@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙78
+14355138943:1@s.whatsapp.net	74492130889741@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙69
+14355138943:1@s.whatsapp.net	137340739706991@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙77
+14355138943:1@s.whatsapp.net	239745124827311@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙70
+14355138943:1@s.whatsapp.net	262238556430373@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙70
+14355138943:1@s.whatsapp.net	84314570121414@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙45
+14355138943:1@s.whatsapp.net	137018197680235@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙05
+14355138943:1@s.whatsapp.net	59330678280290@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙82
+14355138943:1@s.whatsapp.net	48460283813936@lid	\N	\N	\N	\N	+41∙∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	261207177068646@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙24
+14355138943:1@s.whatsapp.net	194214193279069@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙20
+14355138943:1@s.whatsapp.net	73547154219131@lid	\N	\N	\N	\N	+52∙∙∙∙∙∙∙∙∙78
+14355138943:1@s.whatsapp.net	88592877621389@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙57
+14355138943:1@s.whatsapp.net	567036383336@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙37
+14355138943:1@s.whatsapp.net	90950244294692@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	234513938518086@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙65
+14355138943:1@s.whatsapp.net	62968532328588@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙56
+14355138943:1@s.whatsapp.net	121831243681824@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙24
+14355138943:1@s.whatsapp.net	220967527805002@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	169896088444965@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙98
+14355138943:1@s.whatsapp.net	228166329180214@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙62
+14355138943:1@s.whatsapp.net	213060560105472@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙56
+14355138943:1@s.whatsapp.net	145672724607094@lid	\N	\N	\N	\N	+39∙∙∙∙∙∙∙∙21
+14355138943:1@s.whatsapp.net	192968753467403@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙46
+14355138943:1@s.whatsapp.net	236085795909710@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙36
+14355138943:1@s.whatsapp.net	145874403463168@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙99
+14355138943:1@s.whatsapp.net	123416019505164@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙67
+14355138943:1@s.whatsapp.net	92517940858946@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙23
+14355138943:1@s.whatsapp.net	219150890848506@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙05
+14355138943:1@s.whatsapp.net	129051134050305@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙60
+14355138943:1@s.whatsapp.net	27822882070570@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙15
+14355138943:1@s.whatsapp.net	86930272350208@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙70
+14355138943:1@s.whatsapp.net	236734654734475@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙60
+14355138943:1@s.whatsapp.net	264664508305658@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙21
+14355138943:1@s.whatsapp.net	179186119528666@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙75
+14355138943:1@s.whatsapp.net	29373432348745@lid	\N	\N	\N	\N	+972∙∙∙∙∙∙∙87
+14355138943:1@s.whatsapp.net	187252269424868@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙80
+14355138943:1@s.whatsapp.net	21702620774485@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙∙03
+14355138943:1@s.whatsapp.net	216101900308684@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙66
+14355138943:1@s.whatsapp.net	248219061751927@lid	\N	\N	\N	\N	+32∙∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	136631617102034@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙12
+14355138943:1@s.whatsapp.net	77589003681904@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	242721570713841@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	181483876700179@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙75
+14355138943:1@s.whatsapp.net	245775342809301@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙37
+14355138943:1@s.whatsapp.net	188291416649825@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙50
+14355138943:1@s.whatsapp.net	90954556035088@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙30
+14355138943:1@s.whatsapp.net	278700461445223@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙45
+14355138943:1@s.whatsapp.net	257960165023978@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	264428301856820@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙69
+14355138943:1@s.whatsapp.net	218451280982224@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙20
+14355138943:1@s.whatsapp.net	233302740996120@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙71
+14355138943:1@s.whatsapp.net	257135531319486@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙12
+14355138943:1@s.whatsapp.net	234853257732138@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙88
+14355138943:1@s.whatsapp.net	240531137396810@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙66
+14355138943:1@s.whatsapp.net	68431831367814@lid	\N	\N	\N	\N	+43∙∙∙∙∙∙∙∙∙03
+14355138943:1@s.whatsapp.net	208563729367072@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙24
+14355138943:1@s.whatsapp.net	117815365349628@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙08
+14355138943:1@s.whatsapp.net	123154026483879@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙84
+14355138943:1@s.whatsapp.net	63247906525226@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙54
+14355138943:1@s.whatsapp.net	211024762409086@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙57
+14355138943:1@s.whatsapp.net	106618855379170@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	136529024393363@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙07
+14355138943:1@s.whatsapp.net	268585914110165@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	47549717188799@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙06
+14355138943:1@s.whatsapp.net	180882866487471@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙60
+14355138943:1@s.whatsapp.net	233298546708494@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	232628548538570@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙39
+14355138943:1@s.whatsapp.net	195202539065437@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙40
+14355138943:1@s.whatsapp.net	78447678369925@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙15
+14355138943:1@s.whatsapp.net	135403239653399@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙89
+14355138943:1@s.whatsapp.net	134793438187681@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙59
+14355138943:1@s.whatsapp.net	225601864601772@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	150985414565950@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙67
+14355138943:1@s.whatsapp.net	271794187591894@lid	\N	\N	\N	\N	+52∙∙∙∙∙∙∙∙∙70
+14355138943:1@s.whatsapp.net	127788229075158@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	186569168281771@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙20
+14355138943:1@s.whatsapp.net	234282043855058@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙89
+14355138943:1@s.whatsapp.net	165846253097146@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙17
+14355138943:1@s.whatsapp.net	15384572883077@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙07
+14355138943:1@s.whatsapp.net	137598001516654@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙70
+14355138943:1@s.whatsapp.net	37791484366990@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	65193409253513@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙08
+14355138943:1@s.whatsapp.net	157496501100643@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙30
+14355138943:1@s.whatsapp.net	117604811329610@lid	\N	\N	\N	\N	+54∙∙∙∙∙∙∙∙∙62
+14355138943:1@s.whatsapp.net	146411224059978@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙68
+14355138943:1@s.whatsapp.net	227693547241713@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙89
+14355138943:1@s.whatsapp.net	47309635215550@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙48
+14355138943:1@s.whatsapp.net	34570628022348@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	212450809008316@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙77
+14355138943:1@s.whatsapp.net	225425787744456@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙44
+14355138943:1@s.whatsapp.net	29579506901064@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙66
+14355138943:1@s.whatsapp.net	93269677605065@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	146651691925650@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙83
+14355138943:1@s.whatsapp.net	124541300945023@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙59
+14355138943:1@s.whatsapp.net	26233727406319@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙83
+14355138943:1@s.whatsapp.net	133079628832996@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙52
+14355138943:1@s.whatsapp.net	30628183589100@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙32
+14355138943:1@s.whatsapp.net	215358384394361@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙19
+14355138943:1@s.whatsapp.net	147021042323701@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙75
+14355138943:1@s.whatsapp.net	174362820870366@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙49
+14355138943:1@s.whatsapp.net	36181056184526@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	73366782406728@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙81
+14355138943:1@s.whatsapp.net	75136292139173@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙76
+14355138943:1@s.whatsapp.net	47403570876643@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙16
+14355138943:1@s.whatsapp.net	77683207749752@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙85
+14355138943:1@s.whatsapp.net	54060770193557@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙96
+14355138943:1@s.whatsapp.net	149357772972047@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙27
+14355138943:1@s.whatsapp.net	127809687130250@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙82
+14355138943:1@s.whatsapp.net	245075481243692@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙33
+14355138943:1@s.whatsapp.net	49770601123845@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙75
+14355138943:1@s.whatsapp.net	22286602080458@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙70
+14355138943:1@s.whatsapp.net	138323968450633@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙77
+14355138943:1@s.whatsapp.net	3307275817039@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	34433071611987@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙50
+14355138943:1@s.whatsapp.net	91831266201776@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙77
+14355138943:1@s.whatsapp.net	165910509789392@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙83
+14355138943:1@s.whatsapp.net	69132364042473@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙63
+14355138943:1@s.whatsapp.net	266665963081976@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙88
+14355138943:1@s.whatsapp.net	159652557893702@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙54
+14355138943:1@s.whatsapp.net	146157753905342@lid	\N	\N	\N	\N	+34∙∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	227620415344744@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙85
+14355138943:1@s.whatsapp.net	203903639502997@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙66
+14355138943:1@s.whatsapp.net	46077013168275@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙34
+14355138943:1@s.whatsapp.net	234621212086316@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	204608114839604@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙75
+14355138943:1@s.whatsapp.net	39986296582212@lid	\N	\N	\N	\N	+45∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	189107561095205@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙87
+14355138943:1@s.whatsapp.net	223213829283923@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	7456214265916@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙71
+14355138943:1@s.whatsapp.net	272331175927855@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙68
+14355138943:1@s.whatsapp.net	267031119147260@lid	\N	\N	\N	\N	+91∙∙∙∙∙∙∙∙41
+14355138943:1@s.whatsapp.net	230257642737721@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙02
+14355138943:1@s.whatsapp.net	224528122806402@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙62
+14355138943:1@s.whatsapp.net	177184664760408@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙95
+14355138943:1@s.whatsapp.net	230790336143396@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙51
+14355138943:1@s.whatsapp.net	59408155418869@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙06
+14355138943:1@s.whatsapp.net	231391681884385@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙66
+14355138943:1@s.whatsapp.net	160438922813616@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙35
+14355138943:1@s.whatsapp.net	244277120659599@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙02
+14355138943:1@s.whatsapp.net	65743181897917@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙66
+14355138943:1@s.whatsapp.net	248610423869671@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙90
+14355138943:1@s.whatsapp.net	91431414816780@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙86
+14355138943:1@s.whatsapp.net	37538098106526@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙65
+14355138943:1@s.whatsapp.net	182033749942469@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙68
+14355138943:1@s.whatsapp.net	260829706453200@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	274427036086383@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙32
+14355138943:1@s.whatsapp.net	260464164487377@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙95
+14355138943:1@s.whatsapp.net	278807852392560@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙85
+14355138943:1@s.whatsapp.net	145504918843502@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	278546010402997@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙81
+14355138943:1@s.whatsapp.net	163406443233292@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	126663081869511@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙44
+14355138943:1@s.whatsapp.net	20512948363432@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙82
+14355138943:1@s.whatsapp.net	91207942316102@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙77
+14355138943:1@s.whatsapp.net	213610299129897@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	237550966939900@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙24
+14355138943:1@s.whatsapp.net	48326972055743@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙86
+14355138943:1@s.whatsapp.net	218390664839215@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	104501201637450@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	80324545523779@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙81
+14355138943:1@s.whatsapp.net	201708961542156@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙81
+14355138943:1@s.whatsapp.net	91160764756073@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	38474904293398@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	127595056226484@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙34
+14355138943:1@s.whatsapp.net	21410898546795@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙01
+14355138943:1@s.whatsapp.net	245917110243581@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙35
+14355138943:1@s.whatsapp.net	134162010927355@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙14
+14355138943:1@s.whatsapp.net	233483163140108@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙23
+14355138943:1@s.whatsapp.net	231331317452886@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	17665250840593@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙49
+14355138943:1@s.whatsapp.net	10368537628908@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	1718121181229@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙79
+14355138943:1@s.whatsapp.net	8413891272709@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙75
+14355138943:1@s.whatsapp.net	58347667587078@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	280659402690632@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙19
+14355138943:1@s.whatsapp.net	184490538340518@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙50
+14355138943:1@s.whatsapp.net	218128655089806@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	198680925700137@lid	\N	\N	\N	\N	+52∙∙∙∙∙∙∙∙∙99
+14355138943:1@s.whatsapp.net	39054238318612@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙52
+14355138943:1@s.whatsapp.net	102246444494950@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙09
+14355138943:1@s.whatsapp.net	256654511730921@lid	\N	\N	\N	\N	+972∙∙∙∙∙∙∙68
+14355138943:1@s.whatsapp.net	76682866200635@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙12
+14355138943:1@s.whatsapp.net	220164972921029@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙07
+14355138943:1@s.whatsapp.net	179843568271521@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙73
+14355138943:1@s.whatsapp.net	60834017468595@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙07
+14355138943:1@s.whatsapp.net	224549614411894@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	212214434803712@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	263436164444251@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙02
+14355138943:1@s.whatsapp.net	44985554604049@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙49
+14355138943:1@s.whatsapp.net	27711280013451@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙71
+14355138943:1@s.whatsapp.net	276926740606978@lid	\N	\N	\N	\N	+54∙∙∙∙∙∙∙∙∙58
+14355138943:1@s.whatsapp.net	11446171750457@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙54
+14355138943:1@s.whatsapp.net	199376811114547@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙71
+14355138943:1@s.whatsapp.net	236279186890945@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙87
+14355138943:1@s.whatsapp.net	226469414441068@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙36
+14355138943:1@s.whatsapp.net	27144226869389@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙57
+14355138943:1@s.whatsapp.net	91105114775579@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙50
+14355138943:1@s.whatsapp.net	130593295712274@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙02
+14355138943:1@s.whatsapp.net	82678221140089@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙46
+14355138943:1@s.whatsapp.net	228407115796524@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙58
+14355138943:1@s.whatsapp.net	195103318626413@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙80
+14355138943:1@s.whatsapp.net	170635091251455@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙26
+14355138943:1@s.whatsapp.net	60349004939282@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙78
+14355138943:1@s.whatsapp.net	164166618886328@lid	\N	\N	\N	\N	+52∙∙∙∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	174977017979050@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙68
+14355138943:1@s.whatsapp.net	176390213214257@lid	\N	\N	\N	\N	+47∙∙∙∙∙∙03
+14355138943:1@s.whatsapp.net	208812787134572@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙15
+14355138943:1@s.whatsapp.net	98170184958061@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	65502663692513@lid	\N	\N	\N	\N	+45∙∙∙∙∙∙07
+14355138943:1@s.whatsapp.net	172318450053122@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	90125677625461@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙86
+14355138943:1@s.whatsapp.net	101348645281814@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	116084879397043@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙25
+14355138943:1@s.whatsapp.net	271360463007883@lid	\N	\N	\N	\N	+45∙∙∙∙∙∙20
+14355138943:1@s.whatsapp.net	102843159687411@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙77
+14355138943:1@s.whatsapp.net	30202327490639@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙38
+14355138943:1@s.whatsapp.net	222908903383090@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙30
+14355138943:1@s.whatsapp.net	211544386355231@lid	\N	\N	\N	\N	+57∙∙∙∙∙∙∙∙24
+14355138943:1@s.whatsapp.net	60804305002620@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙26
+14355138943:1@s.whatsapp.net	216239456678020@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙49
+14355138943:1@s.whatsapp.net	123467861065810@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙94
+14355138943:1@s.whatsapp.net	50577836883984@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙54
+14355138943:1@s.whatsapp.net	112897644568596@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙39
+14355138943:1@s.whatsapp.net	45978044391459@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙76
+14355138943:1@s.whatsapp.net	126478297624761@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙64
+14355138943:1@s.whatsapp.net	126942221176924@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	206480636702938@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙13
+14355138943:1@s.whatsapp.net	17175725236408@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	240926324727972@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙91
+14355138943:1@s.whatsapp.net	2937858326539@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙64
+14355138943:1@s.whatsapp.net	90383476355192@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙74
+14355138943:1@s.whatsapp.net	169144502734962@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙61
+14355138943:1@s.whatsapp.net	58214171300086@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙41
+14355138943:1@s.whatsapp.net	228178811474053@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	171201708175612@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙90
+14355138943:1@s.whatsapp.net	39848857600097@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙91
+14355138943:1@s.whatsapp.net	126435733827751@lid	\N	\N	\N	\N	+61∙∙∙∙∙∙∙05
+14355138943:1@s.whatsapp.net	20435571863723@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙31
+14355138943:1@s.whatsapp.net	19881789534340@lid	\N	\N	\N	\N	+41∙∙∙∙∙∙∙82
+14355138943:1@s.whatsapp.net	166924004683836@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	251015538425968@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙45
+14355138943:1@s.whatsapp.net	10548540358815@lid	\N	\N	\N	\N	+54∙∙∙∙∙∙∙∙∙14
+14355138943:1@s.whatsapp.net	122556925366426@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙83
+14355138943:1@s.whatsapp.net	151990772465691@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙43
+14355138943:1@s.whatsapp.net	258638652407831@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙83
+14355138943:1@s.whatsapp.net	150431498006642@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙90
+14355138943:1@s.whatsapp.net	163818760044693@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙39
+14355138943:1@s.whatsapp.net	87609414025392@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙41
+14355138943:1@s.whatsapp.net	266447053934741@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙95
+14355138943:1@s.whatsapp.net	124957979873285@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	204759042633809@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙91
+14355138943:1@s.whatsapp.net	177442614415466@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	143911469203468@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙17
+14355138943:1@s.whatsapp.net	22905228386510@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙16
+14355138943:1@s.whatsapp.net	40145428443253@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙61
+14355138943:1@s.whatsapp.net	52596303737007@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙21
+14355138943:1@s.whatsapp.net	104767758037179@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙56
+14355138943:1@s.whatsapp.net	112352116654193@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙82
+14355138943:1@s.whatsapp.net	187200562065460@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	21664150642794@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙88
+14355138943:1@s.whatsapp.net	212059782393954@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙81
+14355138943:1@s.whatsapp.net	85676024451159@lid	\N	\N	\N	\N	+34∙∙∙∙∙∙∙98
+14355138943:1@s.whatsapp.net	104707074830524@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	230846002933864@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙02
+14355138943:1@s.whatsapp.net	150998215590142@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	57604202049675@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙81
+14355138943:1@s.whatsapp.net	192165460365466@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙73
+14355138943:1@s.whatsapp.net	194687310803166@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	99132207300623@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙60
+14355138943:1@s.whatsapp.net	120383772557563@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙34
+14355138943:1@s.whatsapp.net	42206979186860@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙71
+14355138943:1@s.whatsapp.net	234466593226957@lid	\N	\N	\N	\N	+7∙∙∙∙∙∙∙∙33
+14355138943:1@s.whatsapp.net	39569567310063@lid	\N	\N	\N	\N	+54∙∙∙∙∙∙∙∙∙90
+14355138943:1@s.whatsapp.net	144216562913406@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙38
+14355138943:1@s.whatsapp.net	113726489395421@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙91
+14355138943:1@s.whatsapp.net	183936789553292@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙03
+14355138943:1@s.whatsapp.net	113928336093395@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙65
+14355138943:1@s.whatsapp.net	20049075163159@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙02
+14355138943:1@s.whatsapp.net	180942761156661@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙71
+14355138943:1@s.whatsapp.net	4204873699552@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙67
+14355138943:1@s.whatsapp.net	218540854501410@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	11433605615842@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙74
+14355138943:1@s.whatsapp.net	98449341055166@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙06
+14355138943:1@s.whatsapp.net	237632000917573@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙51
+14355138943:1@s.whatsapp.net	80964629831878@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙80
+14355138943:1@s.whatsapp.net	52304397004906@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙17
+14355138943:1@s.whatsapp.net	198084059521193@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙58
+14355138943:1@s.whatsapp.net	6468321460440@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙84
+14355138943:1@s.whatsapp.net	240552561901778@lid	\N	\N	\N	\N	+46∙∙∙∙∙∙∙44
+14355138943:1@s.whatsapp.net	108503909838893@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙64
+14355138943:1@s.whatsapp.net	252003599024131@lid	\N	\N	\N	\N	+262∙∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	193041751109681@lid	\N	\N	\N	\N	+54∙∙∙∙∙∙∙∙∙71
+14355138943:1@s.whatsapp.net	139406115647516@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙∙16
+14355138943:1@s.whatsapp.net	54223978922153@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	102933354033208@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙82
+14355138943:1@s.whatsapp.net	85637772406797@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙16
+14355138943:1@s.whatsapp.net	94214855594216@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙49
+14355138943:1@s.whatsapp.net	81406910800106@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙86
+14355138943:1@s.whatsapp.net	21187174363198@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	156302751875204@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙80
+14355138943:1@s.whatsapp.net	281471369633812@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙37
+14355138943:1@s.whatsapp.net	205041872973973@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙67
+14355138943:1@s.whatsapp.net	115977253568531@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙66
+14355138943:1@s.whatsapp.net	217119857868940@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	166962642551005@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	81338526912673@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙74
+14355138943:1@s.whatsapp.net	156715353907296@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙35
+14355138943:1@s.whatsapp.net	253244190240936@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙07
+14355138943:1@s.whatsapp.net	215899483168809@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙27
+14355138943:1@s.whatsapp.net	221367026900997@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙75
+14355138943:1@s.whatsapp.net	160864191672562@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	27736932352179@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙96
+14355138943:1@s.whatsapp.net	244645833482440@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙63
+14355138943:1@s.whatsapp.net	174337051123852@lid	\N	\N	\N	\N	+39∙∙∙∙∙∙∙∙59
+14355138943:1@s.whatsapp.net	197478485905421@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	245917194174628@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙93
+14355138943:1@s.whatsapp.net	119743788925149@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙88
+14355138943:1@s.whatsapp.net	51655924019215@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙51
+14355138943:1@s.whatsapp.net	82274661998722@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙96
+14355138943:1@s.whatsapp.net	51200321949885@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙81
+14355138943:1@s.whatsapp.net	79465568829480@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙64
+14355138943:1@s.whatsapp.net	143018199933020@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙91
+14355138943:1@s.whatsapp.net	95528780095724@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙41
+14355138943:1@s.whatsapp.net	258144848629912@lid	\N	\N	\N	\N	+420∙∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	94390596968672@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	11579366068472@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙25
+14355138943:1@s.whatsapp.net	145501211119630@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙13
+14355138943:1@s.whatsapp.net	70630854680605@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙88
+14355138943:1@s.whatsapp.net	196739684397240@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙58
+14355138943:1@s.whatsapp.net	209685319811235@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙70
+14355138943:1@s.whatsapp.net	106382162436178@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙37
+14355138943:1@s.whatsapp.net	231408593321990@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙27
+14355138943:1@s.whatsapp.net	255748273631279@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	106446536601751@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	78670966350008@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙34
+14355138943:1@s.whatsapp.net	162577464209660@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙86
+14355138943:1@s.whatsapp.net	6713151344813@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙33
+14355138943:1@s.whatsapp.net	160542153036000@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙62
+14355138943:1@s.whatsapp.net	93230905450551@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙14
+14355138943:1@s.whatsapp.net	171253264576661@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙90
+14355138943:1@s.whatsapp.net	178829754646550@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙49
+14355138943:1@s.whatsapp.net	108576991367177@lid	\N	\N	\N	\N	+420∙∙∙∙∙∙∙62
+14355138943:1@s.whatsapp.net	195167692787807@lid	\N	\N	\N	\N	+54∙∙∙∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	152089237942325@lid	\N	\N	\N	\N	+972∙∙∙∙∙∙∙61
+14355138943:1@s.whatsapp.net	256289456308455@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙64
+14355138943:1@s.whatsapp.net	177854629298324@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙62
+14355138943:1@s.whatsapp.net	156538773745775@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙64
+14355138943:1@s.whatsapp.net	142395547078726@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	81510157795526@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙15
+14355138943:1@s.whatsapp.net	21195797864684@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙40
+14355138943:1@s.whatsapp.net	70657111027764@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙50
+14355138943:1@s.whatsapp.net	233422932988007@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙67
+14355138943:1@s.whatsapp.net	214593913802876@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙93
+14355138943:1@s.whatsapp.net	93373042041078@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙17
+14355138943:1@s.whatsapp.net	269960270110903@lid	\N	\N	\N	\N	+32∙∙∙∙∙∙∙05
+14355138943:1@s.whatsapp.net	44977031794792@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙82
+14355138943:1@s.whatsapp.net	114203868287028@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙∙50
+14355138943:1@s.whatsapp.net	128711730937858@lid	\N	\N	\N	\N	+52∙∙∙∙∙∙∙∙∙54
+14355138943:1@s.whatsapp.net	170880122523811@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	63488256929932@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙32
+14355138943:1@s.whatsapp.net	242924122030207@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙69
+14355138943:1@s.whatsapp.net	64613521567831@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙92
+14355138943:1@s.whatsapp.net	168787936575532@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙35
+14355138943:1@s.whatsapp.net	210732721426456@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙23
+14355138943:1@s.whatsapp.net	263766860157156@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙13
+14355138943:1@s.whatsapp.net	137297269903406@lid	\N	\N	\N	\N	+48∙∙∙∙∙∙∙12
+14355138943:1@s.whatsapp.net	207142514614465@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙60
+14355138943:1@s.whatsapp.net	75463011602441@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙73
+14355138943:1@s.whatsapp.net	154387733311725@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙02
+14355138943:1@s.whatsapp.net	109968376217810@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙36
+14355138943:1@s.whatsapp.net	246501209043191@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙37
+14355138943:1@s.whatsapp.net	241635027886304@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙95
+14355138943:1@s.whatsapp.net	262448372297901@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙49
+14355138943:1@s.whatsapp.net	5910210555981@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	195395359613104@lid	\N	\N	\N	\N	+34∙∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	166266874654760@lid	\N	\N	\N	\N	+502∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	27006888595662@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙46
+14355138943:1@s.whatsapp.net	41082100428881@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙88
+14355138943:1@s.whatsapp.net	134471416340714@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙73
+14355138943:1@s.whatsapp.net	217067764584546@lid	\N	\N	\N	\N	+972∙∙∙∙∙∙∙01
+14355138943:1@s.whatsapp.net	104148796227621@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙49
+14355138943:1@s.whatsapp.net	181432404156584@lid	\N	\N	\N	\N	+33∙∙∙∙∙∙∙40
+14355138943:1@s.whatsapp.net	188562066641028@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙03
+14355138943:1@s.whatsapp.net	188828404994048@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	184610747089081@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙43
+14355138943:1@s.whatsapp.net	260781857886399@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙06
+14355138943:1@s.whatsapp.net	37117174534330@lid	\N	\N	\N	\N	+41∙∙∙∙∙∙∙78
+14355138943:1@s.whatsapp.net	113924510842977@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙92
+14355138943:1@s.whatsapp.net	82158647570497@lid	\N	\N	\N	\N	+972∙∙∙∙∙∙∙35
+14355138943:1@s.whatsapp.net	254391047188647@lid	\N	\N	\N	\N	+595∙∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	278399847276656@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙41
+14355138943:1@s.whatsapp.net	175432301281308@lid	\N	\N	\N	\N	+507∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	13185918742618@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	113477414875311@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙77
+14355138943:1@s.whatsapp.net	245994268672078@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙34
+14355138943:1@s.whatsapp.net	214310529851406@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙93
+14355138943:1@s.whatsapp.net	69183366820085@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	14220670275821@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙05
+14355138943:1@s.whatsapp.net	183923501977724@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	184932836077733@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	277875878027473@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙74
+14355138943:1@s.whatsapp.net	210118541082798@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙09
+14355138943:1@s.whatsapp.net	157943160955112@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙∙63
+14355138943:1@s.whatsapp.net	109384780746765@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙33
+14355138943:1@s.whatsapp.net	82145678766258@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙79
+14355138943:1@s.whatsapp.net	164815192477888@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙38
+14355138943:1@s.whatsapp.net	32379892674704@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	181376519254168@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙92
+14355138943:1@s.whatsapp.net	232091727995000@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙16
+14355138943:1@s.whatsapp.net	136416868757683@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	237718252597367@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙77
+14355138943:1@s.whatsapp.net	37804469944468@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙60
+14355138943:1@s.whatsapp.net	20512864522440@lid	\N	\N	\N	\N	+359∙∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	208362033684635@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙88
+14355138943:1@s.whatsapp.net	78812666687550@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙24
+14355138943:1@s.whatsapp.net	248270735568900@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙50
+14355138943:1@s.whatsapp.net	236850300112997@lid	\N	\N	\N	\N	+34∙∙∙∙∙∙∙12
+14355138943:1@s.whatsapp.net	162526092370158@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙43
+14355138943:1@s.whatsapp.net	183713015021584@lid	\N	\N	\N	\N	+57∙∙∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	153588131217424@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	151586709991500@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙78
+14355138943:1@s.whatsapp.net	37855959212055@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙74
+14355138943:1@s.whatsapp.net	138852148719652@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙38
+14355138943:1@s.whatsapp.net	91530182316158@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙92
+14355138943:1@s.whatsapp.net	278880917131475@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙27
+14355138943:1@s.whatsapp.net	46021329584381@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙63
+14355138943:1@s.whatsapp.net	68419097464885@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙77
+14355138943:1@s.whatsapp.net	196103995687019@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	233165922787412@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	83313976955069@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙25
+14355138943:1@s.whatsapp.net	99681912758348@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙80
+14355138943:1@s.whatsapp.net	212128451555523@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙93
+14355138943:1@s.whatsapp.net	269264384725097@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	229617675804731@lid	\N	\N	\N	\N	+34∙∙∙∙∙∙∙44
+14355138943:1@s.whatsapp.net	210763339825225@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙69
+14355138943:1@s.whatsapp.net	96095698960508@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙20
+14355138943:1@s.whatsapp.net	190516243251345@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙61
+14355138943:1@s.whatsapp.net	111059381800975@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙31
+14355138943:1@s.whatsapp.net	277940604539044@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙68
+14355138943:1@s.whatsapp.net	28187920699640@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙57
+14355138943:1@s.whatsapp.net	56775709569152@lid	\N	\N	\N	\N	+52∙∙∙∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	211359685939267@lid	\N	\N	\N	\N	+91∙∙∙∙∙∙∙∙36
+14355138943:1@s.whatsapp.net	175217519374472@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙09
+14355138943:1@s.whatsapp.net	17665284386843@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙29
+14355138943:1@s.whatsapp.net	114606940901406@lid	\N	\N	\N	\N	+54∙∙∙∙∙∙∙∙∙44
+14355138943:1@s.whatsapp.net	198281627971837@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙12
+14355138943:1@s.whatsapp.net	83249435041898@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙14
+14355138943:1@s.whatsapp.net	78001085644921@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙98
+14355138943:1@s.whatsapp.net	278352636203156@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙82
+14355138943:1@s.whatsapp.net	43280419045416@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙74
+14355138943:1@s.whatsapp.net	91074798309508@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙80
+14355138943:1@s.whatsapp.net	30391222198276@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙34
+14355138943:1@s.whatsapp.net	129493398204592@lid	\N	\N	\N	\N	+972∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	34295515205792@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙75
+14355138943:1@s.whatsapp.net	114254854250569@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	6631731540146@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙66
+14355138943:1@s.whatsapp.net	58759464378572@lid	\N	\N	\N	\N	+673∙∙∙∙∙85
+14355138943:1@s.whatsapp.net	109483078484143@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	69037354672364@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙46
+14355138943:1@s.whatsapp.net	115977169723516@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙20
+14355138943:1@s.whatsapp.net	73465432424673@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙80
+14355138943:1@s.whatsapp.net	34828057637114@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙23
+14355138943:1@s.whatsapp.net	27041365766205@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	91551673880591@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙40
+14355138943:1@s.whatsapp.net	258638753083449@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	114456751259682@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙06
+14355138943:1@s.whatsapp.net	252501278331125@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	190594055938283@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙31
+14355138943:1@s.whatsapp.net	148331107999781@lid	\N	\N	\N	\N	+52∙∙∙∙∙∙∙∙∙26
+14355138943:1@s.whatsapp.net	29661161648360@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙70
+14355138943:1@s.whatsapp.net	158535883206720@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙49
+14355138943:1@s.whatsapp.net	169775913238726@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙63
+14355138943:1@s.whatsapp.net	252870595215507@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙38
+14355138943:1@s.whatsapp.net	249503340871681@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	133723840344223@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙71
+14355138943:1@s.whatsapp.net	130992861929626@lid	\N	\N	\N	\N	+593∙∙∙∙∙∙∙20
+14355138943:1@s.whatsapp.net	40102411694210@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	276767726141600@lid	\N	\N	\N	\N	+62∙∙∙∙∙∙∙∙∙38
+14355138943:1@s.whatsapp.net	28716168163364@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙84
+14355138943:1@s.whatsapp.net	187415226519746@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙01
+14355138943:1@s.whatsapp.net	272584411238560@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙58
+14355138943:1@s.whatsapp.net	26513000914998@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙77
+14355138943:1@s.whatsapp.net	181393816584435@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	90748364013706@lid	\N	\N	\N	\N	+54∙∙∙∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	43022737772677@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙∙87
+14355138943:1@s.whatsapp.net	46089428295871@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙38
+14355138943:1@s.whatsapp.net	210582296903759@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙27
+14355138943:1@s.whatsapp.net	64665061208074@lid	\N	\N	\N	\N	+39∙∙∙∙∙∙∙∙63
+14355138943:1@s.whatsapp.net	32113621528692@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙39
+14355138943:1@s.whatsapp.net	120156156080185@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙34
+14355138943:1@s.whatsapp.net	224665477845031@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙66
+14355138943:1@s.whatsapp.net	48365777764542@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙63
+14355138943:1@s.whatsapp.net	135523649716411@lid	\N	\N	\N	\N	+39∙∙∙∙∙∙∙∙43
+14355138943:1@s.whatsapp.net	85882233159722@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙15
+14355138943:1@s.whatsapp.net	270127757037709@lid	\N	\N	\N	\N	+52∙∙∙∙∙∙∙∙∙32
+14355138943:1@s.whatsapp.net	82068302241868@lid	\N	\N	\N	\N	+41∙∙∙∙∙∙∙79
+14355138943:1@s.whatsapp.net	147596752515312@lid	\N	\N	\N	\N	+55∙∙∙∙∙∙∙∙∙44
+14355138943:1@s.whatsapp.net	228642751803622@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙33
+14355138943:1@s.whatsapp.net	235510891049063@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙05
+14355138943:1@s.whatsapp.net	222157250539759@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙93
+14355138943:1@s.whatsapp.net	56453100499105@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙64
+14355138943:1@s.whatsapp.net	78881990168648@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙73
+14355138943:1@s.whatsapp.net	8349600981107@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	132070311493807@lid	\N	\N	\N	\N	+39∙∙∙∙∙∙∙∙59
+14355138943:1@s.whatsapp.net	51651410968644@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙49
+14355138943:1@s.whatsapp.net	150117747322882@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙41
+14355138943:1@s.whatsapp.net	201223596716243@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙73
+14355138943:1@s.whatsapp.net	85822539862028@lid	\N	\N	\N	\N	+61∙∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	191585757208608@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙27
+14355138943:1@s.whatsapp.net	164304041041933@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙43
+14355138943:1@s.whatsapp.net	259802705981684@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙40
+14355138943:1@s.whatsapp.net	263759008387082@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙67
+14355138943:1@s.whatsapp.net	272288125550672@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙94
+14355138943:1@s.whatsapp.net	223699277983892@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙46
+14355138943:1@s.whatsapp.net	50405769785430@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	224798672158741@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙46
+14355138943:1@s.whatsapp.net	198887503614026@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙12
+14355138943:1@s.whatsapp.net	172279879200832@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	64746648789038@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙16
+14355138943:1@s.whatsapp.net	38895827849349@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙35
+14355138943:1@s.whatsapp.net	42004914417794@lid	\N	\N	\N	\N	+39∙∙∙∙∙∙∙∙67
+14355138943:1@s.whatsapp.net	162753792725097@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙74
+14355138943:1@s.whatsapp.net	126409494245584@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	58274183413903@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙31
+14355138943:1@s.whatsapp.net	271270369308678@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙37
+14355138943:1@s.whatsapp.net	144981050298623@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙94
+14355138943:1@s.whatsapp.net	210827261038614@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙19
+14355138943:1@s.whatsapp.net	177201945288878@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙43
+14355138943:1@s.whatsapp.net	206497799774443@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	195056040472725@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	50350119751764@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙93
+14355138943:1@s.whatsapp.net	271729779855600@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙40
+14355138943:1@s.whatsapp.net	190224118358175@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	7345098772605@lid	\N	\N	\N	\N	+34∙∙∙∙∙∙∙75
+14355138943:1@s.whatsapp.net	199024925782033@lid	\N	\N	\N	\N	+972∙∙∙∙∙∙∙82
+14355138943:1@s.whatsapp.net	144920853659796@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙79
+14355138943:1@s.whatsapp.net	165279132872899@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙88
+14355138943:1@s.whatsapp.net	232843263389860@lid	\N	\N	\N	\N	+39∙∙∙∙∙∙∙∙86
+14355138943:1@s.whatsapp.net	117493528002718@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙38
+14355138943:1@s.whatsapp.net	15818985345183@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙70
+14355138943:1@s.whatsapp.net	271025455526035@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙43
+14355138943:1@s.whatsapp.net	13924451799078@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙50
+14355138943:1@s.whatsapp.net	221109261717754@lid	\N	\N	\N	\N	+39∙∙∙∙∙∙∙∙89
+14355138943:1@s.whatsapp.net	210758474403870@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙87
+14355138943:1@s.whatsapp.net	70789835526230@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙96
+14355138943:1@s.whatsapp.net	251006545866882@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙89
+14355138943:1@s.whatsapp.net	135111467110633@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙67
+14355138943:1@s.whatsapp.net	151836338168038@lid	\N	\N	\N	\N	+47∙∙∙∙∙∙21
+14355138943:1@s.whatsapp.net	266176974323793@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙∙78
+14355138943:1@s.whatsapp.net	269058259812398@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙61
+14355138943:1@s.whatsapp.net	103917169942649@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙91
+14355138943:1@s.whatsapp.net	198835863339059@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	251006596157668@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙81
+14355138943:1@s.whatsapp.net	6112342478943@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙30
+14355138943:1@s.whatsapp.net	254794723766414@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙44
+14355138943:1@s.whatsapp.net	19976094236697@lid	\N	\N	\N	\N	+54∙∙∙∙∙∙∙∙∙77
+14355138943:1@s.whatsapp.net	41584661917892@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙85
+14355138943:1@s.whatsapp.net	227212527689766@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙82
+14355138943:1@s.whatsapp.net	265236275834911@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	21062637117633@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙07
+14355138943:1@s.whatsapp.net	161886192578591@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙19
+14355138943:1@s.whatsapp.net	12300987715646@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	56869779443853@lid	\N	\N	\N	\N	+41∙∙∙∙∙∙∙95
+14355138943:1@s.whatsapp.net	176442155495440@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙21
+14355138943:1@s.whatsapp.net	259566533136427@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙96
+14355138943:1@s.whatsapp.net	275440631607410@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙51
+14355138943:1@s.whatsapp.net	236408069423300@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙83
+14355138943:1@s.whatsapp.net	104866290602001@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙03
+14355138943:1@s.whatsapp.net	164673458589868@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙51
+14355138943:1@s.whatsapp.net	65146181427325@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙83
+14355138943:1@s.whatsapp.net	134909872091234@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙71
+14355138943:1@s.whatsapp.net	154752016982020@lid	\N	\N	\N	\N	+39∙∙∙∙∙∙∙∙14
+14355138943:1@s.whatsapp.net	187114645922022@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙93
+14355138943:1@s.whatsapp.net	144435606224978@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙09
+14355138943:1@s.whatsapp.net	19086918565963@lid	\N	\N	\N	\N	+972∙∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	190610749276301@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙37
+14355138943:1@s.whatsapp.net	164944460927192@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙14
+14355138943:1@s.whatsapp.net	204638666096827@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙45
+14355138943:1@s.whatsapp.net	83751979757812@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙03
+14355138943:1@s.whatsapp.net	238486800060450@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙96
+14355138943:1@s.whatsapp.net	173606923440338@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙99
+14355138943:1@s.whatsapp.net	75256819650688@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙63
+14355138943:1@s.whatsapp.net	188579263303832@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙41
+14355138943:1@s.whatsapp.net	18558721470577@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙73
+14355138943:1@s.whatsapp.net	65635841233128@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙85
+14355138943:1@s.whatsapp.net	52802361495568@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙83
+14355138943:1@s.whatsapp.net	266185144848385@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙84
+14355138943:1@s.whatsapp.net	53635568402507@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙45
+14355138943:1@s.whatsapp.net	243241312079900@lid	\N	\N	\N	\N	+33∙∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	10179122843739@lid	\N	\N	\N	\N	+32∙∙∙∙∙∙∙64
+14355138943:1@s.whatsapp.net	65795157672160@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	155409130221698@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙94
+14355138943:1@s.whatsapp.net	22982370009338@lid	\N	\N	\N	\N	+420∙∙∙∙∙∙∙68
+14355138943:1@s.whatsapp.net	178684094861363@lid	\N	\N	\N	\N	+61∙∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	247334801830037@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙64
+14355138943:1@s.whatsapp.net	205063649800238@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙84
+14355138943:1@s.whatsapp.net	266369627082935@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙30
+14355138943:1@s.whatsapp.net	158428626477275@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙65
+14355138943:1@s.whatsapp.net	175625608413370@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙62
+14355138943:1@s.whatsapp.net	189021577822373@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙17
+14355138943:1@s.whatsapp.net	6708889972741@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙02
+14355138943:1@s.whatsapp.net	252351357169697@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙16
+14355138943:1@s.whatsapp.net	69853448785935@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙68
+14355138943:1@s.whatsapp.net	125447555813576@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	118837651480819@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	98423604814061@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙21
+14355138943:1@s.whatsapp.net	217802589925517@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙30
+14355138943:1@s.whatsapp.net	74745399754774@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙32
+14355138943:1@s.whatsapp.net	233797316542571@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙27
+14355138943:1@s.whatsapp.net	23815761432641@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙93
+14355138943:1@s.whatsapp.net	173301980749852@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	183017179988186@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙01
+14355138943:1@s.whatsapp.net	232946225172629@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	21986038276181@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	161941809012868@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙03
+14355138943:1@s.whatsapp.net	115418773602399@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙08
+14355138943:1@s.whatsapp.net	108843178696752@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙91
+14355138943:1@s.whatsapp.net	76849984057374@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	168036317327495@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙87
+14355138943:1@s.whatsapp.net	276196629721095@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙38
+14355138943:1@s.whatsapp.net	100983422095471@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙16
+14355138943:1@s.whatsapp.net	167010038202456@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙79
+14355138943:1@s.whatsapp.net	37606867861685@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙17
+14355138943:1@s.whatsapp.net	98956197531859@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙83
+14355138943:1@s.whatsapp.net	54288537649396@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙98
+14355138943:1@s.whatsapp.net	276956721455121@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙59
+14355138943:1@s.whatsapp.net	99570428190767@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙52
+14355138943:1@s.whatsapp.net	18103320731903@lid	\N	\N	\N	\N	+54∙∙∙∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	7232842408086@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	58566727721049@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙87
+14355138943:1@s.whatsapp.net	102246192828468@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙∙49
+14355138943:1@s.whatsapp.net	277695439106061@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	55826068811833@lid	\N	\N	\N	\N	+353∙∙∙∙∙∙∙61
+14355138943:1@s.whatsapp.net	226572577583110@lid	\N	\N	\N	\N	+972∙∙∙∙∙∙∙02
+14355138943:1@s.whatsapp.net	115392953507863@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙89
+14355138943:1@s.whatsapp.net	178554893545707@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙70
+14355138943:1@s.whatsapp.net	212927499997225@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙53
+14355138943:1@s.whatsapp.net	233646288036032@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙25
+14355138943:1@s.whatsapp.net	36017612558486@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙85
+14355138943:1@s.whatsapp.net	72868566139060@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙23
+14355138943:1@s.whatsapp.net	199866303156426@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙81
+14355138943:1@s.whatsapp.net	167151738585323@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	221933928972445@lid	\N	\N	\N	\N	+852∙∙∙∙∙∙07
+14355138943:1@s.whatsapp.net	180161060302986@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙80
+14355138943:1@s.whatsapp.net	13082520727676@lid	\N	\N	\N	\N	+56∙∙∙∙∙∙∙66
+14355138943:1@s.whatsapp.net	23545111384224@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	64089619472387@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	179847577997523@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	238155970175116@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙08
+14355138943:1@s.whatsapp.net	69011702337736@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙50
+14355138943:1@s.whatsapp.net	80775600930932@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙54
+14355138943:1@s.whatsapp.net	53858906730540@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙69
+14355138943:1@s.whatsapp.net	108426516504673@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙17
+14355138943:1@s.whatsapp.net	240599789748335@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙40
+14355138943:1@s.whatsapp.net	143606660772055@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	167662755811370@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙30
+14355138943:1@s.whatsapp.net	39853152592100@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙84
+14355138943:1@s.whatsapp.net	241617982193903@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙50
+14355138943:1@s.whatsapp.net	129630786814046@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	146368274407501@lid	\N	\N	\N	\N	+52∙∙∙∙∙∙∙∙∙24
+14355138943:1@s.whatsapp.net	84740359114838@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙90
+14355138943:1@s.whatsapp.net	154241100443699@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙31
+14355138943:1@s.whatsapp.net	83245207138361@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	261554951995410@lid	\N	\N	\N	\N	+61∙∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	187209118429338@lid	\N	\N	\N	\N	+972∙∙∙∙∙∙∙51
+14355138943:1@s.whatsapp.net	56255649464418@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙53
+14355138943:1@s.whatsapp.net	144779136475386@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	238899133714481@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙74
+14355138943:1@s.whatsapp.net	47227477205014@lid	\N	\N	\N	\N	+41∙∙∙∙∙∙∙37
+14355138943:1@s.whatsapp.net	165919452057804@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙41
+14355138943:1@s.whatsapp.net	73624530767995@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙99
+14355138943:1@s.whatsapp.net	75518577750179@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙65
+14355138943:1@s.whatsapp.net	18923760128200@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙14
+14355138943:1@s.whatsapp.net	108504513818712@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙29
+14355138943:1@s.whatsapp.net	62019445203110@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙21
+14355138943:1@s.whatsapp.net	212270873325709@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙29
+14355138943:1@s.whatsapp.net	278777737248893@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	165038514036863@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙78
+14355138943:1@s.whatsapp.net	263981709144099@lid	\N	\N	\N	\N	+60∙∙∙∙∙∙∙01
+14355138943:1@s.whatsapp.net	37125814804692@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙71
+14355138943:1@s.whatsapp.net	109737001656374@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙98
+14355138943:1@s.whatsapp.net	103547802759223@lid	\N	\N	\N	\N	+7∙∙∙∙∙∙∙∙21
+14355138943:1@s.whatsapp.net	9964525477905@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙75
+14355138943:1@s.whatsapp.net	78147013837020@lid	\N	\N	\N	\N	+420∙∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	35867322220651@lid	\N	\N	\N	\N	+39∙∙∙∙∙∙∙∙76
+14355138943:1@s.whatsapp.net	133307446640751@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙41
+14355138943:1@s.whatsapp.net	147665388105895@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	6142323347613@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙56
+14355138943:1@s.whatsapp.net	30283898347648@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	46613984727227@lid	\N	\N	\N	\N	+54∙∙∙∙∙∙∙∙∙29
+14355138943:1@s.whatsapp.net	154864021708991@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	58055089737804@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙64
+14355138943:1@s.whatsapp.net	31494995206352@lid	\N	\N	\N	\N	+57∙∙∙∙∙∙∙∙05
+14355138943:1@s.whatsapp.net	152020401041630@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙61
+14355138943:1@s.whatsapp.net	64382079885358@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙92
+14355138943:1@s.whatsapp.net	94850259120217@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙19
+14355138943:1@s.whatsapp.net	53223301853394@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙93
+14355138943:1@s.whatsapp.net	7757382082573@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙45
+14355138943:1@s.whatsapp.net	79877969547453@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	253794046750818@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙44
+14355138943:1@s.whatsapp.net	250521197744297@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙06
+14355138943:1@s.whatsapp.net	96851713884397@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙35
+14355138943:1@s.whatsapp.net	173439470047466@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙68
+14355138943:1@s.whatsapp.net	164218141708467@lid	\N	\N	\N	\N	+505∙∙∙∙∙∙83
+14355138943:1@s.whatsapp.net	187256430178467@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙77
+14355138943:1@s.whatsapp.net	52472320118917@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙17
+14355138943:1@s.whatsapp.net	174642161524769@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙59
+14355138943:1@s.whatsapp.net	229969796038732@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙14
+14355138943:1@s.whatsapp.net	253493466132596@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	280113606295648@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	131756862771313@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙46
+14355138943:1@s.whatsapp.net	266141960245354@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	165777416146993@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙99
+14355138943:1@s.whatsapp.net	185151829094491@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙19
+14355138943:1@s.whatsapp.net	268688926216438@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	218231717523609@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	117914199957703@lid	\N	\N	\N	\N	+32∙∙∙∙∙∙∙78
+14355138943:1@s.whatsapp.net	90142958219417@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙49
+14355138943:1@s.whatsapp.net	69707906437355@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙06
+14355138943:1@s.whatsapp.net	189420993048584@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙17
+14355138943:1@s.whatsapp.net	106081565049056@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙60
+14355138943:1@s.whatsapp.net	104350626144289@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙92
+14355138943:1@s.whatsapp.net	212635677147177@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙61
+14355138943:1@s.whatsapp.net	16102016987219@lid	\N	\N	\N	\N	+33∙∙∙∙∙∙∙46
+14355138943:1@s.whatsapp.net	101464928211180@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙45
+14355138943:1@s.whatsapp.net	229931107794999@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙65
+14355138943:1@s.whatsapp.net	102001262227619@lid	\N	\N	\N	\N	+27∙∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	280530167845103@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙99
+14355138943:1@s.whatsapp.net	156603349233669@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙86
+14355138943:1@s.whatsapp.net	224137196896299@lid	\N	\N	\N	\N	+54∙∙∙∙∙∙∙∙∙62
+14355138943:1@s.whatsapp.net	176828165709967@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙19
+14355138943:1@s.whatsapp.net	176480407564409@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙57
+14355138943:1@s.whatsapp.net	55912236585005@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙12
+14355138943:1@s.whatsapp.net	9943503601725@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙19
+14355138943:1@s.whatsapp.net	17553682341995@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙88
+14355138943:1@s.whatsapp.net	226830627958827@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙49
+14355138943:1@s.whatsapp.net	63621518331978@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙74
+14355138943:1@s.whatsapp.net	67491300663380@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙90
+14355138943:1@s.whatsapp.net	267744150814773@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙64
+14355138943:1@s.whatsapp.net	149469173678188@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	53180352200922@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙76
+14355138943:1@s.whatsapp.net	269569411276997@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	231576147337374@lid	\N	\N	\N	\N	+61∙∙∙∙∙∙∙06
+14355138943:1@s.whatsapp.net	41549681393779@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙71
+14355138943:1@s.whatsapp.net	161079040688377@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	97740671463438@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙35
+14355138943:1@s.whatsapp.net	219043499913242@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙50
+14355138943:1@s.whatsapp.net	59292090683417@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙13
+14355138943:1@s.whatsapp.net	86595180990586@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙19
+14355138943:1@s.whatsapp.net	136391048622110@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙99
+14355138943:1@s.whatsapp.net	2589915660444@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙70
+14355138943:1@s.whatsapp.net	90731251294386@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙19
+14355138943:1@s.whatsapp.net	157535759769759@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙50
+14355138943:1@s.whatsapp.net	144182370943081@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙45
+14355138943:1@s.whatsapp.net	195159170007087@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙39
+14355138943:1@s.whatsapp.net	160322623115338@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙66
+14355138943:1@s.whatsapp.net	34102442999883@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙48
+14355138943:1@s.whatsapp.net	147369337307282@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙44
+14355138943:1@s.whatsapp.net	164901595136019@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙88
+14355138943:1@s.whatsapp.net	118266504720394@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙58
+14355138943:1@s.whatsapp.net	235153804759206@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙63
+14355138943:1@s.whatsapp.net	61340907491426@lid	\N	\N	\N	\N	+421∙∙∙∙∙∙∙60
+14355138943:1@s.whatsapp.net	187256463749133@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙60
+14355138943:1@s.whatsapp.net	173396486844663@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙27
+14355138943:1@s.whatsapp.net	202159866036237@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙25
+14355138943:1@s.whatsapp.net	248670133952720@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙46
+14355138943:1@s.whatsapp.net	146565926805535@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙41
+14355138943:1@s.whatsapp.net	8645970493646@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙∙67
+14355138943:1@s.whatsapp.net	13615230910684@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙30
+14355138943:1@s.whatsapp.net	197431090266138@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	280246850990096@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙62
+14355138943:1@s.whatsapp.net	24031029923910@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙54
+14355138943:1@s.whatsapp.net	174693533413625@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙13
+14355138943:1@s.whatsapp.net	151745506336803@lid	\N	\N	\N	\N	+52∙∙∙∙∙∙∙∙∙21
+14355138943:1@s.whatsapp.net	175428090204191@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙70
+14355138943:1@s.whatsapp.net	139758319706187@lid	\N	\N	\N	\N	+502∙∙∙∙∙∙16
+14355138943:1@s.whatsapp.net	135905683714112@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙17
+14355138943:1@s.whatsapp.net	52394440274109@lid	\N	\N	\N	\N	+34∙∙∙∙∙∙∙26
+14355138943:1@s.whatsapp.net	13739684294776@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙16
+14355138943:1@s.whatsapp.net	103985922981931@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙89
+14355138943:1@s.whatsapp.net	193393871294580@lid	\N	\N	\N	\N	+503∙∙∙∙∙∙31
+14355138943:1@s.whatsapp.net	112133090107645@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙96
+14355138943:1@s.whatsapp.net	121397502316716@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙∙67
+14355138943:1@s.whatsapp.net	221079196930065@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙19
+14355138943:1@s.whatsapp.net	16574396285120@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	165966277300415@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙35
+14355138943:1@s.whatsapp.net	178219768619256@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙84
+14355138943:1@s.whatsapp.net	86934617587895@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙70
+14355138943:1@s.whatsapp.net	126358038511776@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙38
+14355138943:1@s.whatsapp.net	142485707858113@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	217995712413810@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙01
+14355138943:1@s.whatsapp.net	82798429868040@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	274066493669574@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙12
+14355138943:1@s.whatsapp.net	101099436519511@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	55572732874899@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙24
+14355138943:1@s.whatsapp.net	224309113020574@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	214937427247143@lid	\N	\N	\N	\N	+972∙∙∙∙∙∙∙09
+14355138943:1@s.whatsapp.net	172640656433316@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙52
+14355138943:1@s.whatsapp.net	199325607006429@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙63
+14355138943:1@s.whatsapp.net	175651680161850@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙34
+14355138943:1@s.whatsapp.net	154541580365846@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙90
+14355138943:1@s.whatsapp.net	272271365173499@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙88
+14355138943:1@s.whatsapp.net	69394105376921@lid	\N	\N	\N	\N	+41∙∙∙∙∙∙∙54
+14355138943:1@s.whatsapp.net	201021733216433@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙∙73
+14355138943:1@s.whatsapp.net	134630682415145@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙70
+14355138943:1@s.whatsapp.net	236652882612393@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙04
+14355138943:1@s.whatsapp.net	142889367691425@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙59
+14355138943:1@s.whatsapp.net	43594102665377@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙89
+14355138943:1@s.whatsapp.net	202121228099700@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙01
+14355138943:1@s.whatsapp.net	94764695302190@lid	\N	\N	\N	\N	+33∙∙∙∙∙∙∙05
+14355138943:1@s.whatsapp.net	157208838955141@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	167529645392051@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙61
+14355138943:1@s.whatsapp.net	247987234177151@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙62
+14355138943:1@s.whatsapp.net	42889744801858@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙45
+14355138943:1@s.whatsapp.net	108495202468014@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙08
+14355138943:1@s.whatsapp.net	43890472181932@lid	\N	\N	\N	\N	+32∙∙∙∙∙∙∙78
+14355138943:1@s.whatsapp.net	245487479296053@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	171133592674519@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙09
+14355138943:1@s.whatsapp.net	272520188051579@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙73
+14355138943:1@s.whatsapp.net	87741937225804@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙06
+14355138943:1@s.whatsapp.net	78039706763389@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙60
+14355138943:1@s.whatsapp.net	133994540720211@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙89
+14355138943:1@s.whatsapp.net	258853451100292@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙59
+14355138943:1@s.whatsapp.net	139586974011507@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙03
+14355138943:1@s.whatsapp.net	243443779547233@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙98
+14355138943:1@s.whatsapp.net	148850832621661@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙61
+14355138943:1@s.whatsapp.net	21389004263607@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	199055141523461@lid	\N	\N	\N	\N	+52∙∙∙∙∙∙∙∙∙27
+14355138943:1@s.whatsapp.net	144393143074871@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙66
+14355138943:1@s.whatsapp.net	125022286962916@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙54
+14355138943:1@s.whatsapp.net	137168571859083@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	70085393834024@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙74
+14355138943:1@s.whatsapp.net	154550270971974@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙13
+14355138943:1@s.whatsapp.net	13203165712481@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙94
+14355138943:1@s.whatsapp.net	86457725268214@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	59048049303568@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙05
+14355138943:1@s.whatsapp.net	74101104328766@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙07
+14355138943:1@s.whatsapp.net	148408971071627@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙06
+14355138943:1@s.whatsapp.net	49164591329303@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	268152172712133@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙36
+14355138943:1@s.whatsapp.net	147867704524825@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙63
+14355138943:1@s.whatsapp.net	256821898039345@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙24
+14355138943:1@s.whatsapp.net	9028105203915@lid	\N	\N	\N	\N	+61∙∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	162285406400595@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙64
+14355138943:1@s.whatsapp.net	153274699235576@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙46
+14355138943:1@s.whatsapp.net	243314292985939@lid	\N	\N	\N	\N	+41∙∙∙∙∙∙∙36
+14355138943:1@s.whatsapp.net	165223113744506@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙66
+14355138943:1@s.whatsapp.net	91156587237413@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	203830725759040@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙83
+14355138943:1@s.whatsapp.net	82412017082397@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	86960303562785@lid	\N	\N	\N	\N	+33∙∙∙∙∙∙∙11
+14355138943:1@s.whatsapp.net	63488324030667@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙13
+14355138943:1@s.whatsapp.net	270548647080118@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙75
+14355138943:1@s.whatsapp.net	195623060029469@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙98
+14355138943:1@s.whatsapp.net	149593895518235@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙32
+14355138943:1@s.whatsapp.net	200936102301798@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙19
+14355138943:1@s.whatsapp.net	145427609428112@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙58
+14355138943:1@s.whatsapp.net	97560366735473@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙69
+14355138943:1@s.whatsapp.net	125275673260210@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙46
+14355138943:1@s.whatsapp.net	81917961605167@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙45
+14355138943:1@s.whatsapp.net	24288140738786@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙35
+14355138943:1@s.whatsapp.net	143735492997272@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙02
+14355138943:1@s.whatsapp.net	237524777713873@lid	\N	\N	\N	\N	+34∙∙∙∙∙∙∙75
+14355138943:1@s.whatsapp.net	21380481429678@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙39
+14355138943:1@s.whatsapp.net	224459369783328@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙50
+14355138943:1@s.whatsapp.net	115985742872720@lid	\N	\N	Choco Tour	Choco Tour	+506∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	121938466844908@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙92
+14355138943:1@s.whatsapp.net	101993276248245@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	231279979184279@lid	\N	\N	\N	\N	+43∙∙∙∙∙∙∙∙∙19
+14355138943:1@s.whatsapp.net	176875561332781@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	151470712303790@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙08
+14355138943:1@s.whatsapp.net	31903100981385@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙41
+14355138943:1@s.whatsapp.net	87681841250323@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙57
+14355138943:1@s.whatsapp.net	230309048099004@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙91
+14355138943:1@s.whatsapp.net	168594696605798@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙25
+14355138943:1@s.whatsapp.net	71391013556461@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙53
+14355138943:1@s.whatsapp.net	153064564646112@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙15
+14355138943:1@s.whatsapp.net	221371321835683@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙20
+14355138943:1@s.whatsapp.net	91388330946579@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙39
+14355138943:1@s.whatsapp.net	47828906852387@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙20
+14355138943:1@s.whatsapp.net	14083197792340@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙77
+14355138943:1@s.whatsapp.net	94317649629369@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙85
+14355138943:1@s.whatsapp.net	140020379836625@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙96
+14355138943:1@s.whatsapp.net	152295429918845@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙00
+14355138943:1@s.whatsapp.net	277433462841413@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙13
+14355138943:1@s.whatsapp.net	248876325945562@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙61
+14355138943:1@s.whatsapp.net	75123440746703@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙02
+14355138943:1@s.whatsapp.net	39384900436049@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙43
+14355138943:1@s.whatsapp.net	262890871353582@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙95
+14355138943:1@s.whatsapp.net	56380203499549@lid	\N	\N	\N	\N	+66∙∙∙∙∙∙∙36
+14355138943:1@s.whatsapp.net	162083643596885@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙92
+14355138943:1@s.whatsapp.net	8413924835364@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙59
+14355138943:1@s.whatsapp.net	73980862066934@lid	\N	\N	\N	\N	+354∙∙∙∙∙32
+14355138943:1@s.whatsapp.net	112524049567955@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙33
+14355138943:1@s.whatsapp.net	208190100742300@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙93
+14355138943:1@s.whatsapp.net	32698156511285@lid	\N	\N	\N	\N	+39∙∙∙∙∙∙∙∙17
+14355138943:1@s.whatsapp.net	187350801998072@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙67
+14355138943:1@s.whatsapp.net	228643020243002@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙28
+14355138943:1@s.whatsapp.net	265227165819080@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	66654251839578@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙68
+14355138943:1@s.whatsapp.net	83365365547186@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	201665944748065@lid	\N	\N	\N	\N	+41∙∙∙∙∙∙∙36
+14355138943:1@s.whatsapp.net	204823316176906@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙53
+14355138943:1@s.whatsapp.net	266099765542963@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙18
+14355138943:1@s.whatsapp.net	91521542004822@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙51
+14355138943:1@s.whatsapp.net	178503169396868@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙56
+14355138943:1@s.whatsapp.net	11094655524902@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙30
+14355138943:1@s.whatsapp.net	270771985358960@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙79
+14355138943:1@s.whatsapp.net	53601326117043@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙79
+14355138943:1@s.whatsapp.net	261438987833507@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙59
+14355138943:1@s.whatsapp.net	220027013877895@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	115161109119104@lid	\N	\N	\N	\N	+39∙∙∙∙∙∙∙∙81
+14355138943:1@s.whatsapp.net	109229692158011@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙33
+14355138943:1@s.whatsapp.net	81875129356291@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙01
+14355138943:1@s.whatsapp.net	216105691963599@lid	\N	\N	\N	\N	+31∙∙∙∙∙∙∙33
+14355138943:1@s.whatsapp.net	280255306682538@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙23
+14355138943:1@s.whatsapp.net	38543103635700@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙95
+14355138943:1@s.whatsapp.net	32659065553057@lid	\N	\N	\N	\N	+32∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	268323870785756@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙27
+14355138943:1@s.whatsapp.net	168354581106828@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙55
+14355138943:1@s.whatsapp.net	27741227360350@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙65
+14355138943:1@s.whatsapp.net	120950976680027@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙51
+14355138943:1@s.whatsapp.net	236008587178166@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙80
+14355138943:1@s.whatsapp.net	82494091182226@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙17
+14355138943:1@s.whatsapp.net	253849814171901@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙17
+14355138943:1@s.whatsapp.net	199716079952059@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙37
+14355138943:1@s.whatsapp.net	146587384819789@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙67
+14355138943:1@s.whatsapp.net	100588687749186@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	126804631277576@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙68
+14355138943:1@s.whatsapp.net	106807280304379@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙69
+14355138943:1@s.whatsapp.net	96495583944910@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙93
+14355138943:1@s.whatsapp.net	192083973410847@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙19
+14355138943:1@s.whatsapp.net	166399951519776@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙70
+14355138943:1@s.whatsapp.net	278331111010452@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙03
+14355138943:1@s.whatsapp.net	98591024635906@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	107971300352164@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙69
+14355138943:1@s.whatsapp.net	62058066366607@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙72
+14355138943:1@s.whatsapp.net	140256502407379@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙48
+14355138943:1@s.whatsapp.net	25507877900493@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙65
+14355138943:1@s.whatsapp.net	266751895953657@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙46
+14355138943:1@s.whatsapp.net	216789195698225@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙68
+14355138943:1@s.whatsapp.net	261331999563965@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	243602038984787@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙86
+14355138943:1@s.whatsapp.net	240337930956936@lid	\N	\N	\N	\N	+90∙∙∙∙∙∙∙∙94
+14355138943:1@s.whatsapp.net	52407358767280@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙78
+14355138943:1@s.whatsapp.net	87737776529584@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙34
+14355138943:1@s.whatsapp.net	74067449245719@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙08
+14355138943:1@s.whatsapp.net	212759828517086@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	42129669759160@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙87
+14355138943:1@s.whatsapp.net	72207661269240@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	175518754291865@lid	\N	\N	\N	\N	+56∙∙∙∙∙∙∙82
+14355138943:1@s.whatsapp.net	61284921921604@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙90
+14355138943:1@s.whatsapp.net	130494142369974@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙03
+14355138943:1@s.whatsapp.net	71704596504826@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙36
+14355138943:1@s.whatsapp.net	80105451823119@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙30
+14355138943:1@s.whatsapp.net	270514371223601@lid	\N	\N	\N	\N	+49∙∙∙∙∙∙∙∙∙47
+14355138943:1@s.whatsapp.net	207142044848243@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙03
+14355138943:1@s.whatsapp.net	271678374461685@lid	\N	\N	\N	\N	+44∙∙∙∙∙∙∙∙69
+14355138943:1@s.whatsapp.net	247167432269981@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙42
+14355138943:1@s.whatsapp.net	9569321394247@lid	\N	\N	\N	\N	+34∙∙∙∙∙∙∙34
+14355138943:1@s.whatsapp.net	96680099762425@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙17
+14355138943:1@s.whatsapp.net	204470575222906@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙96
+14355138943:1@s.whatsapp.net	268263724457999@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙65
+14355138943:1@s.whatsapp.net	81608723959847@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙34
+14355138943:1@s.whatsapp.net	173057217937652@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙48
+14355138943:1@s.whatsapp.net	60468928504021@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙61
+14355138943:1@s.whatsapp.net	202709772800086@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙48
+14355138943:1@s.whatsapp.net	216063228813365@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙24
+14355138943:1@s.whatsapp.net	213395584348277@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙33
+14355138943:1@s.whatsapp.net	46978503278771@lid	\N	\N	\N	\N	+61∙∙∙∙∙∙∙44
+14355138943:1@s.whatsapp.net	156307130704017@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙40
+14355138943:1@s.whatsapp.net	267469675602099@lid	\N	\N	\N	\N	+1∙∙∙∙∙∙∙∙60
+14355138943:1@s.whatsapp.net	124910617763908@lid	\N	\N	\N	\N	+506∙∙∙∙∙∙10
+14355138943:1@s.whatsapp.net	251548433141916@lid	\N	\N	Lisa Machu	Lisa Machu	+1∙∙∙∙∙∙∙∙43
+14355138943:1@s.whatsapp.net	106678464811245@lid	\N	\N	Victor Cuenca Lopez	\N	+39∙∙∙∙∙∙∙∙66
+14355138943:1@s.whatsapp.net	393205567066@s.whatsapp.net	\N	\N	Victor Cuenca Lopez	\N	\N
+14355138943:1@s.whatsapp.net	167147762364607@lid	\N	\N	Finca Eco Cedrela	Finca Eco Cedrela	+506∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	50686588522@s.whatsapp.net	\N	\N	Finca Eco Cedrela	Finca Eco Cedrela	\N
+14355138943:1@s.whatsapp.net	31207400202358@lid	\N	\N	Mikayal	\N	+1∙∙∙∙∙∙∙∙97
+14355138943:1@s.whatsapp.net	14159027897@s.whatsapp.net	\N	\N	Mikayal	\N	\N
+14355138943:1@s.whatsapp.net	215809255325853@lid	\N	\N	Dave Hall	\N	+1∙∙∙∙∙∙∙∙22
+14355138943:1@s.whatsapp.net	15037995922@s.whatsapp.net	\N	\N	Dave Hall	\N	\N
+14355138943:1@s.whatsapp.net	44607664554034@lid	\N	\N	Lisa	\N	+1∙∙∙∙∙∙∙∙37
+14355138943:1@s.whatsapp.net	15037392437@s.whatsapp.net	\N	\N	Lisa	\N	\N
+14355138943:1@s.whatsapp.net	50661930555@s.whatsapp.net	Choco tour Cr	Choco tour Cr	Choco Tour	Choco Tour	\N
+14355138943:1@s.whatsapp.net	277871650205778@lid	\N	\N	Ilse Golcher	\N	+506∙∙∙∙∙∙59
+14355138943:1@s.whatsapp.net	50688225959@s.whatsapp.net	\N	\N	Ilse Golcher	\N	\N
+14355138943:1@s.whatsapp.net	36550339461220@lid	\N	\N	Joan	\N	+1∙∙∙∙∙∙∙∙79
+14355138943:1@s.whatsapp.net	13145505179@s.whatsapp.net	\N	\N	Joan	\N	\N
+\.
+
+
+--
+-- Data for Name: whatsmeow_event_buffer; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_event_buffer" ("our_jid", "ciphertext_hash", "plaintext", "server_timestamp", "insert_timestamp") FROM stdin;
+\.
+
+
+--
+-- Data for Name: whatsmeow_identity_keys; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_identity_keys" ("our_jid", "their_id", "identity") FROM stdin;
+14355138943:1@s.whatsapp.net	213185047081126_1:0	\\x087d1e1421b253c36429b64830e75f948aaab19fe22ed60663f2d733ca6b7750
+14355138943:1@s.whatsapp.net	106678464811245_1:0	\\xedfb8df1411fef3ca12feb7b3909781bbdca6b218a36406bb9e732e52272da26
+14355138943:1@s.whatsapp.net	167147762364607_1:0	\\x624c78de7647c8e6594e2c7b11b121bbec18bf56e94e62dbcf35dcf701ff536f
+14355138943:1@s.whatsapp.net	31207400202358_1:14	\\xd2758c2178394d074d6e34fbf72bf6e8845538c3c01ead013988eab3ee970e4b
+14355138943:1@s.whatsapp.net	215809255325853_1:0	\\x4c9d25e69794febac4454170ae266cec736a44762381134c9b68e935f2466714
+14355138943:1@s.whatsapp.net	44607664554034_1:0	\\x7231f95f88ed3124a469c0158f0850bc96d66d974e4e971673913d360beda922
+14355138943:1@s.whatsapp.net	251548433141916_1:0	\\x87dd58b30d8d80043c6c6f02721cc0a4d2dbfd2b74adeea1960a008346661b7e
+14355138943:1@s.whatsapp.net	115985742872720_1:0	\\x672fea2528a19d2093429772fbbf2ea6d2c535ae5c75d850633a31e363fa1f55
+14355138943:1@s.whatsapp.net	277871650205778_1:0	\\x681699dc81b38acc0e033590e1953ecfbf25ac8b152db5ed39fadc0c73bb4a6f
+14355138943:1@s.whatsapp.net	36550339461220_1:0	\\xf99b06360c32f3bca2debfe22b863148d7a3a43ea23f221e841479b12f035432
+\.
+
+
+--
+-- Data for Name: whatsmeow_lid_map; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_lid_map" ("lid", "pn") FROM stdin;
+251548433141916	14355138943
+213185047081126	16467338252
+156307130704017	14152729840
+173057217937652	16316038548
+268263724457999	19015691865
+271678374461685	447776206169
+207142044848243	19194133003
+277871650205778	50688225959
+61284921921604	50660499990
+240337930956936	905335831794
+216789195698225	12343984868
+140256502407379	50687857348
+62058066366607	18057966672
+107971300352164	447811340969
+278331111010452	16475282203
+192083973410847	14154972419
+96495583944910	12894003893
+126804631277576	18138179368
+100588687749186	15306876922
+199716079952059	447903288737
+82494091182226	12399809917
+168354581106828	50672624055
+280255306682538	19702149623
+109229692158011	50670117433
+261438987833507	50660267459
+91521542004822	19195619651
+204823316176906	13025431553
+265227165819080	50687353318
+228643020243002	14383778228
+32698156511285	393513306817
+8413924835364	14156760459
+162083643596885	50687772992
+56380203499549	66956397636
+262890871353582	18314207895
+277433462841413	17207518313
+14083197792340	50683906777
+47828906852387	50661418720
+168594696605798	14076974125
+87681841250323	447773327157
+151470712303790	18456614808
+231279979184279	4369919191919
+121938466844908	19185576792
+224459369783328	50687730550
+21380481429678	50685818839
+237524777713873	34687123075
+97560366735473	50687189169
+149593895518235	31614407732
+195623060029469	13037463898
+270548647080118	19054098075
+82412017082397	50688975555
+165223113744506	50660335266
+9028105203915	61476050710
+49164591329303	13059058222
+59048049303568	50660046105
+154550270971974	19144336313
+70085393834024	50689497174
+115985742872720	50661930555
+137168571859083	50683628655
+139586974011507	50660968803
+133994540720211	19175498689
+167529645392051	16125089061
+202121228099700	19789797701
+43594102665377	491759983189
+142889367691425	50688893059
+236652882612393	16462832004
+69394105376921	41795305954
+55572732874899	15743433224
+217995712413810	18282163101
+178219768619256	13362680784
+135905683714112	50688007117
+197431090266138	50662756142
+146565926805535	18086340541
+248670133952720	50684873246
+118266504720394	50672551658
+147369337307282	50670705644
+157535759769759	447397662050
+136391048622110	15169840599
+59292090683417	16503803213
+97740671463438	50660707935
+269569411276997	17202859104
+53180352200922	447870161376
+267744150814773	50689609564
+63621518331978	15083308874
+55912236585005	50663594112
+176480407564409	17322414557
+224137196896299	5491145778162
+156603349233669	50683360586
+280530167845103	12133049999
+229931107794999	50661414565
+101464928211180	16043598945
+117914199957703	32475785878
+165777416146993	50685010399
+266141960245354	17818012011
+280113606295648	14164001447
+229969796038732	19803296914
+96851713884397	17813639235
+7757382082573	50672809445
+94850259120217	13032415719
+64382079885358	17868778192
+152020401041630	50683162761
+147665388105895	19283629355
+35867322220651	393319651576
+78147013837020	420731899755
+263981709144099	60123131901
+165038514036863	50689686478
+212270873325709	14155138929
+18923760128200	14439538714
+73624530767995	50686767899
+84740359114838	50661619090
+241617982193903	50687546850
+167662755811370	13172247230
+143606660772055	14152597918
+108426516504673	50660541617
+238155970175116	19085244708
+23545111384224	50686369111
+221933928972445	85257406207
+199866303156426	50683059081
+212927499997225	50683326153
+58566727721049	50672773487
+99570428190767	50688746752
+276956721455121	16075920459
+215809255325853	15037995922
+100983422095471	447930836516
+21986038276181	18284501872
+173301980749852	17077877047
+233797316542571	50660143327
+74745399754774	12269211832
+217802589925517	31613453630
+125447555813576	16466759655
+69853448785935	17736775368
+266369627082935	15196520230
+205063649800238	50664465384
+22982370009338	420770670668
+65795157672160	14805992204
+266185144848385	14167355084
+65635841233128	17755251285
+188579263303832	14153020641
+83751979757812	18082805203
+204638666096827	17208409745
+164944460927192	447901978914
+190610749276301	50664645337
+19086918565963	972525254011
+144435606224978	50684167809
+134909872091234	50671906571
+104866290602001	15083971203
+275440631607410	14168029551
+259566533136427	16478616096
+12300987715646	16047214797
+161886192578591	50687398019
+21062637117633	14162012407
+41584661917892	50662885485
+254794723766414	50683618444
+269058259812398	50689139661
+135111467110633	50662710867
+251006545866882	12533504889
+70789835526230	14168848696
+210758474403870	50686847787
+271025455526035	18457501043
+144920853659796	50683262379
+199024925782033	972559662582
+190224118358175	447859829218
+271729779855600	50685796240
+144981050298623	447398208794
+271270369308678	15089485137
+162753792725097	13476287974
+42004914417794	393333893567
+38895827849349	50660653935
+172279879200832	19178878828
+224798672158741	15108471146
+50405769785430	50684736304
+272288125550672	31683969094
+191585757208608	50688361627
+201223596716243	13104835473
+51651410968644	15204830049
+132070311493807	393478477859
+8349600981107	16474650422
+235510891049063	50664783305
+147596752515312	5511983631144
+82068302241868	41779675679
+135523649716411	393481860243
+64665061208074	393475478263
+210582296903759	16135235827
+43022737772677	4917634657287
+90748364013706	5491132098042
+26513000914998	491634093977
+40102411694210	18287470797
+130992861929626	593968459020
+249503340871681	447713775872
+169775913238726	50686905063
+29661161648360	19193600670
+148331107999781	5217771959426
+114456751259682	447801552606
+115977169723516	18507666320
+58759464378572	6737262585
+34295515205792	50686733275
+129493398204592	972508322772
+83249435041898	50684040014
+198281627971837	15209915112
+17665284386843	14588950729
+175217519374472	14438298409
+190516243251345	13105313361
+269264384725097	50683133128
+99681912758348	19173618380
+83313976955069	12097700225
+68419097464885	50687387377
+91530182316158	18573347992
+151586709991500	17753388978
+183713015021584	573125889297
+236850300112997	34659370312
+136416868757683	50688842018
+232091727995000	50684016116
+181376519254168	14133458992
+109384780746765	50672114633
+157943160955112	4915779779463
+277875878027473	18083337474
+214310529851406	50663026193
+113477414875311	15852332077
+13185918742618	15136879147
+175432301281308	50764641522
+278399847276656	15413907241
+82158647570497	972507120535
+113924510842977	50688599592
+260781857886399	50686420606
+188562066641028	14152978003
+181432404156584	33659046040
+217067764584546	972544912301
+134471416340714	18179925873
+166266874654760	50235715455
+241635027886304	18602122695
+31207400202358	14159027897
+154387733311725	16135030402
+75463011602441	13038079973
+242924122030207	50663245269
+128711730937858	5215525593454
+111707938668742	50662536248
+93373042041078	14083937117
+214593913802876	50662712193
+70657111027764	50671632550
+21195797864684	14168033240
+81510157795526	17788382415
+156538773745775	50684908664
+256289456308455	15038964064
+195167692787807	5491158237410
+108576991367177	420777073062
+178829754646550	447931725349
+171253264576661	50683212990
+93230905450551	50661151614
+6713151344813	19202151033
+231408593321990	19134440627
+106382162436178	15862650537
+209685319811235	50686453870
+70630854680605	50663804288
+143018199933020	447565141191
+119743788925149	15137081988
+245917194174628	14168440393
+160864191672562	16096085747
+253244190240936	12073238707
+217119857868940	17474448728
+115977253568531	15146194466
+21187174363198	16125900218
+94214855594216	50672539749
+102933354033208	16127500582
+54223978922153	15414155472
+108503909838893	17203086164
+198084059521193	50684923358
+52304397004906	16479242117
+80964629831878	16027691580
+98449341055166	50663598906
+11433605615842	50688692174
+218540854501410	16315138555
+113928336093395	14143694565
+113726489395421	50684266091
+120383772557563	50684850634
+192165460365466	50685142373
+57604202049675	50683699981
+150998215590142	14168333547
+85676024451159	34662455398
+21664150642794	17862866388
+112352116654193	447912611482
+104767758037179	50671992356
+40145428443253	18176067061
+204759042633809	50686360791
+124957979873285	50684532542
+150431498006642	15403929490
+151990772465691	50660263543
+10548540358815	5493515377414
+166924004683836	16087126555
+20435571863723	50687538231
+171201708175612	50688471490
+90383476355192	50660047774
+240926324727972	14039155091
+17175725236408	50688201072
+206480636702938	447502171413
+126478297624761	19172024364
+112897644568596	50683892739
+30202327490639	14148656538
+188210349109468	50686531811
+101348645281814	50663762604
+90125677625461	50684238686
+172318450053122	31618946497
+98170184958061	50688572742
+60349004939282	50663539678
+226469414441068	50671209936
+236279186890945	17752238687
+11446171750457	19054075554
+276926740606978	5491132172058
+44985554604049	19204894149
+263436164444251	16476779402
+212214434803712	19176000628
+60834017468595	17054414607
+44607664554034	15037392437
+76682866200635	18053671712
+218128655089806	19199697818
+280659402690632	50660034819
+247858351579205	12066690439
+10368537628908	50683076800
+17665250840593	16263755749
+134162010927355	50671083314
+245917110243581	16476281535
+91160764756073	447857466328
+201708961542156	13477682081
+20512948363432	14032171782
+260829706453200	12363397297
+91431414816780	15106547386
+160438922813616	50672764735
+231391681884385	15403191166
+59408155418869	15106487406
+230790336143396	13038195251
+230257642737721	19178659202
+272331175927855	12037671768
+223213829283923	19415573718
+39986296582212	4521469504
+227620415344744	16178066585
+3307275817039	19704090222
+138323968450633	50689972777
+127809687130250	50688158782
+149357772972047	15307981427
+54060770193557	50660599196
+75136292139173	16048628376
+139930084835367	14169090135
+174362820870366	19788801049
+215358384394361	50686378919
+93269677605065	15059476310
+212450809008316	15165672577
+34570628022348	17046500942
+137598001516654	15168512770
+150985414565950	13522588367
+225601864601772	13122177900
+78447678369925	15757702915
+195202539065437	50664144440
+47549717188799	16102463806
+136529024393363	50672747907
+106618855379170	50688012942
+63247906525226	17049424754
+68431831367814	4369912922203
+240531137396810	13608884166
+257135531319486	50685013112
+264428301856820	16127439569
+278700461445223	447539872545
+188291416649825	447771880650
+245775342809301	50663780337
+136631617102034	50660366112
+216101900308684	50689281666
+29373432348745	972505786787
+264664508305658	50687907021
+219150890848506	15034773405
+169896088444965	14136952698
+234513938518086	50685780165
+567036383336	15109262937
+261207177068646	13104671224
+48460283813936	41786172847
+239745124827311	50687354370
+137340739706991	12065958577
+219000399261860	16048414283
+128918342365291	50662614004
+238710272606255	13035944010
+170136690544773	50683790157
+165141643554842	50683266255
+144134924943411	14167056542
+279357641732346	31651170172
+133569288638710	306932520329
+62247011381386	12067711587
+227341343158398	19179402128
+101808005496943	50685173191
+220130109837522	12406011758
+180165506248894	32479030536
+236931904483384	13059260539
+266120518967414	15818880891
+39294773264484	19545159202
+8083313057984	16122808392
+52209790279689	19732719834
+121483334521068	19177448300
+112755927433455	447763845120
+228686137683993	50671936363
+63432472674356	50662237434
+15148752314478	50662733112
+134466987122792	50684449627
+202993693651093	12347882822
+119357325709518	50683441934
+51372170948707	50685915302
+147068337299465	19198347900
+83318104178850	16462462343
+73247043358879	18313317681
+167241765126301	41779665632
+270385471832101	50662375518
+35699919196274	50685324110
+104161597227252	13103514173
+99785629524036	50663522045
+36550339461220	13145505179
+46175579308055	14848345472
+147914563305565	50672089390
+42349065433109	17077081457
+210123104452684	12347883865
+225151379619884	16824354691
+275840298393716	50664255072
+151539599569053	18456614811
+17532140396606	17187496303
+127586751512810	50664465362
+1327262335115	50687544777
+167688508842173	13604604949
+88115851051075	16726739890
+185946716807277	50661435930
+71975162630217	4526187777
+184249953038473	447791366059
+22578961854567	15303884036
+213395584348277	14166666033
+202709772800086	50670127348
+96680099762425	50663341317
+80105451823119	50683899130
+71704596504826	15038197636
+175518754291865	56951768582
+212759828517086	50671704447
+74067449245719	13016739708
+87737776529584	50688431934
+98591024635906	50688656910
+166399951519776	50688542570
+27741227360350	50683139365
+32659065553057	32472875172
+38543103635700	50687237795
+220027013877895	14135120972
+53601326117043	50661337479
+11094655524902	50671944630
+178503169396868	50686125056
+266099765542963	50661583518
+83365365547186	50688208072
+187350801998072	50686301367
+112524049567955	50683310533
+73980862066934	3547751832
+39384900436049	50671441043
+75123440746703	50685439402
+94317649629369	50686596585
+31903100981385	50687303141
+176875561332781	17734258000
+101993276248245	50664126910
+81917961605167	50670685345
+125275673260210	447797758446
+200936102301798	18013185519
+86960303562785	33767047411
+203830725759040	50661260683
+256821898039345	14076394324
+268152172712133	50670093136
+74101104328766	15148656807
+13203165712481	447928190194
+125022286962916	16469206154
+258853451100292	12132840759
+87741937225804	50687120206
+245487479296053	50670788311
+94764695302190	33769246305
+134630682415145	50664147170
+175651680161850	12069419234
+199325607006429	50688894563
+172640656433316	50663630152
+214937427247143	972523797909
+224309113020574	50685836604
+101099436519511	50684789855
+274066493669574	50687311212
+175428090204191	50688097370
+24031029923910	50672994454
+280246850990096	15125171862
+34102442999883	50661416248
+195159170007087	50672968839
+90731251294386	50683705119
+86595180990586	50688406819
+161079040688377	50685926322
+41549681393779	50683136271
+226830627958827	50683353249
+9943503601725	50663421519
+176828165709967	447829812519
+102001262227619	27826505697
+212635677147177	50686800461
+104350626144289	50672783692
+69707906437355	14136879906
+185151829094491	50687337819
+31494995206352	573126532305
+154864021708991	50684161222
+278777737248893	50688281928
+108504513818712	50671984329
+47227477205014	41775272237
+144779136475386	50661250728
+83245207138361	50664130255
+129630786814046	13476538847
+39853152592100	50684184884
+80775600930932	50671107154
+167151738585323	50672864711
+36017612558486	50683792985
+178554893545707	447522919070
+18103320731903	5491149801642
+54288537649396	50672265898
+98956197531859	50686546983
+37606867861685	50688929717
+168036317327495	50684479987
+76849984057374	50670434322
+118837651480819	50684894310
+247334801830037	50671702564
+18558721470577	50688979073
+265236275834911	15748492111
+227212527689766	50672707082
+251006596157668	15036798781
+103917169942649	15054599691
+221109261717754	393400708189
+232843263389860	393661883186
+50350119751764	50660748193
+210827261038614	50687853119
+64746648789038	50685170116
+223699277983892	17187152646
+263759008387082	50661683967
+259802705981684	50688287140
+85822539862028	61408391911
+56453100499105	18582540764
+228642751803622	14038636333
+48365777764542	50687237363
+224665477845031	50683283766
+167147762364607	50686588522
+158535883206720	17324251849
+190594055938283	50685205831
+27041365766205	16462078642
+114606940901406	5491134225644
+211359685939267	919811411636
+212128451555523	18472575293
+233165922787412	50685830947
+196103995687019	50686997600
+46021329584381	18282010863
+37855959212055	50685397974
+78812666687550	50688720824
+208362033684635	50663895788
+237718252597367	447713772777
+32379892674704	50685848372
+210118541082798	50683233909
+184932836077733	50683540000
+14220670275821	50687960605
+37117174534330	41797832278
+104148796227621	50686023849
+27006888595662	50683687146
+207142514614465	50687942560
+114203868287028	4915223436050
+44977031794792	16048800982
+233422932988007	50683622267
+160542153036000	15194003062
+196739684397240	14405540258
+145501211119630	50672539313
+95528780095724	50688369041
+82274661998722	50686933796
+221367026900997	50688305175
+156715353907296	50671441035
+281471369633812	19186880637
+156302751875204	15302639780
+193041751109681	5491122521571
+4204873699552	50661530767
+194687310803166	50671892404
+230846002933864	50664541502
+104707074830524	50689172222
+212059782393954	50688580281
+52596303737007	50686685721
+143911469203468	50683713217
+177442614415466	15109196318
+19881789534340	41782447482
+2937858326539	50684264364
+45978044391459	50660254576
+123467861065810	491707733894
+216239456678020	16195508249
+211544386355231	573145841324
+222908903383090	15166376730
+102843159687411	50662170977
+65502663692513	4528976807
+176390213214257	4747334203
+228407115796524	15709521558
+130593295712274	50689430902
+91105114775579	50663240750
+179843568271521	12269847773
+8413891272709	491733410675
+1718121181229	50684440179
+233483163140108	447907751423
+21410898546795	447453241101
+127595056226484	50686063934
+104501201637450	17789772522
+218390664839215	50689528742
+48326972055743	13477935186
+91207942316102	50670798577
+260464164487377	50686187495
+274427036086383	19707798732
+182033749942469	50671893268
+37538098106526	14153352065
+65743181897917	50662132966
+244277120659599	19132134102
+7456214265916	50686090371
+189107561095205	447895125587
+204608114839604	50684055175
+69132364042473	12066797163
+165910509789392	15144625383
+34433071611987	50689455350
+73366782406728	19015690881
+133079628832996	50661613652
+29579506901064	50688016866
+146411224059978	15038668368
+65193409253513	31686269808
+15384572883077	50688934707
+165846253097146	50661402417
+127788229075158	50688228955
+232628548538570	50672073839
+123154026483879	50687981484
+117815365349628	50687232008
+218451280982224	50687714520
+257960165023978	50683252397
+236734654734475	13607740660
+86930272350208	14167958370
+129051134050305	50686750660
+92517940858946	50688289123
+145672724607094	393409085521
+213060560105472	12057655856
+121831243681824	15103161424
+88592877621389	13127712757
+194214193279069	50685990920
+59330678280290	15185882082
+84314570121414	50686150445
+262238556430373	50686782670
+81505795760186	14136952697
+4118907191354	50687051755
+243894130331750	50688592109
+74762999095305	50687523999
+229823800713370	50684102836
+109590419083513	32485938571
+1473274466519	50687032998
+30249572147225	50662195936
+119456210620597	16106130088
+115710781055100	16134838081
+228453722927268	17659770066
+227899705704514	5216121171413
+61701567344855	50687607874
+47120170094735	50683179639
+39724337078514	50683507403
+264213603827779	50687224656
+193642962636938	13127209145
+92363607253236	19493103722
+6300800970982	50683924909
+25422112813157	50683226363
+219144024306	15209773216
+279701356593405	50671325788
+203221444346078	50664450932
+85186515595367	972549391808
+71215372857506	50687805469
+78331680657584	50683140825
+7242019549374	50686913552
+158437249925357	12068532056
+205969602674856	420602653057
+186423072280803	17757205991
+205720444239932	31614113664
+12717549174801	13522294867
+204861886963865	50689885910
+130494142369974	50661310203
+24288140738786	16132184235
+106678464811245	393205567066
+86934617587895	50671051770
+164901595136019	19736100988
+106081565049056	14153594660
+268688926216438	14168974200
+253493466132596	50687674804
+46613984727227	5491171278029
+55826068811833	353872133261
+232946225172629	19013059742
+19976094236697	5491132157777
+198835863339059	16085767472
+195056040472725	15629806911
+187415226519746	13473590001
+276767726141600	6281344268138
+34828057637114	491737223323
+6631731540146	50683083666
+188828404994048	50684558547
+269960270110903	32486386905
+197478485905421	31643064828
+240552561901778	46729072944
+39569567310063	5491149929190
+27144226869389	491716521357
+271794187591894	5217773274170
+268585914110165	19786215322
+261331999563965	19786526510
+103985922981931	50672227089
+2589915660444	50687029870
+231576147337374	61406606906
+126942221176924	50683380055
+224549614411894	50684141111
+149134283673702	13017044072
+223793666601189	50684930333
+268323870785756	12892133327
+216105691963599	31628247233
+243314292985939	41767675336
+144393143074871	15144494466
+171133592674519	50662198509
+157208838955141	50672913347
+221079196930065	50660479619
+16102016987219	33788126746
+52472320118917	50664495517
+164218141708467	50589205583
+250521197744297	19522019706
+167010038202456	17869738979
+115418773602399	50683380508
+75256819650688	12679127063
+65146181427325	18593278583
+176442155495440	50687496921
+6112342478943	15128259130
+150117747322882	31641620341
+142395547078726	12398957747
+251015538425968	12628531145
+228178811474053	16026251500
+195103318626413	50685820480
+213610299129897	19725957211
+146157753905342	34646141522
+266665963081976	15096683988
+22286602080458	15037089870
+77683207749752	50684337885
+124541300945023	50685148359
+134793438187681	50670130759
+21702620774485	4917621432403
+187252269424868	14164824880
+108302029574372	31642101102
+233547520569354	50683362586
+216063228813365	50662286824
+148408971071627	50663087906
+243443779547233	13853338898
+121397502316716	4917610312767
+8645970493646	4917696377067
+144182370943081	50664225145
+53223301853394	12068906793
+103547802759223	79959619821
+154241100443699	12488802531
+189021577822373	16464560217
+181393816584435	19166270428
+229617675804731	34628487944
+164815192477888	17277100038
+69183366820085	50689711100
+245994268672078	15875963634
+254391047188647	595992914411
+162577464209660	447598056086
+78670966350008	15168161734
+6468321460440	50660097884
+237632000917573	14136879951
+180942761156661	50684081671
+42206979186860	19285832371
+186569168281771	31616965720
+74492130889741	50684913869
+198109812490396	14504940206
+140677392396395	19496364744
+275483564486731	50670053115
+81608723959847	12019787434
+25507877900493	18083593165
+106807280304379	50688239469
+236008587178166	13309983780
+66654251839578	15127979968
+248876325945562	12507777361
+140020379836625	16462891396
+221371321835683	18056980720
+143735492997272	15105305302
+63488324030667	15179838313
+21389004263607	447952050342
+142485707858113	18083598800
+165966277300415	14404883635
+112133090107645	16043513296
+13615230910684	15416612030
+160322623115338	17867687766
+219043499913242	31624890650
+149469173678188	17204127172
+189420993048584	17083592517
+90142958219417	16177102249
+131756862771313	14044069446
+253794046750818	15148653944
+133307446640751	19284510141
+187209118429338	972525341751
+146368274407501	5216863633124
+240599789748335	31653137440
+64089619472387	19494447210
+13082520727676	56994639966
+180161060302986	50685013680
+102246192828468	4915731797149
+183017179988186	14167062001
+23815761432641	16048489993
+98423604814061	14037026621
+252351357169697	15088643316
+155409130221698	31621340294
+238486800060450	15306151396
+154752016982020	393388808414
+236408069423300	19136022083
+266176974323793	4916096639678
+206497799774443	13474603604
+177201945288878	15857897643
+78881990168648	12104261673
+222157250539759	50689840193
+32113621528692	50688919839
+46089428295871	13472956438
+272584411238560	12046880258
+69037354672364	447950122346
+30391222198276	15418061134
+91074798309508	19412649780
+78001085644921	50661872798
+56775709569152	5219991847000
+278880917131475	50684061827
+153588131217424	50686438028
+20512864522440	359899744747
+82145678766258	14014806779
+184610747089081	50687243943
+137297269903406	48502229112
+170880122523811	18019716710
+174337051123852	393703084459
+81338526912673	19209040474
+73615924056243	18016281367
+183936789553292	12899275903
+234466593226957	79776003333
+99132207300623	15195205760
+258638652407831	50687294883
+122556925366426	17577174283
+126435733827751	61414389105
+39848857600097	13474766591
+60804305002620	16616258226
+231331317452886	31628108510
+126663081869511	12157156944
+224528122806402	15852024362
+234621212086316	50663319397
+36181056184526	13032417711
+225425787744456	15865242944
+227693547241713	16047216189
+157496501100643	15103883630
+233298546708494	50685936497
+211024762409086	50660526957
+242721570713841	17577735572
+77589003681904	12012077604
+179186119528666	14156768675
+123416019505164	18327769767
+236085795909710	447891129836
+228166329180214	16462219062
+62968532328588	12063565156
+90950244294692	50662200442
+211681892368536	34608141818
+203758147522694	50672738011
+272932353925360	34606721547
+280873765183686	19788779118
+243580580937778	14162754126
+130327209111646	14423620222
+30253934231713	50660510707
+59141884252298	14168251858
+72112786116675	14015290359
+113421546700903	12016861720
+132529923293410	18479891186
+152415588335687	12707998204
+242141699780743	61402056895
+176257153122354	19597991916
+180397266739324	818085639934
+109813941969136	50671570381
+88575227990117	4528124646
+163204563005448	18054557539
+275715475910892	17783028822
+52407358767280	18455986578
+208190100742300	18583539893
+152295429918845	50687047400
+153064564646112	15856645215
+42889744801858	50688792145
+151745506336803	5216121507321
+164304041041933	50687523943
+96095698960508	447771911220
+246501209043191	17277100037
+94390596968672	447405222222
+198680925700137	5217226158799
+135403239653399	14109032489
+90954556035088	50683030430
+73547154219131	5217293474678
+\.
+
+
+--
+-- Data for Name: whatsmeow_message_secrets; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_message_secrets" ("our_jid", "chat_jid", "sender_jid", "message_id", "key") FROM stdin;
+14355138943:1@s.whatsapp.net	213185047081126@lid	14355138943@s.whatsapp.net	2AA3A83A9C9979F2D7D6	\\x872f71729edd16cda1adfba4813567b4948026c000a1637f9d53b17e836e8a7d
+14355138943:1@s.whatsapp.net	251548433141916@lid	14355138943@s.whatsapp.net	2A6D9FF010C5CDFCF70D	\\xa8bf6b08140e1a2f4eb10de91ef99ab94022b9954d174387c8c02961bdb124df
+14355138943:1@s.whatsapp.net	213185047081126@lid	213185047081126@lid	3A67428C15FC9ADACD56	\\x9fbc64d00dd4518467c3899c716fe1d0bc5a3aa7cbbf5c7ae3da2b762d1fd20f
+14355138943:1@s.whatsapp.net	120363430895695851@g.us	213185047081126@lid	3AA73E27B8C8421D269A	\\xe705441257e63889381e77c9ffafb502d7d2f604ef1618112eb5037f1ef179e3
+14355138943:1@s.whatsapp.net	120363430895695851@g.us	213185047081126@lid	3AD58D2B81107DDB589F	\\x740b9a059fd9ddca2813360de7479a3669534f7a610c254a702ca7aa1aa61735
+14355138943:1@s.whatsapp.net	213185047081126@lid	213185047081126@lid	3A1B43CE356E7F3E07EC	\\xf14e8d019d1049c95ae80af30f30a60ddcf3e7285ab03506e62c9f3727d86bd6
+14355138943:1@s.whatsapp.net	213185047081126@lid	213185047081126@lid	3A11F584588E848FDF0E	\\xdc327818034ae5ab1b5d871a85ca113abe6442e4852faf7f7e77c71583edba35
+14355138943:1@s.whatsapp.net	120363430895695851@g.us	213185047081126@lid	3A4AD324F1633D4DF828	\\x0c8c1cb5a847e0f5f91aa511df4ac868d82a2683006e7e1147c0312d3200dc3a
+14355138943:1@s.whatsapp.net	120363430895695851@g.us	213185047081126@lid	3A2AE78A42C3A42D61DC	\\xf527818d8f2b19e06a02375fe35be77455b9c3fafcd1990b5eb4d338e6880023
+14355138943:1@s.whatsapp.net	120363430895695851@g.us	213185047081126@lid	3AACA0C1DDF461DE81C5	\\xba0cc6b2509fdc8fd9431b432066e5ca18247b28281e8d87a219de21ed677981
+14355138943:1@s.whatsapp.net	120363430895695851@g.us	213185047081126@lid	3A29F06622F8F461B72F	\\x86c2ab0007d01b4e1243a34fafc921298e965f171c4d7751a011488792232655
+14355138943:1@s.whatsapp.net	120363206404216704@g.us	106678464811245@lid	3A170971B38E1B3C013C	\\xec780ce085673a82650a227654bcea8af696fbafee00f6bf3d642f7a72c9472a
+14355138943:1@s.whatsapp.net	120363206404216704@g.us	167147762364607@lid	2A2D744A5AC9EE0BC4F1	\\xccfc8a76a73c4a4497c706e1977e6c4de483a52ed21bb487520a820786ec6d6f
+14355138943:1@s.whatsapp.net	120363402822094365@g.us	31207400202358@lid	3B04921E38EC04FA3C2B	\\x3598237e7a6cb0e0e7d21c512c7f2c902ad04390b3f28c9078f9cbc85f04e2bf
+14355138943:1@s.whatsapp.net	120363402822094365@g.us	31207400202358@lid	3BB74608C76E4298BF16	\\x892af87bb8efa484f57b6abf5abdfac838195331ac55ce21738e2ce67aec5143
+14355138943:1@s.whatsapp.net	120363430895695851@g.us	251548433141916@lid	2AC2F59ABC2A14C6584E	\\x0b911dd8b6e70a3a2e370322463a6c0e8e9a61e832d97167f9fb4fdf4a8f6017
+14355138943:1@s.whatsapp.net	120363402822094365@g.us	251548433141916@lid	2A7E53244B1F13EBDF25	\\x0a9a0271b0a412a3aeb50e58b72570fa46783bafc2c157ef46dbf6aa10a55831
+14355138943:1@s.whatsapp.net	120363206254204249@g.us	251548433141916@lid	2A32CA71B2E350818A75	\\x520cd6827b993ae5ca3f3661fd2238a959d499585705dca707e9e86186c1dd53
+14355138943:1@s.whatsapp.net	120363206254204249@g.us	115985742872720@lid	A562BE98BF16A239831E6E7B107711F3	\\x6a92b719c59d98ab4603220513b306b5a86ad21456cad374770e7cba8a5120a9
+14355138943:1@s.whatsapp.net	120363203127855640@g.us	277871650205778@lid	3A464489D6C2BC610DEE	\\x689ad938affd1286597b850693622ef3d77dbd6796556f880e965f8865d66b53
+\.
+
+
+--
+-- Data for Name: whatsmeow_nct_salt; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_nct_salt" ("our_jid", "salt") FROM stdin;
+\.
+
+
+--
+-- Data for Name: whatsmeow_pre_keys; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_pre_keys" ("jid", "key_id", "key", "uploaded") FROM stdin;
+14355138943:1@s.whatsapp.net	1	\\xc0b9efdb555fd0e8a0e5406d3b27e928ee1797f2b64ab1a4db706d18e050c755	t
+14355138943:1@s.whatsapp.net	2	\\xd071473f50fb758a9346a32538138f66b38827f3b71131a7b0d20d669dbf6d63	t
+14355138943:1@s.whatsapp.net	3	\\x10f5498f8d85c4bee85a91c6c18e941c161f80d1f02dfc198dd4ddbd21cf3770	t
+14355138943:1@s.whatsapp.net	4	\\xa87b903222990793ce341c43f9706ac75f492ae3a4fcd069aa7875f2ca18c76a	t
+14355138943:1@s.whatsapp.net	5	\\x688ae0125c850a82974e4120b3bdbff7ca5a3e201acc73898a29ee2757039a7a	t
+14355138943:1@s.whatsapp.net	6	\\x686c00d096ccb5aacec93629d24bf758e89c58a402e0cca5302eb84cc99beb48	t
+14355138943:1@s.whatsapp.net	7	\\xf0935d4c8e096677193f8c1d829b750218ba7c9fb5df60dbd8ef5b17063a3c5c	t
+14355138943:1@s.whatsapp.net	8	\\xd806d1b98ea52290d203dc5589ef5398da599177d3835b6415f1877fc4b73245	t
+14355138943:1@s.whatsapp.net	9	\\x409b60f31472363dda9d412a7adfe602e4558b1b37065ecdbd71d263774c5366	t
+14355138943:1@s.whatsapp.net	10	\\x60013f8af637a4f468b43a02bb9162d3296d9b1f56fdeb18e782b135e8996060	t
+14355138943:1@s.whatsapp.net	11	\\xf8d3b30f219c5e8d14041e94b0229acc64e7796678681d5df0fe3233984dcb79	t
+14355138943:1@s.whatsapp.net	12	\\x68125886b8a365f5a1fb5ca8687a1f0c28db4e48d89b44ab07db0510be48d46e	t
+14355138943:1@s.whatsapp.net	13	\\x2042cc10c7f88f9034554874364d5b7eefcf067d02408d070efe129f4971df7d	t
+14355138943:1@s.whatsapp.net	14	\\x5022e833af19a114024077c588dfcdaf224d6b98cc620e8b2f5a4f97cd82187c	t
+14355138943:1@s.whatsapp.net	15	\\xf0637143334663006e7511112f4986e373e15ccb706dac3734d6f10c88599860	t
+14355138943:1@s.whatsapp.net	16	\\x1852cbd3bc3c41063cd06c1fe6ee96c375215c49683b768de67a33f98ca00753	t
+14355138943:1@s.whatsapp.net	17	\\xa8fb1f18791304d0729ffa3d314080a07cb05ab8c818881d01fa66e09a6ef758	t
+14355138943:1@s.whatsapp.net	18	\\x304d215d173b7acfca65e21e785c08c0c8dc50e113487207cdcd768a7836d246	t
+14355138943:1@s.whatsapp.net	19	\\xe043ab87aee08937faf7d8c73f32cef24dcdccfd5501dd0243236ebb69cfdc7c	t
+14355138943:1@s.whatsapp.net	20	\\x008ec5e733852f1a0b90e644f224022ad99445042067382484d13fbc9a69224d	t
+14355138943:1@s.whatsapp.net	21	\\xb01ccc5a7e00fec2102ecd88b8cebee8c7c6295b7790838f4d6f9c842a5dc44a	t
+14355138943:1@s.whatsapp.net	22	\\x185daa99a65a41ff5b499c6bb29b9912261495d17d1dac1be178727cfa833f5b	t
+14355138943:1@s.whatsapp.net	23	\\x404300be5120f4e84a42b99026ea91434f7d4d285d35403f614186bb02d4606c	t
+14355138943:1@s.whatsapp.net	24	\\x8862c5f24c6d7c38c8e8eb9d5e9f6f8606d52ec7e77d44c2ec344ead32041367	t
+14355138943:1@s.whatsapp.net	25	\\xb8cee056b66e1f56324df24121d7d9d4813a4e81f5dd335e3ace8f71a1751349	t
+14355138943:1@s.whatsapp.net	26	\\x28add5ab72b32720411fefe62539ca0283008cd8b859db206637b40db82c9773	t
+14355138943:1@s.whatsapp.net	27	\\x58873941297d290f0d2c971c37ff485d1509fdf3b8314afa3b2e939cf2a4515f	t
+14355138943:1@s.whatsapp.net	28	\\xe8f42113cd30bacec07061cff97a963f52b0982c94521d79ada0f7649c176c46	t
+14355138943:1@s.whatsapp.net	29	\\xb80684d3db8654ce2691d03604985619b9775e98878e1ce41f5cc17bd8ca0463	t
+14355138943:1@s.whatsapp.net	30	\\xa072458a059dc069ef20e57e9c193217beeaffb159fe45e45431f23d5d6e4461	t
+14355138943:1@s.whatsapp.net	31	\\x58330b5f4270f4c6ca8ac73535b89c3f864e438b8962a0f4eb4724274675c154	t
+14355138943:1@s.whatsapp.net	32	\\x588113d589d198faf748d00f20e49a27beb6b9db7b92b261d43dd1e36dc0ee57	t
+14355138943:1@s.whatsapp.net	33	\\x40c3a1ae6d6a1525d0cbea599e596709ea781e2e4bafbcc8db1b17cba78fa87d	t
+14355138943:1@s.whatsapp.net	34	\\xc8642c74becfa24207ba044003b53394cfec3cd8dbcf9eb472519b5183c4d554	t
+14355138943:1@s.whatsapp.net	35	\\xd84060f5632c161faff730ad446aa3eb66159aff4ffa105e7ecb5c02b1471348	t
+14355138943:1@s.whatsapp.net	36	\\x60d1280034ce6d5af2a251b48533f220a9f407ae369f7704c28ec7f720896a5f	t
+14355138943:1@s.whatsapp.net	37	\\x501297feee1a3246c7da426739c9a03670a7b57eb6a4db40eaef2958a5c30274	t
+14355138943:1@s.whatsapp.net	38	\\x18621ce098e437dd5b4ebf6c82c225ab1f427a069a97fdd9f7c29ed23b11de4c	t
+14355138943:1@s.whatsapp.net	39	\\x08b199579d39cca03e2b9551d2fe26b6d4ab6640bde7ff081116e6bc5e4bae43	t
+14355138943:1@s.whatsapp.net	40	\\x100f12b0632252dd81af6d9f103a02e810e05542081d08d3449b73c8e5ac4a4d	t
+14355138943:1@s.whatsapp.net	41	\\x68c8b5b17f80263ce0f102838891e5309ba43dc4114399c21f92b3d25c9e327b	t
+14355138943:1@s.whatsapp.net	42	\\x607bf4ab65191846d0f84313c3dfbf669c288dc03d5b3b7e1564ee443f874e6c	t
+14355138943:1@s.whatsapp.net	43	\\xc8d2a65365af72aaadfcb9e0e6f9d618348bc692566265fc89a434f20b120643	t
+14355138943:1@s.whatsapp.net	44	\\xb864384f94fb2c07ac320a90ef4584e483619fe6bcb6f0755682ad39f14f5761	t
+14355138943:1@s.whatsapp.net	45	\\x4834db962966e03a043485bf4b718c9f64d97e8be56f123906e733b94e0a3f6e	t
+14355138943:1@s.whatsapp.net	46	\\xe0608c9bce713727084371c27c083b41880534ad54f0a32610612ad1f379887a	t
+14355138943:1@s.whatsapp.net	47	\\xc8556906bba907e25a28bc13d588c66bcc73db0f6f1ecc8a5c149b3505f1aa71	t
+14355138943:1@s.whatsapp.net	48	\\xe87578806be5cd4af7b94ef1ad3558b0032d9e86949fef36108ff2014ed0ce40	t
+14355138943:1@s.whatsapp.net	49	\\x8809ee6fdd7c398961ad5cea45d22922bb18bc157bf067e5df65d18c7056f874	t
+14355138943:1@s.whatsapp.net	50	\\xd84ac47ebcbc265cdbb37690e9afcaefd6bdc1a5fe68e997a9ad8412c8740747	t
+14355138943:1@s.whatsapp.net	51	\\x3074eeedb480ed571033fa414e59581dc568712a7b347aad265181183f1c456c	t
+14355138943:1@s.whatsapp.net	52	\\x58213f632b8d466b8acf67b1c661ab7f12ed3ad5a1e9c30b3598f2606e588d70	t
+14355138943:1@s.whatsapp.net	53	\\x30f0e3c0f92469ff2a83546bcc9e33fd08464dc199b282986c27dfcd7257255b	t
+14355138943:1@s.whatsapp.net	54	\\x902a27b46d342adad84e6c7e34c252630ead9fc4daf85f80d9c3b67355404e74	t
+14355138943:1@s.whatsapp.net	55	\\xa09cff5347c8cd18fa70462d3cc16d79b76c745019b0befeae0a5c1f16a9a97b	t
+14355138943:1@s.whatsapp.net	56	\\x90805fa21d48d32029a7bdce8c7af92351d1b2b849e642bde05b473cda532565	t
+14355138943:1@s.whatsapp.net	57	\\xd0e361db99d4af0945bb03db97e088ecf971640af71e99f02ccd1c596fcae761	t
+14355138943:1@s.whatsapp.net	58	\\x786e3c1d0601e5adc32af7220ccccae9cc31474a0dae774e4235d1b14f272673	t
+14355138943:1@s.whatsapp.net	59	\\xd05b055b9b3d304e7d5719584fed5d6440ca34b860f4872e6e5be687f51ada75	t
+14355138943:1@s.whatsapp.net	60	\\x6053e3168447f4d333c89909401fccd74aa6fc46e3647d74a279b17024f4ab50	t
+14355138943:1@s.whatsapp.net	61	\\xb0d20b3fac523da3005041c9aaa01a3095974ae4cade8a97ed004235473f7842	t
+14355138943:1@s.whatsapp.net	62	\\x684770f18ac011abd7ba72988a61f03211dc11322bd4abc5dfa275baf1a3d872	t
+14355138943:1@s.whatsapp.net	63	\\x781b51245c01b63b70cb739ecff236e6e91de3bfe5ac2b5ba9a141f1f3abb65d	t
+14355138943:1@s.whatsapp.net	64	\\xc05eb052e5bd5d34de5f2d4657168d7c50945659bb4a5bda3137e8d2fff9e34e	t
+14355138943:1@s.whatsapp.net	65	\\x6012cff02c18762b2f15712f1f8b3af663df66e3adae2fdcf09153e83ff9c543	t
+14355138943:1@s.whatsapp.net	66	\\x58c8fe35e74ff706009b5fc415934ce7d05a252cd98f5c17fc36bf239173f254	t
+14355138943:1@s.whatsapp.net	67	\\x8014ed74aaf6fc0cde5286a9c660107d89dc104a2b14aa7f31a6c2ec079f9545	t
+14355138943:1@s.whatsapp.net	68	\\xb0db70327e1c1bc8c3ce901c07b046e6222eb39f048df8f6cf284b673d28b969	t
+14355138943:1@s.whatsapp.net	69	\\x307c4e3b63fb787cc12e020aed9513b54184fc11655b1692981fd88f4c9d2140	t
+14355138943:1@s.whatsapp.net	70	\\xd84cc0a89ae5b7d6e1dc9dd0aa2543daf8e7614da270b170abc398b27a327570	t
+14355138943:1@s.whatsapp.net	71	\\xf89b431deb7d7317d127e7760716c92d6cffe54283d950780a1064c8f844ef70	t
+14355138943:1@s.whatsapp.net	72	\\xb85ba9d98662fc9459b8daa98c5e0f18467e9f25c7f4194cfe9c47093d8ad05c	t
+14355138943:1@s.whatsapp.net	73	\\x58e8056bf9e8aa4d1e21e487996ca57123f266c85f3edb9f6f2bc709e3f3f35d	t
+14355138943:1@s.whatsapp.net	74	\\xc8bc0f34fec4b6bf39e3f61c8982dfea432309c3fdd16fd94d74f5eabc416f68	t
+14355138943:1@s.whatsapp.net	75	\\xb86083dc402069da22cfdfee8f92760b16ab4d715efa7e85f0f8bae87ac67972	t
+14355138943:1@s.whatsapp.net	76	\\x98c31647bfd0996edc4698e448353999fdbb0e8a4d942872addf85cb86eec452	t
+14355138943:1@s.whatsapp.net	77	\\x30f366b165ea639694ebd0aaad26277bb48478076c4d0ae0ae14b117c0b0da7e	t
+14355138943:1@s.whatsapp.net	78	\\x80a4b6e179a69095c55e02e2d9c1b5a4a158a1222bf1ca2e372f99537f7ccd6b	t
+14355138943:1@s.whatsapp.net	79	\\xe8d8e6dc383dba5ed5f1c9240d590798f54c6b1948d890bb3705d71e37207846	t
+14355138943:1@s.whatsapp.net	80	\\x6071fd09299f3459d4ca8b2bdd8b08e60a1b7a622b65f4482587c195e64b1676	t
+14355138943:1@s.whatsapp.net	81	\\x903406f4a1ac190e0aa7a318ad567fc8283700d914a57c7bb4d9d1a17fe8ed6d	t
+14355138943:1@s.whatsapp.net	82	\\xd8f80888cdbdc5c1ca6970def08f395bc1199b29eaac558651bc00ac2fb54c44	t
+14355138943:1@s.whatsapp.net	83	\\xf0fd9b16973b8cfc0b17edd71259a206316b09b419c835cb726e9cff6f154042	t
+14355138943:1@s.whatsapp.net	84	\\x287757c7848e96ad04e47d25e950f04fbd9cb5bd22103f324cf9249c19875b63	t
+14355138943:1@s.whatsapp.net	85	\\x2023848879ef266e2dd3a8c88fa3456eab614b618467cf034d98e517b258b66f	t
+14355138943:1@s.whatsapp.net	86	\\x9810f1359d161275d86813fbfb5cc9b11e17c803c7c82ed393225bdc7fca6679	t
+14355138943:1@s.whatsapp.net	87	\\x30c9b6bd8a5611c5dd30f234dd2b41f1c01c5b33556b729d0228b16b084c2e55	t
+14355138943:1@s.whatsapp.net	88	\\x7822a7027594fc692175f99e03d77a0ea950e4d4b739a83e7ac8c66c65593967	t
+14355138943:1@s.whatsapp.net	89	\\xb0529e1f54298a4dfdfb904014c5a28817f7587308e9eac77d5b80640cb48477	t
+14355138943:1@s.whatsapp.net	90	\\xb865cd666f136538677771b19f8464665f95652c9f2b1fca509df8ecadc0b574	t
+14355138943:1@s.whatsapp.net	91	\\x10befadb8cb6d1fc3b60e2351270e6535cddfee6f508d17a0e86ea81c3dd6a7a	t
+14355138943:1@s.whatsapp.net	92	\\x3849e6ba15a283e839d7f70f7325632b5f8e20581652f03d260aa7f98e692e44	t
+14355138943:1@s.whatsapp.net	93	\\x40cf888cdb9e4892e0b670dd82d8c76429e6f025175885d72273c81dc031274d	t
+14355138943:1@s.whatsapp.net	94	\\xc8a37bb991ddefd71ca84bd050f6ba74e8181a48e17c8381f7200c7d17a54a7c	t
+14355138943:1@s.whatsapp.net	95	\\x30faac8741cc429efcacabbe6bde372aa197dfbbc4d413e31e6ddd2c61ec7564	t
+14355138943:1@s.whatsapp.net	96	\\x88a77a15c13e50cc9e764c71366b05cdf534bc7028a2e1973d10bbb982d2c052	t
+14355138943:1@s.whatsapp.net	97	\\x68884d285c10a94e77b32849dbf3441527c4afc40499d4918c3ceff8742b3d64	t
+14355138943:1@s.whatsapp.net	98	\\x50916348daff858cb6bb857c7a59513c214c771483aed50934dcf41ef1526357	t
+14355138943:1@s.whatsapp.net	99	\\xc0f99f42f7460d95a4721364bf61cc136322d8249e3e5f8c4de97d47f1940269	t
+14355138943:1@s.whatsapp.net	100	\\x603402ac54c7e8a30aa169d1e21fa9ce13b2d52b80f49eff23c11aa4d7c88940	t
+14355138943:1@s.whatsapp.net	101	\\x8036dc98bf246286be4e81d910a4e0d84262dedca441d0f74427fb77a5709b76	t
+14355138943:1@s.whatsapp.net	102	\\xd89f4aa122026ac5beada9dd43636857e3d3d0c7117428b70e5d0a474b50a457	t
+14355138943:1@s.whatsapp.net	103	\\x485ea81edb7afba4cd48a9772831df754e9606a5e80d936c18b51980dc836669	t
+14355138943:1@s.whatsapp.net	104	\\x68aa0fd5744b4f1592ba039cca4c1a705f295fe3af9f879fd9eea941e0d24445	t
+14355138943:1@s.whatsapp.net	105	\\xb09b4465ef9ac1db4fca63135771d29c654f9244e28210896ae6024f9fc3dc59	t
+14355138943:1@s.whatsapp.net	106	\\xb0e963a3cd5a9cb705515fc623cdd03366b7f56e15fdd7fd46be0d5d546b1f7c	t
+14355138943:1@s.whatsapp.net	107	\\x78b058255e03855a57e985ea0a037b44e8d2c68f949e9b8d83a9d5830937be69	t
+14355138943:1@s.whatsapp.net	108	\\x28ce5969959242125e7f7414779601a4c3479e1d65c2e16ede03017e7e03d768	t
+14355138943:1@s.whatsapp.net	109	\\xf80af2b0e55f55799559b257e3ee1d9cd5a56c3894d0dca3a7c7fc7f1f2ab45d	t
+14355138943:1@s.whatsapp.net	110	\\x08f4b6a7736495b4b4a1aef09469c669804381e0d12270418a61f602f513c854	t
+14355138943:1@s.whatsapp.net	111	\\xe0b6b76e5f4e59feb298ba73794ded9e621ac51aaad56ed064347f2b17a4f662	t
+14355138943:1@s.whatsapp.net	112	\\x509ad54ecf454d4b321faf9711c41041662844f521b6bacbdf2b977bb1f6387a	t
+14355138943:1@s.whatsapp.net	113	\\x389919608ee8d5d752e82e6aabb79c7244fe078b3eac5a9dce94a35fbd7ab24b	t
+14355138943:1@s.whatsapp.net	114	\\xc0415d53adc09c0fddbcb9d27cbb04b5366de5f0682d3b547da64757d4f9af6f	t
+14355138943:1@s.whatsapp.net	115	\\x08b8bc61f5ad6b066e0026f5ddb9864ca6e0500972b4253f677680ede307bc60	t
+14355138943:1@s.whatsapp.net	116	\\x68719599742a2ebe1d0813a1b792c1d19c301d214797f9090b73552588e05550	t
+14355138943:1@s.whatsapp.net	117	\\x20484fea99f714657c78193ba1cab5ebddb8f34bb0393d91cdb98aeabde35d57	t
+14355138943:1@s.whatsapp.net	118	\\x98e0dc1c8c7dc1e4b90f909be33ab5a3eca46f7ce47aec0076f7ce3e09191a5d	t
+14355138943:1@s.whatsapp.net	119	\\xd8c7944fe90b0b46aed69dc8b4503e9ee9fd99eb61af2678850cc86841643c69	t
+14355138943:1@s.whatsapp.net	120	\\x2847b04fc938bce55a80aeeea37e9a312730c043d4f9f628ad5e2abeadff0e79	t
+14355138943:1@s.whatsapp.net	121	\\xd089ea91ad434819dd331e956d3fdf96f36fcfa3956d0975497ea33fe422a548	t
+14355138943:1@s.whatsapp.net	122	\\x2072d2b61503f2698e1df6d05aa67c0278f29cc06409de27a5d107ac6548275b	t
+14355138943:1@s.whatsapp.net	123	\\xb0e652b38dc1d457596617889d9b40b6f8e60e8f59d28ddf1faa8e3b74e7a865	t
+14355138943:1@s.whatsapp.net	124	\\xa83fdec7800fb0fd16fbf91f3a672e47aca9ed97acfbe69366ed05c63c2bb36f	t
+14355138943:1@s.whatsapp.net	125	\\x98204692063dfbba002a2277dc30b63d2d4fe73407880e0788943051602d4c45	t
+14355138943:1@s.whatsapp.net	126	\\x38a4cc428a2ced3a61605fac730a06f20f28898a3142e751db43123315a54378	t
+14355138943:1@s.whatsapp.net	127	\\x8875c8af6c27f917f41879781389139183ca09daf436875264d9cb2d33452e7d	t
+14355138943:1@s.whatsapp.net	128	\\x60df44c8d1a494e32579096837aedd9cb36e448108c87fb1ff90b0d10f253851	t
+14355138943:1@s.whatsapp.net	129	\\x506e74bc8d24a967fe2ba430a07a2adc308e35db86353414f8be7630c055aa64	t
+14355138943:1@s.whatsapp.net	130	\\x88be1c57b0ebe6a83d3e185a86a23cda5ddbd0d2b2ee2b4071fc0e7fbd5f9964	t
+14355138943:1@s.whatsapp.net	131	\\xa89d18d2f3a36e13e106df3a9ba1467e63efed3a90fa613be546b0f14bee5343	t
+14355138943:1@s.whatsapp.net	132	\\x281fc541637600ca0eef53a726477460657d7bdc655b74b0c1d08c8073a57a4c	t
+14355138943:1@s.whatsapp.net	133	\\x2091414016fee05d29c4d16cdcf978b10a541e012bc7887b67ce153605f32250	t
+14355138943:1@s.whatsapp.net	134	\\x38dfa0eff8230a1c3732ef0e0ec9648df9a51b2125c415d76ce9ee698aa3427e	t
+14355138943:1@s.whatsapp.net	135	\\xd0a18a548cc9fbbf7d6124ad98440c38fae3a3ce092f0ed44188b6506cbe2340	t
+14355138943:1@s.whatsapp.net	136	\\x3836e182e91e59184bd083ffe081fabde4d44286ee9b71d3ece355d6a8b26270	t
+14355138943:1@s.whatsapp.net	137	\\x38a160a5fc0639eb66e9ec4256cd16bb10820be1c9a8f355369109cfac8ce85d	t
+14355138943:1@s.whatsapp.net	138	\\xf8d09d36f1c8696745222578f0cf86d594525bb7df2315593c1e5c71d42bea69	t
+14355138943:1@s.whatsapp.net	139	\\x98bb08bce6f5db7fdd724a247980978851eb4d1c21c769147a6d76a30a701a50	t
+14355138943:1@s.whatsapp.net	140	\\x606d0f500e25e4d30785744dbaf56cdbbb431f551ea12f43978fc97f6fb36d74	t
+14355138943:1@s.whatsapp.net	141	\\xa04eedef79979063dbd7203b0304173dee5762ed035f516ea4ab08e3518ec36f	t
+14355138943:1@s.whatsapp.net	142	\\xe80386b8bc374ec187334e99440d80c8a8328f919e62ff377ad00e6a1aff8d6c	t
+14355138943:1@s.whatsapp.net	143	\\xc822ef67ef0bd57a3efc904a8eb6a5ba5b5f5760e1f1820a72b3b93c1d35555a	t
+14355138943:1@s.whatsapp.net	144	\\x2094f07a73d7752005763ab294c34f0fffcb04e0378f2d81e174cbc0e819887d	t
+14355138943:1@s.whatsapp.net	145	\\xc8eccde49ae87f3bd22ab13546a89b8074a94f05a02ac85c1bc9cb2d346ca36d	t
+14355138943:1@s.whatsapp.net	146	\\x2867ba351d36d5b80af878edc7211510fa494a93cb88f90a921ce6052731d652	t
+14355138943:1@s.whatsapp.net	147	\\x2865687932f011d2b4a325293ace91847eb66ea0d21846b6837a725a904ed957	t
+14355138943:1@s.whatsapp.net	148	\\xc0295e883f22932313491901afe3c5e06d6260d9f27cb03bea968ab4b9be705f	t
+14355138943:1@s.whatsapp.net	149	\\x3863815dae88e71363ce4282569900aa487fe90c178bc853b02685bacfd8b458	t
+14355138943:1@s.whatsapp.net	150	\\x5831b3127946ef06c8f610815e48bda23960129fe91b23f00f14f613f860b161	t
+14355138943:1@s.whatsapp.net	151	\\x185b3d36bc18ba84790db12f0239fe2fb8ae7bbdc8f6eeddb6450c1de7b93845	t
+14355138943:1@s.whatsapp.net	152	\\xa0e95e5acf9f5751f7bc000f14ee1d084724238f685686a0834a497f3da37358	t
+14355138943:1@s.whatsapp.net	153	\\x104f5766b5e8f12d9314133f46fce1e3de668fc0570e6c21c46bacf4b8898875	t
+14355138943:1@s.whatsapp.net	154	\\x10f9cd70f5388620ccfff3b2aa3d3421565ecb9921505e4c9cddc7669fa35f48	t
+14355138943:1@s.whatsapp.net	155	\\x208db41049189105888dedcfdae372f73e16b0b3f8d84513d80a3df215919942	t
+14355138943:1@s.whatsapp.net	156	\\x48b520a185010f870de3161257153a38fc466048d49f78f21bcc83c08574566d	t
+14355138943:1@s.whatsapp.net	157	\\xa0c15f4452f1be7c1e9f77a2ed7a4b4931f6559195e26b0cb10ad306cf634c78	t
+14355138943:1@s.whatsapp.net	158	\\x10f598bad354ed0b7b108afcd9c6d5d349df0a7602848b4f8f462a856f4a045c	t
+14355138943:1@s.whatsapp.net	159	\\x48bf7b0f805db149c3bd2a19b9feb93e9c898bd34ddd2c3bfa5408870e055c45	t
+14355138943:1@s.whatsapp.net	160	\\x487a6813c45d65ad56c7f422418eeb0026e062e950aaa924d9c1e392609ea25b	t
+14355138943:1@s.whatsapp.net	161	\\x58b21eb39ed16f00aa8e21e540484d52601f2402bbfa3c69fb72494623abd957	t
+14355138943:1@s.whatsapp.net	162	\\xd0fdc734fa2bd3d8c54444b0e2e67efa1411dcb9dc57404eb2ec5c5a56ecf17b	t
+14355138943:1@s.whatsapp.net	163	\\x484d27be27edcc24835744acd716f5b46c6e01d5064b8f51b5ab6938d824b741	t
+14355138943:1@s.whatsapp.net	164	\\xe0218bc5d24af75262236c1c196d9358a5d6f1843681c577b4a05c6dd7827571	t
+14355138943:1@s.whatsapp.net	165	\\xa062d437c7ecad44cda9fe65d0f8b74b1a027d7894521b7a50830446453c247d	t
+14355138943:1@s.whatsapp.net	166	\\xf0e480abdc97f0fa5b380566871c8e789bc1e597e1ab32706158bf028f8f0446	t
+14355138943:1@s.whatsapp.net	167	\\xe8b0d864c038f5735008377db9c6fceffe09f6bd98b9122bf7fbe4299f72ab4d	t
+14355138943:1@s.whatsapp.net	168	\\xc08f12d8e35196a5de8211ae7f6133f229993e2300de1ac81c8938255c3c065c	t
+14355138943:1@s.whatsapp.net	169	\\x2866a901be084d69e06bad145d4cd746010d34fbbe11ce581d2c8a653f876659	t
+14355138943:1@s.whatsapp.net	170	\\x68ee21cf7893f49104627b97c989ab06e3ce99c1b20da1279d6bfea392243d55	t
+14355138943:1@s.whatsapp.net	171	\\xc82c63751705842c90624dca9116eb8e2176ab663bd1b0b7664df7cd30e1627a	t
+14355138943:1@s.whatsapp.net	172	\\xf0a2aa5b0f1f9f35b8dbb9c7711e371f0ffd48cc7c14d582fdce6bcd6157a55e	t
+14355138943:1@s.whatsapp.net	173	\\x3099981c98fe9c0bf38c1be108f7fe157febda0be0f461a8d2285d057f6d4c68	t
+14355138943:1@s.whatsapp.net	174	\\xa012585c84fc33d32845bbb44478fc0408d8f33dfbd6a279a68c9c7cf658264e	t
+14355138943:1@s.whatsapp.net	175	\\x481863c4a7f36fec675bd79a774cfc4b6a00684d31380864728d0def8eabe546	t
+14355138943:1@s.whatsapp.net	176	\\x9892527e8454a8a764c4f945d81f4fa1cb740b945e41684af1f5a9a698ec7144	t
+14355138943:1@s.whatsapp.net	177	\\x706814bebc70f52c36be9387ed8947926870e0ff6a2356d91d23668065d6357e	t
+14355138943:1@s.whatsapp.net	178	\\xd87a063676864cd5137f8cea8c83109f3d21fe5ca2a217dc567c7f2a6bee195f	t
+14355138943:1@s.whatsapp.net	179	\\xa825c1b9630102c0bf125a5e82d70ed1aa265078ce94709a14bed6ccbdd4de75	t
+14355138943:1@s.whatsapp.net	180	\\x9030148b07c97e3bbde35651e13653e67f45d0d392ba210497299976260fc840	t
+14355138943:1@s.whatsapp.net	181	\\x286cdecd4d5d7ee02db8288107de1d335ab06df1b27d67766bb5fe4f0c5ee97f	t
+14355138943:1@s.whatsapp.net	182	\\xa88f0314017d58e9806169c4e1a17288c0e10d7f782e9e521772f74d604ec75a	t
+14355138943:1@s.whatsapp.net	183	\\x38de7c8b2f40a2f9aed2c062f9a9bd7e4db11ed0a5f0847271fd1fa04d3c4545	t
+14355138943:1@s.whatsapp.net	184	\\x882949ad3a0d8edfa8c6be0a2d6715e4ce0a707a660a441f99a7c6e9f087a44f	t
+14355138943:1@s.whatsapp.net	185	\\x601c212104677ab944ae29f90ebfe1582fefe2cadc3f0732f5a203f2402afe56	t
+14355138943:1@s.whatsapp.net	186	\\x50cc81cbf987103cd3740f6e09b59c28036482b78c3c2e2aaa6996cc6f4be665	t
+14355138943:1@s.whatsapp.net	187	\\x08b6c67340fc254440446f5714dc0cec399ee02adb779c5fad251256eb952a6c	t
+14355138943:1@s.whatsapp.net	188	\\x00ae337701b852927c8741472df4b7053f4c433c9f7dd408033eeef42eac3851	t
+14355138943:1@s.whatsapp.net	189	\\xf06aeb7c92281f63818cc985027d78cd669574c508f466f48c8c11a54eb5be68	t
+14355138943:1@s.whatsapp.net	190	\\xc0356c94576f28e84448c13b9f5dc685a296e921d7d2282e192337c411238f49	t
+14355138943:1@s.whatsapp.net	191	\\x98f1f1dc67af54482a763f9fdbd929b2a428869f7a2597362da96dfd567fc342	t
+14355138943:1@s.whatsapp.net	192	\\x985d0b21c45525e6ccee62f8e7217fe150141d4a81ba6e744c2c91e7d1075b44	t
+14355138943:1@s.whatsapp.net	193	\\xb0473b064512c116498e7a111fe7faf818d2dc5055cbcb65be45be49e54b8d49	t
+14355138943:1@s.whatsapp.net	194	\\x68da625b61089be1e57f585c20e5bbdeced90051c711bbad933e51898b441060	t
+14355138943:1@s.whatsapp.net	195	\\xd8eea495ee756aa9de4cd7ae9734895b54ab14f168e834d4c0992a429fbdf678	t
+14355138943:1@s.whatsapp.net	196	\\x108be18aa9354db9aa6cb358a25c4148f6914b1fff47eac495cd75691e555673	t
+14355138943:1@s.whatsapp.net	197	\\xa8f5fc148737ea56d29979c48f73966845a4b502ede5204d5e98a9c24e760766	t
+14355138943:1@s.whatsapp.net	198	\\x289cc8fe3851df25cd39e190f340edfcdb3149fa29cf7c0c4315270d6155857d	t
+14355138943:1@s.whatsapp.net	199	\\xa0d6718819c3fa79ba21b7aa8d0bc3fd3f1148afeb48a0cf4cbc16405dd7655e	t
+14355138943:1@s.whatsapp.net	200	\\x0045602704fdf8b4d97d9a3498d0913cb9a2728c6d97a0af51ffee404b6dfd7c	t
+14355138943:1@s.whatsapp.net	201	\\x18e3a300ee2410492ebebd229361e87b166207451ee51c5e13b8e97e28eecb6c	t
+14355138943:1@s.whatsapp.net	202	\\xb8c65d80026e0b86b10fe03c4257946d4a08b6c07b929e3839bb94b9e4b87441	t
+14355138943:1@s.whatsapp.net	203	\\xe8157ef05ae7a7429f1e5a4037b985e98ee355ca3c660d77fd36b97b47bb2c6d	t
+14355138943:1@s.whatsapp.net	204	\\xd87a1dd1ea212330d75b5f838ca390f3493eedfce7776330e797cbe9d82dae5b	t
+14355138943:1@s.whatsapp.net	205	\\xd0b41814963c0dd56502eadd705c9c0467abb29108ff9db9daffa7c07041ea4b	t
+14355138943:1@s.whatsapp.net	206	\\x38b15adef522e5ef2a7ee1d038b6d0fb60125e37aadd6a9038bc71707438224e	t
+14355138943:1@s.whatsapp.net	207	\\x7810d0de35a8edbf1b7f6a1451a78b91de0bd54a62afebab4eddb29ffc11e854	t
+14355138943:1@s.whatsapp.net	208	\\x0813fd422c80926b0b232bfeb16ff58364153e57c66db94b43ba5dd856547f4c	t
+14355138943:1@s.whatsapp.net	209	\\x784fba6110a9134b92eb2087acf3ce587ac662d5f8fac58d31c4a9b1ede8616e	t
+14355138943:1@s.whatsapp.net	210	\\x68ce8999e71b1b8450d92e93d46bb8e1b099d2adf93257f1e5abb2d702dd8e45	t
+14355138943:1@s.whatsapp.net	211	\\x78bc9617059dd1deca5284d7f34f1ff946949daaa0b9547b5319841745ad2043	t
+14355138943:1@s.whatsapp.net	212	\\x082d33d7f9fe23bcfff2db87d021d7a7b9533839b5613cc1433293eced8c6175	t
+14355138943:1@s.whatsapp.net	213	\\xc8e6760847777900878c905da05652b2e0a3ae2fe19988e20c9d1105be01037a	t
+14355138943:1@s.whatsapp.net	214	\\x48f171c0312d5f4bbb1d3c88b0dc469a9dc4d9264695bf24bb21231e7539e476	t
+14355138943:1@s.whatsapp.net	215	\\xc84125456557c2e5e00b8ae00b028867259d3211c3e4da6a582fad61f5ecfe6b	t
+14355138943:1@s.whatsapp.net	216	\\x289d888e0c945a177b5ff11227f93b57a862356778174a3d9fbf844e48f06f75	t
+14355138943:1@s.whatsapp.net	217	\\x10b734ee74876624a5db19c1f0a4fc509a688ccdfb825afc39ca4c3e623dea71	t
+14355138943:1@s.whatsapp.net	218	\\x88413b7fafa1c03383dd00f69e097b9ff4dbeecb539d245908f32c5b92d7f767	t
+14355138943:1@s.whatsapp.net	219	\\xb0362f511a570fd1a88056a26055d45ecdc2142d3a8daafdf239dfc1bde9c743	t
+14355138943:1@s.whatsapp.net	220	\\x780fb2a3b62a1c3839bda4bb8f08627eb1be8b8ec5689be70bd887d8e72bee59	t
+14355138943:1@s.whatsapp.net	221	\\xa0329cb5a15e72673c02237c8fa68c797bd8e37b091ed40a9f4a191ef05fa17d	t
+14355138943:1@s.whatsapp.net	222	\\xb88e02c596906eee325fd3ca7c36d9e8e70632366b4a7bc68ffa615c9e136f72	t
+14355138943:1@s.whatsapp.net	223	\\x98577e886fb26abf0b2dc228a5c436d8c94dcb07b742426c5db41951908b515f	t
+14355138943:1@s.whatsapp.net	224	\\x08ef4b2fdebf65320d051edc3a44dffcfe0acee0f84a2295d211a42052269876	t
+14355138943:1@s.whatsapp.net	225	\\xb8f8b37fdce62a50eae7ee70056c4f7edc66977b7e4ec705bc689143a17de857	t
+14355138943:1@s.whatsapp.net	226	\\x98dc5127e12ad22bf0909857837b2f6c44b72cc54f36ef885a5789bf70cc4871	t
+14355138943:1@s.whatsapp.net	227	\\xc8b26c318a9899583e9369e6bddd4654a1b6a8a61fa9ce212d6f0c227cd37079	t
+14355138943:1@s.whatsapp.net	228	\\x5878bb24f216eebf0851aac4032e629a46a60d8b20d2dffae888bdf37903634e	t
+14355138943:1@s.whatsapp.net	229	\\x08bdca7174e8388e674362cb8c9d2afa0775153da75d6c49b3de238ad46ca54d	t
+14355138943:1@s.whatsapp.net	230	\\x18ccaa85d3a6c236acda077d4ea933e678c447df852276eae192b49e14dd4b44	t
+14355138943:1@s.whatsapp.net	231	\\x50a476feb31835c8ce47ba9187d28d26c4aad2a2a5a276ff4ee1e226d44ee566	t
+14355138943:1@s.whatsapp.net	232	\\xb071fc09e0b9b2cefabe030ad8844f66d851096af6bdddb3ee1ddd1f50192744	t
+14355138943:1@s.whatsapp.net	233	\\xb80900c9453095d60e18045a7f67e8bb3dcab94269c388ea4d978744d1f1ee75	t
+14355138943:1@s.whatsapp.net	234	\\x78a9b312cd4e729e89f61972d859a0651b55de935e19fb9dce2ea76335fdc140	t
+14355138943:1@s.whatsapp.net	235	\\xc8c425c40d8a13f54cefd11650ca6e90a1d6d74aad407af3a23e19243e214f5d	t
+14355138943:1@s.whatsapp.net	236	\\x0883b9f1cbfd2235f5733660d33beab77f6bbc524465f0e110a9ba05ee63c640	t
+14355138943:1@s.whatsapp.net	237	\\xd84e4d540a6098584b6f16994539299e68606d8d6ca7269c5985ca48adcbfb47	t
+14355138943:1@s.whatsapp.net	238	\\x60f4318fe9214c944e73035190b84002a28527c1660964dcea042701709d1261	t
+14355138943:1@s.whatsapp.net	239	\\xc834f1ce8ec80af4a0aecd822686d1dea01ffdb216b03f1f75335abf7d0b7679	t
+14355138943:1@s.whatsapp.net	240	\\xd0a504836f875b7a5a4611be98dc295b0844a20f60ec4eba2361ab1868e0c746	t
+14355138943:1@s.whatsapp.net	241	\\x98e8850183a7165e81f3c9ede7eb1813aca38cf80beb2515d831b24720d8574c	t
+14355138943:1@s.whatsapp.net	242	\\x1085348e671f266f4dddc06ecc2a193333a69f180fa2d18b3978e35a6f93f264	t
+14355138943:1@s.whatsapp.net	243	\\x78c95418ffbfb1898fa16ce8d4d63e20349c2ababab7a16882263bb109031a51	t
+14355138943:1@s.whatsapp.net	244	\\x1072a74d950f57c3bf5c04d6f2049a5b442699ebbdc1db577127fdfff8a34841	t
+14355138943:1@s.whatsapp.net	245	\\x904cffe40fd858faa08487bb08cd2080869b27d8a66a50c839fddbced0356340	t
+14355138943:1@s.whatsapp.net	246	\\x106a903677a9a85fe3eb3034f86cc6daa3648b9ac0e034ddb2e57fc8a4639346	t
+14355138943:1@s.whatsapp.net	247	\\xe06daba9de9ed9031317a6abb644352eac5dac88e692ecd1fb25940fc32f4b7e	t
+14355138943:1@s.whatsapp.net	248	\\xb8a45f55ce737b77b992517d5f6447d0c46128994fc36575cf82cb360725715f	t
+14355138943:1@s.whatsapp.net	249	\\x38760acaa7b0aa8cd58f35ac594df820706b305bf1b4c78f8d91aa6f5c5e1d5e	t
+14355138943:1@s.whatsapp.net	250	\\x20819fc74a5280da4d7d9ec86cab1423a82088ce32b949ca4feea1c9e969ed6a	t
+14355138943:1@s.whatsapp.net	251	\\xa04f16584cac6ef6096decb7a08debe2fc14a84a1c6116cf444d08d8f3165c6d	t
+14355138943:1@s.whatsapp.net	252	\\xf02be4057356d7752159b77db10c9bc6681156632f2c0a16c4b36991fa3ad275	t
+14355138943:1@s.whatsapp.net	253	\\x0827659d953d47340fc32295ae7b79d35973c11c1b0b9df2110377f81d39707b	t
+14355138943:1@s.whatsapp.net	254	\\x307bd92ebb86711060293a8c6f49657d32e2bdb38b3506ee73bcb991d01e3968	t
+14355138943:1@s.whatsapp.net	255	\\x507c1a4e8ad51fe9fb90176d0f5dee4f880163e2afe79fa2e08aaa88166d4350	t
+14355138943:1@s.whatsapp.net	256	\\xa83028add5b2d85ba4277d346f13f572047eaf4a7b6bf2bbf220e8fc958d3762	t
+14355138943:1@s.whatsapp.net	257	\\xa82a51b1f0d3f6b46636427021385ab59cf0b93ea33bce0ce38504a95d2ff247	t
+14355138943:1@s.whatsapp.net	258	\\x00587cc3310941a35921835acd43b0c58fbfa37616e8cf563b9102525ccaae59	t
+14355138943:1@s.whatsapp.net	259	\\x20d45f44ca534fb9a91dd992245a4922a1688dde64432f849e4cce6e8a391e44	t
+14355138943:1@s.whatsapp.net	260	\\x28e024c3f569bfd98b3ad70f49dcfc0f03f95f9f1f37a56e989f312db52a1f6e	t
+14355138943:1@s.whatsapp.net	261	\\x60d628d1d6a7d9a5fd938a79afd23f365d6f89870b3520fbbc5cd332cf136277	t
+14355138943:1@s.whatsapp.net	262	\\xc047eb7d5361c9a480bf353961d7d4bc63cb1c9ef64668a73e1679180906c17c	t
+14355138943:1@s.whatsapp.net	263	\\xf8c7ab59d485c016508c7794085913e9b11fdef18b146b4f8b47716b5bd71956	t
+14355138943:1@s.whatsapp.net	264	\\x80c4b4534a291cbce08fe2d732cce633636cbbcafbf387a99cfa061078b7f24d	t
+14355138943:1@s.whatsapp.net	265	\\x18dfef21b23e4e50cf4275121e891305386d169a193d7f0f3264b6b5b205ed69	t
+14355138943:1@s.whatsapp.net	266	\\x88d2e517c7e753654ae0358d1cd95077493b3666b3a602824b4c7ef5a951936c	t
+14355138943:1@s.whatsapp.net	267	\\xa8770d34d83b1c00f259ede818232e57100ca3508f9425799012e98f26d52d41	t
+14355138943:1@s.whatsapp.net	268	\\xa8aeea5439b68d223eee581b22eba64b1f1f1682d5d034a9f0f16d36a4440353	t
+14355138943:1@s.whatsapp.net	269	\\x2880a607a1758c4805f27d3b0147b01a4d8af3e9fddf413c983838454bb6cc45	t
+14355138943:1@s.whatsapp.net	270	\\x28d70e3b0b115de48bc7a3f92eca461eac751f3b8f57b77d8a50f13b30246677	t
+14355138943:1@s.whatsapp.net	271	\\x30d573181b2665906e172d4c34b46576d3c44ffef6382b0862eafd3c06d0107a	t
+14355138943:1@s.whatsapp.net	272	\\xd0cd1a3ce7d4f56ab9b2d22dea1459628875ce7dc79f7715c97794852844c95c	t
+14355138943:1@s.whatsapp.net	273	\\xc8aab75dc273a5b6d1699a6f2b103e4ee81ffc05d5ec482411eba2b38c791445	t
+14355138943:1@s.whatsapp.net	274	\\x48c905c517f6a33c2a771128a508fe56b2c135ffb525f7c17caa3d8eb0e85966	t
+14355138943:1@s.whatsapp.net	275	\\xc03a561fe01abfab60699126fbc144caedda70792dcd058a771eb076a9235e74	t
+14355138943:1@s.whatsapp.net	276	\\x58e8472067204d2f77b5a3cd9601c6a903d16f77bcb59056859e6b28c33efb4a	t
+14355138943:1@s.whatsapp.net	277	\\x70f43fb7473aac769fcfb2b90b35f0a77de2fa2ef916187d9c39aec6312a7957	t
+14355138943:1@s.whatsapp.net	278	\\xe023df9a4989bf7e720c000c15a27e59d69fdcfd0d25665457f74c20882b0a66	t
+14355138943:1@s.whatsapp.net	279	\\xe8f8edc257b28ffac52f0574fa7206b21398d54d7ffe7cf85716ac7c8aaf4f5c	t
+14355138943:1@s.whatsapp.net	280	\\xf0515a22089d9cd7d9ec81969b3cf2efb8bacdbf562ca9c5425f9aec98573657	t
+14355138943:1@s.whatsapp.net	281	\\xf012dfb46f623ac38c4ebb2f10c9017947a7dcc2b9bac5e04e9c756faf8cf176	t
+14355138943:1@s.whatsapp.net	282	\\xa0159be34d667e8eb7e32eee5e5a00e969c5157082b39b2319500f3b22d12a76	t
+14355138943:1@s.whatsapp.net	283	\\x285e9b3e248143dd9777ade4a17b283ba569aa39547b19340a7d94e6526b8a6a	t
+14355138943:1@s.whatsapp.net	284	\\xf0e9cee68a01d85927047ba764adda00caf6251e9168e75360d07e8adef63d66	t
+14355138943:1@s.whatsapp.net	285	\\xd8a07bd7d5031840df2c1e993869cc6f1d11c55badd3de495532e50d565efa7e	t
+14355138943:1@s.whatsapp.net	286	\\xd0d3613bd9fc175c95869e6c8bd4ce8949c4b1eb149b29aba907470766592263	t
+14355138943:1@s.whatsapp.net	287	\\x30eb53fed6e3e0ed82de2b3094f7dbeb1fd792dd02b9ac5a390934daa1ca784e	t
+14355138943:1@s.whatsapp.net	288	\\x984e917703fa7d85ff73c1f1e44c1ef369640049e20a8651bae69eb6b9bfe976	t
+14355138943:1@s.whatsapp.net	289	\\x287673e38c4c689dc10404fa595bc47a325ef8e3255b7c8f2ba931acd178e578	t
+14355138943:1@s.whatsapp.net	290	\\xc86d6ad7137c0b9106e62b046668fd73ba3cc6e51f2c8fafbf93fa516f187e51	t
+14355138943:1@s.whatsapp.net	291	\\x2059289ce480c0dacf5712e48162f43f51f37d8853464ed4dae6280df3d0bb55	t
+14355138943:1@s.whatsapp.net	292	\\x988aa07353e7bad488c9e4b5db0a78ebaa5efe15d836909dc578cfcb1a564640	t
+14355138943:1@s.whatsapp.net	293	\\xc05e914234e6e1ca4eff3a2d59c2161bbbd4bd99aacd490c4e0ae8d6dd1d7073	t
+14355138943:1@s.whatsapp.net	294	\\xa040f907965f681678cf610bc032c76a089afaac13bbdde2efe5f06662a02c56	t
+14355138943:1@s.whatsapp.net	295	\\x48b38ffafd92b91fa0ad62864e8ed3df299b46d5662aa5c5d366c5add42e9674	t
+14355138943:1@s.whatsapp.net	296	\\x98476bb2e7d0a25eb79f5109196d9e3cdd61582ab5bcc3a1ea73153009c3ce51	t
+14355138943:1@s.whatsapp.net	297	\\xe0f542a2653596fe0994cf241b14282f68cff45e787cf3d38ef21ea068609a6d	t
+14355138943:1@s.whatsapp.net	298	\\x80837380cf477cf6a7e5360a3f45a50698695c8a0faf83039866d2b29cf1ab6c	t
+14355138943:1@s.whatsapp.net	299	\\x9892933a5e3b9726abc9cf6301eed8624b53ce9cc2909e119977da22bf94b47c	t
+14355138943:1@s.whatsapp.net	300	\\xe83f7e5e8ca0bcdc24c5b91e5b330af956edde922ef2cb0d3a0e7b3f94c25561	t
+14355138943:1@s.whatsapp.net	301	\\x703ff89aac2ed9afb28db1e7ade0f07c77f00a60fc1cec49d44b92aee644496d	t
+14355138943:1@s.whatsapp.net	302	\\xc04a421fc7c356e7ba947e2f2ae214b11de70d6e334fe4b88578f7d48ed2c162	t
+14355138943:1@s.whatsapp.net	303	\\xf8b434a63e2cccb8e812a1a05ece6e7f845becb9fb234bc63a27656017a6bb4f	t
+14355138943:1@s.whatsapp.net	304	\\x88f53463aa06431060462bc090ee081accd95a87f18d2d4cc29c302d1a162e6b	t
+14355138943:1@s.whatsapp.net	305	\\xc0bb7d4c2ef5d1ae6b600825a310dd8c4cd40ffa3064fafd5016c219095b387d	t
+14355138943:1@s.whatsapp.net	306	\\xe88aeef3d2a02a886ba6b97c5166d3138cb775a7bf7660083f487ddaf7262b74	t
+14355138943:1@s.whatsapp.net	307	\\x9870941c2ebea8dcab574178fe28caf92598a6f35b8a2236854dda07e868fd52	t
+14355138943:1@s.whatsapp.net	308	\\x00d98ca9094e8246861ce919900a82e981c2f14abd39d9085a72168c0326ec51	t
+14355138943:1@s.whatsapp.net	309	\\x882f0cc91af10a433ddad31b2d93e33fde08fb2addac5404e3b2197fe9853971	t
+14355138943:1@s.whatsapp.net	310	\\xc0d8b0bfd7d210fc74788dd92628eb9b70fa6fd72a83d5a558ee6634dd91a950	t
+14355138943:1@s.whatsapp.net	311	\\x78c9dfa1e9f30ce5ad488d8a71988f5276ea3065c7f2f2b9faeea396c0f1397c	t
+14355138943:1@s.whatsapp.net	312	\\xe0cc29ffb31a623cc3c49cd1980207961538c657439e834a62e4f69f6691947b	t
+14355138943:1@s.whatsapp.net	313	\\x88d33b35f93a3fa33a300b81b1c06add9fb04276d855d1a88490a10b0455c77f	t
+14355138943:1@s.whatsapp.net	314	\\x48bf7c30014a18abd0f30a153f348e0912b631357881a3340871a885d6990163	t
+14355138943:1@s.whatsapp.net	315	\\x60f5e1f62e4b8a2d96cf301d3fc23772bcb7fd3531aa769247c3f453c520e379	t
+14355138943:1@s.whatsapp.net	316	\\x60585323b5c7b99f3e27a63e7e1641e6cc27835d8867340f6a090f970df7467f	t
+14355138943:1@s.whatsapp.net	317	\\x80d90d1e4c217b9a7378df83f66cfb510234c9387d3c9b9b3c0ae772ee38f174	t
+14355138943:1@s.whatsapp.net	318	\\x502112ddc5cad5cebea79f24606dc6bb3e16ef54640c621bb8b44ab9d12f075c	t
+14355138943:1@s.whatsapp.net	319	\\x08e3c38347717b5af17392b0eb922314cf45fb56424e1e3d14c110b723ac485e	t
+14355138943:1@s.whatsapp.net	320	\\xd8e724d835a3dabd0837ed4f13dedf06503b92f6552286667c9e19823f5e165f	t
+14355138943:1@s.whatsapp.net	321	\\xd8a5c97440174f0a3d2664bdf9f9a62901f03b85934937060f965f9fe99d9561	t
+14355138943:1@s.whatsapp.net	322	\\x104db302e7173597563657be72c07aefa85094b879dbf2f3e138f870fd7ad35c	t
+14355138943:1@s.whatsapp.net	323	\\x489b9b87ff2482bb6c0571410581c455bc44bcf85f604b810a358bc1e5351163	t
+14355138943:1@s.whatsapp.net	324	\\x707dce109dc9119ca2cf99582acceb9e7cb276338967a9f10457a19e6ac5d570	t
+14355138943:1@s.whatsapp.net	325	\\x68cf4fc270e28e4df7add36b78a41b392e524ab6f913664e7ecd14f209f1ee78	t
+14355138943:1@s.whatsapp.net	326	\\x68dff12585f6de62ad71ef4817a9b590e06453be7a64b3cc7b5b1f296a3f614d	t
+14355138943:1@s.whatsapp.net	327	\\xe85b654107ea6ac79e48b5ff7dacf6ad3111f16a10f5e440e0da16ab1f059c47	t
+14355138943:1@s.whatsapp.net	328	\\x40f3d381fb487aa6c6c8f1ee2f2fbd6861a8a988d95214d4a7c2f8565cd5f478	t
+14355138943:1@s.whatsapp.net	329	\\xc8f6268e003ab2909eaf24d3d208206f1078ce326e1fc7f5b9c03991fba8557a	t
+14355138943:1@s.whatsapp.net	330	\\xb0c3222ba44fe2d195d34945b5c102964cbce58426e3cf7b8b6a245ed1a38647	t
+14355138943:1@s.whatsapp.net	331	\\x28f8d127e45012e3727ee728c308c245c75a4822a732e38d6e8b7bee23cc3540	t
+14355138943:1@s.whatsapp.net	332	\\xc052908a702e46a59eba110525afdca97d7c62f525c8d337db92e9e1a5904c4c	t
+14355138943:1@s.whatsapp.net	333	\\xd0464b3230d0f47d9991c5ae9deb2fdaa064fd07ad2cf3bd0e2ea4b123ef4841	t
+14355138943:1@s.whatsapp.net	334	\\x308bdf5a2ff7f42799c3a2ca97dc3e2174e24424f978dfdf7f223f88be031e53	t
+14355138943:1@s.whatsapp.net	335	\\xa867f39b868d1e5067358aaafc03bef667ad0efffc5ce9ae0841cebc9dae7250	t
+14355138943:1@s.whatsapp.net	336	\\xf885d3103e65ae7c77b2add6606784f13c3aa212184ae19a690f64740f6a1e7d	t
+14355138943:1@s.whatsapp.net	337	\\xf0da654868e20de9d8b9b942e8d0733fe9070739b9c35d2cd0edbc4a749aef6a	t
+14355138943:1@s.whatsapp.net	338	\\x08b632ad2e91c570c5b6110c0e3bc9e0407e4299a2e3fccae03846f506180746	t
+14355138943:1@s.whatsapp.net	339	\\x503946d675e88374a55606f7794784e2ac00d12db942246c7f68a2281a42224f	t
+14355138943:1@s.whatsapp.net	340	\\x407c33ec3ac1884347381de8750cffa95b96fba3df34653efa444ee44ad72049	t
+14355138943:1@s.whatsapp.net	341	\\x50bec8b12340411d9abba14d78967ae57826c628316f5176d199a091dba0b86c	t
+14355138943:1@s.whatsapp.net	342	\\x706b8074d0f8c2c01bb62d45a1d718a59fe9a2ec7d90b22db0c57764def80f63	t
+14355138943:1@s.whatsapp.net	343	\\x68a3297fbb6feabf971a5a3bdf3ebe6f8e1e3b2e86193f6562d94b34f9f7715f	t
+14355138943:1@s.whatsapp.net	344	\\x608eaee880ddb956d90ea086a0754b6b39995f4139479c3e77ec8e0c24473856	t
+14355138943:1@s.whatsapp.net	345	\\x30a0fdb83f787a1f131f87dfa6c2db175a6a1ec701eac860cfa9f82adb3c0546	t
+14355138943:1@s.whatsapp.net	346	\\x38f3d9a48f824676026a8fbbb0d9acd9a5dd5aeae644558f50b94fa59573bb52	t
+14355138943:1@s.whatsapp.net	347	\\x58893fedb296895fc0c2aa09dc0e737f48a7c8305e2b012b217fca020a433159	t
+14355138943:1@s.whatsapp.net	348	\\x708878262099ed1954d43181f88462e9a3def10d5a13401dbc8bb4b550084d5b	t
+14355138943:1@s.whatsapp.net	349	\\x106402a97ba975c11422144e10f66f90ae18cf0a1ebe6e7ab8f5a3564f499e62	t
+14355138943:1@s.whatsapp.net	350	\\xf0be55cc7a21c8677ae04cb7adb28e6c48ece3c1bcd518c2ac6221e624247a4e	t
+14355138943:1@s.whatsapp.net	351	\\xa8c208fd7fc091497fcc1172787787d736258bde171b9b6653f57f357aef2143	t
+14355138943:1@s.whatsapp.net	352	\\x50ef458b85bc0b26e8b99805bc050316144f9ec823a2e97a621cf04efe4b9370	t
+14355138943:1@s.whatsapp.net	353	\\x40991f1aad656b70165a4c880e23033c37b095cc24426180110287ea5cbc997f	t
+14355138943:1@s.whatsapp.net	354	\\x0065e885432b2ea3aff5dce865e6419c18ab5cf8defea588253a49a97a759f62	t
+14355138943:1@s.whatsapp.net	355	\\xc8c6b38e925eda7536ad4bd815af56ebd711d7152ab642b2bc74f0eb55d1ab4d	t
+14355138943:1@s.whatsapp.net	356	\\xe0057c5a11e4035bc94ce0e01dfe57220a5fb35400cc7d6e308228d1af79af41	t
+14355138943:1@s.whatsapp.net	357	\\x58aded4a490a2d37a0697f53636d50313decfee02530f835862fbc62176de764	t
+14355138943:1@s.whatsapp.net	358	\\xe0b0509621e8522b830f2f8bc60b2c96cd489adbf8695f41ca29326678353951	t
+14355138943:1@s.whatsapp.net	359	\\x987cfd027c9d8833ea6686fe09684c0d6e48e2eaf8f7ed21ee0e7ad12020b24c	t
+14355138943:1@s.whatsapp.net	360	\\xd867842978789142db74a292e766c6b3e329093b414b59ac0cd2ccf3dbc51776	t
+14355138943:1@s.whatsapp.net	361	\\xb8f1ac95e697819900f5d255d2c74922d56607ec72c645b77ecef76a79471078	t
+14355138943:1@s.whatsapp.net	362	\\x287435757b5bf5fd723d703d22494af8805578574f678ed713e0b2b3a8243e70	t
+14355138943:1@s.whatsapp.net	363	\\xf89b522fe304adacf6d64d73672eb3923bdac42166c38579f01a61b0a6dc167d	t
+14355138943:1@s.whatsapp.net	364	\\xc89b38594c6a4126e049e82b229c266017bf404fdba10dacfeff1fca9b45a75b	t
+14355138943:1@s.whatsapp.net	365	\\xa8c907ef2011aea7b502176684c53f957734b95cae2c6fc655f558b699b35a57	t
+14355138943:1@s.whatsapp.net	366	\\x1868dfcafd6d3cf966381709c6e1b9d581296e7e6d6c27639e288a13bec3475b	t
+14355138943:1@s.whatsapp.net	367	\\x405b3e8ff74081ec70b6db031a04514107632a4b1ff014701786d15036eae046	t
+14355138943:1@s.whatsapp.net	368	\\xb856702572c1f925bf3c9cbe6b0d1eb42a2d8dde565cd3949fd1d4dadce6e34c	t
+14355138943:1@s.whatsapp.net	369	\\x502ab638dce06009ff689fe05aa552c9ac3a19eb663ed3993c7fcb358c525142	t
+14355138943:1@s.whatsapp.net	370	\\xc00eff14c6ab457cbc46cdd7e3b70bacdef46f8cad48f0c7c1951ac4387a8872	t
+14355138943:1@s.whatsapp.net	371	\\x48b28dff43e66ef31a7943850a6eefcab759917b0c9c2ff09b05e70eaaf4cc70	t
+14355138943:1@s.whatsapp.net	372	\\x08597da7e25c25778f74c71c9fc245bf6a0fe68e82e52b59ab09a28701869966	t
+14355138943:1@s.whatsapp.net	373	\\x008a7bf79d772bfaadc96039762fbcd4d06755fc52a7924b0ada11a08569626b	t
+14355138943:1@s.whatsapp.net	374	\\x601113491052d44a554289107bce87905f713f385221c1354905723930815e77	t
+14355138943:1@s.whatsapp.net	375	\\xd8eaaad4b423fe7efdd3175f0a0ee0877b9b9f0767dd45d2b6360ace17214d60	t
+14355138943:1@s.whatsapp.net	376	\\x98025a98337b543bc0f3f515841093f21ae4cca4f6f7e260381fcc6cba8e046e	t
+14355138943:1@s.whatsapp.net	377	\\x987b8a60a5da50296d5a1a73a4fc982b3151f84a8089ace643e1ea3b1ebf2273	t
+14355138943:1@s.whatsapp.net	378	\\x30f105e52bc9cb38f0eac6f1b13548ebebed47493969ec1ca728fd018843e447	t
+14355138943:1@s.whatsapp.net	379	\\x10667dd62b5defb0d7e6ee676d856907db436a65c1e61a1e34d71c5d80bbf565	t
+14355138943:1@s.whatsapp.net	380	\\xe828a5c725aab253a5adedd46e5e100374467991b1d4141ee3864bb6e21b717d	t
+14355138943:1@s.whatsapp.net	381	\\xb01cd5a01c91ce7ca38e763473c799e8f72afe9937f068e4b53bf424b5c84e4b	t
+14355138943:1@s.whatsapp.net	382	\\xc8a78aa572c8edf902b4e5a190a768b72585a7cc962e5794bf38546c7fc73c57	t
+14355138943:1@s.whatsapp.net	383	\\x700d934743cd3b674e5d522dbd74b4cc47da223d48f7a965a9dd0ffe77abbe6d	t
+14355138943:1@s.whatsapp.net	384	\\x4865545086151bb8bb3157053661639c2fbc98edfd5d69c29fdcb19218f6217f	t
+14355138943:1@s.whatsapp.net	385	\\x10f09da62f969ba87e469552b506d46f8b2205d321167f22fb3365b8ebcd8249	t
+14355138943:1@s.whatsapp.net	386	\\x001fe6453a3744febf9d5174e76af4805d0c1a29f4028f0f5251d48890b89545	t
+14355138943:1@s.whatsapp.net	387	\\xe03bff30dcddad2b445c59c33dc83bccd982a5b0a69f05cb12de49e61e9e5d58	t
+14355138943:1@s.whatsapp.net	388	\\x704548224fd94bcf36ba277eff33252c317c7e2caa5161a2aec9d886144dc55a	t
+14355138943:1@s.whatsapp.net	389	\\x88c67ba1d5906d20dd4a29fc40477332f1373bea42e0ed17b74bdba3a515157a	t
+14355138943:1@s.whatsapp.net	390	\\xb098149e1f60343e315c245f42c552e4b49665f1228be2b458271ba6417a7347	t
+14355138943:1@s.whatsapp.net	391	\\xc8b4b6cfff51c041836e8382c664aaeb9d4eff75031f99138d6646a300a4a551	t
+14355138943:1@s.whatsapp.net	392	\\x50440cec8cbbf35c9dbf2ccd66b818c828e2c98b791723428f11ee636c84927d	t
+14355138943:1@s.whatsapp.net	393	\\x989369e5266640843a377981d4975cf9b7044615ca9cb165eafc737c4ab6a172	t
+14355138943:1@s.whatsapp.net	394	\\x18188127ad4e9fe02e40e456d5368ec9f5ba55032535c25ab871f3af4e527e67	t
+14355138943:1@s.whatsapp.net	395	\\x0027012b89ed9333b7b33737f591dad018b70c9e1a9011b5e45de65dc917875e	t
+14355138943:1@s.whatsapp.net	396	\\xf8b3490e33d9d6b1fe672c3310404101a3bbffc12f8a464dd4ad4f99ec0e8246	t
+14355138943:1@s.whatsapp.net	397	\\x28bea523ca9fc92a480a5798ee25a0e4de18ee620e25a7cd701f2507ba6eed54	t
+14355138943:1@s.whatsapp.net	398	\\x581c969cabcd6d4cd9692eab9b8a8ee54bb800d73a237e517e2a8dfe59de5f59	t
+14355138943:1@s.whatsapp.net	399	\\xf8f3f93f903bd4fd4afd1ec09069698c13e5fc1c79c4cd173af6723d4b91db60	t
+14355138943:1@s.whatsapp.net	400	\\x28de13d5b5112afe67516dc776a98c2d586c2d53560cd004031bb5b906f24357	t
+14355138943:1@s.whatsapp.net	401	\\x30ca9ee7befe814caee35e23c92462b3f05f06e7429543ea5b83cb908522315e	t
+14355138943:1@s.whatsapp.net	402	\\x1870d6ff060cc19280b6357efd8cec40eea7ccec966e9d8ea375b81de768e846	t
+14355138943:1@s.whatsapp.net	403	\\x208d7f10dc8e5d3f64e33c310fe925a9d533b0491c13185641a2a083dc12c74b	t
+14355138943:1@s.whatsapp.net	404	\\x98c0912ed50e8ce4546b68cad65d9d7dd91073bfbd4eb2763fb95c03c068ea5a	t
+14355138943:1@s.whatsapp.net	405	\\x2859d1d4468cab9f28cc7105ba5f1e069d085f294719dfee0d3de3cadbaace55	t
+14355138943:1@s.whatsapp.net	406	\\x78f0a03645d2de168ea6100643f2be015d19a29c764b56ed5126c59774fbe245	t
+14355138943:1@s.whatsapp.net	411	\\x3854a6e73b7ee95082f29c984449d3ad6911ca61739758ab6d2cff17c9efde5b	t
+14355138943:1@s.whatsapp.net	412	\\xf8e50ce29ac0ad23f75614fd67f69855c6ece66094e4f082dd20b6a1887de173	t
+14355138943:1@s.whatsapp.net	415	\\xe8ea4eaad9b9c52e66b908c7d2f2fa19b83a950a8d53bd1b363e966fc5e87943	t
+14355138943:1@s.whatsapp.net	419	\\x60f15f015168163143a7d41d597ec3b7b9da7d059e56c5024a91e468ce0c514c	t
+14355138943:1@s.whatsapp.net	420	\\xe85ad47a1284e0fc7cabb6adbf11dca811cdcb30c8b356df7178510afc397457	t
+14355138943:1@s.whatsapp.net	421	\\xa0ecd3df6bf8f7c2e329b461c3311db12113a7f916bd2fc6d90198b334ecb255	t
+14355138943:1@s.whatsapp.net	422	\\x182f8329ec07177f59c1570f3518ef1aa5a9dff52dc6556e6c5992347a2a2e7a	t
+14355138943:1@s.whatsapp.net	423	\\x3863b53284a33b91cf5e1d234f36a71f30a70095a5bb0beda4a332c13e3d2656	t
+14355138943:1@s.whatsapp.net	424	\\x48be89ec7a98b913ac0607f486333c796554227d4b1923073f5daac24fa3ed55	t
+14355138943:1@s.whatsapp.net	425	\\x30214c84a401b47a5f9c9f7ab10fa99274725edfe470f04d2c354e8eeedbfa64	t
+14355138943:1@s.whatsapp.net	426	\\x3879c44077d4b689cda0f4b938a2c072ecaaf6e3edc7744e2181d6f8da799e68	t
+14355138943:1@s.whatsapp.net	427	\\x28e09cc6a1cd409f7e083bf2aaa66f8598c6d2a1c9f8b15afa2ecf987dae767e	t
+14355138943:1@s.whatsapp.net	428	\\xd85917c3df7218b46bf2d4cb0d02d046fc44d986f70cb5148d880df5ece96157	t
+14355138943:1@s.whatsapp.net	429	\\xc852bf9f0401126603d4ccd39ee26a0025bcd760dd789d7ef1870b2d5f086968	t
+14355138943:1@s.whatsapp.net	430	\\xf86df5d12c91c39ee061be083ac3d3033a1b4dc7b66f86c71f9c3db22e2dfc5b	t
+14355138943:1@s.whatsapp.net	431	\\xc0bf1e7eb9cc295ddf74bc27beb729cc3f547cc8e99c4be76d2c9f13574cb540	t
+14355138943:1@s.whatsapp.net	432	\\x90fa71704b2ba06c768548260b9e8d649e56fed0dd7b2b992ca1ba4b0ab4e044	t
+14355138943:1@s.whatsapp.net	433	\\x10892ef81230c2ce0e43bab1da1b07a8de72118baa9e9a993d997a278036db68	t
+14355138943:1@s.whatsapp.net	434	\\xf8a0b9b4571a417818f7e0a39663eacb166cb38ac128cf35e13d788554d8b05e	t
+14355138943:1@s.whatsapp.net	435	\\x10056ef34f199d6484ff9662c28dc20501ba4fc361e34a3b51f9b27a97ebfd78	t
+14355138943:1@s.whatsapp.net	436	\\x90297c8e13a39c1eb4e56380ba18f86f731c9d86438678ccbb1cc24ad863a56d	t
+14355138943:1@s.whatsapp.net	437	\\x383de98e2c76019986d86ade7d95f9f1ea3f3729c129d53c4efa237a660cd057	t
+14355138943:1@s.whatsapp.net	438	\\x68467dda137d8cafbaf69efd66dd63d8ccca2dc8acaa296454bee52b29476660	t
+14355138943:1@s.whatsapp.net	439	\\xc8b7b98b17b27eb436097355861c50a3748d2b32ef5e5e46c31b57ceddae447b	t
+14355138943:1@s.whatsapp.net	440	\\xa066cd5fbf2c28e90406f14c60c5313a77c33deca427ddc300808bf96e850779	t
+14355138943:1@s.whatsapp.net	441	\\xa83564f202be4ea3605b94f71707228679d9f489ac9bc73bdd220b9afe3a5d4a	t
+14355138943:1@s.whatsapp.net	442	\\x68a13b056846d450760cd38b5e6b7f497bcb5365e8ee17e97b5cf3717e591c6a	t
+14355138943:1@s.whatsapp.net	443	\\x50f1a89bd92eb2acd76a755d516b68fef639518a031e141b9743b71cd20df647	t
+14355138943:1@s.whatsapp.net	444	\\xe07317ac94a03bd3d9fc89cfdaaa6edf6ac33b89699c98ffcc65748961c71772	t
+14355138943:1@s.whatsapp.net	445	\\x8012a430755df139263060d64f7ba701de26ebcd29f588ac4e326804c6815d7d	t
+14355138943:1@s.whatsapp.net	446	\\x80d5db6e853ab7a530a4fbfc443e094fbbe24cda53db3cb06c17c5ebb2aede4d	t
+14355138943:1@s.whatsapp.net	447	\\x20c87773082931c4a30085c091475eb15a6d0c56338719c01685da89b6d52b79	t
+14355138943:1@s.whatsapp.net	448	\\x300bb94282a32da1efc562abfe8f3e3938cee7e622481694e03dcba968986378	t
+14355138943:1@s.whatsapp.net	449	\\xa8494b8eec7a34b5ecb3702d6f7234cf3f1f803430333e9ca10005bcd04e8574	t
+14355138943:1@s.whatsapp.net	450	\\x1098fdf92d276da3df1b7fab969682601ca3a72ba3f30ba5f548660971a6776e	t
+14355138943:1@s.whatsapp.net	451	\\x406d75693daaa42ba388ac556dbe631d3c045448e58f3acbcf76a932ae99ed67	t
+14355138943:1@s.whatsapp.net	452	\\xa8108db2208f34b32943b62c9d20a9c27eeb7ef298b1fa34416d1a171e464760	t
+14355138943:1@s.whatsapp.net	453	\\xc02bb09192457867b10ed2d3edf353852a89b3109493077bd852210350234554	t
+14355138943:1@s.whatsapp.net	454	\\x98fc05eef8466df60eaaa229b5e1623fc16dd3775ec3ea92b4932beb4f4fe846	t
+14355138943:1@s.whatsapp.net	455	\\x90d6b4eaca4f3479f36ffd7c9521b38a9c82cb581e1412a5460d56ccd13f6769	t
+14355138943:1@s.whatsapp.net	456	\\x48c5ab5ad8cf50d7e0292e7280ed71da7b8214414b06bb619a448978a3656257	t
+14355138943:1@s.whatsapp.net	457	\\x18c24d1dd959be707623ff74c2ee4991211eaea08debf3104f0569131cd2136b	t
+14355138943:1@s.whatsapp.net	458	\\x585e0d1fd35886da6844e1b988f2849f9e664a30c24db528107178dd5870e048	t
+14355138943:1@s.whatsapp.net	459	\\x28c2e8949a28c4ad5b2d1fa16bbbc241b1442fdfa60b9009c09c7a3d0bcdbd67	t
+14355138943:1@s.whatsapp.net	460	\\x0807e41efdf72a27becec615ac58f11fc38582feb80b49de0fa5dcb353077674	t
+14355138943:1@s.whatsapp.net	461	\\xc02200a9f66972423d57b15a68503d06b7375b6d3e5f54647478e143dfc5535e	t
+14355138943:1@s.whatsapp.net	462	\\x78e0bbac16a4c56d0adec889817208dc417fa1e3084391efe6012e342dad5173	t
+14355138943:1@s.whatsapp.net	463	\\x685867fdfa2e7fc6f12f09e65afb7845de79d6ab333e157fef062049ffb5435e	t
+14355138943:1@s.whatsapp.net	464	\\xc80aafac6464ceefc1cec92ae0f2fe34052741bdfb60b90fce316fd65498d743	t
+14355138943:1@s.whatsapp.net	465	\\x18896f3965b056714aaa1f530e155df619afb9c2f848ed3564bc457bb1539570	t
+14355138943:1@s.whatsapp.net	466	\\xe8999bbd88fdea63cdb9a9a33b5727c111146cbabfad9a58b24dc180e0758745	t
+14355138943:1@s.whatsapp.net	467	\\x20531ebd747be3b9471e38b44e40d75c3dc07ab1b118ae113be1718010a2b777	t
+14355138943:1@s.whatsapp.net	468	\\x001607df0128cb635f8132f8e1d71fcc7523ecd4ec9a80bb0cb2af21c40a1464	t
+14355138943:1@s.whatsapp.net	469	\\x30f60838ca7005993f6f876e90c829b39852bf03968f69ef582c86da5ee75872	t
+14355138943:1@s.whatsapp.net	470	\\xd8d52d8d0d1a50a3cd8503fd0cbef4ff3b297e03d1762b48a2579874ce91207f	t
+14355138943:1@s.whatsapp.net	471	\\xc843233011d53023eba2305499352f683e057e5995cdfa5ab7ffa5e92422087e	t
+14355138943:1@s.whatsapp.net	472	\\x4829652106c67e7039ee08f19267b4d1b6eeb2eb9de209ef6df8f4055015466d	t
+14355138943:1@s.whatsapp.net	473	\\xa09601e53c85df9bede60f86ce6afa9efba11957d55ab2298d5ab89dd8234a57	t
+14355138943:1@s.whatsapp.net	474	\\x586da78d16ccc3ce141eabe5147ecdf7d04b049bde8998ca367772b459ee8e5f	t
+14355138943:1@s.whatsapp.net	475	\\x60889bca79b0a5e0c1664f6fb3427ea91fbbce7fac09b1e901af1d8b3a37c06f	t
+14355138943:1@s.whatsapp.net	476	\\x90ad9ce86efed0170731100cea8f19425188b67f488c8832fdd667e7c209a052	t
+14355138943:1@s.whatsapp.net	477	\\x985ed851a8c3007940da51ddd2b9b4f09198e5d17842e95cd3bed44a69653c6e	t
+14355138943:1@s.whatsapp.net	478	\\x2032cc8bf078dcf05162fc0ec4b4780c19d8e6db32d56d2ca334a2f08141ac40	t
+14355138943:1@s.whatsapp.net	479	\\x10e0c06e462c311aafb996b90fdd035b6837317f6eaf76928557af16dcb2456c	t
+14355138943:1@s.whatsapp.net	480	\\xd8e4111a5734ee14ba1b163b37529973d018faa132a487c47d70ad33173d7541	t
+14355138943:1@s.whatsapp.net	481	\\xb8e403aa918098bb6a3bb77e5fe68949e4e36073ad98a50bb2a5ffb4f546d86c	t
+14355138943:1@s.whatsapp.net	482	\\x38b46e3bb1ffcbd84ae1ad62e520d413682b9eecf15acfb00a47ad80d377df6e	t
+14355138943:1@s.whatsapp.net	483	\\x30ecab4bf459252c5d0bf360a63b97389cf11ca8c51b5ac9869902a69a300b59	t
+14355138943:1@s.whatsapp.net	484	\\x882939f3ae8edf8d1a453076a4c3ecb2719125179ab41206cfc945279daf135e	t
+14355138943:1@s.whatsapp.net	485	\\xd054375bd455a76c478892a9c6a5b211aad9d6394a26a2e8005f2a7cf581cc77	t
+14355138943:1@s.whatsapp.net	486	\\x684482cbd66ae18e236509e68e19107b997cb58680a6a9b43b6ca2a50dd53f6d	t
+14355138943:1@s.whatsapp.net	487	\\x201dbd8a4e56a9ee95a53ab0f2add483af4271606044490e3ae2bd6598ff0642	t
+14355138943:1@s.whatsapp.net	488	\\x60a6cadea78c84d967569169db77507b2fb6e7466549305d7fb0dacd0298584a	t
+14355138943:1@s.whatsapp.net	489	\\xd0a0217f4c120d2c1a47b129ed6c095157e8a7ffaf5ae168cb48a50b6803bb7b	t
+14355138943:1@s.whatsapp.net	490	\\x70b0b5a515067b1a019335f0002e529234f1ee00b3334bfe257af26ac4398f54	t
+14355138943:1@s.whatsapp.net	491	\\xf0878ceca9d3d396d5e445e8967820e6a3239a0534293090ea88a2ede288b87b	t
+14355138943:1@s.whatsapp.net	492	\\xf87a518028ae4ec0a334d1e66b824ab977301a328c153b5d22d12b21dabbd745	t
+14355138943:1@s.whatsapp.net	493	\\xe84067567bc8c6c5dc90af95b944b4a7bfbf4773fee5e46541b71ed04012f841	t
+14355138943:1@s.whatsapp.net	494	\\x68b4d4bd45287a6a3911c02a7774ee17f70fab3b2be215ab4495049851e58149	t
+14355138943:1@s.whatsapp.net	495	\\xc8504cbb313a5c238e88885d174c62d9bb307741ca9767a0419c4907ae197b7f	t
+14355138943:1@s.whatsapp.net	496	\\x009ab1b4d8663748c25fdd12077a7319e7d362721f2ba7981e367548099fb353	t
+14355138943:1@s.whatsapp.net	497	\\x8009f032ecb015ee13214ba5857338c7772095d9d1f4157c6b488496170a3555	t
+14355138943:1@s.whatsapp.net	498	\\x78667134d64b1f50f2d58ebef6469558786a4032b9ecebe9a73d845f9a061966	t
+14355138943:1@s.whatsapp.net	499	\\x48678bd425b484d3381cedade239e83668cc88dfbb41452134eb098ceec51955	t
+14355138943:1@s.whatsapp.net	500	\\xe8c34c7b9fc4dea4cf4e376d72ce0d330dd538deac223734e353bd395e678c76	t
+14355138943:1@s.whatsapp.net	501	\\x702ed725296c9a9d05b235ee119d5e18d4e2182e3498710c39e480edc0cc0b6c	t
+14355138943:1@s.whatsapp.net	502	\\x40a97e3b43910831bd8d5adf8cfd991e08947cb714ba1aa0902613c423c1d75a	t
+14355138943:1@s.whatsapp.net	503	\\x9865f987195fd926c64c68adce5174e5fdba3e050495b62d4c0ae5f52e688b51	t
+14355138943:1@s.whatsapp.net	504	\\x68923d632013ece8301904b788c24f4d286715ab2d9efb6924bd6156a0809351	t
+14355138943:1@s.whatsapp.net	505	\\x3062c6184f015db24dd45803a11fab24194f7ab1bb2cd6d050ed3f823211924e	t
+14355138943:1@s.whatsapp.net	506	\\x88d9a60736eccf93d989edb37ad5118c818cfe895cbdd3361854b4525871b565	t
+14355138943:1@s.whatsapp.net	507	\\xc0155c67577cb025b9d8362587aae1ae437a7e3fffc3b7396c3d77eb6942034d	t
+14355138943:1@s.whatsapp.net	508	\\xe87b22af5ca47ec3782bb5c9f47c07b36210282427ac81e7985037e11fbdef42	t
+14355138943:1@s.whatsapp.net	509	\\x105128968b90a30d96e21773dfa95b01aa3924983050bcc09a40b7487ecd9945	t
+14355138943:1@s.whatsapp.net	510	\\xc8c4d1a772e01fc24e5ea6186d40377bad081771db2198c69987e539e267725d	t
+14355138943:1@s.whatsapp.net	511	\\xe04aeaf0cb289b0fb1133955dccf1e85f394b062244b3b14b4f5d8d74000a85e	t
+14355138943:1@s.whatsapp.net	512	\\x4094d1a66431f5b9908a1ca15f1daa22503d5041d1375d736fa69b5352f36f6e	t
+14355138943:1@s.whatsapp.net	513	\\x50950e58fc115132425775e7f9a5cff04aacedb28920b63d42257fbc9e87734d	t
+14355138943:1@s.whatsapp.net	514	\\x7841621ac420da58d0a33a4edd73189a2078d447544dff281e4e0dad3607cc42	t
+14355138943:1@s.whatsapp.net	515	\\xc0a03d306c3fea883d264feff83fb50b230b18fa604bb3af7a037b10a1dab97a	t
+14355138943:1@s.whatsapp.net	516	\\x30197d2816c9554e13381d3ca73e7ebc1b38cd47d5569a7fdedc5f7b4c033241	t
+14355138943:1@s.whatsapp.net	517	\\xf0c26312c5829985d3d940aef666da9ae3830418155d7c5f5d75e721b104fb42	t
+14355138943:1@s.whatsapp.net	518	\\x6038a6648c98358b869d6df146274176227c6126f0b6f2ff87e7c67d47e1ff6b	t
+14355138943:1@s.whatsapp.net	519	\\xa0517988253d807b0963411f23da08fc98495581d048a83ac5d642419248a44d	t
+14355138943:1@s.whatsapp.net	520	\\x2083451eaa5be3512eb02652b4559cd651f6b5aa9b0ff85f6d2223e288cf0e41	t
+14355138943:1@s.whatsapp.net	521	\\x80230578693b9feef81097373e9097f923d22966054fbeb795c397e6fc2df75b	t
+14355138943:1@s.whatsapp.net	522	\\x805cbfe4f4abb1d25545200b1f06e830ce0bd1324ae2379a708876c39869c567	t
+14355138943:1@s.whatsapp.net	523	\\x889eb98798f598ffde51c2326c8b750fbbaa65a12529ef3179f87f095b2c845a	t
+14355138943:1@s.whatsapp.net	524	\\x40a12c30dd03ada8dffaddd9cccb74ad37b62ff457c21344f29b99bd536b315f	t
+14355138943:1@s.whatsapp.net	525	\\x280e4ef6418f981c0ebb3c55625fa0a64df51cd9928b87e2743a57f0bf233148	t
+14355138943:1@s.whatsapp.net	526	\\x10f67559e04cfeca736f07cf60749f62df4b496438c90ca45cc0f1c0a744544c	t
+14355138943:1@s.whatsapp.net	527	\\xe86bda37a4fb7f4f213ed66da50911fc3b91cdf9ceab2ed19e8f9e0b675fe878	t
+14355138943:1@s.whatsapp.net	528	\\x8896eff9affb40cdec968c38e9f9b58ba6686d3bf0cef94cd5ff8be5316ca554	t
+14355138943:1@s.whatsapp.net	529	\\x10f095dd56725504c6ae6e029461a60c95a0c395a276119d5dc2416256eb577a	t
+14355138943:1@s.whatsapp.net	530	\\xb098fde234d5b637afdb06d712295d46e04a172ad6bcc92cfb900c459d336b7c	t
+14355138943:1@s.whatsapp.net	531	\\x8006256bb0c638ce0a934948ba25be2f518174c66613c5fe8abfc2d298ac0473	t
+14355138943:1@s.whatsapp.net	532	\\x688536c91da747db2e0f49c7588cfd23314b40ac4d205ed4cf47c9f639fe084b	t
+14355138943:1@s.whatsapp.net	533	\\x48fc69af404fe8eae7dcfc8e92144f5efc3f4a121553aaf049dab015a5deb67c	t
+14355138943:1@s.whatsapp.net	534	\\xe8c5b919c0433dc36c56b4dacce8782d871dbed07042fea90695e63b587cd77f	t
+14355138943:1@s.whatsapp.net	535	\\x508fd5d0d0770e723a82e69fae8ddcffb35820818d5cef53b68b7c1d4324616e	t
+14355138943:1@s.whatsapp.net	536	\\x38dfad29903bb5f0141011559d47117bf5a08072f4f7b2f621eeabf9581d5c7c	t
+14355138943:1@s.whatsapp.net	537	\\xa0daa7d3b4c304d55f23d21956c444ae73cd5c5d7f17a9faddb65badb0fdf96f	t
+14355138943:1@s.whatsapp.net	538	\\xd8cb244c81bd97ca8256b1895812d95a7ee4601c10f3b915d5f5e97bfccb2f66	t
+14355138943:1@s.whatsapp.net	539	\\x90278d4d041dee3200f462eef6c65632fb46c01791e60ad2d583b4f974bbfa72	t
+14355138943:1@s.whatsapp.net	540	\\x383533e3692f59580a69bfd1b899da0561575d6e7a912c86f714371c6da0d067	t
+14355138943:1@s.whatsapp.net	541	\\xa85d9f3b16bb63c7a68c620e887d6ed966afb04ad0e174718c550a10d9a54a79	t
+14355138943:1@s.whatsapp.net	542	\\x88929908ba60bd6baca70a075e22ad499fe0983abf68df228870214929164875	t
+14355138943:1@s.whatsapp.net	543	\\xb8fb0a4c39ae5f43cec88b52a890ffb17fc8356457890fad5428a36c272ad56c	t
+14355138943:1@s.whatsapp.net	544	\\x480e0bb9fee062dd05af1d5f533afc8ccd435bc191017377399385d87647855f	t
+14355138943:1@s.whatsapp.net	545	\\xc8abaa454f105ce8cc23cf80af88fca8922d1ecbf0a8530ae24de9c71b9c2b7f	t
+14355138943:1@s.whatsapp.net	546	\\xc03af36c4a28752f1f82f9fcc98d09a1c305428557c234f7618d66acbe07df60	t
+14355138943:1@s.whatsapp.net	547	\\x089ccc6e003c38eaf152ac95820fa98542a17d9f5755dd3de3f903cb95580c5b	t
+14355138943:1@s.whatsapp.net	548	\\xc0c1c93158e8b8b8027f83b590b33dd5fe1493c77610a84c2975c0808cab7058	t
+14355138943:1@s.whatsapp.net	549	\\xe82752627e351f51097a9c23497ce356bad58a7d564eb11d7f58f9d5b0294a69	t
+14355138943:1@s.whatsapp.net	550	\\x580e712b1e375f8c8258f68a6bbb8a02a3a712457dfb2a1bd31c4642eba13c65	t
+14355138943:1@s.whatsapp.net	551	\\x181bac374a2b22dc563ac1353e1a4b0f12e672d87dbdde240b43fcbc835e696b	t
+14355138943:1@s.whatsapp.net	552	\\x80d873da8ae3ab93de90d82c054d8cc61fd6afbb8770f858644f2c2a6312eb72	t
+14355138943:1@s.whatsapp.net	553	\\x50b5f3147b02e2f7f17df71e13746d05839ac12e8ee6f78503420951757a7a60	t
+14355138943:1@s.whatsapp.net	554	\\xe0eb4e57ff5cd114e21118cfa97ee99df9e36247815f1a6d60e96ef47980805e	t
+14355138943:1@s.whatsapp.net	555	\\xe8e464cdbe2658aeb7ba020eb3ef325617d1effd7500a51ec5f982c57bbd6345	t
+14355138943:1@s.whatsapp.net	556	\\x208bb3ba825b939eb7b40dc747828726e3b47f3275551f2aa5dd999f71402949	t
+14355138943:1@s.whatsapp.net	557	\\x30a9d68955e2a023e157c7ff94b25dccf5afff9aa322ede1c56383f56154a67c	t
+14355138943:1@s.whatsapp.net	558	\\x404c7ee1d81fd6dc4d914cab47726f14d8b91dbf3fc4c5f35eb07f05d3136e7b	t
+14355138943:1@s.whatsapp.net	559	\\xc0cecc3fa1dca09e6fd0f7ee912a1fce92ef8eb95e2d3f8c94fe1ea39d8e5d59	t
+14355138943:1@s.whatsapp.net	560	\\x58f9c0aedb69bac896b166f1ffedebfff068300374d609812239e8ed7c768348	t
+14355138943:1@s.whatsapp.net	561	\\x10143f3b723e06ce2ad167119cd102f0822105474141bce731ab0b697ef24665	t
+14355138943:1@s.whatsapp.net	562	\\x50c66f1b0e5149a61136d4dd235dd2948a96351c3fbb1daf8e33d8ccfbfd4251	t
+14355138943:1@s.whatsapp.net	563	\\x20943a785b79c81bc7d6015a7eb0a75371b562fc1c6259aefbc2f669f8578979	t
+14355138943:1@s.whatsapp.net	564	\\xc06cacda90f730070e6b8147b05837f8147d02735f0c158fe9865a2683352e47	t
+14355138943:1@s.whatsapp.net	565	\\x4818c77662c8eab5d6850d8fd7951aaf6df98a83896800e82c1d1edacf19086b	t
+14355138943:1@s.whatsapp.net	566	\\xa8da6d686cef92b8329460a55747715ac2e86aa675f8cc4d01dcbadc7d1d5a5c	t
+14355138943:1@s.whatsapp.net	567	\\x88a8c1bed84fe4dc45fc6937642eb504c7a9cc3f5a16578cf248f8c8b6efa567	t
+14355138943:1@s.whatsapp.net	568	\\x40a118e886e5013acd4851128621def6d4bd7326200524e28289fdd4c2d0b757	t
+14355138943:1@s.whatsapp.net	569	\\x389d1cc1c0a316b56471b4ae10a299216ad739212459bffd9fb7149b4f88a140	t
+14355138943:1@s.whatsapp.net	570	\\x185b78ad7d65c0d22961d7f96757bea5f7548b5e7918dfc26a15e368c5e5ba53	t
+14355138943:1@s.whatsapp.net	571	\\x68bb2e0217c55441ef8cd5734846d5c8a24cdb0432abbf78605275080c9b8a4c	t
+14355138943:1@s.whatsapp.net	572	\\x1059a8198b4719bb2541dfea4852c068d0d54ad440a13e162afb733d5d914064	t
+14355138943:1@s.whatsapp.net	573	\\x50eb02f623602ce75596d2438b11314c9f0767222a5123e199ff504f92c48451	t
+14355138943:1@s.whatsapp.net	574	\\x90f9d0a3e5f03e296f254dc0067349d587fef1b7aff9e8dde29a83e67eeeb95a	t
+14355138943:1@s.whatsapp.net	575	\\x086c665225d590a8b6dfb670b0ba7a8882d587bbba070adf74067547ba528b57	t
+14355138943:1@s.whatsapp.net	576	\\x3047e063019cc75e8f7de44d8ff14c4e4bf1a00c9fc5be2778e07fe59536b85d	t
+14355138943:1@s.whatsapp.net	577	\\xa8732232bca4f6c09d00171cad6cb014ed9206f48302ceaa39861b32abb8fa76	t
+14355138943:1@s.whatsapp.net	578	\\xf0fe968b29cda63120c54aa0bf5f563f6e1b0d37f567676ed821e20fb962d762	t
+14355138943:1@s.whatsapp.net	579	\\xc00aa668ca7096ce9e1f4890644b379495e41e6409bfff6296cdba716899ca6b	t
+14355138943:1@s.whatsapp.net	580	\\xd83ce00eaed2e659d48c9596c2f3a991d7b28b788ee03f2855c054d43987fb68	t
+14355138943:1@s.whatsapp.net	581	\\xc0afe3330d5997d8810754f664e9c99e7ca851cd537a2835da7ff226eddea941	t
+14355138943:1@s.whatsapp.net	582	\\x20538c2ccc9096246605d878b36c9ca541635fc3ad17c17c3894e3f0609bc069	t
+14355138943:1@s.whatsapp.net	583	\\x5024b480dd73f6ff8af4e4b5121bdd38e31aed5f7d2a469ab3c47da42b1d6665	t
+14355138943:1@s.whatsapp.net	584	\\x50f0d2ea1792e324402f697d1bdea9c614c654c0e9b9539986fcddc285e1496e	t
+14355138943:1@s.whatsapp.net	585	\\x984a0c058f88f31d2e1a71302b081201dd7e5ff8e8dac753f00bccfff8bfdd75	t
+14355138943:1@s.whatsapp.net	586	\\x30f01e1bf0f7e80ed5574e3b51bf4addfba0975944464128e65e2a7782e38a6b	t
+14355138943:1@s.whatsapp.net	587	\\x98bcd3082a907a1ab23df369d56cf04593e18736fdf537a77fca0ed2481a4342	t
+14355138943:1@s.whatsapp.net	588	\\x984f1e6e1b96897ac0c8c58f76022c308d4f1686acb80281930fcb035006a061	t
+14355138943:1@s.whatsapp.net	589	\\x4063e8c77b6f409ec7948aa17eee5165df5a385a9a7ad180ea80649006644352	t
+14355138943:1@s.whatsapp.net	590	\\xf02214a19183281b87f8b47420898b59f9d0f149267b409cc8f3e59d62302166	t
+14355138943:1@s.whatsapp.net	591	\\xc81b987a5d2bade4ee795f00f43dc03d4ad1df5f887befa0bb0c7a6a803ec75a	t
+14355138943:1@s.whatsapp.net	592	\\xf8e79dc9977d9f59837a837959aea228fb25e27eab18a98a04fdc13ed6679c7b	t
+14355138943:1@s.whatsapp.net	593	\\x885ff6e7cd6241789187ed1bf57039edfad3dca28530e850ae05328805495672	t
+14355138943:1@s.whatsapp.net	594	\\x1061c595748702979691b36db2cf0d25d0176d023ed39d37e20b460b5ffe7d53	t
+14355138943:1@s.whatsapp.net	595	\\xe05ec0e06b901cc822e19d9d03208961f8a07797bec075cb7b33a62bb42e655c	t
+14355138943:1@s.whatsapp.net	596	\\x884580e76fa3f6e1da97721a2788b8f220305dbf6aa4a689f1e6219ee4f9f479	t
+14355138943:1@s.whatsapp.net	597	\\xc8950cbfd994d9940cb6f98d8c05a77cf6d15309eb80b682b0c7b955b3839576	t
+14355138943:1@s.whatsapp.net	598	\\x90ec93228501ff674d293a53f59358b05ee4735132647eb334c57f0f0ed0ea50	t
+14355138943:1@s.whatsapp.net	599	\\x385a5fb1c1cb246aeb248327292b5124ef8cb1f7ddb7909daa6b86018b798879	t
+14355138943:1@s.whatsapp.net	600	\\xc05baa48978440d5a3ee9059457b146769d79191a02a7d4bfc028f1b1c868450	t
+14355138943:1@s.whatsapp.net	601	\\xf06294e079e0acc88494a215770e1b9a3381597facef7c9ef98548c45b141979	t
+14355138943:1@s.whatsapp.net	602	\\x705e685509a7262c18b57a772849c2e3b8d05991e3a67458bdb22df7c0345f7f	t
+14355138943:1@s.whatsapp.net	603	\\x908739f155972caa9b434b88b27fb892db1606fbb68021ba0373c62cfe64a857	t
+14355138943:1@s.whatsapp.net	604	\\x707eeb53b1afbc5e605bd4a74712abc83619d7e23cd5873a2cb304499895394c	t
+14355138943:1@s.whatsapp.net	605	\\x503a6a9255f10d877639ae64f88a7511c266a17ed70194ce0283c57f9bab8a5a	t
+14355138943:1@s.whatsapp.net	606	\\x407537fe64674b3bb26b54ba7be9c3584a738910814e2177ea480e85519d9463	t
+14355138943:1@s.whatsapp.net	607	\\x70fcc4ff0633df66fbeca8c9eea1c6f255ac937cb741635e5305f0416c358557	t
+14355138943:1@s.whatsapp.net	608	\\x708a50935ab3ac4732a74527b872c78af5806e4a1dcf20e48f588b116de08443	t
+14355138943:1@s.whatsapp.net	609	\\x486a44d732f83a1a219ff207e4a8512f020ecf78dd960454da658a2c26f06668	t
+14355138943:1@s.whatsapp.net	610	\\xd05795476626afe776bd19f38f3ce06e235822699097495a132a46e8ade3714e	t
+14355138943:1@s.whatsapp.net	611	\\x48f811083e7c1542afc652a6a40bec0d787937fce6030d175eba723b4dc0ca64	t
+14355138943:1@s.whatsapp.net	612	\\x3851432b7696a5a190d95bb315c7f144999d1e0fcbeaf92a4aa43be22d63e144	t
+14355138943:1@s.whatsapp.net	613	\\x783aa70877731c536f690f1d6472a2092776ff5198228cf242e54ad5f31ad346	t
+14355138943:1@s.whatsapp.net	614	\\xb05d178988f7515f74d517bfb3da10be7e07aa275d3750a51256ae751534c573	t
+14355138943:1@s.whatsapp.net	615	\\xd0b4574bbba71976b7fc91a4576eec7d211dcf46fedfb2dbd810787589744277	t
+14355138943:1@s.whatsapp.net	616	\\xd844ff139a9e0ae41aed026695e0adb30a63003fa7a1c5f7692f8518df605f41	t
+14355138943:1@s.whatsapp.net	617	\\x583ff6e6e5b6b3da7e39b042121f462e368468ca8ad09c79b3884c63b5897f58	t
+14355138943:1@s.whatsapp.net	618	\\x701e1296af747326c162d23ad7e35d8613afb9a039ba607651083c7beb15cb4a	t
+14355138943:1@s.whatsapp.net	619	\\x18ba60a306edc46be9e79fdf86abbb7a4c055385ae01b5ed10afd69d3b1b1954	t
+14355138943:1@s.whatsapp.net	620	\\x8022c8f23cbe44c748832e3af33ff22024b309e2b8cec40f18a65cc524496246	t
+14355138943:1@s.whatsapp.net	621	\\x903ed5e2a921c08c2562d95bef0d60c45652ff18e48eaec2c111ef57876f1961	t
+14355138943:1@s.whatsapp.net	622	\\x18bea404afbe91f37a629190d711b94fc4d0f77a79cecdfe081c3d5d371b0653	t
+14355138943:1@s.whatsapp.net	623	\\x106e93259b35e4051eeb6e4e30a0c200aa74c904d6a7df6399624376d9928c49	t
+14355138943:1@s.whatsapp.net	624	\\xb00b1df1350ac529e9f54d736ac197941b3c4bbd29c687343e5d02fcc04f7065	t
+14355138943:1@s.whatsapp.net	625	\\x380bed1107ff827ab0ce89ebbccd6dec8b0fcca3bf358aae682500ecea56f555	t
+14355138943:1@s.whatsapp.net	626	\\x18a13a4484b217429aebc388313d5de52356e07d7e354fdbad411a7be08b1d63	t
+14355138943:1@s.whatsapp.net	627	\\x90ccc2809ab7525bab93a31e692f3ac67cdefc8203b451728b9685556b578967	t
+14355138943:1@s.whatsapp.net	628	\\x68c452595219a1ff6801c537d2bb0eca1bc3a2836a533b2003e109881818296b	t
+14355138943:1@s.whatsapp.net	629	\\x40ad065b0a975a249d44a333b9f0bb5586b1a76368dfc8f8e6d1b9281f78237d	t
+14355138943:1@s.whatsapp.net	630	\\x38f1a30036fc605bacfd393823c2756db0ac5b48241f7f700d1786ba54edd37b	t
+14355138943:1@s.whatsapp.net	631	\\x38cfe5168a8c0407848cde98e74ef608255d8f69370a2b4ac7509ff95d4a7b6b	t
+14355138943:1@s.whatsapp.net	632	\\xf04f8be3d27f50cd08bff16c7d731c4a4fd2cbf02ff9801ad72fdd2fe0f8e178	t
+14355138943:1@s.whatsapp.net	633	\\xc0c77b419d36cdaa370d57e7d0de64ec5b7432316dd2c1837f2d3828e4e57f51	t
+14355138943:1@s.whatsapp.net	634	\\x1803253dc9939aefceb5f10e145088c2acbdf7bbf50e48993c1debfd90ed4950	t
+14355138943:1@s.whatsapp.net	635	\\x4018b78c0c68cfd0c61b4557a46b7991bedbbba58170c114a12bbbecec0de06d	t
+14355138943:1@s.whatsapp.net	636	\\x0868e87cb6c10c14b71e3ff672409a33a067ea603eda5f8940590581464c435e	t
+14355138943:1@s.whatsapp.net	637	\\x10307540ae1ffa3d3d3552428500f855b6160317d9a66bcd846aeb7b724bf54c	t
+14355138943:1@s.whatsapp.net	638	\\xa8c02e62062b0381713f1d85a6742016c4cb29db792f2cb86af6f3c30791074c	t
+14355138943:1@s.whatsapp.net	639	\\x78b972dcceb1aa2639c8f210e01b345893c49f82b7c0ad458457ebf1c808f05d	t
+14355138943:1@s.whatsapp.net	640	\\xb89b959e5b4eb323bf3c1e417e52a589d667ac7c078ac721094db626d0dd017b	t
+14355138943:1@s.whatsapp.net	641	\\xd8a2c96701e3750c6c7631de11600eb3ae88bdacea1d03811a915bb2b08bf378	t
+14355138943:1@s.whatsapp.net	642	\\x7048eac2893946c85586d6c98750db9cd511dd30606663525cc176c71ec9124a	t
+14355138943:1@s.whatsapp.net	643	\\x20895d26103de2fc3a09ea9ad82b5866f70100c3e35b34f8064fe4b3c7a9727b	t
+14355138943:1@s.whatsapp.net	644	\\xa07e214d439c58bc29b2937d36cb8ae2078ad0e9b3578cfa66c720e2ad18dd4a	t
+14355138943:1@s.whatsapp.net	645	\\xa09b10748763b28bc09ec8ecbf0d23185f1130a0c3890d00e82f922558b08a52	t
+14355138943:1@s.whatsapp.net	646	\\xc0437d0ca553e0cf08ff77c846b23d74808a1c36790d70e3f4f9ede140e7ce54	t
+14355138943:1@s.whatsapp.net	647	\\x5043f9e0aaaf777cb2e29f08aab74392b22e3b6105027385b13da95c81b9a651	t
+14355138943:1@s.whatsapp.net	648	\\x68b8544e98de9c62bd4b0913a6bd9c5e5f76cbfe3fcccbe398e4ec15367f3343	t
+14355138943:1@s.whatsapp.net	649	\\xa0a84840f77b4290c576f760f84310cb36101bbf4f730ad1584d0ff6bbb7b07f	t
+14355138943:1@s.whatsapp.net	650	\\x487a9589c23b94dbee4dfc83b54e2b6631293870a186026f815672c6234d9872	t
+14355138943:1@s.whatsapp.net	651	\\xc0a331c92df78f54780bc1239bffb76f79fdee1becd2a54bb32e0148b8bb1272	t
+14355138943:1@s.whatsapp.net	652	\\x580570757f40a8a6fa5a412a4497a26e5d03e70af53985c8becefa5fcec71140	t
+14355138943:1@s.whatsapp.net	653	\\xd0faefcd9d2fba1c136a055923de7437eaaf09e1bf76ae52912c2ea4d4165369	t
+14355138943:1@s.whatsapp.net	654	\\xf0dd378112fb06da1204817324e5fb86ae42d147c18b07e170b475533f54476b	t
+14355138943:1@s.whatsapp.net	655	\\x3056f3002487cb603fa11a6ddce9569d358e8841ae4e7e6b6e29bef4f5514c6c	t
+14355138943:1@s.whatsapp.net	656	\\xb8b11edc3129011e6b7ffbf5cb9625a60fa31d8edc454854a06e993c60061f7b	t
+14355138943:1@s.whatsapp.net	657	\\x20494875680e5a4f872e37c8429165dbf174bb0beff473dd8ac43fa4f47e4873	t
+14355138943:1@s.whatsapp.net	658	\\xe016a70dd7bc1ac5a614c06cc0fb86301c7e7e6c4b38e1acf3d5342aba2f7166	t
+14355138943:1@s.whatsapp.net	659	\\xf8f2a8be27605d1d6e0a164dad46612708379f4e96ba5ffb64c8caba79485c6d	t
+14355138943:1@s.whatsapp.net	660	\\x60ada44dfd6a51930dce0654f1d68be8c09208c7458e8c8a53dcf57778819150	t
+14355138943:1@s.whatsapp.net	661	\\xb043542bd1df35a94ea66a10d54c518d0da34d30874bc6acd5b96db5d7bf8d7d	t
+14355138943:1@s.whatsapp.net	662	\\x8056f106a551bc32dacbd5e832b773ad9e87efa9aa6aecd34bbd3b5e0a47a25a	t
+14355138943:1@s.whatsapp.net	663	\\x98d30d800e6ca27fc96923353822ca3855bb9e2bee21571e5191ff3ae96f4375	t
+14355138943:1@s.whatsapp.net	664	\\x785c26ec7ca51246d051ee33fe37963ccdad31f8c288dd22e1af8487bf84a56c	t
+14355138943:1@s.whatsapp.net	665	\\xd84ed3e0c09e01713cfdbffa164bb20e42bc1b5772cb0be21cab44c91ba9936e	t
+14355138943:1@s.whatsapp.net	666	\\x58abc1e71885a9e78497f8f220bf95ba5415dadc36842941db8f551905119942	t
+14355138943:1@s.whatsapp.net	667	\\x5869d06909f295edf2613dc765f140300e8af7122eee81d8426c8e2d49f84263	t
+14355138943:1@s.whatsapp.net	668	\\x70e4562dc710e80cdfdca14d16455e01b2052934f142a2c94a436c11c3aea742	t
+14355138943:1@s.whatsapp.net	669	\\xd02f9f9680f819cb19a5d4a855b765cf9f65ea792fc6b8812a4255d98c32f766	t
+14355138943:1@s.whatsapp.net	670	\\x58598a21d2588616854a8403f003f749e187e00cf7de3bb68e5959711b7d595f	t
+14355138943:1@s.whatsapp.net	671	\\x10c7556f5db7e83ded799b5c9159559459e332c3b066a4c40b8803e8e405154a	t
+14355138943:1@s.whatsapp.net	672	\\xb837fe59243470037388b045bb71c1eb568857f274db9870ebc27c3e12642b72	t
+14355138943:1@s.whatsapp.net	673	\\x00c68e2612f39809358e84e1596857b3ca1e4e1aa03df16f405efccdd584257c	t
+14355138943:1@s.whatsapp.net	674	\\xa0ab8aa864fc1d82b5ae0b4cd1daf6ad15a4c07e5376a56b1ba294bc647d3658	t
+14355138943:1@s.whatsapp.net	675	\\xa0d9047ef319601c799e013de5c2fdec328b554246123f1d83b9aa761e0dc854	t
+14355138943:1@s.whatsapp.net	676	\\x583a300ee5a0b4d937d3e74d7a1bbc90b855b21bf7a0358129ef36d3bbfc1f5e	t
+14355138943:1@s.whatsapp.net	677	\\x406b6750f599ddec0f1afc440a49744f52df6937cd63c7ba3bfb031a19e1c866	t
+14355138943:1@s.whatsapp.net	678	\\xe0e7c552c396f125706f50362839b22ce467cffc3fb9155b44bd9ddf66621b56	t
+14355138943:1@s.whatsapp.net	679	\\xf8b4b0dc480bdd1342b305f45ab2e42e7a18ddafcdd19cfba7b0e8850fbd296f	t
+14355138943:1@s.whatsapp.net	680	\\xf00e344308555cc7c572454d5acb16861f05245a108b3b16b4c87a81ec7d2041	t
+14355138943:1@s.whatsapp.net	681	\\x981c376a0d111e8a9ec4c5112ce7624a2bc0e678cfb0fab2f6499dc024717843	t
+14355138943:1@s.whatsapp.net	682	\\xd822ea9fdba7e1140155ee2cf974dd85b1c50a60ac15cd11e57814f49779646f	t
+14355138943:1@s.whatsapp.net	683	\\x80f191479ade946ae4cc99788e2f16353d3dd584b9e373d8b5ae703982970164	t
+14355138943:1@s.whatsapp.net	684	\\x60c2d5bc7fbc1694ab2b93f1f7dea05cdbaf9c57a6f6de105c94b8726aa6395a	t
+14355138943:1@s.whatsapp.net	685	\\xb025d3fb197e765d710cabadc9ff9c18ee89132bf7b11a402b69edea2294b65b	t
+14355138943:1@s.whatsapp.net	686	\\x180fdbac9c18778ecd523f7e85291e9490f05db5bb8d36c607a7d99802ea6a59	t
+14355138943:1@s.whatsapp.net	687	\\x083e21365fec29d1374d635783512d5437715a97a3011981333af2cb1fb06056	t
+14355138943:1@s.whatsapp.net	688	\\xa8538c8604a613b07aca7fb7ac1636f72bbcf2b467296142f75b918f73f4135a	t
+14355138943:1@s.whatsapp.net	689	\\x1003ed5ae351efc73022fe79f87ad5a9689ca97bbea826e0daca1edbb7c4014a	t
+14355138943:1@s.whatsapp.net	690	\\xd8ba633d35eb38c0a35a3a28c8c1ebd0fb507389f686181cd45f2a768b089c57	t
+14355138943:1@s.whatsapp.net	691	\\xe0397a76b447e8f25417c4f4f3752ce54cf459fd18c778e7c78e2d84e493f74c	t
+14355138943:1@s.whatsapp.net	692	\\x78fa69b187c7660b3add89622cb5e3a1c5e8714ac9db7b93195fbbd149b06143	t
+14355138943:1@s.whatsapp.net	693	\\xc0ff71c06439c00745b8edde16b448c2badf283188dbf19e2d00ce08667e557e	t
+14355138943:1@s.whatsapp.net	694	\\xe032afe599724dc86a9f7feb11a8f2e2668f14d3118e9c40c711aaf23b71f069	t
+14355138943:1@s.whatsapp.net	695	\\x4048888328c23223c3aedfa61de7e8195fe5a0fc5de50d5e807b47e69245c053	t
+14355138943:1@s.whatsapp.net	696	\\x58be8df2829ab7fcb0595cadfc755f9f342bdec99a442e7e56e7031a2dc4ef44	t
+14355138943:1@s.whatsapp.net	697	\\x900659f8e0e37e2e503d4df738f846a776369e1dc6ae0a3aeaa57ecf2c71987d	t
+14355138943:1@s.whatsapp.net	698	\\xa0a509e1f46e5c7a93018acc9a4840a88c9412c42bfd295c4e1253e71d8e8556	t
+14355138943:1@s.whatsapp.net	699	\\xc809070bddd98d53a89c75af039d770bb650e56d03bab859012eac894e3b096f	t
+14355138943:1@s.whatsapp.net	700	\\x00a621ffdfef93a701936795a141da2897271df587682aed79b7f28fdd8dfa51	t
+14355138943:1@s.whatsapp.net	701	\\x60c10214de64d707a343391d004507b6bf74c876a9901d73dc80384a890f447b	t
+14355138943:1@s.whatsapp.net	702	\\xd8710d56afc195f3d510be8b62f2b7a4d084b4773abe2ae91c88ea323930be7c	t
+14355138943:1@s.whatsapp.net	703	\\xf0397bc98f5c7922e6e600ce07c89847d93b6d29575eb012d752e09bce531a4c	t
+14355138943:1@s.whatsapp.net	704	\\xb862e757601cfd7beb5a742d92579ed65588a4db90984ce8ac33dc00125e916b	t
+14355138943:1@s.whatsapp.net	705	\\xe867738b00d451c80bc9d364a2a4f2b8f172c44a24abbbd2591c427ec592d16a	t
+14355138943:1@s.whatsapp.net	706	\\xd0c0b0435ca9a5e859787afa51d8ac51f03080d49de5a96c0ee0b8da5140d85a	t
+14355138943:1@s.whatsapp.net	707	\\xe8f96354baf561d392100a05ca237e439f8ff96b08bea6b3917e1374f00c9c56	t
+14355138943:1@s.whatsapp.net	708	\\x00acb8901ca6351e21c632ac7300dd089d5c7f7f52f6f910b23aa30b197b2a4c	t
+14355138943:1@s.whatsapp.net	709	\\xd0cc07a340933d658c021db6444703bbf04cae070f2d137dcb151cad14a19658	t
+14355138943:1@s.whatsapp.net	710	\\xb847152f2a6e33274e04075fb8a389bffd255376da23c2888c2c4c638cc98971	t
+14355138943:1@s.whatsapp.net	711	\\xa058c189ccb4082102e873a3b402f0af1137f5f6c03c28bdea86de58cc8a3f79	t
+14355138943:1@s.whatsapp.net	712	\\xa8f059d17e24222afb70abf8db0483c7c6c6b2adcaaeb6a235926e20e8b69063	t
+14355138943:1@s.whatsapp.net	713	\\xf0661efd1cc12e9cbbfbfabc222b1a0c04ec0c23ae76d6b24db588cba4e5c348	t
+14355138943:1@s.whatsapp.net	714	\\xd05148982865ded6d7b6af1df878c426156bb97913e48aa15d53fd82581ea55b	t
+14355138943:1@s.whatsapp.net	715	\\x300f50250261689f63c5c110df350d58190752712eb3ca273eeae8b7354ad151	t
+14355138943:1@s.whatsapp.net	716	\\xc0c74b0c901cae14e0c2b7bcaa1ad7fa8ecb8f351823dc8356c117e27062307d	t
+14355138943:1@s.whatsapp.net	717	\\x2895b8e7e6334dac85e657dcac098cc7af4a680e6c090f1c65cf9a374395946a	t
+14355138943:1@s.whatsapp.net	718	\\x88d9088933780833b53e21fb6637acd4896f7e0a62be78abc1f493fcf0715944	t
+14355138943:1@s.whatsapp.net	719	\\x20577f4b099f1ad1d531c533b7458ff47a904e48ffe39126f10c660d3b91337d	t
+14355138943:1@s.whatsapp.net	720	\\x309d669342c202a03ec363d57bbf4130be96e05d0353ae0e38c8c9641de3b241	t
+14355138943:1@s.whatsapp.net	721	\\x404fe4317a1c5f5b9c96491029b95de231a1dde9b3b76b3b8d31edf29f58874e	t
+14355138943:1@s.whatsapp.net	722	\\x1896da034afcc0d82ebebf1fbe1de05dba6df8816972b6ea2a4b1969fc06e153	t
+14355138943:1@s.whatsapp.net	723	\\xf010c3ba02fdd9e630b1bc84e9a4b646c42778f423b8a6140e1df83e54552c47	t
+14355138943:1@s.whatsapp.net	724	\\xa00ab3864be4ec9e39e137a710155f4707f9a527d521e128b627eec19da6ad73	t
+14355138943:1@s.whatsapp.net	725	\\x30dbb91d238a99229046ed1aca7b67e76187bbb0fb7f4318a94f5decb877664a	t
+14355138943:1@s.whatsapp.net	726	\\x08bd2668ee0cc5e5d7ca25f429b6fe73066df806ba7c73edab6d1c7fe65eab54	t
+14355138943:1@s.whatsapp.net	727	\\x1064cad95301bf566ae7e2dcf1f77f70dc5c98193a0c770963fdf212f0969443	t
+14355138943:1@s.whatsapp.net	728	\\x78438ef6644bdc8771618ca40b096c2f38f08dd471e574fd80b2cdc3411c5674	t
+14355138943:1@s.whatsapp.net	729	\\x18be436b5702f4fa6717f83841639c2d6c88b69ab237ae498c0763640a285a58	t
+14355138943:1@s.whatsapp.net	730	\\x280bcc2c35ac240ebbc618120d67be0289663149cd20bdeb95834f98f9993a6b	t
+14355138943:1@s.whatsapp.net	731	\\xd0f52bb1c8933efa21182bdce0f4bc4ba99cdb5a84b8d5152009704897e49474	t
+14355138943:1@s.whatsapp.net	732	\\x08e1a2f8d133037a5a2768c65314c85cb628018f8f69f0cfbecece51ca5d7a6c	t
+14355138943:1@s.whatsapp.net	733	\\xc04914c485d171e302bc3bd3fe40745ddb6a8865045733ce3e9c72e85e71f14b	t
+14355138943:1@s.whatsapp.net	734	\\x70dd6fbb5d9d4c789f9087d7cce5abd19e092428c853d754313147cc9cb53640	t
+14355138943:1@s.whatsapp.net	735	\\xa873d3d1597bea4d303c13e8995d8dddb1ebb186f3802d340e0ed8473746807f	t
+14355138943:1@s.whatsapp.net	736	\\x98e7655715311548394510c01dbf3763bc5098da97c6db06c43adae606e0374c	t
+14355138943:1@s.whatsapp.net	737	\\xc873580e9cc4ab3c1af3fdb51c47129337b4380a84f9f2c67e1e132e90158a60	t
+14355138943:1@s.whatsapp.net	738	\\x5837a82b4047761ddaa7eb461b424ded35eae00c6e7509dfcbf5ba3c61ad7050	t
+14355138943:1@s.whatsapp.net	739	\\x68cc757375552769de27cb3796c434f18d8fd3e5a0b802322bd573897ee5445c	t
+14355138943:1@s.whatsapp.net	740	\\x102aca3e5a0e312d1689f340290e2bdc80dea282fc6ddd0fa2f62c7723b64568	t
+14355138943:1@s.whatsapp.net	741	\\x58ff70a5a5ba715ecb2fc817dda542f9f68f1330cfb39ec291b2a7294bdb725c	t
+14355138943:1@s.whatsapp.net	742	\\x68941854e9a73a7deac89139e2303a5cf44995a3b7db89963e98ffde1efd644a	t
+14355138943:1@s.whatsapp.net	743	\\x5016efcc268607b1838d5021076fe604e87705d38761d718ecda1967e161ee52	t
+14355138943:1@s.whatsapp.net	744	\\xc857aac617cce498398ce6b7b73cf1507117a97834f94a22e4eceade1d9a7c64	t
+14355138943:1@s.whatsapp.net	745	\\x78b74025b7a0e6c3c46fc7446609cdacc87a080cd7673a8bd40a6882a7e8a945	t
+14355138943:1@s.whatsapp.net	746	\\x680cf8eaf216d37001cbc5cf8c643d8cd4cff0af64713e9414857c9a600ce269	t
+14355138943:1@s.whatsapp.net	747	\\x00de66bd6e52ce6662e0c95d0041882f8cd45d644cea9d146cdea89b0df0015f	t
+14355138943:1@s.whatsapp.net	748	\\x80d5c32f159a4a0a274b3bd8b09991e1c638f21cc7631d63d080cbceb569f879	t
+14355138943:1@s.whatsapp.net	749	\\x28bc5a460e1c38dbf85ed9cd69865fe08cf35e68ce8f50701cfc0894792b5a7f	t
+14355138943:1@s.whatsapp.net	750	\\x28b8446ead9c65902d7467ed8d8d41a33d3d0e9880a708a6c27d6e056783777a	t
+14355138943:1@s.whatsapp.net	751	\\x60d11ab79a9d2fb6dc47c58fa4a6b85c8d71e409907b6918bfaedfbcab3aff5f	t
+14355138943:1@s.whatsapp.net	752	\\xb88bf539dd12a0bcceddd89927438391ad35e188bd774ea4f93bbd9984bdab40	t
+14355138943:1@s.whatsapp.net	753	\\x18444b92e70f129f1ff58eaf4de290874ff51e81a78f5387f4af80ac89ca7b72	t
+14355138943:1@s.whatsapp.net	754	\\xe88ec08a9b262b83c994149a33683ccee57a6be4a4d355a8d85cd5bf3623017a	t
+14355138943:1@s.whatsapp.net	755	\\x40585251c90e16624bfd9f69e083413b14511992fde269f56475186969835752	t
+14355138943:1@s.whatsapp.net	756	\\x500010c4e2edaf463abe48c581bf218ac4410b11d8abf1f385ae2154e7c0924c	t
+14355138943:1@s.whatsapp.net	757	\\x60969b62a1d24175805ca5edb617f802e543e223c48c277b48190af1cf7b9061	t
+14355138943:1@s.whatsapp.net	758	\\x587511d96fb043fbbafd8ddc2a08ba0cef15f80edef3f092dc4e119c6f6cf74b	t
+14355138943:1@s.whatsapp.net	759	\\x60e0e65ba350c4445853abc2a0522730d224d47667d097529e0227d7996ea977	t
+14355138943:1@s.whatsapp.net	760	\\x48b267315a62cd237a7b5f765c2dc3ad9529ad40b2ff43367a008d5727c48e5a	t
+14355138943:1@s.whatsapp.net	761	\\xc876ff0c6d06b5c0b5c41ec95fafe25c1fbc21c75c316c6fd37b9bed5d6fd868	t
+14355138943:1@s.whatsapp.net	762	\\x20608373930f3b0a7e0c3b5c4b50249f1f9db11d3d12176007fd34b8eab65e7e	t
+14355138943:1@s.whatsapp.net	763	\\xe07b8e332baa5bef3b8853cc54e8f9f8c4b84c1edf25b3048c3e60214f6e9d63	t
+14355138943:1@s.whatsapp.net	764	\\xc819ccdd69c2175fa4d83a1992b1b81b5ad76566ff486005d8748c3825b56b41	t
+14355138943:1@s.whatsapp.net	765	\\xf062b2b8e8649a86db1264eda551786d82bafc8d2ff82452e008926548f4f975	t
+14355138943:1@s.whatsapp.net	766	\\xe025e39fbbdd5fc3502aad6119e79cfb54e09e98d6f2089f06771844da69ea71	t
+14355138943:1@s.whatsapp.net	767	\\x786e28db0f1c3a11ee131ac70d5d8ca97beeba54f73732ea2b40c67b7ea85660	t
+14355138943:1@s.whatsapp.net	768	\\x68ea6095f5db12e9a59851ec63b6bbeb45f906f66bbda181375bf1dbd8492358	t
+14355138943:1@s.whatsapp.net	769	\\x188d42c755d1f9077a99635884ddd819bcb64f15290394b2494780c4c6cd154f	t
+14355138943:1@s.whatsapp.net	770	\\x986102ffe7f591cc3325bd2feefadeb747426fc154484b3029aeffc744ce327b	t
+14355138943:1@s.whatsapp.net	771	\\xa0dcf50c1feda0f591f2998b35a0d964bd5802f1febf6cf5c5e88a3f87d5f75c	t
+14355138943:1@s.whatsapp.net	772	\\xd0ef73c3a5ef6a575d7aaf79928ec99d0f662ede281a2273e785d8ebb238a262	t
+14355138943:1@s.whatsapp.net	773	\\x6850b4f815e6a95d6e7b965150a6a640237a36685ecad8780b3b7a2c4af17368	t
+14355138943:1@s.whatsapp.net	774	\\x10ce71ef115e26c4ee7edfa85c47ee24b75fe439be1498b3baaf2af98132955d	t
+14355138943:1@s.whatsapp.net	775	\\x38b35359f83d32a776f8d6dee8af6eb50007f34db830aaeb8e93f16cdfee997b	t
+14355138943:1@s.whatsapp.net	776	\\x80b11079cc2ddc241a7e9f1eb6049c0424cb224fd46c0a82d6b9dc97db66cc7e	t
+14355138943:1@s.whatsapp.net	777	\\x20331d5cef7e8ba455e596dc8e082503e10dbae8aa9403da0a5e3ff64564516e	t
+14355138943:1@s.whatsapp.net	778	\\xe8ba2a1edd6f087ea494bdc90e6e9b6fa01997bb04561b6cd66df5d2efbd3368	t
+14355138943:1@s.whatsapp.net	779	\\xe04964041ff9c7e9c5b38e4f955deea5031fa51b2c7a83309b58ae31015a4746	t
+14355138943:1@s.whatsapp.net	780	\\x7017a650327abf7b04cc955b28eebddbd079ded9c74ffabdd7809024829e6477	t
+14355138943:1@s.whatsapp.net	781	\\x88ac067223a24700e9eb1f14455ae3f8def940018ff331f338a6d0e8e66ebf78	t
+14355138943:1@s.whatsapp.net	782	\\x38f0caa0457b1c3b885d5880e07726b63c492e19250b1153c12b128f0df0534c	t
+14355138943:1@s.whatsapp.net	783	\\x8875ffd2195178e647de1c16ab5998abfaef7d48e11539768af4e0909322ba56	t
+14355138943:1@s.whatsapp.net	784	\\x003472d9961413cf441cd4eacab2f2416dcfe5d1969e99ba53f6513d20515f5a	t
+14355138943:1@s.whatsapp.net	785	\\x80313a0a26a140f0306d9dd1f7e6ba4dcc70c410d93df31cd60e7856e4487d53	t
+14355138943:1@s.whatsapp.net	786	\\xc83138278c92e77fa9bf11e0c770f6a057856e33eaa8e93d907a817f8ddf6478	t
+14355138943:1@s.whatsapp.net	787	\\xb06bf8913d926ebb5243b414047910a0ea03b09d9f08caba0a6a607310acae77	t
+14355138943:1@s.whatsapp.net	788	\\x70c8fe41128dca7b5531faddfc030f2317937a8f4a30b757c0a474ef09b34c5a	t
+14355138943:1@s.whatsapp.net	789	\\xb0335af0fbbbec862fe5f1109ec910453e5317f34877345f37d7bf80a8a23250	t
+14355138943:1@s.whatsapp.net	790	\\xf07246f4ec7f2a104985c9e34a9f8264f4f1c662e429f4cb108382aa21b7b278	t
+14355138943:1@s.whatsapp.net	791	\\xe0002462ed3633d419e0c5c76cd0d2889332ea9aa997df6f4cdceb1d20643768	t
+14355138943:1@s.whatsapp.net	792	\\x380b44dcf3350ba89b8949d4256ce551b890083f5bff6750067353c51af7057d	t
+14355138943:1@s.whatsapp.net	793	\\x20a32c2aa8ebc81cf627419bf6505114bc198ed9d019178327c5fe1a8b21eb4c	t
+14355138943:1@s.whatsapp.net	794	\\x0829b87479a7682846d106e2edd1fbb16376f68b435c3d6ab8e0221c136c4575	t
+14355138943:1@s.whatsapp.net	795	\\x38e01411371750b31c5c25355265bae82c25465ec63da815145509bc9a08fe52	t
+14355138943:1@s.whatsapp.net	796	\\xf805b2c0df95fdb328ed7e48a7fd4ce28def7e7a25df699a921fd322a5be0877	t
+14355138943:1@s.whatsapp.net	797	\\x30e1bcb112a54086ece615c4d48b35a3039289e3bc196bae9c264e985e3b2954	t
+14355138943:1@s.whatsapp.net	798	\\xa09eff3d3f7c80b5afb1bd180bdf27e36b081580d187470cb73b528969d57269	t
+14355138943:1@s.whatsapp.net	799	\\xb047a64287e83e18665e161a80890076b9debdd70c9ad7cf9745bff796897365	t
+14355138943:1@s.whatsapp.net	800	\\x30bc41e6477f7f8912cde4913acec2b5df47229101b5ef814f6e006eccbe3d55	t
+14355138943:1@s.whatsapp.net	801	\\x80915019e2240962330aad1be39b9cb218c7d494593aa622b03356307dac456c	t
+14355138943:1@s.whatsapp.net	802	\\x381d5d0517bd39e967ee5ca6b68f42173a5435af5f79b412ce946cd394f43d45	t
+14355138943:1@s.whatsapp.net	803	\\xa07bb84e49991ccbc14aa1fa5d2bb2c9839fc94cf9fc9921184128ee8ae07877	t
+14355138943:1@s.whatsapp.net	804	\\x905aeb0c736e6e7b7eb215ed7bae008c9a3d914f3f2361704614e79c2f683043	t
+14355138943:1@s.whatsapp.net	805	\\x2056117da1609b7a1d08712b0b0a1cb1ff53452542dfc324a0560dcd56d0ed53	t
+14355138943:1@s.whatsapp.net	806	\\xa8866194851f8010fab42ea113393a9dba92fc41436881f930117a28a64f6f52	t
+14355138943:1@s.whatsapp.net	807	\\x409c9e0b80a07e51c71cd8a107440fb9a086e9379bb3e71b967b9eb87ca08c4e	t
+14355138943:1@s.whatsapp.net	808	\\xb0d98a44c8327e44c72308369068b17156259befd53578092d75a93da802fd55	t
+14355138943:1@s.whatsapp.net	809	\\xd8a10b1c7089f0d6f2ff5ac5756b21416ee8a201fca116ae203a58e83a04276f	t
+14355138943:1@s.whatsapp.net	810	\\xe827ffee03541a867221eb66cdaee1fe362187380658a6d8a13bf8e85be7017b	t
+14355138943:1@s.whatsapp.net	811	\\xc8a522739023efa3f48c25b45374e1593c8e82a5b54124ddaba12521c958df4a	t
+14355138943:1@s.whatsapp.net	812	\\xe0e461d588706cdfc80454f3e7d4de9ab3b5aabb635ed451aeaab32c3eb6e74b	t
+\.
+
+
+--
+-- Data for Name: whatsmeow_privacy_tokens; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_privacy_tokens" ("our_jid", "their_jid", "token", "timestamp", "sender_timestamp") FROM stdin;
+14355138943:1@s.whatsapp.net	251548433141916@lid	\\x0401398083bd4ab72039da	1791059963	1791059963
+14355138943:1@s.whatsapp.net	213185047081126@lid	\\x04013911f95e62ec7e7160	1791065008	\N
+\.
+
+
+--
+-- Data for Name: whatsmeow_retry_buffer; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_retry_buffer" ("our_jid", "chat_jid", "message_id", "format", "plaintext", "timestamp") FROM stdin;
+\.
+
+
+--
+-- Data for Name: whatsmeow_sender_keys; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_sender_keys" ("our_jid", "chat_id", "sender_id", "sender_key") FROM stdin;
+14355138943:1@s.whatsapp.net	120363430895695851@g.us	251548433141916_1:0	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a313830363733383838342c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a312c22436861696e4b6579223a225a345a54563538452b72756b4859555357344b3366426a585055543154563252665445436158793965454d3d227d2c225369676e696e674b657950726976617465223a22414141414141414141414141414141414141414141414141414141414141414141414141414141414141413d222c225369676e696e674b65795075626c6963223a224257632f32614a6f54574a7570714d764f467475625755317871664a4a3455624c39442b304c37396f734149227d5d7d
+14355138943:1@s.whatsapp.net	120363206254204249@g.us	115985742872720_1:0	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a3834333638353031312c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a312c22436861696e4b6579223a2263434b7249347767526a4b5569576e6c4f3566642b75747133746d4e657177667a76354461614d456468733d227d2c225369676e696e674b657950726976617465223a22414141414141414141414141414141414141414141414141414141414141414141414141414141414141413d222c225369676e696e674b65795075626c6963223a22426361754b3156424d6d2b46456851694d504a316573784f76633177754f5562357672727647624446697762227d5d7d
+14355138943:1@s.whatsapp.net	120363402822094365@g.us	251548433141916_1:0	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a323036383437393836322c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a312c22436861696e4b6579223a22455854472f304167434879736e4d6f45437268715147536e42642f656a673057345a6c38714858456572343d227d2c225369676e696e674b657950726976617465223a22414141414141414141414141414141414141414141414141414141414141414141414141414141414141413d222c225369676e696e674b65795075626c6963223a2242547876347943423342756a4c454467367269557443346b57477351756363585875304149766d4155546855227d2c7b224b657973223a5b5d2c224b65794944223a323036383437393836322c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a302c22436861696e4b6579223a226679785479487a6355704b586636384b752b394c774530484d34664d52554c3951312f7379316e3778496b3d227d2c225369676e696e674b657950726976617465223a22414141414141414141414141414141414141414141414141414141414141414141414141414141414141413d222c225369676e696e674b65795075626c6963223a2242547876347943423342756a4c454467367269557443346b57477351756363585875304149766d4155546855227d5d7d
+14355138943:1@s.whatsapp.net	120363206254204249@g.us	251548433141916_1:0	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a313733363530373437342c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a312c22436861696e4b6579223a225275553864575334453757357061706a5151664877666a6976504f50455656516d784137464734324870453d227d2c225369676e696e674b657950726976617465223a22414141414141414141414141414141414141414141414141414141414141414141414141414141414141413d222c225369676e696e674b65795075626c6963223a2242514943496d6b364b55705663326e48456d5565484f677a4d334e7965524478644f525153614866762f452b227d2c7b224b657973223a5b5d2c224b65794944223a313733363530373437342c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a302c22436861696e4b6579223a2265783662654c43412f49397971746b73345268422b394e423046683154326c7230364b37745a7544342b733d227d2c225369676e696e674b657950726976617465223a22414141414141414141414141414141414141414141414141414141414141414141414141414141414141413d222c225369676e696e674b65795075626c6963223a2242514943496d6b364b55705663326e48456d5565484f677a4d334e7965524478644f525153614866762f452b227d5d7d
+14355138943:1@s.whatsapp.net	120363430895695851@g.us	213185047081126_1:0	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a313931373034363136392c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a362c22436861696e4b6579223a224d394b7131737331696153722b5667546d4d6a2b3757546a5a4661385a385154522f46764a4642332f34593d227d2c225369676e696e674b657950726976617465223a22414141414141414141414141414141414141414141414141414141414141414141414141414141414141413d222c225369676e696e674b65795075626c6963223a2242654f4e704a713049792b5570616e727a584e2b4a32644d367764315169664950356b3972585651312b307a227d5d7d
+14355138943:1@s.whatsapp.net	120363203127855640@g.us	251548433141916_1:0	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a313037343134363536342c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a302c22436861696e4b6579223a224366315a4e7944635838656d7a446b3775514334764938736d5051435433764555357366647a2f483037673d227d2c225369676e696e674b657950726976617465223a6e756c6c2c225369676e696e674b65795075626c6963223a2242515049502b6f5a4f6c4c766e49713769336a464647344647525067656353746a6651546c44533337785635227d5d7d
+14355138943:1@s.whatsapp.net	120363205175314432@g.us	251548433141916_1:0	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a313133353530333232392c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a302c22436861696e4b6579223a226234776f746c347a67304832376e454366723452527237576b727334376c44374a4e4a474a474f773546453d227d2c225369676e696e674b657950726976617465223a6e756c6c2c225369676e696e674b65795075626c6963223a22425763736e3861465a58766a6f6b6f624763397533434c352f47674b4941516a4b61652f764b7a736358426e227d5d7d
+14355138943:1@s.whatsapp.net	120363206404216704@g.us	251548433141916_1:0	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a313830373634343134302c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a302c22436861696e4b6579223a22684f576858594c77646c72416e6371727967454b4a6f75642b4b784f6a6a3475426a464e6251717a5733343d227d2c225369676e696e674b657950726976617465223a6e756c6c2c225369676e696e674b65795075626c6963223a22425877425966674c3350374444756e48434d48477677504e4e75384446423336326373697036454c5a456b78227d5d7d
+14355138943:1@s.whatsapp.net	120363407632582800@g.us	251548433141916_1:0	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a313530363637393635352c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a302c22436861696e4b6579223a22487a716e76376d544c7a6c456b58337943532f706e766261525a453544495953686634484b51754e3150733d227d2c225369676e696e674b657950726976617465223a6e756c6c2c225369676e696e674b65795075626c6963223a2242583768634d5178796c50514b7049574c6150784139686d3453666679566b44564c482f684835357479706a227d5d7d
+14355138943:1@s.whatsapp.net	120363203882629480@g.us	251548433141916_1:0	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a313332373231343331362c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a302c22436861696e4b6579223a226b6f45334e68574e4442767a7970444471376f61634f4d33384a507450526f36533930683143673638614d3d227d2c225369676e696e674b657950726976617465223a6e756c6c2c225369676e696e674b65795075626c6963223a22426437526f63766170314f5438304f6a596c79505678675a6e512f744c63754b593646626737634b2b493131227d5d7d
+14355138943:1@s.whatsapp.net	120363185304372115@g.us	251548433141916_1:0	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a313434363832313431352c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a302c22436861696e4b6579223a226b3252384a6452654e6d465532686f353168756d685554792f5434416c7536614f6a4f434a7652373659343d227d2c225369676e696e674b657950726976617465223a6e756c6c2c225369676e696e674b65795075626c6963223a2242577536314161763348444b4c66696c7a673349375a753041356559306e483675644647626f43653577345a227d5d7d
+14355138943:1@s.whatsapp.net	120363402822094365@g.us	31207400202358_1:14	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a313235373232333230352c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a322c22436861696e4b6579223a226c682b424d7777506d547a766b69326e363436334b5951754d47507733315945472b66774c475a36686b633d227d2c225369676e696e674b657950726976617465223a22414141414141414141414141414141414141414141414141414141414141414141414141414141414141413d222c225369676e696e674b65795075626c6963223a2242573332707a4347784e4654703647736c2b2f58574139554d6c4d6a57415564595979724b5149444e343038227d5d7d
+14355138943:1@s.whatsapp.net	120363402822094365@g.us	215809255325853_1:0	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a3933323735353431362c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a312c22436861696e4b6579223a2262596f746e763850434c4c6a65636f64506e2f5169576f525055525834305735625745434a4571766959493d227d2c225369676e696e674b657950726976617465223a22414141414141414141414141414141414141414141414141414141414141414141414141414141414141413d222c225369676e696e674b65795075626c6963223a224256766c4b4971684a4e716b79467532705049333433735856536c4366535874493077555a6b715a62796359227d5d7d
+14355138943:1@s.whatsapp.net	120363402822094365@g.us	44607664554034_1:0	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a313539393236363935352c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a302c22436861696e4b6579223a22757770554b4657366d6d726433594b6f30687241506f414c48714d38746d5457366b5a66493938325a566f3d227d2c225369676e696e674b657950726976617465223a6e756c6c2c225369676e696e674b65795075626c6963223a2242584637376d6f6467396b6479435343786e304d656465684a4353704b4d3476366a6461583473373677682b227d5d7d
+14355138943:1@s.whatsapp.net	120363203127855640@g.us	277871650205778_1:0	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a3234303535373635342c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a312c22436861696e4b6579223a22493067747473554c444b474f56724841625357386f6d38383254707864372f43574437715447574362596b3d227d2c225369676e696e674b657950726976617465223a22414141414141414141414141414141414141414141414141414141414141414141414141414141414141413d222c225369676e696e674b65795075626c6963223a22425570716c6341523551545a4467315462326e624a447a4f45675445334469517a4a4a62743770627a525974227d5d7d
+14355138943:1@s.whatsapp.net	120363203127855640@g.us	36550339461220_1:0	\\x7b2253656e6465724b6579537461746573223a5b7b224b657973223a5b5d2c224b65794944223a3336313932393932322c2253656e646572436861696e4b6579223a7b22497465726174696f6e223a312c22436861696e4b6579223a2262367074496c42694e7133367558575a356a6574427237396f7579546c435a2b71397773666a367a4f68733d227d2c225369676e696e674b657950726976617465223a22414141414141414141414141414141414141414141414141414141414141414141414141414141414141413d222c225369676e696e674b65795075626c6963223a22425862573633622f34494c4b5437702b386e41667132354f3642546f76706b36724d666f6135735763446778227d5d7d
+\.
+
+
+--
+-- Data for Name: whatsmeow_sessions; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_sessions" ("our_jid", "their_id", "session") FROM stdin;
+14355138943:1@s.whatsapp.net	213185047081126_1:0	\\x7b2253657373696f6e5374617465223a7b224c6f63616c4964656e746974795075626c6963223a22425445796e5a39395437707273424f4166742f312f3562386c2f767a6e72344b354154707732424b6a354e4f222c224c6f63616c526567697374726174696f6e4944223a323933323231313738322c224e6565647352656672657368223a66616c73652c2250656e64696e674b657945786368616e6765223a6e756c6c2c2250656e64696e675072654b6579223a6e756c6c2c2250726576696f7573436f756e746572223a343239343936373239352c225265636569766572436861696e73223a5b7b2253656e646572526174636865744b65795075626c6963223a224259615830325958706359306450454538466e2f6e755573417161714c685054325a35435155792f7952674a222c2253656e646572526174636865744b657950726976617465223a6e756c6c2c22436861696e4b6579223a7b224b6579223a224f53674a6e353152797444446d30784339554236534667464b375a5a44526652344c53316435733237544d3d222c22496e646578223a347d2c224d6573736167654b657973223a5b5d7d5d2c2252656d6f74654964656e746974795075626c6963223a224251683948685168736c50445a436d325344446e5835534b7172476634693757426d5079317a504b61336451222c2252656d6f7465526567697374726174696f6e4944223a3538393438373538362c22526f6f744b6579223a224552546750687a3476456b755276495376627a6237633355356c36763369584673555a465a696f6e582b303d222c2253656e646572426173654b6579223a2242597265464d756e313649576672663837494b3679524874777a6a48436c77766c4d56454351635849624555222c2253656e646572436861696e223a7b2253656e646572526174636865744b65795075626c6963223a224259506665594c482f446a32386f432f55307551796f55546c7069767657397a4361444e76316d3336615170222c2253656e646572526174636865744b657950726976617465223a2238467565484f506c7066456d35637a6c4f47535078597176496a61524468674a4375452b356352445658453d222c22436861696e4b6579223a7b224b6579223a2231676e4a7637456c454c774f4954684a667766486a67522b6d4f6e3332777748585a316838504646547a6b3d222c22496e646578223a307d2c224d6573736167654b657973223a5b5d7d2c2253657373696f6e56657273696f6e223a337d2c2250726576696f7573537461746573223a5b5d7d
+14355138943:1@s.whatsapp.net	106678464811245_1:0	\\x7b2253657373696f6e5374617465223a7b224c6f63616c4964656e746974795075626c6963223a22425445796e5a39395437707273424f4166742f312f3562386c2f767a6e72344b354154707732424b6a354e4f222c224c6f63616c526567697374726174696f6e4944223a323933323231313738322c224e6565647352656672657368223a66616c73652c2250656e64696e674b657945786368616e6765223a6e756c6c2c2250656e64696e675072654b6579223a6e756c6c2c2250726576696f7573436f756e746572223a343239343936373239352c225265636569766572436861696e73223a5b7b2253656e646572526174636865744b65795075626c6963223a2242546866357667487a746142493230646567533041474e4d573330614e6a727761316f496d64767a4f456c52222c2253656e646572526174636865744b657950726976617465223a6e756c6c2c22436861696e4b6579223a7b224b6579223a2253373265436b44543962764d6c5168636b504155386c677a4e6749512f6159522b34577161394f464947593d222c22496e646578223a317d2c224d6573736167654b657973223a5b5d7d5d2c2252656d6f74654964656e746974795075626c6963223a22426533376a664642482b38386f532f72657a6b4a65427539796d7368696a5a4161376e6e4d75556963746f6d222c2252656d6f7465526567697374726174696f6e4944223a313834343039333230322c22526f6f744b6579223a22545a536165477874346b7168563741677044415365322b4e7947564142366a4c743678633045434d2b57383d222c2253656e646572426173654b6579223a22426257553770334864314b5a676c56574f512f78714563655479642f377662584b2f2b552b3148697538746d222c2253656e646572436861696e223a7b2253656e646572526174636865744b65795075626c6963223a2242612f633569654133786d327436547750754253536f426c682f726b506d734f724358746d32735073445a62222c2253656e646572526174636865744b657950726976617465223a22364d66796a4b6a757430496e39316f512b7743434279753551504a446a4f5a587a6d68362b6947743456773d222c22436861696e4b6579223a7b224b6579223a2276693958626162626b64504679644e7562794b68537a5743555048774130355438353364327569673259513d222c22496e646578223a307d2c224d6573736167654b657973223a5b5d7d2c2253657373696f6e56657273696f6e223a337d2c2250726576696f7573537461746573223a5b5d7d
+14355138943:1@s.whatsapp.net	167147762364607_1:0	\\x7b2253657373696f6e5374617465223a7b224c6f63616c4964656e746974795075626c6963223a22425445796e5a39395437707273424f4166742f312f3562386c2f767a6e72344b354154707732424b6a354e4f222c224c6f63616c526567697374726174696f6e4944223a323933323231313738322c224e6565647352656672657368223a66616c73652c2250656e64696e674b657945786368616e6765223a6e756c6c2c2250656e64696e675072654b6579223a6e756c6c2c2250726576696f7573436f756e746572223a343239343936373239352c225265636569766572436861696e73223a5b7b2253656e646572526174636865744b65795075626c6963223a2242624c4e567a4675736f64724c3163544e4f32327237714877513843486537377359592b4943466239796436222c2253656e646572526174636865744b657950726976617465223a6e756c6c2c22436861696e4b6579223a7b224b6579223a2264767261466c4139393544363837495769356d33356148734f4365616a6b48643252434c657330365475553d222c22496e646578223a317d2c224d6573736167654b657973223a5b5d7d5d2c2252656d6f74654964656e746974795075626c6963223a2242574a4d654e353252386a6d575534736578477849627673474c39573655356932383831335063422f314e76222c2252656d6f7465526567697374726174696f6e4944223a313434373238303532322c22526f6f744b6579223a225338563651733254384a577861705a67736e6f354b5a5a61657751784b6269423547547877446d4a6d61553d222c2253656e646572426173654b6579223a2242533058764579354b67784b6e6f2b496349626b6c656d7777706e647232596a41526d68644d43474550316d222c2253656e646572436861696e223a7b2253656e646572526174636865744b65795075626c6963223a2242563762363855667877494c534c662b633369764e6a667631695652743179594343704d427a653570347374222c2253656e646572526174636865744b657950726976617465223a223643476d2f54354e4332574d484c5a323778396d614e683659514b3449574b67524d4f376a787a666132553d222c22436861696e4b6579223a7b224b6579223a224d466b59776b7763734f79362f76466b314259346e4f506a526d714e6b33706f727a69664e6a505551616f3d222c22496e646578223a307d2c224d6573736167654b657973223a5b5d7d2c2253657373696f6e56657273696f6e223a337d2c2250726576696f7573537461746573223a5b5d7d
+14355138943:1@s.whatsapp.net	31207400202358_1:14	\\x7b2253657373696f6e5374617465223a7b224c6f63616c4964656e746974795075626c6963223a22425445796e5a39395437707273424f4166742f312f3562386c2f767a6e72344b354154707732424b6a354e4f222c224c6f63616c526567697374726174696f6e4944223a323933323231313738322c224e6565647352656672657368223a66616c73652c2250656e64696e674b657945786368616e6765223a6e756c6c2c2250656e64696e675072654b6579223a6e756c6c2c2250726576696f7573436f756e746572223a343239343936373239352c225265636569766572436861696e73223a5b7b2253656e646572526174636865744b65795075626c6963223a22426672386846705835517032685161386f63415754342f4f58682b66667a717a4b61715551475233584f3431222c2253656e646572526174636865744b657950726976617465223a6e756c6c2c22436861696e4b6579223a7b224b6579223a2253612b336261666961424638545849727654776e36446c72377744593537314f3568306f5a7a69715379593d222c22496e646578223a317d2c224d6573736167654b657973223a5b5d7d5d2c2252656d6f74654964656e746974795075626c6963223a2242644a316a4346344f553048545734302b2f63723975694556546a447742367441546d49367250756c77354c222c2252656d6f7465526567697374726174696f6e4944223a323039313932353934332c22526f6f744b6579223a2232383939626a4f774a6b383663724d4e395a494b61326c7753357037665578454769593548386b4d6b684d3d222c2253656e646572426173654b6579223a224261317068424f4e64326b7434617a5970454d476e4633306a59712b632f5a7a2b3271433952795167654a64222c2253656e646572436861696e223a7b2253656e646572526174636865744b65795075626c6963223a2242543657474862354b5a3047755635665854524e39736977374f6d7276306a63684b732b5855564d61677063222c2253656e646572526174636865744b657950726976617465223a22454247746c432b2f4a6c4d514c52576a52775a62587574444e437674322f772b336c6c534631546e4c6e4d3d222c22436861696e4b6579223a7b224b6579223a224c652b51424462746d4c4138734e674c3135794e3350544961686d594b2b666e376e54505349384d7157633d222c22496e646578223a307d2c224d6573736167654b657973223a5b5d7d2c2253657373696f6e56657273696f6e223a337d2c2250726576696f7573537461746573223a5b5d7d
+14355138943:1@s.whatsapp.net	215809255325853_1:0	\\x7b2253657373696f6e5374617465223a7b224c6f63616c4964656e746974795075626c6963223a22425445796e5a39395437707273424f4166742f312f3562386c2f767a6e72344b354154707732424b6a354e4f222c224c6f63616c526567697374726174696f6e4944223a323933323231313738322c224e6565647352656672657368223a66616c73652c2250656e64696e674b657945786368616e6765223a6e756c6c2c2250656e64696e675072654b6579223a6e756c6c2c2250726576696f7573436f756e746572223a343239343936373239352c225265636569766572436861696e73223a5b7b2253656e646572526174636865744b65795075626c6963223a22425a42413130754a736f4436486345342b736f5a67396b65694364723031434e4b664d7834535a5777365963222c2253656e646572526174636865744b657950726976617465223a6e756c6c2c22436861696e4b6579223a7b224b6579223a22456d61574f686b68577a576e6b69496c6568613362316b6f70782b75624e49524b74544f32326f674239493d222c22496e646578223a317d2c224d6573736167654b657973223a5b5d7d5d2c2252656d6f74654964656e746974795075626c6963223a22425579644a6561586c50363678455642634b346d624f787a616b523249344554544a746f36545879526d6355222c2252656d6f7465526567697374726174696f6e4944223a313533383735323431332c22526f6f744b6579223a2267476938667778344574316d30786c7a75767939575070636b6373727a6c36357a4e67386a64664a5065453d222c2253656e646572426173654b6579223a224255767530444f4146484833437a4565437839594779702f4755773746684c4b775a6548734c6459687a5a75222c2253656e646572436861696e223a7b2253656e646572526174636865744b65795075626c6963223a22426630315a6538726c4c4c78643030714f66506c302b356e4a4b755a6e39556c635462593842505650397048222c2253656e646572526174636865744b657950726976617465223a224b46764a784a6733626768635132534873636e6f6548344954473443354d68534e306755433853576331493d222c22436861696e4b6579223a7b224b6579223a2246544d5073324865764c474b78706a6b46567277482f6b71722f7472386f69546f6351432b5957655978383d222c22496e646578223a307d2c224d6573736167654b657973223a5b5d7d2c2253657373696f6e56657273696f6e223a337d2c2250726576696f7573537461746573223a5b5d7d
+14355138943:1@s.whatsapp.net	44607664554034_1:0	\\x7b2253657373696f6e5374617465223a7b224c6f63616c4964656e746974795075626c6963223a22425445796e5a39395437707273424f4166742f312f3562386c2f767a6e72344b354154707732424b6a354e4f222c224c6f63616c526567697374726174696f6e4944223a323933323231313738322c224e6565647352656672657368223a66616c73652c2250656e64696e674b657945786368616e6765223a6e756c6c2c2250656e64696e675072654b6579223a6e756c6c2c2250726576696f7573436f756e746572223a343239343936373239352c225265636569766572436861696e73223a5b7b2253656e646572526174636865744b65795075626c6963223a224252564a3848357873533548327a666b674e4533494e416e6441416f3973796970704a6c4d6f72577837776e222c2253656e646572526174636865744b657950726976617465223a6e756c6c2c22436861696e4b6579223a7b224b6579223a224167667968426732706a49413368706362525a4356434b47504b44424b6f53575447706c336c6c694630733d222c22496e646578223a317d2c224d6573736167654b657973223a5b5d7d5d2c2252656d6f74654964656e746974795075626c6963223a22425849782b562b493754456b70476e4146593849554c7957316d3258546b3658466e4f525054594c37616b69222c2252656d6f7465526567697374726174696f6e4944223a313038303730343131332c22526f6f744b6579223a2248304e59574d48432b4d774c45626a6b667452724f69566a3738413543354c704371426638394e69376c633d222c2253656e646572426173654b6579223a2242564f41745a6262646b64534e4d74333935382b52305444487042657673382b4f6832466430486e647a7046222c2253656e646572436861696e223a7b2253656e646572526174636865744b65795075626c6963223a224261666c7449566c50624d66757764695457622f43556569386d593050704c416b2b455043375656324a3043222c2253656e646572526174636865744b657950726976617465223a222b424e434671576b4d2b5063346a575156414d776c4b36756a5374335737437771573835686b58734e46733d222c22436861696e4b6579223a7b224b6579223a22434d457572485053736276497a565168515664707836756d3976635146486131374578654d44396a4a51493d222c22496e646578223a307d2c224d6573736167654b657973223a5b5d7d2c2253657373696f6e56657273696f6e223a337d2c2250726576696f7573537461746573223a5b5d7d
+14355138943:1@s.whatsapp.net	251548433141916_1:0	\\x7b2253657373696f6e5374617465223a7b224c6f63616c4964656e746974795075626c6963223a22425445796e5a39395437707273424f4166742f312f3562386c2f767a6e72344b354154707732424b6a354e4f222c224c6f63616c526567697374726174696f6e4944223a323933323231313738322c224e6565647352656672657368223a66616c73652c2250656e64696e674b657945786368616e6765223a6e756c6c2c2250656e64696e675072654b6579223a6e756c6c2c2250726576696f7573436f756e746572223a343239343936373239352c225265636569766572436861696e73223a5b7b2253656e646572526174636865744b65795075626c6963223a22425954366e52343336704d66613672503570635276425a6f32786c47545a48715973784d3335716d76567048222c2253656e646572526174636865744b657950726976617465223a6e756c6c2c22436861696e4b6579223a7b224b6579223a22755a2f38586930586356492f7a7a7637732b4d4944624b695678415538626930386d71336f6754782f6f4d3d222c22496e646578223a31377d2c224d6573736167654b657973223a5b5d7d5d2c2252656d6f74654964656e746974795075626c6963223a2242596664574c4d4e6a59414550477876416e4963774b5453322f3072644b33756f5a594b41494e475a68742b222c2252656d6f7465526567697374726174696f6e4944223a3436303138313537312c22526f6f744b6579223a224d7a35556d2f58725a4c43787a6c3157734a694979645344615551427846766a74702f6f477261663267733d222c2253656e646572426173654b6579223a22426268584a4e6b644f446d67524c7a74634d63744a6e4e476d4a63467044714136576c453343592b354a6c2f222c2253656e646572436861696e223a7b2253656e646572526174636865744b65795075626c6963223a224262306c5139452f6d4e486969596e58687869614365796256627a5a5173516f734558594f61666d36785974222c2253656e646572526174636865744b657950726976617465223a226d45643938762b6f7445416339554c646d4f596156382b734d4633536a6457666c6f47344330746d4332413d222c22436861696e4b6579223a7b224b6579223a22564b392b663277796c42677a77634e32774e446e4267486834536755533643793636364839503174494b303d222c22496e646578223a307d2c224d6573736167654b657973223a5b5d7d2c2253657373696f6e56657273696f6e223a337d2c2250726576696f7573537461746573223a5b5d7d
+14355138943:1@s.whatsapp.net	115985742872720_1:0	\\x7b2253657373696f6e5374617465223a7b224c6f63616c4964656e746974795075626c6963223a22425445796e5a39395437707273424f4166742f312f3562386c2f767a6e72344b354154707732424b6a354e4f222c224c6f63616c526567697374726174696f6e4944223a323933323231313738322c224e6565647352656672657368223a66616c73652c2250656e64696e674b657945786368616e6765223a6e756c6c2c2250656e64696e675072654b6579223a6e756c6c2c2250726576696f7573436f756e746572223a343239343936373239352c225265636569766572436861696e73223a5b7b2253656e646572526174636865744b65795075626c6963223a2242532f53722b446736584d637959356b5a59534545584967674677524b515146336d65503171533451305264222c2253656e646572526174636865744b657950726976617465223a6e756c6c2c22436861696e4b6579223a7b224b6579223a225a362f3862746e73496f43494c4637376c6b4550615a4e62416b694a43523741444f6932384b6755634d773d222c22496e646578223a317d2c224d6573736167654b657973223a5b5d7d5d2c2252656d6f74654964656e746974795075626c6963223a22425763763669556f6f5a30676b304b586376752f4c716253785457755848585955474d364d654e6a2b683956222c2252656d6f7465526567697374726174696f6e4944223a3436363031313634342c22526f6f744b6579223a22707a6c683372526d6537464855456f554d456f507748526e2b6d6a493744506650572f2f2b354a7a626d6f3d222c2253656e646572426173654b6579223a2242626571365647784d4e30782f625432743330477142795374534b7538515538323673356d317779784a7351222c2253656e646572436861696e223a7b2253656e646572526174636865744b65795075626c6963223a22426167557a4448454a626667746b6262556544723662777145626c6f656f6c555963304a7376647a62664a54222c2253656e646572526174636865744b657950726976617465223a22774c5868546a4c4b784149726955664e7171436a615567634130333633306241426e45444f3758664555453d222c22436861696e4b6579223a7b224b6579223a226563453236485932706e634e65556c596e4f78353832324b477754374946506331396a49744c494c312f413d222c22496e646578223a307d2c224d6573736167654b657973223a5b5d7d2c2253657373696f6e56657273696f6e223a337d2c2250726576696f7573537461746573223a5b5d7d
+14355138943:1@s.whatsapp.net	277871650205778_1:0	\\x7b2253657373696f6e5374617465223a7b224c6f63616c4964656e746974795075626c6963223a22425445796e5a39395437707273424f4166742f312f3562386c2f767a6e72344b354154707732424b6a354e4f222c224c6f63616c526567697374726174696f6e4944223a323933323231313738322c224e6565647352656672657368223a66616c73652c2250656e64696e674b657945786368616e6765223a6e756c6c2c2250656e64696e675072654b6579223a6e756c6c2c2250726576696f7573436f756e746572223a343239343936373239352c225265636569766572436861696e73223a5b7b2253656e646572526174636865744b65795075626c6963223a2242543937453131795139456d35586b312f4d30634c344353574567494a464a53694e776a7559657566333133222c2253656e646572526174636865744b657950726976617465223a6e756c6c2c22436861696e4b6579223a7b224b6579223a22516855514d73724a6a476b785572362f77436e686b63366d513239647a67744f46567339727244383642733d222c22496e646578223a317d2c224d6573736167654b657973223a5b5d7d5d2c2252656d6f74654964656e746974795075626c6963223a22425767576d6479427334724d44674d316b4f475650732b2f4a61794c4653323137546e363341787a75307076222c2252656d6f7465526567697374726174696f6e4944223a313831343836353435312c22526f6f744b6579223a22326959372f4932314654313958614861416133386c69465030355343685a2b316345763842755379644f383d222c2253656e646572426173654b6579223a22425a73623431716167767275556c77714e703763476a2f5258616776684e6a617774394a666f596151477472222c2253656e646572436861696e223a7b2253656e646572526174636865744b65795075626c6963223a22426152595130395a64506a624e51574f505979562b37707a717a6467304c5474457246616e5439456c394539222c2253656e646572526174636865744b657950726976617465223a226f422b315067684731596c6c56776174562f6d75395852386865785735497a51634e4f76686c4953476c6b3d222c22436861696e4b6579223a7b224b6579223a226564705350506c474e706536644e7a566a32542f7955774779695351574e4673454c3038656b6b786477303d222c22496e646578223a307d2c224d6573736167654b657973223a5b5d7d2c2253657373696f6e56657273696f6e223a337d2c2250726576696f7573537461746573223a5b5d7d
+14355138943:1@s.whatsapp.net	36550339461220_1:0	\\x7b2253657373696f6e5374617465223a7b224c6f63616c4964656e746974795075626c6963223a22425445796e5a39395437707273424f4166742f312f3562386c2f767a6e72344b354154707732424b6a354e4f222c224c6f63616c526567697374726174696f6e4944223a323933323231313738322c224e6565647352656672657368223a66616c73652c2250656e64696e674b657945786368616e6765223a6e756c6c2c2250656e64696e675072654b6579223a6e756c6c2c2250726576696f7573436f756e746572223a343239343936373239352c225265636569766572436861696e73223a5b7b2253656e646572526174636865744b65795075626c6963223a22425671534e77634241443262416c78573557526a6d316d6d58497a5271694f38344b6f534439496457395937222c2253656e646572526174636865744b657950726976617465223a6e756c6c2c22436861696e4b6579223a7b224b6579223a222b625a4836676e41497648656d353830376d50363371685858653173522b7433427375504d56723042596b3d222c22496e646578223a317d2c224d6573736167654b657973223a5b5d7d5d2c2252656d6f74654964656e746974795075626c6963223a2242666d62426a594d4d764f386f74362f346975474d556a586f36512b6f6a3869486f51556562457641315179222c2252656d6f7465526567697374726174696f6e4944223a3337323233343533372c22526f6f744b6579223a22596e534739705743574267476e526650795a33614a714b5351614966486b7a6f6968417a5532416a76496f3d222c2253656e646572426173654b6579223a2242573670564658744b5a2f44427664594531337552584b5a48334a434a616d2b766c73705777354c59313142222c2253656e646572436861696e223a7b2253656e646572526174636865744b65795075626c6963223a2242627861576f326d6d72553341356d7639664239574c33646d48385a77686a53664f414f535472506f693178222c2253656e646572526174636865744b657950726976617465223a22554278314e444965644a44456930574e47713030763554716e38426e745559706a416267647148446956413d222c22436861696e4b6579223a7b224b6579223a226f484d69477a4b65446c65512b314667424663632b4172764f6e6b5941517343337a365550442b424736383d222c22496e646578223a307d2c224d6573736167654b657973223a5b5d7d2c2253657373696f6e56657273696f6e223a337d2c2250726576696f7573537461746573223a5b5d7d
+\.
+
+
+--
+-- Data for Name: whatsmeow_version; Type: TABLE DATA; Schema: whatsmeow; Owner: machu_listener
+--
+
+COPY "whatsmeow"."whatsmeow_version" ("version", "compat") FROM stdin;
+16	8
+\.
+
+
+--
 -- Name: refresh_tokens_id_seq; Type: SEQUENCE SET; Schema: auth; Owner: supabase_auth_admin
 --
 
@@ -769,9 +7850,23 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 1, false);
 
 
 --
+-- Name: group_digest_items_ref_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"public"."group_digest_items_ref_seq"', 1, true);
+
+
+--
+-- Name: whatsapp_groups_ref_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"public"."whatsapp_groups_ref_seq"', 11, true);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
--- \unrestrict CGmTJcnlLvat0LMb3UuqiC2Z8hd6xK9M1BxYTD9lF7NZGEqOrvz5IhDSnT9vR3a
+-- \unrestrict dU66kIOpQOpwt0jmf9z1nYG5pdQ350ibtwI3YfAgt9ekVIFE1uKPTXPFYTvpZHq
 
 RESET ALL;

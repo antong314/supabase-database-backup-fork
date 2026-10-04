@@ -24,6 +24,16 @@ COMMENT ON SCHEMA "public" IS 'standard public schema';
 
 
 
+CREATE SCHEMA IF NOT EXISTS "whatsmeow";
+
+
+ALTER SCHEMA "whatsmeow" OWNER TO "postgres";
+
+
+COMMENT ON SCHEMA "whatsmeow" IS 'Private WhatsApp linked-device session for the Machu group listener. Not exposed through the Data API.';
+
+
+
 CREATE EXTENSION IF NOT EXISTS "pg_stat_statements" WITH SCHEMA "extensions";
 
 
@@ -103,7 +113,7 @@ BEGIN
   IF v_action NOT IN ('wiki_create', 'wiki_update', 'wiki_delete')
     OR v_slug !~ '^[a-z0-9]+(?:-[a-z0-9]+)*$'
     OR v_phone !~ '^\+[1-9][0-9]{7,14}$'
-    OR p_verification_method NOT IN ('whatsapp_inbound', 'trusted_session')
+    OR p_verification_method NOT IN ('whatsapp_inbound', 'trusted_session', 'group_digest')
     OR ((p_verification_action_id IS NULL) = (p_twilio_message_sid IS NULL)) THEN
     RAISE EXCEPTION 'Invalid audited wiki change' USING ERRCODE = '22023';
   END IF;
@@ -221,6 +231,49 @@ $_$;
 
 
 ALTER FUNCTION "public"."apply_audited_wiki_write"("p_action_type" "text", "p_slug" "text", "p_title" "text", "p_category" "text", "p_content" "text", "p_expected_version" integer, "p_requester_whatsapp" "text", "p_requester_name" "text", "p_verification_method" "text", "p_verification_action_id" "uuid", "p_twilio_message_sid" "text") OWNER TO "postgres";
+
+
+CREATE OR REPLACE FUNCTION "public"."claim_group_digest_run"("p_run_date" "date", "p_trigger" "text", "p_mode" "text") RETURNS "uuid"
+    LANGUAGE "plpgsql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $$
+DECLARE
+  v_run_id UUID;
+BEGIN
+  IF p_trigger NOT IN ('schedule', 'manual') OR p_mode NOT IN ('shadow', 'publish') THEN
+    RAISE EXCEPTION 'Invalid digest run' USING ERRCODE = '22023';
+  END IF;
+  PERFORM pg_advisory_xact_lock(hashtext('machu_group_digest_run'));
+
+  UPDATE public.group_digest_runs
+  SET status = 'failed', error = 'Run did not finish within two hours', finished_at = now()
+  WHERE status = 'running' AND started_at < now() - interval '2 hours';
+
+  IF EXISTS (SELECT 1 FROM public.group_digest_runs WHERE status = 'running') THEN
+    RETURN NULL;
+  END IF;
+  IF p_trigger = 'schedule' AND (
+    EXISTS (
+      SELECT 1 FROM public.group_digest_runs
+      WHERE run_date = p_run_date AND trigger = 'schedule' AND status = 'completed'
+    )
+    OR (
+      SELECT count(*) FROM public.group_digest_runs
+      WHERE run_date = p_run_date AND trigger = 'schedule' AND status = 'failed'
+    ) >= 3
+  ) THEN
+    RETURN NULL;
+  END IF;
+
+  INSERT INTO public.group_digest_runs (run_date, trigger, mode)
+  VALUES (p_run_date, p_trigger, p_mode)
+  RETURNING id INTO v_run_id;
+  RETURN v_run_id;
+END;
+$$;
+
+
+ALTER FUNCTION "public"."claim_group_digest_run"("p_run_date" "date", "p_trigger" "text", "p_mode" "text") OWNER TO "postgres";
 
 
 CREATE OR REPLACE FUNCTION "public"."clear_bot_conversation"("p_conversation_key" "text") RETURNS "void"
@@ -610,6 +663,19 @@ $$;
 ALTER FUNCTION "public"."complete_verified_wiki_write"("p_action_id" "uuid") OWNER TO "postgres";
 
 
+CREATE OR REPLACE FUNCTION "public"."edit_group_message"("p_group_jid" "text", "p_message_id" "text", "p_body" "text") RETURNS "void"
+    LANGUAGE "sql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $$
+  UPDATE public.group_messages
+  SET body = left(COALESCE(p_body, ''), 8000), edited_at = now()
+  WHERE group_jid = p_group_jid AND message_id = p_message_id;
+$$;
+
+
+ALTER FUNCTION "public"."edit_group_message"("p_group_jid" "text", "p_message_id" "text", "p_body" "text") OWNER TO "postgres";
+
+
 CREATE OR REPLACE FUNCTION "public"."find_active_contact_by_phone"("p_phone" "text") RETURNS TABLE("id" "uuid", "title" "text", "subtitle" "text", "category" "text", "phone_number" "text", "website_url" "text", "map_url" "text", "image_url" "text")
     LANGUAGE "sql" STABLE
     SET "search_path" TO 'pg_catalog', 'public'
@@ -903,6 +969,80 @@ COMMENT ON FUNCTION "public"."perform_provider_soft_delete"("p_contact_id" "uuid
 
 
 
+CREATE OR REPLACE FUNCTION "public"."purge_group_messages"("p_retention_days" integer DEFAULT 14) RETURNS integer
+    LANGUAGE "plpgsql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $$
+DECLARE
+  v_deleted INTEGER;
+BEGIN
+  DELETE FROM public.group_messages
+  WHERE received_at < now() - make_interval(days => LEAST(GREATEST(COALESCE(p_retention_days, 14), 1), 90));
+  GET DIAGNOSTICS v_deleted = ROW_COUNT;
+  RETURN v_deleted;
+END;
+$$;
+
+
+ALTER FUNCTION "public"."purge_group_messages"("p_retention_days" integer) OWNER TO "postgres";
+
+
+CREATE OR REPLACE FUNCTION "public"."record_group_message"("p_group_jid" "text", "p_group_name" "text", "p_message_id" "text", "p_sender_hash" "text", "p_sender_name" "text", "p_sent_at" timestamp with time zone, "p_body" "text", "p_contacts" "jsonb", "p_quoted_message_id" "text") RETURNS boolean
+    LANGUAGE "plpgsql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $$
+DECLARE
+  v_enabled BOOLEAN;
+  v_inserted INTEGER;
+BEGIN
+  v_enabled := public.upsert_whatsapp_group(p_group_jid, p_group_name);
+  IF NOT v_enabled THEN
+    RETURN FALSE;
+  END IF;
+  INSERT INTO public.group_messages (
+    group_jid, message_id, sender_hash, sender_name, sent_at, body, contacts, quoted_message_id
+  ) VALUES (
+    p_group_jid,
+    p_message_id,
+    p_sender_hash,
+    NULLIF(left(btrim(COALESCE(p_sender_name, '')), 100), ''),
+    COALESCE(p_sent_at, now()),
+    left(COALESCE(p_body, ''), 8000),
+    COALESCE(p_contacts, '[]'::JSONB),
+    NULLIF(btrim(COALESCE(p_quoted_message_id, '')), '')
+  ) ON CONFLICT (group_jid, message_id) DO NOTHING;
+  GET DIAGNOSTICS v_inserted = ROW_COUNT;
+  IF v_inserted > 0 THEN
+    UPDATE public.whatsapp_listener_status
+    SET last_message_at = GREATEST(COALESCE(last_message_at, '-infinity'), COALESCE(p_sent_at, now()))
+    WHERE id = 1;
+  END IF;
+  RETURN v_inserted > 0;
+END;
+$$;
+
+
+ALTER FUNCTION "public"."record_group_message"("p_group_jid" "text", "p_group_name" "text", "p_message_id" "text", "p_sender_hash" "text", "p_sender_name" "text", "p_sent_at" timestamp with time zone, "p_body" "text", "p_contacts" "jsonb", "p_quoted_message_id" "text") OWNER TO "postgres";
+
+
+CREATE OR REPLACE FUNCTION "public"."record_listener_status"("p_status" "text", "p_account_phone" "text") RETURNS "void"
+    LANGUAGE "sql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $$
+  INSERT INTO public.whatsapp_listener_status AS listener (id, status, account_phone, last_seen_at, updated_at)
+  VALUES (1, p_status, NULLIF(btrim(COALESCE(p_account_phone, '')), ''), now(), now())
+  ON CONFLICT (id) DO UPDATE SET
+    status = EXCLUDED.status,
+    account_phone = COALESCE(EXCLUDED.account_phone, listener.account_phone),
+    last_seen_at = now(),
+    updated_at = CASE WHEN listener.status IS DISTINCT FROM EXCLUDED.status
+      THEN now() ELSE listener.updated_at END;
+$$;
+
+
+ALTER FUNCTION "public"."record_listener_status"("p_status" "text", "p_account_phone" "text") OWNER TO "postgres";
+
+
 CREATE OR REPLACE FUNCTION "public"."reject_anonymous_contact_image_mutation"() RETURNS "trigger"
     LANGUAGE "plpgsql"
     SET "search_path" TO 'pg_catalog', 'public', 'storage', 'auth'
@@ -922,6 +1062,18 @@ $$;
 
 
 ALTER FUNCTION "public"."reject_anonymous_contact_image_mutation"() OWNER TO "postgres";
+
+
+CREATE OR REPLACE FUNCTION "public"."revoke_group_message"("p_group_jid" "text", "p_message_id" "text") RETURNS "void"
+    LANGUAGE "sql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $$
+  DELETE FROM public.group_messages
+  WHERE group_jid = p_group_jid AND message_id = p_message_id;
+$$;
+
+
+ALTER FUNCTION "public"."revoke_group_message"("p_group_jid" "text", "p_message_id" "text") OWNER TO "postgres";
 
 
 CREATE OR REPLACE FUNCTION "public"."set_bot_conversation"("p_conversation_key" "text", "p_contact_id" "uuid", "p_phase" "text", "p_context" "jsonb" DEFAULT '{}'::"jsonb", "p_ttl_hours" integer DEFAULT 72) RETURNS "void"
@@ -1205,6 +1357,91 @@ $_$;
 ALTER FUNCTION "public"."submit_provider_review"("p_contact_id" "uuid", "p_rating" smallint, "p_reviewer_whatsapp" "text", "p_image_paths" "text"[], "p_comment" "text", "p_reviewer_name" "text", "p_verification_method" "text", "p_verification_action_id" "uuid", "p_twilio_verification_sid" "text") OWNER TO "postgres";
 
 
+CREATE OR REPLACE FUNCTION "public"."undo_group_digest_item"("p_item_id" "uuid", "p_requester_whatsapp" "text") RETURNS TABLE("ref" bigint, "kind" "text", "action" "text", "title" "text", "status" "text")
+    LANGUAGE "plpgsql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $_$
+DECLARE
+  v_item public.group_digest_items%ROWTYPE;
+  v_before public.contacts%ROWTYPE;
+  v_after public.contacts%ROWTYPE;
+  v_request_key TEXT := 'digest-undo:' || p_item_id::TEXT;
+  v_apply_key TEXT := 'digest:' || p_item_id::TEXT;
+  v_phone TEXT := btrim(COALESCE(p_requester_whatsapp, ''));
+BEGIN
+  IF v_phone !~ '^\+[1-9][0-9]{7,14}$' THEN
+    RAISE EXCEPTION 'Invalid digest undo request' USING ERRCODE = '22023';
+  END IF;
+
+  SELECT items.* INTO v_item FROM public.group_digest_items AS items
+  WHERE items.id = p_item_id FOR UPDATE;
+  IF NOT FOUND THEN RAISE EXCEPTION 'Digest item not found' USING ERRCODE = 'P0002'; END IF;
+  IF v_item.status = 'undone' THEN
+    RETURN QUERY SELECT v_item.ref, v_item.kind, v_item.action, v_item.title, v_item.status;
+    RETURN;
+  END IF;
+  IF v_item.status <> 'applied' THEN
+    RAISE EXCEPTION 'Only applied digest items can be undone' USING ERRCODE = 'P0001';
+  END IF;
+
+  IF v_item.action IN ('contact_create', 'contact_enrich') THEN
+    SELECT contacts.* INTO v_before FROM public.contacts AS contacts
+    WHERE contacts.id = v_item.contact_id AND contacts.is_deleted = FALSE FOR UPDATE;
+    IF NOT FOUND THEN RAISE EXCEPTION 'Provider not found' USING ERRCODE = 'P0002'; END IF;
+    IF EXISTS (
+      SELECT 1 FROM public.provider_change_events AS events
+      WHERE events.contact_id = v_item.contact_id
+        AND events.changed_at > v_item.decided_at
+        AND events.twilio_message_sid IS DISTINCT FROM v_apply_key
+    ) OR EXISTS (
+      SELECT 1 FROM public.provider_deletion_events AS deletions
+      WHERE deletions.contact_id = v_item.contact_id
+        AND deletions.deleted_at > v_item.decided_at
+    ) THEN
+      RAISE EXCEPTION 'Provider changed after the digest' USING ERRCODE = '40001';
+    END IF;
+
+    IF v_item.action = 'contact_create' THEN
+      UPDATE public.contacts AS contacts SET is_deleted = TRUE
+      WHERE contacts.id = v_item.contact_id RETURNING contacts.* INTO v_after;
+    ELSE
+      UPDATE public.contacts AS contacts SET
+        subtitle = COALESCE(v_item.payload #>> '{before,subtitle}', contacts.subtitle),
+        category = COALESCE(v_item.payload #>> '{before,category}', contacts.category),
+        website_url = CASE WHEN v_item.payload->'before' ? 'website_url'
+          THEN v_item.payload #>> '{before,website_url}' ELSE contacts.website_url END
+      WHERE contacts.id = v_item.contact_id RETURNING contacts.* INTO v_after;
+    END IF;
+
+    INSERT INTO public.provider_change_events (
+      contact_id, action_type, requester_whatsapp, requester_name,
+      verification_method, twilio_message_sid, before_snapshot, after_snapshot
+    ) VALUES (
+      v_item.contact_id, 'provider_update', v_phone, 'Machu digest undo',
+      'group_digest', v_request_key, to_jsonb(v_before) - 'phone_normalized',
+      to_jsonb(v_after) - 'phone_normalized'
+    ) ON CONFLICT (twilio_message_sid, contact_id, action_type)
+      WHERE twilio_message_sid IS NOT NULL DO NOTHING;
+  ELSIF v_item.action IN ('wiki_update', 'wiki_create') THEN
+    PERFORM 1 FROM public.undo_wiki_change_event(
+      v_item.wiki_event_id, v_phone, 'Machu digest undo', v_request_key
+    );
+  ELSE
+    RAISE EXCEPTION 'Digest item cannot be undone' USING ERRCODE = 'P0001';
+  END IF;
+
+  UPDATE public.group_digest_items AS items
+  SET status = 'undone', decided_at = now(), decided_by = v_phone
+  WHERE items.id = v_item.id;
+
+  RETURN QUERY SELECT v_item.ref, v_item.kind, v_item.action, v_item.title, 'undone'::TEXT;
+END;
+$_$;
+
+
+ALTER FUNCTION "public"."undo_group_digest_item"("p_item_id" "uuid", "p_requester_whatsapp" "text") OWNER TO "postgres";
+
+
 CREATE OR REPLACE FUNCTION "public"."undo_last_inbound_wiki_change"("p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text") RETURNS TABLE("slug" "text", "title" "text", "version" integer, "event_id" "uuid")
     LANGUAGE "plpgsql" SECURITY DEFINER
     SET "search_path" TO 'pg_catalog', 'public'
@@ -1368,7 +1605,104 @@ COMMENT ON FUNCTION "public"."undo_provider_soft_delete"("p_event_id" "uuid", "p
 
 
 
-CREATE OR REPLACE FUNCTION "public"."update_inbound_provider_contact"("p_contact_id" "uuid", "p_changes" "jsonb", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text") RETURNS TABLE("id" "uuid", "title" "text", "subtitle" "text", "category" "text", "phone_number" "text", "website_url" "text", "map_url" "text", "image_url" "text")
+CREATE OR REPLACE FUNCTION "public"."undo_wiki_change_event"("p_event_id" "uuid", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_request_key" "text") RETURNS TABLE("slug" "text", "title" "text", "version" integer, "event_id" "uuid")
+    LANGUAGE "plpgsql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $_$
+DECLARE
+  v_original public.wiki_change_events%ROWTYPE;
+  v_current public.wiki_pages%ROWTYPE;
+  v_restored public.wiki_pages%ROWTYPE;
+  v_before JSONB;
+  v_after JSONB;
+  v_event_id UUID;
+  v_existing public.wiki_change_events%ROWTYPE;
+  v_snapshot JSONB;
+BEGIN
+  IF btrim(COALESCE(p_requester_whatsapp, '')) !~ '^\+[1-9][0-9]{7,14}$'
+    OR NULLIF(btrim(COALESCE(p_request_key, '')), '') IS NULL THEN
+    RAISE EXCEPTION 'Invalid wiki undo request' USING ERRCODE = '22023';
+  END IF;
+
+  SELECT events.* INTO v_existing
+  FROM public.wiki_change_events AS events
+  WHERE events.twilio_message_sid = p_request_key
+    AND events.action_type = 'wiki_restore'
+  LIMIT 1;
+  IF FOUND THEN
+    v_snapshot := COALESCE(v_existing.after_snapshot, v_existing.before_snapshot);
+    RETURN QUERY SELECT v_existing.page_slug, v_snapshot->>'title',
+      COALESCE((v_existing.after_snapshot->>'version')::INTEGER, -1), v_existing.id;
+    RETURN;
+  END IF;
+
+  SELECT events.* INTO v_original
+  FROM public.wiki_change_events AS events
+  WHERE events.id = p_event_id
+    AND events.action_type IN ('wiki_create', 'wiki_update')
+    AND events.reverted_at IS NULL
+  FOR UPDATE;
+  IF NOT FOUND THEN RAISE EXCEPTION 'Wiki change cannot be undone' USING ERRCODE = 'P0002'; END IF;
+
+  SELECT pages.* INTO v_current FROM public.wiki_pages AS pages
+  WHERE pages.slug = v_original.page_slug AND pages.is_published = TRUE
+  LIMIT 1 FOR UPDATE;
+  IF NOT FOUND OR v_current.version <> (v_original.after_snapshot->>'version')::INTEGER THEN
+    RAISE EXCEPTION 'Wiki page changed after this edit' USING ERRCODE = '40001';
+  END IF;
+
+  v_before := jsonb_build_object('id', v_current.id, 'slug', v_current.slug,
+    'title', v_current.title, 'content', v_current.content, 'excerpt', v_current.excerpt,
+    'category', v_current.category, 'version', v_current.version,
+    'created_at', v_current.created_at, 'updated_at', v_current.updated_at);
+  UPDATE public.wiki_pages AS pages SET is_published = FALSE
+  WHERE pages.id = v_current.id AND pages.version = v_current.version;
+
+  IF v_original.action_type = 'wiki_create' THEN
+    v_restored := v_current;
+    v_after := NULL;
+  ELSE
+    INSERT INTO public.wiki_pages (
+      id, slug, title, content, excerpt, category, version, is_published,
+      created_at, updated_at, created_by
+    ) SELECT
+      (v_original.before_snapshot->>'id')::UUID,
+      v_original.before_snapshot->>'slug', v_original.before_snapshot->>'title',
+      v_original.before_snapshot->'content', v_original.before_snapshot->>'excerpt',
+      v_original.before_snapshot->>'category',
+      COALESCE((SELECT max(pages.version) + 1 FROM public.wiki_pages AS pages
+        WHERE pages.id = (v_original.before_snapshot->>'id')::UUID), 0),
+      TRUE, COALESCE((v_original.before_snapshot->>'created_at')::TIMESTAMPTZ, now()),
+      now(), NULL
+    RETURNING * INTO v_restored;
+    v_after := jsonb_build_object('id', v_restored.id, 'slug', v_restored.slug,
+      'title', v_restored.title, 'content', v_restored.content, 'excerpt', v_restored.excerpt,
+      'category', v_restored.category, 'version', v_restored.version,
+      'created_at', v_restored.created_at, 'updated_at', v_restored.updated_at);
+  END IF;
+
+  INSERT INTO public.wiki_change_events (
+    page_id, page_slug, action_type, requester_whatsapp, requester_name,
+    verification_method, twilio_message_sid, before_snapshot, after_snapshot
+  ) VALUES (
+    v_original.page_id, v_original.page_slug, 'wiki_restore',
+    btrim(p_requester_whatsapp), NULLIF(btrim(COALESCE(p_requester_name, '')), ''),
+    v_original.verification_method, p_request_key, v_before, v_after
+  ) RETURNING wiki_change_events.id INTO v_event_id;
+  UPDATE public.wiki_change_events SET reverted_at = now(), reverted_by_event_id = v_event_id
+  WHERE wiki_change_events.id = v_original.id;
+
+  RETURN QUERY SELECT v_original.page_slug,
+    COALESCE(v_restored.title, v_original.after_snapshot->>'title'),
+    COALESCE(v_restored.version::INTEGER, -1), v_event_id;
+END;
+$_$;
+
+
+ALTER FUNCTION "public"."undo_wiki_change_event"("p_event_id" "uuid", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_request_key" "text") OWNER TO "postgres";
+
+
+CREATE OR REPLACE FUNCTION "public"."update_inbound_provider_contact"("p_contact_id" "uuid", "p_changes" "jsonb", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text", "p_verification_method" "text" DEFAULT 'whatsapp_inbound'::"text") RETURNS TABLE("id" "uuid", "title" "text", "subtitle" "text", "category" "text", "phone_number" "text", "website_url" "text", "map_url" "text", "image_url" "text")
     LANGUAGE "plpgsql" SECURITY DEFINER
     SET "search_path" TO 'pg_catalog', 'public'
     AS $$
@@ -1376,10 +1710,17 @@ DECLARE
   v_before public.contacts%ROWTYPE;
   v_after public.contacts%ROWTYPE;
 BEGIN
+  IF COALESCE(p_verification_method, '') NOT IN ('whatsapp_inbound', 'group_digest') THEN
+    RAISE EXCEPTION 'Invalid provider source' USING ERRCODE = '22023';
+  END IF;
   IF jsonb_typeof(COALESCE(p_changes, '{}'::JSONB)) <> 'object'
     OR EXISTS (SELECT 1 FROM jsonb_object_keys(p_changes) AS keys(key)
-      WHERE keys.key NOT IN ('title', 'subtitle', 'category')) THEN
+      WHERE keys.key NOT IN ('title', 'subtitle', 'category', 'website_url')) THEN
     RAISE EXCEPTION 'Invalid provider changes' USING ERRCODE = '22023';
+  END IF;
+  IF p_changes ? 'website_url' AND NULLIF(btrim(p_changes->>'website_url'), '') IS NOT NULL
+    AND (length(p_changes->>'website_url') > 500 OR btrim(p_changes->>'website_url') ~ '\s') THEN
+    RAISE EXCEPTION 'Invalid provider website' USING ERRCODE = '22023';
   END IF;
   SELECT contacts.* INTO v_before FROM public.contacts AS contacts
   WHERE contacts.id = p_contact_id AND contacts.is_deleted = FALSE FOR UPDATE;
@@ -1387,7 +1728,9 @@ BEGIN
   UPDATE public.contacts AS contacts SET
     title = CASE WHEN p_changes ? 'title' THEN left(btrim(p_changes->>'title'), 160) ELSE contacts.title END,
     subtitle = CASE WHEN p_changes ? 'subtitle' THEN left(btrim(p_changes->>'subtitle'), 2000) ELSE contacts.subtitle END,
-    category = CASE WHEN p_changes ? 'category' THEN left(btrim(p_changes->>'category'), 80) ELSE contacts.category END
+    category = CASE WHEN p_changes ? 'category' THEN left(btrim(p_changes->>'category'), 80) ELSE contacts.category END,
+    website_url = CASE WHEN p_changes ? 'website_url'
+      THEN NULLIF(btrim(p_changes->>'website_url'), '') ELSE contacts.website_url END
   WHERE contacts.id = p_contact_id RETURNING contacts.* INTO v_after;
   IF to_jsonb(v_before) IS DISTINCT FROM to_jsonb(v_after) THEN
     INSERT INTO public.provider_change_events (
@@ -1395,7 +1738,7 @@ BEGIN
       verification_method, twilio_message_sid, before_snapshot, after_snapshot
     ) VALUES (
       v_after.id, 'provider_update', p_requester_whatsapp,
-      NULLIF(btrim(COALESCE(p_requester_name, '')), ''), 'whatsapp_inbound',
+      NULLIF(btrim(COALESCE(p_requester_name, '')), ''), p_verification_method,
       p_twilio_message_sid, to_jsonb(v_before) - 'phone_normalized',
       to_jsonb(v_after) - 'phone_normalized'
     ) ON CONFLICT (twilio_message_sid, contact_id, action_type)
@@ -1407,7 +1750,7 @@ END;
 $$;
 
 
-ALTER FUNCTION "public"."update_inbound_provider_contact"("p_contact_id" "uuid", "p_changes" "jsonb", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text") OWNER TO "postgres";
+ALTER FUNCTION "public"."update_inbound_provider_contact"("p_contact_id" "uuid", "p_changes" "jsonb", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text", "p_verification_method" "text") OWNER TO "postgres";
 
 
 CREATE OR REPLACE FUNCTION "public"."update_wiki_content_tsv"() RETURNS "trigger"
@@ -1426,7 +1769,7 @@ $$;
 ALTER FUNCTION "public"."update_wiki_content_tsv"() OWNER TO "postgres";
 
 
-CREATE OR REPLACE FUNCTION "public"."upsert_inbound_provider_contact"("p_name" "text", "p_phone" "text", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text") RETURNS TABLE("id" "uuid", "title" "text", "subtitle" "text", "category" "text", "phone_number" "text", "website_url" "text", "map_url" "text", "image_url" "text", "created" boolean)
+CREATE OR REPLACE FUNCTION "public"."upsert_inbound_provider_contact"("p_name" "text", "p_phone" "text", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text", "p_verification_method" "text" DEFAULT 'whatsapp_inbound'::"text") RETURNS TABLE("id" "uuid", "title" "text", "subtitle" "text", "category" "text", "phone_number" "text", "website_url" "text", "map_url" "text", "image_url" "text", "created" boolean)
     LANGUAGE "plpgsql" SECURITY DEFINER
     SET "search_path" TO 'pg_catalog', 'public'
     AS $$
@@ -1434,6 +1777,9 @@ DECLARE
   v_contact public.contacts%ROWTYPE;
   v_created BOOLEAN := FALSE;
 BEGIN
+  IF COALESCE(p_verification_method, '') NOT IN ('whatsapp_inbound', 'group_digest') THEN
+    RAISE EXCEPTION 'Invalid provider source' USING ERRCODE = '22023';
+  END IF;
   SELECT contacts.* INTO v_contact FROM public.contacts AS contacts
   WHERE contacts.is_deleted = FALSE
     AND contacts.phone_normalized = public.normalize_contact_phone(p_phone)
@@ -1448,7 +1794,7 @@ BEGIN
       verification_method, twilio_message_sid, before_snapshot, after_snapshot
     ) VALUES (
       v_contact.id, 'provider_create', p_requester_whatsapp,
-      NULLIF(btrim(COALESCE(p_requester_name, '')), ''), 'whatsapp_inbound',
+      NULLIF(btrim(COALESCE(p_requester_name, '')), ''), p_verification_method,
       p_twilio_message_sid, NULL, to_jsonb(v_contact) - 'phone_normalized'
     ) ON CONFLICT (twilio_message_sid, contact_id, action_type)
       WHERE twilio_message_sid IS NOT NULL DO NOTHING;
@@ -1460,7 +1806,42 @@ END;
 $$;
 
 
-ALTER FUNCTION "public"."upsert_inbound_provider_contact"("p_name" "text", "p_phone" "text", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text") OWNER TO "postgres";
+ALTER FUNCTION "public"."upsert_inbound_provider_contact"("p_name" "text", "p_phone" "text", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text", "p_verification_method" "text") OWNER TO "postgres";
+
+
+CREATE OR REPLACE FUNCTION "public"."upsert_whatsapp_group"("p_group_jid" "text", "p_group_name" "text") RETURNS boolean
+    LANGUAGE "plpgsql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $$
+DECLARE
+  v_name TEXT := NULLIF(left(btrim(COALESCE(p_group_name, '')), 200), '');
+  v_enabled BOOLEAN;
+BEGIN
+  UPDATE public.whatsapp_groups AS groups SET
+    name = COALESCE(v_name, groups.name),
+    updated_at = CASE WHEN v_name IS NOT NULL AND v_name IS DISTINCT FROM groups.name
+      THEN now() ELSE groups.updated_at END
+  WHERE groups.jid = p_group_jid
+  RETURNING groups.enabled INTO v_enabled;
+  IF FOUND THEN
+    RETURN v_enabled;
+  END IF;
+
+  BEGIN
+    INSERT INTO public.whatsapp_groups (jid, name)
+    VALUES (p_group_jid, v_name)
+    RETURNING enabled INTO v_enabled;
+  EXCEPTION WHEN unique_violation THEN
+    -- Another listener event inserted the group concurrently.
+    SELECT groups.enabled INTO v_enabled
+    FROM public.whatsapp_groups AS groups WHERE groups.jid = p_group_jid;
+  END;
+  RETURN v_enabled;
+END;
+$$;
+
+
+ALTER FUNCTION "public"."upsert_whatsapp_group"("p_group_jid" "text", "p_group_name" "text") OWNER TO "postgres";
 
 SET default_tablespace = '';
 
@@ -1645,6 +2026,114 @@ COMMENT ON COLUMN "public"."contacts"."image_url" IS 'Public URL of the image st
 
 
 
+CREATE TABLE IF NOT EXISTS "public"."group_digest_admin_state" (
+    "admin_whatsapp" "text" NOT NULL,
+    "last_inbound_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    CONSTRAINT "group_digest_admin_state_admin_whatsapp_check" CHECK (("admin_whatsapp" ~ '^\+[1-9][0-9]{7,14}$'::"text"))
+);
+
+
+ALTER TABLE "public"."group_digest_admin_state" OWNER TO "postgres";
+
+
+CREATE TABLE IF NOT EXISTS "public"."group_digest_items" (
+    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
+    "ref" bigint NOT NULL,
+    "run_id" "uuid" NOT NULL,
+    "kind" "text" NOT NULL,
+    "action" "text",
+    "status" "text" NOT NULL,
+    "reason" "text",
+    "confidence" numeric(3,2),
+    "title" "text" NOT NULL,
+    "detail" "text",
+    "payload" "jsonb" DEFAULT '{}'::"jsonb" NOT NULL,
+    "evidence" "jsonb" DEFAULT '[]'::"jsonb" NOT NULL,
+    "contact_id" "uuid",
+    "wiki_page_slug" "text",
+    "wiki_event_id" "uuid",
+    "created_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    "decided_at" timestamp with time zone,
+    "decided_by" "text",
+    CONSTRAINT "group_digest_items_action_check" CHECK ((("action" IS NULL) OR ("action" = ANY (ARRAY['contact_create'::"text", 'contact_enrich'::"text", 'wiki_update'::"text", 'wiki_create'::"text"])))),
+    CONSTRAINT "group_digest_items_confidence_check" CHECK ((("confidence" IS NULL) OR (("confidence" >= (0)::numeric) AND ("confidence" <= (1)::numeric)))),
+    CONSTRAINT "group_digest_items_decided_by_check" CHECK ((("decided_by" IS NULL) OR ("decided_by" ~ '^\+[1-9][0-9]{7,14}$'::"text"))),
+    CONSTRAINT "group_digest_items_detail_check" CHECK ((("detail" IS NULL) OR ("char_length"("detail") <= 500))),
+    CONSTRAINT "group_digest_items_evidence_check" CHECK (("jsonb_typeof"("evidence") = 'array'::"text")),
+    CONSTRAINT "group_digest_items_kind_check" CHECK (("kind" = ANY (ARRAY['contact'::"text", 'wiki'::"text"]))),
+    CONSTRAINT "group_digest_items_payload_check" CHECK (("jsonb_typeof"("payload") = 'object'::"text")),
+    CONSTRAINT "group_digest_items_reason_check" CHECK ((("reason" IS NULL) OR ("char_length"("reason") <= 300))),
+    CONSTRAINT "group_digest_items_status_check" CHECK (("status" = ANY (ARRAY['applied'::"text", 'proposed'::"text", 'needs_review'::"text", 'skipped'::"text", 'undone'::"text", 'failed'::"text"]))),
+    CONSTRAINT "group_digest_items_title_check" CHECK ((("char_length"("title") >= 1) AND ("char_length"("title") <= 200)))
+);
+
+
+ALTER TABLE "public"."group_digest_items" OWNER TO "postgres";
+
+
+COMMENT ON TABLE "public"."group_digest_items" IS 'Private ledger of every digest decision, its evidence, and the resulting directory or wiki change.';
+
+
+
+ALTER TABLE "public"."group_digest_items" ALTER COLUMN "ref" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME "public"."group_digest_items_ref_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+
+CREATE TABLE IF NOT EXISTS "public"."group_digest_runs" (
+    "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
+    "run_date" "date" NOT NULL,
+    "trigger" "text" NOT NULL,
+    "mode" "text" NOT NULL,
+    "status" "text" DEFAULT 'running'::"text" NOT NULL,
+    "stats" "jsonb" DEFAULT '{}'::"jsonb" NOT NULL,
+    "error" "text",
+    "summary_sent_at" timestamp with time zone,
+    "started_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    "finished_at" timestamp with time zone,
+    CONSTRAINT "group_digest_runs_mode_check" CHECK (("mode" = ANY (ARRAY['shadow'::"text", 'publish'::"text"]))),
+    CONSTRAINT "group_digest_runs_stats_check" CHECK (("jsonb_typeof"("stats") = 'object'::"text")),
+    CONSTRAINT "group_digest_runs_status_check" CHECK (("status" = ANY (ARRAY['running'::"text", 'completed'::"text", 'failed'::"text"]))),
+    CONSTRAINT "group_digest_runs_trigger_check" CHECK (("trigger" = ANY (ARRAY['schedule'::"text", 'manual'::"text"])))
+);
+
+
+ALTER TABLE "public"."group_digest_runs" OWNER TO "postgres";
+
+
+CREATE TABLE IF NOT EXISTS "public"."group_messages" (
+    "group_jid" "text" NOT NULL,
+    "message_id" "text" NOT NULL,
+    "sender_hash" "text" NOT NULL,
+    "sender_name" "text",
+    "sent_at" timestamp with time zone NOT NULL,
+    "body" "text" DEFAULT ''::"text" NOT NULL,
+    "contacts" "jsonb" DEFAULT '[]'::"jsonb" NOT NULL,
+    "quoted_message_id" "text",
+    "edited_at" timestamp with time zone,
+    "received_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    CONSTRAINT "group_messages_body_check" CHECK (("char_length"("body") <= 8000)),
+    CONSTRAINT "group_messages_contacts_check" CHECK (("jsonb_typeof"("contacts") = 'array'::"text")),
+    CONSTRAINT "group_messages_message_id_check" CHECK ((("char_length"("message_id") >= 1) AND ("char_length"("message_id") <= 128))),
+    CONSTRAINT "group_messages_quoted_message_id_check" CHECK ((("quoted_message_id" IS NULL) OR ("char_length"("quoted_message_id") <= 128))),
+    CONSTRAINT "group_messages_sender_hash_check" CHECK (("sender_hash" ~ '^[0-9a-f]{64}$'::"text")),
+    CONSTRAINT "group_messages_sender_name_check" CHECK ((("sender_name" IS NULL) OR ("char_length"("sender_name") <= 100)))
+);
+
+
+ALTER TABLE "public"."group_messages" OWNER TO "postgres";
+
+
+COMMENT ON TABLE "public"."group_messages" IS 'Private, short-lived raw group messages for the daily digest. Sender identity is an HMAC; rows are purged after the retention window.';
+
+
+
 CREATE TABLE IF NOT EXISTS "public"."provider_change_events" (
     "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
     "contact_id" "uuid" NOT NULL,
@@ -1663,7 +2152,7 @@ CREATE TABLE IF NOT EXISTS "public"."provider_change_events" (
     CONSTRAINT "provider_change_events_before_snapshot_check" CHECK ((("before_snapshot" IS NULL) OR ("jsonb_typeof"("before_snapshot") = 'object'::"text"))),
     CONSTRAINT "provider_change_events_check" CHECK (((("action_type" = 'provider_create'::"text") AND ("before_snapshot" IS NULL)) OR (("action_type" = 'provider_update'::"text") AND ("before_snapshot" IS NOT NULL)))),
     CONSTRAINT "provider_change_events_requester_whatsapp_check" CHECK (("requester_whatsapp" ~ '^\+[1-9][0-9]{7,14}$'::"text")),
-    CONSTRAINT "provider_change_events_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['whatsapp_otp'::"text", 'whatsapp_inbound'::"text", 'trusted_session'::"text"])))
+    CONSTRAINT "provider_change_events_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['whatsapp_otp'::"text", 'whatsapp_inbound'::"text", 'trusted_session'::"text", 'group_digest'::"text"])))
 );
 
 
@@ -1766,6 +2255,54 @@ COMMENT ON COLUMN "public"."provider_reviews"."reviewer_whatsapp" IS 'Private ab
 
 
 
+CREATE TABLE IF NOT EXISTS "public"."whatsapp_groups" (
+    "jid" "text" NOT NULL,
+    "ref" integer NOT NULL,
+    "name" "text",
+    "enabled" boolean DEFAULT false NOT NULL,
+    "processed_through" timestamp with time zone,
+    "first_seen_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    "enabled_at" timestamp with time zone,
+    "updated_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    CONSTRAINT "whatsapp_groups_jid_check" CHECK (("jid" ~ '^[0-9-]{5,64}@g\.us$'::"text")),
+    CONSTRAINT "whatsapp_groups_name_check" CHECK ((("name" IS NULL) OR ("char_length"("name") <= 200)))
+);
+
+
+ALTER TABLE "public"."whatsapp_groups" OWNER TO "postgres";
+
+
+COMMENT ON TABLE "public"."whatsapp_groups" IS 'WhatsApp groups the Machu listener belongs to. Messages are recorded only after an administrator enables a group.';
+
+
+
+ALTER TABLE "public"."whatsapp_groups" ALTER COLUMN "ref" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME "public"."whatsapp_groups_ref_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+
+CREATE TABLE IF NOT EXISTS "public"."whatsapp_listener_status" (
+    "id" smallint DEFAULT 1 NOT NULL,
+    "status" "text" NOT NULL,
+    "account_phone" "text",
+    "last_seen_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    "last_message_at" timestamp with time zone,
+    "updated_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    CONSTRAINT "whatsapp_listener_status_account_phone_check" CHECK ((("account_phone" IS NULL) OR ("account_phone" ~ '^\+[1-9][0-9]{7,14}$'::"text"))),
+    CONSTRAINT "whatsapp_listener_status_id_check" CHECK (("id" = 1)),
+    CONSTRAINT "whatsapp_listener_status_status_check" CHECK (("status" = ANY (ARRAY['starting'::"text", 'awaiting_login'::"text", 'connected'::"text", 'disconnected'::"text", 'logged_out'::"text"])))
+);
+
+
+ALTER TABLE "public"."whatsapp_listener_status" OWNER TO "postgres";
+
+
 CREATE TABLE IF NOT EXISTS "public"."wiki_change_events" (
     "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL,
     "page_id" "uuid" NOT NULL,
@@ -1787,7 +2324,7 @@ CREATE TABLE IF NOT EXISTS "public"."wiki_change_events" (
     CONSTRAINT "wiki_change_events_check" CHECK (((("verification_action_id" IS NOT NULL) AND ("twilio_message_sid" IS NULL)) OR (("verification_action_id" IS NULL) AND ("twilio_message_sid" IS NOT NULL)))),
     CONSTRAINT "wiki_change_events_check1" CHECK (((("action_type" = 'wiki_create'::"text") AND ("before_snapshot" IS NULL) AND ("after_snapshot" IS NOT NULL)) OR (("action_type" = 'wiki_update'::"text") AND ("before_snapshot" IS NOT NULL) AND ("after_snapshot" IS NOT NULL)) OR (("action_type" = 'wiki_delete'::"text") AND ("before_snapshot" IS NOT NULL) AND ("after_snapshot" IS NULL)) OR (("action_type" = 'wiki_restore'::"text") AND (("before_snapshot" IS NOT NULL) OR ("after_snapshot" IS NOT NULL))))),
     CONSTRAINT "wiki_change_events_requester_whatsapp_check" CHECK (("requester_whatsapp" ~ '^\+[1-9][0-9]{7,14}$'::"text")),
-    CONSTRAINT "wiki_change_events_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['whatsapp_inbound'::"text", 'trusted_session'::"text"])))
+    CONSTRAINT "wiki_change_events_verification_method_check" CHECK (("verification_method" = ANY (ARRAY['whatsapp_inbound'::"text", 'trusted_session'::"text", 'group_digest'::"text"])))
 );
 
 
@@ -1815,6 +2352,228 @@ CREATE TABLE IF NOT EXISTS "public"."wiki_pages" (
 
 
 ALTER TABLE "public"."wiki_pages" OWNER TO "postgres";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_app_state_mutation_macs" (
+    "jid" "text" NOT NULL,
+    "name" "text" NOT NULL,
+    "version" bigint NOT NULL,
+    "index_mac" "bytea" NOT NULL,
+    "value_mac" "bytea" NOT NULL,
+    CONSTRAINT "whatsmeow_app_state_mutation_macs_index_mac_check" CHECK (("length"("index_mac") = 32)),
+    CONSTRAINT "whatsmeow_app_state_mutation_macs_value_mac_check" CHECK (("length"("value_mac") = 32))
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_app_state_mutation_macs" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_app_state_sync_keys" (
+    "jid" "text" NOT NULL,
+    "key_id" "bytea" NOT NULL,
+    "key_data" "bytea" NOT NULL,
+    "timestamp" bigint NOT NULL,
+    "fingerprint" "bytea" NOT NULL
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_app_state_sync_keys" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_app_state_version" (
+    "jid" "text" NOT NULL,
+    "name" "text" NOT NULL,
+    "version" bigint NOT NULL,
+    "hash" "bytea" NOT NULL,
+    CONSTRAINT "whatsmeow_app_state_version_hash_check" CHECK (("length"("hash") = 128))
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_app_state_version" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_chat_settings" (
+    "our_jid" "text" NOT NULL,
+    "chat_jid" "text" NOT NULL,
+    "muted_until" bigint DEFAULT 0 NOT NULL,
+    "pinned" boolean DEFAULT false NOT NULL,
+    "archived" boolean DEFAULT false NOT NULL,
+    "wasa_root_secret_id" "text" DEFAULT ''::"text" NOT NULL
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_chat_settings" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_contacts" (
+    "our_jid" "text" NOT NULL,
+    "their_jid" "text" NOT NULL,
+    "first_name" "text",
+    "full_name" "text",
+    "push_name" "text",
+    "business_name" "text",
+    "redacted_phone" "text"
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_contacts" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_device" (
+    "jid" "text" NOT NULL,
+    "lid" "text",
+    "facebook_uuid" "uuid",
+    "registration_id" bigint NOT NULL,
+    "noise_key" "bytea" NOT NULL,
+    "identity_key" "bytea" NOT NULL,
+    "signed_pre_key" "bytea" NOT NULL,
+    "signed_pre_key_id" integer NOT NULL,
+    "signed_pre_key_sig" "bytea" NOT NULL,
+    "adv_key" "bytea" NOT NULL,
+    "adv_details" "bytea" NOT NULL,
+    "adv_account_sig" "bytea" NOT NULL,
+    "adv_account_sig_key" "bytea" NOT NULL,
+    "adv_device_sig" "bytea" NOT NULL,
+    "platform" "text" DEFAULT ''::"text" NOT NULL,
+    "business_name" "text" DEFAULT ''::"text" NOT NULL,
+    "push_name" "text" DEFAULT ''::"text" NOT NULL,
+    "lid_migration_ts" bigint DEFAULT 0 NOT NULL,
+    "companion_meta_nonce" "text" DEFAULT ''::"text" NOT NULL,
+    CONSTRAINT "whatsmeow_device_adv_account_sig_check" CHECK (("length"("adv_account_sig") = 64)),
+    CONSTRAINT "whatsmeow_device_adv_account_sig_key_check" CHECK (("length"("adv_account_sig_key") = 32)),
+    CONSTRAINT "whatsmeow_device_adv_device_sig_check" CHECK (("length"("adv_device_sig") = 64)),
+    CONSTRAINT "whatsmeow_device_identity_key_check" CHECK (("length"("identity_key") = 32)),
+    CONSTRAINT "whatsmeow_device_noise_key_check" CHECK (("length"("noise_key") = 32)),
+    CONSTRAINT "whatsmeow_device_registration_id_check" CHECK ((("registration_id" >= 0) AND ("registration_id" < '4294967296'::bigint))),
+    CONSTRAINT "whatsmeow_device_signed_pre_key_check" CHECK (("length"("signed_pre_key") = 32)),
+    CONSTRAINT "whatsmeow_device_signed_pre_key_id_check" CHECK ((("signed_pre_key_id" >= 0) AND ("signed_pre_key_id" < 16777216))),
+    CONSTRAINT "whatsmeow_device_signed_pre_key_sig_check" CHECK (("length"("signed_pre_key_sig") = 64))
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_device" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_event_buffer" (
+    "our_jid" "text" NOT NULL,
+    "ciphertext_hash" "bytea" NOT NULL,
+    "plaintext" "bytea",
+    "server_timestamp" bigint NOT NULL,
+    "insert_timestamp" bigint NOT NULL,
+    CONSTRAINT "whatsmeow_event_buffer_ciphertext_hash_check" CHECK (("length"("ciphertext_hash") = 32))
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_event_buffer" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_identity_keys" (
+    "our_jid" "text" NOT NULL,
+    "their_id" "text" NOT NULL,
+    "identity" "bytea" NOT NULL,
+    CONSTRAINT "whatsmeow_identity_keys_identity_check" CHECK (("length"("identity") = 32))
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_identity_keys" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_lid_map" (
+    "lid" "text" NOT NULL,
+    "pn" "text" NOT NULL
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_lid_map" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_message_secrets" (
+    "our_jid" "text" NOT NULL,
+    "chat_jid" "text" NOT NULL,
+    "sender_jid" "text" NOT NULL,
+    "message_id" "text" NOT NULL,
+    "key" "bytea" NOT NULL
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_message_secrets" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_nct_salt" (
+    "our_jid" "text" NOT NULL,
+    "salt" "bytea" NOT NULL
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_nct_salt" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_pre_keys" (
+    "jid" "text" NOT NULL,
+    "key_id" integer NOT NULL,
+    "key" "bytea" NOT NULL,
+    "uploaded" boolean NOT NULL,
+    CONSTRAINT "whatsmeow_pre_keys_key_check" CHECK (("length"("key") = 32)),
+    CONSTRAINT "whatsmeow_pre_keys_key_id_check" CHECK ((("key_id" >= 0) AND ("key_id" < 16777216)))
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_pre_keys" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_privacy_tokens" (
+    "our_jid" "text" NOT NULL,
+    "their_jid" "text" NOT NULL,
+    "token" "bytea" NOT NULL,
+    "timestamp" bigint NOT NULL,
+    "sender_timestamp" bigint
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_privacy_tokens" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_retry_buffer" (
+    "our_jid" "text" NOT NULL,
+    "chat_jid" "text" NOT NULL,
+    "message_id" "text" NOT NULL,
+    "format" "text" NOT NULL,
+    "plaintext" "bytea" NOT NULL,
+    "timestamp" bigint NOT NULL
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_retry_buffer" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_sender_keys" (
+    "our_jid" "text" NOT NULL,
+    "chat_id" "text" NOT NULL,
+    "sender_id" "text" NOT NULL,
+    "sender_key" "bytea" NOT NULL
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_sender_keys" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_sessions" (
+    "our_jid" "text" NOT NULL,
+    "their_id" "text" NOT NULL,
+    "session" "bytea"
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_sessions" OWNER TO "machu_listener";
+
+
+CREATE TABLE IF NOT EXISTS "whatsmeow"."whatsmeow_version" (
+    "version" integer,
+    "compat" integer
+);
+
+
+ALTER TABLE "whatsmeow"."whatsmeow_version" OWNER TO "machu_listener";
 
 
 ALTER TABLE ONLY "public"."bot_conversations"
@@ -1854,6 +2613,31 @@ ALTER TABLE ONLY "public"."community_verified_sessions"
 
 ALTER TABLE ONLY "public"."contacts"
     ADD CONSTRAINT "contacts_pkey" PRIMARY KEY ("id");
+
+
+
+ALTER TABLE ONLY "public"."group_digest_admin_state"
+    ADD CONSTRAINT "group_digest_admin_state_pkey" PRIMARY KEY ("admin_whatsapp");
+
+
+
+ALTER TABLE ONLY "public"."group_digest_items"
+    ADD CONSTRAINT "group_digest_items_pkey" PRIMARY KEY ("id");
+
+
+
+ALTER TABLE ONLY "public"."group_digest_items"
+    ADD CONSTRAINT "group_digest_items_ref_key" UNIQUE ("ref");
+
+
+
+ALTER TABLE ONLY "public"."group_digest_runs"
+    ADD CONSTRAINT "group_digest_runs_pkey" PRIMARY KEY ("id");
+
+
+
+ALTER TABLE ONLY "public"."group_messages"
+    ADD CONSTRAINT "group_messages_pkey" PRIMARY KEY ("group_jid", "message_id");
 
 
 
@@ -1897,6 +2681,21 @@ ALTER TABLE ONLY "public"."provider_reviews"
 
 
 
+ALTER TABLE ONLY "public"."whatsapp_groups"
+    ADD CONSTRAINT "whatsapp_groups_pkey" PRIMARY KEY ("jid");
+
+
+
+ALTER TABLE ONLY "public"."whatsapp_groups"
+    ADD CONSTRAINT "whatsapp_groups_ref_key" UNIQUE ("ref");
+
+
+
+ALTER TABLE ONLY "public"."whatsapp_listener_status"
+    ADD CONSTRAINT "whatsapp_listener_status_pkey" PRIMARY KEY ("id");
+
+
+
 ALTER TABLE ONLY "public"."wiki_change_events"
     ADD CONSTRAINT "wiki_change_events_pkey" PRIMARY KEY ("id");
 
@@ -1909,6 +2708,91 @@ ALTER TABLE ONLY "public"."wiki_change_events"
 
 ALTER TABLE ONLY "public"."wiki_pages"
     ADD CONSTRAINT "wiki_pages_pkey" PRIMARY KEY ("id", "version");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_app_state_mutation_macs"
+    ADD CONSTRAINT "whatsmeow_app_state_mutation_macs_pkey" PRIMARY KEY ("jid", "name", "version", "index_mac");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_app_state_sync_keys"
+    ADD CONSTRAINT "whatsmeow_app_state_sync_keys_pkey" PRIMARY KEY ("jid", "key_id");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_app_state_version"
+    ADD CONSTRAINT "whatsmeow_app_state_version_pkey" PRIMARY KEY ("jid", "name");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_chat_settings"
+    ADD CONSTRAINT "whatsmeow_chat_settings_pkey" PRIMARY KEY ("our_jid", "chat_jid");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_contacts"
+    ADD CONSTRAINT "whatsmeow_contacts_pkey" PRIMARY KEY ("our_jid", "their_jid");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_device"
+    ADD CONSTRAINT "whatsmeow_device_pkey" PRIMARY KEY ("jid");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_event_buffer"
+    ADD CONSTRAINT "whatsmeow_event_buffer_pkey" PRIMARY KEY ("our_jid", "ciphertext_hash");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_identity_keys"
+    ADD CONSTRAINT "whatsmeow_identity_keys_pkey" PRIMARY KEY ("our_jid", "their_id");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_lid_map"
+    ADD CONSTRAINT "whatsmeow_lid_map_pkey" PRIMARY KEY ("lid");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_lid_map"
+    ADD CONSTRAINT "whatsmeow_lid_map_pn_key" UNIQUE ("pn");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_message_secrets"
+    ADD CONSTRAINT "whatsmeow_message_secrets_pkey" PRIMARY KEY ("our_jid", "chat_jid", "sender_jid", "message_id");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_nct_salt"
+    ADD CONSTRAINT "whatsmeow_nct_salt_pkey" PRIMARY KEY ("our_jid");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_pre_keys"
+    ADD CONSTRAINT "whatsmeow_pre_keys_pkey" PRIMARY KEY ("jid", "key_id");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_privacy_tokens"
+    ADD CONSTRAINT "whatsmeow_privacy_tokens_pkey" PRIMARY KEY ("our_jid", "their_jid");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_retry_buffer"
+    ADD CONSTRAINT "whatsmeow_retry_buffer_pkey" PRIMARY KEY ("our_jid", "chat_jid", "message_id");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_sender_keys"
+    ADD CONSTRAINT "whatsmeow_sender_keys_pkey" PRIMARY KEY ("our_jid", "chat_id", "sender_id");
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_sessions"
+    ADD CONSTRAINT "whatsmeow_sessions_pkey" PRIMARY KEY ("our_jid", "their_id");
 
 
 
@@ -1945,6 +2829,34 @@ CREATE INDEX "community_verified_sessions_phone_created_idx" ON "public"."commun
 
 
 CREATE UNIQUE INDEX "contacts_active_phone_normalized_unique_idx" ON "public"."contacts" USING "btree" ("phone_normalized") WHERE (("is_deleted" = false) AND ("phone_normalized" IS NOT NULL));
+
+
+
+CREATE INDEX "group_digest_items_run_idx" ON "public"."group_digest_items" USING "btree" ("run_id", "ref");
+
+
+
+CREATE INDEX "group_digest_items_status_idx" ON "public"."group_digest_items" USING "btree" ("status", "created_at" DESC);
+
+
+
+CREATE UNIQUE INDEX "group_digest_runs_one_scheduled_per_day_idx" ON "public"."group_digest_runs" USING "btree" ("run_date") WHERE (("trigger" = 'schedule'::"text") AND ("status" = ANY (ARRAY['running'::"text", 'completed'::"text"])));
+
+
+
+CREATE INDEX "group_digest_runs_started_idx" ON "public"."group_digest_runs" USING "btree" ("started_at" DESC);
+
+
+
+CREATE INDEX "group_messages_group_received_idx" ON "public"."group_messages" USING "btree" ("group_jid", "received_at");
+
+
+
+CREATE INDEX "group_messages_group_sent_idx" ON "public"."group_messages" USING "btree" ("group_jid", "sent_at");
+
+
+
+CREATE INDEX "group_messages_received_idx" ON "public"."group_messages" USING "btree" ("received_at");
 
 
 
@@ -2020,6 +2932,14 @@ CREATE INDEX "wiki_pages_title_idx" ON "public"."wiki_pages" USING "gin" ("to_ts
 
 
 
+CREATE INDEX "idx_whatsmeow_privacy_tokens_our_jid_timestamp" ON "whatsmeow"."whatsmeow_privacy_tokens" USING "btree" ("our_jid", "timestamp");
+
+
+
+CREATE INDEX "whatsmeow_retry_buffer_timestamp_idx" ON "whatsmeow"."whatsmeow_retry_buffer" USING "btree" ("our_jid", "timestamp");
+
+
+
 CREATE OR REPLACE TRIGGER "on_contacts_updated" BEFORE UPDATE ON "public"."contacts" FOR EACH ROW EXECUTE FUNCTION "public"."handle_updated_at"();
 
 
@@ -2044,6 +2964,26 @@ ALTER TABLE ONLY "public"."community_verification_actions"
 
 ALTER TABLE ONLY "public"."community_verified_sessions"
     ADD CONSTRAINT "community_verified_sessions_source_action_id_fkey" FOREIGN KEY ("source_action_id") REFERENCES "public"."community_verification_actions"("id") ON DELETE RESTRICT;
+
+
+
+ALTER TABLE ONLY "public"."group_digest_items"
+    ADD CONSTRAINT "group_digest_items_contact_id_fkey" FOREIGN KEY ("contact_id") REFERENCES "public"."contacts"("id") ON DELETE RESTRICT;
+
+
+
+ALTER TABLE ONLY "public"."group_digest_items"
+    ADD CONSTRAINT "group_digest_items_run_id_fkey" FOREIGN KEY ("run_id") REFERENCES "public"."group_digest_runs"("id") ON DELETE CASCADE;
+
+
+
+ALTER TABLE ONLY "public"."group_digest_items"
+    ADD CONSTRAINT "group_digest_items_wiki_event_id_fkey" FOREIGN KEY ("wiki_event_id") REFERENCES "public"."wiki_change_events"("id") ON DELETE RESTRICT;
+
+
+
+ALTER TABLE ONLY "public"."group_messages"
+    ADD CONSTRAINT "group_messages_group_jid_fkey" FOREIGN KEY ("group_jid") REFERENCES "public"."whatsapp_groups"("jid") ON DELETE CASCADE;
 
 
 
@@ -2092,6 +3032,71 @@ ALTER TABLE ONLY "public"."wiki_change_events"
 
 
 
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_app_state_mutation_macs"
+    ADD CONSTRAINT "whatsmeow_app_state_mutation_macs_jid_name_fkey" FOREIGN KEY ("jid", "name") REFERENCES "whatsmeow"."whatsmeow_app_state_version"("jid", "name") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_app_state_sync_keys"
+    ADD CONSTRAINT "whatsmeow_app_state_sync_keys_jid_fkey" FOREIGN KEY ("jid") REFERENCES "whatsmeow"."whatsmeow_device"("jid") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_app_state_version"
+    ADD CONSTRAINT "whatsmeow_app_state_version_jid_fkey" FOREIGN KEY ("jid") REFERENCES "whatsmeow"."whatsmeow_device"("jid") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_chat_settings"
+    ADD CONSTRAINT "whatsmeow_chat_settings_our_jid_fkey" FOREIGN KEY ("our_jid") REFERENCES "whatsmeow"."whatsmeow_device"("jid") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_contacts"
+    ADD CONSTRAINT "whatsmeow_contacts_our_jid_fkey" FOREIGN KEY ("our_jid") REFERENCES "whatsmeow"."whatsmeow_device"("jid") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_event_buffer"
+    ADD CONSTRAINT "whatsmeow_event_buffer_our_jid_fkey" FOREIGN KEY ("our_jid") REFERENCES "whatsmeow"."whatsmeow_device"("jid") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_identity_keys"
+    ADD CONSTRAINT "whatsmeow_identity_keys_our_jid_fkey" FOREIGN KEY ("our_jid") REFERENCES "whatsmeow"."whatsmeow_device"("jid") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_message_secrets"
+    ADD CONSTRAINT "whatsmeow_message_secrets_our_jid_fkey" FOREIGN KEY ("our_jid") REFERENCES "whatsmeow"."whatsmeow_device"("jid") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_nct_salt"
+    ADD CONSTRAINT "whatsmeow_nct_salt_our_jid_fkey" FOREIGN KEY ("our_jid") REFERENCES "whatsmeow"."whatsmeow_device"("jid") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_pre_keys"
+    ADD CONSTRAINT "whatsmeow_pre_keys_jid_fkey" FOREIGN KEY ("jid") REFERENCES "whatsmeow"."whatsmeow_device"("jid") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_retry_buffer"
+    ADD CONSTRAINT "whatsmeow_retry_buffer_our_jid_fkey" FOREIGN KEY ("our_jid") REFERENCES "whatsmeow"."whatsmeow_device"("jid") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_sender_keys"
+    ADD CONSTRAINT "whatsmeow_sender_keys_our_jid_fkey" FOREIGN KEY ("our_jid") REFERENCES "whatsmeow"."whatsmeow_device"("jid") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+
+ALTER TABLE ONLY "whatsmeow"."whatsmeow_sessions"
+    ADD CONSTRAINT "whatsmeow_sessions_our_jid_fkey" FOREIGN KEY ("our_jid") REFERENCES "whatsmeow"."whatsmeow_device"("jid") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+
 CREATE POLICY "All access for All Users" ON "public"."wiki_pages" USING (true);
 
 
@@ -2122,6 +3127,18 @@ ALTER TABLE "public"."community_verified_sessions" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "public"."contacts" ENABLE ROW LEVEL SECURITY;
 
 
+ALTER TABLE "public"."group_digest_admin_state" ENABLE ROW LEVEL SECURITY;
+
+
+ALTER TABLE "public"."group_digest_items" ENABLE ROW LEVEL SECURITY;
+
+
+ALTER TABLE "public"."group_digest_runs" ENABLE ROW LEVEL SECURITY;
+
+
+ALTER TABLE "public"."group_messages" ENABLE ROW LEVEL SECURITY;
+
+
 ALTER TABLE "public"."provider_change_events" ENABLE ROW LEVEL SECURITY;
 
 
@@ -2132,6 +3149,12 @@ ALTER TABLE "public"."provider_review_images" ENABLE ROW LEVEL SECURITY;
 
 
 ALTER TABLE "public"."provider_reviews" ENABLE ROW LEVEL SECURITY;
+
+
+ALTER TABLE "public"."whatsapp_groups" ENABLE ROW LEVEL SECURITY;
+
+
+ALTER TABLE "public"."whatsapp_listener_status" ENABLE ROW LEVEL SECURITY;
 
 
 ALTER TABLE "public"."wiki_change_events" ENABLE ROW LEVEL SECURITY;
@@ -2149,6 +3172,11 @@ GRANT USAGE ON SCHEMA "public" TO "postgres";
 GRANT USAGE ON SCHEMA "public" TO "anon";
 GRANT USAGE ON SCHEMA "public" TO "authenticated";
 GRANT USAGE ON SCHEMA "public" TO "service_role";
+GRANT USAGE ON SCHEMA "public" TO "machu_listener";
+
+
+
+GRANT ALL ON SCHEMA "whatsmeow" TO "machu_listener";
 
 
 
@@ -2336,6 +3364,11 @@ GRANT ALL ON FUNCTION "public"."apply_audited_wiki_write"("p_action_type" "text"
 
 
 
+REVOKE ALL ON FUNCTION "public"."claim_group_digest_run"("p_run_date" "date", "p_trigger" "text", "p_mode" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."claim_group_digest_run"("p_run_date" "date", "p_trigger" "text", "p_mode" "text") TO "service_role";
+
+
+
 REVOKE ALL ON FUNCTION "public"."clear_bot_conversation"("p_conversation_key" "text") FROM PUBLIC;
 GRANT ALL ON FUNCTION "public"."clear_bot_conversation"("p_conversation_key" "text") TO "anon";
 GRANT ALL ON FUNCTION "public"."clear_bot_conversation"("p_conversation_key" "text") TO "authenticated";
@@ -2372,6 +3405,12 @@ GRANT ALL ON FUNCTION "public"."complete_verified_provider_write"("p_action_id" 
 
 REVOKE ALL ON FUNCTION "public"."complete_verified_wiki_write"("p_action_id" "uuid") FROM PUBLIC;
 GRANT ALL ON FUNCTION "public"."complete_verified_wiki_write"("p_action_id" "uuid") TO "service_role";
+
+
+
+REVOKE ALL ON FUNCTION "public"."edit_group_message"("p_group_jid" "text", "p_message_id" "text", "p_body" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."edit_group_message"("p_group_jid" "text", "p_message_id" "text", "p_body" "text") TO "service_role";
+GRANT ALL ON FUNCTION "public"."edit_group_message"("p_group_jid" "text", "p_message_id" "text", "p_body" "text") TO "machu_listener";
 
 
 
@@ -2440,8 +3479,31 @@ GRANT ALL ON FUNCTION "public"."perform_provider_soft_delete"("p_contact_id" "uu
 
 
 
+REVOKE ALL ON FUNCTION "public"."purge_group_messages"("p_retention_days" integer) FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."purge_group_messages"("p_retention_days" integer) TO "service_role";
+
+
+
+REVOKE ALL ON FUNCTION "public"."record_group_message"("p_group_jid" "text", "p_group_name" "text", "p_message_id" "text", "p_sender_hash" "text", "p_sender_name" "text", "p_sent_at" timestamp with time zone, "p_body" "text", "p_contacts" "jsonb", "p_quoted_message_id" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."record_group_message"("p_group_jid" "text", "p_group_name" "text", "p_message_id" "text", "p_sender_hash" "text", "p_sender_name" "text", "p_sent_at" timestamp with time zone, "p_body" "text", "p_contacts" "jsonb", "p_quoted_message_id" "text") TO "service_role";
+GRANT ALL ON FUNCTION "public"."record_group_message"("p_group_jid" "text", "p_group_name" "text", "p_message_id" "text", "p_sender_hash" "text", "p_sender_name" "text", "p_sent_at" timestamp with time zone, "p_body" "text", "p_contacts" "jsonb", "p_quoted_message_id" "text") TO "machu_listener";
+
+
+
+REVOKE ALL ON FUNCTION "public"."record_listener_status"("p_status" "text", "p_account_phone" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."record_listener_status"("p_status" "text", "p_account_phone" "text") TO "service_role";
+GRANT ALL ON FUNCTION "public"."record_listener_status"("p_status" "text", "p_account_phone" "text") TO "machu_listener";
+
+
+
 REVOKE ALL ON FUNCTION "public"."reject_anonymous_contact_image_mutation"() FROM PUBLIC;
 GRANT ALL ON FUNCTION "public"."reject_anonymous_contact_image_mutation"() TO "service_role";
+
+
+
+REVOKE ALL ON FUNCTION "public"."revoke_group_message"("p_group_jid" "text", "p_message_id" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."revoke_group_message"("p_group_jid" "text", "p_message_id" "text") TO "service_role";
+GRANT ALL ON FUNCTION "public"."revoke_group_message"("p_group_jid" "text", "p_message_id" "text") TO "machu_listener";
 
 
 
@@ -2474,6 +3536,11 @@ GRANT ALL ON FUNCTION "public"."submit_provider_review"("p_contact_id" "uuid", "
 
 
 
+REVOKE ALL ON FUNCTION "public"."undo_group_digest_item"("p_item_id" "uuid", "p_requester_whatsapp" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."undo_group_digest_item"("p_item_id" "uuid", "p_requester_whatsapp" "text") TO "service_role";
+
+
+
 REVOKE ALL ON FUNCTION "public"."undo_last_inbound_wiki_change"("p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text") FROM PUBLIC;
 GRANT ALL ON FUNCTION "public"."undo_last_inbound_wiki_change"("p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text") TO "service_role";
 
@@ -2484,8 +3551,13 @@ GRANT ALL ON FUNCTION "public"."undo_provider_soft_delete"("p_event_id" "uuid", 
 
 
 
-REVOKE ALL ON FUNCTION "public"."update_inbound_provider_contact"("p_contact_id" "uuid", "p_changes" "jsonb", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text") FROM PUBLIC;
-GRANT ALL ON FUNCTION "public"."update_inbound_provider_contact"("p_contact_id" "uuid", "p_changes" "jsonb", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text") TO "service_role";
+REVOKE ALL ON FUNCTION "public"."undo_wiki_change_event"("p_event_id" "uuid", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_request_key" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."undo_wiki_change_event"("p_event_id" "uuid", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_request_key" "text") TO "service_role";
+
+
+
+REVOKE ALL ON FUNCTION "public"."update_inbound_provider_contact"("p_contact_id" "uuid", "p_changes" "jsonb", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text", "p_verification_method" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."update_inbound_provider_contact"("p_contact_id" "uuid", "p_changes" "jsonb", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text", "p_verification_method" "text") TO "service_role";
 
 
 
@@ -2495,8 +3567,14 @@ GRANT ALL ON FUNCTION "public"."update_wiki_content_tsv"() TO "service_role";
 
 
 
-REVOKE ALL ON FUNCTION "public"."upsert_inbound_provider_contact"("p_name" "text", "p_phone" "text", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text") FROM PUBLIC;
-GRANT ALL ON FUNCTION "public"."upsert_inbound_provider_contact"("p_name" "text", "p_phone" "text", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text") TO "service_role";
+REVOKE ALL ON FUNCTION "public"."upsert_inbound_provider_contact"("p_name" "text", "p_phone" "text", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text", "p_verification_method" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."upsert_inbound_provider_contact"("p_name" "text", "p_phone" "text", "p_requester_whatsapp" "text", "p_requester_name" "text", "p_twilio_message_sid" "text", "p_verification_method" "text") TO "service_role";
+
+
+
+REVOKE ALL ON FUNCTION "public"."upsert_whatsapp_group"("p_group_jid" "text", "p_group_name" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."upsert_whatsapp_group"("p_group_jid" "text", "p_group_name" "text") TO "service_role";
+GRANT ALL ON FUNCTION "public"."upsert_whatsapp_group"("p_group_jid" "text", "p_group_name" "text") TO "machu_listener";
 
 
 
@@ -2541,6 +3619,28 @@ GRANT SELECT ON TABLE "public"."contacts" TO "authenticated";
 
 
 
+GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."group_digest_admin_state" TO "service_role";
+
+
+
+GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."group_digest_items" TO "service_role";
+
+
+
+GRANT ALL ON SEQUENCE "public"."group_digest_items_ref_seq" TO "anon";
+GRANT ALL ON SEQUENCE "public"."group_digest_items_ref_seq" TO "authenticated";
+GRANT ALL ON SEQUENCE "public"."group_digest_items_ref_seq" TO "service_role";
+
+
+
+GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."group_digest_runs" TO "service_role";
+
+
+
+GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."group_messages" TO "service_role";
+
+
+
 GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."provider_change_events" TO "service_role";
 
 
@@ -2554,6 +3654,20 @@ GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public".
 
 
 GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."provider_reviews" TO "service_role";
+
+
+
+GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."whatsapp_groups" TO "service_role";
+
+
+
+GRANT ALL ON SEQUENCE "public"."whatsapp_groups_ref_seq" TO "anon";
+GRANT ALL ON SEQUENCE "public"."whatsapp_groups_ref_seq" TO "authenticated";
+GRANT ALL ON SEQUENCE "public"."whatsapp_groups_ref_seq" TO "service_role";
+
+
+
+GRANT SELECT,INSERT,REFERENCES,DELETE,TRIGGER,TRUNCATE,UPDATE ON TABLE "public"."whatsapp_listener_status" TO "service_role";
 
 
 
