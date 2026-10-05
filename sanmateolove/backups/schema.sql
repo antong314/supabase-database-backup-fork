@@ -233,14 +233,15 @@ $_$;
 ALTER FUNCTION "public"."apply_audited_wiki_write"("p_action_type" "text", "p_slug" "text", "p_title" "text", "p_category" "text", "p_content" "text", "p_expected_version" integer, "p_requester_whatsapp" "text", "p_requester_name" "text", "p_verification_method" "text", "p_verification_action_id" "uuid", "p_twilio_message_sid" "text") OWNER TO "postgres";
 
 
-CREATE OR REPLACE FUNCTION "public"."claim_group_digest_run"("p_run_date" "date", "p_trigger" "text", "p_mode" "text") RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."claim_group_digest_run"("p_run_date" "date", "p_trigger" "text", "p_mode" "text", "p_window_start" timestamp with time zone DEFAULT NULL::timestamp with time zone, "p_window_end" timestamp with time zone DEFAULT NULL::timestamp with time zone) RETURNS "uuid"
     LANGUAGE "plpgsql" SECURITY DEFINER
     SET "search_path" TO 'pg_catalog', 'public'
     AS $$
 DECLARE
   v_run_id UUID;
 BEGIN
-  IF p_trigger NOT IN ('schedule', 'manual') OR p_mode NOT IN ('shadow', 'publish') THEN
+  IF p_trigger NOT IN ('schedule', 'manual', 'backfill') OR p_mode NOT IN ('shadow', 'publish')
+    OR ((p_trigger = 'backfill') <> (p_window_start IS NOT NULL AND p_window_end > p_window_start)) THEN
     RAISE EXCEPTION 'Invalid digest run' USING ERRCODE = '22023';
   END IF;
   PERFORM pg_advisory_xact_lock(hashtext('machu_group_digest_run'));
@@ -265,15 +266,19 @@ BEGIN
     RETURN NULL;
   END IF;
 
-  INSERT INTO public.group_digest_runs (run_date, trigger, mode)
-  VALUES (p_run_date, p_trigger, p_mode)
+  INSERT INTO public.group_digest_runs (run_date, trigger, mode, window_start, window_end)
+  VALUES (
+    p_run_date, p_trigger, p_mode,
+    CASE WHEN p_trigger = 'backfill' THEN p_window_start END,
+    CASE WHEN p_trigger = 'backfill' THEN p_window_end END
+  )
   RETURNING id INTO v_run_id;
   RETURN v_run_id;
 END;
 $$;
 
 
-ALTER FUNCTION "public"."claim_group_digest_run"("p_run_date" "date", "p_trigger" "text", "p_mode" "text") OWNER TO "postgres";
+ALTER FUNCTION "public"."claim_group_digest_run"("p_run_date" "date", "p_trigger" "text", "p_mode" "text", "p_window_start" timestamp with time zone, "p_window_end" timestamp with time zone) OWNER TO "postgres";
 
 
 CREATE OR REPLACE FUNCTION "public"."clear_bot_conversation"("p_conversation_key" "text") RETURNS "void"
@@ -844,6 +849,64 @@ $$;
 ALTER FUNCTION "public"."handle_updated_at"() OWNER TO "postgres";
 
 
+CREATE OR REPLACE FUNCTION "public"."import_group_messages"("p_messages" "jsonb") RETURNS TABLE("inserted" integer, "refreshed" integer, "disabled" integer)
+    LANGUAGE "plpgsql" SECURITY DEFINER
+    SET "search_path" TO 'pg_catalog', 'public'
+    AS $_$
+DECLARE
+  v_total INTEGER;
+  v_eligible INTEGER;
+  v_inserted INTEGER;
+BEGIN
+  IF jsonb_typeof(p_messages) <> 'array' OR jsonb_array_length(p_messages) > 1000 THEN
+    RAISE EXCEPTION 'Import batches must be arrays of at most 1000 messages' USING ERRCODE = '22023';
+  END IF;
+  v_total := jsonb_array_length(p_messages);
+
+  WITH incoming AS (
+    SELECT
+      entry->>'group_jid' AS group_jid,
+      entry->>'message_id' AS message_id,
+      entry->>'sender_hash' AS sender_hash,
+      NULLIF(left(btrim(COALESCE(entry->>'sender_name', '')), 100), '') AS sender_name,
+      (entry->>'sent_at')::TIMESTAMPTZ AS sent_at,
+      left(COALESCE(entry->>'body', ''), 8000) AS body,
+      COALESCE(entry->'contacts', '[]'::JSONB) AS contacts,
+      NULLIF(btrim(COALESCE(entry->>'quoted_message_id', '')), '') AS quoted_message_id,
+      CASE WHEN entry->>'sender_phone' ~ '^\+[1-9][0-9]{7,14}$' THEN entry->>'sender_phone' END AS sender_phone
+    FROM jsonb_array_elements(p_messages) AS entry
+  ), eligible AS (
+    SELECT incoming.* FROM incoming
+    JOIN public.whatsapp_groups AS groups ON groups.jid = incoming.group_jid AND groups.enabled
+  ), written AS (
+    INSERT INTO public.group_messages AS messages (
+      group_jid, message_id, sender_hash, sender_name, sent_at, body, contacts,
+      quoted_message_id, source, sender_phone
+    )
+    SELECT group_jid, message_id, sender_hash, sender_name, sent_at, body, contacts,
+      quoted_message_id, 'backfill', sender_phone
+    FROM eligible
+    ON CONFLICT (group_jid, message_id) DO UPDATE SET
+      body = CASE WHEN messages.source = 'backfill' THEN EXCLUDED.body ELSE messages.body END,
+      contacts = CASE
+        WHEN messages.source = 'backfill' OR messages.contacts = '[]'::JSONB THEN EXCLUDED.contacts
+        ELSE messages.contacts END,
+      quoted_message_id = COALESCE(messages.quoted_message_id, EXCLUDED.quoted_message_id),
+      sender_name = COALESCE(messages.sender_name, EXCLUDED.sender_name),
+      sender_phone = COALESCE(messages.sender_phone, EXCLUDED.sender_phone)
+    RETURNING (xmax = 0) AS was_inserted
+  )
+  SELECT (SELECT count(*) FROM eligible), (SELECT count(*) FROM written WHERE was_inserted)
+  INTO v_eligible, v_inserted;
+
+  RETURN QUERY SELECT v_inserted, v_eligible - v_inserted, v_total - v_eligible;
+END;
+$_$;
+
+
+ALTER FUNCTION "public"."import_group_messages"("p_messages" "jsonb") OWNER TO "postgres";
+
+
 CREATE OR REPLACE FUNCTION "public"."normalize_contact_phone"("p_phone" "text") RETURNS "text"
     LANGUAGE "sql" IMMUTABLE PARALLEL SAFE
     SET "search_path" TO 'pg_catalog'
@@ -987,20 +1050,25 @@ $$;
 ALTER FUNCTION "public"."purge_group_messages"("p_retention_days" integer) OWNER TO "postgres";
 
 
-CREATE OR REPLACE FUNCTION "public"."record_group_message"("p_group_jid" "text", "p_group_name" "text", "p_message_id" "text", "p_sender_hash" "text", "p_sender_name" "text", "p_sent_at" timestamp with time zone, "p_body" "text", "p_contacts" "jsonb", "p_quoted_message_id" "text") RETURNS boolean
+CREATE OR REPLACE FUNCTION "public"."record_group_message"("p_group_jid" "text", "p_group_name" "text", "p_message_id" "text", "p_sender_hash" "text", "p_sender_name" "text", "p_sent_at" timestamp with time zone, "p_body" "text", "p_contacts" "jsonb", "p_quoted_message_id" "text", "p_sender_phone" "text" DEFAULT NULL::"text") RETURNS boolean
     LANGUAGE "plpgsql" SECURITY DEFINER
     SET "search_path" TO 'pg_catalog', 'public'
-    AS $$
+    AS $_$
 DECLARE
   v_enabled BOOLEAN;
   v_inserted INTEGER;
+  v_phone TEXT := NULLIF(btrim(COALESCE(p_sender_phone, '')), '');
 BEGIN
   v_enabled := public.upsert_whatsapp_group(p_group_jid, p_group_name);
   IF NOT v_enabled THEN
     RETURN FALSE;
   END IF;
+  IF v_phone !~ '^\+[1-9][0-9]{7,14}$' THEN
+    v_phone := NULL;
+  END IF;
   INSERT INTO public.group_messages (
-    group_jid, message_id, sender_hash, sender_name, sent_at, body, contacts, quoted_message_id
+    group_jid, message_id, sender_hash, sender_name, sent_at, body, contacts,
+    quoted_message_id, sender_phone
   ) VALUES (
     p_group_jid,
     p_message_id,
@@ -1009,7 +1077,8 @@ BEGIN
     COALESCE(p_sent_at, now()),
     left(COALESCE(p_body, ''), 8000),
     COALESCE(p_contacts, '[]'::JSONB),
-    NULLIF(btrim(COALESCE(p_quoted_message_id, '')), '')
+    NULLIF(btrim(COALESCE(p_quoted_message_id, '')), ''),
+    v_phone
   ) ON CONFLICT (group_jid, message_id) DO NOTHING;
   GET DIAGNOSTICS v_inserted = ROW_COUNT;
   IF v_inserted > 0 THEN
@@ -1019,10 +1088,10 @@ BEGIN
   END IF;
   RETURN v_inserted > 0;
 END;
-$$;
+$_$;
 
 
-ALTER FUNCTION "public"."record_group_message"("p_group_jid" "text", "p_group_name" "text", "p_message_id" "text", "p_sender_hash" "text", "p_sender_name" "text", "p_sent_at" timestamp with time zone, "p_body" "text", "p_contacts" "jsonb", "p_quoted_message_id" "text") OWNER TO "postgres";
+ALTER FUNCTION "public"."record_group_message"("p_group_jid" "text", "p_group_name" "text", "p_message_id" "text", "p_sender_hash" "text", "p_sender_name" "text", "p_sent_at" timestamp with time zone, "p_body" "text", "p_contacts" "jsonb", "p_quoted_message_id" "text", "p_sender_phone" "text") OWNER TO "postgres";
 
 
 CREATE OR REPLACE FUNCTION "public"."record_listener_status"("p_status" "text", "p_account_phone" "text") RETURNS "void"
@@ -2063,7 +2132,7 @@ CREATE TABLE IF NOT EXISTS "public"."group_digest_items" (
     CONSTRAINT "group_digest_items_kind_check" CHECK (("kind" = ANY (ARRAY['contact'::"text", 'wiki'::"text"]))),
     CONSTRAINT "group_digest_items_payload_check" CHECK (("jsonb_typeof"("payload") = 'object'::"text")),
     CONSTRAINT "group_digest_items_reason_check" CHECK ((("reason" IS NULL) OR ("char_length"("reason") <= 300))),
-    CONSTRAINT "group_digest_items_status_check" CHECK (("status" = ANY (ARRAY['applied'::"text", 'proposed'::"text", 'needs_review'::"text", 'skipped'::"text", 'undone'::"text", 'failed'::"text"]))),
+    CONSTRAINT "group_digest_items_status_check" CHECK (("status" = ANY (ARRAY['applied'::"text", 'proposed'::"text", 'needs_review'::"text", 'skipped'::"text", 'undone'::"text", 'failed'::"text", 'superseded'::"text"]))),
     CONSTRAINT "group_digest_items_title_check" CHECK ((("char_length"("title") >= 1) AND ("char_length"("title") <= 200)))
 );
 
@@ -2097,10 +2166,13 @@ CREATE TABLE IF NOT EXISTS "public"."group_digest_runs" (
     "summary_sent_at" timestamp with time zone,
     "started_at" timestamp with time zone DEFAULT "now"() NOT NULL,
     "finished_at" timestamp with time zone,
+    "window_start" timestamp with time zone,
+    "window_end" timestamp with time zone,
+    CONSTRAINT "group_digest_runs_backfill_window_check" CHECK (((("trigger" = 'backfill'::"text") AND ("window_start" IS NOT NULL) AND ("window_end" > "window_start")) OR (("trigger" <> 'backfill'::"text") AND ("window_start" IS NULL) AND ("window_end" IS NULL)))),
     CONSTRAINT "group_digest_runs_mode_check" CHECK (("mode" = ANY (ARRAY['shadow'::"text", 'publish'::"text"]))),
     CONSTRAINT "group_digest_runs_stats_check" CHECK (("jsonb_typeof"("stats") = 'object'::"text")),
     CONSTRAINT "group_digest_runs_status_check" CHECK (("status" = ANY (ARRAY['running'::"text", 'completed'::"text", 'failed'::"text"]))),
-    CONSTRAINT "group_digest_runs_trigger_check" CHECK (("trigger" = ANY (ARRAY['schedule'::"text", 'manual'::"text"])))
+    CONSTRAINT "group_digest_runs_trigger_check" CHECK (("trigger" = ANY (ARRAY['schedule'::"text", 'manual'::"text", 'backfill'::"text"])))
 );
 
 
@@ -2118,12 +2190,16 @@ CREATE TABLE IF NOT EXISTS "public"."group_messages" (
     "quoted_message_id" "text",
     "edited_at" timestamp with time zone,
     "received_at" timestamp with time zone DEFAULT "now"() NOT NULL,
+    "source" "text" DEFAULT 'live'::"text" NOT NULL,
+    "sender_phone" "text",
     CONSTRAINT "group_messages_body_check" CHECK (("char_length"("body") <= 8000)),
     CONSTRAINT "group_messages_contacts_check" CHECK (("jsonb_typeof"("contacts") = 'array'::"text")),
     CONSTRAINT "group_messages_message_id_check" CHECK ((("char_length"("message_id") >= 1) AND ("char_length"("message_id") <= 128))),
     CONSTRAINT "group_messages_quoted_message_id_check" CHECK ((("quoted_message_id" IS NULL) OR ("char_length"("quoted_message_id") <= 128))),
     CONSTRAINT "group_messages_sender_hash_check" CHECK (("sender_hash" ~ '^[0-9a-f]{64}$'::"text")),
-    CONSTRAINT "group_messages_sender_name_check" CHECK ((("sender_name" IS NULL) OR ("char_length"("sender_name") <= 100)))
+    CONSTRAINT "group_messages_sender_name_check" CHECK ((("sender_name" IS NULL) OR ("char_length"("sender_name") <= 100))),
+    CONSTRAINT "group_messages_sender_phone_check" CHECK ((("sender_phone" IS NULL) OR ("sender_phone" ~ '^\+[1-9][0-9]{7,14}$'::"text"))),
+    CONSTRAINT "group_messages_source_check" CHECK (("source" = ANY (ARRAY['live'::"text", 'backfill'::"text"])))
 );
 
 
@@ -2131,6 +2207,10 @@ ALTER TABLE "public"."group_messages" OWNER TO "postgres";
 
 
 COMMENT ON TABLE "public"."group_messages" IS 'Private, short-lived raw group messages for the daily digest. Sender identity is an HMAC; rows are purged after the retention window.';
+
+
+
+COMMENT ON COLUMN "public"."group_messages"."sender_phone" IS 'Private sender WhatsApp number, used only when a member advertises their own service; purged with the message.';
 
 
 
@@ -2848,6 +2928,10 @@ CREATE INDEX "group_digest_runs_started_idx" ON "public"."group_digest_runs" USI
 
 
 
+CREATE INDEX "group_digest_runs_window_idx" ON "public"."group_digest_runs" USING "btree" ("window_start", "window_end") WHERE ("trigger" = 'backfill'::"text");
+
+
+
 CREATE INDEX "group_messages_group_received_idx" ON "public"."group_messages" USING "btree" ("group_jid", "received_at");
 
 
@@ -3364,8 +3448,8 @@ GRANT ALL ON FUNCTION "public"."apply_audited_wiki_write"("p_action_type" "text"
 
 
 
-REVOKE ALL ON FUNCTION "public"."claim_group_digest_run"("p_run_date" "date", "p_trigger" "text", "p_mode" "text") FROM PUBLIC;
-GRANT ALL ON FUNCTION "public"."claim_group_digest_run"("p_run_date" "date", "p_trigger" "text", "p_mode" "text") TO "service_role";
+REVOKE ALL ON FUNCTION "public"."claim_group_digest_run"("p_run_date" "date", "p_trigger" "text", "p_mode" "text", "p_window_start" timestamp with time zone, "p_window_end" timestamp with time zone) FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."claim_group_digest_run"("p_run_date" "date", "p_trigger" "text", "p_mode" "text", "p_window_start" timestamp with time zone, "p_window_end" timestamp with time zone) TO "service_role";
 
 
 
@@ -3467,6 +3551,12 @@ GRANT ALL ON FUNCTION "public"."handle_updated_at"() TO "service_role";
 
 
 
+REVOKE ALL ON FUNCTION "public"."import_group_messages"("p_messages" "jsonb") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."import_group_messages"("p_messages" "jsonb") TO "service_role";
+GRANT ALL ON FUNCTION "public"."import_group_messages"("p_messages" "jsonb") TO "machu_listener";
+
+
+
 REVOKE ALL ON FUNCTION "public"."normalize_contact_phone"("p_phone" "text") FROM PUBLIC;
 GRANT ALL ON FUNCTION "public"."normalize_contact_phone"("p_phone" "text") TO "anon";
 GRANT ALL ON FUNCTION "public"."normalize_contact_phone"("p_phone" "text") TO "authenticated";
@@ -3484,9 +3574,9 @@ GRANT ALL ON FUNCTION "public"."purge_group_messages"("p_retention_days" integer
 
 
 
-REVOKE ALL ON FUNCTION "public"."record_group_message"("p_group_jid" "text", "p_group_name" "text", "p_message_id" "text", "p_sender_hash" "text", "p_sender_name" "text", "p_sent_at" timestamp with time zone, "p_body" "text", "p_contacts" "jsonb", "p_quoted_message_id" "text") FROM PUBLIC;
-GRANT ALL ON FUNCTION "public"."record_group_message"("p_group_jid" "text", "p_group_name" "text", "p_message_id" "text", "p_sender_hash" "text", "p_sender_name" "text", "p_sent_at" timestamp with time zone, "p_body" "text", "p_contacts" "jsonb", "p_quoted_message_id" "text") TO "service_role";
-GRANT ALL ON FUNCTION "public"."record_group_message"("p_group_jid" "text", "p_group_name" "text", "p_message_id" "text", "p_sender_hash" "text", "p_sender_name" "text", "p_sent_at" timestamp with time zone, "p_body" "text", "p_contacts" "jsonb", "p_quoted_message_id" "text") TO "machu_listener";
+REVOKE ALL ON FUNCTION "public"."record_group_message"("p_group_jid" "text", "p_group_name" "text", "p_message_id" "text", "p_sender_hash" "text", "p_sender_name" "text", "p_sent_at" timestamp with time zone, "p_body" "text", "p_contacts" "jsonb", "p_quoted_message_id" "text", "p_sender_phone" "text") FROM PUBLIC;
+GRANT ALL ON FUNCTION "public"."record_group_message"("p_group_jid" "text", "p_group_name" "text", "p_message_id" "text", "p_sender_hash" "text", "p_sender_name" "text", "p_sent_at" timestamp with time zone, "p_body" "text", "p_contacts" "jsonb", "p_quoted_message_id" "text", "p_sender_phone" "text") TO "service_role";
+GRANT ALL ON FUNCTION "public"."record_group_message"("p_group_jid" "text", "p_group_name" "text", "p_message_id" "text", "p_sender_hash" "text", "p_sender_name" "text", "p_sent_at" timestamp with time zone, "p_body" "text", "p_contacts" "jsonb", "p_quoted_message_id" "text", "p_sender_phone" "text") TO "machu_listener";
 
 
 
