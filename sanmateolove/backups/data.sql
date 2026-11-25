@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
--- \restrict lvKImpWBwc54bZVlei3vo2jyl5ulbhA3wlR05f7qWHbnSMJh9dHaFCbPKLqzAp0
+-- \restrict SkZTsw8Qa0sTzW6xctMgBBWmNn5H9xN2AoZgJVNHYaT5UagirIaL5FbzPlh67Jv
 
 -- Dumped from database version 15.8
 -- Dumped by pg_dump version 17.12
@@ -1652,7 +1652,7 @@ COPY "public"."provider_review_images" ("id", "review_id", "storage_path", "posi
 --
 
 COPY "public"."whatsapp_listener_status" ("id", "status", "account_phone", "last_seen_at", "last_message_at", "updated_at") FROM stdin;
-1	connected	+14355138943	2026-11-25 17:46:46.823208+00	2026-11-25 16:20:58+00	2026-11-25 10:26:46.823869+00
+1	connected	+14355138943	2026-11-25 17:50:46.822744+00	2026-11-25 16:20:58+00	2026-11-25 10:26:46.823869+00
 \.
 
 
@@ -13123,6 +13123,6 @@ SELECT pg_catalog.setval('"public"."whatsapp_groups_ref_seq"', 17, true);
 -- PostgreSQL database dump complete
 --
 
--- \unrestrict lvKImpWBwc54bZVlei3vo2jyl5ulbhA3wlR05f7qWHbnSMJh9dHaFCbPKLqzAp0
+-- \unrestrict SkZTsw8Qa0sTzW6xctMgBBWmNn5H9xN2AoZgJVNHYaT5UagirIaL5FbzPlh67Jv
 
 RESET ALL;
