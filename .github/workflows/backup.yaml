@@ -30,16 +30,13 @@ jobs:
 
       - name: Checkout repository
         if: env.BACKUP_ENABLED == 'true'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Setup Supabase CLI
         if: env.BACKUP_ENABLED == 'true'
-        uses: supabase/setup-cli@v1
+        uses: supabase/setup-cli@v3
         with:
           version: latest
-          # Authenticate the "latest" release lookup; anonymous GitHub API calls
-          # from shared runners intermittently fail with "rate limit exceeded".
-          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create timestamp folder
         if: env.BACKUP_ENABLED == 'true'
@@ -59,6 +56,6 @@ jobs:
 
       - name: Commit backups
         if: env.BACKUP_ENABLED == 'true'
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Supabase backup
